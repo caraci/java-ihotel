@@ -26,11 +26,11 @@ public class CreateIhotelData {
 			com.iHotel.persistentModel.StatoCamera statoCamera_2_101 = new com.iHotel.persistentModel.StatoCamera();			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _libera
 			com.iHotel.persistentModel.StatoCamera statoCamera_1_102 = new com.iHotel.persistentModel.StatoCamera();			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _libera
 			com.iHotel.persistentModel.StatoCamera statoCamera_2_102 = new com.iHotel.persistentModel.StatoCamera();			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : _libera
-			com.iHotel.persistentModel.Camera camera_101 = new com.iHotel.persistentModel.Camera();			// Initialize the properties of the persistent object here
-			com.iHotel.persistentModel.Camera camera_102 = new com.iHotel.persistentModel.Camera();			// Initialize the properties of the persistent object here
-			com.iHotel.persistentModel.CatalogoCamere catalogoCamere = new com.iHotel.persistentModel.CatalogoCamere();			// Initialize the properties of the persistent object here			
-			com.iHotel.persistentModel.DescrizioneCamera descrizioneCamera_singola = new com.iHotel.persistentModel.DescrizioneCamera();			// Initialize the properties of the persistent object here
-			com.iHotel.persistentModel.DescrizioneCamera descrizioneCamera_doppia = new com.iHotel.persistentModel.DescrizioneCamera();			// Initialize the properties of the persistent object here
+			com.iHotel.persistentModel.Camera camera_101 = new com.iHotel.persistentModel.Camera();			// TODO Initialize the properties of the persistent object here
+			com.iHotel.persistentModel.Camera camera_102 = new com.iHotel.persistentModel.Camera();			// TODO Initialize the properties of the persistent object here
+			com.iHotel.persistentModel.CatalogoCamere catalogoCamere = new com.iHotel.persistentModel.CatalogoCamere();			// TODO Initialize the properties of the persistent object here			
+			com.iHotel.persistentModel.DescrizioneCamera descrizioneCamera_singola = new com.iHotel.persistentModel.DescrizioneCamera();			// TODO Initialize the properties of the persistent object here
+			com.iHotel.persistentModel.DescrizioneCamera descrizioneCamera_doppia = new com.iHotel.persistentModel.DescrizioneCamera();			// TODO Initialize the properties of the persistent object here
 			// Fine inizializzazioni
 			
 			// Periodo //
