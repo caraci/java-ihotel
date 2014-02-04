@@ -19,7 +19,7 @@ public class PrezzoCamera extends com.iHotel.persistentModel.APersistentModel {
 	
 	private int ID;
 	
-	com.iHotel.persistentModel.Periodo _periodo;
+	private com.iHotel.persistentModel.Periodo _periodo;
 	
 	private com.iHotel.persistentModel.DescrizioneCamera _descrizioneCamera;
 	

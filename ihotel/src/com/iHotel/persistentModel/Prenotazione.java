@@ -21,7 +21,7 @@ public class Prenotazione extends com.iHotel.persistentModel.APersistentModel {
 	
 	com.iHotel.persistentModel.Periodo _periodo;
 	
-	com.iHotel.persistentModel.Ospite _ospite;
+	private com.iHotel.persistentModel.Ospite _ospite;
 	
 	private com.iHotel.persistentModel.Albergo _albergo;
 	
