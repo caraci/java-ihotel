@@ -20,15 +20,18 @@ import org.orm.criteria.*;
 
 public class DescrizioneCameraDetachedCriteria extends AbstractORMDetachedCriteria {
 	public final IntegerExpression ID;
+	public final StringExpression _tipologia;
 	
 	public DescrizioneCameraDetachedCriteria() {
 		super(com.iHotel.persistentModel.DescrizioneCamera.class, com.iHotel.persistentModel.DescrizioneCameraCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		_tipologia = new StringExpression("_tipologia", this.getDetachedCriteria());
 	}
 	
 	public DescrizioneCameraDetachedCriteria(DetachedCriteria aDetachedCriteria) {
 		super(aDetachedCriteria, com.iHotel.persistentModel.DescrizioneCameraCriteria.class);
 		ID = new IntegerExpression("ID", this.getDetachedCriteria());
+		_tipologia = new StringExpression("_tipologia", this.getDetachedCriteria());
 	}
 	
 	public com.iHotel.persistentModel.CatalogoCamereDetachedCriteria create_catalogoCamereCriteria() {

@@ -12,6 +12,8 @@ License Type: Academic
 		</id>
 		<many-to-one name="_albergo" cascade="lock" column="AlbergoID" class="com.ihotel.persistentmodel.Albergo" not-null="false" lazy="no-proxy">
 		</many-to-one>
+		<property name="_numero" column="_numero" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="_tipologia" column="_tipologia" type="string" length="255" not-null="false" lazy="false"/>
 		<set name="_statiCamera" lazy="true" cascade="save-update,lock" inverse="true">
 			<key column="CameraID" not-null="false"/>
 			<one-to-many class="com.ihotel.persistentmodel.StatoCamera"/>

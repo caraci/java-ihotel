@@ -21,6 +21,8 @@ public class DescrizioneCamera extends com.iHotel.persistentModel.APersistentMod
 	
 	private com.iHotel.persistentModel.CatalogoCamere _catalogoCamere;
 	
+	private String _tipologia;
+	
 	private java.util.Set _prezziCamera = new java.util.HashSet();
 	
 	private void setID(int value) {
@@ -33,6 +35,14 @@ public class DescrizioneCamera extends com.iHotel.persistentModel.APersistentMod
 	
 	public int getORMID() {
 		return getID();
+	}
+	
+	public void set_tipologia(String value) {
+		this._tipologia = value;
+	}
+	
+	public String get_tipologia() {
+		return _tipologia;
 	}
 	
 	public void set_catalogoCamere(com.iHotel.persistentModel.CatalogoCamere value) {

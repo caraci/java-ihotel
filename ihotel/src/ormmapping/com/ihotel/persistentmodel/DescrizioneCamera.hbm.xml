@@ -12,6 +12,7 @@ License Type: Academic
 		</id>
 		<many-to-one name="_catalogoCamere" cascade="lock" column="CatalogoCamereID" class="com.ihotel.persistentmodel.CatalogoCamere" not-null="false" lazy="no-proxy">
 		</many-to-one>
+		<property name="_tipologia" column="_tipologia" type="string" length="255" not-null="false" lazy="false"/>
 		<set name="_prezziCamera" lazy="true" cascade="save-update,lock" inverse="true">
 			<key column="DescrizioneCameraID" not-null="false"/>
 			<one-to-many class="com.ihotel.persistentmodel.PrezzoCamera"/>

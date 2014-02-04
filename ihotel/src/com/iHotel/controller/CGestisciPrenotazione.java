@@ -5,6 +5,11 @@ import com.iHotel.model.*;
 public class CGestisciPrenotazione {
 
 	private MPrenotazione _prenotazione;
+	private MAlbergo _albergo;
+	
+	public CGestisciPrenotazione() {
+		MAlbergo _albergo = new MAlbergo();
+	}
 
 	public MPrenotazione get_prenotazione() {
 		return this._prenotazione;

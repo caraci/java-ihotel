@@ -20,10 +20,12 @@ import org.orm.criteria.*;
 
 public class DescrizioneCameraCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final StringExpression _tipologia;
 	
 	public DescrizioneCameraCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		_tipologia = new StringExpression("_tipologia", this);
 	}
 	
 	public DescrizioneCameraCriteria(PersistentSession session) {

@@ -21,6 +21,10 @@ public class Camera extends com.iHotel.persistentModel.APersistentModel {
 	
 	private com.iHotel.persistentModel.Albergo _albergo;
 	
+	private String _numero;
+	
+	private String _tipologia;
+	
 	private java.util.Set _statiCamera = new java.util.HashSet();
 	
 	private void setID(int value) {
@@ -33,6 +37,22 @@ public class Camera extends com.iHotel.persistentModel.APersistentModel {
 	
 	public int getORMID() {
 		return getID();
+	}
+	
+	public void set_numero(String value) {
+		this._numero = value;
+	}
+	
+	public String get_numero() {
+		return _numero;
+	}
+	
+	public void set_tipologia(String value) {
+		this._tipologia = value;
+	}
+	
+	public String get_tipologia() {
+		return _tipologia;
 	}
 	
 	public void set_albergo(com.iHotel.persistentModel.Albergo value) {

@@ -5,6 +5,10 @@ import com.iHotel.persistentModel.*;
 public class MAlbergo {
 
 	private Albergo _albergo;
+	
+	public MAlbergo() {
+		Albergo _albergo = new Albergo();
+	}
 
 	/**
 	 * 

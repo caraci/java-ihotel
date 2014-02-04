@@ -20,10 +20,14 @@ import org.orm.criteria.*;
 
 public class CameraCriteria extends AbstractORMCriteria {
 	public final IntegerExpression ID;
+	public final StringExpression _numero;
+	public final StringExpression _tipologia;
 	
 	public CameraCriteria(Criteria criteria) {
 		super(criteria);
 		ID = new IntegerExpression("ID", this);
+		_numero = new StringExpression("_numero", this);
+		_tipologia = new StringExpression("_tipologia", this);
 	}
 	
 	public CameraCriteria(PersistentSession session) {
