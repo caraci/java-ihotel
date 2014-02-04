@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.ihotel.persistentmodel.Albergo" table="Albergo" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="_catalogoCamere" column="CatalogoCamereID" class="com.ihotel.persistentmodel.CatalogoCamere" cascade="save-update,lock" unique="true" not-null="false" lazy="no-proxy">
+		</many-to-one>
+		<property name="nome" column="Nome" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="_prenotazioni" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="AlbergoID" not-null="false"/>
+			<one-to-many class="com.ihotel.persistentmodel.Prenotazione"/>
+		</set>
+		<set name="_camere" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="AlbergoID" not-null="false"/>
+			<one-to-many class="com.ihotel.persistentmodel.Camera"/>
+		</set>
+	</class>
+</hibernate-mapping>

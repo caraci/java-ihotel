@@ -20,8 +20,7 @@ public class VFrameCreaPrenotazioneHome extends JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	private void initComponents() {
-		// TODO - implement VFrameCreaPrenotazioneHome.initComponents
-		throw new UnsupportedOperationException();
+
 	}
 
 	/**

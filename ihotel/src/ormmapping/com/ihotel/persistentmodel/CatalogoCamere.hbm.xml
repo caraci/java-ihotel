@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.ihotel.persistentmodel.CatalogoCamere" table="CatalogoCamere" lazy="false">
+		<id name="ID" column="ID" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<set name="_descrizioniCamere" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="CatalogoCamereID" not-null="false"/>
+			<one-to-many class="com.ihotel.persistentmodel.DescrizioneCamera"/>
+		</set>
+	</class>
+</hibernate-mapping>

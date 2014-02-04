@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: Universita degli Studi dell'Aquila
+License Type: Academic
+-->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+   	<!-- properties -->
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost/iHotel</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">pippo</property>
+		<property name="show_sql">false</property>
+		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
+		<!-- mapping files -->
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/Albergo.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/Camera.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/CatalogoCamere.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/DescrizioneCamera.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/ElementoPrenotazione.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/Ospite.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/Periodo.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/Prenotazione.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/PrezzoCamera.hbm.xml" />
+		<mapping resource="ormmapping/com/ihotel/persistentmodel/StatoCamera.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
