@@ -38,30 +38,28 @@ public class CreateIhotelData {
 			// Periodo 1
 			Periodo p_1 = new Periodo();
 				// Data inizio
+				// 1/1/2014 - 00.00.00
 				Date di_1 = new Date();
-				di_1.setDate(1);
-				di_1.setMonth(1);
-				di_1.setYear(2014);
+				di_1.setTime(1388534400);
+				
 				// Data fine
+				// 31/1/2014 - 23.59.59
 				Date df_1 = new Date();
-				df_1.setDate(31);
-				df_1.setMonth(1);
-				df_1.setYear(2104);
+				df_1.setTime(1391212799);
 			
 				p_1.set_dataInizio(di_1);
 				p_1.set_dataFine(df_1);
+				
 			// Periodo 2
 			Periodo p_2 = new Periodo();
 				// Data inizio
 				Date di_2 = new Date();
-				di_2.setDate(1);
-				di_2.setMonth(2);
-				di_2.setYear(2014);
+				// 1/2/2014 - 00.00.00
+				di_2.setTime(1391212800);
 				// Data fine
 				Date df_2 = new Date();
-				df_2.setDate(28);
-				df_2.setMonth(2);
-				df_2.setYear(2104);
+				// 28/2/2014 - 23.59.59
+				df_2.setTime(1393631999);
 			
 				p_2.set_dataInizio(di_2);
 				p_2.set_dataFine(df_2);
