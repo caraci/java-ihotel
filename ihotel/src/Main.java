@@ -74,44 +74,53 @@ public class Main{
 		
 		// Camera 102
 		MCamera camera_102 = new MCamera();
-		camera_101.set_numero("102");
-		camera_101.set_tipologia("Doppia");
+		camera_102.set_numero("102");
+		camera_102.set_tipologia("Doppia");
 		
 		// Camera 103
 		MCamera camera_103 = new MCamera();
-		camera_101.set_numero("103");
-		camera_101.set_tipologia("Tripla");
+		camera_103.set_numero("103");
+		camera_103.set_tipologia("Tripla");
 		
 		//Creo gli stati per le camere
 		
 		// StatoCamera_101_Periodo_1
 		MStatoCamera statoCamera_101_Periodo1 = new MStatoCamera();
+		statoCamera_101_Periodo1.set_periodo(periodo_1);
 		statoCamera_101_Periodo1.set_libera(true);
 		// StatoCamera_102_Periodo_1
 		MStatoCamera statoCamera_102_Periodo1 = new MStatoCamera();
+		statoCamera_102_Periodo1.set_periodo(periodo_1);
 		statoCamera_102_Periodo1.set_libera(true);
 		// StatoCamera_103_Periodo_1
 		MStatoCamera statoCamera_103_Periodo1 = new MStatoCamera();
+		statoCamera_103_Periodo1.set_periodo(periodo_1);
 		statoCamera_103_Periodo1.set_libera(false);
 		
 		// StatoCamera_101_Periodo_2
 		MStatoCamera statoCamera_101_Periodo2 = new MStatoCamera();
+		statoCamera_101_Periodo2.set_periodo(periodo_2);
 		statoCamera_101_Periodo2.set_libera(false);
 		// StatoCamera_102_Periodo_2
 		MStatoCamera statoCamera_102_Periodo2 = new MStatoCamera();
+		statoCamera_102_Periodo2.set_periodo(periodo_2);
 		statoCamera_102_Periodo2.set_libera(true);
 		// StatoCamera_103_Periodo_2
 		MStatoCamera statoCamera_103_Periodo2 = new MStatoCamera();
+		statoCamera_103_Periodo2.set_periodo(periodo_2);
 		statoCamera_103_Periodo2.set_libera(true);
 		
 		// StatoCamera_101_Periodo_3
 		MStatoCamera statoCamera_101_Periodo3 = new MStatoCamera();
+		statoCamera_101_Periodo3.set_periodo(periodo_3);
 		statoCamera_101_Periodo3.set_libera(true);
 		// StatoCamera_102_Periodo_3
 		MStatoCamera statoCamera_102_Periodo3 = new MStatoCamera();
+		statoCamera_102_Periodo3.set_periodo(periodo_3);
 		statoCamera_102_Periodo3.set_libera(false);
 		// StatoCamera_103_Periodo_3
 		MStatoCamera statoCamera_103_Periodo3 = new MStatoCamera();
+		statoCamera_103_Periodo3.set_periodo(periodo_3);
 		statoCamera_103_Periodo3.set_libera(true);
 		
 		//Creo le map di stati di camere
