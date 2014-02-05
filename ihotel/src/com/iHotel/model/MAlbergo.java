@@ -5,7 +5,7 @@ import java.util.*;
 public class MAlbergo {
 
 	private MCatalogoCamere _catalogoCamere;
-	private HashMap<String,MCamera> _camere;
+	private ArrayList<MCamera> _camere;
 	private Collection<MPrenotazione> _prenotazioni;
 	private String _nome;
 	private String _telefono;
@@ -26,17 +26,18 @@ public class MAlbergo {
 		this._catalogoCamere = _catalogoCamere;
 	}
 
+
 	/**
 	 * @return the _camere
 	 */
-	public HashMap<String,MCamera> get_camere() {
+	public ArrayList<MCamera> get_camere() {
 		return _camere;
 	}
 
 	/**
 	 * @param _camere the _camere to set
 	 */
-	public void set_camere(HashMap<String,MCamera> _camere) {
+	public void set_camere(ArrayList<MCamera> _camere) {
 		this._camere = _camere;
 	}
 

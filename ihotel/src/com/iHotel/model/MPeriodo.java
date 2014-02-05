@@ -1,34 +1,34 @@
 package com.iHotel.model;
 
-import java.util.*;
-
 public class MPeriodo {
 
-	private Calendar _dataInizio;
-	private Calendar _dataFine;
-
-	public Calendar get_dataInizio() {
-		return this._dataInizio;
-	}
-
+	private long _dataInizio;
+	private long _dataFine;
 	/**
-	 * 
-	 * @param dataInizio_1
+	 * @return the _dataFine
 	 */
-	public void set_dataInizio(Calendar dataInizio_1) {
-		this._dataInizio = dataInizio_1;
+	public long get_dataFine() {
+		return _dataFine;
 	}
-
-	public Calendar get_dataFine() {
-		return this._dataFine;
-	}
-
 	/**
-	 * 
-	 * @param dataFine_1
+	 * @param _dataFine the _dataFine to set
 	 */
-	public void set_dataFine(Calendar dataFine_1) {
-		this._dataFine = dataFine_1;
+	public void set_dataFine(long _dataFine) {
+		this._dataFine = _dataFine;
 	}
+	/**
+	 * @return the _dataInizio
+	 */
+	public long get_dataInizio() {
+		return _dataInizio;
+	}
+	/**
+	 * @param _dataInizio the _dataInizio to set
+	 */
+	public void set_dataInizio(long _dataInizio) {
+		this._dataInizio = _dataInizio;
+	}
+
+	
 
 }

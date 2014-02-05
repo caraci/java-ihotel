@@ -4,20 +4,21 @@ import java.util.*;
 
 public class MDescrizioneCamera {
 
-	private HashMap<MPeriodo, MPrezzoCamera> _prezziCamera;
+	private ArrayList<MPrezzoCamera> _prezziCamera;
 	private String _tipologia;
+
 
 	/**
 	 * @return the _prezziCamera
 	 */
-	public HashMap<MPeriodo, MPrezzoCamera> get_prezziCamera() {
+	public ArrayList<MPrezzoCamera> get_prezziCamera() {
 		return _prezziCamera;
 	}
 
 	/**
 	 * @param _prezziCamera the _prezziCamera to set
 	 */
-	public void set_prezziCamera(HashMap<MPeriodo, MPrezzoCamera> _prezziCamera) {
+	public void set_prezziCamera(ArrayList<MPrezzoCamera> _prezziCamera) {
 		this._prezziCamera = _prezziCamera;
 	}
 

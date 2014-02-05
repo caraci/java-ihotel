@@ -37,31 +37,26 @@ public class Main{
 		//periodi
 		
 		// periodo_1 - 1 Gennaio 2014 - 00:00.00 - 31 Gennaio 2014 - 23.59.59
-					Calendar dataInizio_1 = Calendar.getInstance();
-					dataInizio_1.setTimeInMillis(1388534400);
-					Calendar dataFine_1 = Calendar.getInstance();
-					dataFine_1.setTimeInMillis(139121279);
+					long di_1 = 1388534400000L;
+					
+					long df_1 = 1391209199000L;
 				MPeriodo periodo_1 = new MPeriodo();
-				periodo_1.set_dataInizio(dataInizio_1);
-				periodo_1.set_dataFine(dataFine_1);
+				periodo_1.set_dataInizio(di_1);
+				periodo_1.set_dataFine(df_1);
 			
 			// periodo_2 - 1 Febbraio 2014 - 00:00.00 - 28 Febbraio 2014 - 23:59.59
-					Calendar dataInizio_2 = Calendar.getInstance();
-					dataInizio_2.setTimeInMillis(1391212800);
-					Calendar dataFine_2 = Calendar.getInstance();
-					dataFine_2.setTimeInMillis(1393631999);
+					long di_2 = 1391209200000L;
+					long df_2 = 1393628399000L;
 				MPeriodo periodo_2 = new MPeriodo();
-				periodo_2.set_dataInizio(dataInizio_2);
-				periodo_2.set_dataFine(dataFine_2);
+				periodo_2.set_dataInizio(di_2);
+				periodo_2.set_dataFine(df_2);
 				
 			// periodo_3 - 1 Marzo 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
-				Calendar dataInizio_3 = Calendar.getInstance();
-				dataInizio_3.setTimeInMillis(1393632000);
-				Calendar dataFine_3 = Calendar.getInstance();
-				dataFine_3.setTimeInMillis(1396310399);
+					long di_3 = 1393628400000L;
+					long df_3 = 1396306799000L;
 				MPeriodo periodo_3 = new MPeriodo();
-				periodo_3.set_dataInizio(dataInizio_3);
-				periodo_3.set_dataFine(dataFine_3);
+				periodo_3.set_dataInizio(di_3);
+				periodo_3.set_dataFine(df_3);
 		
 		//fine periodi
 		
@@ -87,7 +82,7 @@ public class Main{
 		// StatoCamera_101_Periodo_1
 		MStatoCamera statoCamera_101_Periodo1 = new MStatoCamera();
 		statoCamera_101_Periodo1.set_periodo(periodo_1);
-		statoCamera_101_Periodo1.set_libera(true);
+		statoCamera_101_Periodo1.set_libera(false);
 		// StatoCamera_102_Periodo_1
 		MStatoCamera statoCamera_102_Periodo1 = new MStatoCamera();
 		statoCamera_102_Periodo1.set_periodo(periodo_1);
@@ -126,22 +121,22 @@ public class Main{
 		//Creo le map di stati di camere
 		
 		// Stati occupazione Camera 101
-		HashMap<MPeriodo,MStatoCamera> statiCamera_101 = new HashMap<MPeriodo,MStatoCamera>();
-		statiCamera_101.put(periodo_1, statoCamera_101_Periodo1);
-		statiCamera_101.put(periodo_2, statoCamera_101_Periodo2);
-		statiCamera_101.put(periodo_3, statoCamera_101_Periodo3);
+		LinkedList<MStatoCamera> statiCamera_101 = new LinkedList<MStatoCamera>();
+		statiCamera_101.add(statoCamera_101_Periodo1);
+		statiCamera_101.add(statoCamera_101_Periodo2);
+		statiCamera_101.add(statoCamera_101_Periodo3);
 		
 		// Stati occupazione Camera 102
-		HashMap<MPeriodo,MStatoCamera> statiCamera_102 = new HashMap<MPeriodo,MStatoCamera>();
-		statiCamera_102.put(periodo_1, statoCamera_102_Periodo1);
-		statiCamera_102.put(periodo_2, statoCamera_102_Periodo2);
-		statiCamera_102.put(periodo_3, statoCamera_102_Periodo3);
+		LinkedList<MStatoCamera> statiCamera_102 = new LinkedList<MStatoCamera>();
+		statiCamera_102.add(statoCamera_102_Periodo1);
+		statiCamera_102.add(statoCamera_102_Periodo2);
+		statiCamera_102.add(statoCamera_102_Periodo3);
 		
 		// Stati occupazione Camera 103
-		HashMap<MPeriodo,MStatoCamera> statiCamera_103 = new HashMap<MPeriodo,MStatoCamera>();
-		statiCamera_103.put(periodo_1, statoCamera_103_Periodo1);
-		statiCamera_103.put(periodo_2, statoCamera_103_Periodo2);
-		statiCamera_103.put(periodo_3, statoCamera_103_Periodo3);
+		LinkedList<MStatoCamera> statiCamera_103 = new LinkedList<MStatoCamera>();
+		statiCamera_103.add(statoCamera_103_Periodo1);
+		statiCamera_103.add(statoCamera_103_Periodo2);
+		statiCamera_103.add(statoCamera_103_Periodo3);
 		
 		// Aggiungo stati alle rispettive camere
 		
@@ -151,39 +146,44 @@ public class Main{
 		
 		// Mappa delle camere
 		
-		HashMap<String, MCamera> camere = new HashMap<String, MCamera>();
-		camere.put(camera_101.get_numero(), camera_101);
-		camere.put(camera_102.get_numero(), camera_102);
-		camere.put(camera_103.get_numero(), camera_103);
-		
-		
-
+		ArrayList<MCamera> camere = new ArrayList<MCamera>();
+		camere.add(camera_101);
+		camere.add(camera_102);
+		camere.add(camera_103);
 		
 		//prezzi camere
 		MPrezzoCamera p_singola_1 = new MPrezzoCamera();
 		p_singola_1.set_prezzo(50);
 		p_singola_1.set_periodo(periodo_1);
+		
 		MPrezzoCamera p_singola_2 = new MPrezzoCamera();
 		p_singola_2.set_prezzo(60);
 		p_singola_2.set_periodo(periodo_2);
+		
 		MPrezzoCamera p_singola_3 = new MPrezzoCamera();
 		p_singola_3.set_prezzo(70);
 		p_singola_3.set_periodo(periodo_3);
+		
 		MPrezzoCamera p_doppia_1 = new MPrezzoCamera();
 		p_doppia_1.set_prezzo(70);
 		p_doppia_1.set_periodo(periodo_1);
+		
 		MPrezzoCamera p_doppia_2 = new MPrezzoCamera();
 		p_doppia_2.set_prezzo(90);
 		p_doppia_2.set_periodo(periodo_2);
+		
 		MPrezzoCamera p_doppia_3 = new MPrezzoCamera();
 		p_doppia_3.set_prezzo(90);
 		p_doppia_3.set_periodo(periodo_3);
+		
 		MPrezzoCamera p_tripla_1 = new MPrezzoCamera();
 		p_tripla_1.set_prezzo(110);
 		p_tripla_1.set_periodo(periodo_1);
+		
 		MPrezzoCamera p_tripla_2 = new MPrezzoCamera();
 		p_tripla_2.set_prezzo(130);
 		p_tripla_2.set_periodo(periodo_2);
+		
 		MPrezzoCamera p_tripla_3 = new MPrezzoCamera();
 		p_tripla_3.set_prezzo(150);
 		p_tripla_3.set_periodo(periodo_3);
@@ -193,21 +193,20 @@ public class Main{
 		//inizializzazione map prezzi camere
 		
 		//singola
-		HashMap<MPeriodo, MPrezzoCamera> prezzi_singola = new HashMap<>();
-		prezzi_singola.put(periodo_1, p_singola_1);
-		prezzi_singola.put(periodo_2, p_singola_2);
-		prezzi_singola.put(periodo_3, p_singola_3);
+		ArrayList<MPrezzoCamera> prezzi_singola = new ArrayList<MPrezzoCamera>();
+		prezzi_singola.add(p_singola_1);
+		prezzi_singola.add(p_singola_2);
+		prezzi_singola.add(p_singola_3);
 		//doppia
-		HashMap<MPeriodo, MPrezzoCamera> prezzi_doppia = new HashMap<>();
-		prezzi_doppia.put(periodo_1, p_doppia_1);
-		prezzi_doppia.put(periodo_2, p_doppia_2);
-		prezzi_doppia.put(periodo_3, p_doppia_3);
+		ArrayList<MPrezzoCamera> prezzi_doppia = new ArrayList<MPrezzoCamera>();
+		prezzi_doppia.add(p_doppia_1);
+		prezzi_doppia.add(p_doppia_2);
+		prezzi_doppia.add(p_doppia_3);
 		//tripla
-		HashMap<MPeriodo, MPrezzoCamera> prezzi_tripla = new HashMap<>();
-		prezzi_tripla.put(periodo_1, p_tripla_1);
-		prezzi_tripla.put(periodo_2, p_tripla_2);
-		prezzi_tripla.put(periodo_3, p_tripla_3);
-		
+		ArrayList<MPrezzoCamera> prezzi_tripla = new ArrayList<MPrezzoCamera>();
+		prezzi_tripla.add(p_tripla_1);
+		prezzi_tripla.add(p_tripla_2);
+		prezzi_tripla.add(p_tripla_3);	
 		
 		//inizializzazione descrizioni camere
 		MDescrizioneCamera d1 = new MDescrizioneCamera();
