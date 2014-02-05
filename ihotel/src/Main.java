@@ -36,32 +36,32 @@ public class Main{
 		
 		//periodi
 		
-	// periodo_1 
-		Date dataInizio_1 = new Date();
-		dataInizio_1.setTime(1388534400);
-		Date dataFine_1 = new Date();
-		dataFine_1.setTime(139121279);
-		MPeriodo periodo_1 = new MPeriodo();
-		periodo_1.set_dataInizio(dataInizio_1);
-		periodo_1.set_dataFine(dataFine_1);
-	
-	// periodo_2 - 1 Febbraio 2014 - 00:00.00 - 28 Febbraio 2014 - 23:59.59
-		Date dataInizio_2 = new Date();
-		dataInizio_2.setTime(1391212800);
-		Date dataFine_2 = new Date();
-		dataFine_2.setTime(1393631999);
-		MPeriodo periodo_2 = new MPeriodo();
-		periodo_2.set_dataInizio(dataInizio_2);
-		periodo_2.set_dataFine(dataFine_2);
-		
-	// periodo_3 - 1 Marzo 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
-		Date dataInizio_3 = new Date();
-		dataInizio_3.setTime(1393632000);
-		Date dataFine_3 = new Date();
-		dataFine_3.setTime(1396310399);
-		MPeriodo periodo_3 = new MPeriodo();
-		periodo_3.set_dataInizio(dataInizio_3);
-		periodo_3.set_dataFine(dataFine_3);
+		// periodo_1 - 1 Gennaio 2014 - 00:00.00 - 31 Gennaio 2014 - 23.59.59
+					Calendar dataInizio_1 = Calendar.getInstance();
+					dataInizio_1.setTimeInMillis(1388534400);
+					Calendar dataFine_1 = Calendar.getInstance();
+					dataFine_1.setTimeInMillis(139121279);
+				MPeriodo periodo_1 = new MPeriodo();
+				periodo_1.set_dataInizio(dataInizio_1);
+				periodo_1.set_dataFine(dataFine_1);
+			
+			// periodo_2 - 1 Febbraio 2014 - 00:00.00 - 28 Febbraio 2014 - 23:59.59
+					Calendar dataInizio_2 = Calendar.getInstance();
+					dataInizio_2.setTimeInMillis(1391212800);
+					Calendar dataFine_2 = Calendar.getInstance();
+					dataFine_2.setTimeInMillis(1393631999);
+				MPeriodo periodo_2 = new MPeriodo();
+				periodo_2.set_dataInizio(dataInizio_2);
+				periodo_2.set_dataFine(dataFine_2);
+				
+			// periodo_3 - 1 Marzo 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
+				Calendar dataInizio_3 = Calendar.getInstance();
+				dataInizio_3.setTimeInMillis(1393632000);
+				Calendar dataFine_3 = Calendar.getInstance();
+				dataFine_3.setTimeInMillis(1396310399);
+				MPeriodo periodo_3 = new MPeriodo();
+				periodo_3.set_dataInizio(dataInizio_3);
+				periodo_3.set_dataFine(dataFine_3);
 		
 		//fine periodi
 		

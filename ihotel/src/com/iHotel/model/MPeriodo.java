@@ -4,31 +4,31 @@ import java.util.*;
 
 public class MPeriodo {
 
-	private Date _dataInizio;
-	private Date _dataFine;
+	private Calendar _dataInizio;
+	private Calendar _dataFine;
 
-	public Date get_dataInizio() {
+	public Calendar get_dataInizio() {
 		return this._dataInizio;
 	}
 
 	/**
 	 * 
-	 * @param _dataInizio
+	 * @param dataInizio_1
 	 */
-	public void set_dataInizio(Date _dataInizio) {
-		this._dataInizio = _dataInizio;
+	public void set_dataInizio(Calendar dataInizio_1) {
+		this._dataInizio = dataInizio_1;
 	}
 
-	public Date get_dataFine() {
+	public Calendar get_dataFine() {
 		return this._dataFine;
 	}
 
 	/**
 	 * 
-	 * @param _dataFine
+	 * @param dataFine_1
 	 */
-	public void set_dataFine(Date _dataFine) {
-		this._dataFine = _dataFine;
+	public void set_dataFine(Calendar dataFine_1) {
+		this._dataFine = dataFine_1;
 	}
 
 }
