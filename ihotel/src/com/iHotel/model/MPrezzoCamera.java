@@ -17,4 +17,12 @@ public class MPrezzoCamera {
 		this._prezzo = _prezzo;
 	}
 
+	public MPeriodo get_periodo() {
+		return _periodo;
+	}
+
+	public void set_periodo(MPeriodo _periodo) {
+		this._periodo = _periodo;
+	}
+
 }

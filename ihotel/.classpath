@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="C:/db4o-8.0/lib/db4o-8.0.249.16098-all-java5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alessandro/Desktop/db4o-8.0/lib/db4o-8.0.249.16098-all-java5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -4,7 +4,21 @@ import java.util.*;
 
 public class MCatalogoCamere {
 
-	private Collection<MDescrizioneCamera> _descrizioniCamere;
+	private HashMap<String,MDescrizioneCamera> _descrizioniCamere;
+
+	/**
+	 * @return the _descrizioniCamere
+	 */
+	public HashMap<String,MDescrizioneCamera> get_descrizioniCamere() {
+		return _descrizioniCamere;
+	}
+
+	/**
+	 * @param _descrizioniCamere the _descrizioniCamere to set
+	 */
+	public void set_descrizioniCamere(HashMap<String,MDescrizioneCamera> _descrizioniCamere) {
+		this._descrizioniCamere = _descrizioniCamere;
+	}
 
 	/**
 	 * 

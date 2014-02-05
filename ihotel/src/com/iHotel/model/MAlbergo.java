@@ -5,12 +5,40 @@ import java.util.*;
 public class MAlbergo {
 
 	private MCatalogoCamere _catalogoCamere;
-	private Collection<MCamera> _camere;
+	private HashMap<String,MCamera> _camere;
 	private Collection<MPrenotazione> _prenotazioni;
 	private String _nome;
 	private String _telefono;
 	private String _PIVA;
 	private String _eMail;
+
+	/**
+	 * @return the _catalogoCamere
+	 */
+	public MCatalogoCamere get_catalogoCamere() {
+		return _catalogoCamere;
+	}
+
+	/**
+	 * @param _catalogoCamere the _catalogoCamere to set
+	 */
+	public void set_catalogoCamere(MCatalogoCamere _catalogoCamere) {
+		this._catalogoCamere = _catalogoCamere;
+	}
+
+	/**
+	 * @return the _camere
+	 */
+	public HashMap<String,MCamera> get_camere() {
+		return _camere;
+	}
+
+	/**
+	 * @param _camere the _camere to set
+	 */
+	public void set_camere(HashMap<String,MCamera> _camere) {
+		this._camere = _camere;
+	}
 
 	/**
 	 * 
