@@ -18,7 +18,10 @@ public class MStatoCamera {
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean get_libera() {
 		return this._libera;
 	}
