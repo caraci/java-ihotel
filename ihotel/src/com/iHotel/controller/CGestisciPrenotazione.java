@@ -1,6 +1,7 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.*;
+import java.util.ArrayList;
 
 public class CGestisciPrenotazione {
 	
@@ -25,7 +26,7 @@ public class CGestisciPrenotazione {
      * Creazione della prenotazione
      */
 	public void creaNuovaPrenotazione() {
-		MPrenotazione _prenotazione = new MPrenotazione();
+		_prenotazione = new MPrenotazione();
 	}
 
 	/**
@@ -44,7 +45,7 @@ public class CGestisciPrenotazione {
 	 * @param email
 	 * @param telefono
 	 */
-	public void concludiPrenotazione(java.lang.String nome, java.lang.String cognome, java.lang.String email, int telefono) {
+	public void concludiPrenotazione(String nome, String cognome, String email, int telefono) {
 		// TODO - implement CGestisciPrenotazione.concludiPrenotazione
 		throw new UnsupportedOperationException();
 	}
@@ -55,7 +56,7 @@ public class CGestisciPrenotazione {
 	 * @param DataFine
 	 * @param Tipologie
 	 */
-	public void cercaCamereLibere(java.util.Date DataInizio, java.util.Date DataFine, java.util.ArrayList<java.lang.String> Tipologie) {
+	public void cercaCamereLibere(long DataInizio, long DataFine, ArrayList<String> Tipologie) {
 		// TODO - implement CGestisciPrenotazione.cercaCamereLibere
 		throw new UnsupportedOperationException();
 	}
