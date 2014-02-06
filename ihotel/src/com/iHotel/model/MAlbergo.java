@@ -3,6 +3,12 @@ package com.iHotel.model;
 import java.util.*;
 
 public class MAlbergo {
+	
+	private static MAlbergo instance = null;
+	// Private constructor prevents instantiation from other classes
+    private MAlbergo() {
+    	// Private constructor prevents instantiation from other classes
+    }
 
 	private MCatalogoCamere _catalogoCamere;
 	private ArrayList<MCamera> _camere;
@@ -12,6 +18,17 @@ public class MAlbergo {
 	private String _PIVA;
 	private String _eMail;
 
+	/**
+	 * 
+	 * @return MAlbergo
+	 */
+    public static MAlbergo getInstance() {
+    	if(instance == null) {
+            instance = new MAlbergo();
+         }
+         return instance;
+    }
+	  
 	/**
 	 * @return the _catalogoCamere
 	 */

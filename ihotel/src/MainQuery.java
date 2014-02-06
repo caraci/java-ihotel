@@ -15,25 +15,33 @@ public class MainQuery {
 			System.out.println(o);
 		}
 	}
+	@SuppressWarnings("serial")
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// Accedo al DB
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		
 		try {
+		MAlbergo albergo = MAlbergo.getInstance();
+		
 		List<MAlbergo> result = db.query(new Predicate<MAlbergo>() {
 			public boolean match(MAlbergo candidate) {
 				return true;
 			}
 		});	
-		MAlbergo albergo = result.get(0);
+		albergo = result.get(0);
+		System.out.println(albergo.get_nome());
+		
 		MCamera camera = albergo.get_camere().get(0);
-		for (Iterator iterator = camera.get_statiCamera().iterator(); iterator.hasNext();) {
+		for (Iterator<MStatoCamera> iterator = camera.get_statiCamera().iterator(); iterator.hasNext();) {
 			MStatoCamera statoCamera = (MStatoCamera) iterator.next();
 			if(statoCamera.get_periodo().get_dataFine()<=1393628399000L && statoCamera.get_libera()==true){
 				System.out.print(camera.get_numero());
 			}	
 		}
+		
+		MAlbergo giovanni = MAlbergo.getInstance();
+		System.out.println(giovanni.get_nome());
 	
 		/*
 		int anno = gc.get(Calendar.YEAR);
