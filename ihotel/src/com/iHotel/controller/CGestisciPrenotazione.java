@@ -8,7 +8,7 @@ public class CGestisciPrenotazione {
 	private MPrenotazione _prenotazione;
 	
     private CGestisciPrenotazione() {
-    	MPrenotazione _prenotazione = new MPrenotazione();
+    	// Private constructor prevents instantiation from other classes
     }
 	
 	/**
@@ -21,9 +21,11 @@ public class CGestisciPrenotazione {
          }
          return instance;
     }
+    /**
+     * Creazione della prenotazione
+     */
 	public void creaNuovaPrenotazione() {
-		// TODO - implement CGestisciPrenotazione.creaNuovaPrenotazione
-		throw new UnsupportedOperationException();
+		MPrenotazione _prenotazione = new MPrenotazione();
 	}
 
 	/**

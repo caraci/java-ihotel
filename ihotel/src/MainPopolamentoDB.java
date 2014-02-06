@@ -232,7 +232,7 @@ public class MainPopolamentoDB{
 		catalogoCamere.set_descrizioniCamere(descrizioniCamere);
 		// Creo Albergo e gli associo tutte le informazioni.
 		
-		MAlbergo albergo = MAlbergo.getInstance();
+		MAlbergo albergo = new MAlbergo();
 		albergo.set_eMail("info@hotelmAraviglioso.com");
 		albergo.set_nome("Hotel mAraviglioso");
 		albergo.set_PIVA("123456789ABCDEF");

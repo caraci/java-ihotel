@@ -28,7 +28,8 @@ public class MainQuery {
 				return true;
 			}
 		});	
-		MAlbergo albergo = MAlbergo.getInstance(result.get(0));
+		MAlbergo albergo = new MAlbergo();
+		albergo = result.get(0);
 		System.out.println(albergo.get_nome());
 		
 		MCamera camera = albergo.get_camere().get(0);
@@ -38,9 +39,6 @@ public class MainQuery {
 				System.out.print(camera.get_numero());
 			}	
 		}
-		
-		MAlbergo giovanni = MAlbergo.getInstance();
-		System.out.println(giovanni.get_nome());
 	
 		/*
 		int anno = gc.get(Calendar.YEAR);
