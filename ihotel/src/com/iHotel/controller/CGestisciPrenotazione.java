@@ -3,9 +3,24 @@ package com.iHotel.controller;
 import com.iHotel.model.*;
 
 public class CGestisciPrenotazione {
-
+	
+	private static CGestisciPrenotazione instance = null;
 	private MPrenotazione _prenotazione;
-
+	
+    private CGestisciPrenotazione() {
+    	MPrenotazione _prenotazione = new MPrenotazione();
+    }
+	
+	/**
+	 * 
+	 * @return CGestisciPrenotazione
+	 */
+    public static CGestisciPrenotazione getInstance() {
+    	if(instance == null) {
+            instance = new CGestisciPrenotazione();
+         }
+         return instance;
+    }
 	public void creaNuovaPrenotazione() {
 		// TODO - implement CGestisciPrenotazione.creaNuovaPrenotazione
 		throw new UnsupportedOperationException();

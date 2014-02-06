@@ -5,11 +5,7 @@ import java.util.*;
 public class MAlbergo {
 	
 	private static MAlbergo instance = null;
-	// Private constructor prevents instantiation from other classes
-    private MAlbergo() {
-    	// Private constructor prevents instantiation from other classes
-    }
-
+    
 	private MCatalogoCamere _catalogoCamere;
 	private ArrayList<MCamera> _camere;
 	private Collection<MPrenotazione> _prenotazioni;
@@ -18,6 +14,9 @@ public class MAlbergo {
 	private String _PIVA;
 	private String _eMail;
 
+	private MAlbergo() {
+    	// Private constructor prevents instantiation from other classes
+    }
 	/**
 	 * 
 	 * @return MAlbergo
@@ -25,6 +24,18 @@ public class MAlbergo {
     public static MAlbergo getInstance() {
     	if(instance == null) {
             instance = new MAlbergo();
+         }
+         return instance;
+    }
+    /**
+     * Metodo utilizzato per prendere il risultato di una query e salvarlo, utilizzando la tecnologia db40.
+     * 
+     * @param albergo
+     * @return MAlbergo
+     */
+    public static MAlbergo getInstance(MAlbergo albergo) {
+    	if(instance == null) {
+            instance = albergo;
          }
          return instance;
     }

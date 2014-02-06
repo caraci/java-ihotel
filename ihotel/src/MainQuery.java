@@ -22,14 +22,13 @@ public class MainQuery {
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		
 		try {
-		MAlbergo albergo = MAlbergo.getInstance();
 		
 		List<MAlbergo> result = db.query(new Predicate<MAlbergo>() {
 			public boolean match(MAlbergo candidate) {
 				return true;
 			}
 		});	
-		albergo = result.get(0);
+		MAlbergo albergo = MAlbergo.getInstance(result.get(0));
 		System.out.println(albergo.get_nome());
 		
 		MCamera camera = albergo.get_camere().get(0);
