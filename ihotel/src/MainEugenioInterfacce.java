@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -21,8 +22,9 @@ public class MainEugenioInterfacce {
 			});
 			MAlbergo albergo = new MAlbergo();
 			albergo = result.get(0);
-			Set<String> tipologie_camere = albergo.get_catalogoCamere().get_descrizioniCamere().keySet();
-			VFrameCreaPrenotazioneStep_1 frameCreaPrenotazioneStep_1 = new VFrameCreaPrenotazioneStep_1(tipologie_camere);
+			ArrayList<String> tipologieCamere = new ArrayList<String>();
+			tipologieCamere.addAll(albergo.get_catalogoCamere().get_descrizioniCamere().keySet());
+			VFrameCreaPrenotazioneStep_1 frameCreaPrenotazioneStep_1 = new VFrameCreaPrenotazioneStep_1(tipologieCamere);
 			frameCreaPrenotazioneStep_1.setVisible(true);
 		}
 		finally{
