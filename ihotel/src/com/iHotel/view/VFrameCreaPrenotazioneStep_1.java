@@ -1,24 +1,41 @@
 package com.iHotel.view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Color;
 
+import javax.swing.Box;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
+
+import net.sourceforge.jdatepicker.JDateComponentFactory;
+import net.sourceforge.jdatepicker.JDatePanel;
+import net.sourceforge.jdatepicker.JDatePicker;
+
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import javax.swing.JButton;
+import java.awt.GridBagConstraints;
 
 public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 
 	private JPanel contentPane;
+    /* Panel generali del ContentPane */
+    private JPanel panelTop, panelBottom;
+    private JPanel panelTopLeft;
+    private JPanel panelTopRight;
+    private JPanel panelBottomLeft;
+    private JPanel panelBottomRight;
+    private JButton btnAvanti;
+    private JButton btnBannnanzi;
 
 	/**
 	 * Launch the application.
@@ -48,58 +65,88 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
-			// Creo Pannello Top
-			JPanel panelTop = new JPanel();
+			// PanelTop
+			panelTop = new JPanel();
 			panelTop.setForeground(new Color(0, 0, 0));
 			contentPane.add(panelTop);
-				// Setto il tipo di Layout al PanelTop
-				panelTop.setLayout(new GridLayout(3, 2, 0, 0));
+			panelTop.setLayout(new GridLayout(1, 2, 20, 20));
 				
-				// 1^ Riga - Panel Top
+					// PanelTopLeft
+					panelTopLeft = new JPanel();
+					panelTop.add(panelTopLeft);
+					panelTopLeft.setLayout(new BoxLayout(panelTopLeft, BoxLayout.PAGE_AXIS));
+					// Label Data di inizio
+					JLabel lblDataDiInizio = new JLabel("Data di inizio:");
+					panelTopLeft.add(lblDataDiInizio);
+					// Spaziatore 
+					panelTopLeft.add(Box.createVerticalGlue());
+					// JDatePanel data inizio
+					JDatePanel datePanelInizio = JDateComponentFactory.createJDatePanel();
+					panelTopLeft.add((Component) datePanelInizio);
 				
-				// Label Data di inizio
-				JLabel lblDataDiInizio = new JLabel("Data di inizio:");
-				panelTop.add(lblDataDiInizio);
-				// Contenitore Selettori data inizio
-				JPanel panelDataInizio = new JPanel();
-				panelTop.setForeground(new Color(20, 0, 0));
-				panelTop.add(panelDataInizio);
-				// Setto il layour al PanelDataInizio
-				panelDataInizio.setLayout(new BoxLayout(panelDataInizio, BoxLayout.X_AXIS));
+					// PanelTopRight
+					panelTopRight = new JPanel();
+					panelTop.add(panelTopRight);
+					panelTopRight.setLayout(new BoxLayout(panelTopRight, BoxLayout.PAGE_AXIS));
+					// Label Data di inizio
+					JLabel lblDataDiFine = new JLabel("Data di fine:");
+					panelTopRight.add(lblDataDiFine);
+					// Spaziatore 
+					panelTopRight.add(Box.createVerticalGlue());
+					// JDatePanel data inizio
+					JDatePanel dataPanelFine = JDateComponentFactory.createJDatePanel();
+					panelTopRight.add((Component) dataPanelFine);
 					
-					// Label Giorno inizio
-					JLabel lblGiorno = new JLabel("Giorno:");
-					panelDataInizio.add(lblGiorno);
-					// ComboBox dei giorni iniziali
-					JComboBox comboBoxGiornoInizio = new JComboBox();
-					panelDataInizio.add(comboBoxGiornoInizio);
-					// Label Mese inizio
-					JLabel lblMese = new JLabel("Mese:");
-					panelDataInizio.add(lblMese);
-					// ComboBox del mese di inizio
-					JComboBox comboBoxMeseInizio = new JComboBox();
-					panelDataInizio.add(comboBoxMeseInizio);
-					// Label anno inizio
-					JLabel lblAnno = new JLabel("Anno:");
-					panelDataInizio.add(lblAnno);
-					// ComboBox del mese di inizio
-					JComboBox comboBoxAnnoInizio = new JComboBox();
-					panelDataInizio.add(comboBoxAnnoInizio);
-					
-				// 2^ Riga - Panel Top
 				
-				// Label Data fine
-				JLabel lblDataDiFine = new JLabel("Data di fine:");
-				panelTop.add(lblDataDiFine);
-				// Contenitore Selettori data fine
-				JPanel panelDataFine = new JPanel();
-				panelTop.setForeground(new Color(20, 0, 0));
-				panelTop.add(panelDataFine);		
-				panelDataFine.setLayout(new BoxLayout(panelDataFine, BoxLayout.X_AXIS));
-			
-			// Panello Bottom
-			JPanel panelBottom = new JPanel();
+			// PanelBottom
+			panelBottom = new JPanel();
 			contentPane.add(panelBottom);
+			panelBottom.setLayout(new GridLayout(1, 2, 20, 20));
+				
+				// PanelBottomLeft
+				panelBottomLeft = new JPanel();
+				panelBottom.add(panelBottomLeft);
+				// Layout PanelBottomLeft
+				panelBottomLeft.setLayout(new BoxLayout(panelBottomLeft, BoxLayout.PAGE_AXIS));
+					// Label Data di inizio
+					JLabel lblTipologie = new JLabel("Tipologie:");
+					panelBottomLeft.add(lblTipologie);
+					// Spaziatura dinamica
+					panelBottomLeft.add(Box.createVerticalGlue());
+					// CheckBox - Singola
+					JCheckBox checkBoxSingola = new JCheckBox();
+					checkBoxSingola.setText("Singola");
+					panelBottomLeft.add(checkBoxSingola);
+					// Spaziatura dinamica
+					panelBottomLeft.add(Box.createVerticalGlue());
+					// CheckBox - Doppia
+					JCheckBox checkBoxDoppia = new JCheckBox();
+					checkBoxDoppia.setText("Doppia");
+					panelBottomLeft.add(checkBoxDoppia);
+					// Spaziatura dinamica
+					panelBottomLeft.add(Box.createVerticalGlue());
+					// CheckBox - Tripla
+					JCheckBox checkBoxTripla = new JCheckBox();
+					checkBoxTripla.setText("Tripla");
+					// Spaziatura dinamica
+					panelBottomLeft.add(checkBoxTripla);
+					panelBottomLeft.add(Box.createVerticalGlue());
+			
+				// PanelBottomRight
+				panelBottomRight = new JPanel();
+				panelBottom.add(panelBottomRight);
+				// Layout PanelBottomRight
+				panelBottomRight.setLayout(new BorderLayout(0, 0));
+				
+				btnBannnanzi = new JButton("BANNNANZI");
+				panelBottomRight.add(btnBannnanzi, BorderLayout.SOUTH);
+				
+					
+				
+				
+				
+				
+			
 	}
 
 }
