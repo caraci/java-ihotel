@@ -39,7 +39,8 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     private ArrayList<String> tipologie;
     private boolean singola_stato = false;
     private boolean doppia_stato = false;
-    private boolean tripla_stato = false; 
+    private boolean tripla_stato = false;
+	private JButton btnBannnanzi; 
     
 	/**
 	 * Launch the application.
@@ -119,9 +120,9 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 					panelBottomLeft.add(Box.createVerticalGlue());
 					
 					for (Iterator<String> iterator = tipologie_camere.iterator(); iterator.hasNext();) {
-						String string = (String) iterator.next();
-						
+						String tipologia = (String) iterator.next();
 					}
+					
 					// CheckBox - Singola
 					final JCheckBox checkBoxSingola = new JCheckBox();
 					checkBoxSingola.setText("Singola");
@@ -215,6 +216,14 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 				
 				
 			
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public VFrameCreaPrenotazioneStep_1() {
+		// TODO - implement VFrameCreaPrenotazioneStep_1.VFrameCreaPrenotazioneStep_1
+		throw new UnsupportedOperationException();
 	}
 
 }

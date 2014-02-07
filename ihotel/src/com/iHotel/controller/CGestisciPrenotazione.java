@@ -9,12 +9,16 @@ public class CGestisciPrenotazione {
 	
 	private static CGestisciPrenotazione instance = null;
 	private MPrenotazione _prenotazione;
-	private MAlbergo _albergo;
+	private int _albergo;
     private CGestisciPrenotazione() {
     	// Private constructor prevents instantiation from other classes
     }
 	
-    public void setAlbergo(MAlbergo albergo){
+    /**
+	 * 
+	 * @param albergo
+	 */
+	public void setAlbergo(int albergo){
     	_albergo =albergo;
     }
 	/**

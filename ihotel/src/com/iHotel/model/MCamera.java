@@ -7,6 +7,7 @@ public class MCamera {
 	private LinkedList<MStatoCamera> _statiCamera;
 	private String _numero;
 	private String _tipologia;
+	MAlbergo _albergo;
 
 
 	/**
