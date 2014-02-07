@@ -53,22 +53,21 @@ public class MStatoCamera {
 		GregorianCalendar dataFine= new GregorianCalendar();
 		dataFine.set(_periodo.get_af(), _periodo.get_mf(), _periodo.get_gf());
 
-		if(dataInizioPrenotazione.compareTo(dataInizio)==-1 && dataInizioPrenotazione.compareTo()
-				){}
-		
-		
-		
-		
-		if( _periodo.get_dataFine()<= periodo.get_dataFine() && _periodo.get_dataFine()>=periodo.get_dataInizio() || 
-				_periodo.get_dataInizio()<=periodo.get_dataFine()&& _periodo.get_dataInizio()>=periodo.get_dataInizio()){
-			System.out.print("periodo buono");
-			if (this.get_libera()==false){
-				System.out.print("falso");
+		//controllo se il periodo è corretto
+		if(dataInizio.compareTo(dataFinePrenotazione)==-1 && dataInizio.compareTo(dataInizioPrenotazione)==1 ||
+				dataFine.compareTo(dataInizioPrenotazione)==1 && dataFine.compareTo(dataFinePrenotazione)==-1)
+		{
+			if(_libera){
+				return true;
+			} else {
 				return false;
 			}
+			
+			
+		} else {
+			return false;
 		}
-		System.out.print("vero");
-		return true;
+		
 	}
 
 }

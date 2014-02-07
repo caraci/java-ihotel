@@ -65,7 +65,7 @@ public class CGestisciPrenotazione {
 	 * @param DataFine
 	 * @param Tipologie
 	 */
-	public ArrayList<ArrayList<MCamera>> cercaCamereLibere(int gi, int mi, int ai, int gf, int mf,, int af, ArrayList<String> Tipologie) {
+	public ArrayList<ArrayList<MCamera>> cercaCamereLibere(int gi, int mi, int ai, int gf, int mf, int af, ArrayList<String> Tipologie) {
 		MPeriodo periodo = new MPeriodo();
 		periodo.set_gi(gi);
 		periodo.set_mi(mi);
@@ -74,8 +74,8 @@ public class CGestisciPrenotazione {
 		periodo.set_mf(mf);
 		periodo.set_af(af);
 		ArrayList<ArrayList<MCamera>> camere_libere_dalle_tipologie = new ArrayList<ArrayList<MCamera>>();
-		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext()) {
-			 camere_libere_dalle_tipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next().));
+		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
+			 //camere_libere_dalle_tipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
 		}
 		return camere_libere_dalle_tipologie;
 	}
