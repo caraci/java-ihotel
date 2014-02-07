@@ -1,42 +1,46 @@
 package com.iHotel.view;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Color;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.Box;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
-import javax.swing.JComboBox;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+
+import com.iHotel.controller.CGestisciPrenotazione;
 
 import net.sourceforge.jdatepicker.JDateComponentFactory;
 import net.sourceforge.jdatepicker.JDatePanel;
-import net.sourceforge.jdatepicker.JDatePicker;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagLayout;
-import javax.swing.JButton;
-import java.awt.GridBagConstraints;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
 public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 
 	private JPanel contentPane;
-    /* Panel generali del ContentPane */
+    /* Panel */
     private JPanel panelTop, panelBottom;
-    private JPanel panelTopLeft;
-    private JPanel panelTopRight;
-    private JPanel panelBottomLeft;
-    private JPanel panelBottomRight;
+    private JPanel panelTopLeft, panelTopRight;
+    private JPanel panelBottomLeft, panelBottomRight;
     private JButton btnAvanti;
-    private JButton btnBannnanzi;
-
+    /* Variabili */
+    private ArrayList<String> tipologie;
+    private boolean singola_stato = false;
+    private boolean doppia_stato = false;
+    private boolean tripla_stato = false; 
+    
 	/**
 	 * Launch the application.
 	 */
@@ -44,8 +48,8 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VFrameCreaPrenotazioneStep_1 frame = new VFrameCreaPrenotazioneStep_1();
-					frame.setVisible(true);
+					//VFrameCreaPrenotazioneStep_1 frame = new VFrameCreaPrenotazioneStep_1(tipologie);
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,7 +60,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VFrameCreaPrenotazioneStep_1() {
+	public VFrameCreaPrenotazioneStep_1(Set<String> tipologie_camere) {
 		setTitle("iHotel - Crea nuova prenotazione");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
@@ -81,7 +85,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 					// Spaziatore 
 					panelTopLeft.add(Box.createVerticalGlue());
 					// JDatePanel data inizio
-					JDatePanel datePanelInizio = JDateComponentFactory.createJDatePanel();
+					final JDatePanel datePanelInizio = JDateComponentFactory.createJDatePanel();
 					panelTopLeft.add((Component) datePanelInizio);
 				
 					// PanelTopRight
@@ -108,25 +112,30 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 				panelBottom.add(panelBottomLeft);
 				// Layout PanelBottomLeft
 				panelBottomLeft.setLayout(new BoxLayout(panelBottomLeft, BoxLayout.PAGE_AXIS));
-					// Label Data di inizio
+					// Label Tipologie
 					JLabel lblTipologie = new JLabel("Tipologie:");
 					panelBottomLeft.add(lblTipologie);
 					// Spaziatura dinamica
 					panelBottomLeft.add(Box.createVerticalGlue());
+					
+					for (Iterator<String> iterator = tipologie_camere.iterator(); iterator.hasNext();) {
+						String string = (String) iterator.next();
+						
+					}
 					// CheckBox - Singola
-					JCheckBox checkBoxSingola = new JCheckBox();
+					final JCheckBox checkBoxSingola = new JCheckBox();
 					checkBoxSingola.setText("Singola");
 					panelBottomLeft.add(checkBoxSingola);
 					// Spaziatura dinamica
 					panelBottomLeft.add(Box.createVerticalGlue());
 					// CheckBox - Doppia
-					JCheckBox checkBoxDoppia = new JCheckBox();
+					final JCheckBox checkBoxDoppia = new JCheckBox();
 					checkBoxDoppia.setText("Doppia");
 					panelBottomLeft.add(checkBoxDoppia);
 					// Spaziatura dinamica
 					panelBottomLeft.add(Box.createVerticalGlue());
 					// CheckBox - Tripla
-					JCheckBox checkBoxTripla = new JCheckBox();
+					final JCheckBox checkBoxTripla = new JCheckBox();
 					checkBoxTripla.setText("Tripla");
 					// Spaziatura dinamica
 					panelBottomLeft.add(checkBoxTripla);
@@ -138,12 +147,71 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 				// Layout PanelBottomRight
 				panelBottomRight.setLayout(new BorderLayout(0, 0));
 				
-				btnBannnanzi = new JButton("BANNNANZI");
-				panelBottomRight.add(btnBannnanzi, BorderLayout.SOUTH);
+				btnAvanti = new JButton("Avanti");
+				panelBottomRight.add(btnAvanti, BorderLayout.SOUTH);
 				
+				// Eventi
+
+				// Click sul checkBoxSingola
+				checkBoxSingola.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						singola_stato = checkBoxSingola.isSelected();
+						if (singola_stato) {
+							JOptionPane.showMessageDialog(null, "selezionata");
+						} else {
+							JOptionPane.showMessageDialog(null, "non selezionata");
+						}
+					}
+				});
+				// Click sul checkBoxDoppia
+				checkBoxDoppia.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						doppia_stato = checkBoxDoppia.isSelected();
+						if (doppia_stato) {
+							JOptionPane.showMessageDialog(null, "selezionata");
+						} else {
+							JOptionPane.showMessageDialog(null, "non selezionata");
+						}
+					}
+				});
+				// Click sul checkBoxTripla
+				checkBoxTripla.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						doppia_stato = checkBoxTripla.isSelected();
+						if (doppia_stato) {
+							JOptionPane.showMessageDialog(null, "selezionata");
+						} else {
+							JOptionPane.showMessageDialog(null, "non selezionata");
+						}
+					}
+				});
+				// Click sul bottoneAvanti
+				btnAvanti.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						if (singola_stato == true) {
+							tipologie.add("Singola");
+						}
+						if (doppia_stato == true) {
+							tipologie.add("Doppia");
+						}
+						if (tripla_stato == true) {
+							tipologie.add("Tripla");
+						}
+						int anno_inizio = datePanelInizio.getModel().getYear();
+						int mese_inizio = datePanelInizio.getModel().getMonth();
+						int giorno_inizio = datePanelInizio.getModel().getDay();
 					
-				
-				
+						
+						JOptionPane.showMessageDialog(null, anno_inizio + " " + mese_inizio + " " + giorno_inizio);
+						
+						//CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+						//gestisciPrenotazione.cercaCamereLibere(12312312312L, 12312312312L, tipologie);
+					}
+				});
 				
 				
 			
