@@ -1,5 +1,7 @@
 package com.iHotel.model;
 
+import java.util.GregorianCalendar;
+
 public class MStatoCamera {
 
 	private MPeriodo _periodo;
@@ -38,8 +40,25 @@ public class MStatoCamera {
 	 * @param periodo
 	 */
 	public boolean isLiberaInPeriodo(MPeriodo periodo){
-		//System.out.print(periodo.get_dataFine());
-		System.out.print(_periodo.get_dataFine());
+		
+		GregorianCalendar dataInizioPrenotazione= new GregorianCalendar();
+		dataInizioPrenotazione.set(periodo.get_ai(), periodo.get_mi(), periodo.get_gi());
+		
+		GregorianCalendar dataFinePrenotazione= new GregorianCalendar();
+		dataFinePrenotazione.set(periodo.get_af(), periodo.get_mf(), periodo.get_gf());
+		
+		GregorianCalendar dataInizio= new GregorianCalendar();
+		dataInizio.set(_periodo.get_ai(), _periodo.get_mi(), _periodo.get_gi());
+		
+		GregorianCalendar dataFine= new GregorianCalendar();
+		dataFine.set(_periodo.get_af(), _periodo.get_mf(), _periodo.get_gf());
+
+		if(dataInizioPrenotazione.compareTo(dataInizio)==-1 && dataInizioPrenotazione.compareTo()
+				){}
+		
+		
+		
+		
 		if( _periodo.get_dataFine()<= periodo.get_dataFine() && _periodo.get_dataFine()>=periodo.get_dataInizio() || 
 				_periodo.get_dataInizio()<=periodo.get_dataFine()&& _periodo.get_dataInizio()>=periodo.get_dataInizio()){
 			System.out.print("periodo buono");
