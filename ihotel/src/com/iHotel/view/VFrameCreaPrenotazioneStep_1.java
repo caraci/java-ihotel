@@ -166,7 +166,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 					
 						// Recupero il controllore e invoco il metodo.
 						CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
-						gestisciPrenotazione.cercaCamereLibere(annoInizio, meseInizio, giornoInizio, annoFine, meseFine, giornoFine, tipologieSelezionate);
+						gestisciPrenotazione.cercaCamereLibere(giornoInizio, meseInizio, annoInizio, giornoFine, meseFine, annoFine, tipologieSelezionate);
 					}
 				});
 				

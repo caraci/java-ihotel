@@ -37,10 +37,9 @@ public class MainPopolamentoDB{
 		//periodi
 		
 		// periodo_1 - 1 Gennaio 2014 - 00:00.00 - 31 Gennaio 2014 - 23.59.59
-					long di_1 = 1388534400000L;
-					
-					long df_1 = 1391209199000L;
+
 				MPeriodo periodo_1 = new MPeriodo();
+				int di_1 = 1;
 				periodo_1.set_dataInizio(di_1);
 				periodo_1.set_dataFine(df_1);
 			

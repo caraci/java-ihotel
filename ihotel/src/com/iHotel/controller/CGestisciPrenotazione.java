@@ -9,18 +9,26 @@ public class CGestisciPrenotazione {
 	
 	private static CGestisciPrenotazione instance = null;
 	private MPrenotazione _prenotazione;
-	private int _albergo;
-    private CGestisciPrenotazione() {
+	private MAlbergo _albergo;
+    
+	/**
+	 * @return the _albergo
+	 */
+	public MAlbergo get_albergo() {
+		return _albergo;
+	}
+
+	/**
+	 * @param _albergo the _albergo to set
+	 */
+	public void set_albergo(MAlbergo _albergo) {
+		this._albergo = _albergo;
+	}
+	
+	private CGestisciPrenotazione() {
     	// Private constructor prevents instantiation from other classes
     }
 	
-    /**
-	 * 
-	 * @param albergo
-	 */
-	public void setAlbergo(int albergo){
-    	_albergo =albergo;
-    }
 	/**
 	 * 
 	 * @return CGestisciPrenotazione
@@ -73,11 +81,11 @@ public class CGestisciPrenotazione {
 		periodo.set_gf(gf);
 		periodo.set_mf(mf);
 		periodo.set_af(af);
-		ArrayList<ArrayList<MCamera>> camere_libere_dalle_tipologie = new ArrayList<ArrayList<MCamera>>();
+		ArrayList<ArrayList<MCamera>> camereLibereDalleTipologie = new ArrayList<ArrayList<MCamera>>();
 		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
-			 //camere_libere_dalle_tipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
+			 camereLibereDalleTipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
 		}
-		return camere_libere_dalle_tipologie;
+		return camereLibereDalleTipologie;
 	}
 
 }
