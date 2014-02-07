@@ -29,5 +29,14 @@ public class MCatalogoCamere {
 		// TODO - implement MCatalogoCamere.getPrezziCamere
 		throw new UnsupportedOperationException();
 	}
+	/*
+	 * 
+	 * @param  periodo
+	 * @param tipologia
+	 */
+	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
+		HashMap<String,ArrayList<MPrezzoCamera>> p  = new HashMap<String,ArrayList<MPrezzoCamera>>();
+		return p;
+	}
 
 }

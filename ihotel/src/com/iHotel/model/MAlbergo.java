@@ -117,5 +117,32 @@ public class MAlbergo {
 	public void set_eMail(String _eMail) {
 		this._eMail = _eMail;
 	}
+	/*
+	 * restituisce una lista di camere libere data una tipologia e un periodo
+	 * @param periodo
+	 * @param String
+	 */
+	public ArrayList<MCamera> cercaCamereLibereInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
+		ArrayList<MCamera> lista_camere = new ArrayList<MCamera>();
+		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
+			if(iterator.next().isLiberaInPeriodoDaTipologia(periodo, tipologia)==true){
+				lista_camere.add(iterator.next());
+			}
+		}
+		return lista_camere;
+	}
+	/*
+	 * 
+	 * @param  periodo
+	 * @param tipologia
+	 */
+	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
+		HashMap<String,ArrayList<MPrezzoCamera>> p  = new HashMap<String,ArrayList<MPrezzoCamera>>();
+		return p;
+	}
+	
+	
+	
+	 
 
 }

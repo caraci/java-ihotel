@@ -33,5 +33,19 @@ public class MStatoCamera {
 	public void set_libera(boolean _libera) {
 		this._libera = _libera;
 	}
+	/*
+	 * 
+	 * @param periodo
+	 */
+	public boolean isLiberaInPeriodo(MPeriodo periodo){
+		
+		if( _periodo.get_dataFine()<= periodo.get_dataFine() && _periodo.get_dataFine()>=periodo.get_dataInizio() || 
+				_periodo.get_dataInizio()<=periodo.get_dataFine()&& _periodo.get_dataInizio()>=periodo.get_dataInizio()){
+			if (this.get_libera()!=true){
+				return false;
+			}
+		}
+		return true;
+	}
 
 }

@@ -52,5 +52,14 @@ public class MDescrizioneCamera {
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;
 	}
+	/*
+	 * 
+	 * @param  periodo
+	 * @param tipologia
+	 */
+	public ArrayList<MPrezzoCamera> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
+		ArrayList<MPrezzoCamera> array_prezzi  = new ArrayList<MPrezzoCamera>();
+		return array_prezzi;
+	}
 
 }

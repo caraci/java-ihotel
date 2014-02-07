@@ -14,8 +14,17 @@ public class MCamera {
 	 * @param periodo
 	 * @param tipologia
 	 */
-	public void isLibera(MPeriodo periodo, java.util.List<java.lang.String> tipologia) {
-		// TODO - implement MCamera.isLibera
+	public boolean isLiberaInPeriodoDaTipologia(MPeriodo periodo, String tipologia) {
+		if (tipologia == _tipologia){
+			for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
+				if(iterator.next().isLiberaInPeriodo(periodo)==false){
+					return false;
+				}
+				else return true;
+				
+			}
+		
+		}	
 		throw new UnsupportedOperationException();
 	}
 

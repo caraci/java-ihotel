@@ -1,17 +1,22 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.*;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CGestisciPrenotazione {
 	
 	private static CGestisciPrenotazione instance = null;
 	private MPrenotazione _prenotazione;
-	
+	private MAlbergo _albergo;
     private CGestisciPrenotazione() {
     	// Private constructor prevents instantiation from other classes
     }
 	
+    public void setAlbergo(MAlbergo albergo){
+    	_albergo =albergo;
+    }
 	/**
 	 * 
 	 * @return CGestisciPrenotazione
@@ -56,9 +61,16 @@ public class CGestisciPrenotazione {
 	 * @param DataFine
 	 * @param Tipologie
 	 */
-	public void cercaCamereLibere(long DataInizio, long DataFine, ArrayList<String> Tipologie) {
-		// TODO - implement CGestisciPrenotazione.cercaCamereLibere
-		throw new UnsupportedOperationException();
+	public ArrayList<ArrayList<MCamera>> cercaCamereLibere(long DataInizio, long DataFine, ArrayList<String> Tipologie) {
+		MPeriodo periodo = new MPeriodo();
+		periodo.set_dataInizio(DataInizio);
+		periodo.set_dataFine(DataFine);
+		ArrayList<ArrayList<MCamera>> camere_libere_dalle_tipologie = new ArrayList<ArrayList<MCamera>>();
+		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
+			 camere_libere_dalle_tipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
+		}
+		return camere_libere_dalle_tipologie;
+		
 	}
 
 }

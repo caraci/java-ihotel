@@ -24,5 +24,12 @@ public class MPrezzoCamera {
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
 	}
+	/*
+	 * 
+	 * @param periodo
+	 */
+	public MPrezzoCamera getPrezzoInPeriodo(MPeriodo periodo){
+		return this;
+	}
 
 }
