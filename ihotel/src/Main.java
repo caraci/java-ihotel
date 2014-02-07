@@ -22,6 +22,7 @@ public class Main {
 			MAlbergo albergo = new MAlbergo();
 			albergo = result.get(0);
 			gestisciPrenotazione.setAlbergo(albergo);
+			System.out.print(albergo.get_camere().get(0).get_statiCamera().get(0).get_periodo().get_dataFine());
 		}
 		finally{
 			db.close();
@@ -32,13 +33,13 @@ public class Main {
 		
 		gestisciPrenotazione.creaNuovaPrenotazione();
 		// 1 Gennaio 2014 - 00:00.00
-		long dataInizio = 1388530800000L;
+		long dataInizio = 1393628400000L;
 		// 7 Gennaio 2014 - 23:59.59
-		long dataFine = 1389135599000L;
+		long dataFine = 1396306799000L;
 		// Tipologie
 		ArrayList<String> tipologie = new ArrayList<String>();
-		tipologie.add("Singola");
-		gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologie);
+		tipologie.add("Doppia");
+		System.out.print(gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologie).get(0).get(0).get_numero());
 		
 	}
 

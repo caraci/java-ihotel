@@ -15,7 +15,8 @@ public class MCamera {
 	 * @param tipologia
 	 */
 	public boolean isLiberaInPeriodoDaTipologia(MPeriodo periodo, String tipologia) {
-		if (tipologia == _tipologia){
+		if (tipologia.equals(_tipologia)){
+			
 			for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
 				if(iterator.next().isLiberaInPeriodo(periodo)==false){
 					return false;
@@ -24,7 +25,7 @@ public class MCamera {
 			}
 		
 		}	
-	 return true;
+	 return false;
 		
 	}
 

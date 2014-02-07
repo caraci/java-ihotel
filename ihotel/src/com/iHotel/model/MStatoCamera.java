@@ -38,13 +38,17 @@ public class MStatoCamera {
 	 * @param periodo
 	 */
 	public boolean isLiberaInPeriodo(MPeriodo periodo){
-		
+		//System.out.print(periodo.get_dataFine());
+		System.out.print(_periodo.get_dataFine());
 		if( _periodo.get_dataFine()<= periodo.get_dataFine() && _periodo.get_dataFine()>=periodo.get_dataInizio() || 
 				_periodo.get_dataInizio()<=periodo.get_dataFine()&& _periodo.get_dataInizio()>=periodo.get_dataInizio()){
-			if (this.get_libera()!=true){
+			System.out.print("periodo buono");
+			if (this.get_libera()==false){
+				System.out.print("falso");
 				return false;
 			}
 		}
+		System.out.print("vero");
 		return true;
 	}
 

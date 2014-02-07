@@ -67,7 +67,7 @@ public class CGestisciPrenotazione {
 		periodo.set_dataFine(DataFine);
 		ArrayList<ArrayList<MCamera>> camere_libere_dalle_tipologie = new ArrayList<ArrayList<MCamera>>();
 		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
-			 camere_libere_dalle_tipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
+			 camere_libere_dalle_tipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next().toString()));
 		}
 		return camere_libere_dalle_tipologie;
 		
