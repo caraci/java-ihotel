@@ -19,13 +19,13 @@ public class MCamera {
 			for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
 				if(iterator.next().isLiberaInPeriodo(periodo)==false){
 					return false;
-				}
+				}		
 				else return true;
-				
 			}
 		
 		}	
-		throw new UnsupportedOperationException();
+	 return true;
+		
 	}
 
 	/**

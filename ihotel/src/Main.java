@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
-		
+		CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
 		try {			
 			List<MAlbergo> result = db.query(new Predicate<MAlbergo>() {
 				public boolean match(MAlbergo candidate) {
@@ -21,13 +21,15 @@ public class Main {
 			});
 			MAlbergo albergo = new MAlbergo();
 			albergo = result.get(0);
+			gestisciPrenotazione.setAlbergo(albergo);
 		}
 		finally{
 			db.close();
 		}
 		
 		
-		CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+		
+		
 		gestisciPrenotazione.creaNuovaPrenotazione();
 		// 1 Gennaio 2014 - 00:00.00
 		long dataInizio = 1388530800000L;

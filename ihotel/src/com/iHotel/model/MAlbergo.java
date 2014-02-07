@@ -125,8 +125,9 @@ public class MAlbergo {
 	public ArrayList<MCamera> cercaCamereLibereInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
 		ArrayList<MCamera> lista_camere = new ArrayList<MCamera>();
 		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
-			if(iterator.next().isLiberaInPeriodoDaTipologia(periodo, tipologia)==true){
-				lista_camere.add(iterator.next());
+			MCamera tmp = iterator.next();
+			if(tmp.isLiberaInPeriodoDaTipologia(periodo, tipologia)==true){
+				lista_camere.add(tmp);
 			}
 		}
 		return lista_camere;
