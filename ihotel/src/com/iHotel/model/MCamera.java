@@ -7,8 +7,22 @@ public class MCamera {
 	private LinkedList<MStatoCamera> _statiCamera;
 	private String _numero;
 	private String _tipologia;
-	MAlbergo _albergo;
+	private MAlbergo _albergo;
 
+
+	/**
+	 * @return the _albergo
+	 */
+	public MAlbergo get_albergo() {
+		return _albergo;
+	}
+
+	/**
+	 * @param _albergo the _albergo to set
+	 */
+	public void set_albergo(MAlbergo _albergo) {
+		this._albergo = _albergo;
+	}
 
 	/**
 	 * 
