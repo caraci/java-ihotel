@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.db4o.Db4oEmbedded;
@@ -27,6 +28,11 @@ public class MainDio {
 			gestisciPrenotazione.set_albergo(albergo);
 			ArrayList<MCamera> camere = new ArrayList<MCamera>();
 			camere = albergo.get_camere();
+			for (Iterator iterator = camere.iterator(); iterator.hasNext();) {
+				MCamera camera = (MCamera) iterator.next();
+				MPeriodo p = 
+				
+			}
 			System.out.println(albergo.get_camere().get(0).get_statiCamera().get(0).get_periodo());
 		}
 		finally{
