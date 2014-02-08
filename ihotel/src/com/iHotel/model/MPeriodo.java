@@ -2,99 +2,89 @@ package com.iHotel.model;
 
 public class MPeriodo {
 
-	private int _gi;
-	private int _mi;
-	private int _ai;
+	private int _giornoInizio;
+	private int _meseInizio;
+	private int _annoInizio;
 	
-	private int _gf;
-	private int _mf;
-	private int _af;
+	private int _giornoFine;
+	private int _meseFine;
+	private int _annoFine;
+	/**
+	 * @return the _annoFine
+	 */
+	public int get_annoFine() {
+		return _annoFine;
+	}
+	/**
+	 * @param _annoFine the _annoFine to set
+	 */
+	public void set_annoFine(int _annoFine) {
+		this._annoFine = _annoFine;
+	}
+	/**
+	 * @return the _meseFine
+	 */
+	public int get_meseFine() {
+		return _meseFine;
+	}
+	/**
+	 * @param _meseFine the _meseFine to set
+	 */
+	public void set_meseFine(int _meseFine) {
+		this._meseFine = _meseFine;
+	}
+	/**
+	 * @return the _giornoFine
+	 */
+	public int get_giornoFine() {
+		return _giornoFine;
+	}
+	/**
+	 * @param _giornoFine the _giornoFine to set
+	 */
+	public void set_giornoFine(int _giornoFine) {
+		this._giornoFine = _giornoFine;
+	}
+	/**
+	 * @return the _annoInizio
+	 */
+	public int get_annoInizio() {
+		return _annoInizio;
+	}
+	/**
+	 * @param _annoInizio the _annoInizio to set
+	 */
+	public void set_annoInizio(int _annoInizio) {
+		this._annoInizio = _annoInizio;
+	}
+	/**
+	 * @return the _meseInizio
+	 */
+	public int get_meseInizio() {
+		return _meseInizio;
+	}
+	/**
+	 * @param _meseInizio the _meseInizio to set
+	 */
+	public void set_meseInizio(int _meseInizio) {
+		this._meseInizio = _meseInizio;
+	}
+	/**
+	 * @return the _giornoInizio
+	 */
+	public int get_giornoInizio() {
+		return _giornoInizio;
+	}
+	/**
+	 * @param _giornoInizio the _giornoInizio to set
+	 */
+	public void set_giornoInizio(int _giornoInizio) {
+		this._giornoInizio = _giornoInizio;
+	}
 	
 	
 
-	/**
-	 * @return the _gi
-	 */
-	public int get_gi() {
-		return _gi;
-	}
-
-	/**
-	 * @param _gi the _gi to set
-	 */
-	public void set_gi(int _gi) {
-		this._gi = _gi;
-	}
-
-	/**
-	 * @return the _mi
-	 */
-	public int get_mi() {
-		return _mi;
-	}
-
-	/**
-	 * @param _mi the _mi to set
-	 */
-	public void set_mi(int _mi) {
-		this._mi = _mi;
-	}
-
-	/**
-	 * @return the _ai
-	 */
-	public int get_ai() {
-		return _ai;
-	}
-
-	/**
-	 * @param _ai the _ai to set
-	 */
-	public void set_ai(int _ai) {
-		this._ai = _ai;
-	}
-
-	/**
-	 * @return the _gf
-	 */
-	public int get_gf() {
-		return _gf;
-	}
-
-	/**
-	 * @param _gf the _gf to set
-	 */
-	public void set_gf(int _gf) {
-		this._gf = _gf;
-	}
-
-	/**
-	 * @return the _mf
-	 */
-	public int get_mf() {
-		return _mf;
-	}
-
-	/**
-	 * @param _mf the _mf to set
-	 */
-	public void set_mf(int _mf) {
-		this._mf = _mf;
-	}
-
-	/**
-	 * @return the _af
-	 */
-	public int get_af() {
-		return _af;
-	}
-
-	/**
-	 * @param _af the _af to set
-	 */
-	public void set_af(int _af) {
-		this._af = _af;
-	}
+	
 	
 	
 

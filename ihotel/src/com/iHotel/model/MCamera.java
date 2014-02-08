@@ -7,22 +7,8 @@ public class MCamera {
 	private LinkedList<MStatoCamera> _statiCamera;
 	private String _numero;
 	private String _tipologia;
-	private MAlbergo _albergo;
+	private MDescrizioneCamera _descrizioneCamera;
 
-
-	/**
-	 * @return the _albergo
-	 */
-	public MAlbergo get_albergo() {
-		return _albergo;
-	}
-
-	/**
-	 * @param _albergo the _albergo to set
-	 */
-	public void set_albergo(MAlbergo _albergo) {
-		this._albergo = _albergo;
-	}
 
 	/**
 	 * 
@@ -80,6 +66,20 @@ public class MCamera {
 	 */
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;
+	}
+
+	/**
+	 * @return the _descrizioneCamera
+	 */
+	public MDescrizioneCamera get_descrizioneCamera() {
+		return _descrizioneCamera;
+	}
+
+	/**
+	 * @param _descrizioneCamera the _descrizioneCamera to set
+	 */
+	public void set_descrizioneCamera(MDescrizioneCamera _descrizioneCamera) {
+		this._descrizioneCamera = _descrizioneCamera;
 	}
 
 }

@@ -37,26 +37,49 @@ public class MainPopolamentoDB{
 		//periodi
 		
 		// periodo_1 - 1 Gennaio 2014 - 00:00.00 - 31 Gennaio 2014 - 23.59.59
-
 				MPeriodo periodo_1 = new MPeriodo();
-				int di_1 = 1;
-				periodo_1.set_dataInizio(di_1);
-				periodo_1.set_dataFine(df_1);
-			
-			// periodo_2 - 1 Febbraio 2014 - 00:00.00 - 28 Febbraio 2014 - 23:59.59
-					long di_2 = 1391209200000L;
-					long df_2 = 1393628399000L;
+				int giornoInizio_1 = 01;
+				int meseInizio_1 = 01;
+				int annoInizio_1 = 2014;
+				int giornoFine_1 = 31;
+				int meseFine_1 = 01;
+				int annoFine_1 = 2014;
+				periodo_1.set_giornoInizio(giornoInizio_1);
+				periodo_1.set_meseInizio(meseInizio_1);
+				periodo_1.set_annoInizio(annoInizio_1);
+				periodo_1.set_giornoFine(giornoFine_1);
+				periodo_1.set_meseFine(meseFine_1);
+				periodo_1.set_annoFine(annoFine_1);
+				
+			// periodo_2 - 1 Febbraio 2014 - 00:00.00 - 28 Febbraio 2014 - 23:59.59				
 				MPeriodo periodo_2 = new MPeriodo();
-				periodo_2.set_dataInizio(di_2);
-				periodo_2.set_dataFine(df_2);
+				int giornoInizio_2 = 01;
+				int meseInizio_2 = 02;
+				int annoInizio_2 = 2014;
+				int giornoFine_2 = 28;
+				int meseFine_2 = 02;
+				int annoFine_2 = 2014;
+				periodo_2.set_giornoInizio(giornoInizio_2);
+				periodo_2.set_meseInizio(meseInizio_2);
+				periodo_2.set_annoInizio(annoInizio_2);
+				periodo_2.set_giornoFine(giornoFine_2);
+				periodo_2.set_meseFine(meseFine_2);
+				periodo_2.set_annoFine(annoFine_2);
 				
 			// periodo_3 - 1 Marzo 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
-					long di_3 = 1393628400000L;
-					long df_3 = 1396306799000L;
 				MPeriodo periodo_3 = new MPeriodo();
-				periodo_3.set_dataInizio(di_3);
-				periodo_3.set_dataFine(df_3);
-		
+				int giornoInizio_3 = 01;
+				int meseInizio_3 = 03;
+				int annoInizio_3 = 2014;
+				int giornoFine_3 = 31;
+				int meseFine_3 = 03;
+				int annoFine_3 = 2014;
+				periodo_3.set_giornoInizio(giornoInizio_3);
+				periodo_3.set_meseInizio(meseInizio_3);
+				periodo_3.set_annoInizio(annoInizio_3);
+				periodo_3.set_giornoFine(giornoFine_3);
+				periodo_3.set_meseFine(meseFine_3);
+				periodo_3.set_annoFine(annoFine_3);
 		//fine periodi
 		
 		//Creo le camere
@@ -409,15 +432,15 @@ public class MainPopolamentoDB{
 		albergo.set_catalogoCamere(catalogoCamere);
 		
 		// assegno l'albergo alle camere
-		camera_101.set_albergo(albergo);
-		camera_102.set_albergo(albergo);
-		camera_103.set_albergo(albergo);
-		camera_201.set_albergo(albergo);
-		camera_202.set_albergo(albergo);
-		camera_203.set_albergo(albergo);
-		camera_301.set_albergo(albergo);
-		camera_302.set_albergo(albergo);
-		camera_303.set_albergo(albergo);
+		camera_101.set_descrizioneCamera(d1);
+		camera_102.set_descrizioneCamera(d1);
+		camera_103.set_descrizioneCamera(d1);
+		camera_201.set_descrizioneCamera(d2);
+		camera_202.set_descrizioneCamera(d2);
+		camera_203.set_descrizioneCamera(d2);
+		camera_301.set_descrizioneCamera(d3);
+		camera_302.set_descrizioneCamera(d3);
+		camera_303.set_descrizioneCamera(d3);
 		
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {

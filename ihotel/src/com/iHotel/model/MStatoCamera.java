@@ -42,16 +42,16 @@ public class MStatoCamera {
 	public boolean isLiberaInPeriodo(MPeriodo periodo){
 		
 		GregorianCalendar dataInizioPrenotazione= new GregorianCalendar();
-		dataInizioPrenotazione.set(periodo.get_ai(), periodo.get_mi(), periodo.get_gi());
+		dataInizioPrenotazione.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
 		
 		GregorianCalendar dataFinePrenotazione= new GregorianCalendar();
-		dataFinePrenotazione.set(periodo.get_af(), periodo.get_mf(), periodo.get_gf());
+		dataFinePrenotazione.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
 		
 		GregorianCalendar dataInizio= new GregorianCalendar();
-		dataInizio.set(_periodo.get_ai(), _periodo.get_mi(), _periodo.get_gi());
+		dataInizio.set(_periodo.get_annoInizio(), _periodo.get_meseInizio(), _periodo.get_giornoInizio());
 		
 		GregorianCalendar dataFine= new GregorianCalendar();
-		dataFine.set(_periodo.get_af(), _periodo.get_mf(), _periodo.get_gf());
+		dataFine.set(_periodo.get_annoFine(), _periodo.get_meseFine(), _periodo.get_giornoFine());
 
 		//controllo se il periodo è corretto
 		if(dataInizio.compareTo(dataFinePrenotazione)==-1 && dataInizio.compareTo(dataInizioPrenotazione)==1 ||
