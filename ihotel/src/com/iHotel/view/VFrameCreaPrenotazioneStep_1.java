@@ -31,13 +31,6 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     JDatePanel datePanelFine, datePanelInizio;
     /* CheckBoxes */
     private JCheckBox[] checkBoxesTipologie;
-	/**
-	 * Variabili
-	 */
-	private java.util.ArrayList<String> tipologie;
-	private boolean singola_stato = false;
-	private boolean doppia_stato = false;
-	private boolean tripla_stato = false;
     
 
 	/**
@@ -154,65 +147,56 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
 			
-			// PanelTop
-			panelTop = new JPanel();
-			panelTop.setForeground(new Color(0, 0, 0));
-			contentPane.add(panelTop);
-			panelTop.setLayout(new GridLayout(1, 2, 20, 20));
+		// PanelTop
+		panelTop = new JPanel();
+		panelTop.setForeground(new Color(0, 0, 0));
+		contentPane.add(panelTop);
+		panelTop.setLayout(new GridLayout(1, 2, 20, 20));
 				
-					// PanelTopLeft
-					addPanelTopLeft();
-					// PanelTopRight
-					addPanelTopRight();
+		// PanelTopLeft
+		addPanelTopLeft();
+		// PanelTopRight
+		addPanelTopRight();
 				
-			// PanelBottom
-			panelBottom = new JPanel();
-			contentPane.add(panelBottom);
-			panelBottom.setLayout(new GridLayout(1, 2, 20, 20));
+		// PanelBottom
+		panelBottom = new JPanel();
+		contentPane.add(panelBottom);
+		panelBottom.setLayout(new GridLayout(1, 2, 20, 20));
 				
-				// PanelBottomLeft
-				addPanelBottomLeft(tipologieCamere);		
-				// PanelBottomRigth
-				addPanelBottomRight();
+		// PanelBottomLeft
+		addPanelBottomLeft(tipologieCamere);		
+		// PanelBottomRigth
+		addPanelBottomRight();
 				
-				/* ---------------------- Eventi ------------------------------------- */
+		/* ---------------------- Eventi ------------------------------------- */
 
-				// Click sul bottoneAvanti
-				btnAvanti.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						ArrayList<String> tipologieSelezionate = new ArrayList<String>();
-						boolean tipologiaStato;
-						// Controllo lo stato di tutte le CheckBox per verificare le tipologie inserite dall'utente
-						for (int i = 0; i < checkBoxesTipologie.length; i++) {
-							tipologiaStato=checkBoxesTipologie[i].isSelected();
-							if (tipologiaStato) {
-								// Aggiungo le tipologie scelte dall'utente
-								tipologieSelezionate.add(checkBoxesTipologie[i].getText());
-							}	
-						}
-						// Data inizio
-						int annoInizio 	 = datePanelInizio.getModel().getYear();
-						int meseInizio 	 = datePanelInizio.getModel().getMonth();
-						int giornoInizio = datePanelInizio.getModel().getDay();
-						// Data fine
-						int annoFine 	 = datePanelFine.getModel().getYear();
-						int meseFine 	 = datePanelFine.getModel().getMonth();
-						int giornoFine 	 = datePanelFine.getModel().getDay();
-					
-						// Recupero il controllore e invoco il metodo.
-						CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
-						gestisciPrenotazione.cercaCamereLibere(giornoInizio, meseInizio, annoInizio, giornoFine, meseFine, annoFine, tipologieSelezionate);
-					}
-				});
-	}
-
-	/**
-	 * Create the frame.
-	 * @param tipologieCamere
-	 */
-	public VFrameCreaPrenotazioneStep_1(java.util.ArrayList<String> tipologieCamere) {
-		// TODO - implement VFrameCreaPrenotazioneStep_1.VFrameCreaPrenotazioneStep_1
-		throw new UnsupportedOperationException();
+		// Click sul bottoneAvanti
+		btnAvanti.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ArrayList<String> tipologieSelezionate = new ArrayList<String>();
+				boolean tipologiaStato;
+				// Controllo lo stato di tutte le CheckBox per verificare le tipologie inserite dall'utente
+				for (int i = 0; i < checkBoxesTipologie.length; i++) {
+					tipologiaStato=checkBoxesTipologie[i].isSelected();
+					if (tipologiaStato) {
+						// Aggiungo le tipologie scelte dall'utente
+						tipologieSelezionate.add(checkBoxesTipologie[i].getText());
+					}	
+				}
+				// Data inizio
+				int annoInizio 	 = datePanelInizio.getModel().getYear();
+				int meseInizio 	 = datePanelInizio.getModel().getMonth();
+				int giornoInizio = datePanelInizio.getModel().getDay();
+				// Data fine
+				int annoFine 	 = datePanelFine.getModel().getYear();
+				int meseFine 	 = datePanelFine.getModel().getMonth();
+				int giornoFine 	 = datePanelFine.getModel().getDay();
+			
+				// Recupero il controllore e invoco il metodo.
+				CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+				gestisciPrenotazione.cercaCamereLibere(giornoInizio, meseInizio, annoInizio, giornoFine, meseFine, annoFine, tipologieSelezionate);
+			}
+		});
 	}
 }
