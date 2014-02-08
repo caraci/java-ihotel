@@ -1,16 +1,32 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.*;
+import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CGestisciPrenotazione {
 	
+	/* Singleton */
 	private static CGestisciPrenotazione instance = null;
 	private MPrenotazione _prenotazione;
 	private MAlbergo _albergo;
     
+	
+	private CGestisciPrenotazione() {
+    	// Private constructor prevents instantiation from other classes
+    }
+	/**
+	 * 
+	 * @return CGestisciPrenotazione
+	 */
+    public static CGestisciPrenotazione getInstance() {
+    	if(instance == null) {
+            instance = new CGestisciPrenotazione();
+         }
+         return instance;
+    }
 	/**
 	 * @return the _albergo
 	 */
@@ -25,20 +41,6 @@ public class CGestisciPrenotazione {
 		this._albergo = _albergo;
 	}
 	
-	private CGestisciPrenotazione() {
-    	// Private constructor prevents instantiation from other classes
-    }
-	
-	/**
-	 * 
-	 * @return CGestisciPrenotazione
-	 */
-    public static CGestisciPrenotazione getInstance() {
-    	if(instance == null) {
-            instance = new CGestisciPrenotazione();
-         }
-         return instance;
-    }
     /**
      * Creazione della prenotazione
      */
@@ -73,7 +75,8 @@ public class CGestisciPrenotazione {
 	 * @param DataFine
 	 * @param Tipologie
 	 */
-	public ArrayList<ArrayList<MCamera>> cercaCamereLibere(int gi, int mi, int ai, int gf, int mf, int af, ArrayList<String> Tipologie) {
+	public void cercaCamereLibere(int gi, int mi, int ai, int gf, int mf, int af, ArrayList<String> Tipologie) {
+		/* Setto il periodo ricevuto dall'interfaccia */
 		MPeriodo periodo = new MPeriodo();
 		periodo.set_giornoInizio(gi);
 		periodo.set_meseInizio(mi);
@@ -81,11 +84,16 @@ public class CGestisciPrenotazione {
 		periodo.set_giornoFine(gf);
 		periodo.set_meseFine(mf);
 		periodo.set_annoFine(af);
+		// Recupero l'interfaccia relativa al primo step della prenotazione mediante singleton
+		VFrameCreaPrenotazioneStep_1 frameCreaPrenotazioneStep_1 = VFrameCreaPrenotazioneStep_1.getInstance();
+		frameCreaPrenotazioneStep_1.setVisible(false);
 		ArrayList<ArrayList<MCamera>> camereLibereDalleTipologie = new ArrayList<ArrayList<MCamera>>();
 		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
-			 camereLibereDalleTipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
+			 //camereLibereDalleTipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
+			System.out.println(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()).get(0).get_numero());
 		}
-		return camereLibereDalleTipologie;
+		
+		//return camereLibereDalleTipologie;
 	}
 
 }
