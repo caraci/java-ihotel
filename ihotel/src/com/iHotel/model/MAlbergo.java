@@ -117,8 +117,8 @@ public class MAlbergo {
 	public void set_eMail(String _eMail) {
 		this._eMail = _eMail;
 	}
-	/*
-	 * restituisce una lista di camere libere data una tipologia e un periodo
+	/**
+	 * Restituisce una lista di camere libere data una tipologia e un periodo
 	 * @param periodo
 	 * @param String
 	 */
@@ -126,13 +126,14 @@ public class MAlbergo {
 		ArrayList<MCamera> lista_camere = new ArrayList<MCamera>();
 		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
 			MCamera tmp = iterator.next();
+			System.out.println(tmp.get_numero());
 			if(tmp.isLiberaInPeriodoDaTipologia(periodo, tipologia)==true){
 				lista_camere.add(tmp);
 			}
 		}
 		return lista_camere;
 	}
-	/*
+	/**
 	 * 
 	 * @param  periodo
 	 * @param tipologia
