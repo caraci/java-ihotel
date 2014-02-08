@@ -9,6 +9,7 @@ public class MCamera {
 	private String _tipologia;
 	private MDescrizioneCamera attribute;
 	private MDescrizioneCamera _descrizioneCamera;
+	private MDescrizioneCamera attribute2;
 
 
 	/**
@@ -108,6 +109,14 @@ public class MCamera {
 
 	public void set_descrizioneCamera(MDescrizioneCamera _descrizioneCamera) {
 		this._descrizioneCamera = _descrizioneCamera;
+	}
+
+	public MDescrizioneCamera getAttribute2() {
+		return this.attribute2;
+	}
+
+	public void setAttribute2(MDescrizioneCamera attribute2) {
+		this.attribute2 = attribute2;
 	}
 
 }

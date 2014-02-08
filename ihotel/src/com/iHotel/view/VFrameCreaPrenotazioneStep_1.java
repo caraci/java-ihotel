@@ -31,6 +31,13 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     JDatePanel datePanelFine, datePanelInizio;
     /* CheckBoxes */
     private JCheckBox[] checkBoxesTipologie;
+	/**
+	 * Variabili
+	 */
+	private java.util.ArrayList<String> tipologie;
+	private boolean singola_stato = false;
+	private boolean doppia_stato = false;
+	private boolean tripla_stato = false;
     
 
 	/**

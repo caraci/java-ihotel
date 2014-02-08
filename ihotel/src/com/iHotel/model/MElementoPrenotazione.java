@@ -15,6 +15,7 @@ public class MElementoPrenotazione {
 	public boolean occupaCameraInPeriodo(MPeriodo periodo){
 		return false;
 	}
+
 	/**
 	 * @return the _camera
 	 */

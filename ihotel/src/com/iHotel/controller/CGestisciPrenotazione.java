@@ -1,7 +1,6 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.*;
-import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -50,10 +49,10 @@ public class CGestisciPrenotazione {
 
 	/**
 	 * 
-	 * @param ep
+	 * @param camera
 	 */
-	public void aggiungiElementoPrenotazione(MCamera camera) {
-		
+	public boolean aggiungiElementoPrenotazione(MCamera camera) {
+		return false;
 	}
 
 	

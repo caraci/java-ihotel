@@ -1,19 +1,13 @@
-
 public class pilot {
-	 private String a;
 
-	/**
-	 * @return the a
-	 */
+	private String a;
+
 	public String getA() {
-		return a;
+		return this.a;
 	}
 
-	/**
-	 * @param a the a to set
-	 */
 	public void setA(String a) {
 		this.a = a;
 	}
-	 
+
 }
