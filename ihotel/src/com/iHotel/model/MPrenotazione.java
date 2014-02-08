@@ -23,6 +23,18 @@ public class MPrenotazione {
 		// TODO - implement MPrenotazione.addElementoPrenotazione
 		throw new UnsupportedOperationException();
 	}
+	/**
+	 * 
+	 * @param nome
+	 * @param cognome
+	 * @param eMail
+	 * @param telefono
+	 * @return
+	 */
+	public boolean concludiPrenotazione(String nome, String cognome, String eMail, String telefono){
+		return false;		
+	}
+	
 
 	/**
 	 * @return the _elementiPrenotazione

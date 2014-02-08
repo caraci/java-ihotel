@@ -11,7 +11,10 @@ public class MElementoPrenotazione {
 	public Currency getSubTotal(MPeriodo periodo){
 		return null;
 	}
-
+	
+	public boolean occupaCameraInPeriodo(MPeriodo periodo){
+		return false;
+	}
 	/**
 	 * @return the _camera
 	 */

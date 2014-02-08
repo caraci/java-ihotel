@@ -56,17 +56,7 @@ public class CGestisciPrenotazione {
 		
 	}
 
-	/**
-	 * 
-	 * @param nome
-	 * @param cognome
-	 * @param email
-	 * @param telefono
-	 */
-	public void concludiPrenotazione(String nome, String cognome, String email, int telefono) {
-		// TODO - implement CGestisciPrenotazione.concludiPrenotazione
-		throw new UnsupportedOperationException();
-	}
+	
 
 	/**
 	 * 
@@ -109,6 +99,17 @@ public class CGestisciPrenotazione {
 	 */
 	public void aggiungiElementoPrenotazione(MElementoPrenotazione ep) {
 		// TODO - implement CGestisciPrenotazione.aggiungiElementoPrenotazione
+		throw new UnsupportedOperationException();
+	}
+	/**
+	 * 
+	 * @param nome
+	 * @param cognome
+	 * @param email
+	 * @param telefono
+	 */
+	public void concludiPrenotazione(String nome, String cognome, String email, String telefono) {
+		// TODO - implement CGestisciPrenotazione.concludiPrenotazione
 		throw new UnsupportedOperationException();
 	}
 

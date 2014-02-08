@@ -7,12 +7,10 @@ public class MOspite {
 	private String _eMail;
 	private String _telefono;
 
-	public MOspite (String nome, String cognome, String eMail, String telefono) {
-		set_nome(nome);
-		set_cognome(cognome);
-		set_eMail(eMail);
-		set_telefono(telefono);
+	public MOspite() {
+	
 	}
+	
 	/**
 	 * 
 	 * @return
