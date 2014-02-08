@@ -1,11 +1,11 @@
 package com.iHotel.model;
 
-import java.util.Currency;
+
 
 public class MPrezzoCamera {
 
 	private MPeriodo _periodo;
-	private Currency _prezzo;
+	private double _prezzo;
 	
 
 	/**
@@ -20,7 +20,7 @@ public class MPrezzoCamera {
 	 * 
 	 * @return
 	 */
-	public Currency get_prezzo() {
+	public double get_prezzo() {
 		return this._prezzo;
 	}
 
@@ -28,7 +28,7 @@ public class MPrezzoCamera {
 	 * 
 	 * @param _prezzo
 	 */
-	public void set_prezzo(Currency _prezzo) {
+	public void set_prezzo(double _prezzo) {
 		this._prezzo = _prezzo;
 	}
 
