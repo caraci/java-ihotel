@@ -1,11 +1,26 @@
 package com.iHotel.model;
 
+import java.util.Currency;
+
 public class MPrezzoCamera {
 
 	private MPeriodo _periodo;
-	private int _prezzo;
+	private Currency _prezzo;
+	
 
-	public int get_prezzo() {
+	/**
+	 * 
+	 * @param periodo
+	 */
+	public MPrezzoCamera getPrezzoInPeriodo(MPeriodo periodo){
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public Currency get_prezzo() {
 		return this._prezzo;
 	}
 
@@ -13,7 +28,7 @@ public class MPrezzoCamera {
 	 * 
 	 * @param _prezzo
 	 */
-	public void set_prezzo(int _prezzo) {
+	public void set_prezzo(Currency _prezzo) {
 		this._prezzo = _prezzo;
 	}
 
@@ -24,12 +39,6 @@ public class MPrezzoCamera {
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
 	}
-	/*
-	 * 
-	 * @param periodo
-	 */
-	public MPrezzoCamera getPrezzoInPeriodo(MPeriodo periodo){
-		return this;
-	}
+	
 
 }

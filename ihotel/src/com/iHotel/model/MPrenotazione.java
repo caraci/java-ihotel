@@ -4,37 +4,38 @@ import java.util.*;
 
 public class MPrenotazione {
 
-	private Collection<MElementoPrenotazione> _elementiPrenotazione;
+	private ArrayList<MElementoPrenotazione> _elementiPrenotazione;
 	private MOspite _ospite;
 	private MPeriodo _periodo;
 	private String _codice;
 	private boolean _completata;
 
-	/**
-	 * 
-	 * @param ospite
-	 */
-	public void addOspite(MOspite ospite) {
-		// TODO - implement MPrenotazione.addOspite
-		throw new UnsupportedOperationException();
+	
+	public Currency getTotal(){
+		return null;		
 	}
-
+	
 	/**
 	 * 
 	 * @param ep
 	 */
-	public void addElementoPrenotazione(MElementoPrenotazione ep) {
+	public void addElementoPrenotazione(MCamera camera) {
 		// TODO - implement MPrenotazione.addElementoPrenotazione
 		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * 
-	 * @param periodo
+	 * @return the _elementiPrenotazione
 	 */
-	public void addPeriodo(MPeriodo periodo) {
-		// TODO - implement MPrenotazione.addPeriodo
-		throw new UnsupportedOperationException();
+	public ArrayList<MElementoPrenotazione> get_elementiPrenotazione() {
+		return _elementiPrenotazione;
+	}
+
+	/**
+	 * @param _elementiPrenotazione the _elementiPrenotazione to set
+	 */
+	public void set_elementiPrenotazione(ArrayList<MElementoPrenotazione> _elementiPrenotazione) {
+		this._elementiPrenotazione = _elementiPrenotazione;
 	}
 
 	/**

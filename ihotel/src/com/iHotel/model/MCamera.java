@@ -34,11 +34,11 @@ public class MCamera {
 	 return false;
 	}
 	/**
-	 * restituisce i prezzi
 	 * 
+	 * @param periodo
 	 */
-	public void getPrezzi(MPeriodo periodo){
-		
+	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo){
+		return null;
 	}
 
 	/**

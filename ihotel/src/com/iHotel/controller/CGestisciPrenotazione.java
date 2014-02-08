@@ -10,7 +10,6 @@ public class CGestisciPrenotazione {
 	
 	/* Singleton */
 	private static CGestisciPrenotazione instance = null;
-	private MPrenotazione attribute;
 	private MAlbergo _albergo;
 	private MPrenotazione _prenotazione;
     

@@ -1,4 +1,5 @@
 package com.iHotel.model;
+import java.util.Currency;
 
 /**
  * @author Eugenio
@@ -6,14 +7,25 @@ package com.iHotel.model;
 public class MElementoPrenotazione {
 
 	private MCamera _camera;
+	
+	public Currency getSubTotal(MPeriodo periodo){
+		return null;
+	}
 
 	/**
-	 * 
-	 * @param camera
+	 * @return the _camera
 	 */
-	public void addCamera(MCamera camera) {
-		// TODO - implement MElementoPrenotazione.addCamera
-		throw new UnsupportedOperationException();
+	public MCamera get_camera() {
+		return _camera;
 	}
+
+	/**
+	 * @param _camera the _camera to set
+	 */
+	public void set_camera(MCamera _camera) {
+		this._camera = _camera;
+	}
+
+	
 
 }

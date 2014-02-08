@@ -7,6 +7,15 @@ public class MDescrizioneCamera {
 	private ArrayList<MPrezzoCamera> _prezziCamera;
 	private String _tipologia;
 
+	
+	/**
+	 * 
+	 * @param periodo
+	 */
+	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo) {
+		return null;
+	}
+	
 
 	/**
 	 * @return the _prezziCamera
@@ -22,24 +31,6 @@ public class MDescrizioneCamera {
 		this._prezziCamera = _prezziCamera;
 	}
 
-	/**
-	 * 
-	 * @param periodo
-	 */
-	public void getPrezziCamera(MPeriodo periodo) {
-		
-	}
-
-	/**
-	 * 
-	 * @param periodo
-	 * @param tipologie
-	 */
-	public void isLibera(MPeriodo periodo, java.util.List<java.lang.String> tipologie) {
-		// TODO - implement MDescrizioneCamera.isLibera
-		throw new UnsupportedOperationException();
-	}
-
 	public String get_tipologia() {
 		return this._tipologia;
 	}
@@ -51,23 +42,7 @@ public class MDescrizioneCamera {
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;
 	}
-	/*
-	 * 
-	 * @param  periodo
-	 * @param tipologia
-	 */
-	public ArrayList<MPrezzoCamera> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
-		ArrayList<MPrezzoCamera> array_prezzi  = new ArrayList<MPrezzoCamera>();
-		return array_prezzi;
-	}
+	
 
-	/**
-	 * 
-	 * @param periodo
-	 */
-	public void getPrezzoCamera(MPeriodo periodo) {
-		// TODO - implement MDescrizioneCamera.getPrezzoCamera
-		throw new UnsupportedOperationException();
-	}
 
 }
