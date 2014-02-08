@@ -52,9 +52,8 @@ public class CGestisciPrenotazione {
 	 * 
 	 * @param ep
 	 */
-	public void aggiungiElementoPrenotazione(MElementoPrenotazione ep) {
-		// TODO - implement CGestisciPrenotazione.aggiungiElementoPrenotazione
-		throw new UnsupportedOperationException();
+	public void aggiungiElementoPrenotazione(MCamera camera) {
+		
 	}
 
 	/**
