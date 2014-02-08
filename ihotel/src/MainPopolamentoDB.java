@@ -315,15 +315,15 @@ public class MainPopolamentoDB{
 		
 		// Stati occupazione Camera 201
 		LinkedList<MStatoCamera> statiCamera_302 = new LinkedList<MStatoCamera>();
-		statiCamera_301.add(statoCamera_302_Periodo1);
-		statiCamera_301.add(statoCamera_302_Periodo2);
-		statiCamera_301.add(statoCamera_302_Periodo3);
+		statiCamera_302.add(statoCamera_302_Periodo1);
+		statiCamera_302.add(statoCamera_302_Periodo2);
+		statiCamera_302.add(statoCamera_302_Periodo3);
 		
 		// Stati occupazione Camera 201
 		LinkedList<MStatoCamera> statiCamera_303 = new LinkedList<MStatoCamera>();
-		statiCamera_301.add(statoCamera_303_Periodo1);
-		statiCamera_301.add(statoCamera_303_Periodo2);
-		statiCamera_301.add(statoCamera_303_Periodo3);
+		statiCamera_303.add(statoCamera_303_Periodo1);
+		statiCamera_303.add(statoCamera_303_Periodo2);
+		statiCamera_303.add(statoCamera_303_Periodo3);
 		
 		// Aggiungo stati alle rispettive camere
 		
@@ -337,18 +337,7 @@ public class MainPopolamentoDB{
 		camera_302.set_statiCamera(statiCamera_302);
 		camera_303.set_statiCamera(statiCamera_303);
 		
-		// Mappa delle camere
 		
-		ArrayList<MCamera> camere = new ArrayList<MCamera>();
-		camere.add(camera_101);
-		camere.add(camera_102);
-		camere.add(camera_103);
-		camere.add(camera_201);
-		camere.add(camera_202);
-		camere.add(camera_203);
-		camere.add(camera_301);
-		camere.add(camera_302);
-		camere.add(camera_303);
 		
 		
 		//prezzi camere
@@ -430,18 +419,9 @@ public class MainPopolamentoDB{
 		// Creo CatalogoCamere
 		MCatalogoCamere catalogoCamere = new MCatalogoCamere();	
 		catalogoCamere.set_descrizioniCamere(descrizioniCamere);
-		// Creo Albergo e gli associo tutte le informazioni.
-		
-		MAlbergo albergo = new MAlbergo();
-		albergo.set_eMail("info@hotelmAraviglioso.com");
-		albergo.set_nome("Hotel mAraviglioso");
-		albergo.set_PIVA("123456789ABCDEF");
-		albergo.set_telefono("0746123456");
-		albergo.set_camere(camere);
-		albergo.set_catalogoCamere(catalogoCamere);
 		
 		// assegno l'albergo alle camere
-		/*camera_101.set_descrizioneCamera(d1);
+		camera_101.set_descrizioneCamera(d1);
 		camera_102.set_descrizioneCamera(d1);
 		camera_103.set_descrizioneCamera(d1);
 		camera_201.set_descrizioneCamera(d2);
@@ -450,19 +430,52 @@ public class MainPopolamentoDB{
 		camera_301.set_descrizioneCamera(d3);
 		camera_302.set_descrizioneCamera(d3);
 		camera_303.set_descrizioneCamera(d3);
-		*/
+		
+		// Mappa delle camere
+		
+		ArrayList<MCamera> camere = new ArrayList<MCamera>();
+		camere.add(camera_101);
+		camere.add(camera_102);
+		camere.add(camera_103);
+		camere.add(camera_201);
+		camere.add(camera_202);
+		camere.add(camera_203);
+		camere.add(camera_301);
+		camere.add(camera_302);
+		camere.add(camera_303);
+		
+		// Creo Albergo e gli associo tutte le informazioni.
+		
+		MAlbergo albergo = new MAlbergo();
+		albergo.set_eMail("info@hotelmAraviglioso.com");
+		albergo.set_nome("Hotel mAraviglioso");
+		albergo.set_PIVA("123456789ABCDEF");
+		albergo.set_telefono("0746123456");
+		albergo.set_camere(camere);
+		
+		albergo.set_catalogoCamere(catalogoCamere);
+		
+		ArrayList<MPrenotazione> prenotazioni = new ArrayList<MPrenotazione>();
+		albergo.set_prenotazioni(prenotazioni);
+		
 		
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {
+			
+			aggiungiAlbergo(db,albergo);
+			
+			/*
 			//aggiunta dei periodi
 			aggiungiPeriodo(db,periodo_1);
 			aggiungiPeriodo(db,periodo_2);
 			aggiungiPeriodo(db,periodo_3);
 			//aggiunta descrizioni
+			
 			aggiungiDescrizione(db,d1);
 			aggiungiDescrizione(db,d2);
 			aggiungiDescrizione(db,d3);
 			//aggiunta prezzi
+			
 			aggiungiPrezzo(db,p_singola_1);
 			aggiungiPrezzo(db,p_singola_2);
 			aggiungiPrezzo(db,p_singola_3);
@@ -472,6 +485,7 @@ public class MainPopolamentoDB{
 			aggiungiPrezzo(db,p_tripla_1);
 			aggiungiPrezzo(db,p_tripla_2);
 			aggiungiPrezzo(db,p_tripla_3);
+			
 			//aggiunta camere
 			aggiungiCamera(db,camera_101);
 			aggiungiCamera(db,camera_102);
@@ -482,10 +496,13 @@ public class MainPopolamentoDB{
 			aggiungiCamera(db,camera_301);
 			aggiungiCamera(db,camera_302);
 			aggiungiCamera(db,camera_303);
+			
 			//aggiunta albergo
-			aggiungiAlbergo(db,albergo);
+			/*
+			
 			//aggiunta catalogo
-			aggiungiCatalogo(db,catalogoCamere);
+			
+			aggiungiCatalogo(db,catalogoCamere);*/
 			
 		}
 		
