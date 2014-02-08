@@ -11,7 +11,7 @@ public class MAlbergo {
 	private String _telefono;
 	private String _PIVA;
 	private String _eMail;
-	private Collection<MCamera> _camere2;
+	
 	  
 	/**
 	 * @return the _catalogoCamere
@@ -138,13 +138,6 @@ public class MAlbergo {
 		return p;
 	}
 
-	public Collection<MCamera> get_camere2() {
-		return this._camere2;
-	}
-
-	public void set_camere2(Collection<MCamera> _camere2) {
-		this._camere2 = _camere2;
-	}
 	
 	
 	

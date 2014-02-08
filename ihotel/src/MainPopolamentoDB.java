@@ -1,6 +1,7 @@
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.iHotel.model.*;
+
 import java.util.*;
 
 public class MainPopolamentoDB{
@@ -38,11 +39,11 @@ public class MainPopolamentoDB{
 		
 		// periodo_1 - 1 Gennaio 2014 - 00:00.00 - 31 Gennaio 2014 - 23.59.59
 				MPeriodo periodo_1 = new MPeriodo();
-				int giornoInizio_1 = 01;
-				int meseInizio_1 = 01;
+				int giornoInizio_1 = 1;
+				int meseInizio_1 = 0;
 				int annoInizio_1 = 2014;
 				int giornoFine_1 = 31;
-				int meseFine_1 = 01;
+				int meseFine_1 = 0;
 				int annoFine_1 = 2014;
 				periodo_1.set_giornoInizio(giornoInizio_1);
 				periodo_1.set_meseInizio(meseInizio_1);
@@ -51,13 +52,14 @@ public class MainPopolamentoDB{
 				periodo_1.set_meseFine(meseFine_1);
 				periodo_1.set_annoFine(annoFine_1);
 				
+				
 			// periodo_2 - 1 Febbraio 2014 - 00:00.00 - 28 Febbraio 2014 - 23:59.59				
 				MPeriodo periodo_2 = new MPeriodo();
-				int giornoInizio_2 = 01;
-				int meseInizio_2 = 02;
+				int giornoInizio_2 = 1;
+				int meseInizio_2 = 1;
 				int annoInizio_2 = 2014;
 				int giornoFine_2 = 28;
-				int meseFine_2 = 02;
+				int meseFine_2 = 1;
 				int annoFine_2 = 2014;
 				periodo_2.set_giornoInizio(giornoInizio_2);
 				periodo_2.set_meseInizio(meseInizio_2);
@@ -66,13 +68,14 @@ public class MainPopolamentoDB{
 				periodo_2.set_meseFine(meseFine_2);
 				periodo_2.set_annoFine(annoFine_2);
 				
+				
 			// periodo_3 - 1 Marzo 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
 				MPeriodo periodo_3 = new MPeriodo();
-				int giornoInizio_3 = 01;
-				int meseInizio_3 = 03;
+				int giornoInizio_3 = 1;
+				int meseInizio_3 = 2;
 				int annoInizio_3 = 2014;
 				int giornoFine_3 = 31;
-				int meseFine_3 = 03;
+				int meseFine_3 = 2;
 				int annoFine_3 = 2014;
 				periodo_3.set_giornoInizio(giornoInizio_3);
 				periodo_3.set_meseInizio(meseInizio_3);
@@ -327,6 +330,12 @@ public class MainPopolamentoDB{
 		camera_101.set_statiCamera(statiCamera_101);
 		camera_102.set_statiCamera(statiCamera_102);
 		camera_103.set_statiCamera(statiCamera_103);
+		camera_201.set_statiCamera(statiCamera_201);
+		camera_202.set_statiCamera(statiCamera_202);
+		camera_203.set_statiCamera(statiCamera_203);
+		camera_301.set_statiCamera(statiCamera_301);
+		camera_302.set_statiCamera(statiCamera_302);
+		camera_303.set_statiCamera(statiCamera_303);
 		
 		// Mappa delle camere
 		
@@ -432,7 +441,7 @@ public class MainPopolamentoDB{
 		albergo.set_catalogoCamere(catalogoCamere);
 		
 		// assegno l'albergo alle camere
-		camera_101.set_descrizioneCamera(d1);
+		/*camera_101.set_descrizioneCamera(d1);
 		camera_102.set_descrizioneCamera(d1);
 		camera_103.set_descrizioneCamera(d1);
 		camera_201.set_descrizioneCamera(d2);
@@ -441,6 +450,7 @@ public class MainPopolamentoDB{
 		camera_301.set_descrizioneCamera(d3);
 		camera_302.set_descrizioneCamera(d3);
 		camera_303.set_descrizioneCamera(d3);
+		*/
 		
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {

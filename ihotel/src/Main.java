@@ -34,7 +34,7 @@ public class Main {
 			int mi=0;
 			int ai=2014;
 			int gf=1;
-			int mf=2;
+			int mf=1;
 			int af=2014;
 			// Cerco le camere libere nel periodo e nelle tipologie
 			gestisciPrenotazione.cercaCamereLibere(gi, mi, ai, gf, mf, af, tipologie);
