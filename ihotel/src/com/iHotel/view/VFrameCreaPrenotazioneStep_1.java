@@ -31,6 +31,13 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     JDatePanel datePanelFine, datePanelInizio;
     /* CheckBoxes */
     private JCheckBox[] checkBoxesTipologie;
+	/**
+	 * Variabili
+	 */
+	private java.util.ArrayList<String> tipologie;
+	private boolean singola_stato = false;
+	private boolean doppia_stato = false;
+	private boolean tripla_stato = false;
     
 
 	/**
@@ -198,5 +205,14 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 						gestisciPrenotazione.cercaCamereLibere(giornoInizio, meseInizio, annoInizio, giornoFine, meseFine, annoFine, tipologieSelezionate);
 					}
 				});
+	}
+
+	/**
+	 * Create the frame.
+	 * @param tipologieCamere
+	 */
+	public VFrameCreaPrenotazioneStep_1(java.util.ArrayList<String> tipologieCamere) {
+		// TODO - implement VFrameCreaPrenotazioneStep_1.VFrameCreaPrenotazioneStep_1
+		throw new UnsupportedOperationException();
 	}
 }

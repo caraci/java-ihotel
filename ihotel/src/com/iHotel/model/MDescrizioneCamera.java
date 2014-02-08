@@ -61,4 +61,13 @@ public class MDescrizioneCamera {
 		return array_prezzi;
 	}
 
+	/**
+	 * 
+	 * @param periodo
+	 */
+	public void getPrezzoCamera(MPeriodo periodo) {
+		// TODO - implement MDescrizioneCamera.getPrezzoCamera
+		throw new UnsupportedOperationException();
+	}
+
 }

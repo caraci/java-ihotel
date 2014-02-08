@@ -7,6 +7,7 @@ public class MCamera {
 	private LinkedList<MStatoCamera> _statiCamera;
 	private String _numero;
 	private String _tipologia;
+	private MDescrizioneCamera attribute;
 	private MDescrizioneCamera _descrizioneCamera;
 
 
@@ -81,13 +82,21 @@ public class MCamera {
 	/**
 	 * @return the _descrizioneCamera
 	 */
-	public MDescrizioneCamera get_descrizioneCamera() {
-		return _descrizioneCamera;
+	public MDescrizioneCamera getAttribute() {
+		return attribute;
 	}
 
 	/**
 	 * @param _descrizioneCamera the _descrizioneCamera to set
 	 */
+	public void setAttribute(MDescrizioneCamera _descrizioneCamera) {
+		this.attribute = _descrizioneCamera;
+	}
+
+	public MDescrizioneCamera get_descrizioneCamera() {
+		return this._descrizioneCamera;
+	}
+
 	public void set_descrizioneCamera(MDescrizioneCamera _descrizioneCamera) {
 		this._descrizioneCamera = _descrizioneCamera;
 	}

@@ -10,8 +10,9 @@ public class CGestisciPrenotazione {
 	
 	/* Singleton */
 	private static CGestisciPrenotazione instance = null;
-	private MPrenotazione _prenotazione;
+	private MPrenotazione attribute;
 	private MAlbergo _albergo;
+	private MPrenotazione _prenotazione;
     
 	
 	private CGestisciPrenotazione() {
@@ -101,6 +102,15 @@ public class CGestisciPrenotazione {
 		}
 		
 		//return camereLibereDalleTipologie;
+	}
+
+	/**
+	 * 
+	 * @param ep
+	 */
+	public void aggiungiElementoPrenotazione(MElementoPrenotazione ep) {
+		// TODO - implement CGestisciPrenotazione.aggiungiElementoPrenotazione
+		throw new UnsupportedOperationException();
 	}
 
 }
