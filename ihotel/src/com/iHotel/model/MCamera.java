@@ -32,6 +32,13 @@ public class MCamera {
 		}	
 	 return false;
 	}
+	/**
+	 * restituisce i prezzi
+	 * 
+	 */
+	public void getPrezzi(MPeriodo periodo){
+		
+	}
 
 	/**
 	 * @return the _statiCamera
