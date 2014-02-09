@@ -4,8 +4,26 @@ import java.util.*;
 
 public class MCatalogoCamere {
 
+	// Attributi
 	private HashMap<String,MDescrizioneCamera> _descrizioniCamere;
-
+	// Singleton
+	private static MCatalogoCamere instance = null;
+	
+	/**
+	 * Costruttore privato - pattern singleton
+	 */
+	private MCatalogoCamere() {}
+	
+	// Metodi di classe
+	public static MCatalogoCamere getInstance() {
+    	if(instance == null) {
+            instance = new MCatalogoCamere();
+         }
+         return instance;
+    }
+	
+	// Metodi di instanza
+	// Getter, Setter
 	/**
 	 * @return the _descrizioniCamere
 	 */

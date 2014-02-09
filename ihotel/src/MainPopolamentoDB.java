@@ -336,10 +336,7 @@ public class MainPopolamentoDB{
 		camera_203.set_statiCamera(statiCamera_203);
 		camera_301.set_statiCamera(statiCamera_301);
 		camera_302.set_statiCamera(statiCamera_302);
-		camera_303.set_statiCamera(statiCamera_303);
-		
-		
-		
+		camera_303.set_statiCamera(statiCamera_303);	
 		
 		//prezzi camere
 		double x = 50.44;
@@ -413,17 +410,21 @@ public class MainPopolamentoDB{
 		d3.set_tipologia("Tripla");
 		d3.set_prezziCamera(prezzi_tripla);
 		
+		/*
 		//creo map descrizione camere
 		HashMap<String,MDescrizioneCamera> descrizioniCamere = new HashMap<String,MDescrizioneCamera>();
 		descrizioniCamere.put("Singola",d1);
 		descrizioniCamere.put("Doppia", d2);
 		descrizioniCamere.put("Tripla", d3);
+		*/
 		
+		/*
 		// Creo CatalogoCamere
 		MCatalogoCamere catalogoCamere = new MCatalogoCamere();	
 		catalogoCamere.set_descrizioniCamere(descrizioniCamere);
+		*/
 		
-		// assegno l'albergo alle camere
+		// assegno le descrizioni alle camere
 		camera_101.set_descrizioneCamera(d1);
 		camera_102.set_descrizioneCamera(d1);
 		camera_103.set_descrizioneCamera(d1);
@@ -434,8 +435,8 @@ public class MainPopolamentoDB{
 		camera_302.set_descrizioneCamera(d3);
 		camera_303.set_descrizioneCamera(d3);
 		
+		/*
 		// Mappa delle camere
-		
 		ArrayList<MCamera> camere = new ArrayList<MCamera>();
 		camere.add(camera_101);
 		camere.add(camera_102);
@@ -446,39 +447,30 @@ public class MainPopolamentoDB{
 		camere.add(camera_301);
 		camere.add(camera_302);
 		camere.add(camera_303);
+		*/
 		
+		/*
 		// Creo Albergo e gli associo tutte le informazioni.
-		
 		MAlbergo albergo = new MAlbergo();
 		albergo.set_eMail("info@hotelmAraviglioso.com");
 		albergo.set_nome("Hotel mAraviglioso");
 		albergo.set_PIVA("123456789ABCDEF");
 		albergo.set_telefono("0746123456");
 		albergo.set_camere(camere);
-		
 		albergo.set_catalogoCamere(catalogoCamere);
-		
 		ArrayList<MPrenotazione> prenotazioni = new ArrayList<MPrenotazione>();
 		albergo.set_prenotazioni(prenotazioni);
-		
+		*/
 		
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {
-			
-			aggiungiAlbergo(db,albergo);
-			
-			/*
+		
 			//aggiunta dei periodi
 			aggiungiPeriodo(db,periodo_1);
 			aggiungiPeriodo(db,periodo_2);
 			aggiungiPeriodo(db,periodo_3);
-			//aggiunta descrizioni
 			
-			aggiungiDescrizione(db,d1);
-			aggiungiDescrizione(db,d2);
-			aggiungiDescrizione(db,d3);
 			//aggiunta prezzi
-			
 			aggiungiPrezzo(db,p_singola_1);
 			aggiungiPrezzo(db,p_singola_2);
 			aggiungiPrezzo(db,p_singola_3);
@@ -488,6 +480,11 @@ public class MainPopolamentoDB{
 			aggiungiPrezzo(db,p_tripla_1);
 			aggiungiPrezzo(db,p_tripla_2);
 			aggiungiPrezzo(db,p_tripla_3);
+			
+			//aggiunta descrizioni
+			aggiungiDescrizione(db,d1);
+			aggiungiDescrizione(db,d2);
+			aggiungiDescrizione(db,d3);
 			
 			//aggiunta camere
 			aggiungiCamera(db,camera_101);
@@ -500,13 +497,15 @@ public class MainPopolamentoDB{
 			aggiungiCamera(db,camera_302);
 			aggiungiCamera(db,camera_303);
 			
-			//aggiunta albergo
 			/*
-			
 			//aggiunta catalogo
+			aggiungiCatalogo(db,catalogoCamere);
+			*/
 			
-			aggiungiCatalogo(db,catalogoCamere);*/
-			
+			/*
+			//aggiunta albergo
+			aggiungiAlbergo(db,albergo);
+			*/
 		}
 		
 		finally {

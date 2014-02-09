@@ -12,10 +12,10 @@ public class CGestisciPrenotazione {
 	private MAlbergo _albergo;
 	private MPrenotazione _prenotazione;
     
-	
-	private CGestisciPrenotazione() {
-    	// Private constructor prevents instantiation from other classes
-    }
+	/**
+	 * Costruttore privato - pattern Singleton
+	 */
+	private CGestisciPrenotazione() {}
 	/**
 	 * 
 	 * @return CGestisciPrenotazione

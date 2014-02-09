@@ -2,18 +2,65 @@ package com.iHotel.model;
 
 import java.util.*;
 
+
 public class MAlbergo {
     
+	// Attributi
 	private MCatalogoCamere _catalogoCamere;
 	private ArrayList<MCamera> _camere;
 	private ArrayList<MPrenotazione> _prenotazioni;
-	private String _nome;
-	private String _telefono;
-	private String _PIVA;
-	private String _eMail;
-	private Collection<MCamera> _camere2;
+	private String _nome = "Hotel MAraviglioso";
+	private String _telefono = "123123123";
+	private String _PIVA = "123456789ABCDEF";
+	private String _eMail = "info@hotelmAraviglioso.com";
+	// Singleton 
+	private static MAlbergo instance = null;
 	
-	  
+	/**
+	 * Costruttore privato - pattern Singleton
+	 */
+	private MAlbergo() {}
+	
+	// Metodi di classe
+	/**
+	 * 
+	 * @return
+	 */
+	public static MAlbergo getInstance() {
+    	if(instance == null) {
+            instance = new MAlbergo();
+         }
+         return instance;
+    }
+	
+	// Metodi dell'instanza
+	/**
+	 * Restituisce una lista di camere libere data una tipologia e un periodo
+	 * @param periodo
+	 * @param tipologia
+	 */
+	public ArrayList<MCamera> cercaCamereLibereInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
+		ArrayList<MCamera> lista_camere = new ArrayList<MCamera>();
+		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
+			MCamera tmp = iterator.next();
+			System.out.println(tmp.get_numero());
+			if(tmp.isLiberaInPeriodoDaTipologia(periodo, tipologia)==true){
+				lista_camere.add(tmp);
+			}
+		}
+		return lista_camere;
+	}
+	/**
+	 * 
+	 * @param  periodo
+	 * @param tipologia
+	 */
+	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
+		HashMap<String,ArrayList<MPrezzoCamera>> p  = new HashMap<String,ArrayList<MPrezzoCamera>>();
+		return p;
+	}
+
+	// Getter, Setter
 	/**
 	 * @return the _catalogoCamere
 	 */
@@ -112,39 +159,6 @@ public class MAlbergo {
 	 */
 	public void set_eMail(String _eMail) {
 		this._eMail = _eMail;
-	}
-	/**
-	 * Restituisce una lista di camere libere data una tipologia e un periodo
-	 * @param periodo
-	 * @param tipologia
-	 */
-	public ArrayList<MCamera> cercaCamereLibereInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
-		ArrayList<MCamera> lista_camere = new ArrayList<MCamera>();
-		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
-			MCamera tmp = iterator.next();
-			System.out.println(tmp.get_numero());
-			if(tmp.isLiberaInPeriodoDaTipologia(periodo, tipologia)==true){
-				lista_camere.add(tmp);
-			}
-		}
-		return lista_camere;
-	}
-	/**
-	 * 
-	 * @param  periodo
-	 * @param tipologia
-	 */
-	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
-		HashMap<String,ArrayList<MPrezzoCamera>> p  = new HashMap<String,ArrayList<MPrezzoCamera>>();
-		return p;
-	}
-
-	public Collection<MCamera> get_camere2() {
-		return this._camere2;
-	}
-
-	public void set_camere2(Collection<MCamera> _camere2) {
-		this._camere2 = _camere2;
 	}
 
 	
