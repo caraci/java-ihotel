@@ -36,9 +36,10 @@ public class MStatoCamera {
 		{
 			
 			if(_libera==true){
-				System.out.println("bella");
+				
 				return true;
 			} else {
+				
 				return false;
 			}
 		} else {

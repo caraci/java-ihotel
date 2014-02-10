@@ -17,18 +17,13 @@ public class MCamera {
 	 */
 	public boolean isLiberaInPeriodoDaTipologia(MPeriodo periodo, String tipologia) {
 		if (tipologia.equals(_tipologia)){
-			//System.out.println("Tipologia uguale "+ tipologia);
-			System.out.println("Tipologia stanza =" + this.get_tipologia());
 			for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
 				MStatoCamera tmp = iterator.next();
-				//System.out.println(tmp.get_periodo().get_giornoInizio() + " " + tmp.get_periodo().get_meseInizio());
-				//System.out.println(tmp.get_periodo().get_giornoFine() + " " + tmp.get_periodo().get_meseFine());
-
 				if(tmp.isLiberaInPeriodo(periodo)==true){
 					
 					return true;
 				} else {
-					System.out.print(this.get_numero());
+					
 					return false;
 				}
 			}

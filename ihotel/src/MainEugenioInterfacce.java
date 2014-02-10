@@ -40,7 +40,7 @@ public class MainEugenioInterfacce {
 			catalogoCamere.set_descrizioniCamere(_descrizioniCamere);
 			// Setto gli attributi dell'albergo
 			ArrayList<MCamera> _camere = new ArrayList<MCamera>();
-			for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
+			for (Iterator<MCamera> iterator = camere.iterator(); iterator.hasNext();) {
 				MCamera camera = (MCamera) iterator.next();
 				_camere.add(camera);
 			}
