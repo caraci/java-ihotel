@@ -67,6 +67,17 @@ public class Main {
 			int af=2014;
 			// Cerco le camere libere nel periodo e nelle tipologie
 			gestisciPrenotazione.cercaCamereLibere(gi, mi, ai, gf, mf, af, tipologie);
+			/**prova per vedere se restituisce periodo contentte*/
+			MPeriodo periodo = new MPeriodo();
+			periodo.set_giornoInizio(1);
+			periodo.set_meseInizio(0);
+			periodo.set_annoInizio(2014);
+			periodo.set_giornoFine(2);
+			periodo.set_meseFine(0);
+			periodo.set_annoFine(2014);
+			System.out.print(albergo.get_camere().get(0).get_statiCamera().get(0).getStatoContenente(periodo).get_periodo().get_giornoFine());
+			/**fine prova per vedere se restiutuisce il periodo contenete, and it works!*/
+			
 			//System.out.print(albergo.get_camere().get(0).get_statiCamera().get(0).get_periodo().get_giornoInizio());
 		}
 		finally{
