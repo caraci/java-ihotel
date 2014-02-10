@@ -13,7 +13,14 @@ public class MDescrizioneCamera {
 	 * @param periodo
 	 */
 	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo) {
-		return null;
+		ArrayList<MPrezzoCamera> pc = new ArrayList<MPrezzoCamera>();
+		
+		for (Iterator<MPrezzoCamera> iterator = _prezziCamera.iterator(); iterator.hasNext();) {
+			MPrezzoCamera tmp = iterator.next().getPrezzoInPeriodo(periodo);
+			pc.add(tmp);
+		}
+		
+		return pc;
 	}
 	
 

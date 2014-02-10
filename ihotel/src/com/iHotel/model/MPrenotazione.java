@@ -20,8 +20,8 @@ public class MPrenotazione {
 	 * @param ep
 	 */
 	public void addElementoPrenotazione(MCamera camera) {
-		// TODO - implement MPrenotazione.addElementoPrenotazione
-		throw new UnsupportedOperationException();
+		MElementoPrenotazione ep= new MElementoPrenotazione();
+		ep.set_camera(camera);
 	}
 	/**
 	 * 

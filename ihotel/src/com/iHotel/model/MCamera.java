@@ -49,7 +49,7 @@ public class MCamera {
 	 * @param periodo
 	 */
 	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo){
-		return null;
+		return _descrizioneCamera.getPrezziInPeriodo(periodo);
 	}
 
 	// Getter, Setter
