@@ -57,6 +57,7 @@ public class Main {
 			// Creo l'array contenente le tipologie da ricercare
 			ArrayList<String> tipologie = new ArrayList<String>();
 			tipologie.add("Singola");
+			tipologie.add("Doppia");
 			// Data di inizio e fine ricerca
 			int gi=1;
 			int mi=0;

@@ -86,12 +86,12 @@ public class CGestisciPrenotazione {
 		
 		//ArrayList<ArrayList<MCamera>> camereLibereDalleTipologie = new ArrayList<ArrayList<MCamera>>();
 		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
-			System.out.println(iterator.next());
+			
 			 //camereLibereDalleTipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
 			ArrayList<MCamera> tmp = new ArrayList<MCamera>();
-			tmp = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, "Singola");
-			for (int i = 0; i < tmp.size()-1; i++) {
-				System.out.println(tmp.get(i).get_numero());
+			tmp = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next());
+			for (Iterator<MCamera> iterator_camere_libere = tmp.iterator(); iterator_camere_libere.hasNext();) {
+				System.out.println(iterator_camere_libere.next().get_numero());
 			}
 		}
 		
