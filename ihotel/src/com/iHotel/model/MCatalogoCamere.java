@@ -14,7 +14,7 @@ public class MCatalogoCamere {
 	 */
 	private MCatalogoCamere() {}
 	
-	// Metodi di classe
+	// Metodi di classe	
 	public static MCatalogoCamere getInstance() {
     	if(instance == null) {
             instance = new MCatalogoCamere();
@@ -24,6 +24,11 @@ public class MCatalogoCamere {
 	
 	// Metodi di instanza
 	// Getter, Setter
+	public MDescrizioneCamera getDescrizioneDaTipologia(String tipologia){
+		return null;
+	}
+	
+	
 	/**
 	 * @return the _descrizioniCamere
 	 */
@@ -56,5 +61,7 @@ public class MCatalogoCamere {
 		HashMap<String,ArrayList<MPrezzoCamera>> p  = new HashMap<String,ArrayList<MPrezzoCamera>>();
 		return p;
 	}
+	
+	
 
 }

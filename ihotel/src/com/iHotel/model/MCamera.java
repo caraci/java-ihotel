@@ -38,14 +38,8 @@ public class MCamera {
 	public boolean occupaInPeriodo(MPeriodo periodo){
 		return false;
 	}
+
 	
-	/**
-	 * 
-	 * @param periodo
-	 */
-	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo){
-		return _descrizioneCamera.getPrezziInPeriodo(periodo);
-	}
 
 	// Getter, Setter
 	/**
