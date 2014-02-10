@@ -29,7 +29,7 @@ public class Main {
 					return true;
 				}
 			});
-			// Mediante pattern singleton, carico Albergo e Catalogo camere.
+			// Mediante pattern singleton, creo Albergo e Catalogo camere.
 			MAlbergo albergo = MAlbergo.getInstance();
 			MCatalogoCamere catalogoCamere = MCatalogoCamere.getInstance();
 			// Setto gli attributi del catalogoCamere
@@ -41,7 +41,7 @@ public class Main {
 			catalogoCamere.set_descrizioniCamere(_descrizioniCamere);
 			// Setto gli attributi dell'albergo
 			ArrayList<MCamera> _camere = new ArrayList<MCamera>();
-			for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
+			for (Iterator<MCamera> iterator = camere.iterator(); iterator.hasNext();) {
 				MCamera camera = (MCamera) iterator.next();
 				_camere.add(camera);
 			}
@@ -61,8 +61,8 @@ public class Main {
 			int gi=1;
 			int mi=0;
 			int ai=2014;
-			int gf=1;
-			int mf=1;
+			int gf=2;
+			int mf=0;
 			int af=2014;
 			// Cerco le camere libere nel periodo e nelle tipologie
 			gestisciPrenotazione.cercaCamereLibere(gi, mi, ai, gf, mf, af, tipologie);

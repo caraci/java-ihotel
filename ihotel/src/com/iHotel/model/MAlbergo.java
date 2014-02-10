@@ -43,8 +43,9 @@ public class MAlbergo {
 		ArrayList<MCamera> lista_camere = new ArrayList<MCamera>();
 		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
 			MCamera tmp = iterator.next();
-			System.out.println(tmp.get_numero());
+			
 			if(tmp.isLiberaInPeriodoDaTipologia(periodo, tipologia)==true){
+				System.out.println(tmp.get_numero());
 				lista_camere.add(tmp);
 			}
 		}

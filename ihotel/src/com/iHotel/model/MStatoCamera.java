@@ -27,12 +27,15 @@ public class MStatoCamera {
 		// Data di fine dello MStatoCamera
 		GregorianCalendar dataFine= new GregorianCalendar();
 		dataFine.set(_periodo.get_annoFine(), _periodo.get_meseFine(), _periodo.get_giornoFine());
-
+		
+		
 		// Controllo se il periodo è corretto
-		if(dataInizio.compareTo(dataFinePrenotazione)==-1 && dataInizio.compareTo(dataInizioPrenotazione)==1 ||
-				dataFine.compareTo(dataInizioPrenotazione)==1 && dataFine.compareTo(dataFinePrenotazione)==-1)
+		
+		if(dataInizio.compareTo(dataFinePrenotazione)!=1 && dataInizio.compareTo(dataInizioPrenotazione)!=-1 ||
+				dataFine.compareTo(dataInizioPrenotazione)!=-1 && dataFine.compareTo(dataFinePrenotazione)!=1)
 		{
-			if(_libera){
+			
+			if(_libera==true){
 				System.out.println("bella");
 				return true;
 			} else {

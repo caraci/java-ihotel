@@ -67,13 +67,19 @@ public class CGestisciPrenotazione {
 		/* Setto il periodo ricevuto dall'interfaccia */
 		MPeriodo periodo = new MPeriodo();
 		/* Setto la data di inizio */
-		periodo.set_giornoInizio(gi);
+		/*periodo.set_giornoInizio(gi);
 		periodo.set_meseInizio(mi);
 		periodo.set_annoInizio(ai);
 		/* Setto la data di fine */ 
-		periodo.set_giornoFine(gf);
+		/*periodo.set_giornoFine(gf);
 		periodo.set_meseFine(mf);
-		periodo.set_annoFine(af);
+		periodo.set_annoFine(af);*/
+		periodo.set_giornoInizio(1);
+		periodo.set_meseInizio(0);
+		periodo.set_annoInizio(2014);
+		periodo.set_giornoFine(2);
+		periodo.set_meseFine(0);
+		periodo.set_annoFine(2014);
 		// Recupero l'interfaccia relativa al primo step della prenotazione mediante singleton
 		//VFrameCreaPrenotazioneStep_1 frameCreaPrenotazioneStep_1 = VFrameCreaPrenotazioneStep_1.getInstance();
 		//frameCreaPrenotazioneStep_1.setVisible(false);
@@ -83,7 +89,7 @@ public class CGestisciPrenotazione {
 			System.out.println(iterator.next());
 			 //camereLibereDalleTipologie.add(_albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next()));
 			ArrayList<MCamera> tmp = new ArrayList<MCamera>();
-			tmp = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, iterator.next());
+			tmp = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, "Singola");
 			for (int i = 0; i < tmp.size()-1; i++) {
 				System.out.println(tmp.get(i).get_numero());
 			}
