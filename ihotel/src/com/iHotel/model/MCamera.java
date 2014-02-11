@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MCamera {
 
-	private LinkedList<MStatoCamera> _statiCamera;
+	private LinkedList<MStatoCamera> _statiCamera = new LinkedList<MStatoCamera>();
 	private String _numero;
 	private String _tipologia;
 	private MDescrizioneCamera _descrizioneCamera;
@@ -50,13 +50,18 @@ public class MCamera {
 		int indiceLista=0;
 		//devo andare a prendere lo statoCamera il cui periodo contiene il periodo della prenotazione 
 		
-		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
+		for (Iterator<MStatoCamera> iterator = this._statiCamera.iterator(); iterator.hasNext();) {
 			MStatoCamera statoCamera = (MStatoCamera) iterator.next();
-			 statoContenente= statoCamera.getStatoContenente(periodo);		
+			
+			 if (statoCamera.getStatoContenente(periodo)!=null)
+				 statoContenente=statoCamera.getStatoContenente(periodo);
 		}
+		
+		
 		indiceLista =_statiCamera.indexOf(statoContenente);
 		//periodo dello stato contenente
 		MPeriodo periodoStatoContenente = statoContenente.get_periodo();
+		
 		//qua si incasina un pò aniddoc
 		
 		//ricavo le date dal periodo stato contenete
@@ -118,8 +123,7 @@ public class MCamera {
 		
 		periodoStatoContenente.set_annoFine(annoPrimaDellaPrenotazione);
 		periodoStatoContenente.set_meseFine(mesePrimaDellaPrenotazione);
-		periodoStatoContenente.set_giornoFine(giornoPrimaDellaPrenotazione);
-		
+		periodoStatoContenente.set_giornoFine(giornoPrimaDellaPrenotazione);		
 		statoContenente.set_periodo(periodoStatoContenente);
 		statoContenente.set_libera(true);
 		
