@@ -177,7 +177,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 				
 		/* ---------------------- Eventi ------------------------------------- */
 
-		// Assegniamo l'eventListener al bottone
+		// Assegniamo l'eventListener al JButton btnAvanti
 		btnAvanti.addMouseListener(new MouseAdapter() {
 			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
 			@Override
