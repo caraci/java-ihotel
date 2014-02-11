@@ -25,6 +25,11 @@ public class MCatalogoCamere {
 	// Metodi di instanza
 	// Getter, Setter
 	public MDescrizioneCamera getDescrizioneDaTipologia(String tipologia){
+		for (Map.Entry<String, MDescrizioneCamera> entry : _descrizioniCamere.entrySet()) {
+			if (entry.getKey().equals(tipologia)){		    
+				return entry.getValue();
+			}		    
+		}
 		return null;
 	}
 	
