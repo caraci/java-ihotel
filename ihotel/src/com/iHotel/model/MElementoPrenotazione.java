@@ -16,7 +16,6 @@ public class MElementoPrenotazione {
 	
 	public double getSubTotal(MPeriodo periodo){
 		
-		double subtot=0;
 		// Data di inizio dello MStatoCamera
 		GregorianCalendar dataInizio = new GregorianCalendar();
 		// Data di fine dello MStatoCamera
