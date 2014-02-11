@@ -1,4 +1,8 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -70,14 +74,27 @@ public class Main {
 			/**prova per vedere se restituisce periodo contentte*/
 			MPeriodo periodo = new MPeriodo();
 			periodo.set_giornoInizio(1);
-			periodo.set_meseInizio(0);
+			periodo.set_meseInizio(3);
 			periodo.set_annoInizio(2014);
 			periodo.set_giornoFine(2);
-			periodo.set_meseFine(0);
+			periodo.set_meseFine(3);
 			periodo.set_annoFine(2014);
-			System.out.print(albergo.get_camere().get(0).get_statiCamera().get(0).getStatoContenente(periodo).get_periodo().get_giornoFine());
-			/**fine prova per vedere se restiutuisce il periodo contenete, and it works!*/
 			
+			
+			
+			//System.out.print(albergo.get_camere().get(0).get_statiCamera().get(0).getStatoContenente(periodo).get_periodo().get_giornoFine());
+			/**fine prova per vedere se restiutuisce il periodo contenete, and it works!*/
+			GregorianCalendar dataInizio = new GregorianCalendar();
+			dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
+			
+				
+			dataInizio.add(Calendar.DAY_OF_MONTH,1);
+			
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			String output = sdf.format(dataInizio.getTime());
+			System.out.println(output);
+			System.out.print(dataInizio.get(0)+ " "+dataInizio.get(1)+" "+ " "+dataInizio.get(2));
 			//System.out.print(albergo.get_camere().get(0).get_statiCamera().get(0).get_periodo().get_giornoInizio());
 		}
 		finally{
