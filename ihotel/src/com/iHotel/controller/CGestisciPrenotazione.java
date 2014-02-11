@@ -68,6 +68,7 @@ public class CGestisciPrenotazione {
 	 * @param Tipologie
 	 */
 	public void cercaCamereLibere(int gi, int mi, int ai, int gf, int mf, int af, ArrayList<String> Tipologie) {
+		
 		/* Setto il periodo ricevuto dall'interfaccia */
 		MPeriodo periodo = new MPeriodo();
 		/* Setto la data di inizio */
@@ -77,7 +78,9 @@ public class CGestisciPrenotazione {
 		/* Setto la data di fine*/
 		periodo.set_giornoFine(gf);
 		periodo.set_meseFine(mf);
-		periodo.set_annoFine(af);
+		periodo.set_annoFine(af);	
+		/* Setto il periodo alla prenotazione */
+		_prenotazione.set_periodo(periodo);
 	
 		String tipologia;
 		ArrayList<ArrayList<String>> camereLibereString = new ArrayList<ArrayList<String>>();
