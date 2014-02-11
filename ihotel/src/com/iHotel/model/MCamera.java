@@ -40,6 +40,95 @@ public class MCamera {
 	 * RICONTROLLARE I RETURN
 	 */
 	public boolean occupaInPeriodo(MPeriodo periodo){
+		//definisco lo stato occupato, lo stato contenente e lo stato residuo
+		MStatoCamera statoOccupato = new MStatoCamera();
+		MStatoCamera statoContenente = new MStatoCamera();
+		MStatoCamera statoResiduo = new MStatoCamera();
+		//setto subito i parametri dello stato occupato perchè li ho
+		statoOccupato.set_periodo(periodo);
+		statoOccupato.set_libera(false);
+		//devo andare a prendere lo statoCamera il cui periodo contiene il periodo della prenotazione 
+		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
+			MStatoCamera statoCamera = (MStatoCamera) iterator.next();
+			 statoContenente= statoCamera.getStatoContenente(periodo);			
+		}
+		//periodo dello stato contenente
+		MPeriodo periodoStatoContenente = statoContenente.get_periodo();
+		//qua si incasina un pò aniddoc
+		
+		//ricavo le date dal periodo stato contenete
+		
+		GregorianCalendar dataInizioPeriodoStatoContenente = new GregorianCalendar();
+		dataInizioPeriodoStatoContenente.set(periodoStatoContenente.get_annoInizio(), periodoStatoContenente.get_meseInizio(), periodoStatoContenente.get_giornoInizio());
+				
+		GregorianCalendar dataFinePeriodoStatoContenente = new GregorianCalendar();
+		dataFinePeriodoStatoContenente.set(periodoStatoContenente.get_annoFine(), periodoStatoContenente.get_meseFine(), periodoStatoContenente.get_giornoFine());
+		
+		//date del periodo stato contenente ricavate.
+		
+		//ricavo le date del periodo della prenotazione
+		GregorianCalendar dataInizioPeriodoPrenotazione = new GregorianCalendar();
+		dataInizioPeriodoPrenotazione.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
+		
+		GregorianCalendar dataFinePeriodoPrenotazione = new GregorianCalendar();
+		dataFinePeriodoPrenotazione.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
+		//date del periodo della prenotazione ricavate
+		
+		//ricavo i periodi
+		
+		
+		//Periodo residuo, data inizio = data fine prenotazione +1, data fine = data fine periodo contenente
+		MPeriodo periodoResiduo = new MPeriodo();
+		//calcolo data inizio del periodo residuo
+		dataFinePeriodoPrenotazione.add(dataFinePeriodoPrenotazione.DAY_OF_MONTH,1);
+		int giornoDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.DATE);
+		int meseDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.DAY_OF_MONTH);
+		int annoDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.DAY_OF_YEAR);
+		//setto gli attributi del periodo residuo
+		periodoResiduo.set_giornoInizio(giornoDopoFinePrenotazione);
+		periodoResiduo.set_meseInizio(meseDopoFinePrenotazione);
+		periodoResiduo.set_annoInizio(annoDopoFinePrenotazione);		
+		periodoResiduo.set_giornoFine(periodoStatoContenente.get_giornoFine());
+		periodoResiduo.set_meseFine(periodoStatoContenente.get_meseFine());
+		periodoResiduo.set_annoFine(periodoStatoContenente.get_annoFine());
+			
+		
+		/* non serve pd
+		//periodo occupazione
+		// data fine = data fine rpenotazione, data inizio = data inizio prenotazione
+		MPeriodo periodoStatoOccupato = new MPeriodo();
+		periodoStatoOccupato.set_annoInizio(periodo.get_annoInizio());
+		periodoStatoOccupato.set_meseInizio(periodo.get_meseInizio());
+		periodoStatoOccupato.set_giornoInizio(periodo.get_giornoInizio());
+		
+		periodoStatoOccupato.set_annoFine(periodo.get_annoFine());
+		periodoStatoOccupato.set_meseFine(periodo.get_meseFine());
+		periodoStatoOccupato.set_giornoFine(periodo.get_giornoFine());*/
+		
+		// periodo prima della prenotazione
+		//data inizio = data inizio periodo contenente, data fine = data inizio prenotazione -1
+		//ricavo il giorno prima di quello dell'inizio della prenotazione e il giorno dopo la fine della prenotazione
+		dataInizioPeriodoPrenotazione.add(dataInizioPeriodoPrenotazione.DAY_OF_MONTH, -1);		
+		int giornoPrimaDellaPrenotazione=dataInizioPeriodoPrenotazione.get(Calendar.DATE);
+		int mesePrimaDellaPrenotazione= dataInizioPeriodoPrenotazione.get(Calendar.DAY_OF_MONTH);
+		int annoPrimaDellaPrenotazione= dataInizioPeriodoPrenotazione.get(Calendar.DAY_OF_YEAR);
+		
+		periodoStatoContenente.set_annoFine(annoPrimaDellaPrenotazione);
+		periodoStatoContenente.set_meseFine(mesePrimaDellaPrenotazione);
+		periodoStatoContenente.set_giornoFine(giornoPrimaDellaPrenotazione);
+		
+		statoContenente.set_periodo(periodoStatoContenente);
+		statoContenente.set_libera(true);
+		
+		statoResiduo.set_periodo(periodoResiduo);
+		statoResiduo.set_libera(true);
+		
+		
+		
+		
+		
+		
+		
 		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();){
 			if(iterator.next().isLiberaInPeriodo(periodo)==true){
 				iterator.next().set_libera(false);
