@@ -48,23 +48,17 @@ public class MCatalogoCamere {
 		this._descrizioniCamere = _descrizioniCamere;
 	}
 
+	
 	/**
-	 * 
-	 * @param periodo
-	 * @param tipologie
-	 */
-	public void getPrezziCamere(MPeriodo periodo, java.util.List<java.lang.String> tipologie) {
-		// TODO - implement MCatalogoCamere.getPrezziCamere
-		throw new UnsupportedOperationException();
-	}
-	/*
 	 * 
 	 * @param  periodo
 	 * @param tipologia
 	 */
 	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
-		HashMap<String,ArrayList<MPrezzoCamera>> p  = new HashMap<String,ArrayList<MPrezzoCamera>>();
-		return p;
+		MDescrizioneCamera descrizioneCamera = this.getDescrizioneDaTipologia(tipologia);		
+		HashMap<String,ArrayList<MPrezzoCamera>> mappaPrezziCamera  = new HashMap<String,ArrayList<MPrezzoCamera>>();
+			mappaPrezziCamera.put(tipologia, descrizioneCamera.getPrezziInPeriodo(periodo));
+		return mappaPrezziCamera;
 	}
 	
 	

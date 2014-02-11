@@ -14,8 +14,10 @@ public class MDescrizioneCamera {
 	 */
 	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo) {
 		ArrayList<MPrezzoCamera> prezziCamera = new ArrayList<MPrezzoCamera>();		
-		for (Iterator<MPrezzoCamera> iterator = _prezziCamera.iterator(); iterator.hasNext();) {			
-			prezziCamera.add(iterator.next().getPrezzoInPeriodo(periodo));
+		for (Iterator<MPrezzoCamera> iterator = _prezziCamera.iterator(); iterator.hasNext();) {
+			MPrezzoCamera prezzoCamera = iterator.next().getPrezzoInPeriodo(periodo);
+			if(prezzoCamera!=null)
+				prezziCamera.add(prezzoCamera);
 		}		
 		return prezziCamera;
 	}
