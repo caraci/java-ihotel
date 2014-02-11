@@ -145,7 +145,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 	 * Metodo per creare il frame
 	 */
 	public void creaFrame(ArrayList<String> tipologieCamere) {
-		setTitle("iHotel - Crea nuova prenotazione");
+		setTitle("iHotel - Crea nuova prenotazione - Step 1 di 2");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
 		setBounds(50, 50, 1024, 500);
