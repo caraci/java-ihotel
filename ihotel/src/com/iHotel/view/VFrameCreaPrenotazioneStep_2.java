@@ -1,8 +1,10 @@
 package com.iHotel.view;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,6 +39,11 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
     private ArrayList<JLabel> lblNumeriCamereDisponibili = new ArrayList<JLabel>();
     /* JButton */
     private ArrayList<JButton> btnNumeriCamereDisponibili = new ArrayList<JButton>();
+    private JButton btnCompletaPrenotazione;
+    /* JLabel */
+    private JLabel lblNome, lblCognome, lbleMail, lblTelefono;
+    /* JTextField */
+    private JTextField txtNome, txtCognome, txteMail, txtTelefono;
    
 	/**
 	 * Launch the application.
@@ -101,21 +108,27 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 	// Ricavo la tipologia dell'ArrayList relativo alle camere di una certa tipologia.
 		tipologia = arrayListCamere.get(0);
 	// Aggiungo la label relativo alla tipologia alla colonna
-		JLabel lbltipologia = new JLabel();
-		lbltipologia.setText(tipologia);
-		panelColonna.add(lbltipologia);
+		JLabel lblTipologia = new JLabel();
+		lblTipologia.setText(tipologia + ":");
+		panelColonna.add(lblTipologia);
+	// Aggiungo spaziatura statica
+		panelColonna.add(Box.createRigidArea(new Dimension(0,20)));
 	//Rimuovo la tipologia dall'ArrayList.
 		arrayListCamere.remove(0);
 	// Ciclo sull'arrayList di String contenenti i numeri di camere ed aggiungo i numeri all'array di String creato sopra.
 		for (Iterator<String> iterator = arrayListCamere.iterator(); iterator.hasNext();) {
 			String numeroCamera = (String) iterator.next();
-			JLabel lblNumeroCamera = new JLabel(numeroCamera);
+			JLabel lblNumeroCamera = new JLabel("Camera " + numeroCamera);
 			JButton btnNumeroCamera = new JButton("Aggiungi camera");
 			lblNumeriCamereDisponibili.add(lblNumeroCamera);
 			btnNumeriCamereDisponibili.add(btnNumeroCamera);
 			// Aggiungo label e button al panelColonna
 			panelColonna.add(lblNumeroCamera);
+			// Aggiungo uno spaziatore statica
+			panelColonna.add(Box.createRigidArea(new Dimension(0,4)));
 			panelColonna.add(btnNumeroCamera);
+			// Aggiungo uno spaziatore statica
+			panelColonna.add(Box.createRigidArea(new Dimension(0,10)));
 		}
     }
     /**
@@ -130,6 +143,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 			JLabel lblPrezzoTotale = new JLabel("0€");
 		// Aggiungo gli elementi al panelOspite
 			panelPrezzo.add(lblPrezzoScritto);
+			panelPrezzo.add(Box.createRigidArea(new Dimension(0,20)));
 			panelPrezzo.add(lblPrezzoTotale);
 		// Aggiungo il panelOspite a panelFinale
 			panelFinale.add(panelPrezzo);
@@ -143,26 +157,37 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 			JPanel panelOspite = new JPanel();
 			panelOspite.setLayout(new  BoxLayout(panelOspite, BoxLayout.PAGE_AXIS));
 		// Nome
-			JLabel lblNome = new JLabel("Nome:");
-			JTextField txtNome = new JTextField();
+			lblNome = new JLabel("Nome:");
+			txtNome = new JTextField();
 		// Cognome
-			JLabel lblCognome = new JLabel("Cognome:");
-			JTextField txtCognome = new JTextField();
+			lblCognome = new JLabel("Cognome:");
+			txtCognome = new JTextField();
 		// eMail
-			JLabel lbleMail = new JLabel("e-Mail:");
-			JTextField txteMail = new JTextField();
+			lbleMail = new JLabel("e-Mail:");
+			txteMail = new JTextField();
 		// telefono
-			JLabel lblTelefono = new JLabel("Telefono:");
-			JTextField txtTelefono = new JTextField();
+			lblTelefono = new JLabel("Telefono:");
+			txtTelefono = new JTextField();
+		// Button completa prenotazione
+			btnCompletaPrenotazione = new JButton("Completa Prenotazione");
 		// Aggiungo gli elementi al panelOspite
 			panelOspite.add(lblNome);
+			panelOspite.add(Box.createVerticalGlue());
 			panelOspite.add(txtNome);
+			panelOspite.add(Box.createVerticalGlue());
 			panelOspite.add(lblCognome);
+			panelOspite.add(Box.createVerticalGlue());
 			panelOspite.add(txtCognome);
+			panelOspite.add(Box.createVerticalGlue());
 			panelOspite.add(lbleMail);
+			panelOspite.add(Box.createVerticalGlue());
 			panelOspite.add(txteMail);
+			panelOspite.add(Box.createVerticalGlue());
 			panelOspite.add(lblTelefono);
+			panelOspite.add(Box.createVerticalGlue());
 			panelOspite.add(txtTelefono);
+			panelOspite.add(Box.createRigidArea(new Dimension(0,20)));
+			panelOspite.add(btnCompletaPrenotazione);
 		// Aggiungo il panelOspite a panelFinale
 			panelFinale.add(panelOspite);
     }
@@ -199,9 +224,10 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 	    	contentPane.add(panelFinale);
 	    	
 	    /* ---------- EVENTI --------- */
-	    	// Assegniamo l'eventListener ai bottoni
+
 	    	for (Iterator<JButton> iterator = btnNumeriCamereDisponibili.iterator(); iterator.hasNext();) {
-				JButton btnCameraDisponibile = (JButton) iterator.next();
+				JButton btnCameraDisponibile = (JButton) iterator.next();				
+				// Assegniamo l'eventListener al JButton btnCameraDisponibile
 				btnCameraDisponibile.addMouseListener(new MouseAdapter() {
 					// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
 					@Override
@@ -220,7 +246,18 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 							btn.setText("Rimuovi camera");
 						}
 					}
-				});	
-			}
+				});
+    		}
+			// Assegniamo l'eventListener al JButton btnCompletaPrenotazione
+			btnCompletaPrenotazione.addMouseListener(new MouseAdapter() {
+				// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					// Recupero il controllore e invoco il metodo.
+					CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+					// Invoco il metodo passando come parametro la stringa contenente il numero di camera.
+					gestisciPrenotazione.concludiPrenotazione(txtNome.getText(), txtCognome.getText(), txteMail.getText(), txtTelefono.getText());
+				}
+			});		
     }
 }
