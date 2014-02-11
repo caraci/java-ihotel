@@ -25,15 +25,8 @@ public class MCatalogoCamere {
 	// Metodi di instanza
 	// Getter, Setter
 	public MDescrizioneCamera getDescrizioneDaTipologia(String tipologia){
-		for (Map.Entry<String, MDescrizioneCamera> entry : _descrizioniCamere.entrySet()) {
-			if (entry.getKey().equals(tipologia)){		    
-				return entry.getValue();
-			}		    
-		}
-		return null;
+		return _descrizioniCamere.get(tipologia);
 	}
-	
-	
 	/**
 	 * @return the _descrizioniCamere
 	 */
@@ -55,9 +48,11 @@ public class MCatalogoCamere {
 	 * @param tipologia
 	 */
 	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
-		MDescrizioneCamera descrizioneCamera = this.getDescrizioneDaTipologia(tipologia);		
+		// Ricavo la descrizione della camera a partire dalla tipologia.
+		MDescrizioneCamera descrizioneCamera = getDescrizioneDaTipologia(tipologia);
+		// Creo una mappa nella quale andrò a salvare tutti i prezzi nel formato . <k,v> = <tipologia, ArrayList<MPrezzoCamera>
 		HashMap<String,ArrayList<MPrezzoCamera>> mappaPrezziCamera  = new HashMap<String,ArrayList<MPrezzoCamera>>();
-			mappaPrezziCamera.put(tipologia, descrizioneCamera.getPrezziInPeriodo(periodo));
+		mappaPrezziCamera.put(tipologia, descrizioneCamera.getPrezziInPeriodo(periodo));
 		return mappaPrezziCamera;
 	}
 	

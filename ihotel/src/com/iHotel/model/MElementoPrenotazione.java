@@ -16,16 +16,15 @@ public class MElementoPrenotazione {
 	
 	public double getSubTotal(MPeriodo periodo){
 		
-		// Data di inizio dello MStatoCamera
+		// Data di inizio della richiesta
 		GregorianCalendar dataInizio = new GregorianCalendar();
-		// Data di fine dello MStatoCamera
+		// Data di fine della richiesta
 		GregorianCalendar dataFine= new GregorianCalendar();
 		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
 		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
 		
 		HashMap<String,ArrayList<MPrezzoCamera>> prezziTipologia= new HashMap<String,ArrayList<MPrezzoCamera>>();
-		
-		
+		// Tipologia della camera
 		String tipologia=_camera.get_tipologia();
 		MCatalogoCamere catalogo = MCatalogoCamere.getInstance();
 		
@@ -34,21 +33,21 @@ public class MElementoPrenotazione {
 		double totaleGiorno=0;
 		double totalePeriodo=0;
 		
-		while (dataInizio.compareTo(dataFine)!=0) {
+		while (dataInizio.compareTo(dataFine) < 0) {
 		
-		totaleGiorno=calcolaPrezzoGiorno(prezziTipologia.get(tipologia),dataInizio);
-		totalePeriodo=totalePeriodo+totaleGiorno;
-		
-		dataInizio.add(Calendar.DAY_OF_MONTH,1);
+			totaleGiorno=calcolaPrezzoGiorno(prezziTipologia.get(tipologia),dataInizio);
+			totalePeriodo=totalePeriodo+totaleGiorno;
+			dataInizio.add(Calendar.DAY_OF_MONTH,1);
 		}
-		return totaleGiorno;
+		return totalePeriodo;
 		
 	}
-	/*
-	 *metodo privato 
+	/**
+	 * Metodo per calcolare il prezzo in un giorno relativo ad una camera. 
 	 */
 	private double calcolaPrezzoGiorno(ArrayList<MPrezzoCamera> prezziCamera, GregorianCalendar data){
 		
+		// Creo un periodo con data inizio uguale a data fine
 		MPeriodo periodo= new MPeriodo();
 		periodo.set_giornoInizio(data.get(Calendar.DATE));
 		periodo.set_meseInizio(data.get(Calendar.MONTH));
@@ -58,12 +57,12 @@ public class MElementoPrenotazione {
 		periodo.set_annoFine(data.get(Calendar.DATE));
 		
 		double prezzoGiorno=0;
+		MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
 		for (Iterator<MPrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
 			MPrezzoCamera prezzoCamera = (MPrezzoCamera) iterator.next();
-			prezzoCamera=prezzoCamera.getPrezzoInPeriodo(periodo);
-			prezzoGiorno=prezzoCamera.get_prezzo();
+			prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
+			prezzoGiorno=prezzoCameraPeriodo.get_prezzo();
 		}
-		
 		return prezzoGiorno;
 	}
 	/*
