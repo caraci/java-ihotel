@@ -48,13 +48,16 @@ public class MCamera {
 		statoOccupato.set_periodo(periodo);
 		statoOccupato.set_libera(false);
 		int indiceLista=0;
+		int i= 1;
 		//devo andare a prendere lo statoCamera il cui periodo contiene il periodo della prenotazione 
 		
 		for (Iterator<MStatoCamera> iterator = this._statiCamera.iterator(); iterator.hasNext();) {
 			MStatoCamera statoCamera = (MStatoCamera) iterator.next();
-			
 			 if (statoCamera.getStatoContenente(periodo)!=null)
 				 statoContenente=statoCamera.getStatoContenente(periodo);
+			 else {
+				 System.out.print("a maggico, guarda che manca il periodo contenente. periodo esaminato è il numero : "+ i + "\n");}
+			 ++i;
 		}
 		
 		

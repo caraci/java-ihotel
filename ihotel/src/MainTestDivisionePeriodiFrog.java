@@ -71,6 +71,22 @@ public class MainTestDivisionePeriodiFrog {
 				periodo_4.set_giornoFine(giornoFine_4);
 				periodo_4.set_meseFine(meseFine_4);
 				periodo_4.set_annoFine(annoFine_4);
+				
+				
+				// periodo_4 - 1 Marzo 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
+				MPeriodo periodo_5 = new MPeriodo();
+				int giornoInizio_5 = 6;
+				int meseInizio_5 = 1;
+				int annoInizio_5 = 2014;
+				int giornoFine_5 = 9;
+				int meseFine_5 = 1;
+				int annoFine_5 = 2014;
+				periodo_5.set_giornoInizio(giornoInizio_5);
+				periodo_5.set_meseInizio(meseInizio_5);
+				periodo_5.set_annoInizio(annoInizio_5);
+				periodo_5.set_giornoFine(giornoFine_5);
+				periodo_5.set_meseFine(meseFine_5);
+				periodo_5.set_annoFine(annoFine_5);
 		//fine periodi
 				
 				
@@ -434,19 +450,25 @@ public class MainTestDivisionePeriodiFrog {
 				MPrenotazione prenotazione_camera = new MPrenotazione();
 				prenotazione_camera.set_periodo(periodo_4);				
 				prenotazione_camera.addElementoPrenotazione(camera_101);				
-				prenotazione_camera.set_completata(true);
+				//prenotazione_camera.set_completata(true); da implementare, non è stato fatto
 				/*for (Iterator<MStatoCamera> iterator = camera_101.get_statiCamera().iterator(); iterator.hasNext();) {	
 					MStatoCamera stato = (MStatoCamera) iterator.next();
 					System.out.print(stato.get_periodo().get_giornoInizio()+ " " +stato.get_periodo().get_giornoFine()+"\n");
 				}*/
-				
 				camera_101.occupaInPeriodo(periodo_4);
+				camera_202.occupaInPeriodo(periodo_4);
+				
+				
+				
+				
+				//camera_202.occupaInPeriodo(periodo_4);
 				//System.out.print(camera_101.get_statiCamera().get(0).get_periodo().get_meseInizio());
 
 				for (Iterator<MStatoCamera> iterator = camera_101.get_statiCamera().iterator(); iterator.hasNext();) {	
 					MStatoCamera stato = (MStatoCamera) iterator.next();
-					System.out.print(stato.get_periodo().get_giornoInizio()+ " " +stato.get_periodo().get_meseInizio()+ " "+stato.get_periodo().get_annoInizio()+" " +stato.get_periodo().get_giornoFine()+ " "+stato.get_periodo().get_meseFine()+ " " + stato.get_periodo().get_annoFine() + stato.get_libera()+"\n");
+					System.out.print(stato.get_periodo().get_giornoInizio()+ " " +stato.get_periodo().get_meseInizio()+ " "+stato.get_periodo().get_annoInizio()+" " +stato.get_periodo().get_giornoFine()+ " "+stato.get_periodo().get_meseFine()+ " " + stato.get_periodo().get_annoFine() +" "+  stato.get_libera()+"\n");
 				}
+				
 				
 
 	}
