@@ -44,7 +44,6 @@ public class MAlbergo {
 		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
 			MCamera tmp = iterator.next();			
 			if(tmp.isLiberaInPeriodoDaTipologia(periodo, tipologia)==true){
-				//System.out.println(tmp.get_numero());
 				lista_camere.add(tmp);
 			}
 		}
@@ -56,8 +55,8 @@ public class MAlbergo {
 	 * @param tipologia
 	 */
 	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
-		HashMap<String,ArrayList<MPrezzoCamera>> p  = new HashMap<String,ArrayList<MPrezzoCamera>>();
-		return p;
+		MCatalogoCamere catalogoCamere =MCatalogoCamere.getInstance();
+		return catalogoCamere.getPrezziInPeriodoDaTipologia(periodo, tipologia);
 	}
 
 	// Getter, Setter
@@ -109,8 +108,7 @@ public class MAlbergo {
 	 * @param prenotazione
 	 */
 	public void addPrenotazione(MPrenotazione prenotazione) {
-		// TODO - implement MAlbergo.addPrenotazione
-		throw new UnsupportedOperationException();
+		this._prenotazioni.add(prenotazione);
 	}
 
 	public String get_nome() {

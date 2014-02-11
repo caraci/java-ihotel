@@ -17,9 +17,12 @@ import javax.swing.border.EmptyBorder;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.iHotel.controller.CGestisciPrenotazione;
 import com.iHotel.model.MCamera;
 
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 
@@ -76,7 +79,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 	private VFrameCreaPrenotazioneStep_2() {
 	}
 	/**
-	 * 
+	 * Metodo per ottenre l'instanza della classe - pattern Singleton
 	 * @return CGestisciPrenotazione
 	 */
     public static VFrameCreaPrenotazioneStep_2 getInstance() {
@@ -89,7 +92,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
      * Metodo per aggiungere una colonna contenente tipologie di camere dello stesso tipo.
      * @param arrayListCamere
      */
-    private void addColonna(ArrayList<String> arrayListCamere) {
+    private void addColonnaTipologiaCamere(ArrayList<String> arrayListCamere) {
     	String tipologia;
 	// Creo una colonna per mostrare i risultati della tipologia di camere
 		JPanel panelColonna = new JPanel();
@@ -115,6 +118,9 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 			panelColonna.add(btnNumeroCamera);
 		}
     }
+    /**
+     * Metodo per aggiungere il pannello dove si visualizza il prezzo della prenotazione
+     */
     private void addPanelPrezzo() {
     	// Creo un panel per far inserire all'utente i dati sul cliente
 			JPanel panelPrezzo = new JPanel();
@@ -128,6 +134,10 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 		// Aggiungo il panelOspite a panelFinale
 			panelFinale.add(panelPrezzo);
     }
+    /**
+     * Metodo per aggiungere il pannello dove si inseriscono le informazioni sul cliente e dove si mostra
+     * il bottone per concludere la prenotazione.
+     */
     private void addPanelOspite() {
     	// Creo un panel per far inserire all'utente i dati sul cliente
 			JPanel panelOspite = new JPanel();
@@ -160,8 +170,9 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
      * Metodo per creare il frame
      */
     public void creaFrame(ArrayList<ArrayList<String>> camereDisponibili) {
-    	setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	// Imposto il titolo e l'operazione in chiusura alla finestra
+    		setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
 			setBounds(50, 50, 1024, 500);
 			contentPane = new JPanel();
@@ -177,14 +188,39 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 	    	for (Iterator<ArrayList<String>> iteratorArrayCamere = camereDisponibili.iterator(); iteratorArrayCamere.hasNext();) {
 	    		// In ogni arrayList abbiamo in prima posizione la stringa relativa alla tipologia, e successivamente i numeri di stanza.
 	    		ArrayList<String> arrayListCamere = (ArrayList<String>) iteratorArrayCamere.next();
-	    		addColonna(arrayListCamere);		
+	    		addColonnaTipologiaCamere(arrayListCamere);		
 			}
     	// Aggiungo il pannello finale
 	    	panelFinale = new JPanel();
 	    	panelFinale.setLayout(new GridLayout(2, 1, 20, 20));
+    	// Aggiungi i pezzi del panelFinale
 	    	addPanelPrezzo();
 	    	addPanelOspite();
 	    	contentPane.add(panelFinale);
+	    	
+	    /* ---------- EVENTI --------- */
+	    	// Assegniamo l'eventListener ai bottoni
+	    	for (Iterator<JButton> iterator = btnNumeriCamereDisponibili.iterator(); iterator.hasNext();) {
+				JButton btnCameraDisponibile = (JButton) iterator.next();
+				btnCameraDisponibile.addMouseListener(new MouseAdapter() {
+					// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						JButton btn = new JButton();
+						boolean esito;
+						// Ricavo il JButton che ha generato l'evento
+						btn=(JButton) e.getComponent();
+						// Ricavo la sua posizione nell'ArrayList di JButton
+						int numeroLista=btnNumeriCamereDisponibili.indexOf(btn);
+						// Recupero il controllore e invoco il metodo.
+						CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+						// Invoco il metodo passando come parametro la stringa contenente il numero di camera.
+						esito=gestisciPrenotazione.aggiungiElementoPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText());
+						if (esito==true) {
+							btn.setText("Rimuovi camera");
+						}
+					}
+				});	
+			}
     }
-
 }

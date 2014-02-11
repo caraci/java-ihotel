@@ -51,8 +51,8 @@ public class CGestisciPrenotazione {
 	 * 
 	 * @param camera
 	 */
-	public boolean aggiungiElementoPrenotazione(MCamera camera) {
-		return false;
+	public boolean aggiungiElementoPrenotazione(String numeroCamera) {
+		return true;
 	}
 
 	

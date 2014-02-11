@@ -11,8 +11,13 @@ public class MPrenotazione {
 	private boolean _completata;
 
 	
-	public Currency getTotal(){
-		return null;		
+	public double getTotal(){
+		double total =0;
+		for (Iterator<MElementoPrenotazione> iterator = _elementiPrenotazione.iterator(); iterator.hasNext();) {
+			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
+			total = elementoPrenotazione.getSubTotal(_periodo);
+		}
+		return total;				
 	}
 	
 	/**
@@ -20,8 +25,9 @@ public class MPrenotazione {
 	 * @param ep
 	 */
 	public void addElementoPrenotazione(MCamera camera) {
-		MElementoPrenotazione ep= new MElementoPrenotazione();
-		ep.set_camera(camera);
+		MElementoPrenotazione elementoPrenotazione= new MElementoPrenotazione();
+		elementoPrenotazione.set_camera(camera);
+		_elementiPrenotazione.add(elementoPrenotazione);
 	}
 	/**
 	 * 
@@ -31,8 +37,12 @@ public class MPrenotazione {
 	 * @param telefono
 	 * @return
 	 */
-	public boolean concludiPrenotazione(String nome, String cognome, String eMail, String telefono){
-		return false;		
+	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono){
+		MOspite ospite = new MOspite();
+		ospite.set_nome(nome);
+		ospite.set_cognome(cognome);
+		ospite.set_eMail(eMail);
+		ospite.set_telefono(telefono);
 	}
 	
 
