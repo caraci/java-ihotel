@@ -47,11 +47,14 @@ public class MCamera {
 		//setto subito i parametri dello stato occupato perchè li ho
 		statoOccupato.set_periodo(periodo);
 		statoOccupato.set_libera(false);
+		int indiceLista=0;
 		//devo andare a prendere lo statoCamera il cui periodo contiene il periodo della prenotazione 
+		
 		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
 			MStatoCamera statoCamera = (MStatoCamera) iterator.next();
-			 statoContenente= statoCamera.getStatoContenente(periodo);			
+			 statoContenente= statoCamera.getStatoContenente(periodo);		
 		}
+		indiceLista =_statiCamera.indexOf(statoContenente);
 		//periodo dello stato contenente
 		MPeriodo periodoStatoContenente = statoContenente.get_periodo();
 		//qua si incasina un pò aniddoc
@@ -80,7 +83,7 @@ public class MCamera {
 		//Periodo residuo, data inizio = data fine prenotazione +1, data fine = data fine periodo contenente
 		MPeriodo periodoResiduo = new MPeriodo();
 		//calcolo data inizio del periodo residuo
-		dataFinePeriodoPrenotazione.add(dataFinePeriodoPrenotazione.DAY_OF_MONTH,1);
+		dataFinePeriodoPrenotazione.add(Calendar.DAY_OF_MONTH,1);
 		int giornoDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.DATE);
 		int meseDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.DAY_OF_MONTH);
 		int annoDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.DAY_OF_YEAR);
@@ -108,7 +111,7 @@ public class MCamera {
 		// periodo prima della prenotazione
 		//data inizio = data inizio periodo contenente, data fine = data inizio prenotazione -1
 		//ricavo il giorno prima di quello dell'inizio della prenotazione e il giorno dopo la fine della prenotazione
-		dataInizioPeriodoPrenotazione.add(dataInizioPeriodoPrenotazione.DAY_OF_MONTH, -1);		
+		dataInizioPeriodoPrenotazione.add(Calendar.DAY_OF_MONTH, -1);		
 		int giornoPrimaDellaPrenotazione=dataInizioPeriodoPrenotazione.get(Calendar.DATE);
 		int mesePrimaDellaPrenotazione= dataInizioPeriodoPrenotazione.get(Calendar.DAY_OF_MONTH);
 		int annoPrimaDellaPrenotazione= dataInizioPeriodoPrenotazione.get(Calendar.DAY_OF_YEAR);
@@ -122,6 +125,9 @@ public class MCamera {
 		
 		statoResiduo.set_periodo(periodoResiduo);
 		statoResiduo.set_libera(true);
+		
+		this.get_statiCamera().add(indiceLista + 1, statoOccupato);
+		this.get_statiCamera().add(indiceLista +2 , statoResiduo);
 		
 		
 		

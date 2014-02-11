@@ -15,7 +15,7 @@ public class MPrenotazione {
 		double total =0;
 		for (Iterator<MElementoPrenotazione> iterator = _elementiPrenotazione.iterator(); iterator.hasNext();) {
 			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
-			total = elementoPrenotazione.getSubTotal(_periodo);
+			total = total + elementoPrenotazione.getSubTotal(_periodo);
 		}
 		return total;				
 	}
