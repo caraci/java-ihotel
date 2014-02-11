@@ -339,7 +339,7 @@ public class MainPopolamentoDB{
 		camera_303.set_statiCamera(statiCamera_303);	
 		
 		//prezzi camere
-		double x = 50.44;
+		double x = 50;
 		
 		MPrezzoCamera p_singola_1 = new MPrezzoCamera();
 		p_singola_1.set_prezzo(x);

@@ -34,7 +34,7 @@ public class MainGab{
 				int giornoInizio_2 = 1;
 				int meseInizio_2 = 1;
 				int annoInizio_2 = 2014;
-				int giornoFine_2 = 28;
+				int giornoFine_2 = 10;
 				int meseFine_2 = 1;
 				int annoFine_2 = 2014;
 				periodo_2.set_giornoInizio(giornoInizio_2);
@@ -314,7 +314,7 @@ public class MainGab{
 		camera_303.set_statiCamera(statiCamera_303);	
 		
 		//prezzi camere
-		double x = 50.44;
+		double x = 1;
 		
 		MPrezzoCamera p_singola_1 = new MPrezzoCamera();
 		p_singola_1.set_prezzo(x);
@@ -385,19 +385,16 @@ public class MainGab{
 		d3.set_tipologia("Tripla");
 		d3.set_prezziCamera(prezzi_tripla);
 		
-		/*
+		
 		//creo map descrizione camere
 		HashMap<String,MDescrizioneCamera> descrizioniCamere = new HashMap<String,MDescrizioneCamera>();
 		descrizioniCamere.put("Singola",d1);
 		descrizioniCamere.put("Doppia", d2);
 		descrizioniCamere.put("Tripla", d3);
-		*/
-		
-		/*
+	
 		// Creo CatalogoCamere
-		MCatalogoCamere catalogoCamere = new MCatalogoCamere();	
+		MCatalogoCamere catalogoCamere = MCatalogoCamere.getInstance();	
 		catalogoCamere.set_descrizioniCamere(descrizioniCamere);
-		*/
 		
 		// assegno le descrizioni alle camere
 		camera_101.set_descrizioneCamera(d1);

@@ -33,13 +33,14 @@ public class MPrezzoCamera {
 		dataFinePrezzo.set(_periodo.get_annoFine(), _periodo.get_meseFine(), _periodo.get_giornoFine());
 		
 		// Controllo se il periodo è corretto
-		
-		if(dataFineRichiesta.compareTo(dataInizioPrezzo)==-1 || dataInizioRichiesta.compareTo(dataFinePrezzo)==1)
+		return this;
+		/*
+		if(dataFineRichiesta.compareTo(dataInizioPrezzo)!=-1 || dataInizioRichiesta.compareTo(dataFinePrezzo)!=1)
 		{
-			return null;
-		}else {
 			return this;
-		}
+		}else {
+			return null;
+		}*/
 	}
 	
 	/**
