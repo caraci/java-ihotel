@@ -130,18 +130,7 @@ public class MCamera {
 		this.get_statiCamera().add(indiceLista +2 , statoResiduo);
 		
 		
-		
-		
-		
-		
-		
-		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();){
-			if(iterator.next().isLiberaInPeriodo(periodo)==true){
-				iterator.next().set_libera(false);
-				return true;
-			}
-		}
-		return false;
+		return true;
 	}
 
 	
