@@ -5,7 +5,7 @@ import java.util.*;
 public class MPrenotazione {
 
 	// Atrributi
-	private ArrayList<MElementoPrenotazione> _elementiPrenotazione;
+	private ArrayList<MElementoPrenotazione> _elementiPrenotazione = new ArrayList<MElementoPrenotazione>();
 	private MOspite _ospite;
 	private MPeriodo _periodo;
 	private String _codice;

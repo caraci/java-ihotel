@@ -62,7 +62,7 @@ public class CGestisciPrenotazione {
 		return true;
 	}
 	/**
-	 * 
+	 * Metodo per ricercare le camere libere nell'albergo ed appartenenti a tipologie differenti.
 	 * @param DataInizio
 	 * @param DataFine
 	 * @param Tipologie
@@ -78,22 +78,23 @@ public class CGestisciPrenotazione {
 		periodo.set_giornoFine(gf);
 		periodo.set_meseFine(mf);
 		periodo.set_annoFine(af);
-		
-		
-		//ArrayList<ArrayList<MCamera>> camereLibereDalleTipologie = new ArrayList<ArrayList<MCamera>>();
-		
-		//cicla sulle tipologie
-		ArrayList<ArrayList<String>> camereLibereString = new ArrayList<ArrayList<String>>();
+	
 		String tipologia;
+		ArrayList<ArrayList<String>> camereLibereString = new ArrayList<ArrayList<String>>();
+		
+		// Ciclo sulle tipologie
 		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
+			tipologia = iterator.next();
 			ArrayList<MCamera> camereLibereTipologia = new ArrayList<MCamera>();
-			ArrayList<String> camereLibereTipologiaString= new ArrayList<String>();
-			tipologia = iterator.next(); 
+			ArrayList<String> camereLibereTipologiaString= new ArrayList<String>();			 
+			// Aggiunto al primo posto nell'ArrayList la tipologia di camere.
 			camereLibereTipologiaString.add(0, tipologia);			
 			camereLibereTipologia = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia);		
 			for (Iterator<MCamera> iteratorCamereLibere = camereLibereTipologia.iterator(); iteratorCamereLibere.hasNext();) {
+				// Aggiungo il numero della camera all'ArrayList
 				camereLibereTipologiaString.add(iteratorCamereLibere.next().get_numero());
 			}
+			// Aggiungo l'ArrayList delle stringhe relative a tutte le camere appartenenti ad una tipologia
 			camereLibereString.add(camereLibereTipologiaString);
 		}
 		
