@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MDescrizioneCamera {
 
-	private ArrayList<MPrezzoCamera> _prezziCamera;
+	private ArrayList<MPrezzoCamera> _prezziCamera=new ArrayList<MPrezzoCamera>();
 	private String _tipologia;
 
 	

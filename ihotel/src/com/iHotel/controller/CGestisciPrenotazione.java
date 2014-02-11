@@ -28,27 +28,12 @@ public class CGestisciPrenotazione {
          }
          return instance;
     }
-	/**
-	 * @return the _albergo
-	 */
-	public MAlbergo get_albergo() {
-		return _albergo;
-	}
-
-	/**
-	 * @param _albergo the _albergo to set
-	 */
-	public void set_albergo(MAlbergo _albergo) {
-		this._albergo = _albergo;
-	}
-	
     /**
      * Creazione della prenotazione
      */
 	public void creaNuovaPrenotazione() {
 		_prenotazione = new MPrenotazione();
 	}
-
 	/**
 	 * Metodo per aggiungere una Camera alla prenotazione
 	 * @param numeroCamera Stringa contenente il numero della camera
@@ -68,6 +53,7 @@ public class CGestisciPrenotazione {
 	 * @param Tipologie
 	 */
 	public void cercaCamereLibere(int gi, int mi, int ai, int gf, int mf, int af, ArrayList<String> Tipologie) {
+		
 		/* Setto il periodo ricevuto dall'interfaccia */
 		MPeriodo periodo = new MPeriodo();
 		/* Setto la data di inizio */
@@ -77,7 +63,9 @@ public class CGestisciPrenotazione {
 		/* Setto la data di fine*/
 		periodo.set_giornoFine(gf);
 		periodo.set_meseFine(mf);
-		periodo.set_annoFine(af);
+		periodo.set_annoFine(af);	
+		/* Setto il periodo alla prenotazione */
+		_prenotazione.set_periodo(periodo);
 	
 		String tipologia;
 		ArrayList<ArrayList<String>> camereLibereString = new ArrayList<ArrayList<String>>();
@@ -126,6 +114,33 @@ public class CGestisciPrenotazione {
 	public void concludiPrenotazione(String nome, String cognome, String email, String telefono) {
 		// TODO - implement CGestisciPrenotazione.concludiPrenotazione
 		throw new UnsupportedOperationException();
+	}
+	/* -------------------------- Getter, Setter -------------------- */
+	/**
+	 * @return the _albergo
+	 */
+	public MAlbergo get_albergo() {
+		return _albergo;
+	}
+
+	/**
+	 * @param _albergo the _albergo to set
+	 */
+	public void set_albergo(MAlbergo _albergo) {
+		this._albergo = _albergo;
+	}
+	/**
+	 * @return the _prenotazione
+	 */
+	public MPrenotazione get_prenotazione() {
+		return _prenotazione;
+	}
+
+	/**
+	 * @param _prenotazione the _prenotazione to set
+	 */
+	public void set_prenotazione(MPrenotazione _prenotazione) {
+		this._prenotazione = _prenotazione;
 	}
 
 }
