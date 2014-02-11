@@ -41,7 +41,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
     private ArrayList<JButton> btnNumeriCamereDisponibili = new ArrayList<JButton>();
     private JButton btnCompletaPrenotazione;
     /* JLabel */
-    private JLabel lblNome, lblCognome, lbleMail, lblTelefono;
+    private JLabel lblNome, lblCognome, lbleMail, lblTelefono, lblPrezzoTotale, lblPrezzoScritto;
     /* JTextField */
     private JTextField txtNome, txtCognome, txteMail, txtTelefono;
    
@@ -139,8 +139,8 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 			JPanel panelPrezzo = new JPanel();
 			panelPrezzo.setLayout(new  BoxLayout(panelPrezzo, BoxLayout.PAGE_AXIS));
 		// Nome
-			JLabel lblPrezzoScritto = new JLabel("Prezzo Totale:");
-			JLabel lblPrezzoTotale = new JLabel("0€");
+			lblPrezzoScritto = new JLabel("Prezzo Totale:");
+			lblPrezzoTotale = new JLabel("0€");
 		// Aggiungo gli elementi al panelOspite
 			panelPrezzo.add(lblPrezzoScritto);
 			panelPrezzo.add(Box.createRigidArea(new Dimension(0,20)));
@@ -244,6 +244,9 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 						esito=gestisciPrenotazione.aggiungiElementoPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText());
 						if (esito==true) {
 							btn.setText("Rimuovi camera");
+							// Carico la prenotazione per richiedere il totale.
+							String total = String.valueOf(gestisciPrenotazione.get_prenotazione().getTotal());
+							lblPrezzoTotale.setText(total + "€");
 						}
 					}
 				});

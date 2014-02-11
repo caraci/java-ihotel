@@ -28,27 +28,12 @@ public class CGestisciPrenotazione {
          }
          return instance;
     }
-	/**
-	 * @return the _albergo
-	 */
-	public MAlbergo get_albergo() {
-		return _albergo;
-	}
-
-	/**
-	 * @param _albergo the _albergo to set
-	 */
-	public void set_albergo(MAlbergo _albergo) {
-		this._albergo = _albergo;
-	}
-	
     /**
      * Creazione della prenotazione
      */
 	public void creaNuovaPrenotazione() {
 		_prenotazione = new MPrenotazione();
 	}
-
 	/**
 	 * Metodo per aggiungere una Camera alla prenotazione
 	 * @param numeroCamera Stringa contenente il numero della camera
@@ -129,6 +114,33 @@ public class CGestisciPrenotazione {
 	public void concludiPrenotazione(String nome, String cognome, String email, String telefono) {
 		// TODO - implement CGestisciPrenotazione.concludiPrenotazione
 		throw new UnsupportedOperationException();
+	}
+	/* -------------------------- Getter, Setter -------------------- */
+	/**
+	 * @return the _albergo
+	 */
+	public MAlbergo get_albergo() {
+		return _albergo;
+	}
+
+	/**
+	 * @param _albergo the _albergo to set
+	 */
+	public void set_albergo(MAlbergo _albergo) {
+		this._albergo = _albergo;
+	}
+	/**
+	 * @return the _prenotazione
+	 */
+	public MPrenotazione get_prenotazione() {
+		return _prenotazione;
+	}
+
+	/**
+	 * @param _prenotazione the _prenotazione to set
+	 */
+	public void set_prenotazione(MPrenotazione _prenotazione) {
+		this._prenotazione = _prenotazione;
 	}
 
 }
