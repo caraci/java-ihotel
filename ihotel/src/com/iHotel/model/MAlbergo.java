@@ -35,6 +35,21 @@ public class MAlbergo {
 	
 	// Metodi dell'instanza
 	/**
+	 * Metodo per ricavare l'oggetto MCamera a partire dalla stringa contenente il suo numero.
+	 * @param numeroCamera Stringa contenente il numero della camera da ricavare.
+	 * @return MCamera MCamera relativa al numero richiesto.
+	 */
+	public MCamera getCameraDaNumero(String numeroCamera) {
+		MCamera cameraRicercata = new MCamera();
+		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
+			MCamera camera = (MCamera) iterator.next();
+			if (camera.get_numero().equals(numeroCamera)) {
+				cameraRicercata = camera;
+			}
+		}
+		return cameraRicercata;
+	}
+	/**
 	 * Restituisce una lista di camere libere data una tipologia e un periodo
 	 * @param periodo
 	 * @param tipologia

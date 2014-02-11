@@ -4,13 +4,18 @@ import java.util.*;
 
 public class MPrenotazione {
 
+	// Atrributi
 	private ArrayList<MElementoPrenotazione> _elementiPrenotazione;
 	private MOspite _ospite;
 	private MPeriodo _periodo;
 	private String _codice;
 	private boolean _completata;
-
 	
+	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
+	/**
+	 * Metodo per ottenere il totale di una prenotazione
+	 * @return double Totale della prenotazione.
+	 */
 	public double getTotal(){
 		double total =0;
 		for (Iterator<MElementoPrenotazione> iterator = _elementiPrenotazione.iterator(); iterator.hasNext();) {
@@ -21,8 +26,8 @@ public class MPrenotazione {
 	}
 	
 	/**
-	 * 
-	 * @param ep
+	 * Metodo per aggiungere un elemento alla prenotazione.
+	 * @param MCamera Camera da aggiungere alla prenotazione
 	 */
 	public void addElementoPrenotazione(MCamera camera) {
 		MElementoPrenotazione elementoPrenotazione= new MElementoPrenotazione();
@@ -30,6 +35,7 @@ public class MPrenotazione {
 		_elementiPrenotazione.add(elementoPrenotazione);
 	}
 	/**
+	 * Metodo per concludere una prenotazione e memorizzare l'ospite prenotante.
 	 * 
 	 * @param nome
 	 * @param cognome
@@ -45,7 +51,7 @@ public class MPrenotazione {
 		ospite.set_telefono(telefono);
 	}
 	
-
+	/* -------------------------------- Getter, Setter ------------------------------------------ */
 	/**
 	 * @return the _elementiPrenotazione
 	 */

@@ -50,15 +50,17 @@ public class CGestisciPrenotazione {
 	}
 
 	/**
-	 * 
-	 * @param camera
+	 * Metodo per aggiungere una Camera alla prenotazione
+	 * @param numeroCamera Stringa contenente il numero della camera
+	 * @return 
 	 */
 	public boolean aggiungiElementoPrenotazione(String numeroCamera) {
+		MCamera camera = new MCamera();
+		// Ricavo la MCamera a partire dalla stringa contenente il suo numero.
+		camera = _albergo.getCameraDaNumero(numeroCamera);
+		_prenotazione.addElementoPrenotazione(camera);
 		return true;
 	}
-
-	
-
 	/**
 	 * 
 	 * @param DataInizio
