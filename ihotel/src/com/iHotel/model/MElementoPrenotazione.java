@@ -2,6 +2,7 @@ package com.iHotel.model;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Iterator;
 
 /**
@@ -12,31 +13,43 @@ public class MElementoPrenotazione {
 	private MCamera _camera;
 	
 	public double getSubTotal(MPeriodo periodo){
-		ArrayList<MPrezzoCamera> prezziCamera= new ArrayList<MPrezzoCamera>();
-		double subtot=0;
 		
+		double subtot=0;
 		// Data di inizio dello MStatoCamera
 		GregorianCalendar dataInizio = new GregorianCalendar();
 		// Data di fine dello MStatoCamera
-		GregorianCalendar dataFine= new GregorianCalendar();		
+		GregorianCalendar dataFine= new GregorianCalendar();
+		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
+		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
 		
-		for (Iterator<MPrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
-			MPrezzoCamera tmp = iterator.next();
-			tmp.get_periodo();
-			dataInizio.set(tmp.get_periodo().get_annoInizio(), tmp.get_periodo().get_meseInizio(), tmp.get_periodo().get_giornoInizio());
-			dataFine.set(tmp.get_periodo().get_annoFine(), tmp.get_periodo().get_meseFine(), tmp.get_periodo().get_giornoFine());
-			dataInizio.compareTo(dataFine);
+		HashMap<String,ArrayList<MPrezzoCamera>> prezziTipologia= new HashMap<String,ArrayList<MPrezzoCamera>>();
+		if(dataInizio.compareTo(dataFine)<0){
+			String tipologia=_camera.get_tipologia();
+			MCatalogoCamere catalogo = MCatalogoCamere.getInstance();
+			prezziTipologia=catalogo.getPrezziInPeriodoDaTipologia(periodo, tipologia);
 			
-		
-			subtot=subtot+tmp.get_prezzo();
-		}
+			MPeriodo periodoGiorno= new MPeriodo();
+			periodoGiorno=this.calcolagiorno();
+		};
 		return subtot;
-	}
-	
 
-	
+	}
+	/*
+	 *metodo privato 
+	 */
+	private MPeriodo calcolagiorno(){
+		MPeriodo periodo=new MPeriodo();
+		return periodo;
+	}
+	/*
+	 * RICONTROLLARE 
+	 * 
+	 */
 	public boolean occupaCameraInPeriodo(MPeriodo periodo){
-		return false;
+		
+		if(_camera.occupaInPeriodo(periodo)==true){
+			return true;
+		}else return false;
 	}
 
 	/**

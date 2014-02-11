@@ -33,9 +33,19 @@ public class MCamera {
 	/**
 	 * 
 	 * @param periodo
-	 * @return
+	 * @return boolean
+	 * scorredo l'array _statiCamera controllo se nel periodo che gli passo è libera o meno. Nel caso sia  libera 
+	 * metto false _libera
+	 * 
+	 * RICONTROLLARE I RETURN
 	 */
 	public boolean occupaInPeriodo(MPeriodo periodo){
+		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();){
+			if(iterator.next().isLiberaInPeriodo(periodo)==true){
+				iterator.next().set_libera(false);
+				return true;
+			}
+		}
 		return false;
 	}
 
