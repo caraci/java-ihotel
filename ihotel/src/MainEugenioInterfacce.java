@@ -14,8 +14,7 @@ public class MainEugenioInterfacce {
 		// TODO Auto-generated method stub
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {			
-			/* CARICAMENTO DEGLI OGETTI DELLO STRATO DI DOMINIO  */
-			
+			/* CARICAMENTO DEGLI OGETTI DELLO STRATO DI DOMINIO  */		
 			// Carico tutte le camere
 			List<MCamera> camere = db.query(new Predicate<MCamera>() {
 				public boolean match(MCamera candidate) {
@@ -45,8 +44,7 @@ public class MainEugenioInterfacce {
 				_camere.add(camera);
 			}
 			albergo.set_camere(_camere);
-			albergo.set_catalogoCamere(catalogoCamere);
-			
+			albergo.set_catalogoCamere(catalogoCamere);		
 			/* FINE CARICAMENTO DEGLI OGGETTI DELLO STRATO DI DOMINIO */
 			
 			// Prendo il controllore per la gestione della prenotazione.
