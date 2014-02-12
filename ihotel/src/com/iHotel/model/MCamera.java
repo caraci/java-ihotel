@@ -38,15 +38,18 @@ public class MCamera {
 	 * metto false _libera
 	 * 
 	 * RICONTROLLARE I RETURN
+	 * @throws CloneNotSupportedException 
 	 */
-	public boolean occupaInPeriodo(MPeriodo periodo){
+	public boolean occupaInPeriodo(MPeriodo periodo) throws CloneNotSupportedException{
 		//definisco lo stato occupato, lo stato contenente e lo stato residuo
 		MStatoCamera statoOccupato = new MStatoCamera();
 		MStatoCamera statoContenente = new MStatoCamera();
 		MStatoCamera statoResiduo = new MStatoCamera();
+		
 		//setto subito i parametri dello stato occupato perchè li ho
 		statoOccupato.set_periodo(periodo);
 		statoOccupato.set_libera(false);
+		//indiceLista serve perchè poi dovrò riposizionare i periodi
 		int indiceLista=0;
 		int i= 1;
 		//devo andare a prendere lo statoCamera il cui periodo contiene il periodo della prenotazione 
@@ -64,8 +67,8 @@ public class MCamera {
 		indiceLista =_statiCamera.indexOf(statoContenente);
 		
 		//periodo dello stato contenente
-		MPeriodo periodoStatoContenente = statoContenente.get_periodo();
-		
+		MPeriodo vecchioPeriodoStatoContenente = statoContenente.get_periodo();
+		MPeriodo periodoStatoContenente = vecchioPeriodoStatoContenente.clone();
 		//qua si incasina un pò aniddoc
 		
 		//ricavo le date dal periodo stato contenete

@@ -69,7 +69,7 @@ public class MElementoPrenotazione {
 	 * RICONTROLLARE 
 	 * 
 	 */
-	public boolean occupaCameraInPeriodo(MPeriodo periodo){
+	public boolean occupaCameraInPeriodo(MPeriodo periodo) throws CloneNotSupportedException{
 		
 		if(_camera.occupaInPeriodo(periodo)==true){
 			return true;

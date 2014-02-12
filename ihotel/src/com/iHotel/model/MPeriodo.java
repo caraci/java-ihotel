@@ -1,6 +1,6 @@
 package com.iHotel.model;
 
-public class MPeriodo {
+public class MPeriodo implements Cloneable {
 
 	private int _giornoInizio;
 	private int _meseInizio;
@@ -9,6 +9,16 @@ public class MPeriodo {
 	private int _giornoFine;
 	private int _meseFine;
 	private int _annoFine;
+	
+	/**
+	 * @throws CloneNotSupportedException 
+	 * @Override
+	 */
+	public MPeriodo clone() throws CloneNotSupportedException {
+	    return (MPeriodo)super.clone();
+	}
+	
+	
 	/**
 	 * @return the _annoFine
 	 */
