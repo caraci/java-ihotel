@@ -8,7 +8,7 @@ import com.iHotel.model.*;
 
 public class MainTestDivisionePeriodiFrog {
 
-	public static void main(String[] args) throws CloneNotSupportedException {
+	public static void main(String[] args) {
 
 		// periodo_1 - 1 Gennaio 2014 - 00:00.00 - 31 Gennaio 2014 - 23.59.59
 				MPeriodo periodo_1 = new MPeriodo();
@@ -458,6 +458,7 @@ public class MainTestDivisionePeriodiFrog {
 					System.out.print(stato.get_periodo().get_giornoInizio()+ " " +stato.get_periodo().get_giornoFine()+"\n");
 				}*/
 				//camera_101.occupaInPeriodo(periodo_4);
+				//camera_101.get_statiCamera().get(0).get_periodo().set_giornoFine(3);
 				//camera_202.occupaInPeriodo(periodo_5);
 				
 				

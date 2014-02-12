@@ -38,9 +38,9 @@ public class MCamera {
 	 * metto false _libera
 	 * 
 	 * 
-	 * @throws CloneNotSupportedException 
+	 *
 	 */
-	public boolean occupaInPeriodo(MPeriodo periodo) throws CloneNotSupportedException{
+	public boolean occupaInPeriodo(MPeriodo periodo) {
 		//definisco lo stato contenente, lo stato occupato e lo stato residuo. Setto i parametri dello stato occupato
 		//perchè li ho già tutti per farlo.
 		
@@ -71,7 +71,24 @@ public class MCamera {
 		
 		//faccio una copia dell'oggetto periodoStatoContenente, perché se lavorassi direttamente su periodoStatoContenente 
 		//avrei problemi di sovrapposizione dei riferimenti
-		MPeriodo nuovoPeriodoStatoContenente = periodoStatoContenente.clone();
+		
+		/* magheggio per creare un nuovo periodo stato contenente*/
+		
+		int gi = periodoStatoContenente.get_giornoInizio();
+		int mi = periodoStatoContenente.get_meseInizio();
+		int ai = periodoStatoContenente.get_annoInizio();
+		
+		int gf = periodoStatoContenente.get_giornoFine();
+		int mf = periodoStatoContenente.get_meseFine();
+		int af = periodoStatoContenente.get_annoFine();
+		
+		MPeriodo nuovoPeriodoStatoContenente = new MPeriodo();
+		nuovoPeriodoStatoContenente.set_giornoInizio(gi);
+		nuovoPeriodoStatoContenente.set_meseInizio(mi);
+		nuovoPeriodoStatoContenente.set_annoInizio(ai);
+		nuovoPeriodoStatoContenente.set_giornoFine(gf);
+		nuovoPeriodoStatoContenente.set_meseFine(mf);
+		nuovoPeriodoStatoContenente.set_annoFine(af);
 		
 		//ricavo le date dal nuovoPeriodoStatoContenente (banalmente uguali a quelle di periodoStatoContenente
 		
@@ -112,7 +129,7 @@ public class MCamera {
 		periodoResiduo.set_annoFine(periodoStatoContenente.get_annoFine());
 			
 		
-		/************* Periodo antecedente: dal giorno di inizio del nuovoPeriodoStatoContenente fino al giorno prima della data di inizio
+		/* ************ Periodo antecedente: dal giorno di inizio del nuovoPeriodoStatoContenente fino al giorno prima della data di inizio
 		 * della prenotazione prenotazione ******************/
 		
 		//calcolo il giorno precedente alla data di inizio della prenotazione
@@ -132,7 +149,7 @@ public class MCamera {
 		
 		if(dataInizioPeriodoStatoContenente.compareTo(nuovaDataFinePeriodoStatoContenente)==1){			
 			this.get_statiCamera().remove(indiceLista);
-			//dopo aver cancellato un elemento dalla lista, diminuisco l'indice se è diverso da 0.
+			//dopo aver cancellato un elemento dalla lista, diminuisco l'indice.
 			indiceLista = indiceLista -1;
 		}
 		else{
