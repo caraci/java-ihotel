@@ -13,32 +13,26 @@ public class MCamera {
 	/**
 	 * 
 	 * @param periodo
-	 * @param tipologia
+	 * @return _boolean
+	 * Metodo che restituisce un booleano: true se la stanza è libera nel periodo passato come parametro,
+	 * altrimenti restituisce false
 	 */
-	public boolean isLiberaInPeriodoDaTipologia(MPeriodo periodo, String tipologia) {
-		if (tipologia.equals(_tipologia)){
-			for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
-				MStatoCamera tmp = iterator.next();
-				if(tmp.isLiberaInPeriodo(periodo)==true){
-					
-					return true;
-				} else {
-					
-					return false;
-				}
-			}
-		}	
-	 return false;
+	public boolean isLiberaInPeriodo(MPeriodo periodo) {		
+		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
+			MStatoCamera tmp = iterator.next();				
+			if(tmp.isLiberaInPeriodo(periodo)==true)					
+				return true;							
+		}
+		return false; 
 	}
+
 	/**
 	 * 
 	 * @param periodo
-	 * @return boolean
-	 * scorredo l'array _statiCamera controllo se nel periodo che gli passo è libera o meno. Nel caso sia  libera 
-	 * metto false _libera
-	 * 
-	 * 
-	 *
+	 * @return true
+	 * Metodo che occupa una stanza nel periodo passato come parametro. Risulta evidente che dato il periodo di occupazione,
+	 * c'è la necessità di creare un periodo prima ed uno dopo a quello della prenotazione, in cui la camera risulti
+	 * essere libera.
 	 */
 	public boolean occupaInPeriodo(MPeriodo periodo) {
 		//definisco lo stato contenente, lo stato occupato e lo stato residuo. Setto i parametri dello stato occupato
@@ -63,9 +57,7 @@ public class MCamera {
 			 }
 		}	
 				
-		MPeriodo periodoStatoContenente = statoContenente.get_periodo();
-		
-		
+		MPeriodo periodoStatoContenente = statoContenente.get_periodo();	
 		
 		//qua si incasina un pò aniddoc
 		
@@ -111,7 +103,7 @@ public class MCamera {
 		//certo periodo
 		
 		
-		/********** Periodo residuo: dal giorno dopo  data di fine della prenotazione al giorno della fine periodoStatoContenente************/
+		/* ********* Periodo residuo: dal giorno dopo  data di fine della prenotazione al giorno della fine periodoStatoContenente************/
 		MPeriodo periodoResiduo = new MPeriodo();
 		
 		//calcolo data inizio del periodo residuo
@@ -162,6 +154,7 @@ public class MCamera {
 		
 		this.get_statiCamera().add(indiceLista + 1, statoOccupato);
 		this.get_statiCamera().add(indiceLista +2 , statoResiduo);
+		
 		return true;
 	}
 
@@ -170,6 +163,7 @@ public class MCamera {
 	// Getter, Setter
 	/**
 	 * @return the _statiCamera
+	 * Metodo che restituisce gli stati della camera
 	 */
 	public LinkedList<MStatoCamera> get_statiCamera() {
 		return _statiCamera;
@@ -177,11 +171,16 @@ public class MCamera {
 
 	/**
 	 * @param _statiCamera the _statiCamera to set
+	 * Metodo che setta gli stati della MCamera, data una LinkedList che li contiene 
 	 */
 	public void set_statiCamera(LinkedList<MStatoCamera> _statiCamera) {
 		this._statiCamera = _statiCamera;
 	}
-
+	/**
+	 * 
+	 * @return _numero
+	 * Metodo che serve a restituire il numero della MCamera
+	 */
 	public String get_numero() {
 		return this._numero;
 	}
@@ -189,11 +188,16 @@ public class MCamera {
 	/**
 	 * 
 	 * @param _numero
+	 * Metodo che serve a settare il numero della MCamera
 	 */
 	public void set_numero(String _numero) {
 		this._numero = _numero;
 	}
-
+	/**
+	 * 
+	 * @return _tipologia
+	 * Metodo che restituisce la tipologia della MCamera
+	 */
 	public String get_tipologia() {
 		return this._tipologia;
 	}
@@ -201,15 +205,24 @@ public class MCamera {
 	/**
 	 * 
 	 * @param _tipologia
+	 * Metodo che serve a settare la tipologia della MCamera
 	 */
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;
 	}
-
+	/**
+	 * 
+	 * @return _descrizioneCamera
+	 * Metodo che restituisce l'oggetto che contiene la MDescrizioneCamera della MCamera
+	 */
 	public MDescrizioneCamera get_descrizioneCamera() {
 		return this._descrizioneCamera;
 	}
-
+	/**
+	 * 
+	 * @param _descrizioneCamera
+	 * Metodo che associa alla MCamera corrente la MDescrizioneCamera passata come parametro
+	 */
 	public void set_descrizioneCamera(MDescrizioneCamera _descrizioneCamera) {
 		this._descrizioneCamera = _descrizioneCamera;
 	}
