@@ -34,7 +34,7 @@ public class MainGab{
 				int giornoInizio_2 = 1;
 				int meseInizio_2 = 1;
 				int annoInizio_2 = 2014;
-				int giornoFine_2 = 10;
+				int giornoFine_2 = 28;
 				int meseFine_2 = 1;
 				int annoFine_2 = 2014;
 				periodo_2.set_giornoInizio(giornoInizio_2);
@@ -209,7 +209,7 @@ public class MainGab{
 		// StatoCamera_102_Periodo_3
 		MStatoCamera statoCamera_102_Periodo3 = new MStatoCamera();
 		statoCamera_102_Periodo3.set_periodo(periodo_3);
-		statoCamera_102_Periodo3.set_libera(false);
+		statoCamera_102_Periodo3.set_libera(true);
 		// StatoCamera_103_Periodo_3
 		MStatoCamera statoCamera_103_Periodo3 = new MStatoCamera();
 		statoCamera_103_Periodo3.set_periodo(periodo_3);
@@ -441,18 +441,21 @@ public class MainGab{
 		ospite1.set_eMail("asdas@sdas.it");
 		ospite1.set_telefono("092384384320");
 		
+		MPeriodo periodoPrenotazione = new MPeriodo();
+		periodoPrenotazione.set_giornoInizio(1);
+		periodoPrenotazione.set_meseInizio(2);
+		periodoPrenotazione.set_annoInizio(2014);
+		periodoPrenotazione.set_giornoFine(4);
+		periodoPrenotazione.set_meseFine(2);
+		periodoPrenotazione.set_annoFine(2014);
+		
 		MPrenotazione prenotazione=new MPrenotazione();
-		prenotazione.set_periodo(periodo_2);
+		prenotazione.set_periodo(periodoPrenotazione);
 		prenotazione.set_ospite(ospite1);
-		prenotazione.addElementoPrenotazione(camera_102);
+		prenotazione.addElementoPrenotazione(camera_101);
 		prenotazione.set_codice("123");
 		//prenotazione.set_completata(false);
-		double totale;
-		totale=prenotazione.getTotal();
-		System.out.println(totale);
-		
-		
-
+		double totale=prenotazione.getTotal();
 	}
 
 }

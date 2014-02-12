@@ -5,6 +5,8 @@ import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 
 public class CGestisciPrenotazione {
@@ -52,18 +54,18 @@ public class CGestisciPrenotazione {
 	 * @param DataFine
 	 * @param Tipologie
 	 */
-	public void cercaCamereLibere(int gi, int mi, int ai, int gf, int mf, int af, ArrayList<String> Tipologie) {
+	public void cercaCamereLibere(GregorianCalendar dataInizio, GregorianCalendar dataFine, ArrayList<String> Tipologie) {
 		
 		/* Setto il periodo ricevuto dall'interfaccia */
 		MPeriodo periodo = new MPeriodo();
 		/* Setto la data di inizio */
-		periodo.set_giornoInizio(gi);
-		periodo.set_meseInizio(mi);
-		periodo.set_annoInizio(ai);
+		periodo.set_giornoInizio(dataInizio.get(Calendar.DATE));
+		periodo.set_meseInizio(dataInizio.get(Calendar.MONTH));
+		periodo.set_annoInizio(dataInizio.get(Calendar.YEAR));
 		/* Setto la data di fine*/
-		periodo.set_giornoFine(gf);
-		periodo.set_meseFine(mf);
-		periodo.set_annoFine(af);	
+		periodo.set_giornoFine(dataFine.get(Calendar.DATE));
+		periodo.set_meseFine(dataFine.get(Calendar.MONTH));
+		periodo.set_annoFine(dataFine.get(Calendar.YEAR));	
 		/* Setto il periodo alla prenotazione */
 		_prenotazione.set_periodo(periodo);
 	

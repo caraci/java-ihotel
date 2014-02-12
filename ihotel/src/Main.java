@@ -70,7 +70,15 @@ public class Main {
 			int mf=0;
 			int af=2014;
 			// Cerco le camere libere nel periodo e nelle tipologie
-			gestisciPrenotazione.cercaCamereLibere(gi, mi, ai, gf, mf, af, tipologie);
+			
+			
+			
+			
+			//gestisciPrenotazione.cercaCamereLibere(gi, mi, ai, gf, mf, af, tipologie);
+			
+			
+			
+			
 			/**prova per vedere se restituisce periodo contentte*/
 			MPeriodo periodo = new MPeriodo();
 			periodo.set_giornoInizio(1);
@@ -83,7 +91,7 @@ public class Main {
 			
 			
 			//System.out.print(albergo.get_camere().get(0).get_statiCamera().get(0).getStatoContenente(periodo).get_periodo().get_giornoFine());
-			/**fine prova per vedere se restiutuisce il periodo contenete, and it works!*/
+			/* fine prova per vedere se restiutuisce il periodo contenete, and it works!*/
 			GregorianCalendar dataInizio = new GregorianCalendar();
 			dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
 			

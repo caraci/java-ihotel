@@ -1,4 +1,5 @@
 package com.iHotel.model;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Currency;
@@ -40,15 +41,17 @@ public class MElementoPrenotazione {
 		double totaleCameraPeriodo=0;
 		
 		// Ciclo a partire dal giorno di inizio fino al giorno finale.
-		while (dataInizio.compareTo(dataFine) <= 0) {
+		while (dataInizio.compareTo(dataFine) < 0) {
 		
 			// Calcolo il prezzo della camera in un giorno attraverso il metodo privato di MElementoPrenotazione
 			totaleCameraGiorno=calcolaPrezzoGiorno(prezziTipologia.get(tipologia),dataInizio);
+			System.out.println(totaleCameraGiorno);
 			// Sommo il totale della camera nel giorno al totale della camera per il periodo.
 			totaleCameraPeriodo+=totaleCameraGiorno;
 			// Incremento il giorno di uno.
 			dataInizio.add(Calendar.DAY_OF_MONTH,1);
 		}
+		
 		return totaleCameraPeriodo;
 		
 	}
@@ -65,13 +68,16 @@ public class MElementoPrenotazione {
 		periodo.set_giornoFine(data.get(Calendar.DATE));
 		periodo.set_meseFine(data.get(Calendar.MONTH));
 		periodo.set_annoFine(data.get(Calendar.DATE));
-		
+		// Variabile nella quale andremo a memorizzare il totale per il giorno.
 		double prezzoGiorno=0;
+		
 		MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
 		for (Iterator<MPrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
 			MPrezzoCamera prezzoCamera = (MPrezzoCamera) iterator.next();
-			prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
-			prezzoGiorno=prezzoCameraPeriodo.get_prezzo();
+			if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
+				prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
+				prezzoGiorno=prezzoCameraPeriodo.get_prezzo();
+			}
 		}
 		return prezzoGiorno;
 	}

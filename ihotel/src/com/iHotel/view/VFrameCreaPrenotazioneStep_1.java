@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -193,10 +195,20 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 				int annoFine 	 = datePanelFine.getModel().getYear();
 				int meseFine 	 = datePanelFine.getModel().getMonth();
 				int giornoFine 	 = datePanelFine.getModel().getDay();
-			
+				
+				// Data inizio
+				GregorianCalendar dataInizio = new GregorianCalendar();
+				dataInizio.set(annoInizio, meseInizio, giornoInizio);
+				// Data fine
+				GregorianCalendar dataFine = new GregorianCalendar();
+				dataFine.set(annoFine, meseFine, giornoFine);
+				// Decremento di uno perchè nella logica si ragiona per notti. Mentre l'utilizzatore indica il giorno di arrivo e 
+				// il giorno di partenza.
+				dataFine.add(Calendar.DATE, -1);
+				
 				// Recupero il controllore e invoco il metodo.
 				CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
-				gestisciPrenotazione.cercaCamereLibere(giornoInizio, meseInizio, annoInizio, giornoFine, meseFine, annoFine, tipologieSelezionate);
+				gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologieSelezionate);
 			}
 		});
 	}

@@ -9,23 +9,26 @@ public class MDescrizioneCamera {
 
 	
 	/**
-	 * 
+	 * Metodo per ottenere tutti i prezzi per una tipologia di camera, in un certo periodo
 	 * @param periodo
 	 */
 	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo) {
-		ArrayList<MPrezzoCamera> prezziCamera = new ArrayList<MPrezzoCamera>();	
-		MPrezzoCamera prezzoCameraPeriodo;
+		ArrayList<MPrezzoCamera> prezziCamera = new ArrayList<MPrezzoCamera>();
 		// Ciclo sugli MPrezzoCamera 
 		for (Iterator<MPrezzoCamera> iterator = _prezziCamera.iterator(); iterator.hasNext();) {
 			MPrezzoCamera prezzoCamera = iterator.next();
-			prezzoCameraPeriodo = prezzoCamera.getPrezzoInPeriodo(periodo);
-			if(prezzoCameraPeriodo != null)
+			prezzoCamera.getPrezzoInPeriodo(periodo);
+			// Se otteniamo un MPrezzoCamera valido lo aggiungo alla lista.
+			if(prezzoCamera.getPrezzoInPeriodo(periodo) != null) {
+				MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
+				prezzoCameraPeriodo = prezzoCamera.getPrezzoInPeriodo(periodo);
+				//System.out.println(prezzoCameraPeriodo.get_prezzo());
 				prezziCamera.add(prezzoCameraPeriodo);
+			}
 		}		
 		return prezziCamera;
 	}
 	
-
 	/**
 	 * @return the _prezziCamera
 	 */
