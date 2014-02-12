@@ -449,14 +449,15 @@ public class MainTestDivisionePeriodiFrog {
 				
 				MPrenotazione prenotazione_camera = new MPrenotazione();
 				prenotazione_camera.set_periodo(periodo_4);				
-				prenotazione_camera.addElementoPrenotazione(camera_101);				
-				//prenotazione_camera.set_completata(true); da implementare, non è stato fatto
+				prenotazione_camera.addElementoPrenotazione(camera_101);
+				prenotazione_camera.addElementoPrenotazione(camera_202);
+				prenotazione_camera.set_completata(true); //da implementare, non è stato fatto
 				/*for (Iterator<MStatoCamera> iterator = camera_101.get_statiCamera().iterator(); iterator.hasNext();) {	
 					MStatoCamera stato = (MStatoCamera) iterator.next();
 					System.out.print(stato.get_periodo().get_giornoInizio()+ " " +stato.get_periodo().get_giornoFine()+"\n");
 				}*/
-				camera_101.occupaInPeriodo(periodo_4);
-				camera_202.occupaInPeriodo(periodo_5);
+				//camera_101.occupaInPeriodo(periodo_4);
+				//camera_202.occupaInPeriodo(periodo_5);
 				
 				
 				

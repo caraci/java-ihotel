@@ -116,8 +116,13 @@ public class MPrenotazione {
 	/**
 	 * 
 	 * @param _completata
+	 * @throws CloneNotSupportedException 
 	 */
-	public void set_completata(boolean _completata) {
+	public void set_completata(boolean _completata) throws CloneNotSupportedException {
+		for (Iterator<MElementoPrenotazione> iterator = this._elementiPrenotazione.iterator(); iterator.hasNext();) {
+			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
+			elementoPrenotazione.get_camera().occupaInPeriodo(_periodo);
+		}
 		this._completata = _completata;
 	}
 
