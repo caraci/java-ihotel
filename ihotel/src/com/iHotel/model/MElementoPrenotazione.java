@@ -14,32 +14,42 @@ public class MElementoPrenotazione {
 
 	private MCamera _camera;
 	
+	/**
+	 * Metodo per ottere il subTotale di una prenotazione dovuto ad un unico elemento.
+	 * @param periodo Periodo della prenotazione
+	 * @return double Subtotale della prenotazione per quella camera in tutto il periodo.
+	 */
 	public double getSubTotal(MPeriodo periodo){
 		
-		// Data di inizio della richiesta
+		// Data di inizio della richiesta.
 		GregorianCalendar dataInizio = new GregorianCalendar();
-		// Data di fine della richiesta
-		GregorianCalendar dataFine= new GregorianCalendar();
 		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
+		// Data di fine della richiesta.
+		GregorianCalendar dataFine= new GregorianCalendar();
 		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
-		
-		HashMap<String,ArrayList<MPrezzoCamera>> prezziTipologia= new HashMap<String,ArrayList<MPrezzoCamera>>();
-		// Tipologia della camera
+		// Tipologia della camera.
 		String tipologia=_camera.get_tipologia();
+		// Ricavo l'instanza della classe MCatalogoCamere attraverso il pattern Singleton.
 		MCatalogoCamere catalogo = MCatalogoCamere.getInstance();
-		
+		// Ricavo l'insieme dei prezzi della tipologia della camera in un certo periodo.
+		HashMap<String,ArrayList<MPrezzoCamera>> prezziTipologia= new HashMap<String,ArrayList<MPrezzoCamera>>();
 		prezziTipologia=catalogo.getPrezziInPeriodoDaTipologia(periodo, tipologia);
 		
-		double totaleGiorno=0;
-		double totalePeriodo=0;
+		// Variabili nelle quali si andranno a memorizzare i totali.
+		double totaleCameraGiorno=0;
+		double totaleCameraPeriodo=0;
 		
-		while (dataInizio.compareTo(dataFine) < 0) {
+		// Ciclo a partire dal giorno di inizio fino al giorno finale.
+		while (dataInizio.compareTo(dataFine) <= 0) {
 		
-			totaleGiorno=calcolaPrezzoGiorno(prezziTipologia.get(tipologia),dataInizio);
-			totalePeriodo=totalePeriodo+totaleGiorno;
+			// Calcolo il prezzo della camera in un giorno attraverso il metodo privato di MElementoPrenotazione
+			totaleCameraGiorno=calcolaPrezzoGiorno(prezziTipologia.get(tipologia),dataInizio);
+			// Sommo il totale della camera nel giorno al totale della camera per il periodo.
+			totaleCameraPeriodo+=totaleCameraGiorno;
+			// Incremento il giorno di uno.
 			dataInizio.add(Calendar.DAY_OF_MONTH,1);
 		}
-		return totalePeriodo;
+		return totaleCameraPeriodo;
 		
 	}
 	/**

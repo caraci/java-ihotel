@@ -17,10 +17,13 @@ public class MPrenotazione {
 	 * @return double Totale della prenotazione.
 	 */
 	public double getTotal(){
-		double total =0;
+		// Variabile nella quale andiamo a salvare il totale.
+		double total=0;
+		// Cicliamo su tutti gli elementi della prenotazione.
 		for (Iterator<MElementoPrenotazione> iterator = _elementiPrenotazione.iterator(); iterator.hasNext();) {
 			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
-			total = total + elementoPrenotazione.getSubTotal(_periodo);
+			// Su ogni elemento prenotazione andiamo a chiedere il subTotale e lo sommiamo al totale.
+			total += elementoPrenotazione.getSubTotal(_periodo);
 			System.out.println(total);
 		}
 		return total;				
@@ -118,7 +121,7 @@ public class MPrenotazione {
 	 * @param _completata
 	 * @throws CloneNotSupportedException 
 	 */
-	public void set_completata(boolean _completata) throws CloneNotSupportedException {
+	public void set_completata(boolean _completata) {
 		for (Iterator<MElementoPrenotazione> iterator = this._elementiPrenotazione.iterator(); iterator.hasNext();) {
 			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
 			elementoPrenotazione.get_camera().occupaInPeriodo(_periodo);

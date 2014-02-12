@@ -446,7 +446,7 @@ public class MainGab{
 		prenotazione.set_ospite(ospite1);
 		prenotazione.addElementoPrenotazione(camera_102);
 		prenotazione.set_codice("123");
-		prenotazione.set_completata(false);
+		//prenotazione.set_completata(false);
 		double totale;
 		totale=prenotazione.getTotal();
 		System.out.println(totale);
