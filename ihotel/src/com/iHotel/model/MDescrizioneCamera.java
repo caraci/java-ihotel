@@ -10,7 +10,8 @@ public class MDescrizioneCamera {
 	
 	/**
 	 * Metodo per ottenere tutti i prezzi per una tipologia di camera, in un certo periodo
-	 * @param periodo
+	 * @param periodo	Periodo generico
+	 * @return 			prezzi per una tipologia di camera in un periodo
 	 */
 	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo) {
 		ArrayList<MPrezzoCamera> prezziCamera = new ArrayList<MPrezzoCamera>();
@@ -30,19 +31,25 @@ public class MDescrizioneCamera {
 	}
 	
 	/**
-	 * @return the _prezziCamera
+	 * @return _prezziCamera
+	 * Metodo che restituisce tutti prezzi per una tipologia di camere 
 	 */
 	public ArrayList<MPrezzoCamera> get_prezziCamera() {
 		return _prezziCamera;
 	}
 
 	/**
-	 * @param _prezziCamera the _prezziCamera to set
+	 * @param _prezziCamera 
+	 * Metodo che setta tutti prezzi per una tipologia di camere 
 	 */
 	public void set_prezziCamera(ArrayList<MPrezzoCamera> _prezziCamera) {
 		this._prezziCamera = _prezziCamera;
 	}
 
+	/**
+	 * @return _tipologia
+	 * Metodo che restituisce la tipologia  
+	 */
 	public String get_tipologia() {
 		return this._tipologia;
 	}
@@ -50,6 +57,7 @@ public class MDescrizioneCamera {
 	/**
 	 * 
 	 * @param _tipologia
+	 * Metodo che setta la topologia
 	 */
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;

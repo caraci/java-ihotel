@@ -24,18 +24,25 @@ public class MCatalogoCamere {
 	
 	// Metodi di instanza
 	// Getter, Setter
+	
+	/**
+	 * @param	tipologia	Tipologia di camera di cui si vuole avere la descrizione
+	 * Metodo che restituisce la descrizione della camera di una specifica tipologia
+	 */
 	public MDescrizioneCamera getDescrizioneDaTipologia(String tipologia){
 		return _descrizioniCamere.get(tipologia);
 	}
 	/**
-	 * @return the _descrizioniCamere
+	 * @return  _descrizioniCamere
+	 * Metodo che restiuisce tutte le tipologie di camera con la relative descrizioni
 	 */
 	public HashMap<String,MDescrizioneCamera> get_descrizioniCamere() {
 		return _descrizioniCamere;
 	}
 
 	/**
-	 * @param _descrizioniCamere the _descrizioniCamere to set
+	 * @param _descrizioniCamere
+	 * Metodo che setta tutte le tipologie di camera con la relative descrizioni
 	 */
 	public void set_descrizioniCamere(HashMap<String,MDescrizioneCamera> _descrizioniCamere) {
 		this._descrizioniCamere = _descrizioniCamere;
@@ -44,8 +51,10 @@ public class MCatalogoCamere {
 	
 	/**
 	 * 
-	 * @param  periodo
-	 * @param tipologia
+	 * @param periodo	 Periodo in cui si prendono i prezzi di una tipologia
+	 * @param tipologia	 Tipologia di camera di cui si vuole il prezzo in un periodo
+	 * @return			 NON SO CHE SCRIVERCI
+	 * Metodo che restituisce tutte le camere di una tipologia con i relativi prezzi in un determinato periodo
 	 */
 	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
 		// Ricavo la descrizione della camera a partire dalla tipologia.

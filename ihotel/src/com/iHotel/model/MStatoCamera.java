@@ -9,9 +9,10 @@ public class MStatoCamera {
 	
 	
 	/**
+	 * @param periodo
+	 * @return boolean
 	 * Metodo per verificare se lo stato è libero in un periodo.
 	 * 
-	 * @param periodo
 	 */
 	public boolean isLiberaInPeriodo(MPeriodo periodo) {
 		
@@ -47,6 +48,11 @@ public class MStatoCamera {
 		}	
 	} 
 	
+	
+	/**
+	 * @param periodo
+	 * @return 
+	 * */
 	public MStatoCamera getStatoContenente(MPeriodo periodo){
 		
 		// Data di inizio del periodo contenuto
@@ -71,13 +77,15 @@ public class MStatoCamera {
 	
 	/**
 	 * @return the _periodo
+	 * Metodo che restituisce il periodo dello statoCamera
 	 */
 	public MPeriodo get_periodo() {
 		return _periodo;
 	}
 
 	/**
-	 * @param _periodo the _periodo to set
+	 * @param _periodo
+	 * metodo che setta il periodo dello statoCamera
 	 */
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
@@ -85,6 +93,7 @@ public class MStatoCamera {
 	/**
 	 * 
 	 * @return
+	 * Metodo
 	 */
 	public boolean get_libera() {
 		return this._libera;
@@ -93,6 +102,7 @@ public class MStatoCamera {
 	/**
 	 * 
 	 * @param _libera
+	 * Metodo che setta 
 	 */
 	public void set_libera(boolean _libera) {
 		this._libera = _libera;

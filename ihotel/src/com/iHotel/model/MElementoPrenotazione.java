@@ -17,8 +17,8 @@ public class MElementoPrenotazione {
 	
 	/**
 	 * Metodo per ottere il subTotale di una prenotazione dovuto ad un unico elemento.
-	 * @param periodo Periodo della prenotazione
-	 * @return double Subtotale della prenotazione per quella camera in tutto il periodo.
+	 * @param 	periodo	Periodo della prenotazione
+	 * @return 	double 	Subtotale della prenotazione per quella camera in tutto il periodo.
 	 */
 	public double getSubTotal(MPeriodo periodo){
 		
@@ -56,7 +56,10 @@ public class MElementoPrenotazione {
 		
 	}
 	/**
-	 * Metodo per calcolare il prezzo in un giorno relativo ad una camera. 
+	 * Metodo per calcolare il prezzo in un giorno relativo ad una camera.
+	 * @param 	prezziCamera	
+	 * @param 	data  			Giorno in cui bisogna calcolare il prezzo della camera
+	 * @return 					Prezzo della camera in un giorno
 	 */
 	private double calcolaPrezzoGiorno(ArrayList<MPrezzoCamera> prezziCamera, GregorianCalendar data){
 		
@@ -81,8 +84,10 @@ public class MElementoPrenotazione {
 		}
 		return prezzoGiorno;
 	}
-	/*
-	 * RICONTROLLARE 
+	/**
+	 * @param periodo
+	 * @return boolean
+	 * Metodo che setta occupata una carema in un determinato periodo 
 	 * 
 	 */
 	public boolean occupaCameraInPeriodo(MPeriodo periodo) throws CloneNotSupportedException{
@@ -93,14 +98,16 @@ public class MElementoPrenotazione {
 	}
 
 	/**
-	 * @return the _camera
+	 * @return  _camera
+	 * Metodo che restituisce la camera di un  ElementoPrenotazione
 	 */
 	public MCamera get_camera() {
 		return _camera;
 	}
 
 	/**
-	 * @param _camera the _camera to set
+	 * @param _camera 
+	 * Metodo che setta la camera di un ElementoPrenotazione
 	 */
 	public void set_camera(MCamera camera) {
 		this._camera = camera;

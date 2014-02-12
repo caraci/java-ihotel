@@ -58,6 +58,7 @@ public class MPrenotazione {
 	/* -------------------------------- Getter, Setter ------------------------------------------ */
 	/**
 	 * @return the _elementiPrenotazione
+	 * Metodo che restituisce tutti gli elementi di una preotazione
 	 */
 	public ArrayList<MElementoPrenotazione> get_elementiPrenotazione() {
 		return _elementiPrenotazione;
@@ -65,48 +66,55 @@ public class MPrenotazione {
 
 	/**
 	 * @param _elementiPrenotazione the _elementiPrenotazione to set
+	 * Metodo che setta tutti gli elementi di una preotazione
 	 */
 	public void set_elementiPrenotazione(ArrayList<MElementoPrenotazione> _elementiPrenotazione) {
 		this._elementiPrenotazione = _elementiPrenotazione;
 	}
 
 	/**
-	 * @return the _ospite
+	 * @return  _ospite
+	 * Metodo che restituisce l'ospite di una prenotazione
 	 */
 	public MOspite get_ospite() {
 		return _ospite;
 	}
 
 	/**
-	 * @param _ospite the _ospite to set
+	 * @param _ospite 
+	 * Metodo che setta l'ospite di una prenotazione
 	 */
 	public void set_ospite(MOspite _ospite) {
 		this._ospite = _ospite;
 	}
 
 	/**
-	 * @return the _periodo
+	 * @return  _periodo
+	 * Metodo che restituisce il periodo di una prenotazione
 	 */
 	public MPeriodo get_periodo() {
 		return _periodo;
 	}
 
 	/**
-	 * @param _periodo the _periodo to set
+	 * @param _periodo 
+	 * Metodo che setta il periodo di una prenotazione
 	 */
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
 	}
 
 	/**
-	 * @return the _codice
+	 * @return  _codice
+	 * Metodo che restituisce il codice di una prenotazione
 	 */
 	public String get_codice() {
 		return _codice;
 	}
 
 	/**
-	 * @param _codice the _codice to set
+	 * @param _codice 
+	 * Metodo che setta il codice di una prenotazione
 	 */
 	public void set_codice(String _codice) {
 		this._codice = _codice;

@@ -15,6 +15,7 @@ public class MPrezzoCamera {
 	 * Metodo per farsi restituire un MPrezzoCamera, se il periodo passato come parametro, ha almeno un giorno in comune 
 	 * con quello relativo all'oggetto su cui si invoca il metodo.
 	 * @param periodo
+	 * @return MPrezzoCamera
 	 */
 	public MPrezzoCamera getPrezzoInPeriodo(MPeriodo periodo){
 		
@@ -44,7 +45,8 @@ public class MPrezzoCamera {
 	
 	/**
 	 * 
-	 * @return
+	 * @return double
+	 * Metodo che restituisce il prezzo relativo a un MPrezzoCamera
 	 */
 	public double get_prezzo() {
 		return this._prezzo;
@@ -53,15 +55,25 @@ public class MPrezzoCamera {
 	/**
 	 * 
 	 * @param _prezzo
+	 * Metodo che setta il prezzo relativo a un MPrezzoCamera
 	 */
 	public void set_prezzo(double _prezzo) {
 		this._prezzo = _prezzo;
 	}
 
+	/**
+	 * 
+	 * @return double
+	 * Metodo che restituisce il periodo relativo a un MPrezzoCamera
+	 */
 	public MPeriodo get_periodo() {
 		return _periodo;
 	}
-
+	
+	/**
+	 * @param _periodo 
+	 * Metodo che setta il periodo relativo a un MPrezzoCamera
+	 */
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
 	}
