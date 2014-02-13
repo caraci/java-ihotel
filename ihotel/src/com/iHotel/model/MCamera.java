@@ -34,14 +34,16 @@ public class MCamera {
 	 */
 	public boolean occupaInPeriodo(MPeriodo periodo) {
 		//definisco lo stato contenente, lo stato occupato e lo stato residuo. Setto i parametri dello stato occupato
-		//perchè li ho già tutti per farlo.
+		//perchè li ho già tutti per farlo.	
 		
 		
-		MStatoCamera statoContenente = new MStatoCamera();
 		MStatoCamera statoOccupato = new MStatoCamera();
-		MStatoCamera statoResiduo = new MStatoCamera();
 		statoOccupato.set_periodo(periodo);
 		statoOccupato.set_libera(false);
+		
+		MStatoCamera statoResiduo = new MStatoCamera();
+		
+		MStatoCamera statoContenente = new MStatoCamera();
 		//indiceLista serve perchè poi dovrò riposizionare i periodi
 		int indiceLista=0;
 	
@@ -53,32 +55,24 @@ public class MCamera {
 				 statoContenente=statoCamera.getStatoContenente(periodo);
 				 indiceLista =_statiCamera.indexOf(statoContenente);
 			 }
-		}	
-				
-		MPeriodo periodoStatoContenente = statoContenente.get_periodo();	
+		}				
+	
 		
 		//qua si incasina un pò aniddoc
 		
-		//faccio una copia dell'oggetto periodoStatoContenente, perché se lavorassi direttamente su periodoStatoContenente 
-		//avrei problemi di sovrapposizione dei riferimenti
+		//Metodo per calcolare i nuovi periodi
+		
+		//Calcolo il periodo residuo
+		MPeriodo periodoResiduo = this.calcolaPeriodoResiduo(statoContenente.get_periodo(),periodo);
 		
 		/* magheggio per creare un nuovo periodo stato contenente*/
+		MPeriodo nuovoPeriodoStatoContenente = this.calcolaNuovoPeriodoStatoContenente(statoContenente.get_periodo());
 		
-		int gi = periodoStatoContenente.get_giornoInizio();
-		int mi = periodoStatoContenente.get_meseInizio();
-		int ai = periodoStatoContenente.get_annoInizio();
+		//Metodo  per calcolare il periodo antecedente
+		//che vado a mettere dentro al nuovo periodo stato contenente
+		nuovoPeriodoStatoContenente = this.calcolaPeriodoAntecedente(nuovoPeriodoStatoContenente,periodo);		
+		this.aggiornaStatiCamera();
 		
-		int gf = periodoStatoContenente.get_giornoFine();
-		int mf = periodoStatoContenente.get_meseFine();
-		int af = periodoStatoContenente.get_annoFine();
-		
-		MPeriodo nuovoPeriodoStatoContenente = new MPeriodo();
-		nuovoPeriodoStatoContenente.set_giornoInizio(gi);
-		nuovoPeriodoStatoContenente.set_meseInizio(mi);
-		nuovoPeriodoStatoContenente.set_annoInizio(ai);
-		nuovoPeriodoStatoContenente.set_giornoFine(gf);
-		nuovoPeriodoStatoContenente.set_meseFine(mf);
-		nuovoPeriodoStatoContenente.set_annoFine(af);
 		
 		//ricavo le date dal nuovoPeriodoStatoContenente (banalmente uguali a quelle di periodoStatoContenente
 		
@@ -89,49 +83,16 @@ public class MCamera {
 		dataFinePeriodoStatoContenente.set(nuovoPeriodoStatoContenente.get_annoFine(), nuovoPeriodoStatoContenente.get_meseFine(), nuovoPeriodoStatoContenente.get_giornoFine());
 		
 				
-		//ricavo le date del periodo della prenotazione
-		GregorianCalendar dataInizioPeriodoPrenotazione = new GregorianCalendar();
-		dataInizioPeriodoPrenotazione.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
-		
-		GregorianCalendar dataFinePeriodoPrenotazione = new GregorianCalendar();
-		dataFinePeriodoPrenotazione.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
 		
 	
 		//Ricavo i periodi degli stati che si vengono a creare in seguito all'occupazione della camera in un
 		//certo periodo
 		
 		
-		/* ********* Periodo residuo: dal giorno dopo  data di fine della prenotazione al giorno della fine periodoStatoContenente************/
-		MPeriodo periodoResiduo = new MPeriodo();
 		
-		//calcolo data inizio del periodo residuo
-		dataFinePeriodoPrenotazione.add(Calendar.DAY_OF_MONTH,1);
-		int giornoDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.DATE);
-		int meseDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.MONTH);
-		int annoDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.YEAR);
-		
-		//Setting degli attributi
-		periodoResiduo.set_giornoInizio(giornoDopoFinePrenotazione);
-		periodoResiduo.set_meseInizio(meseDopoFinePrenotazione);
-		periodoResiduo.set_annoInizio(annoDopoFinePrenotazione);		
-		periodoResiduo.set_giornoFine(periodoStatoContenente.get_giornoFine());
-		periodoResiduo.set_meseFine(periodoStatoContenente.get_meseFine());
-		periodoResiduo.set_annoFine(periodoStatoContenente.get_annoFine());
 			
 		
-		/* ************ Periodo antecedente: dal giorno di inizio del nuovoPeriodoStatoContenente fino al giorno prima della data di inizio
-		 * della prenotazione prenotazione ******************/
 		
-		//calcolo il giorno precedente alla data di inizio della prenotazione
-		dataInizioPeriodoPrenotazione.add(Calendar.DAY_OF_MONTH, -1);		
-		int giornoPrimaDellaPrenotazione=dataInizioPeriodoPrenotazione.get(Calendar.DATE);
-		int mesePrimaDellaPrenotazione= dataInizioPeriodoPrenotazione.get(Calendar.MONTH);
-		int annoPrimaDellaPrenotazione= dataInizioPeriodoPrenotazione.get(Calendar.YEAR);
-		
-		//setto la data di termine del nuovoPeriodoStatoContenente al giorno precedente all'inizio della prenotazione.
-		nuovoPeriodoStatoContenente.set_annoFine(annoPrimaDellaPrenotazione);
-		nuovoPeriodoStatoContenente.set_meseFine(mesePrimaDellaPrenotazione);
-		nuovoPeriodoStatoContenente.set_giornoFine(giornoPrimaDellaPrenotazione);
 		
 		//Devo verificare che nuovoPeriodoStatoContenente abbia almeno un giorno. Se così non fosse devo eliminarlo dalla lista dei periodo		
 		GregorianCalendar nuovaDataFinePeriodoStatoContenente = new GregorianCalendar();
@@ -155,8 +116,78 @@ public class MCamera {
 		
 		return true;
 	}
-
+	private MPeriodo calcolaPeriodoResiduo(MPeriodo periodoStatoContenente, MPeriodo periodoPrenotazione){
+		/* ********* Periodo residuo: dal giorno dopo  data di fine della prenotazione al giorno della fine periodoStatoContenente************/
+		MPeriodo periodoResiduo = new MPeriodo();
+		
+		//calcolo data inizio del periodo residuo
+		GregorianCalendar dataFinePeriodoPrenotazione = new GregorianCalendar();
+		dataFinePeriodoPrenotazione.set(periodoPrenotazione.get_annoFine(), periodoPrenotazione.get_meseFine(), periodoPrenotazione.get_giornoFine());
+		
+		dataFinePeriodoPrenotazione.add(Calendar.DAY_OF_MONTH,1);
+		int giornoDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.DATE);
+		int meseDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.MONTH);
+		int annoDopoFinePrenotazione = dataFinePeriodoPrenotazione.get(Calendar.YEAR);
+		
+		//Setting degli attributi
+		periodoResiduo.set_giornoInizio(giornoDopoFinePrenotazione);
+		periodoResiduo.set_meseInizio(meseDopoFinePrenotazione);
+		periodoResiduo.set_annoInizio(annoDopoFinePrenotazione);		
+		
+		periodoResiduo.set_giornoFine(periodoStatoContenente.get_giornoFine());
+		periodoResiduo.set_meseFine(periodoStatoContenente.get_meseFine());
+		periodoResiduo.set_annoFine(periodoStatoContenente.get_annoFine());
+		
+		return periodoResiduo;
+		
+	}
 	
+	private MPeriodo calcolaPeriodoAntecedente(MPeriodo nuovoPeriodoStatoContenente,MPeriodo periodoPrenotazione){
+		
+		//ricavo le date del periodo della prenotazione
+		GregorianCalendar dataInizioPeriodoPrenotazione = new GregorianCalendar();
+		dataInizioPeriodoPrenotazione.set(periodoPrenotazione.get_annoInizio(), periodoPrenotazione.get_meseInizio(), periodoPrenotazione.get_giornoInizio());
+		
+		
+		/* ************ Periodo antecedente: dal giorno di inizio del nuovoPeriodoStatoContenente fino al giorno prima della data di inizio
+		 * della prenotazione prenotazione ******************/
+		
+		//calcolo il giorno precedente alla data di inizio della prenotazione
+		dataInizioPeriodoPrenotazione.add(Calendar.DAY_OF_MONTH, -1);		
+		int giornoPrimaDellaPrenotazione=dataInizioPeriodoPrenotazione.get(Calendar.DATE);
+		int mesePrimaDellaPrenotazione= dataInizioPeriodoPrenotazione.get(Calendar.MONTH);
+		int annoPrimaDellaPrenotazione= dataInizioPeriodoPrenotazione.get(Calendar.YEAR);
+		
+		//setto la data di termine del nuovoPeriodoStatoContenente al giorno precedente all'inizio della prenotazione.
+		nuovoPeriodoStatoContenente.set_annoFine(annoPrimaDellaPrenotazione);
+		nuovoPeriodoStatoContenente.set_meseFine(mesePrimaDellaPrenotazione);
+		nuovoPeriodoStatoContenente.set_giornoFine(giornoPrimaDellaPrenotazione);
+		return nuovoPeriodoStatoContenente;
+	}
+	
+	private void aggiornaStatiCamera(){
+		
+	}
+	private MPeriodo calcolaNuovoPeriodoStatoContenente(MPeriodo vecchioPeriodo){
+		//estraggo le date dal vecchio periodo
+		
+		int gi = vecchioPeriodo.get_giornoInizio();
+		int mi = vecchioPeriodo.get_meseInizio();
+		int ai = vecchioPeriodo.get_annoInizio();
+		
+		int gf = vecchioPeriodo.get_giornoFine();
+		int mf = vecchioPeriodo.get_meseFine();
+		int af = vecchioPeriodo.get_annoFine();		
+		//setto le date del nuovo periodo
+		MPeriodo nuovoPeriodo = new MPeriodo();
+		nuovoPeriodo.set_giornoInizio(gi);
+		nuovoPeriodo.set_meseInizio(mi);
+		nuovoPeriodo.set_annoInizio(ai);
+		nuovoPeriodo.set_giornoFine(gf);
+		nuovoPeriodo.set_meseFine(mf);
+		nuovoPeriodo.set_annoFine(af);
+		return nuovoPeriodo;
+	}
 
 	// Getter, Setter
 	/**
