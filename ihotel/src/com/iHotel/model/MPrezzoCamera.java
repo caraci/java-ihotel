@@ -35,7 +35,7 @@ public class MPrezzoCamera {
 			GregorianCalendar dataFinePrezzo= new GregorianCalendar();
 			dataFinePrezzo.set(_periodo.get_annoFine(), _periodo.get_meseFine(), _periodo.get_giornoFine());
 			*/
-		if(this.get_periodo().contiene(periodo)||this.get_periodo().sovrapposto(periodo)) {
+		if(this.get_periodo().contiene(periodo)||this.get_periodo().sovrappone(periodo)) {
 			return this;
 		} else{
 			return null;
