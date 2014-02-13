@@ -38,7 +38,7 @@ public class MPrezzoCamera {
 		if(this.get_periodo().contiene(periodo)||this.get_periodo().sovrapposto(periodo)) {
 			return this;
 		} else{
-			return ;
+			return null;
 		}
 	}
 	
