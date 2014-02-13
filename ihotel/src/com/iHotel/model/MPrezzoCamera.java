@@ -1,9 +1,5 @@
 package com.iHotel.model;
 
-import java.util.GregorianCalendar;
-
-
-
 public class MPrezzoCamera {
 
 	/* -------------------------- Attributi ------------------------------- */
@@ -14,34 +10,17 @@ public class MPrezzoCamera {
 	/**
 	 * Metodo per farsi restituire un MPrezzoCamera, se il periodo passato come parametro, ha almeno un giorno in comune 
 	 * con quello relativo all'oggetto su cui si invoca il metodo.
-	 * @param periodo
-	 * @return MPrezzoCamera
+	 * @param periodo Periodo per il quale si vuole ottenere l' MPrezzoCamera corretto.
+	 * @return MPrezzoCamera relativo al periodo inserito.
 	 */
 	public MPrezzoCamera getPrezzoInPeriodo(MPeriodo periodo){
-		
-		/*// Periodo di richiesta
-			// Data di inizio
-			GregorianCalendar dataInizioPrenotazione= new GregorianCalendar();
-			dataInizioPrenotazione.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
-			// Data di fine
-			GregorianCalendar dataFinePrenotazione= new GregorianCalendar();
-			dataFinePrenotazione.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
-		
-		// Periodo dell' MPrezzoCamera
-			// Data di inizio del MPrezzoCamera
-			GregorianCalendar dataInizioPrezzo = new GregorianCalendar();
-			dataInizioPrezzo.set(_periodo.get_annoInizio(), _periodo.get_meseInizio(), _periodo.get_giornoInizio());
-			// Data di fine del MPrezzoCamera
-			GregorianCalendar dataFinePrezzo= new GregorianCalendar();
-			dataFinePrezzo.set(_periodo.get_annoFine(), _periodo.get_meseFine(), _periodo.get_giornoFine());
-			*/
-		if(this.get_periodo().contiene(periodo)||this.get_periodo().sovrappone(periodo)) {
+		if(this.get_periodo().contiene(periodo) || this.get_periodo().sovrappone(periodo)) {
 			return this;
 		} else{
 			return null;
 		}
 	}
-	
+	/* ------------------------------------- Getter, Setter ------------------------------- */
 	/**
 	 * 
 	 * @return double

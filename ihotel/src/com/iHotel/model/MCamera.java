@@ -11,16 +11,14 @@ public class MCamera {
 
 
 	/**
-	 * 
-	 * @param periodo
-	 * @return _boolean
-	 * Metodo che restituisce un booleano: true se la stanza è libera nel periodo passato come parametro,
-	 * altrimenti restituisce false
+	 * Metodo per controllare se una camera è libera in un periodo.
+	 * @param periodoRichiesta Periodo nel quale si vuole prenotare la camera.
+	 * @return True se la camera è libera nel periodo. False altrimenti.
 	 */
-	public boolean isLiberaInPeriodo(MPeriodo periodo) {		
+	public boolean isLiberaInPeriodo(MPeriodo periodoRichiesta) {		
 		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
-			MStatoCamera tmp = iterator.next();				
-			if(tmp.isLiberaInPeriodo(periodo)==true)					
+			MStatoCamera statoCamera = iterator.next();				
+			if(statoCamera.isLiberaInPeriodo(periodoRichiesta)==true)					
 				return true;							
 		}
 		return false; 
