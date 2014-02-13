@@ -23,9 +23,9 @@ public class MPrenotazione {
 		for (Iterator<MElementoPrenotazione> iterator = _elementiPrenotazione.iterator(); iterator.hasNext();) {
 			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
 			// Su ogni elemento prenotazione andiamo a chiedere il subTotale e lo sommiamo al totale.
-			total += elementoPrenotazione.getSubTotal(_periodo);
+			total+=elementoPrenotazione.getSubTotal(_periodo);
 		}
-		System.out.println("Totale prenotazione: " + total);
+		//System.out.println("Totale prenotazione: " + total);
 		return total;				
 	}
 	

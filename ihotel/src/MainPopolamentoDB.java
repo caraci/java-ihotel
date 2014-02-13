@@ -84,6 +84,22 @@ public class MainPopolamentoDB{
 				periodo_3.set_giornoFine(giornoFine_3);
 				periodo_3.set_meseFine(meseFine_3);
 				periodo_3.set_annoFine(annoFine_3);
+				
+			// periodo_4 - 1 Febbraio 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
+				MPeriodo periodo_3 = new MPeriodo();
+				int giornoInizio_3 = 1;
+				int meseInizio_3 = 2;
+				int annoInizio_3 = 2014;
+				int giornoFine_3 = 31;
+				int meseFine_3 = 2;
+				int annoFine_3 = 2014;
+				periodo_3.set_giornoInizio(giornoInizio_3);
+				periodo_3.set_meseInizio(meseInizio_3);
+				periodo_3.set_annoInizio(annoInizio_3);
+				periodo_3.set_giornoFine(giornoFine_3);
+				periodo_3.set_meseFine(meseFine_3);
+				periodo_3.set_annoFine(annoFine_3);
+				
 		//fine periodi
 		
 		//Creo le camere

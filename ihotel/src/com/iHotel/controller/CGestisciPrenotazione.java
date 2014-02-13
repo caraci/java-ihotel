@@ -90,23 +90,14 @@ public class CGestisciPrenotazione {
 			camereLibereString.add(camereLibereTipologiaString);
 		}
 		
-		//mostro finestra 2
+		// Mostro finestra Step 2
 		VFrameCreaPrenotazioneStep_2 frameCreaPrenotazioneStep_2 = VFrameCreaPrenotazioneStep_2.getInstance();
 		frameCreaPrenotazioneStep_2.creaFrame(camereLibereString);			
 		frameCreaPrenotazioneStep_2.setVisible(true);
-		//Nascondo finestra 1
+		// Nascondo finestra Step 1
 		VFrameCreaPrenotazioneStep_1 frameCreaPrenotazioneStep_1 = VFrameCreaPrenotazioneStep_1.getInstance();
 		frameCreaPrenotazioneStep_1.setVisible(false);
 		
-	}
-
-	/**
-	 * 
-	 * @param ep
-	 */
-	public void aggiungiElementoPrenotazione(MElementoPrenotazione ep) {
-		// TODO - implement CGestisciPrenotazione.aggiungiElementoPrenotazione
-		throw new UnsupportedOperationException();
 	}
 	/**
 	 * 

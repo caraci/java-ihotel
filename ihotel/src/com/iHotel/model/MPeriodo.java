@@ -8,10 +8,12 @@ public class MPeriodo {
 	private int _giornoInizio;
 	private int _meseInizio;
 	private int _annoInizio;
+	private int _oraInizio;
 	
 	private int _giornoFine;
 	private int _meseFine;
 	private int _annoFine;
+	private int _oraFine;
 	
 	
 	/* --------------------- Metodi di instanza ----------------------------------------- */
@@ -31,8 +33,8 @@ public class MPeriodo {
 		// Periodo dell'instanza
 		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
 		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine);
 		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)<=0 && dataFinePeriodo.compareTo(dataFineRichiesta) >=0) {
 			esito = true;
 		} else {

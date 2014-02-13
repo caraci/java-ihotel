@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MCatalogoCamere {
 
-	// Attributi
+	/* ----------------------------------- Attributi ---------------------------------- */
 	private HashMap<String,MDescrizioneCamera> _descrizioniCamere=new HashMap<String,MDescrizioneCamera>();
 	// Singleton
 	private static MCatalogoCamere instance = null;
@@ -14,7 +14,7 @@ public class MCatalogoCamere {
 	 */
 	private MCatalogoCamere() {}
 	
-	// Metodi di classe	
+	/* ---------------------------- Metodi di classe -------------------- */	
 	public static MCatalogoCamere getInstance() {
     	if(instance == null) {
             instance = new MCatalogoCamere();
