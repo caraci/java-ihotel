@@ -1,7 +1,10 @@
 package com.iHotel.model;
 
+import java.util.GregorianCalendar;
+
 public class MPeriodo {
 
+	/* --------------------- Attributi -------------------------- */
 	private int _giornoInizio;
 	private int _meseInizio;
 	private int _annoInizio;
@@ -11,8 +14,29 @@ public class MPeriodo {
 	private int _annoFine;
 	
 	
+	/* --------------------- Metodi di instanza ----------------------------------------- */
 	
+	public boolean contiene (MPeriodo periodoRichiesta) {
+		boolean esito;
+		// Periodo richiesta
+		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
+		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
+		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
+		// Periodo dell'instanza
+		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
+		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)<=0 && dataFinePeriodo.compareTo(dataFineRichiesta) >=0) {
+			esito = true;
+		} else {
+			esito = false;
+		}
+		return esito;
+	}
 	
+	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**
 	 * @return _annoFine
 	 * Metodo che restituisce l'intero che rappresenta l'anno della data di fine periodo
