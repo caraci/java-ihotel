@@ -24,10 +24,10 @@ public class MElementoPrenotazione {
 		
 		// Data di inizio della richiesta.
 		GregorianCalendar dataInizio = new GregorianCalendar();
-		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio(),10,0,0);
+		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio(),periodo.get_oraInizio(),periodo.get_minutoInizio());
 		// Data di fine della richiesta.
 		GregorianCalendar dataFine= new GregorianCalendar();
-		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),16,0,0);
+		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),periodo.get_oraFine(),periodo.get_minutoFine());
 		
 		// Tipologia della camera.
 		String tipologia=_camera.get_tipologia();
@@ -69,9 +69,14 @@ public class MElementoPrenotazione {
 		periodo.set_giornoInizio(data.get(Calendar.DATE));
 		periodo.set_meseInizio(data.get(Calendar.MONTH));
 		periodo.set_annoInizio(data.get(Calendar.YEAR));
+		periodo.set_oraInizio(data.get(Calendar.HOUR));
+		periodo.set_minutoInizio(data.get(Calendar.MINUTE));		
+		
 		periodo.set_giornoFine(data.get(Calendar.DATE));
 		periodo.set_meseFine(data.get(Calendar.MONTH));
 		periodo.set_annoFine(data.get(Calendar.DATE));
+		periodo.set_oraFine(data.get(Calendar.HOUR));
+		periodo.set_oraFine(data.get(Calendar.MINUTE));
 		// Variabile nella quale andremo a memorizzare il totale per il giorno.
 		double prezzoGiorno=0;
 		
