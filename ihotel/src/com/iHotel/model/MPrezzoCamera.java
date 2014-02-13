@@ -19,7 +19,7 @@ public class MPrezzoCamera {
 	 */
 	public MPrezzoCamera getPrezzoInPeriodo(MPeriodo periodo){
 		
-		// Periodo di richiesta
+		/*// Periodo di richiesta
 			// Data di inizio
 			GregorianCalendar dataInizioPrenotazione= new GregorianCalendar();
 			dataInizioPrenotazione.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
@@ -34,12 +34,11 @@ public class MPrezzoCamera {
 			// Data di fine del MPrezzoCamera
 			GregorianCalendar dataFinePrezzo= new GregorianCalendar();
 			dataFinePrezzo.set(_periodo.get_annoFine(), _periodo.get_meseFine(), _periodo.get_giornoFine());
-			
-		if(dataInizioPrezzo.compareTo(dataFinePrenotazione)!=1 && dataInizioPrezzo.compareTo(dataInizioPrenotazione)!=-1 ||
-				dataFinePrezzo.compareTo(dataInizioPrenotazione)!=-1 && dataFinePrezzo.compareTo(dataFinePrenotazione)!=1) {
+			*/
+		if(this.get_periodo().contiene(periodo)||this.get_periodo().sovrapposto(periodo)) {
 			return this;
-		} else {
-			return null;
+		} else{
+			return ;
 		}
 	}
 	
