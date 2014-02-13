@@ -69,13 +69,13 @@ public class MElementoPrenotazione {
 		periodo.set_giornoInizio(data.get(Calendar.DATE));
 		periodo.set_meseInizio(data.get(Calendar.MONTH));
 		periodo.set_annoInizio(data.get(Calendar.YEAR));
-		periodo.set_oraInizio(data.get(Calendar.HOUR));
+		periodo.set_oraInizio(data.get(Calendar.HOUR_OF_DAY));
 		periodo.set_minutoInizio(data.get(Calendar.MINUTE));		
 		
 		periodo.set_giornoFine(data.get(Calendar.DATE));
 		periodo.set_meseFine(data.get(Calendar.MONTH));
 		periodo.set_annoFine(data.get(Calendar.DATE));
-		periodo.set_oraFine(data.get(Calendar.HOUR));
+		periodo.set_oraFine(data.get(Calendar.HOUR_OF_DAY));
 		periodo.set_oraFine(data.get(Calendar.MINUTE));
 		// Variabile nella quale andremo a memorizzare il totale per il giorno.
 		double prezzoGiorno=0;
