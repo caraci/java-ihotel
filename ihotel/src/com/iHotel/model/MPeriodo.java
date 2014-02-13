@@ -154,6 +154,63 @@ public class MPeriodo {
 	public void set_giornoInizio(int _giornoInizio) {
 		this._giornoInizio = _giornoInizio;
 	}
+	/**
+	 * @return the _oraInizio
+	 * Metodo che restituisce l'intero che rappresenta l'ora della data di inizio periodo
+	 */
+	public int get_oraInizio() {
+		return _oraInizio;
+	}
+	/**
+	 * @param _oraInizio
+	 * Metodo che setta l'intero che rappresenta l'ora della data di inizio periodo 
+	 */
+	public void set_oraInizio(int _oraInizio) {
+		this._oraInizio = _oraInizio;
+	}
+	/**
+	 * @param _oraFine
+	 * Metodo che setta l'intero che rappresenta l'ora della data di fine periodo 
+	 */
+	public void set_oraFine(int _oraFine) {
+		this._oraFine = _oraFine;
+	}
+	/**
+	 * @return the _oraFine
+	 * Metodo che restituisce l'intero che rappresenta l'ora della data di fine periodo
+	 */
+	public int get_oraFine() {
+		return _oraFine;
+	}
+	/**
+	 * @param _minutoInizio
+	 * Metodo che setta l'intero che rappresenta il minuto della data di inizio periodo 
+	 */
+	public void set_minutoInizio(int _minutoInizio) {
+		this._minutoInizio = _minutoInizio;
+	}
+	/**
+	 * @return the _minutoInizio
+	 * Metodo che restituisce l'intero che rappresenta il minuto della data di inizio periodo
+	 */
+	public int get_minutoInizio() {
+		return _minutoInizio;
+	}
+	/**
+	 * @param _minutoFine
+	 * Metodo che setta l'intero che rappresenta il minuto della data di fine periodo 
+	 */
+	public void set_minutoFine(int _minutoFine) {
+		this._minutoFine= _minutoFine;
+	}
+	/**
+	 * @return the _minutoFine
+	 * Metodo che restituisce l'intero che rappresenta il minuto della data di fine periodo
+	 */
+	public int get_minutoFine() {
+		return _minutoFine;
+	}
+	
 	
 	
 
