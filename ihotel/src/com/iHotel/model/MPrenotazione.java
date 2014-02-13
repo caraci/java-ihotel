@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MPrenotazione {
 
-	// Atrributi
+	/* ---------------------- Atrributi --------------------------------*/
 	private ArrayList<MElementoPrenotazione> _elementiPrenotazione = new ArrayList<MElementoPrenotazione>();
 	private MOspite _ospite;
 	private MPeriodo _periodo;
@@ -14,7 +14,7 @@ public class MPrenotazione {
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
 	/**
 	 * Metodo per ottenere il totale di una prenotazione
-	 * @return double Totale della prenotazione.
+	 * @return Totale della prenotazione.
 	 */
 	public double getTotal(){
 		// Variabile nella quale andiamo a salvare il totale.
@@ -24,8 +24,8 @@ public class MPrenotazione {
 			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
 			// Su ogni elemento prenotazione andiamo a chiedere il subTotale e lo sommiamo al totale.
 			total += elementoPrenotazione.getSubTotal(_periodo);
-			//System.out.println(total);
 		}
+		System.out.println(total);
 		return total;				
 	}
 	

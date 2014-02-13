@@ -339,42 +339,44 @@ public class MainPopolamentoDB{
 		camera_303.set_statiCamera(statiCamera_303);	
 		
 		//prezzi camere
-		double x = 50;
+		double singola = 10;
+		double doppia = 20;
+		double tripla = 30;
 		
 		MPrezzoCamera p_singola_1 = new MPrezzoCamera();
-		p_singola_1.set_prezzo(x);
+		p_singola_1.set_prezzo(singola);
 		p_singola_1.set_periodo(periodo_1);
 		
 		MPrezzoCamera p_singola_2 = new MPrezzoCamera();
-		p_singola_2.set_prezzo(x);
+		p_singola_2.set_prezzo(singola);
 		p_singola_2.set_periodo(periodo_2);
 		
 		MPrezzoCamera p_singola_3 = new MPrezzoCamera();
-		p_singola_3.set_prezzo(x);
+		p_singola_3.set_prezzo(singola);
 		p_singola_3.set_periodo(periodo_3);
 		
 		MPrezzoCamera p_doppia_1 = new MPrezzoCamera();
-		p_doppia_1.set_prezzo(x);
+		p_doppia_1.set_prezzo(doppia);
 		p_doppia_1.set_periodo(periodo_1);
 		
 		MPrezzoCamera p_doppia_2 = new MPrezzoCamera();
-		p_doppia_2.set_prezzo(x);
+		p_doppia_2.set_prezzo(doppia);
 		p_doppia_2.set_periodo(periodo_2);
 		
 		MPrezzoCamera p_doppia_3 = new MPrezzoCamera();
-		p_doppia_3.set_prezzo(x);
+		p_doppia_3.set_prezzo(doppia);
 		p_doppia_3.set_periodo(periodo_3);
 		
 		MPrezzoCamera p_tripla_1 = new MPrezzoCamera();
-		p_tripla_1.set_prezzo(x);
+		p_tripla_1.set_prezzo(tripla);
 		p_tripla_1.set_periodo(periodo_1);
 		
 		MPrezzoCamera p_tripla_2 = new MPrezzoCamera();
-		p_tripla_2.set_prezzo(x);
+		p_tripla_2.set_prezzo(tripla);
 		p_tripla_2.set_periodo(periodo_2);
 		
 		MPrezzoCamera p_tripla_3 = new MPrezzoCamera();
-		p_tripla_3.set_prezzo(x);
+		p_tripla_3.set_prezzo(tripla);
 		p_tripla_3.set_periodo(periodo_3);
 		
 		//fine prezzi camere

@@ -4,10 +4,11 @@ import java.util.*;
 
 public class MDescrizioneCamera {
 
+	/* -------------------------- Attributi -------------------------------------- */
 	private ArrayList<MPrezzoCamera> _prezziCamera=new ArrayList<MPrezzoCamera>();
 	private String _tipologia;
 
-	
+	/* ----------------------- Metodi di instanza ----------------------------------------- */
 	/**
 	 * Metodo per ottenere tutti i prezzi per una tipologia di camera, in un certo periodo
 	 * @param periodo	Periodo generico
@@ -15,13 +16,12 @@ public class MDescrizioneCamera {
 	 */
 	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo) {
 		ArrayList<MPrezzoCamera> prezziCamera = new ArrayList<MPrezzoCamera>();
+		MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
 		// Ciclo sugli MPrezzoCamera 
 		for (Iterator<MPrezzoCamera> iterator = _prezziCamera.iterator(); iterator.hasNext();) {
 			MPrezzoCamera prezzoCamera = iterator.next();
-			prezzoCamera.getPrezzoInPeriodo(periodo);
 			// Se otteniamo un MPrezzoCamera valido lo aggiungo alla lista.
 			if(prezzoCamera.getPrezzoInPeriodo(periodo) != null) {
-				MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
 				prezzoCameraPeriodo = prezzoCamera.getPrezzoInPeriodo(periodo);
 				//System.out.println(prezzoCameraPeriodo.get_prezzo());
 				prezziCamera.add(prezzoCameraPeriodo);

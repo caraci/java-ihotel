@@ -205,7 +205,6 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 				// Decremento di uno perchè nella logica si ragiona per notti. Mentre l'utilizzatore indica il giorno di arrivo e 
 				// il giorno di partenza.
 				dataFine.add(Calendar.DATE, -1);
-				
 				// Recupero il controllore e invoco il metodo.
 				CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
 				gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologieSelezionate);

@@ -49,7 +49,9 @@ public class MainEugenioInterfacce {
 			
 			// Prendo il controllore per la gestione della prenotazione.
 			CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
-			// Associo l'albergo alla prenotazione
+			// Creo una nuova prenotazione
+			gestisciPrenotazione.creaNuovaPrenotazione();
+			// Associo l'albergo alla controllore della prenotazione
 			gestisciPrenotazione.set_albergo(albergo);
 			// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 			ArrayList<String> tipologieCamere = new ArrayList<String>();

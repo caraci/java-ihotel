@@ -1,8 +1,5 @@
-import com.db4o.Db4oEmbedded;
-import com.db4o.ObjectContainer;
-import com.iHotel.model.*;
 
-import java.math.BigDecimal;
+import com.iHotel.model.*;
 import java.util.*;
 
 public class MainGab{
@@ -407,55 +404,29 @@ public class MainGab{
 		camera_302.set_descrizioneCamera(d3);
 		camera_303.set_descrizioneCamera(d3);
 		
-		/*
-		// Mappa delle camere
-		ArrayList<MCamera> camere = new ArrayList<MCamera>();
-		camere.add(camera_101);
-		camere.add(camera_102);
-		camere.add(camera_103);
-		camere.add(camera_201);
-		camere.add(camera_202);
-		camere.add(camera_203);
-		camere.add(camera_301);
-		camere.add(camera_302);
-		camere.add(camera_303);
-		*/
-		
-		/*
-		// Creo Albergo e gli associo tutte le informazioni.
-		MAlbergo albergo = new MAlbergo();
-		albergo.set_eMail("info@hotelmAraviglioso.com");
-		albergo.set_nome("Hotel mAraviglioso");
-		albergo.set_PIVA("123456789ABCDEF");
-		albergo.set_telefono("0746123456");
-		albergo.set_camere(camere);
-		albergo.set_catalogoCamere(catalogoCamere);
-		ArrayList<MPrenotazione> prenotazioni = new ArrayList<MPrenotazione>();
-		albergo.set_prenotazioni(prenotazioni);
-		*/
-		
-		
+		// Creo un ospite
 		MOspite ospite1=new MOspite();
 		ospite1.set_cognome("Tizio");
 		ospite1.set_nome("Caio");
 		ospite1.set_eMail("asdas@sdas.it");
 		ospite1.set_telefono("092384384320");
 		
+		// Creo il periodo per la prenotazione
 		MPeriodo periodoPrenotazione = new MPeriodo();
-		periodoPrenotazione.set_giornoInizio(1);
+		periodoPrenotazione.set_giornoInizio(2);
 		periodoPrenotazione.set_meseInizio(2);
 		periodoPrenotazione.set_annoInizio(2014);
-		periodoPrenotazione.set_giornoFine(4);
+		periodoPrenotazione.set_giornoFine(12);
 		periodoPrenotazione.set_meseFine(2);
 		periodoPrenotazione.set_annoFine(2014);
 		
+		// Creo la prenotazione
 		MPrenotazione prenotazione=new MPrenotazione();
 		prenotazione.set_periodo(periodoPrenotazione);
 		prenotazione.set_ospite(ospite1);
 		prenotazione.addElementoPrenotazione(camera_101);
 		prenotazione.set_codice("123");
-		//prenotazione.set_completata(false);
-		double totale=prenotazione.getTotal();
+		prenotazione.getTotal();
 	}
 
 }

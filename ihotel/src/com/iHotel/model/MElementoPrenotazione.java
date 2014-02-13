@@ -2,19 +2,19 @@ package com.iHotel.model;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Currency;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 /**
  * @author Eugenio
  */
 public class MElementoPrenotazione {
 
+	/* -------------------------------------- Attributi ---------------------- */
 	private MCamera _camera;
 	
+	/* ----------------------------------- Metodi di instanza -------------------------- */
 	/**
 	 * Metodo per ottere il subTotale di una prenotazione dovuto ad un unico elemento.
 	 * @param 	periodo	Periodo della prenotazione
@@ -28,8 +28,11 @@ public class MElementoPrenotazione {
 		// Data di fine della richiesta.
 		GregorianCalendar dataFine= new GregorianCalendar();
 		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
+		
 		// Tipologia della camera.
 		String tipologia=_camera.get_tipologia();
+		System.out.println(_camera);
+		
 		// Ricavo l'instanza della classe MCatalogoCamere attraverso il pattern Singleton.
 		MCatalogoCamere catalogo = MCatalogoCamere.getInstance();
 		// Ricavo l'insieme dei prezzi della tipologia della camera in un certo periodo.
@@ -45,7 +48,6 @@ public class MElementoPrenotazione {
 		
 			// Calcolo il prezzo della camera in un giorno attraverso il metodo privato di MElementoPrenotazione
 			totaleCameraGiorno=calcolaPrezzoGiorno(prezziTipologia.get(tipologia),dataInizio);
-			System.out.println(totaleCameraGiorno);
 			// Sommo il totale della camera nel giorno al totale della camera per il periodo.
 			totaleCameraPeriodo+=totaleCameraGiorno;
 			// Incremento il giorno di uno.
@@ -57,9 +59,9 @@ public class MElementoPrenotazione {
 	}
 	/**
 	 * Metodo per calcolare il prezzo in un giorno relativo ad una camera.
-	 * @param 	prezziCamera	
-	 * @param 	data  			Giorno in cui bisogna calcolare il prezzo della camera
-	 * @return 					Prezzo della camera in un giorno
+	 * @param prezziCamera Insieme dei prezzi della camera.	
+	 * @param data Giorno in cui bisogna calcolare il prezzo della camera
+	 * @return Prezzo della camera in un giorno.
 	 */
 	private double calcolaPrezzoGiorno(ArrayList<MPrezzoCamera> prezziCamera, GregorianCalendar data){
 		
@@ -75,6 +77,7 @@ public class MElementoPrenotazione {
 		double prezzoGiorno=0;
 		
 		MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
+		// Ciclo su tutti gli MPrezzoCamera che ho a disposizione
 		for (Iterator<MPrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
 			MPrezzoCamera prezzoCamera = (MPrezzoCamera) iterator.next();
 			if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
@@ -96,7 +99,7 @@ public class MElementoPrenotazione {
 			return true;
 		}else return false;
 	}
-
+	/* ---------------------------------- Getter, Setter -------------------------------- */
 	/**
 	 * @return  _camera
 	 * Metodo che restituisce la camera di un  ElementoPrenotazione
