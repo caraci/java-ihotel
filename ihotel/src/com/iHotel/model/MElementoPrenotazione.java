@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class MElementoPrenotazione {
 
-	/* -------------------------------------- Attributi ---------------------- */
+	/* -------------------------------------- Attributi ------------------------------- */
 	private MCamera _camera;
 	
 	/* ----------------------------------- Metodi di instanza -------------------------- */
@@ -24,15 +24,14 @@ public class MElementoPrenotazione {
 		
 		// Data di inizio della richiesta.
 		GregorianCalendar dataInizio = new GregorianCalendar();
-		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
+		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio(),18,0,0);
 		// Data di fine della richiesta.
 		GregorianCalendar dataFine= new GregorianCalendar();
-		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
+		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),10,0,0);
 		
 		// Tipologia della camera.
 		String tipologia=_camera.get_tipologia();
-		System.out.println(_camera);
-		
+	
 		// Ricavo l'instanza della classe MCatalogoCamere attraverso il pattern Singleton.
 		MCatalogoCamere catalogo = MCatalogoCamere.getInstance();
 		// Ricavo l'insieme dei prezzi della tipologia della camera in un certo periodo.
@@ -53,7 +52,7 @@ public class MElementoPrenotazione {
 			// Incremento il giorno di uno.
 			dataInizio.add(Calendar.DAY_OF_MONTH,1);
 		}
-		
+		System.out.println(totaleCameraPeriodo);
 		return totaleCameraPeriodo;
 		
 	}

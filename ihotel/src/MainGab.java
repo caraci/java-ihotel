@@ -1,5 +1,6 @@
 
 import com.iHotel.model.*;
+
 import java.util.*;
 
 public class MainGab{
@@ -425,6 +426,7 @@ public class MainGab{
 		prenotazione.set_periodo(periodoPrenotazione);
 		prenotazione.set_ospite(ospite1);
 		prenotazione.addElementoPrenotazione(camera_101);
+		prenotazione.addElementoPrenotazione(camera_302);
 		prenotazione.set_codice("123");
 		prenotazione.getTotal();
 	}

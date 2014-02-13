@@ -25,7 +25,7 @@ public class MPrenotazione {
 			// Su ogni elemento prenotazione andiamo a chiedere il subTotale e lo sommiamo al totale.
 			total += elementoPrenotazione.getSubTotal(_periodo);
 		}
-		System.out.println(total);
+		System.out.println("Totale prenotazione: " + total);
 		return total;				
 	}
 	
