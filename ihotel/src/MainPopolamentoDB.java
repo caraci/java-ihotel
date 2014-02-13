@@ -139,15 +139,15 @@ public class MainPopolamentoDB{
 				// Inizio
 				periodo_5.set_oraInizio(oraInizio);
 				periodo_5.set_minutoInizio(minutoInizio);
-				periodo_5.set_giornoInizio(giornoInizio_4);
-				periodo_5.set_meseInizio(meseInizio_4);
-				periodo_5.set_annoInizio(annoInizio_4);
+				periodo_5.set_giornoInizio(giornoInizio_5);
+				periodo_5.set_meseInizio(meseInizio_5);
+				periodo_5.set_annoInizio(annoInizio_5);
 				// Fine
 				periodo_5.set_oraFine(oraFine);
 				periodo_5.set_minutoFine(minutoFine);
-				periodo_5.set_giornoFine(giornoFine_4);
-				periodo_5.set_meseFine(meseFine_4);
-				periodo_5.set_annoFine(annoFine_4);
+				periodo_5.set_giornoFine(giornoFine_5);
+				periodo_5.set_meseFine(meseFine_5);
+				periodo_5.set_annoFine(annoFine_5);
 				
 		//fine periodi
 		

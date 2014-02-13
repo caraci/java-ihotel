@@ -1,5 +1,6 @@
 package com.iHotel.model;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class MPeriodo {
@@ -30,13 +31,13 @@ public class MPeriodo {
 		// Periodo richiesta
 		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
 		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
-		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio(), periodoRichiesta.get_oraInizio(), periodoRichiesta.get_minutoInizio());
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_minutoFine());
+		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio(), periodoRichiesta.get_oraInizio(), periodoRichiesta.get_minutoInizio(),1);
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine(), periodoRichiesta.get_oraFine(), periodoRichiesta.get_minutoFine(),0);
 		// Periodo dell'instanza
 		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
 		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio, _minutoInizio);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine, _minutoFine);
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio, _minutoInizio,0);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine, _minutoFine,59);
 		// Controllo se il periodoRichiesta è contenuto in periodo.
 		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)<=0 && dataFinePeriodo.compareTo(dataFineRichiesta) >=0) {
 			esito = true;
@@ -56,7 +57,7 @@ public class MPeriodo {
 		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
 		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
 		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio(), periodoRichiesta.get_oraInizio(), periodoRichiesta.get_minutoInizio());
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_minutoFine());
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine(), periodoRichiesta.get_oraFine(), periodoRichiesta.get_minutoFine());
 		// Periodo dell'instanza
 		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
 		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
@@ -70,6 +71,75 @@ public class MPeriodo {
 		}
 		return esito;
 	}
+	/**
+	 * Metodo per verificare che il periodo dell'instanza segue quello del periodo passato come parametro.
+	 * @param periodoRichiesta Periodo da analizzare.
+	 * @return True se il periodo dell'instanza precede quello passato per parametro. False altrimenti.
+	 */
+	public boolean segue (MPeriodo periodoRichiesta) {
+		boolean esito;
+		// Periodo richiesta
+		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
+		// Periodo dell'instanza
+		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		// Controllo se il periodo della instanza segue quello della richiesta.
+		if (
+		   dataInizioPeriodo.get(Calendar.DATE) == dataFineRichiesta.get(Calendar.DATE) &&
+		   dataInizioPeriodo.get(Calendar.MONTH) == dataFineRichiesta.get(Calendar.MONTH) &&
+		   dataInizioPeriodo.get(Calendar.YEAR) == dataFineRichiesta.get(Calendar.YEAR)
+		   ) {
+			esito = true;
+		} else {
+			esito = false;
+		}
+		return esito;
+	}
+	/**
+	 * Metodo per verificare che il periodo dell'instanza anticipa quello del periodo passato come parametro.
+	 * @param periodoRichiesta Periodo da analizzare.
+	 * @return True se il periodo dell'instanza anticipa quello passato per parametro. False altrimenti.
+	 */
+	public boolean anticipa (MPeriodo periodoRichiesta) {
+		boolean esito;
+		// Periodo richiesta
+		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
+		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
+		// Periodo dell'instanza
+		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		// Controllo se il periodo della instanza segue quello della richiesta.
+		if (
+		   dataInizioRichiesta.get(Calendar.DATE) == dataFinePeriodo.get(Calendar.DATE) &&
+		   dataInizioRichiesta.get(Calendar.MONTH) == dataFinePeriodo.get(Calendar.MONTH) &&
+		   dataInizioRichiesta.get(Calendar.YEAR) == dataFinePeriodo.get(Calendar.YEAR)
+		   ) {
+			esito = true;
+		} else {
+			esito = false;
+		}
+		return esito;
+	}
+	/**
+	 * Metodo per verificare che il periodo dell'instanza è esattamente compreso tra due periodi. 
+	 * Per esattamente si intende che non sono presenti "buchi" tra il periodo precedente e quello antecedente.
+	 * @param periodoPrecedente Periodo che precede quello dell'instanza.
+	 * @param periodoSuccessivo Periodo che antecede quello dell'instanza.
+	 * @return True se il periodo dell'instanza è esattamente contenuto. False altrimenti.
+	 */
+	public boolean contenutoTraPeriodi (MPeriodo periodoPrecedente, MPeriodo periodoSuccessivo) {
+		boolean esito;
+		// Controllo se il periodo è esattamente contenuto tra due periodi
+		if(this.segue(periodoPrecedente) && this.anticipa(periodoSuccessivo)) {
+			esito = true;
+		} else {
+			esito = false;
+		}
+		return esito;
+	}
+	
+	
 	
 	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**
