@@ -15,7 +15,12 @@ public class MPeriodo {
 	
 	
 	/* --------------------- Metodi di instanza ----------------------------------------- */
-	
+	/**
+	 * Metodo per verificare che il periodo passato come paramentro è contenuto all'interno del periodo relativo all'oggetto
+	 * sul quale si sta invocando il metodo.
+	 * @param periodoRichiesta Periodo da confrontare
+	 * @return True se il periodo è contenuto. False altrimenti.
+	 */
 	public boolean contiene (MPeriodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
@@ -29,6 +34,30 @@ public class MPeriodo {
 		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
 		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)<=0 && dataFinePeriodo.compareTo(dataFineRichiesta) >=0) {
+			esito = true;
+		} else {
+			esito = false;
+		}
+		return esito;
+	}
+	/**
+	 * Metodo per verificare che il periodo passato come parametro si sovrappone con quello passato come parametro 
+	 * @param periodoRichiesta Periodo da confrontare
+	 * @return True se il periodo si sovrappone. False altrimenti.
+	 */
+	public boolean sovrappone (MPeriodo periodoRichiesta) {
+		boolean esito;
+		// Periodo richiesta
+		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
+		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
+		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
+		// Periodo dell'instanza
+		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
+		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		if(dataInizioPeriodo.compareTo(dataFineRichiesta)<=0 && dataFinePeriodo.compareTo(dataInizioRichiesta) >=0) {
 			esito = true;
 		} else {
 			esito = false;
