@@ -49,27 +49,14 @@ public class MStatoCamera {
 	} 
 	
 	
-	/**
+	/** Metodo che restituisce lo stato camera se il periodo su cui è definito lo stato contiene il periodo 
+	 * che riguarda la prenotazione
 	 * @param periodo
-	 * @return 
+	 * @return this
 	 * */
 	public MStatoCamera getStatoContenente(MPeriodo periodo){
-		
-		// Data di inizio del periodo contenuto
-		GregorianCalendar dataInizioPeriodoContenuto= new GregorianCalendar();
-		dataInizioPeriodoContenuto.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
-		// Data di fine del periodo contenuto
-		GregorianCalendar dataFinePeriodoContenuto= new GregorianCalendar();
-		dataFinePeriodoContenuto.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
-		
-		// Data di inizio dello MStatoCamera
-		GregorianCalendar dataInizio = new GregorianCalendar();
-		dataInizio.set(_periodo.get_annoInizio(), _periodo.get_meseInizio(), _periodo.get_giornoInizio());
-		// Data di fine dello MStatoCamera
-		GregorianCalendar dataFine= new GregorianCalendar();
-		dataFine.set(_periodo.get_annoFine(), _periodo.get_meseFine(), _periodo.get_giornoFine());
-		
-		if(dataInizio.compareTo(dataInizioPeriodoContenuto)!=1 && dataFine.compareTo(dataFinePeriodoContenuto)!=-1){
+			
+		if(this.get_periodo().contiene(periodo)==true){
 			return this;
 		}
 		else return null;
