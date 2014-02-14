@@ -77,7 +77,7 @@ public class MainTestDivisionePeriodiFrog {
 				int giornoInizio_4 = 15;
 				int meseInizio_4 = 1;
 				int annoInizio_4 = 2014;
-				int giornoFine_4 = 28;
+				int giornoFine_4 = 16;
 				int meseFine_4 = 1;
 				int annoFine_4 = 2014;
 				periodo_4.set_minutoInizio(minutoInizio);

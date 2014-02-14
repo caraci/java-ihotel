@@ -88,6 +88,7 @@ public class MCamera {
 				periodoResiduo.setDataInizioDaPeriodo(periodo, "ultimo");
 				periodoResiduo.setDataFineDaPeriodo(statoContenente.get_periodo(),"ultimo");
 				this.get_statiCamera().get(indiceLista).set_periodo(periodoResiduo);
+				this.get_statiCamera().get(indiceLista).set_libera(true);
 			}
 			else if (periodoSuccessivo.segue(periodo)){
 				System.out.print("bella 2");
@@ -102,6 +103,31 @@ public class MCamera {
 				periodoAntecedente.setDataInizioDaPeriodo(periodoPrecedente, "primo");
 				periodoAntecedente.setDataFineDaPeriodo(periodo, "primo");
 				this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
+				this.get_statiCamera().get(indiceLista).set_libera(true);
+			}
+			else{
+				
+				MPeriodo periodoResiduo = new MPeriodo();
+				periodoResiduo.setDataFineDaPeriodo(statoContenente.get_periodo(), "ultimo");
+				periodoResiduo.setDataInizioDaPeriodo(periodo, "ultimo");
+				
+				MPeriodo periodoAntecedente = new MPeriodo();
+				periodoAntecedente.setDataInizioDaPeriodo(statoContenente.get_periodo(), "primo");
+				periodoAntecedente.setDataFineDaPeriodo(periodo, "primo");
+				
+				this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
+				this.get_statiCamera().get(indiceLista).set_libera(true);
+				
+				MStatoCamera nuovoStatoOccupato= new MStatoCamera();
+				nuovoStatoOccupato.set_periodo(periodo);
+				nuovoStatoOccupato.set_libera(false);
+				this._statiCamera.add(indiceLista+1, nuovoStatoOccupato);
+				
+				MStatoCamera statoResiduo = new MStatoCamera();
+				statoResiduo.set_periodo(periodoResiduo);
+				statoResiduo.set_libera(true);
+				this._statiCamera.add(indiceLista+2,statoResiduo);
+				
 			}
 		}
 		
