@@ -138,7 +138,37 @@ public class MPeriodo {
 		}
 		return esito;
 	}
-	
+	public void setDataInizioDaPeriodo(MPeriodo periodo, String giorno){
+		if (giorno.equals("primo")){
+		this.set_minutoInizio(periodo.get_minutoInizio());
+		this.set_oraInizio(periodo.get_oraInizio());
+		this.set_giornoInizio(periodo.get_giornoInizio());
+		this.set_meseInizio(periodo.get_meseInizio());
+		this.set_annoInizio(periodo.get_annoInizio());}
+		else{
+			this.set_minutoInizio(0);
+			this.set_oraInizio(16);
+			this.set_giornoInizio(periodo.get_giornoFine());
+			this.set_meseInizio(periodo.get_meseFine());
+			this.set_annoInizio(periodo.get_annoFine());
+			
+		}
+	}
+	public void setDataFineDaPeriodo(MPeriodo periodo,String giorno){
+		if (giorno.equals("ultimo")){
+		this.set_minutoFine(periodo.get_minutoFine());
+		this.set_oraFine(periodo.get_oraFine());
+		this.set_giornoFine(periodo.get_giornoFine());
+		this.set_meseFine(periodo.get_meseFine());
+		this.set_annoFine(periodo.get_annoFine());}
+		else{
+			this.set_minutoFine(0);
+			this.set_oraFine(10);
+			this.set_giornoFine(periodo.get_giornoInizio());
+			this.set_meseFine(periodo.get_meseInizio());
+			this.set_annoFine(periodo.get_annoInizio());
+		}
+	}
 	
 	
 	/* ------------------------- Getter, Setter ------------------------------------- */

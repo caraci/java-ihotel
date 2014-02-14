@@ -9,7 +9,10 @@ import com.iHotel.model.*;
 public class MainTestDivisionePeriodiFrog {
 
 	public static void main(String[] args) {
-
+				int oraInizio = 16;
+				int oraFine = 10;
+				int minutoInizio = 0;
+				int minutoFine = 0;
 		// periodo_1 - 1 Gennaio 2014 - 00:00.00 - 31 Gennaio 2014 - 23.59.59
 				MPeriodo periodo_1 = new MPeriodo();
 				int giornoInizio_1 = 1;
@@ -18,9 +21,13 @@ public class MainTestDivisionePeriodiFrog {
 				int giornoFine_1 = 31;
 				int meseFine_1 = 0;
 				int annoFine_1 = 2014;
+				periodo_1.set_minutoInizio(minutoInizio);
+				periodo_1.set_oraInizio(oraInizio);
 				periodo_1.set_giornoInizio(giornoInizio_1);
 				periodo_1.set_meseInizio(meseInizio_1);
 				periodo_1.set_annoInizio(annoInizio_1);
+				periodo_1.set_minutoFine(minutoFine);
+				periodo_1.set_oraFine(oraFine);
 				periodo_1.set_giornoFine(giornoFine_1);
 				periodo_1.set_meseFine(meseFine_1);
 				periodo_1.set_annoFine(annoFine_1);
@@ -28,15 +35,19 @@ public class MainTestDivisionePeriodiFrog {
 				
 			// periodo_2 - 1 Febbraio 2014 - 00:00.00 - 28 Febbraio 2014 - 23:59.59				
 				MPeriodo periodo_2 = new MPeriodo();
-				int giornoInizio_2 = 1;
-				int meseInizio_2 = 1;
+				int giornoInizio_2 = 31;
+				int meseInizio_2 = 0;
 				int annoInizio_2 = 2014;
 				int giornoFine_2 = 28;
 				int meseFine_2 = 1;
 				int annoFine_2 = 2014;
+				periodo_2.set_minutoInizio(minutoInizio);
+				periodo_2.set_oraInizio(oraInizio);
 				periodo_2.set_giornoInizio(giornoInizio_2);
 				periodo_2.set_meseInizio(meseInizio_2);
 				periodo_2.set_annoInizio(annoInizio_2);
+				periodo_2.set_minutoFine(minutoFine);
+				periodo_2.set_oraFine(oraFine);
 				periodo_2.set_giornoFine(giornoFine_2);
 				periodo_2.set_meseFine(meseFine_2);
 				periodo_2.set_annoFine(annoFine_2);
@@ -44,30 +55,38 @@ public class MainTestDivisionePeriodiFrog {
 				
 			// periodo_3 - 1 Marzo 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
 				MPeriodo periodo_3 = new MPeriodo();
-				int giornoInizio_3 = 1;
-				int meseInizio_3 = 2;
+				int giornoInizio_3 = 28;
+				int meseInizio_3 = 1;
 				int annoInizio_3 = 2014;
 				int giornoFine_3 = 31;
 				int meseFine_3 = 2;
 				int annoFine_3 = 2014;
+				periodo_3.set_minutoInizio(minutoInizio);
+				periodo_3.set_oraInizio(oraInizio);
 				periodo_3.set_giornoInizio(giornoInizio_3);
 				periodo_3.set_meseInizio(meseInizio_3);
 				periodo_3.set_annoInizio(annoInizio_3);
+				periodo_3.set_minutoInizio(minutoFine);
+				periodo_3.set_oraInizio(oraFine);
 				periodo_3.set_giornoFine(giornoFine_3);
 				periodo_3.set_meseFine(meseFine_3);
 				periodo_3.set_annoFine(annoFine_3);
 				
 				// periodo_4 - 1 Marzo 2014 - 00:00.00 - 31 Marzo 2014 - 23:59.59
 				MPeriodo periodo_4 = new MPeriodo();
-				int giornoInizio_4 = 1;
-				int meseInizio_4 = 0;
+				int giornoInizio_4 = 15;
+				int meseInizio_4 = 1;
 				int annoInizio_4 = 2014;
-				int giornoFine_4 = 5;
-				int meseFine_4 = 0;
+				int giornoFine_4 = 28;
+				int meseFine_4 = 1;
 				int annoFine_4 = 2014;
+				periodo_4.set_minutoInizio(minutoInizio);
+				periodo_4.set_oraInizio(oraInizio);
 				periodo_4.set_giornoInizio(giornoInizio_4);
 				periodo_4.set_meseInizio(meseInizio_4);
 				periodo_4.set_annoInizio(annoInizio_4);
+				periodo_4.set_minutoFine(minutoFine);
+				periodo_4.set_oraFine(oraFine);
 				periodo_4.set_giornoFine(giornoFine_4);
 				periodo_4.set_meseFine(meseFine_4);
 				periodo_4.set_annoFine(annoFine_4);
@@ -148,7 +167,7 @@ public class MainTestDivisionePeriodiFrog {
 				// StatoCamera_101_Periodo_1
 				MStatoCamera statoCamera_101_Periodo1 = new MStatoCamera();
 				statoCamera_101_Periodo1.set_periodo(periodo_1);
-				statoCamera_101_Periodo1.set_libera(true);
+				statoCamera_101_Periodo1.set_libera(false);
 				// StatoCamera_102_Periodo_1
 				MStatoCamera statoCamera_102_Periodo1 = new MStatoCamera();
 				statoCamera_102_Periodo1.set_periodo(periodo_1);
@@ -235,7 +254,7 @@ public class MainTestDivisionePeriodiFrog {
 				// StatoCamera_101_Periodo_3
 				MStatoCamera statoCamera_101_Periodo3 = new MStatoCamera();
 				statoCamera_101_Periodo3.set_periodo(periodo_3);
-				statoCamera_101_Periodo3.set_libera(true);
+				statoCamera_101_Periodo3.set_libera(false);
 				// StatoCamera_102_Periodo_3
 				MStatoCamera statoCamera_102_Periodo3 = new MStatoCamera();
 				statoCamera_102_Periodo3.set_periodo(periodo_3);

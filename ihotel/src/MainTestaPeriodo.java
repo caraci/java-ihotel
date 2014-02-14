@@ -119,7 +119,7 @@ public class MainTestaPeriodo {
 		periodo_5.set_annoFine(annoFine_5);
 		
 //fine periodi
-		//System.out.println(periodo_2.contenutoTraPeriodi(periodo_1, periodo_5));
+		System.out.println(periodo_2.contenutoTraPeriodi(periodo_1, periodo_5));
 	}
 
 }
