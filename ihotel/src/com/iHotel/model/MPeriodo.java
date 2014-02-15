@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 public class MPeriodo {
 
-	/* ----------------------------------------- Attributi ------------------------------------- */
+	/* ----------------------------------------- Attributi e costruttore ------------------------------------- */
 	private int _giornoInizio;
 	private int _meseInizio;
 	private int _annoInizio;
@@ -18,7 +18,7 @@ public class MPeriodo {
 	private int _oraFine = 10;
 	private int _minutoFine =0;
 	
-	
+	public MPeriodo() {}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro è contenuto all'interno del periodo relativo all'oggetto
@@ -210,6 +210,24 @@ public class MPeriodo {
 			return true;
 		}
 		return false;
+	}
+	/**
+	 * Metodo per settare la data di inizio del periodo da una data.
+	 * @param data Data attraverso la quale si setta l'inizio del periodo.
+	 */
+	public void setDataInizioDaData (GregorianCalendar data) {
+		this.set_giornoInizio(data.get(Calendar.DATE));
+		this.set_meseInizio(data.get(Calendar.MONTH));
+		this.set_annoInizio(data.get(Calendar.YEAR));
+	}
+	/**
+	 * Metodo per settare la data di fine del periodo da una data.
+	 * @param data Data attraverso la quale si setta la fine del periodo.
+	 */
+	public void setDataFineDaData(GregorianCalendar data) {
+		this.set_giornoFine(data.get(Calendar.DATE));
+		this.set_meseFine(data.get(Calendar.MONTH));
+		this.set_annoFine(data.get(Calendar.YEAR));
 	}
 	
 	

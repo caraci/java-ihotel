@@ -61,20 +61,11 @@ public class CGestisciPrenotazione {
 		/* Setto il periodo ricevuto dall'interfaccia */
 		MPeriodo periodo = new MPeriodo();
 		/* Setto la data di inizio */
-		periodo.set_minutoInizio(dataInizio.get(Calendar.MINUTE));
-		periodo.set_oraInizio(dataInizio.get(Calendar.HOUR_OF_DAY));
-		periodo.set_giornoInizio(dataInizio.get(Calendar.DATE));
-		periodo.set_meseInizio(dataInizio.get(Calendar.MONTH));
-		periodo.set_annoInizio(dataInizio.get(Calendar.YEAR));
+		periodo.setDataInizioDaData(dataInizio);
 		/* Setto la data di fine*/
-		periodo.set_minutoFine(dataFine.get(Calendar.MINUTE));
-		periodo.set_oraFine(dataFine.get(Calendar.HOUR_OF_DAY));
-		periodo.set_giornoFine(dataFine.get(Calendar.DATE));
-		periodo.set_meseFine(dataFine.get(Calendar.MONTH));
-		periodo.set_annoFine(dataFine.get(Calendar.YEAR));	
+		periodo.setDataFineDaData(dataFine);
 		/* Setto il periodo alla prenotazione */
 		_prenotazione.set_periodo(periodo);
-	
 		// Struttura dati nella quale andremo a salvare le informazioni relative alle camere libere.
 		ArrayList<ArrayList<String>> camereLibereString = new ArrayList<ArrayList<String>>();
 		

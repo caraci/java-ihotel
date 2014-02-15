@@ -200,10 +200,10 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 				
 				// Data inizio
 				GregorianCalendar dataInizio = new GregorianCalendar();
-				dataInizio.set(annoInizio, meseInizio, giornoInizio, 16, 0);
+				dataInizio.set(annoInizio, meseInizio, giornoInizio);
 				// Data fine
 				GregorianCalendar dataFine = new GregorianCalendar();
-				dataFine.set(annoFine, meseFine, giornoFine, 10, 0);
+				dataFine.set(annoFine, meseFine, giornoFine);
 				
 				// Recupero il controllore e invoco il metodo per cercare le camere libere.
 				CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
