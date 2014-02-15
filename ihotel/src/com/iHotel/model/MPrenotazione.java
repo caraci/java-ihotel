@@ -4,12 +4,13 @@ import java.util.*;
 
 public class MPrenotazione {
 
-	/* ---------------------- Atrributi --------------------------------*/
+	/* ---------------------- Atrributi e costruttore --------------------------------*/
 	private ArrayList<MElementoPrenotazione> _elementiPrenotazione = new ArrayList<MElementoPrenotazione>();
 	private MOspite _ospite;
 	private MPeriodo _periodo;
 	private boolean _completata;
 	
+	public MPrenotazione() {}
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
 	/**
 	 * Metodo per ottenere il totale di una prenotazione

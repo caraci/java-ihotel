@@ -30,7 +30,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     private JPanel panelBottomLeft, panelBottomRight;
     private JButton btnAvanti;
     /* JDatePanel */
-    JDatePanel datePanelFine, datePanelInizio;
+    private JDatePanel datePanelFine, datePanelInizio;
     /* CheckBoxes */
     private JCheckBox[] checkBoxesTipologie;
     
