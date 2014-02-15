@@ -46,11 +46,11 @@ public class MPrenotazione {
 	 * @param telefono
 	 */
 	public void addOspite(String nome, String cognome, String eMail, String telefono){
-		MOspite ospite = new MOspite();
-		ospite.set_nome(nome);
-		ospite.set_cognome(cognome);
-		ospite.set_eMail(eMail);
-		ospite.set_telefono(telefono);
+		_ospite = new MOspite();
+		_ospite.set_nome(nome);
+		_ospite.set_cognome(cognome);
+		_ospite.set_eMail(eMail);
+		_ospite.set_telefono(telefono);
 	}
 	/**
 	 * Metodo per occupare le camere della prenotazione.

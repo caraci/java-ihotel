@@ -8,7 +8,7 @@ public class MAlbergo {
 	// Attributi
 	private MCatalogoCamere _catalogoCamere;
 	private ArrayList<MCamera> _camere;
-	private ArrayList<MPrenotazione> _prenotazioni;
+	private ArrayList<MPrenotazione> _prenotazioni = new ArrayList<MPrenotazione>();
 	private String _nome = "Hotel MAraviglioso";
 	private String _telefono = "123123123";
 	private String _PIVA = "123456789ABCDEF";
