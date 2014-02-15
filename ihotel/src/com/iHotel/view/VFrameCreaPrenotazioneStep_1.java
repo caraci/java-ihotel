@@ -30,14 +30,14 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     private JPanel panelBottomLeft, panelBottomRight;
     private JButton btnAvanti;
     /* JDatePanel */
-    JDatePanel datePanelFine, datePanelInizio;
+    private JDatePanel datePanelFine, datePanelInizio;
     /* CheckBoxes */
     private JCheckBox[] checkBoxesTipologie;
     
-
-	/**
-	 * Launch the application.
-	 */
+    /*
+     	*
+     	* Launch the application.
+     	*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,9 +53,11 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 			}
 		});
 	}
-	private VFrameCreaPrenotazioneStep_1() {
-    	// Private constructor prevents instantiation from other classes
-    }
+	*/
+    /**
+     * Costruttore privato - pattern Singleton
+     */
+	private VFrameCreaPrenotazioneStep_1() {}
 	/**
 	 * 
 	 * @return CGestisciPrenotazione
