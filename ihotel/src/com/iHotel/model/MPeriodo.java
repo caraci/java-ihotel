@@ -9,14 +9,14 @@ public class MPeriodo {
 	private int _giornoInizio;
 	private int _meseInizio;
 	private int _annoInizio;
-	private int _oraInizio;
-	private int _minutoInizio;
+	private int _oraInizio = 16;
+	private int _minutoInizio= 0;
 	
 	private int _giornoFine;
 	private int _meseFine;
 	private int _annoFine;
-	private int _oraFine;
-	private int _minutoFine;
+	private int _oraFine = 10;
+	private int _minutoFine =0;
 	
 	
 	/* --------------------- Metodi di instanza ----------------------------------------- */
@@ -138,36 +138,57 @@ public class MPeriodo {
 		}
 		return esito;
 	}
-	public void setDataInizioDaPeriodo(MPeriodo periodo, String giorno){
-		if (giorno.equals("primo")){
+	/**
+	 * Metodo che setta la data inizio dell'istanza su cui è invocato, alla data di inizio del periodo
+	 * passato come parametro
+	 * @param periodo
+	 */
+	public void setDataInizioPeriodoDaDataInizioPeriodo(MPeriodo periodo){
 		this.set_minutoInizio(periodo.get_minutoInizio());
 		this.set_oraInizio(periodo.get_oraInizio());
 		this.set_giornoInizio(periodo.get_giornoInizio());
 		this.set_meseInizio(periodo.get_meseInizio());
-		this.set_annoInizio(periodo.get_annoInizio());}
-		else{
-			this.set_minutoInizio(0);
-			this.set_oraInizio(16);
-			this.set_giornoInizio(periodo.get_giornoFine());
-			this.set_meseInizio(periodo.get_meseFine());
-			this.set_annoInizio(periodo.get_annoFine());
-			
-		}
+		this.set_annoInizio(periodo.get_annoInizio());
 	}
-	public void setDataFineDaPeriodo(MPeriodo periodo,String giorno){
-		if (giorno.equals("ultimo")){
+	/**
+	 * Metodo che setta la data di inizio dell'istanza su cui è invocato, alla data di fine del periodo
+	 * passato come parameto. Per ora e minuto si prendono i parametri di "default" _minutoInizio e _oraInizio,
+	 * altrimenti il periodo comincerebbe in un orario sbagliato
+	 * @param periodo
+	 */
+	public void setDataInizioPeriodoDaDataFinePeriodo(MPeriodo periodo){
+		this.set_minutoInizio(this.get_minutoInizio());
+		this.set_oraInizio(this.get_oraInizio());
+		this.set_giornoInizio(periodo.get_giornoFine());
+		this.set_meseInizio(periodo.get_meseFine());
+		this.set_annoInizio(periodo.get_annoFine());
+	}
+	/**
+	 * Metodo che setta la data di fine del periodo dell'istanza su cui è invocato, alla fine del periodo
+	 * passato come parametro.
+	 * @param periodo
+	 */
+	public void setDataFinePeriodoDaDataFinePeriodo(MPeriodo periodo){
+		
 		this.set_minutoFine(periodo.get_minutoFine());
 		this.set_oraFine(periodo.get_oraFine());
 		this.set_giornoFine(periodo.get_giornoFine());
 		this.set_meseFine(periodo.get_meseFine());
-		this.set_annoFine(periodo.get_annoFine());}
-		else{
-			this.set_minutoFine(0);
-			this.set_oraFine(10);
-			this.set_giornoFine(periodo.get_giornoInizio());
-			this.set_meseFine(periodo.get_meseInizio());
-			this.set_annoFine(periodo.get_annoInizio());
-		}
+		this.set_annoFine(periodo.get_annoFine());
+		
+	}	
+	/**
+	 * Metodo che setta la data di fine del periodo su cui è invocato, alla data di inizio del periodo
+	 * passato come parametro. Per ora e minuto si assegnano i valori di default presi da _oraFine, _minutoFine
+	 * altrimenti la data di fine sarebbe sbagliata.
+	 * @param periodo
+	 */
+	public void setDataFinePeriodoDaDataInizioPeriodo(MPeriodo periodo){
+		this.set_minutoFine(this.get_minutoFine());
+		this.set_oraFine(this.get_oraFine());
+		this.set_giornoFine(periodo.get_giornoInizio());
+		this.set_meseFine(periodo.get_meseInizio());
+		this.set_annoFine(periodo.get_annoInizio());
 	}
 	
 	

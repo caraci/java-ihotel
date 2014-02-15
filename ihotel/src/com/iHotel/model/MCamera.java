@@ -66,8 +66,8 @@ public class MCamera {
 				//creo nuovo periodo lungo
 				System.out.print("magico");
 				MPeriodo periodoOccupazioneAllungato = new MPeriodo();
-				periodoOccupazioneAllungato.setDataInizioDaPeriodo(periodoPrecedente,"primo");
-				periodoOccupazioneAllungato.setDataFineDaPeriodo(periodoSuccessivo,"ultimo");
+				periodoOccupazioneAllungato.setDataInizioPeriodoDaDataInizioPeriodo(periodoPrecedente);
+				periodoOccupazioneAllungato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
 				this.get_statiCamera().get(indiceLista -1).set_periodo(periodoOccupazioneAllungato);
 				this.get_statiCamera().get(indiceLista -1).set_libera(false);
 				this.get_statiCamera().remove(indiceLista+1);
@@ -77,43 +77,42 @@ public class MCamera {
 			else if (periodo.segue(periodoPrecedente)){
 				//allungo il periodo di occupazione
 				MPeriodo periodoOccupazioneAllungato = new MPeriodo();
-				periodoOccupazioneAllungato.setDataInizioDaPeriodo(periodoPrecedente,"primo");
-				periodoOccupazioneAllungato.setDataFineDaPeriodo(periodo,"ultimo");
+				periodoOccupazioneAllungato.setDataInizioPeriodoDaDataInizioPeriodo(periodoPrecedente);
+				periodoOccupazioneAllungato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				
 				this.get_statiCamera().get(indiceLista -1).set_periodo(periodoOccupazioneAllungato);
 				this.get_statiCamera().get(indiceLista -1).set_libera(false);
 				//riduco il periodo libero residuo
 				
 				MPeriodo periodoResiduo = new MPeriodo();
-				periodoResiduo.setDataInizioDaPeriodo(periodo, "ultimo");
-				periodoResiduo.setDataFineDaPeriodo(statoContenente.get_periodo(),"ultimo");
+				periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
+				periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 				this.get_statiCamera().get(indiceLista).set_periodo(periodoResiduo);
 				this.get_statiCamera().get(indiceLista).set_libera(true);
 			}
-			else if (periodoSuccessivo.segue(periodo)){
-				System.out.print("bella 2");
+			else if (periodo.anticipa(periodoSuccessivo)){
 				//allungo il periodo di occupazione
 				MPeriodo periodoOccupazioneAllungato = new MPeriodo();
-				periodoOccupazioneAllungato.setDataInizioDaPeriodo(periodo,"primo");
-				periodoOccupazioneAllungato.setDataFineDaPeriodo(periodoSuccessivo,"ultimo");
+				periodoOccupazioneAllungato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
+				periodoOccupazioneAllungato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
 				this.get_statiCamera().get(indiceLista +1 ).set_periodo(periodoOccupazioneAllungato);
 				this.get_statiCamera().get(indiceLista +1 ).set_libera(false);
 				
 				MPeriodo periodoAntecedente = new MPeriodo();
-				periodoAntecedente.setDataInizioDaPeriodo(periodoPrecedente, "primo");
-				periodoAntecedente.setDataFineDaPeriodo(periodo, "primo");
+				periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
+				periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
 				this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
 				this.get_statiCamera().get(indiceLista).set_libera(true);
 			}
 			else{
 				
 				MPeriodo periodoResiduo = new MPeriodo();
-				periodoResiduo.setDataFineDaPeriodo(statoContenente.get_periodo(), "ultimo");
-				periodoResiduo.setDataInizioDaPeriodo(periodo, "ultimo");
+				periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
+				periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
 				
 				MPeriodo periodoAntecedente = new MPeriodo();
-				periodoAntecedente.setDataInizioDaPeriodo(statoContenente.get_periodo(), "primo");
-				periodoAntecedente.setDataFineDaPeriodo(periodo, "primo");
+				periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
+				periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
 				
 				this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
 				this.get_statiCamera().get(indiceLista).set_libera(true);
@@ -130,69 +129,49 @@ public class MCamera {
 				
 			}
 		}
-		
-		//Metodo per calcolare i nuovi periodi
-		
-		
-		
-		/* magheggio per creare un nuovo periodo stato contenente che poi userò per memorizzare il periodo antecedente
-		 * alla prenotazione*/
-		//MPeriodo nuovoPeriodoStatoContenente = this.calcolaNuovoPeriodoStatoContenente(statoContenente.get_periodo());
-		
-		//Metodo  per calcolare il periodo antecedente
-		//che vado a mettere dentro al nuovo periodo stato contenente
-		//nuovoPeriodoStatoContenente = this.calcolaPeriodoAntecedente(nuovoPeriodoStatoContenente,periodo);		
-		// se il periodo antecedente ha una durata di 0 giorni, lo stato a cui esso è associato va tolto dalla lista.
-		
-		
-		
-		
-		/*
-		
-		if (nuovoPeriodoStatoContenente == null){
-			
-			MPeriodo periodoOccupatoPrecendente = new MPeriodo();
-			
-			periodoOccupatoPrecendente = calcolaNuovoPeriodoStatoContenente(this.get_statiCamera().get(indiceLista-1).get_periodo());
-			
-			
-			periodoOccupatoPrecendente.set_annoFine(statoOccupato.get_periodo().get_annoFine());
-			periodoOccupatoPrecendente.set_meseFine(statoOccupato.get_periodo().get_meseFine());
-			periodoOccupatoPrecendente.set_giornoFine(statoOccupato.get_periodo().get_giornoFine());
-			System.out.print("periodo occupato precedente"+ periodoOccupatoPrecendente.get_giornoInizio()+" "+ periodoOccupatoPrecendente.get_meseInizio()+" "+periodoOccupatoPrecendente.get_annoInizio()+" "+periodoOccupatoPrecendente.get_giornoFine()+" "+ periodoOccupatoPrecendente.get_meseFine()+" "+periodoOccupatoPrecendente.get_annoFine()+"\n");
-			this.get_statiCamera().get(indiceLista-1).set_periodo(periodoOccupatoPrecendente);
-			this.get_statiCamera().get(indiceLista-1).set_libera(false);
-			this.get_statiCamera().remove(indiceLista);
-			//this._statiCamera.get(indiceLista).set_libera(false);
-			//indiceLista = indiceLista -1;
-			MPeriodo periodoResiduo = this.calcolaPeriodoResiduo(statoContenente.get_periodo(),periodo);
-			//System.out.print("giorno inizio periodo residuo"+ periodoResiduo.get_giornoInizio());
-			//creo lo stato residuo e gli associo il periodo residuo
-			MStatoCamera statoResiduo = new MStatoCamera();
-			statoResiduo.set_periodo(periodoResiduo);
-			statoResiduo.set_libera(true);
-			
-			
-			this.get_statiCamera().add(indiceLista , statoResiduo);
-			
-		}		
-		else{
-			//associo lo stato contenente col nuovo periodo antecendente
-			statoContenente.set_periodo(nuovoPeriodoStatoContenente);
-			statoContenente.set_libera(true);
-			this.get_statiCamera().add(indiceLista + 1, statoOccupato);
-			MPeriodo periodoResiduo = this.calcolaPeriodoResiduo(statoContenente.get_periodo(),periodo);
-			
-			//creo lo stato residuo e gli associo il periodo residuo
-			MStatoCamera statoResiduo = new MStatoCamera();
-			statoResiduo.set_periodo(periodoResiduo);
-			System.out.print(statoResiduo.get_periodo().get_giornoInizio());
-			statoResiduo.set_libera(true);			
-			this.get_statiCamera().add(indiceLista +2 , statoResiduo);
+		else if(indiceLista ==0)
+		{
+			MPeriodo periodoSuccessivo = this.get_statiCamera().get(indiceLista +1).get_periodo();
+			 if (periodo.anticipa(periodoSuccessivo)){
+					//allungo il periodo di occupazione
+					MPeriodo periodoOccupazioneAllungato = new MPeriodo();
+					periodoOccupazioneAllungato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
+					periodoOccupazioneAllungato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
+					this.get_statiCamera().get(indiceLista +1 ).set_periodo(periodoOccupazioneAllungato);
+					this.get_statiCamera().get(indiceLista +1 ).set_libera(false);
+					
+					MPeriodo periodoAntecedente = new MPeriodo();
+					periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
+					periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
+					this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
+					this.get_statiCamera().get(indiceLista).set_libera(true);
+			}
+			 else{
+					
+					MPeriodo periodoResiduo = new MPeriodo();
+					periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
+					periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
+					
+					MPeriodo periodoAntecedente = new MPeriodo();
+					periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
+					periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
+					
+					this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
+					this.get_statiCamera().get(indiceLista).set_libera(true);
+					
+					MStatoCamera nuovoStatoOccupato= new MStatoCamera();
+					nuovoStatoOccupato.set_periodo(periodo);
+					nuovoStatoOccupato.set_libera(false);
+					this._statiCamera.add(indiceLista+1, nuovoStatoOccupato);
+					
+					MStatoCamera statoResiduo = new MStatoCamera();
+					statoResiduo.set_periodo(periodoResiduo);
+					statoResiduo.set_libera(true);
+					this._statiCamera.add(indiceLista+2,statoResiduo);
+					
+				}
 		}
 		
-		//Calcolo il periodo residuo 
-		*/
 		
 		return true;
 	}
