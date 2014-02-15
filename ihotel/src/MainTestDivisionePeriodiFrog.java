@@ -82,11 +82,11 @@ public class MainTestDivisionePeriodiFrog {
 		
 	// periodo_4 - 31 Gennaio 2014 - 16:00.00 - 31 Marzo 2014 - 10:00.00
 		MPeriodo periodo_4 = new MPeriodo();
-		int giornoInizio_4 = 31;
+		int giornoInizio_4 = 2;
 		int meseInizio_4 = 0;
 		int annoInizio_4 = 2014;
-		int giornoFine_4 = 31;
-		int meseFine_4 = 2;
+		int giornoFine_4 = 15;
+		int meseFine_4 = 0;
 		int annoFine_4 = 2014;
 		// Inizio
 		periodo_4.set_oraInizio(oraInizio);
@@ -226,7 +226,7 @@ public class MainTestDivisionePeriodiFrog {
 				// StatoCamera_101_Periodo_2
 				MStatoCamera statoCamera_101_Periodo2 = new MStatoCamera();
 				statoCamera_101_Periodo2.set_periodo(periodo_2);
-				statoCamera_101_Periodo2.set_libera(true);
+				statoCamera_101_Periodo2.set_libera(false);
 				// StatoCamera_102_Periodo_2
 				MStatoCamera statoCamera_102_Periodo2 = new MStatoCamera();
 				statoCamera_102_Periodo2.set_periodo(periodo_2);
@@ -486,6 +486,7 @@ public class MainTestDivisionePeriodiFrog {
 				prenotazione_camera.addElementoPrenotazione(camera_101);
 				prenotazione_camera.addElementoPrenotazione(camera_202);
 				prenotazione_camera.addElementoPrenotazione(camera_302);
+				prenotazione_camera.occupaCamere();
 				prenotazione_camera.set_completata(true); //da implementare, non è stato fatto
 				/*for (Iterator<MStatoCamera> iterator = camera_101.get_statiCamera().iterator(); iterator.hasNext();) {	
 					MStatoCamera stato = (MStatoCamera) iterator.next();

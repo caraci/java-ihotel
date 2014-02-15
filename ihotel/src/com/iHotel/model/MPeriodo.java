@@ -168,8 +168,7 @@ public class MPeriodo {
 	 * passato come parametro.
 	 * @param periodo
 	 */
-	public void setDataFinePeriodoDaDataFinePeriodo(MPeriodo periodo){
-		
+	public void setDataFinePeriodoDaDataFinePeriodo(MPeriodo periodo){		
 		this.set_minutoFine(periodo.get_minutoFine());
 		this.set_oraFine(periodo.get_oraFine());
 		this.set_giornoFine(periodo.get_giornoFine());
@@ -189,6 +188,28 @@ public class MPeriodo {
 		this.set_giornoFine(periodo.get_giornoInizio());
 		this.set_meseFine(periodo.get_meseInizio());
 		this.set_annoFine(periodo.get_annoInizio());
+	}
+	/**
+	 * Metodo che confronta il giorno di inizio dell'istanza su cui è invocato, con quello del periodo passato
+	 * come parametro.
+	 * @param periodo
+	 * @return true se i giorni di inizio sono uguali, false altrimenti.
+	 */
+	public boolean IniziaStessoGiornoInizioDi(MPeriodo periodo){
+		if (this.get_giornoInizio()==periodo.get_giornoInizio()&&
+				this.get_meseInizio()==periodo.get_meseInizio()&&
+				this.get_annoInizio()==periodo.get_annoInizio()){
+			return true;			
+		}
+		return false;
+	}
+	public boolean FinisceStessoGiornoFineDi(MPeriodo periodo){
+		if(this.get_giornoFine()==periodo.get_giornoFine()&&
+				this.get_meseFine()==periodo.get_meseFine()&&
+				this.get_annoFine()==periodo.get_annoFine()){
+			return true;
+		}
+		return false;
 	}
 	
 	

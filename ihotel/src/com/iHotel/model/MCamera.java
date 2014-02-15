@@ -55,9 +55,9 @@ public class MCamera {
 		}			
 		//qua si incasina un pò aniddoc
 		
-		
+		System.out.print(indiceLista);
 		if (indiceLista != 0){
-			
+			System.out.print("indicelista != 0");
 			MPeriodo periodoPrecedente = this.get_statiCamera().get(indiceLista -1).get_periodo();
 			MPeriodo periodoSuccessivo = this.get_statiCamera().get(indiceLista +1).get_periodo();
 			
@@ -129,26 +129,65 @@ public class MCamera {
 				
 			}
 		}
+		
 		else if(indiceLista ==0)
 		{
+			
 			MPeriodo periodoSuccessivo = this.get_statiCamera().get(indiceLista +1).get_periodo();
-			 if (periodo.anticipa(periodoSuccessivo)){
-					//allungo il periodo di occupazione
-					MPeriodo periodoOccupazioneAllungato = new MPeriodo();
-					periodoOccupazioneAllungato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
-					periodoOccupazioneAllungato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
-					this.get_statiCamera().get(indiceLista +1 ).set_periodo(periodoOccupazioneAllungato);
-					this.get_statiCamera().get(indiceLista +1 ).set_libera(false);
-					
+			
+			
+			if (periodo.IniziaStessoGiornoInizioDi(statoContenente.get_periodo())==true && periodo.FinisceStessoGiornoFineDi(statoContenente.get_periodo())==true){				
+				System.out.println("indice lista"+ indiceLista + "sono in 1 caso");
+					MPeriodo periodoOccupato = new MPeriodo();
+					periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
+					periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
+					MStatoCamera nuovoStatoOccupato= new MStatoCamera();
+					nuovoStatoOccupato.set_periodo(periodoOccupato);
+					nuovoStatoOccupato.set_libera(false);
+					this.get_statiCamera().remove(indiceLista+1);
+					this.get_statiCamera().set(indiceLista, nuovoStatoOccupato);
+			}
+			 else if(periodo.FinisceStessoGiornoFineDi(statoContenente.get_periodo())==true){		
+				 System.out.println("indice lista"+ indiceLista + "sono in 2 caso");
 					MPeriodo periodoAntecedente = new MPeriodo();
 					periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
 					periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
 					this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
 					this.get_statiCamera().get(indiceLista).set_libera(true);
-			}
-			 else{
 					
-					MPeriodo periodoResiduo = new MPeriodo();
+					
+					MPeriodo periodoOccupato = new MPeriodo();
+					periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
+					periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
+					MStatoCamera nuovoStatoOccupato = new MStatoCamera();
+					nuovoStatoOccupato.set_periodo(periodoOccupato);
+					nuovoStatoOccupato.set_libera(false);
+					this.get_statiCamera().add(indiceLista+1, nuovoStatoOccupato);
+					
+					this.get_statiCamera().remove(indiceLista+2);
+					
+				}
+			 else if(periodo.IniziaStessoGiornoInizioDi(statoContenente.get_periodo())==true){
+				 System.out.println("indice lista"+ indiceLista + "sono in 3 caso");
+				 
+				 MPeriodo periodoOccupato = new MPeriodo();
+				 periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
+				 periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodo);
+				 
+				 MStatoCamera nuovoStatoOccupato = new MStatoCamera();
+				 nuovoStatoOccupato.set_periodo(periodoOccupato);
+				 nuovoStatoOccupato.set_libera(false);
+				 this.get_statiCamera().add(indiceLista, nuovoStatoOccupato);
+				 
+				 MPeriodo periodoResiduo = new MPeriodo();
+				 periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
+				 periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
+				 this.get_statiCamera().get(indiceLista+1).set_periodo(periodoResiduo);
+				 this.get_statiCamera().get(indiceLista+1).set_libera(true);
+			 }
+			 else{
+				 System.out.println("indice lista"+ indiceLista + "sono in 4 caso");
+				 MPeriodo periodoResiduo = new MPeriodo();
 					periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 					periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
 					
@@ -169,7 +208,7 @@ public class MCamera {
 					statoResiduo.set_libera(true);
 					this._statiCamera.add(indiceLista+2,statoResiduo);
 					
-				}
+			 }
 		}
 		
 		
