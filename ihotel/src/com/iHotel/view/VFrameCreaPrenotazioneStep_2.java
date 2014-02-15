@@ -39,9 +39,10 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
     /* JTextField */
     private JTextField txtNome, txtCognome, txteMail, txtTelefono;
    
-	/**
-	 * Launch the application.
-	 */
+    /*
+	 	*
+	 	* Launch the application.
+	 	*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -73,7 +74,8 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 			}
 		});
 	}
-
+	*/
+	
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */

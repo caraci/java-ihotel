@@ -8,7 +8,6 @@ public class MPrenotazione {
 	private ArrayList<MElementoPrenotazione> _elementiPrenotazione = new ArrayList<MElementoPrenotazione>();
 	private MOspite _ospite;
 	private MPeriodo _periodo;
-	private String _codice;
 	private boolean _completata;
 	
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
@@ -109,22 +108,6 @@ public class MPrenotazione {
 	 */
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
-	}
-
-	/**
-	 * @return  _codice
-	 * Metodo che restituisce il codice di una prenotazione
-	 */
-	public String get_codice() {
-		return _codice;
-	}
-
-	/**
-	 * @param _codice 
-	 * Metodo che setta il codice di una prenotazione
-	 */
-	public void set_codice(String _codice) {
-		this._codice = _codice;
 	}
 	/**
 	 * @param _completata 
