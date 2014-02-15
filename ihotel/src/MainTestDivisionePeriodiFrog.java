@@ -82,11 +82,11 @@ public class MainTestDivisionePeriodiFrog {
 		
 	// periodo_4 - 31 Gennaio 2014 - 16:00.00 - 31 Marzo 2014 - 10:00.00
 		MPeriodo periodo_4 = new MPeriodo();
-		int giornoInizio_4 = 2;
-		int meseInizio_4 = 0;
+		int giornoInizio_4 = 5;
+		int meseInizio_4 = 2;
 		int annoInizio_4 = 2014;
-		int giornoFine_4 = 15;
-		int meseFine_4 = 0;
+		int giornoFine_4 = 18;
+		int meseFine_4 = 2;
 		int annoFine_4 = 2014;
 		// Inizio
 		periodo_4.set_oraInizio(oraInizio);
@@ -104,7 +104,7 @@ public class MainTestDivisionePeriodiFrog {
 	// periodo_5 - 1 Gennaio 2014 - 16:00.00 - 31 Marzo 2014 - 10:00.00
 		MPeriodo periodo_5 = new MPeriodo();
 		int giornoInizio_5 = 1;
-		int meseInizio_5 = 0;
+		int meseInizio_5 = 1;
 		int annoInizio_5 = 2014;
 		int giornoFine_5 = 31;
 		int meseFine_5 = 2;
@@ -269,7 +269,7 @@ public class MainTestDivisionePeriodiFrog {
 				// StatoCamera_101_Periodo_3
 				MStatoCamera statoCamera_101_Periodo3 = new MStatoCamera();
 				statoCamera_101_Periodo3.set_periodo(periodo_3);
-				statoCamera_101_Periodo3.set_libera(false);
+				statoCamera_101_Periodo3.set_libera(true);
 				// StatoCamera_102_Periodo_3
 				MStatoCamera statoCamera_102_Periodo3 = new MStatoCamera();
 				statoCamera_102_Periodo3.set_periodo(periodo_3);
