@@ -44,12 +44,11 @@ public class CGestisciPrenotazione {
 	public double aggiungiElementoPrenotazione(String numeroCamera) {
 		MCamera camera = new MCamera();
 		// Ricavo la MCamera a partire dalla stringa contenente il suo numero.
-		System.out.println(numeroCamera);
 		camera = _albergo.getCameraDaNumero(numeroCamera);
-		System.out.println(camera.get_tipologia());
+		// Aggiungo la camera all'elemento prenotazione
 		_prenotazione.addElementoPrenotazione(camera);
+		// Restituisco il totale della prenotazione in seguito all'aggiunta della camera
 		return _prenotazione.getTotal();
-		//System.out.println(_prenotazione.get_elementiPrenotazione().get(0).get_camera().get_tipologia());
 	}
 	/**
 	 * Metodo per ricercare le camere libere nell'albergo ed appartenenti a tipologie differenti.
