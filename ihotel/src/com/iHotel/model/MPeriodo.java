@@ -203,6 +203,12 @@ public class MPeriodo {
 		}
 		return false;
 	}
+	/**
+	 * Metodo che confronta il giorno di fine dell'istanza su cui è invocato, con quello del periodo passato 
+	 * come parametro
+	 * @param periodo
+	 * @return true se i periodi finiscono lo stesso giorno, false altrimenti
+	 */
 	public boolean FinisceStessoGiornoFineDi(MPeriodo periodo){
 		if(this.get_giornoFine()==periodo.get_giornoFine()&&
 				this.get_meseFine()==periodo.get_meseFine()&&
