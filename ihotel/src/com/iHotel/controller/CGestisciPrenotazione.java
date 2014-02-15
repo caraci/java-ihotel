@@ -1,5 +1,7 @@
 package com.iHotel.controller;
 
+import com.db4o.Db4oEmbedded;
+import com.db4o.ObjectContainer;
 import com.iHotel.model.*;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
@@ -31,15 +33,15 @@ public class CGestisciPrenotazione {
          return instance;
     }
     /**
-     * Creazione della prenotazione
+     * Metodo per creare una nuova prenotazione
      */
 	public void creaNuovaPrenotazione() {
 		_prenotazione = new MPrenotazione();
 	}
 	/**
-	 * Metodo per aggiungere una Camera alla prenotazione
+	 * Metodo per aggiungere una Camera alla prenotazione.
 	 * @param numeroCamera Stringa contenente il numero della camera
-	 * @return 
+	 * @return Costo totale della prenotazione in seguito all'aggiunta della camera
 	 */
 	public double aggiungiElementoPrenotazione(String numeroCamera) {
 		MCamera camera = new MCamera();
@@ -52,9 +54,9 @@ public class CGestisciPrenotazione {
 	}
 	/**
 	 * Metodo per ricercare le camere libere nell'albergo ed appartenenti a tipologie differenti.
-	 * @param DataInizio
-	 * @param DataFine
-	 * @param Tipologie
+	 * @param DataInizio Data di inizio ricerca.
+	 * @param DataFine Data di fine ricerca
+	 * @param Tipologie Tipologie di camere da ricercare.
 	 */
 	public void cercaCamereLibere(GregorianCalendar dataInizio, GregorianCalendar dataFine, ArrayList<String> Tipologie) {
 		
@@ -94,7 +96,7 @@ public class CGestisciPrenotazione {
 		
 	}
 	/**
-	 * 
+	 * Metodo per concludere una prenotazione.
 	 * @param nome
 	 * @param cognome
 	 * @param email
@@ -103,7 +105,22 @@ public class CGestisciPrenotazione {
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
 		// Aggiungo l'ospite alla prenotazione
 		_prenotazione.addOspite(nome, cognome, eMail, telefono);
-		// 
+		// Occupo le camere scelte dall'utente
+		_prenotazione.occupaCamere();
+		// Setto la prenotazione come completata
+		_prenotazione.set_completata(true);
+		// Aggiungo la prenotazione all'albergo
+		_albergo.addPrenotazione(_prenotazione);
+		// Carico il gestore della persistenza.
+		ObjectContainer db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
+		try {
+			// Aggiorno l'insieme delle prenotazioni effettuate.
+			db.store(_albergo.get_prenotazioni());
+			// Aggiorno gli stati delle camere in seguito alla prenotazione.
+			db.store(_albergo.get_camere());
+		} finally {
+			db.close();
+		}
 	}
 	/* -------------------------- Getter, Setter -------------------- */
 	/**
