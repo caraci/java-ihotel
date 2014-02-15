@@ -25,7 +25,6 @@ public class MPrenotazione {
 			// Su ogni elemento prenotazione andiamo a chiedere il subTotale e lo sommiamo al totale.
 			total+=elementoPrenotazione.getSubTotal(_periodo);
 		}
-		//System.out.println("Totale prenotazione: " + total);
 		return total;				
 	}
 	
@@ -39,22 +38,30 @@ public class MPrenotazione {
 		_elementiPrenotazione.add(elementoPrenotazione);
 	}
 	/**
-	 * Metodo per concludere una prenotazione e memorizzare l'ospite prenotante.
+	 * Metodo per aggiungere l'ospite prenotante.
 	 * 
 	 * @param nome
 	 * @param cognome
 	 * @param eMail
 	 * @param telefono
-	 * @return
 	 */
-	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono){
+	public void addOspite(String nome, String cognome, String eMail, String telefono){
 		MOspite ospite = new MOspite();
 		ospite.set_nome(nome);
 		ospite.set_cognome(cognome);
 		ospite.set_eMail(eMail);
 		ospite.set_telefono(telefono);
 	}
-	
+	/**
+	 * Metodo per occupare le camere della prenotazione.
+	 */
+	public void occupaCamere() {
+		for (Iterator<MElementoPrenotazione> iterator = this._elementiPrenotazione.iterator(); iterator.hasNext();) {
+			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
+			elementoPrenotazione.get_camera().occupaInPeriodo(_periodo);
+		}
+	}
+		
 	/* -------------------------------- Getter, Setter ------------------------------------------ */
 	/**
 	 * @return the _elementiPrenotazione
@@ -119,21 +126,18 @@ public class MPrenotazione {
 	public void set_codice(String _codice) {
 		this._codice = _codice;
 	}
-
+	/**
+	 * @param _completata 
+	 * Metodo per ottenere lo stato della completazione della prenotazione
+	 */
 	public boolean get_completata() {
 		return this._completata;
 	}
-
 	/**
-	 * 
-	 * @param _completata
-	 * @throws CloneNotSupportedException 
+	 * @param _completata 
+	 * Metodo che setta lo stato della completazione della prenotazione
 	 */
 	public void set_completata(boolean _completata) {
-		for (Iterator<MElementoPrenotazione> iterator = this._elementiPrenotazione.iterator(); iterator.hasNext();) {
-			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
-			elementoPrenotazione.get_camera().occupaInPeriodo(_periodo);
-		}
 		this._completata = _completata;
 	}
 

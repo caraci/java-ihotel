@@ -1,5 +1,5 @@
 package com.iHotel.model;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -47,7 +47,7 @@ public class MElementoPrenotazione {
 		
 			// Calcolo il prezzo della camera in un giorno attraverso il metodo privato di MElementoPrenotazione
 			totaleCameraGiorno=calcolaPrezzoGiorno(prezziTipologia.get(tipologia),dataInizio);
-			// Sommo il totale della camera nel giorno al totale della camera per il periodo.
+			// Sommo il totale della camera nel giorno, al totale della camera per il periodo.
 			totaleCameraPeriodo+=totaleCameraGiorno;
 			// Incremento il giorno di uno.
 			dataInizio.add(Calendar.DAY_OF_MONTH,1);
@@ -92,13 +92,11 @@ public class MElementoPrenotazione {
 		return prezzoGiorno;
 	}
 	/**
-	 * @param periodo
+	 * Metodo per occupare una camera in un determinato periodo.
+	 * @param periodo Periodo nel quale si vuole occupare una camera.
 	 * @return boolean
-	 * Metodo che setta occupata una carema in un determinato periodo 
-	 * 
 	 */
-	public boolean occupaCameraInPeriodo(MPeriodo periodo) throws CloneNotSupportedException{
-		
+	public boolean occupaCameraInPeriodo(MPeriodo periodo) {
 		if(_camera.occupaInPeriodo(periodo)==true){
 			return true;
 		}else return false;

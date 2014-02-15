@@ -1,6 +1,5 @@
 package com.iHotel.view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 
@@ -9,18 +8,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.iHotel.controller.CGestisciPrenotazione;
-import com.iHotel.model.MCamera;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -33,7 +28,6 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 	/* ContentPane */
 	private JPanel contentPane;
 	/* Panel */
-    private JPanel[] panelColonne;
     private JPanel panelFinale;
     /* JList */
     private ArrayList<JLabel> lblNumeriCamereDisponibili = new ArrayList<JLabel>();
@@ -97,7 +91,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
     }
     /**
      * Metodo per aggiungere una colonna contenente tipologie di camere dello stesso tipo.
-     * @param arrayListCamere
+     * @param arrayListCamere Struttura dati contenente tipologia della camera e numeri di camera.
      */
     private void addColonnaTipologiaCamere(ArrayList<String> arrayListCamere) {
     	String tipologia;
@@ -239,10 +233,8 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 						int numeroLista=btnNumeriCamereDisponibili.indexOf(btn);
 						// Recupero il controllore e invoco il metodo.
 						CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
-						// Invoco il metodo passando come parametro la stringa contenente il numero di camera.
-						gestisciPrenotazione.aggiungiElementoPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText());
-						// Carico il totale della prenotazione.
-						String total = String.valueOf(gestisciPrenotazione.get_prenotazione().getTotal());
+						// Aggiungo la camera alla prenotazione e carico il totale.
+						String total = String.valueOf(gestisciPrenotazione.aggiungiElementoPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText()));
 						btn.setText("Rimuovi camera");	
 						// Setto il prezzo della Label con il totale della prenotazione
 						lblPrezzoTotale.setText(total + "€");

@@ -41,14 +41,15 @@ public class CGestisciPrenotazione {
 	 * @param numeroCamera Stringa contenente il numero della camera
 	 * @return 
 	 */
-	public void aggiungiElementoPrenotazione(String numeroCamera) {
+	public double aggiungiElementoPrenotazione(String numeroCamera) {
 		MCamera camera = new MCamera();
 		// Ricavo la MCamera a partire dalla stringa contenente il suo numero.
 		System.out.println(numeroCamera);
 		camera = _albergo.getCameraDaNumero(numeroCamera);
 		System.out.println(camera.get_tipologia());
 		_prenotazione.addElementoPrenotazione(camera);
-		System.out.println(_prenotazione.get_elementiPrenotazione().get(0).get_camera().get_tipologia());
+		return _prenotazione.getTotal();
+		//System.out.println(_prenotazione.get_elementiPrenotazione().get(0).get_camera().get_tipologia());
 	}
 	/**
 	 * Metodo per ricercare le camere libere nell'albergo ed appartenenti a tipologie differenti.
@@ -109,9 +110,10 @@ public class CGestisciPrenotazione {
 	 * @param email
 	 * @param telefono
 	 */
-	public void concludiPrenotazione(String nome, String cognome, String email, String telefono) {
-		// TODO - implement CGestisciPrenotazione.concludiPrenotazione
-		throw new UnsupportedOperationException();
+	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
+		// Aggiungo l'ospite alla prenotazione
+		_prenotazione.addOspite(nome, cognome, eMail, telefono);
+		// 
 	}
 	/* -------------------------- Getter, Setter -------------------- */
 	/**
