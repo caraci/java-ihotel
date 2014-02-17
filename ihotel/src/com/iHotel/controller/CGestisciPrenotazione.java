@@ -5,6 +5,7 @@ import com.db4o.ObjectContainer;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
 import com.iHotel.model.*;
+import com.iHotel.persistence.PersistentManager;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
 
@@ -120,40 +121,14 @@ public class CGestisciPrenotazione {
 		// Aggiungo la prenotazione all'albergo
 		_albergo.addPrenotazione(_prenotazione);
 		// Carico il gestore della persistenza.
-		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-		config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
-		ObjectContainer db = Db4oEmbedded.openFile(config, "dbihotel");
+		PersistentManager persistentManager = PersistentManager.getInstance();
+		ObjectContainer db = persistentManager.get_db();
 		try {
-			// Carico tutte le camere dal DB.
-			List<MCamera> camere = db.query(new Predicate<MCamera>() {
-				public boolean match(MCamera candidate) {
-					return true;
-				}
-			});
-			// Aggiorno gli stati delle camere in seguito alla prenotazione.
-			for (int i = 0; i < camere.size(); i++) {
-				MCamera cameraDB = camere.get(i);
-				MCamera cameraRAM = _albergo.get_camere().get(i);
-				cameraDB.set_statiCamera(cameraRAM.get_statiCamera());
-				// Salvo le camere con lo stato aggiornato.
-				db.store(cameraDB);
-			}
-			String numeroCamera;
-			// Ciclo sugli elementi della prenotazione
-			for (Iterator<MElementoPrenotazione> iterator = _prenotazione.get_elementiPrenotazione().iterator(); iterator.hasNext();) {
-				MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
-				numeroCamera = elementoPrenotazione.get_camera().get_numero();
-				// Ciclo sulle camere del DB per cercare quella relativa all'elementoPrenotazione
-				for (Iterator<MCamera> iteratorCamere = camere.iterator(); iteratorCamere.hasNext();) {
-					MCamera camera = (MCamera) iteratorCamere.next();
-					// Se la camera del DB ha lo stesso numero della camera della prenotazione la associo con quest'ultima.
-					if (camera.get_numero().equals(numeroCamera)) {
-						elementoPrenotazione.set_camera(camera);
-					}
-				}	
+			for (Iterator<MCamera> iterator = _albergo.get_camere().iterator(); iterator.hasNext();) {
+				MCamera camera = (MCamera) iterator.next();
+				db.store(camera);
 			}
 			db.store(_prenotazione);
-			
 		} finally {
 			db.close();
 		}

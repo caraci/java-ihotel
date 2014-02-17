@@ -2,12 +2,11 @@ package com.iHotel.main;
 import java.io.IOException;
 import java.util.*;
 
-import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
-import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
 import com.iHotel.controller.CGestisciPrenotazione;
 import com.iHotel.model.*;
+import com.iHotel.persistence.PersistentManager;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 
 
@@ -15,9 +14,8 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-		config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
-		ObjectContainer db = Db4oEmbedded.openFile(config, "dbihotel");
+		PersistentManager persistentManager = PersistentManager.getInstance();
+		ObjectContainer db = persistentManager.get_db();
 		try {			
 			/* CARICAMENTO DEGLI OGETTI DELLO STRATO DI DOMINIO  */		
 			// Carico tutte le camere
@@ -66,8 +64,8 @@ public class Main {
 			frameCreaPrenotazioneStep_1.creaFrame(tipologieCamere);
 			frameCreaPrenotazioneStep_1.setVisible(true);
 		}
-		finally{
-			db.close();
+		finally {
+			//db.close();
 		}	
 	}
 
