@@ -2,7 +2,6 @@ package com.iHotel.main;
 import java.io.IOException;
 import java.util.*;
 
-import com.db4o.ObjectContainer;
 import com.db4o.query.Predicate;
 import com.iHotel.controller.CGestisciPrenotazione;
 import com.iHotel.model.*;
@@ -12,20 +11,19 @@ import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 
 public class Main {
 
+	@SuppressWarnings({ "unchecked", "serial" })
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		PersistentManager persistentManager = PersistentManager.getInstance();
-		ObjectContainer db = persistentManager.get_db();
+		PersistentManager db = PersistentManager.getInstance();
 		try {			
-			/* CARICAMENTO DEGLI OGETTI DELLO STRATO DI DOMINIO  */		
+			/*------------------- CARICAMENTO DEGLI OGETTI DELLO STRATO DI DOMINIO  ----------------*/		
 			// Carico tutte le camere
-			List<MCamera> camere = db.query(new Predicate<MCamera>() {
+			List<MCamera> camere = (List<MCamera>) db.query(new Predicate<MCamera>() {
 				public boolean match(MCamera candidate) {
 					return true;
 				}
 			});
 			// Carico tutte le descrizioni
-			List<MDescrizioneCamera> descrizioniCamere = db.query(new Predicate<MDescrizioneCamera>() {
+			List<MDescrizioneCamera> descrizioniCamere = (List<MDescrizioneCamera>) db.query(new Predicate<MDescrizioneCamera>() {
 				public boolean match(MDescrizioneCamera candidate) {
 					return true;
 				}
@@ -48,7 +46,7 @@ public class Main {
 			}
 			albergo.set_camere(_camere);
 			albergo.set_catalogoCamere(catalogoCamere);		
-			/* FINE CARICAMENTO DEGLI OGGETTI DELLO STRATO DI DOMINIO */
+			/*------------------------ FINE CARICAMENTO DEGLI OGGETTI DELLO STRATO DI DOMINIO ----------------*/
 			
 			// Prendo il controllore per la gestione della prenotazione.
 			CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
@@ -64,8 +62,8 @@ public class Main {
 			frameCreaPrenotazioneStep_1.creaFrame(tipologieCamere);
 			frameCreaPrenotazioneStep_1.setVisible(true);
 		}
-		finally {
-			//db.close();
+		catch (Exception e) {
+			// TODO
 		}	
 	}
 

@@ -121,14 +121,10 @@ public class CGestisciPrenotazione {
 		// Aggiungo la prenotazione all'albergo
 		_albergo.addPrenotazione(_prenotazione);
 		// Carico il gestore della persistenza.
-		PersistentManager persistentManager = PersistentManager.getInstance();
-		ObjectContainer db = persistentManager.get_db();
+		PersistentManager db = PersistentManager.getInstance();
 		try {
-			/*for (Iterator<MCamera> iterator = _albergo.get_camere().iterator(); iterator.hasNext();) {
-				MCamera camera = (MCamera) iterator.next();
-				db.store(camera);
-			}*/
 			db.store(_albergo.get_camere());
+			db.store(_prenotazione);
 		} finally {
 			db.close();
 		}
