@@ -124,11 +124,11 @@ public class CGestisciPrenotazione {
 		PersistentManager persistentManager = PersistentManager.getInstance();
 		ObjectContainer db = persistentManager.get_db();
 		try {
-			for (Iterator<MCamera> iterator = _albergo.get_camere().iterator(); iterator.hasNext();) {
+			/*for (Iterator<MCamera> iterator = _albergo.get_camere().iterator(); iterator.hasNext();) {
 				MCamera camera = (MCamera) iterator.next();
 				db.store(camera);
-			}
-			db.store(_prenotazione);
+			}*/
+			db.store(_albergo.get_camere());
 		} finally {
 			db.close();
 		}
