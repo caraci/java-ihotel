@@ -23,7 +23,8 @@ public class CGestisciPrenotazione {
 	private CGestisciPrenotazione() {}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
-	 * Metodo per ottenere l'instanza della di questa classe - Pattern Singleton.
+	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
+	 * 
 	 * @return CGestisciPrenotazione Instanza unica di questa classe
 	 */
     public static CGestisciPrenotazione getInstance() {
