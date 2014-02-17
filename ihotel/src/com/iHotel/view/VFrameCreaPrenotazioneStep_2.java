@@ -1,7 +1,6 @@
 package com.iHotel.view;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -21,6 +20,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+@SuppressWarnings("serial")
 public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 
 	/* Singleton */

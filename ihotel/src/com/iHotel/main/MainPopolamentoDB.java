@@ -3,7 +3,6 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.iHotel.model.*;
 
-import java.math.BigDecimal;
 import java.util.*;
 
 public class MainPopolamentoDB{

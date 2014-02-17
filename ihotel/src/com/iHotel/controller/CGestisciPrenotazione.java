@@ -1,9 +1,4 @@
 package com.iHotel.controller;
-
-import com.db4o.Db4oEmbedded;
-import com.db4o.ObjectContainer;
-import com.db4o.config.EmbeddedConfiguration;
-import com.db4o.query.Predicate;
 import com.iHotel.model.*;
 import com.iHotel.persistence.PersistentManager;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
@@ -12,7 +7,6 @@ import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
-import java.util.List;
 
 public class CGestisciPrenotazione {
 	

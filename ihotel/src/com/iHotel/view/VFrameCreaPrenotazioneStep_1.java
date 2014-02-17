@@ -3,12 +3,10 @@ package com.iHotel.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.swing.*;
@@ -18,6 +16,7 @@ import com.iHotel.controller.CGestisciPrenotazione;
 
 import net.sourceforge.jdatepicker.*;
 
+@SuppressWarnings("serial")
 public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 
 	/* Singleton */
