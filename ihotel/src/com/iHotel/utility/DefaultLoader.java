@@ -12,7 +12,7 @@ public class DefaultLoader {
 	/**
 	 * Costruttore privato - Pattern singleton
 	 */
-	private void DefaultLoader(){}
+	private DefaultLoader(){}
 	/**
 	 * Metodo per ottenere l'instanza unica di questa classe - Pattern singleton
 	 * @return
@@ -64,28 +64,28 @@ public class DefaultLoader {
 	 */
 	public ArrayList<Integer> getMinutoOraInizioMinutoOraFine(){
 		// Variabili nelle quali andremo a memorizzare gli attributi del periodo.
-		Integer minutoInizio, oraInizio, minutoFine, oraFine;
+		String minutoInizioStr, oraInizioStr, minutoFineStr, oraFineStr;
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
 		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + "/configs/Periodo.txt"))) {  
 			// Inizializzo gli attributi
-			minutoInizio = albergoReader.read();
-			oraInizio = albergoReader.read();
-			minutoFine = albergoReader.read();
-			oraFine = albergoReader.read();
+			minutoInizioStr = albergoReader.readLine();
+			oraInizioStr = albergoReader.readLine();
+			minutoFineStr = albergoReader.readLine();
+			oraFineStr = albergoReader.readLine();
 		} catch (IOException e) {
-			minutoInizio = 0;
-			oraInizio = 16;
-			minutoFine = 0;
-			oraFine = 10;
+			minutoInizioStr = "0";
+			oraInizioStr = "16";
+			minutoFineStr = "0";
+			oraFineStr = "10";
         } 
 		ArrayList<Integer> attributiPeriodo = new ArrayList<Integer>();
 		// Aggiungi gli attributi all'ArrayList di interi.
-		attributiPeriodo.add(minutoInizio);
-		attributiPeriodo.add(oraInizio);
-		attributiPeriodo.add(minutoFine);
-		attributiPeriodo.add(oraFine);
+		attributiPeriodo.add(Integer.parseInt(minutoInizioStr));
+		attributiPeriodo.add(Integer.parseInt(oraInizioStr));
+		attributiPeriodo.add(Integer.parseInt(minutoFineStr));
+		attributiPeriodo.add(Integer.parseInt(oraFineStr));
 		
 		return attributiPeriodo;
 	}	

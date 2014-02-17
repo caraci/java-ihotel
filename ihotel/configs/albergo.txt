@@ -1,4 +1,4 @@
-Coddina
-00000000
-ABCDEF
-00000@hotelmAraviglioso.com
+Hotel nextGen
+06/123456
+123456789ABCDEF
+info@hotelnextgen.com
