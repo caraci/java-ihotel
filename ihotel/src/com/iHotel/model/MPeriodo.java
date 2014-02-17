@@ -12,14 +12,14 @@ public class MPeriodo {
 	private int _giornoInizio;
 	private int _meseInizio;
 	private int _annoInizio;
-	private int _oraInizio = 16;
-	private int _minutoInizio= 0;
+	private int _oraInizio;
+	private int _minutoInizio;
 	
 	private int _giornoFine;
 	private int _meseFine;
 	private int _annoFine;
-	private int _oraFine = 10;
-	private int _minutoFine =0;
+	private int _oraFine;
+	private int _minutoFine;
 	
 	/**
 	 * Costruttore privato -pattern Singleton
@@ -33,10 +33,10 @@ public class MPeriodo {
 		DefaultLoader defaultLoader = DefaultLoader.getInstance();
 		ArrayList<Integer> orarioDefault = new ArrayList<Integer>();
 		orarioDefault = defaultLoader.getMinutoOraInizioMinutoOraFine();
-		_minutoInizio = orarioDefault.get(0);
-		_oraInizio= orarioDefault.get(1);
-		_minutoFine = orarioDefault.get(2);
-		_oraFine=orarioDefault.get(3);
+		_minutoInizio = orarioDefault.get(0).intValue();
+		_oraInizio= orarioDefault.get(1).intValue();
+		_minutoFine = orarioDefault.get(2).intValue();
+		_oraFine=orarioDefault.get(3).intValue();
 	}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
 	/**
