@@ -22,7 +22,7 @@ public class MPeriodo {
 	private int _minutoFine;
 	
 	/**
-	 * Costruttore privato -pattern Singleton
+	 * Costruttore privato - pattern Singleton
 	 */	
 	public MPeriodo() {
 		/*
