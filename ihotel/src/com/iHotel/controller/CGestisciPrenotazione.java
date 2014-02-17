@@ -7,13 +7,12 @@ import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 
 public class CGestisciPrenotazione {
 	
-	/* Singleton */
+	/* -------------------------------- Attributi e costruttore -------------------------------*/
 	private static CGestisciPrenotazione instance = null;
 	private MAlbergo _albergo;
 	private MPrenotazione _prenotazione;
@@ -22,9 +21,10 @@ public class CGestisciPrenotazione {
 	 * Costruttore privato - pattern Singleton
 	 */
 	private CGestisciPrenotazione() {}
+	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
-	 * 
-	 * @return CGestisciPrenotazione
+	 * Metodo per ottenere l'instanza della di questa classe - Pattern Singleton.
+	 * @return CGestisciPrenotazione Instanza unica di questa classe
 	 */
     public static CGestisciPrenotazione getInstance() {
     	if(instance == null) {
@@ -32,6 +32,7 @@ public class CGestisciPrenotazione {
          }
          return instance;
     }
+    /* --------------------------------- Metodi di instanza -------------------------------------- */
     /**
      * Metodo per creare una nuova prenotazione
      */
@@ -39,9 +40,10 @@ public class CGestisciPrenotazione {
 		_prenotazione = new MPrenotazione();
 	}
 	/**
-	 * Metodo per aggiungere una Camera alla prenotazione.
-	 * @param numeroCamera Stringa contenente il numero della camera
-	 * @return Costo totale della prenotazione in seguito all'aggiunta della camera
+	 * Metodo per aggiungere una Camera alla prenotazione ed ottenere il totale di quest'ultima.
+	 * 
+	 * @param numeroCamera Stringa contenente il numero della camera.
+	 * @return Costo totale della prenotazione in seguito all'aggiunta della camera.
 	 */
 	public double aggiungiElementoPrenotazione(String numeroCamera) {
 		MCamera camera = new MCamera();
@@ -53,7 +55,8 @@ public class CGestisciPrenotazione {
 		return _prenotazione.getTotal();
 	}
 	/**
-	 * Metodo per ricercare le camere libere nell'albergo ed appartenenti a tipologie differenti.
+	 * Metodo per ricercare le camere libere nell'albergo, appartenenti a tipologie differenti.
+	 * 
 	 * @param DataInizio Data di inizio ricerca.
 	 * @param DataFine Data di fine ricerca
 	 * @param Tipologie Tipologie di camere da ricercare.
@@ -97,10 +100,11 @@ public class CGestisciPrenotazione {
 	}
 	/**
 	 * Metodo per concludere una prenotazione.
-	 * @param nome
-	 * @param cognome
-	 * @param email
-	 * @param telefono
+	 * 
+	 * @param nome Nome dell'ospite.
+	 * @param cognome Cognome dell'ospite.
+	 * @param email e-Mail dell'ospite.
+	 * @param telefono Telefono dell'ospite.
 	 */
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
 		// Aggiungo l'ospite alla prenotazione
@@ -124,27 +128,27 @@ public class CGestisciPrenotazione {
 	}
 	/* -------------------------- Getter, Setter -------------------- */
 	/**
-	 * @return the _albergo
+	 * @return _albergo
 	 */
 	public MAlbergo get_albergo() {
 		return _albergo;
 	}
 
 	/**
-	 * @param _albergo the _albergo to set
+	 * @param _albergo
 	 */
 	public void set_albergo(MAlbergo _albergo) {
 		this._albergo = _albergo;
 	}
 	/**
-	 * @return the _prenotazione
+	 * @return _prenotazione
 	 */
 	public MPrenotazione get_prenotazione() {
 		return _prenotazione;
 	}
 
 	/**
-	 * @param _prenotazione the _prenotazione to set
+	 * @param _prenotazione
 	 */
 	public void set_prenotazione(MPrenotazione _prenotazione) {
 		this._prenotazione = _prenotazione;

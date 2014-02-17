@@ -1,18 +1,17 @@
 package com.iHotel.model;
 
-import java.util.GregorianCalendar;
-
 public class MStatoCamera {
 
+	/* ------------------------ Attributi ---------------- */
 	private MPeriodo _periodo;
 	private boolean _libera;
 	
-	
+	/* --------------------- Metodi di instanza ---------------- */
 	/**
-	 * @param periodo
-	 * @return boolean
 	 * Metodo per verificare se lo stato è libero in un periodo.
 	 * 
+	 * @param periodo Periodo da controllare
+	 * @return boolean True se libero. False altrimenti.
 	 */
 	public boolean isLiberaInPeriodo(MPeriodo periodoRichiesta) {
 		// Controllo se il periodo dello statoCamera contiene il periodo della richiesta e se lo stato è libero.
@@ -22,12 +21,11 @@ public class MStatoCamera {
 			return false;
 		}		
 	} 
-	
-	
-	/** Metodo che restituisce lo stato camera se il periodo su cui è definito lo stato contiene il periodo 
-	 * che riguarda la prenotazione
-	 * @param periodo
-	 * @return this
+	/** 
+	 * Metodo che restituisce l'instanza stessa, se il suo periodo, contiene quello ricevuto per paramentro.
+	 * 
+	 * @param periodo Periodo da controllare.
+	 * @return this 
 	 * */
 	public MStatoCamera getStatoContenente(MPeriodo periodo){
 			
@@ -36,10 +34,9 @@ public class MStatoCamera {
 		}
 		else return null;
 	}
-	
+	/* ----------------------- Getter, Setter ------------------- */
 	/**
-	 * @return the _periodo
-	 * Metodo che restituisce il periodo dello statoCamera
+	 * @return _periodo
 	 */
 	public MPeriodo get_periodo() {
 		return _periodo;
@@ -47,24 +44,19 @@ public class MStatoCamera {
 
 	/**
 	 * @param _periodo
-	 * metodo che setta il periodo dello statoCamera
 	 */
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
 	}
 	/**
-	 * 
-	 * @return
-	 * Metodo
+	 * @return  _libera
 	 */
 	public boolean get_libera() {
 		return this._libera;
 	}
 
 	/**
-	 * 
 	 * @param _libera
-	 * Metodo che setta 
 	 */
 	public void set_libera(boolean _libera) {
 		this._libera = _libera;
