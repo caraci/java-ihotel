@@ -59,8 +59,9 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
      */
 	private VFrameCreaPrenotazioneStep_1() {}
 	/**
+	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
 	 * 
-	 * @return CGestisciPrenotazione
+	 * @return VFrameCreaPrenotazioneStep_1 Instanza unica di questa classe.
 	 */
     public static VFrameCreaPrenotazioneStep_1 getInstance() {
     	if(instance == null) {
@@ -70,7 +71,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     }
 	
 	/**
-	 * Metodo per aggiungere la porzione in alto a sinistra della finestra
+	 * Metodo per aggiungere la porzione in alto a sinistra della finestra.
 	 */
 	private void addPanelTopLeft() {
 		// PanelTopLeft
@@ -87,7 +88,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 		panelTopLeft.add((Component) datePanelInizio);
 	}
 	/**
-	 * Metodo per aggiungere la porzione in alto a destra della finestra
+	 * Metodo per aggiungere la porzione in alto a destra della finestra.
 	 */
 	private void addPanelTopRight() {
 		// PanelTopRight
@@ -103,7 +104,10 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 		datePanelFine = JDateComponentFactory.createJDatePanel();
 		panelTopRight.add((Component) datePanelFine);
 	}
-	
+	/**
+	 * Metodo per aggiungere la porzione in basso a sinistra della finestra, con le tipologie di camere che è possibile scegliere.
+	 * @param tipologieCamere Tipologie di camere presenti nell'albergo.
+	 */
 	private void addPanelBottomLeft(ArrayList<String> tipologieCamere) {
 		// PanelBottomLeft
 		panelBottomLeft = new JPanel();
@@ -128,6 +132,9 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 			panelBottomLeft.add(Box.createVerticalGlue());
 		}
 	}
+	/**
+	 * Metodo per aggiungere la porzione di finestra in basso a destra.
+	 */
 	private void addPanelBottomRight() {
 		// PanelBottomRight
 		panelBottomRight = new JPanel();
@@ -139,7 +146,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 		panelBottomRight.add(btnAvanti, BorderLayout.SOUTH);
 	}
 	/**
-	 * Metodo per creare il frame
+	 * Metodo per creare il frame.
 	 */
 	public void creaFrame(ArrayList<String> tipologieCamere) {
 		setTitle("iHotel - Crea nuova prenotazione - Step 1 di 2");

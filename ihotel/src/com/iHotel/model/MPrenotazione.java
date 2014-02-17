@@ -13,7 +13,8 @@ public class MPrenotazione {
 	public MPrenotazione() {}
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
 	/**
-	 * Metodo per ottenere il totale di una prenotazione
+	 * Metodo per ottenere il totale di una prenotazione.
+	 * 
 	 * @return Totale della prenotazione.
 	 */
 	public double getTotal(){
@@ -30,7 +31,8 @@ public class MPrenotazione {
 	
 	/**
 	 * Metodo per aggiungere un elemento alla prenotazione.
-	 * @param MCamera Camera da aggiungere alla prenotazione
+	 * 
+	 * @param camera Camera da aggiungere alla prenotazione
 	 */
 	public void addElementoPrenotazione(MCamera camera) {
 		MElementoPrenotazione elementoPrenotazione= new MElementoPrenotazione();
@@ -40,10 +42,10 @@ public class MPrenotazione {
 	/**
 	 * Metodo per aggiungere l'ospite prenotante.
 	 * 
-	 * @param nome
-	 * @param cognome
-	 * @param eMail
-	 * @param telefono
+	 * @param nome Nome dell'ospite.
+	 * @param cognome Cognome dell'ospite.
+	 * @param eMail eMail dell'ospite.
+	 * @param telefono Telefono dell'ospite.
 	 */
 	public void addOspite(String nome, String cognome, String eMail, String telefono){
 		_ospite = new MOspite();
@@ -64,16 +66,14 @@ public class MPrenotazione {
 		
 	/* -------------------------------- Getter, Setter ------------------------------------------ */
 	/**
-	 * @return the _elementiPrenotazione
-	 * Metodo che restituisce tutti gli elementi di una preotazione
+	 * @return _elementiPrenotazione
 	 */
 	public ArrayList<MElementoPrenotazione> get_elementiPrenotazione() {
 		return _elementiPrenotazione;
 	}
 
 	/**
-	 * @param _elementiPrenotazione the _elementiPrenotazione to set
-	 * Metodo che setta tutti gli elementi di una preotazione
+	 * @param _elementiPrenotazione
 	 */
 	public void set_elementiPrenotazione(ArrayList<MElementoPrenotazione> _elementiPrenotazione) {
 		this._elementiPrenotazione = _elementiPrenotazione;
@@ -81,7 +81,6 @@ public class MPrenotazione {
 
 	/**
 	 * @return  _ospite
-	 * Metodo che restituisce l'ospite di una prenotazione
 	 */
 	public MOspite get_ospite() {
 		return _ospite;
@@ -89,7 +88,6 @@ public class MPrenotazione {
 
 	/**
 	 * @param _ospite 
-	 * Metodo che setta l'ospite di una prenotazione
 	 */
 	public void set_ospite(MOspite _ospite) {
 		this._ospite = _ospite;
@@ -97,7 +95,6 @@ public class MPrenotazione {
 
 	/**
 	 * @return  _periodo
-	 * Metodo che restituisce il periodo di una prenotazione
 	 */
 	public MPeriodo get_periodo() {
 		return _periodo;
@@ -105,21 +102,18 @@ public class MPrenotazione {
 
 	/**
 	 * @param _periodo 
-	 * Metodo che setta il periodo di una prenotazione
 	 */
 	public void set_periodo(MPeriodo _periodo) {
 		this._periodo = _periodo;
 	}
 	/**
 	 * @param _completata 
-	 * Metodo per ottenere lo stato della completazione della prenotazione
 	 */
 	public boolean get_completata() {
 		return this._completata;
 	}
 	/**
 	 * @param _completata 
-	 * Metodo che setta lo stato della completazione della prenotazione
 	 */
 	public void set_completata(boolean _completata) {
 		this._completata = _completata;

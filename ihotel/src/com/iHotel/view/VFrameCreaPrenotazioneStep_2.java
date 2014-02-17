@@ -82,8 +82,9 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 	private VFrameCreaPrenotazioneStep_2() {
 	}
 	/**
-	 * Metodo per ottenre l'instanza della classe - pattern Singleton
-	 * @return CGestisciPrenotazione
+	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
+	 * 
+	 * @return VFrameCreaPrenotazioneStep_2 Instanza unica di questa classe.
 	 */
     public static VFrameCreaPrenotazioneStep_2 getInstance() {
     	if(instance == null) {
@@ -93,6 +94,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
     }
     /**
      * Metodo per aggiungere una colonna contenente tipologie di camere dello stesso tipo.
+     * 
      * @param arrayListCamere Struttura dati contenente tipologia della camera e numeri di camera.
      */
     private void addColonnaTipologiaCamere(ArrayList<String> arrayListCamere) {
@@ -128,7 +130,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 		}
     }
     /**
-     * Metodo per aggiungere il pannello dove si visualizza il prezzo della prenotazione
+     * Metodo per aggiungere il pannello dove si visualizza il prezzo della prenotazione.
      */
     private void addPanelPrezzo() {
     	// Creo un panel per far inserire all'utente i dati sul cliente
@@ -188,7 +190,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 			panelFinale.add(panelOspite);
     }
     /**
-     * Metodo per creare il frame
+     * Metodo per creare il frame.
      */
     public void creaFrame(ArrayList<ArrayList<String>> camereDisponibili) {
     	// Imposto il titolo e l'operazione in chiusura alla finestra

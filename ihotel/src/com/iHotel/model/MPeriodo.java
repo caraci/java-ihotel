@@ -23,6 +23,7 @@ public class MPeriodo {
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro è contenuto all'interno del periodo relativo all'oggetto
 	 * sul quale si sta invocando il metodo.
+	 * 
 	 * @param periodoRichiesta Periodo da confrontare
 	 * @return True se il periodo è contenuto. False altrimenti.
 	 */
@@ -47,7 +48,8 @@ public class MPeriodo {
 		return esito;
 	}
 	/**
-	 * Metodo per verificare che il periodo passato come parametro si sovrappone con quello passato come parametro 
+	 * Metodo per verificare che il periodo passato come parametro si sovrappone con quello passato come parametro.
+	 * 
 	 * @param periodoRichiesta Periodo da confrontare
 	 * @return True se il periodo si sovrappone. False altrimenti.
 	 */
@@ -73,6 +75,7 @@ public class MPeriodo {
 	}
 	/**
 	 * Metodo per verificare che il periodo dell'instanza segue quello del periodo passato come parametro.
+	 * 
 	 * @param periodoRichiesta Periodo da analizzare.
 	 * @return True se il periodo dell'instanza precede quello passato per parametro. False altrimenti.
 	 */
@@ -98,6 +101,7 @@ public class MPeriodo {
 	}
 	/**
 	 * Metodo per verificare che il periodo dell'instanza anticipa quello del periodo passato come parametro.
+	 * 
 	 * @param periodoRichiesta Periodo da analizzare.
 	 * @return True se il periodo dell'instanza anticipa quello passato per parametro. False altrimenti.
 	 */
@@ -123,9 +127,10 @@ public class MPeriodo {
 	}
 	/**
 	 * Metodo per verificare che il periodo dell'instanza è esattamente compreso tra due periodi. 
-	 * Per esattamente si intende che non sono presenti "buchi" tra il periodo precedente e quello antecedente.
-	 * @param periodoPrecedente Periodo che precede quello dell'instanza.
-	 * @param periodoSuccessivo Periodo che antecede quello dell'instanza.
+	 * Per esattamente si intende che non sono presenti "buchi" tra il periodo precedente e quello successivo.
+	 * 
+	 * @param periodoPrecedente Periodo precedente a quello dell'instanza.
+	 * @param periodoSuccessivo Periodo successivo a quello dell'instanza.
 	 * @return True se il periodo dell'instanza è esattamente contenuto. False altrimenti.
 	 */
 	public boolean contenutoTraPeriodi (MPeriodo periodoPrecedente, MPeriodo periodoSuccessivo) {
@@ -140,7 +145,8 @@ public class MPeriodo {
 	}
 	/**
 	 * Metodo che setta la data inizio dell'istanza su cui è invocato, alla data di inizio del periodo
-	 * passato come parametro
+	 * passato come parametro.
+	 * 
 	 * @param periodo
 	 */
 	public void setDataInizioPeriodoDaDataInizioPeriodo(MPeriodo periodo){
@@ -153,7 +159,8 @@ public class MPeriodo {
 	/**
 	 * Metodo che setta la data di inizio dell'istanza su cui è invocato, alla data di fine del periodo
 	 * passato come parameto. Per ora e minuto si prendono i parametri di "default" _minutoInizio e _oraInizio,
-	 * altrimenti il periodo comincerebbe in un orario sbagliato
+	 * altrimenti il periodo comincerebbe in un orario sbagliato.
+	 * 
 	 * @param periodo
 	 */
 	public void setDataInizioPeriodoDaDataFinePeriodo(MPeriodo periodo){
@@ -166,6 +173,7 @@ public class MPeriodo {
 	/**
 	 * Metodo che setta la data di fine del periodo dell'istanza su cui è invocato, alla fine del periodo
 	 * passato come parametro.
+	 * 
 	 * @param periodo
 	 */
 	public void setDataFinePeriodoDaDataFinePeriodo(MPeriodo periodo){		
@@ -180,6 +188,7 @@ public class MPeriodo {
 	 * Metodo che setta la data di fine del periodo su cui è invocato, alla data di inizio del periodo
 	 * passato come parametro. Per ora e minuto si assegnano i valori di default presi da _oraFine, _minutoFine
 	 * altrimenti la data di fine sarebbe sbagliata.
+	 * 
 	 * @param periodo
 	 */
 	public void setDataFinePeriodoDaDataInizioPeriodo(MPeriodo periodo){
@@ -192,8 +201,9 @@ public class MPeriodo {
 	/**
 	 * Metodo che confronta il giorno di inizio dell'istanza su cui è invocato, con quello del periodo passato
 	 * come parametro.
+	 * 
 	 * @param periodo
-	 * @return true se i giorni di inizio sono uguali, false altrimenti.
+	 * @return True se i giorni di inizio sono uguali. False altrimenti.
 	 */
 	public boolean IniziaStessoGiornoInizioDi(MPeriodo periodo){
 		if (this.get_giornoInizio()==periodo.get_giornoInizio()&&
@@ -205,9 +215,10 @@ public class MPeriodo {
 	}
 	/**
 	 * Metodo che confronta il giorno di fine dell'istanza su cui è invocato, con quello del periodo passato 
-	 * come parametro
+	 * come parametro.
+	 * 
 	 * @param periodo
-	 * @return true se i periodi finiscono lo stesso giorno, false altrimenti
+	 * @return True se i periodi finiscono lo stesso giorno. False altrimenti.
 	 */
 	public boolean FinisceStessoGiornoFineDi(MPeriodo periodo){
 		if(this.get_giornoFine()==periodo.get_giornoFine()&&
@@ -219,6 +230,7 @@ public class MPeriodo {
 	}
 	/**
 	 * Metodo per settare la data di inizio del periodo da una data.
+	 * 
 	 * @param data Data attraverso la quale si setta l'inizio del periodo.
 	 */
 	public void setDataInizioDaData (GregorianCalendar data) {
@@ -228,6 +240,7 @@ public class MPeriodo {
 	}
 	/**
 	 * Metodo per settare la data di fine del periodo da una data.
+	 * 
 	 * @param data Data attraverso la quale si setta la fine del periodo.
 	 */
 	public void setDataFineDaData(GregorianCalendar data) {
@@ -240,140 +253,120 @@ public class MPeriodo {
 	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**
 	 * @return _annoFine
-	 * Metodo che restituisce l'intero che rappresenta l'anno della data di fine periodo
 	 */
 	public int get_annoFine() {
 		return _annoFine;
 	}
 	/**
 	 * @param _annoFine 
-	 * Metodo che setta l'intero che rappresenta l'anno della data di fine periodo
 	 */
 	public void set_annoFine(int _annoFine) {
 		this._annoFine = _annoFine;
 	}
 	/**
 	 * @return _meseFine
-	 * metodo che restituisce l'intero che rappresenta il mese della data di fine periodo
 	 */
 	public int get_meseFine() {
 		return _meseFine;
 	}
 	/**
 	 * @param _meseFine 
-	 * Metodo che setta l'intero che rappresenta il mese della data di fine periodo
 	 */
 	public void set_meseFine(int _meseFine) {
 		this._meseFine = _meseFine;
 	}
 	/**
-	 * @return the _giornoFine
-	 * Metodo che restituisce l'intero che rappresenta il giorno della data di fine periodo
+	 * @return _giornoFine
 	 */
 	public int get_giornoFine() {
 		return _giornoFine;
 	}
 	/**
 	 * @param _giornoFine
-	 * Metodo che setta l'intero che rappresenta il giorno della data di fine periodo
 	 */
 	public void set_giornoFine(int _giornoFine) {
 		this._giornoFine = _giornoFine;
 	}
 	/**
-	 * @return the _annoInizio
-	 * Metodo che restituisce l'intero che rappresenta l'anno della data di inizio periodo
+	 * @return _annoInizio
 	 */
 	public int get_annoInizio() {
 		return _annoInizio;
 	}
 	/**
-	 * @param _annoInizio the _annoInizio to set
-	 * Metodo che setta l'intero che rappresenta l'anno della data di inizio periodo
+	 * @param _annoInizio
 	 */
 	public void set_annoInizio(int _annoInizio) {
 		this._annoInizio = _annoInizio;
 	}
 	/**
-	 * @return the _meseInizio
-	 * Metodo che restituisce l'intero che rappresenta il mese della data di inizio periodo
+	 * @return _meseInizio
 	 */
 	public int get_meseInizio() {
 		return _meseInizio;
 	}
 	/**
 	 * @param _meseInizio
-	 * Metodo che setta l'intero che rappresenta il mese della data di inizio periodo 
 	 */
 	public void set_meseInizio(int _meseInizio) {
 		this._meseInizio = _meseInizio;
 	}
 	/**
-	 * @return the _giornoInizio
-	 * Metodo che restituisce l'intero che rappresenta il giorno della data di inizio periodo
+	 * @return _giornoInizio
 	 */
 	public int get_giornoInizio() {
 		return _giornoInizio;
 	}
 	/**
 	 * @param _giornoInizio
-	 * Metodo che setta l'intero che rappresenta il giorno della data di inizio periodo 
 	 */
 	public void set_giornoInizio(int _giornoInizio) {
 		this._giornoInizio = _giornoInizio;
 	}
 	/**
-	 * @return the _oraInizio
-	 * Metodo che restituisce l'intero che rappresenta l'ora della data di inizio periodo
+	 * @return _oraInizio
 	 */
 	public int get_oraInizio() {
 		return _oraInizio;
 	}
 	/**
 	 * @param _oraInizio
-	 * Metodo che setta l'intero che rappresenta l'ora della data di inizio periodo 
 	 */
 	public void set_oraInizio(int _oraInizio) {
 		this._oraInizio = _oraInizio;
 	}
 	/**
 	 * @param _oraFine
-	 * Metodo che setta l'intero che rappresenta l'ora della data di fine periodo 
 	 */
 	public void set_oraFine(int _oraFine) {
 		this._oraFine = _oraFine;
 	}
 	/**
-	 * @return the _oraFine
-	 * Metodo che restituisce l'intero che rappresenta l'ora della data di fine periodo
+	 * @return _oraFine
 	 */
 	public int get_oraFine() {
 		return _oraFine;
 	}
 	/**
 	 * @param _minutoInizio
-	 * Metodo che setta l'intero che rappresenta il minuto della data di inizio periodo 
 	 */
 	public void set_minutoInizio(int _minutoInizio) {
 		this._minutoInizio = _minutoInizio;
 	}
 	/**
-	 * @return the _minutoInizio
-	 * Metodo che restituisce l'intero che rappresenta il minuto della data di inizio periodo
+	 * @return _minutoInizio
 	 */
 	public int get_minutoInizio() {
 		return _minutoInizio;
 	}
 	/**
 	 * @param _minutoFine
-	 * Metodo che setta l'intero che rappresenta il minuto della data di fine periodo 
 	 */
 	public void set_minutoFine(int _minutoFine) {
 		this._minutoFine= _minutoFine;
 	}
 	/**
-	 * @return the _minutoFine
-	 * Metodo che restituisce l'intero che rappresenta il minuto della data di fine periodo
+	 * @return _minutoFine
 	 */
 	public int get_minutoFine() {
 		return _minutoFine;
