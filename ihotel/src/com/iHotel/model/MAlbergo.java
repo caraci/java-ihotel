@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+import com.iHotel.utility.DefaultLoader;
+
 
 public class MAlbergo {
     
@@ -26,21 +28,21 @@ public class MAlbergo {
 	 * Costruttore privato - pattern Singleton
 	 * @throws IOException 
 	 */
+	
 	private MAlbergo() throws IOException {
-		String filePath = new File("").getAbsolutePath();
-        System.out.println (filePath);
-		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + "/configs/Albergo.txt"))) {  
-			// Inizializzo gli attributi
-			_nome = albergoReader.readLine();
-			_telefono = albergoReader.readLine();
-			_PIVA = albergoReader.readLine();
-			_eMail = albergoReader.readLine();
-		} catch (IOException e) {
-			_nome = "Hotel Meraviglioso";
-			_telefono = "06808182";
-			_PIVA = "123456789ABCDEF";
-			_eMail = "info@hotelmeraviglioso.com";
-        } 
+		/*
+		 * Si prendono nome, telefono, partita IVA e email dal defaultLoader, togliendo dalla classe  
+		 * MAlbergo la responsabilità di recuperare i dati di default.
+		 */
+		DefaultLoader defaultLoader = DefaultLoader.getInstance();
+        ArrayList<String> informazioniAlbergo = new ArrayList<String>();
+        informazioniAlbergo =defaultLoader.getInformazioniAlbergo();
+        _nome = informazioniAlbergo.get(0);
+        _telefono = informazioniAlbergo.get(1);
+        _PIVA = informazioniAlbergo.get(2);
+        _eMail=informazioniAlbergo.get(3);
+
+
 	}
 	
 	/* ----------------------------- Metodi di classe -----------------------*/

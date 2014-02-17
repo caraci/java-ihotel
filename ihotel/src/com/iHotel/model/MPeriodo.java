@@ -1,7 +1,10 @@
 package com.iHotel.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
+import com.iHotel.utility.DefaultLoader;
 
 public class MPeriodo {
 
@@ -18,7 +21,23 @@ public class MPeriodo {
 	private int _oraFine = 10;
 	private int _minutoFine =0;
 	
-	public MPeriodo() {}
+	/**
+	 * Costruttore privato -pattern Singleton
+	 */	
+	public MPeriodo() {
+		/*
+		 * Si prendono minutoInizio, oraInizio, minutoFine e oraFine dal defaultLoader, togliendo dalla classe  
+		 * MPeriodo la responsabilità di recuperare i dati di default.
+		 */
+		
+		DefaultLoader defaultLoader = DefaultLoader.getInstance();
+		ArrayList<Integer> orarioDefault = new ArrayList<Integer>();
+		orarioDefault = defaultLoader.getMinutoOraInizioMinutoOraFine();
+		_minutoInizio = orarioDefault.get(0);
+		_oraInizio= orarioDefault.get(1);
+		_minutoFine = orarioDefault.get(2);
+		_oraFine=orarioDefault.get(3);
+	}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro è contenuto all'interno del periodo relativo all'oggetto
