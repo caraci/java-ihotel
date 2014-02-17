@@ -4,14 +4,18 @@ import java.util.*;
 
 public class MCamera {
 
+	/* --------------------------- Attributi ---------------------- */
+	
 	private LinkedList<MStatoCamera> _statiCamera = new LinkedList<MStatoCamera>();
 	private String _numero;
 	private String _tipologia;
 	private MDescrizioneCamera _descrizioneCamera;
 
-
+	/* -------------------------- Metodi di istanza ----------------------- */
+	
 	/**
 	 * Metodo per controllare se una camera è libera in un periodo.
+	 * 
 	 * @param periodoRichiesta Periodo nel quale si vuole prenotare la camera.
 	 * @return True se la camera è libera nel periodo. False altrimenti.
 	 */
@@ -25,14 +29,13 @@ public class MCamera {
 	}
 
 	/**
-	 * 
-	 * @param periodo
-	 * @return true
 	 * Metodo che occupa una stanza nel periodo passato come parametro. Risulta evidente che dato il periodo di occupazione,
 	 * c'è la necessità di creare un periodo prima ed uno dopo a quello della prenotazione, in cui la camera risulti
 	 * essere libera.
+	 * 
+	 * @param periodo	è il periodo in cui si deve occupare la camera 
 	 */
-	public boolean occupaInPeriodo(MPeriodo periodo) {
+	public void occupaInPeriodo(MPeriodo periodo) {
 		//definisco lo stato contenente, lo stato occupato e lo stato residuo. Setto i parametri dello stato occupato
 		//perchè li ho già tutti per farlo.		
 		
@@ -395,9 +398,6 @@ public class MCamera {
 			}
 			
 		}
-		
-		
-		return true;
 	}
 	
 	
@@ -405,10 +405,11 @@ public class MCamera {
 	 * Metodo che a partire dallo stato contenente, dal periodo della prenotazione e dall'indice della lista
 	 * in cui si trova lo stato contenente, va a calcolare due nuovi periodi, uno precedente alla prenotazione 
 	 * ed uno successivo, in cui la camera è libera. Questi periodi vengono poi associati a 2 rispettivi stati, 
-	 * i quali vengono aggiunti alla camera su cui si era invocato il metodo occupaCamera
-	 * @param statoContenente
-	 * @param periodo
-	 * @param indiceLista
+	 * i quali vengono aggiunti alla camera su cui si era invocato il metodo occupaCamera.
+	 * 
+	 * @param statoContenente è lo stato i cui periodo contiene il periodo per cui è effettuata la prenotazione
+	 * @param periodo è il periodo per cui si è effettuata la prenotazione
+	 * @param indiceLista è la posizione dello statoContenente all'interno della lista degli stati della camera
 	 */
 	private void calcolaNuoviPeriodi(MStatoCamera statoContenente,MPeriodo periodo,int indiceLista){	
 		/*
@@ -441,68 +442,54 @@ public class MCamera {
 	}
 	
 	
-	// Getter, Setter
+	/*------------------ Getter e Setter --------------*/
 	/**
-	 * @return the _statiCamera
-	 * Metodo che restituisce gli stati della camera
+	 * @return _statiCamera 
 	 */
 	public LinkedList<MStatoCamera> get_statiCamera() {
 		return _statiCamera;
 	}
 
 	/**
-	 * @param _statiCamera the _statiCamera to set
-	 * Metodo che setta gli stati della MCamera, data una LinkedList che li contiene 
+	 * @param _statiCamera
 	 */
 	public void set_statiCamera(LinkedList<MStatoCamera> _statiCamera) {
 		this._statiCamera = _statiCamera;
 	}
 	/**
-	 * 
 	 * @return _numero
-	 * Metodo che serve a restituire il numero della MCamera
 	 */
 	public String get_numero() {
 		return this._numero;
 	}
 
 	/**
-	 * 
 	 * @param _numero
-	 * Metodo che serve a settare il numero della MCamera
 	 */
 	public void set_numero(String _numero) {
 		this._numero = _numero;
 	}
 	/**
-	 * 
 	 * @return _tipologia
-	 * Metodo che restituisce la tipologia della MCamera
 	 */
 	public String get_tipologia() {
 		return this._tipologia;
 	}
 
 	/**
-	 * 
 	 * @param _tipologia
-	 * Metodo che serve a settare la tipologia della MCamera
 	 */
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;
 	}
 	/**
-	 * 
-	 * @return _descrizioneCamera
-	 * Metodo che restituisce l'oggetto che contiene la MDescrizioneCamera della MCamera
+	 * @return _descrizioneCamera 
 	 */
 	public MDescrizioneCamera get_descrizioneCamera() {
 		return this._descrizioneCamera;
 	}
 	/**
-	 * 
 	 * @param _descrizioneCamera
-	 * Metodo che associa alla MCamera corrente la MDescrizioneCamera passata come parametro
 	 */
 	public void set_descrizioneCamera(MDescrizioneCamera _descrizioneCamera) {
 		this._descrizioneCamera = _descrizioneCamera;

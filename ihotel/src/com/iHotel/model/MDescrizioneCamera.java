@@ -5,12 +5,15 @@ import java.util.*;
 public class MDescrizioneCamera {
 
 	/* -------------------------- Attributi -------------------------------------- */
+	
 	private ArrayList<MPrezzoCamera> _prezziCamera=new ArrayList<MPrezzoCamera>();
 	private String _tipologia;
 
 	/* ----------------------- Metodi di instanza ----------------------------------------- */
+	
 	/**
-	 * Metodo per ottenere tutti i prezzi per una tipologia di camera, in un certo periodo
+	 * Metodo per ottenere tutti i prezzi per una tipologia di camera, in un certo periodo.
+	 * 
 	 * @param periodo	Periodo generico
 	 * @return 			prezzi per una tipologia di camera in un periodo
 	 */
@@ -30,9 +33,9 @@ public class MDescrizioneCamera {
 		return prezziCamera;
 	}
 	
+	/* ------------------------------- Getter e Setter -------------------- */
 	/**
-	 * @return _prezziCamera
-	 * Metodo che restituisce tutti prezzi per una tipologia di camere 
+	 * @return _prezziCamera  
 	 */
 	public ArrayList<MPrezzoCamera> get_prezziCamera() {
 		return _prezziCamera;
@@ -40,7 +43,6 @@ public class MDescrizioneCamera {
 
 	/**
 	 * @param _prezziCamera 
-	 * Metodo che setta tutti prezzi per una tipologia di camere 
 	 */
 	public void set_prezziCamera(ArrayList<MPrezzoCamera> _prezziCamera) {
 		this._prezziCamera = _prezziCamera;
@@ -48,16 +50,13 @@ public class MDescrizioneCamera {
 
 	/**
 	 * @return _tipologia
-	 * Metodo che restituisce la tipologia  
 	 */
 	public String get_tipologia() {
 		return this._tipologia;
 	}
 
 	/**
-	 * 
 	 * @param _tipologia
-	 * Metodo che setta la topologia
 	 */
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;

@@ -12,11 +12,14 @@ import java.util.Iterator;
 public class MElementoPrenotazione {
 
 	/* -------------------------------------- Attributi ------------------------------- */
+	
 	private MCamera _camera;
 	
 	/* ----------------------------------- Metodi di instanza -------------------------- */
+	
 	/**
 	 * Metodo per ottere il subTotale di una prenotazione dovuto ad un unico elemento.
+	 * 
 	 * @param 	periodo	Periodo della prenotazione
 	 * @return 	double 	Subtotale della prenotazione per quella camera in tutto il periodo.
 	 */
@@ -58,6 +61,7 @@ public class MElementoPrenotazione {
 	}
 	/**
 	 * Metodo per calcolare il prezzo in un giorno relativo ad una camera.
+	 * 
 	 * @param prezziCamera Insieme dei prezzi della camera.	
 	 * @param data Giorno in cui bisogna calcolare il prezzo della camera
 	 * @return Prezzo della camera in un giorno.
@@ -83,18 +87,16 @@ public class MElementoPrenotazione {
 	}
 	/**
 	 * Metodo per occupare una camera in un determinato periodo.
+	 * 
 	 * @param periodo Periodo nel quale si vuole occupare una camera.
-	 * @return boolean
 	 */
-	public boolean occupaCameraInPeriodo(MPeriodo periodo) {
-		if(_camera.occupaInPeriodo(periodo)==true){
-			return true;
-		}else return false;
+	public void occupaCameraInPeriodo(MPeriodo periodo) {
+		_camera.occupaInPeriodo(periodo);
 	}
-	/* ---------------------------------- Getter, Setter -------------------------------- */
+	
+	/* ---------------------------------- Getter e Setter -------------------------------- */
 	/**
 	 * @return  _camera
-	 * Metodo che restituisce la camera di un  ElementoPrenotazione
 	 */
 	public MCamera get_camera() {
 		return _camera;
@@ -102,7 +104,6 @@ public class MElementoPrenotazione {
 
 	/**
 	 * @param _camera 
-	 * Metodo che setta la camera di un ElementoPrenotazione
 	 */
 	public void set_camera(MCamera camera) {
 		this._camera = camera;
