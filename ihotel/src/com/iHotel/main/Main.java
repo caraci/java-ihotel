@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
+import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
 import com.iHotel.controller.CGestisciPrenotazione;
 import com.iHotel.model.*;
@@ -14,7 +15,9 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
+		EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+		config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
+		ObjectContainer db = Db4oEmbedded.openFile(config, "dbihotel");
 		try {			
 			/* CARICAMENTO DEGLI OGETTI DELLO STRATO DI DOMINIO  */		
 			// Carico tutte le camere
