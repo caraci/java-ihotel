@@ -1,5 +1,10 @@
 package com.iHotel.model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -10,25 +15,42 @@ public class MAlbergo {
  	private MCatalogoCamere _catalogoCamere;
 	private ArrayList<MCamera> _camere;
 	private ArrayList<MPrenotazione> _prenotazioni = new ArrayList<MPrenotazione>();
-	private String _nome = "Hotel MAraviglioso";
-	private String _telefono = "123123123";
-	private String _PIVA = "123456789ABCDEF";
-	private String _eMail = "info@hotelmAraviglioso.com";
+	private String _nome;
+	private String _telefono;
+	private String _PIVA;
+	private String _eMail;
 	// Singleton 
 	private static MAlbergo instance = null;
 	
 	/**
 	 * Costruttore privato - pattern Singleton
+	 * @throws IOException 
 	 */
-	private MAlbergo() {}
+	private MAlbergo() throws IOException {
+		String filePath = new File("").getAbsolutePath();
+        System.out.println (filePath);
+		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + "/configs/Albergo.txt"))) {  
+			// Inizializzo gli attributi
+			_nome = albergoReader.readLine();
+			_telefono = albergoReader.readLine();
+			_PIVA = albergoReader.readLine();
+			_eMail = albergoReader.readLine();
+		} catch (IOException e) {
+			_nome = "Hotel Meraviglioso";
+			_telefono = "06808182";
+			_PIVA = "123456789ABCDEF";
+			_eMail = "info@hotelmeraviglioso.com";
+        } 
+	}
 	
 	/* ----------------------------- Metodi di classe -----------------------*/
 	
 	/**
 	 * 
 	 * @return instance
+	 * @throws IOException 
 	 */
-	public static MAlbergo getInstance() {
+	public static MAlbergo getInstance() throws IOException {
     	if(instance == null) {
             instance = new MAlbergo();
          }
