@@ -6,23 +6,28 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class DefaultLoader {
+public class UDefaultLoader {
 	
-	private static DefaultLoader instance = null;
+	/* -------------------------- Attributi e costruttore ----------------------- */
+	private String _pathToAlbergo = "/configs/Albergo.txt";
+	private String _pathToPeriodo = "/configs/Periodo.txt";
+	private static UDefaultLoader instance = null;
 	/**
 	 * Costruttore privato - Pattern singleton
 	 */
-	private DefaultLoader(){}
+	private UDefaultLoader(){}
 	/**
 	 * Metodo per ottenere l'instanza unica di questa classe - Pattern singleton
 	 * @return
 	 */
-	public static DefaultLoader getInstance(){
+	/* ----------------------- Metodi di classe -------------------------------- */
+	public static UDefaultLoader getInstance(){
 		if (instance == null){
-			instance = new DefaultLoader();
+			instance = new UDefaultLoader();
 		}
 		return instance;
 	}
+	/* ------------------------- Metodi di instanza ------------------------------ */
 	/**
 	 * Metodo per andare a leggere in un file di configurazione i valori relativi a nome, telefono, PIVA e eMail della
 	 * classe MAlbergo.
@@ -88,6 +93,31 @@ public class DefaultLoader {
 		attributiPeriodo.add(Integer.parseInt(oraFineStr));
 		
 		return attributiPeriodo;
+	}
+	/* --------------------------------- Getter, Setter ---------------------------------- */
+	/**
+	 * @return _pathToAlbergo
+	 */
+	public String get_PathToAlbergo() {
+		return _pathToAlbergo;
+	}
+	/**
+	 * @param _pathToAlbergo
+	 */
+	public void set_PathToAlbergo(String _pathToAlbergo) {
+		this._pathToAlbergo = _pathToAlbergo;
+	}
+	/**
+	 * @return _pathToPeriodo
+	 */
+	public String get_PathToPeriodo() {
+		return _pathToPeriodo;
+	}
+	/**
+	 * @param _pathToPeriodo
+	 */
+	public void setPathToPeriodo(String _pathToPeriodo) {
+		this._pathToPeriodo = _pathToPeriodo;
 	}	
 	
 

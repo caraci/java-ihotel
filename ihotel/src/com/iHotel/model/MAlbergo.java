@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-import com.iHotel.utility.DefaultLoader;
+import com.iHotel.utility.UDefaultLoader;
 
 
 public class MAlbergo {
@@ -34,7 +34,7 @@ public class MAlbergo {
 		 * Si prendono nome, telefono, partita IVA e email dal defaultLoader, togliendo dalla classe  
 		 * MAlbergo la responsabilità di recuperare i dati di default.
 		 */
-		DefaultLoader defaultLoader = DefaultLoader.getInstance();
+		UDefaultLoader defaultLoader = UDefaultLoader.getInstance();
         ArrayList<String> informazioniAlbergo = new ArrayList<String>();
         informazioniAlbergo =defaultLoader.getInformazioniAlbergo();
         _nome = informazioniAlbergo.get(0);

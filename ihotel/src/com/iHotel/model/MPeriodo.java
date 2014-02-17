@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import com.iHotel.utility.DefaultLoader;
+import com.iHotel.utility.UDefaultLoader;
 
 public class MPeriodo {
 
@@ -30,7 +30,7 @@ public class MPeriodo {
 		 * MPeriodo la responsabilità di recuperare i dati di default.
 		 */
 		
-		DefaultLoader defaultLoader = DefaultLoader.getInstance();
+		UDefaultLoader defaultLoader = UDefaultLoader.getInstance();
 		ArrayList<Integer> orarioDefault = new ArrayList<Integer>();
 		orarioDefault = defaultLoader.getMinutoOraInizioMinutoOraFine();
 		_minutoInizio = orarioDefault.get(0).intValue();
