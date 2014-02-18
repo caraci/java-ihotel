@@ -48,10 +48,11 @@ public class PersistentManager {
 	}
 	/**
 	 * Metodo per caricare oggetti dal DB.
+	 * @param <T>
 	 * @param arg0
 	 * @return
 	 */
-	public ObjectSet<?> query(Predicate<?> arg0) {
+	public <T> ObjectSet<T> query(Predicate<T> arg0) {
 		return _db.query(arg0);
 	}
 	/**

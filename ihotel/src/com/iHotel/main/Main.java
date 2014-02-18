@@ -11,19 +11,19 @@ import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 
 public class Main {
 
-	@SuppressWarnings({ "unchecked", "serial" })
+	@SuppressWarnings({"serial"})
 	public static void main(String[] args) throws IOException {
 		PersistentManager db = PersistentManager.getInstance();
 		try {			
 			/*------------------- CARICAMENTO DEGLI OGETTI DELLO STRATO DI DOMINIO  ----------------*/		
 			// Carico tutte le camere
-			List<MCamera> camere = (List<MCamera>) db.query(new Predicate<MCamera>() {
+			List<MCamera> camere = db.query(new Predicate<MCamera>() {
 				public boolean match(MCamera candidate) {
 					return true;
 				}
 			});
 			// Carico tutte le descrizioni
-			List<MDescrizioneCamera> descrizioniCamere = (List<MDescrizioneCamera>) db.query(new Predicate<MDescrizioneCamera>() {
+			List<MDescrizioneCamera> descrizioniCamere = db.query(new Predicate<MDescrizioneCamera>() {
 				public boolean match(MDescrizioneCamera candidate) {
 					return true;
 				}
