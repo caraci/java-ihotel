@@ -6,10 +6,10 @@ public class MCamera {
 
 	/* --------------------------- Attributi ---------------------- */
 	
-	private LinkedList<MStatoCamera> _statiCamera = new LinkedList<MStatoCamera>();
-	private String _numero;
-	private String _tipologia;
-	private MDescrizioneCamera _descrizioneCamera;
+	protected LinkedList<MStatoCamera> _statiCamera = new LinkedList<MStatoCamera>();
+	protected String _numero;
+	protected String _tipologia;
+	protected MDescrizioneCamera _descrizioneCamera;
 
 	/* -------------------------- Metodi di istanza ----------------------- */
 	

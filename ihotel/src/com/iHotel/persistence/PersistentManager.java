@@ -18,7 +18,7 @@ public class PersistentManager {
 	private PersistentManager() {
 		_config = Db4oEmbedded.newConfiguration();
 		_config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
-		_db = Db4oEmbedded.openFile(_config, "dbihotel");
+		_db = Db4oEmbedded.openFile(_config, "dbihotel_ereditarieta");
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
