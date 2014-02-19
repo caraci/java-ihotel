@@ -60,7 +60,7 @@ public class MPrenotazione {
 	public void occupaCamere() {
 		for (Iterator<MElementoPrenotazione> iterator = this._elementiPrenotazione.iterator(); iterator.hasNext();) {
 			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
-			elementoPrenotazione.get_camera().occupaInPeriodo(_periodo);
+			elementoPrenotazione.occupaCameraInPeriodo(_periodo);
 		}
 	}
 		

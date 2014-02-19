@@ -29,11 +29,10 @@ public abstract class MCamera {
 	}
 
 	/**
-	 * Metodo che occupa una stanza nel periodo passato come parametro. Risulta evidente che dato il periodo di occupazione,
-	 * c'è la necessità di creare un periodo prima ed uno dopo a quello della prenotazione, in cui la camera risulti
-	 * essere libera.
+	 * Metodo che occupa una stanza nel periodo passato come parametro. In base al periodo di occupazione, si vanno a modificare
+	 * gli stati della camera su cui è invocato il metodo.
 	 * 
-	 * @param periodo	è il periodo in cui si deve occupare la camera 
+	 * @param periodo Periodo in cui si deve occupare la camera 
 	 */
 	public void occupaInPeriodo(MPeriodo periodo) {
 		//definisco lo stato contenente, lo stato occupato e lo stato residuo. Setto i parametri dello stato occupato
@@ -60,7 +59,6 @@ public abstract class MCamera {
 		/* questo lo eseguo se il periodo della prenotazione riguarda non il primo periodo in cui la stanza è libera
 		* e non l'ultimo*/
 		if (indiceLista != 0 && indiceLista<(this.get_statiCamera().size()-1)){
-			System.out.print("indicelista != 0");
 			MPeriodo periodoPrecedente = this.get_statiCamera().get(indiceLista -1).get_periodo();
 			MPeriodo periodoSuccessivo = this.get_statiCamera().get(indiceLista +1).get_periodo();
 			
@@ -407,9 +405,9 @@ public abstract class MCamera {
 	 * ed uno successivo, in cui la camera è libera. Questi periodi vengono poi associati a 2 rispettivi stati, 
 	 * i quali vengono aggiunti alla camera su cui si era invocato il metodo occupaCamera.
 	 * 
-	 * @param statoContenente è lo stato i cui periodo contiene il periodo per cui è effettuata la prenotazione
-	 * @param periodo è il periodo per cui si è effettuata la prenotazione
-	 * @param indiceLista è la posizione dello statoContenente all'interno della lista degli stati della camera
+	 * @param statoContenente Stato il cui periodo, contiene quello per cui è effettuata la prenotazione.
+	 * @param periodo Periodo per cui si è effettuata la prenotazione.
+	 * @param indiceLista Posizione dello statoContenente all'interno della lista degli stati della camera.
 	 */
 	private void calcolaNuoviPeriodi(MStatoCamera statoContenente,MPeriodo periodo,int indiceLista){	
 		/*

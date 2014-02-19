@@ -3,7 +3,6 @@ package com.iHotel.model;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.Iterator;
 
 /**
@@ -31,15 +30,12 @@ public class MElementoPrenotazione {
 		// Data di fine della richiesta.
 		GregorianCalendar dataFine= new GregorianCalendar();
 		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),periodo.get_oraFine(),periodo.get_minutoFine());
-		
-		// Tipologia della camera.
-		String tipologia=_camera.get_tipologia();
 	
 		// Ricavo l'instanza della classe MCatalogoCamere attraverso il pattern Singleton.
 		MCatalogoCamere catalogo = MCatalogoCamere.getInstance();
 		// Ricavo l'insieme dei prezzi della tipologia della camera in un certo periodo.
-		HashMap<String,ArrayList<MPrezzoCamera>> prezziTipologia= new HashMap<String,ArrayList<MPrezzoCamera>>();
-		prezziTipologia=catalogo.getPrezziInPeriodoDaTipologia(periodo, tipologia);
+		ArrayList<MPrezzoCamera> prezziTipologia = new ArrayList<MPrezzoCamera>();
+		prezziTipologia=catalogo.getPrezziInPeriodoDaTipologia(periodo, _camera.get_tipologia());
 		
 		// Variabili nelle quali si andranno a memorizzare i totali.
 		double totaleCameraGiorno=0;
@@ -49,7 +45,7 @@ public class MElementoPrenotazione {
 		while (dataInizio.compareTo(dataFine) < 0) {
 		
 			// Calcolo il prezzo della camera in un giorno attraverso il metodo privato di MElementoPrenotazione
-			totaleCameraGiorno=calcolaPrezzoGiorno(prezziTipologia.get(tipologia),dataInizio);
+			totaleCameraGiorno=calcolaPrezzoGiorno(prezziTipologia,dataInizio);
 			// Sommo il totale della camera nel giorno, al totale della camera per il periodo.
 			totaleCameraPeriodo+=totaleCameraGiorno;
 			// Incremento il giorno di uno.

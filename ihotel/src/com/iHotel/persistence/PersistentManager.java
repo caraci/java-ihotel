@@ -8,7 +8,7 @@ import com.db4o.query.Predicate;
 import com.iHotel.model.MCamera;
 
 public class PersistentManager {
-	/* ------------ Attributi e costruttore */
+	/* ------------------------- Attributi e costruttore -----------------------------------*/
 	private static PersistentManager instance = null;
 	private EmbeddedConfiguration _config;
 	private ObjectContainer _db;

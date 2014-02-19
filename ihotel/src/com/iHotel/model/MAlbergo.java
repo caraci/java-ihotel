@@ -92,19 +92,6 @@ public class MAlbergo {
 		}
 		return lista_camere;
 	}
-	/**
-	 * Metodo che restituisce una HashMap in cui la chiave è la tipolgia della camera e il valore
-	 * è un arraylist di MPrezzoCamera.
-	 * 
-	 * @param periodo è il periodo per cui si stanno richiedendo i prezzi
-	 * @param tipologia è la tipologia per cui si richiedono i prezzi
-	 * @return catalogoCamere.getPrezziInPeriodoDaTipologia(MPeriodo,String) mappa contenente l'insieme dei prezzi delle camere 
-	 * della tipologia data nel periodo dato
-	 */
-	public HashMap<String,ArrayList<MPrezzoCamera>> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
-		MCatalogoCamere catalogoCamere =MCatalogoCamere.getInstance();
-		return catalogoCamere.getPrezziInPeriodoDaTipologia(periodo, tipologia);
-	}
 
 	/*---------------------- Getter e Setter --------------------*/
 	/**
