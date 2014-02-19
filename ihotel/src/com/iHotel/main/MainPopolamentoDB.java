@@ -1,13 +1,31 @@
+/**
+ * 
+ */
 package com.iHotel.main;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
-import com.iHotel.model.*;
+import com.iHotel.model.MAlbergo;
+import com.iHotel.model.MCamera;
+import com.iHotel.model.MCameraDoppia;
+import com.iHotel.model.MCameraSingola;
+import com.iHotel.model.MCameraTripla;
+import com.iHotel.model.MCatalogoCamere;
+import com.iHotel.model.MDescrizioneCamera;
+import com.iHotel.model.MPeriodo;
+import com.iHotel.model.MPrezzoCamera;
+import com.iHotel.model.MStatoCamera;
 
-import java.util.*;
+/**
+ * @author Eugenio
+ *
+ */
+public class MainPopolamentoDB {
 
-public class MainPopolamentoDB{
-	
-	
+
 	//metodi per inserire
 	public static void aggiungiPeriodo(ObjectContainer db,MPeriodo periodo){
 		db.store(periodo);		
@@ -155,49 +173,49 @@ public class MainPopolamentoDB{
 		//Camere singole
 				
 		// Camera 101
-		MCamera camera_101 = new MCamera();
+		MCamera camera_101 = new MCameraSingola();
 		camera_101.set_numero("101");
 		camera_101.set_tipologia("Singola");
 		
 		// Camera 102
-		MCamera camera_102 = new MCamera();
+		MCamera camera_102 = new MCameraSingola();
 		camera_102.set_numero("102");
 		camera_102.set_tipologia("Singola");
 		
 		// Camera 103
-		MCamera camera_103 = new MCamera();
+		MCamera camera_103 = new MCameraSingola();
 		camera_103.set_numero("103");
 		camera_103.set_tipologia("Singola");
 		
 		//Camere doppie
 		// Camera 201
-		MCamera camera_201 = new MCamera();
+		MCamera camera_201 = new MCameraDoppia();
 		camera_201.set_numero("201");
 		camera_201.set_tipologia("Doppia");
 		
 		// Camera 202
-		MCamera camera_202 = new MCamera();
+		MCamera camera_202 = new MCameraDoppia();
 		camera_202.set_numero("202");
 		camera_202.set_tipologia("Doppia");
 		
 		// Camera 203
-		MCamera camera_203 = new MCamera();
+		MCamera camera_203 = new MCameraDoppia();
 		camera_203.set_numero("203");
 		camera_203.set_tipologia("Doppia");
 		
 		// Camere triple
 		// Camera 301
-		MCamera camera_301 = new MCamera();
+		MCamera camera_301 = new MCameraTripla();
 		camera_301.set_numero("301");
 		camera_301.set_tipologia("Tripla");
 		
 		// Camera 302
-		MCamera camera_302 = new MCamera();
+		MCamera camera_302 = new MCameraTripla();
 		camera_302.set_numero("302");
 		camera_302.set_tipologia("Tripla");
 		
 		// Camera 303
-		MCamera camera_303 = new MCamera();
+		MCamera camera_303 = new MCameraTripla();
 		camera_303.set_numero("303");
 		camera_303.set_tipologia("Tripla");
 		
@@ -425,20 +443,6 @@ public class MainPopolamentoDB{
 		d3.set_tipologia("Tripla");
 		d3.set_prezziCamera(prezzi_tripla);
 		
-		/*
-		//creo map descrizione camere
-		HashMap<String,MDescrizioneCamera> descrizioniCamere = new HashMap<String,MDescrizioneCamera>();
-		descrizioniCamere.put("Singola",d1);
-		descrizioniCamere.put("Doppia", d2);
-		descrizioniCamere.put("Tripla", d3);
-		*/
-		
-		/*
-		// Creo CatalogoCamere
-		MCatalogoCamere catalogoCamere = new MCatalogoCamere();	
-		catalogoCamere.set_descrizioniCamere(descrizioniCamere);
-		*/
-		
 		// assegno le descrizioni alle camere
 		camera_101.set_descrizioneCamera(d1);
 		camera_102.set_descrizioneCamera(d1);
@@ -450,32 +454,6 @@ public class MainPopolamentoDB{
 		camera_302.set_descrizioneCamera(d3);
 		camera_303.set_descrizioneCamera(d3);
 		
-		/*
-		// Mappa delle camere
-		ArrayList<MCamera> camere = new ArrayList<MCamera>();
-		camere.add(camera_101);
-		camere.add(camera_102);
-		camere.add(camera_103);
-		camere.add(camera_201);
-		camere.add(camera_202);
-		camere.add(camera_203);
-		camere.add(camera_301);
-		camere.add(camera_302);
-		camere.add(camera_303);
-		*/
-		
-		/*
-		// Creo Albergo e gli associo tutte le informazioni.
-		MAlbergo albergo = new MAlbergo();
-		albergo.set_eMail("info@hotelmAraviglioso.com");
-		albergo.set_nome("Hotel mAraviglioso");
-		albergo.set_PIVA("123456789ABCDEF");
-		albergo.set_telefono("0746123456");
-		albergo.set_camere(camere);
-		albergo.set_catalogoCamere(catalogoCamere);
-		ArrayList<MPrenotazione> prenotazioni = new ArrayList<MPrenotazione>();
-		albergo.set_prenotazioni(prenotazioni);
-		*/
 		
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {
@@ -512,15 +490,6 @@ public class MainPopolamentoDB{
 			aggiungiCamera(db,camera_302);
 			aggiungiCamera(db,camera_303);
 			
-			/*
-			//aggiunta catalogo
-			aggiungiCatalogo(db,catalogoCamere);
-			*/
-			
-			/*
-			//aggiunta albergo
-			aggiungiAlbergo(db,albergo);
-			*/
 		}
 		
 		finally {

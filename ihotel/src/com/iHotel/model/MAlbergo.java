@@ -64,7 +64,7 @@ public class MAlbergo {
 	 * @return cameraRicercata Camera che ha il numero passato come parametro.
 	 */
 	public MCamera getCameraDaNumero(String numeroCamera) {
-		MCamera cameraRicercata = new MCamera();
+		MCamera cameraRicercata = null; // = new MCamera();
 		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
 			MCamera camera = (MCamera) iterator.next();
 			if (camera.get_numero().equals(numeroCamera)) {

@@ -12,13 +12,15 @@ public class PersistentManager {
 	private static PersistentManager instance = null;
 	private EmbeddedConfiguration _config;
 	private ObjectContainer _db;
+	private String _nomeDB;
 	/**
 	 * Costruttore privato - pattern singleton
 	 */
 	private PersistentManager() {
 		_config = Db4oEmbedded.newConfiguration();
 		_config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
-		_db = Db4oEmbedded.openFile(_config, "dbihotel_ereditarieta");
+		_nomeDB = "dbihotel";
+		_db = Db4oEmbedded.openFile(_config, _nomeDB);
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
@@ -33,12 +35,6 @@ public class PersistentManager {
          return instance;
     }
     /* --------------------------------- Metodi di instanza -------------------------------------- */
-	/**
-	 * @return _db
-	 */
-	public ObjectContainer get_db() {
-		return _db;
-	}
 	/**
 	 * Store di un oggetto.
 	 * @param arg0

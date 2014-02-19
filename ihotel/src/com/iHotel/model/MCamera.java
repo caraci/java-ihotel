@@ -2,7 +2,7 @@ package com.iHotel.model;
 
 import java.util.*;
 
-public class MCamera {
+public abstract class MCamera {
 
 	/* --------------------------- Attributi ---------------------- */
 	
