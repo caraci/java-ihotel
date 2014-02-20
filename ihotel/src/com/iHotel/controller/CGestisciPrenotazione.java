@@ -1,8 +1,8 @@
 package com.iHotel.controller;
 import com.iHotel.model.*;
 import com.iHotel.persistence.PCamera;
+import com.iHotel.persistence.PersistentManager;
 import com.iHotel.persistence.PPrenotazione;
-import com.iHotel.persistence.PServer;
 import com.iHotel.utility.UStartup;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
@@ -136,14 +136,13 @@ public class CGestisciPrenotazione {
 		// Aggiungo la prenotazione all'albergo
 		_albergo.addPrenotazione(_prenotazione);
 		// Carico il gestore della persistenza.
-		PCamera pcamera = PCamera.getInstance();
-		PPrenotazione pprenotazione = PPrenotazione.getInstance();
+		PersistentManager db = PCamera.getInstance();
 		try {
-			pcamera.store(_albergo.get_camere());
-			pprenotazione.store(_prenotazione);
+			db.store(_albergo.get_camere());
+			db = PPrenotazione.getInstance();
+			db.store(_prenotazione);
 		} finally {
-			pcamera.close();
-			pprenotazione.close();
+			db.close();
 		}
 	}
 	/* -------------------------- Getter, Setter -------------------- */
