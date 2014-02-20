@@ -40,7 +40,7 @@ public class UDefaultLoader {
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + "/configs/Albergo.txt"))) {  
+		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToAlbergo))) {  
 			// Inizializzo gli attributi
 			nome = albergoReader.readLine();
 			telefono = albergoReader.readLine();
@@ -73,7 +73,7 @@ public class UDefaultLoader {
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + "/configs/Periodo.txt"))) {  
+		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToPeriodo))) {  
 			// Inizializzo gli attributi
 			minutoInizioStr = albergoReader.readLine();
 			oraInizioStr = albergoReader.readLine();

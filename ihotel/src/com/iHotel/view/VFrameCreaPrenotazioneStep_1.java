@@ -33,26 +33,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     /* CheckBoxes */
     private JCheckBox[] checkBoxesTipologie;
     
-    /*
-     	*
-     	* Launch the application.
-     	*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					
-					VFrameCreaPrenotazioneStep_1 frame = VFrameCreaPrenotazioneStep_1.getInstance();
-					frame.creaFrame(new ArrayList<String>());
-					frame.setVisible(true);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	*/
+	
     /**
      * Costruttore privato - pattern Singleton
      */

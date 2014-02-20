@@ -1,9 +1,12 @@
 package com.iHotel.controller;
 import com.iHotel.model.*;
 import com.iHotel.persistence.PersistentManager;
+import com.iHotel.utility.UStartup;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
+import com.iHotel.view.VFrameHome;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
@@ -34,9 +37,25 @@ public class CGestisciPrenotazione {
     /* --------------------------------- Metodi di instanza -------------------------------------- */
     /**
      * Metodo per creare una nuova prenotazione
+     * @throws IOException 
      */
-	public void creaNuovaPrenotazione() {
+	public void creaNuovaPrenotazione() throws IOException {
+		UStartup startup = new UStartup();
+		// Inizializzo lo strato di dominio.
+		startup.inizializza();
+		// Carico l'albergo mediante pattern Singleton
+		_albergo = MAlbergo.getInstance();
+		// Creo la nuova prenotazione
 		_prenotazione = new MPrenotazione();
+		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
+		ArrayList<String> tipologieCamere = new ArrayList<String>();
+		tipologieCamere.addAll(_albergo.get_catalogoCamere().get_descrizioniCamere().keySet());
+		// Nascondo VFrameHome e mostro VFrameCreaPrenotazioneStep1
+		VFrameHome.getInstance().setVisible(false);
+		VFrameCreaPrenotazioneStep_1 frameCreaPrenotazione1 = VFrameCreaPrenotazioneStep_1.getInstance();
+		frameCreaPrenotazione1.creaFrame(tipologieCamere);
+		frameCreaPrenotazione1.setVisible(true);
+		
 	}
 	/**
 	 * Metodo per aggiungere una Camera alla prenotazione ed ottenere il totale di quest'ultima.
