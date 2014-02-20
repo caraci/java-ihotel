@@ -2,19 +2,29 @@
  * 
  */
 package com.iHotel.persistence;
+import com.iHotel.model.MAlbergo;
+import com.iHotel.persistence.*;
 
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectServer;
-import com.db4o.ObjectSet;
-import com.db4o.query.Predicate;
+
 
 /**
  * @author Eugenio
  *
  */
-public class PCamera {
+public class PCamera extends PClient {
 	
-	/* ------------------------- Attributi e costruttore ----------------------- */
+	private static PCamera instance=null;
+	
+	private PCamera(){}
+	
+	public static PCamera getInstance(){
+		if(instance == null) {
+            instance = new PCamera();
+         }
+         return instance;
+	}
+	/*
+	/* ------------------------- Attributi e costruttore ----------------------- 
 	ObjectContainer _db;
 	
 	public PCamera() {
@@ -23,11 +33,11 @@ public class PCamera {
 		// Apro una nuova connessione mediante un client al server.
 		_db=serverDB.openClient();
 	}
-	/* ------------------------- Metodi di instanza ------------------------------ */
+	/* ------------------------- Metodi di instanza ------------------------------ 
 	/**
 	* Store di un oggetto.
 	* @param arg0
-	*/
+	
 	public void store(Object arg0) {
 		_db.store(arg0);
 	}
@@ -35,15 +45,15 @@ public class PCamera {
 	* @param <T>
 	* @param arg0
 	* @return
-	*/
+	
 	public <T> ObjectSet<T> query(Predicate<T> arg0) {
 		return _db.query(arg0);
 	}
 	/**
 	 * Metodo per chiudere la connessione con il DB.
-	 */
+	 
 	public void close() {
 		_db.close();
-	}
+	}*/
 
 }

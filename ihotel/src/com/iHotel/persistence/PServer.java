@@ -5,16 +5,16 @@ import com.db4o.cs.Db4oClientServer;
 import com.db4o.cs.config.ServerConfiguration;
 import com.iHotel.model.MCamera;
 
-public class PersistentManager {
+public class PServer {
 	/* ------------------------- Attributi e costruttore -----------------------------------*/
-	private static PersistentManager instance = null;
+	private static PServer instance = null;
 	private ServerConfiguration _config;
 	private ObjectServer _db;
 	private String _nomeDB;
 	/**
 	 * Costruttore privato - pattern singleton
 	 */
-	private PersistentManager() {
+	private PServer() {
 		_config = Db4oClientServer.newServerConfiguration();
 		_config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
 		_nomeDB = "dbihotel";
@@ -26,9 +26,9 @@ public class PersistentManager {
 	 * 
 	 * @return CGestisciPrenotazione Instanza unica di questa classe
 	 */
-    public static PersistentManager getInstance() {
+    public static PServer getInstance() {
     	if(instance == null) {
-            instance = new PersistentManager();
+            instance = new PServer();
          }
          return instance;
     }

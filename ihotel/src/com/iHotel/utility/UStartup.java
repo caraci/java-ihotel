@@ -15,7 +15,7 @@ import com.iHotel.model.MCatalogoCamere;
 import com.iHotel.model.MDescrizioneCamera;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PDescrizioneCamera;
-import com.iHotel.persistence.PersistentManager;
+import com.iHotel.persistence.PServer;
 
 /**
  * @author Eugenio
@@ -26,22 +26,22 @@ public class UStartup {
 	public void inizializza() {
 		
 		try {
-			PCamera pcamera = new PCamera();
+			PCamera pcamera = PCamera.getInstance();
 			// Carico tutte le camere
 			List<MCamera> camere = pcamera.query(new Predicate<MCamera>() {
 				public boolean match(MCamera candidate) {
 					return true;
 				}
 			});
-			pcamera.close();
-			PDescrizioneCamera pdescrizioneCamera = new PDescrizioneCamera();
+			
+			PDescrizioneCamera pdescrizioneCamera = PDescrizioneCamera.getInstance();
 			// Carico tutte le descrizioni
 			List<MDescrizioneCamera> descrizioniCamere = pdescrizioneCamera.query(new Predicate<MDescrizioneCamera>() {
 				public boolean match(MDescrizioneCamera candidate) {
 					return true;
 				}
 			});
-			pdescrizioneCamera.close();
+			
 			// Mediante pattern singleton, carico Albergo e Catalogo camere.
 			MAlbergo _albergo = MAlbergo.getInstance();
 			MCatalogoCamere catalogoCamere = MCatalogoCamere.getInstance();
