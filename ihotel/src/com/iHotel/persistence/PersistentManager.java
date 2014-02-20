@@ -1,13 +1,8 @@
 package com.iHotel.persistence;
 
-import com.db4o.Db4oEmbedded;
-import com.db4o.ObjectContainer;
 import com.db4o.ObjectServer;
-import com.db4o.ObjectSet;
-import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.cs.Db4oClientServer;
 import com.db4o.cs.config.ServerConfiguration;
-import com.db4o.query.Predicate;
 import com.iHotel.model.MCamera;
 
 public class PersistentManager {
@@ -38,25 +33,13 @@ public class PersistentManager {
          return instance;
     }
     /* --------------------------------- Metodi di instanza -------------------------------------- */
-	
-    /*
-	 * Store di un oggetto.
-	 * @param arg0
-	 
-	public void store(Object arg0) {
-		_db.store(arg0);
-	}
-	
-	 * Metodo per caricare oggetti dal DB.
-	 * @param <T>
-	 * @param arg0
+	/**
+	 * Metodo per ottenere il server della base dati.
 	 * @return
-	 
-	public <T> ObjectSet<T> query(Predicate<T> arg0) {
-		return _db.query(arg0);
-	}
-	*/
-	
+	 */
+    public ObjectServer get_db() {
+    	return _db;
+    }	
 	/**
 	 * Metodo per chiudere la connessione con il DB.
 	 */
