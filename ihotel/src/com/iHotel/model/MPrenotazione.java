@@ -47,20 +47,21 @@ public class MPrenotazione {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void addPrenotante(String nome, String cognome, String eMail, String telefono){
-	
+	/*
 		_prenotante = (MOspite) _prenotante;
 		_prenotante.
 		_ospite.set_cognome(cognome);
 		_ospite.set_eMail(eMail);
 		_ospite.set_telefono(telefono);
+		*/
 	}
 	/**
 	 * Metodo per occupare le camere della prenotazione.
 	 */
 	public void occupaCamere() {
-		for (Iterator<MElementoPrenotazione> iterator = this._elementiPrenotazione.iterator(); iterator.hasNext();) {
-			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
-			elementoPrenotazione.occupaCameraInPeriodo(_periodo);
+		for (Iterator<MCamera> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
+			MCamera cameraPrenotata = (MCamera) iterator.next();
+			cameraPrenotata.occupaInPeriodo(_periodo);
 		}
 	}
 		

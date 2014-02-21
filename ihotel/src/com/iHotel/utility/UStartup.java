@@ -33,7 +33,7 @@ public class UStartup {
 					return true;
 				}
 			});
-			
+
 			db = PDescrizioneCamera.getInstance();
 			// Carico tutte le descrizioni
 			List<MDescrizioneCamera> descrizioniCamere = db.query(new Predicate<MDescrizioneCamera>() {

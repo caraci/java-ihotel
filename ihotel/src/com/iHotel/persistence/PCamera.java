@@ -26,4 +26,7 @@ public class PCamera extends PersistentManager {
          }
          return instance;
 	}
+	public void dio() {
+		
+	}
 }
