@@ -9,7 +9,6 @@ public abstract class MCamera {
 	protected LinkedList<MStatoCamera> _statiCamera = new LinkedList<MStatoCamera>();
 	protected String _numero;
 	protected String _tipologia;
-	protected MDescrizioneCamera _descrizioneCamera;
 
 	/* -------------------------- Metodi di istanza ----------------------- */
 	
@@ -480,17 +479,15 @@ public abstract class MCamera {
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;
 	}
+
 	/**
-	 * @return _descrizioneCamera 
+	 * 
+	 * @param periodo
+	 * @param tipologia
 	 */
-	public MDescrizioneCamera get_descrizioneCamera() {
-		return this._descrizioneCamera;
-	}
-	/**
-	 * @param _descrizioneCamera
-	 */
-	public void set_descrizioneCamera(MDescrizioneCamera _descrizioneCamera) {
-		this._descrizioneCamera = _descrizioneCamera;
+	public boolean isLiberaInPeriodoDaTipologia(MPeriodo periodo, String tipologia) {
+		// TODO - implement MCamera.isLiberaInPeriodoDaTipologia
+		throw new UnsupportedOperationException();
 	}
 
 }

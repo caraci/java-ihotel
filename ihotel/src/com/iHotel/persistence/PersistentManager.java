@@ -13,6 +13,12 @@ public abstract class PersistentManager {
 	// Attributo nel quale si memorizza la connessione verso la base dati
 	protected static ObjectContainer _db;
 	/**
+	 * ------------------------- Attributi e costruttore -----------------------------------
+	 */
+	private static PersistentManager instance = null;
+	private EmbeddedConfiguration _config;
+	private String _nomeDB;
+	/**
 	 * Costruttore protetto in modo che possa essere ereditato dalle sottoclassi.
 	 */
 	protected PersistentManager() {
@@ -52,5 +58,9 @@ public abstract class PersistentManager {
 	 */
 	public void close() {
 		_db.close();
+	}
+
+	public PersistentManager getInstance() {
+		return this.instance;
 	}
 }

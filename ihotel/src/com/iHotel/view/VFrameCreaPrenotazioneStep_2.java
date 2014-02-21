@@ -38,6 +38,10 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
     private JLabel lblNome, lblCognome, lbleMail, lblTelefono, lblPrezzoTotale, lblPrezzoScritto;
     /* JTextField */
     private JTextField txtNome, txtCognome, txteMail, txtTelefono;
+	/**
+	 * Panel
+	 */
+	private javax.swing.JPanel[] panelColonne;
    
     /*
 	 	*
@@ -257,4 +261,13 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 				}
 			});		
     }
+
+	/**
+	 * Launch the application.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO - implement VFrameCreaPrenotazioneStep_2.main
+		throw new UnsupportedOperationException();
+	}
 }

@@ -61,11 +61,10 @@ public class CGestisciPrenotazione {
 	}
 	/**
 	 * Metodo per aggiungere una Camera alla prenotazione ed ottenere il totale di quest'ultima.
-	 * 
 	 * @param numeroCamera Stringa contenente il numero della camera.
 	 * @return Costo totale della prenotazione in seguito all'aggiunta della camera.
 	 */
-	public double aggiungiElementoPrenotazione(String numeroCamera) {
+	public double aggiungiCameraAllaPrenotazione(String numeroCamera) {
 		MCamera camera = null;
 		// Ricavo la MCamera a partire dalla stringa contenente il suo numero.
 		camera = _albergo.getCameraDaNumero(numeroCamera);

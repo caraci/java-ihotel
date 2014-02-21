@@ -5,10 +5,10 @@ import java.util.*;
 public class MPrenotazione {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
-	private ArrayList<MElementoPrenotazione> _elementiPrenotazione = new ArrayList<MElementoPrenotazione>();
-	private MOspite _ospite;
+	private ArrayList<MCamera> _camerePrenotate = new ArrayList<MCamera>();
 	private MPeriodo _periodo;
 	private boolean _completata;
+	private IMPrenotante _prenotante;
 	
 	public MPrenotazione() {}
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
@@ -31,23 +31,21 @@ public class MPrenotazione {
 	
 	/**
 	 * Metodo per aggiungere un elemento alla prenotazione.
-	 * 
 	 * @param camera Camera da aggiungere alla prenotazione
 	 */
-	public void addElementoPrenotazione(MCamera camera) {
+	public void addCamera(MCamera camera) {
 		MElementoPrenotazione elementoPrenotazione= new MElementoPrenotazione();
 		elementoPrenotazione.set_camera(camera);
 		_elementiPrenotazione.add(elementoPrenotazione);
 	}
 	/**
 	 * Metodo per aggiungere l'ospite prenotante.
-	 * 
 	 * @param nome Nome dell'ospite.
 	 * @param cognome Cognome dell'ospite.
 	 * @param eMail eMail dell'ospite.
 	 * @param telefono Telefono dell'ospite.
 	 */
-	public void addOspite(String nome, String cognome, String eMail, String telefono){
+	public void addPrenotante(String nome, String cognome, String eMail, String telefono){
 		_ospite = new MOspite();
 		_ospite.set_nome(nome);
 		_ospite.set_cognome(cognome);
@@ -68,29 +66,15 @@ public class MPrenotazione {
 	/**
 	 * @return _elementiPrenotazione
 	 */
-	public ArrayList<MElementoPrenotazione> get_elementiPrenotazione() {
-		return _elementiPrenotazione;
+	public ArrayList<MCamera> get_camerePrenotate() {
+		return _camerePrenotate;
 	}
 
 	/**
 	 * @param _elementiPrenotazione
 	 */
-	public void set_elementiPrenotazione(ArrayList<MElementoPrenotazione> _elementiPrenotazione) {
-		this._elementiPrenotazione = _elementiPrenotazione;
-	}
-
-	/**
-	 * @return  _ospite
-	 */
-	public MOspite get_ospite() {
-		return _ospite;
-	}
-
-	/**
-	 * @param _ospite 
-	 */
-	public void set_ospite(MOspite _ospite) {
-		this._ospite = _ospite;
+	public void set_camerePrenotate(ArrayList<MCamera> _elementiPrenotazione) {
+		this._camerePrenotate = _elementiPrenotazione;
 	}
 
 	/**

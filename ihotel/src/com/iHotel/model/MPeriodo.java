@@ -233,9 +233,8 @@ public class MPeriodo {
 		return false;
 	}
 	/**
-	 * Metodo che confronta il giorno di fine dell'istanza su cui è invocato, con quello del periodo passato 
+	 * Metodo che confronta il giorno di fine dell'istanza su cui è invocato, con quello del periodo passato
 	 * come parametro.
-	 * 
 	 * @param periodo
 	 * @return True se i periodi finiscono lo stesso giorno. False altrimenti.
 	 */

@@ -197,4 +197,13 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 			}
 		});
 	}
+
+	/**
+	 * Launch the application.
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO - implement VFrameCreaPrenotazioneStep_1.main
+		throw new UnsupportedOperationException();
+	}
 }

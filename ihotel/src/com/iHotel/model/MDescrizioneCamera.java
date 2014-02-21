@@ -61,6 +61,15 @@ public class MDescrizioneCamera {
 	public void set_tipologia(String _tipologia) {
 		this._tipologia = _tipologia;
 	}
+
+	/**
+	 * 
+	 * @param periodo
+	 */
+	public double calcolaPrezzoInPeriodo(MPeriodo periodo) {
+		// TODO - implement MDescrizioneCamera.calcolaPrezzoInPeriodo
+		throw new UnsupportedOperationException();
+	}
 	
 
 
