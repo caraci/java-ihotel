@@ -2,9 +2,7 @@ package com.iHotel.controller;
 import com.iHotel.model.*;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PDb;
-import com.iHotel.persistence.PersistentManager;
 import com.iHotel.persistence.PPrenotazione;
-import com.iHotel.utility.UStartup;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
 import com.iHotel.view.VFrameHome;
@@ -13,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class CGestisciPrenotazione {
 	
@@ -43,9 +42,6 @@ public class CGestisciPrenotazione {
      * @throws IOException 
      */
 	public void creaNuovaPrenotazione() throws IOException {
-		UStartup startup = new UStartup();
-		// Inizializzo lo strato di dominio.
-		startup.inizializza();
 		// Carico l'albergo mediante pattern Singleton
 		_albergo = MAlbergo.getInstance();
 		// Creo la nuova prenotazione
@@ -131,18 +127,24 @@ public class CGestisciPrenotazione {
 		_prenotazione.addPrenotante(nome, cognome, eMail, telefono);
 		// Occupo le camere scelte dall'utente
 		_prenotazione.occupaCamere();
+		// Stampo l'elenco di stati della camera
+		LinkedList<MStatoCamera> stati = new LinkedList<MStatoCamera>();
+		stati=_prenotazione.get_camerePrenotate().get(0).get_statiCamera();
+		for (Iterator<MStatoCamera> iterator = stati.iterator(); iterator.hasNext();) {
+			MStatoCamera mStatoCamera = (MStatoCamera) iterator.next();
+			System.out.println("Inizio: " + mStatoCamera.get_periodo().get_giornoInizio() + " " + mStatoCamera.get_periodo().get_meseInizio());
+			System.out.println("Fine: " + mStatoCamera.get_periodo().get_giornoFine() + " " + mStatoCamera.get_periodo().get_meseFine());
+		}
 		// Setto la prenotazione come completata
 		_prenotazione.set_completata(true);
 		// Aggiungo la prenotazione all'albergo
 		_albergo.addPrenotazione(_prenotazione);
-		// Carico il gestore della persistenza.
-		
+		// Salvataggio degli oggetti da Ram -> Persistenza.
 		try {
-			PCamera.getInstance().store(_albergo.get_camere());
-			
-			
+			//PCamera.getInstance().store(_albergo.get_camere());	
+			PPrenotazione.getInstance().store(_prenotazione);
 		} finally {
-			PDb.getDB().close();
+			PDb.getInstance().getDB().close();
 		}
 	}
 	/* -------------------------- Getter, Setter -------------------- */

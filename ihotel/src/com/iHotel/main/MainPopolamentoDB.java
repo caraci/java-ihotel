@@ -25,7 +25,6 @@ import com.iHotel.model.MStatoCamera;
  */
 public class MainPopolamentoDB {
 
-
 	//metodi per inserire
 	public static void aggiungiPeriodo(ObjectContainer db,MPeriodo periodo){
 		db.store(periodo);		

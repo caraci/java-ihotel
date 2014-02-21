@@ -2,9 +2,6 @@
  * 
  */
 package com.iHotel.persistence;
-
-
-
 /**
  * @author Eugenio
  *

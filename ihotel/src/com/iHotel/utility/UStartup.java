@@ -8,14 +8,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import com.db4o.query.Predicate;
 import com.iHotel.model.MAlbergo;
 import com.iHotel.model.MCamera;
 import com.iHotel.model.MCatalogoCamere;
 import com.iHotel.model.MDescrizioneCamera;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PDb;
-import com.iHotel.persistence.PersistentManager;
 import com.iHotel.persistence.PDescrizioneCamera;
 
 /**
@@ -23,29 +21,14 @@ import com.iHotel.persistence.PDescrizioneCamera;
  *
  */
 public class UStartup {
-	
 	public void inizializza() {
-		
 		try {
+			// Avvio la connessione alla base dati.
 			PDb.getInstance();
-			//PCamera db = PCamera.getInstance();
 			// Carico tutte le camere
-			@SuppressWarnings("serial")
-			List<MCamera> camere = PCamera.getInstance().query(new Predicate<MCamera>() {
-				public boolean match(MCamera candidate) {
-					return true;
-				}
-			});
-
-			//PDescrizioneCamera database = PDescrizioneCamera.getInstance();
+			List<MCamera> camere = PCamera.getInstance().caricaCamere();
 			// Carico tutte le descrizioni
-			@SuppressWarnings("serial")
-			List<MDescrizioneCamera> descrizioniCamere = PDescrizioneCamera.getInstance().query(new Predicate<MDescrizioneCamera>() {
-				public boolean match(MDescrizioneCamera candidate) {
-					return true;
-				}
-			});
-			
+			List<MDescrizioneCamera> descrizioniCamere = PDescrizioneCamera.getInstance().caricaDescrizioniCamere();
 			// Mediante pattern singleton, carico Albergo e Catalogo camere.
 			MAlbergo _albergo = MAlbergo.getInstance();
 			MCatalogoCamere catalogoCamere = MCatalogoCamere.getInstance();

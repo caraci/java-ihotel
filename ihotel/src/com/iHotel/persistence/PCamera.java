@@ -3,6 +3,10 @@
  */
 package com.iHotel.persistence;
 
+import java.util.List;
+import com.db4o.query.Predicate;
+import com.iHotel.model.MCamera;
+
 /**
  * @author Eugenio
  *
@@ -26,7 +30,18 @@ public class PCamera extends PersistentManager {
          }
          return instance;
 	}
-	public void dio() {
-		
+	/* ------------------- Metodi di instanza -------------------------- */
+	/**
+	 * Metodo per caricare tutte le camere presenti nella base dati.
+	 * @return L'insieme delle camere dell'albergo.
+	 */
+	public List<MCamera> caricaCamere() {
+		@SuppressWarnings("serial")
+		List<MCamera> camere = query(new Predicate<MCamera>() {
+			public boolean match(MCamera candidate) {
+				return true;
+			}
+		});
+		return camere;
 	}
 }

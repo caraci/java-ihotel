@@ -1,20 +1,18 @@
 package com.iHotel.persistence;
 
-import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
-import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
-import com.iHotel.model.MCamera;
 
 public class PersistentManager {
-	private ObjectContainer _db;
-	
+	/* --------------- Attributi e costruttore ------------------- */
+	protected ObjectContainer _db;
+	/**
+	 * Costruttore che serve ad ottenre l'instanza della connessione al db.
+	 */
 	public PersistentManager(){		
-		_db = PDb.getDB();
+		_db = PDb.getInstance().getDB();
 	}
-	
-
 	/* ------------------------- Metodi di instanza ------------------------------ */
 	/**
 	* Store di un oggetto.

@@ -46,13 +46,11 @@ public class MPrenotazione {
 	 * @param eMail eMail dell'ospite.
 	 * @param telefono Telefono dell'ospite.
 	 */
-	public void addPrenotante(String nome, String cognome, String eMail, String telefono){
-	
+	public void addPrenotante(String nome, String cognome, String eMail, String telefono) {
 		_prenotante.set_nome(nome);		
 		_prenotante.set_cognome(cognome);
 		_prenotante.set_eMail(eMail);
 		_prenotante.set_telefono(telefono);
-		
 	}
 	/**
 	 * Metodo per occupare le camere della prenotazione.
