@@ -443,17 +443,6 @@ public class MainPopolamentoDB {
 		d3.set_tipologia("Tripla");
 		d3.set_prezziCamera(prezzi_tripla);
 		
-		// assegno le descrizioni alle camere
-		camera_101.set_descrizioneCamera(d1);
-		camera_102.set_descrizioneCamera(d1);
-		camera_103.set_descrizioneCamera(d1);
-		camera_201.set_descrizioneCamera(d2);
-		camera_202.set_descrizioneCamera(d2);
-		camera_203.set_descrizioneCamera(d2);
-		camera_301.set_descrizioneCamera(d3);
-		camera_302.set_descrizioneCamera(d3);
-		camera_303.set_descrizioneCamera(d3);
-		
 		
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {
