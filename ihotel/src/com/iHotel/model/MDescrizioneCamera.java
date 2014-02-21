@@ -63,13 +63,66 @@ public class MDescrizioneCamera {
 	}
 
 	/**
+	 * Metodo che calcola il prezzo per la tipologia di camera descritta dal descrittore,
+	 * nel periodo passato come parametro.
 	 * 
-	 * @param periodo
+	 * @param periodo Periodo della prenotazione
+	 * @return totaleCameraPeriodo Costo totale della camera durante il soggiorno
 	 */
 	public double calcolaPrezzoInPeriodo(MPeriodo periodo) {
-		// TODO - implement MDescrizioneCamera.calcolaPrezzoInPeriodo
-		throw new UnsupportedOperationException();
+		// Data di inizio della richiesta.
+		GregorianCalendar dataInizio = new GregorianCalendar();
+		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio(),periodo.get_oraInizio(),periodo.get_minutoInizio());
+		// Data di fine della richiesta.
+		GregorianCalendar dataFine= new GregorianCalendar();
+		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),periodo.get_oraFine(),periodo.get_minutoFine());
+	
+					
+		// Variabili nelle quali si andranno a memorizzare i totali.
+		double totaleCameraGiorno=0;
+		double totaleCameraPeriodo=0;
+		
+		// Ciclo a partire dal giorno di inizio fino al giorno finale.
+		while (dataInizio.compareTo(dataFine) < 0) {
+		
+			// Calcolo il prezzo della camera in un giorno attraverso il metodo privato di MElementoPrenotazione
+			totaleCameraGiorno=calcolaPrezzoGiorno(_prezziCamera,dataInizio);
+			// Sommo il totale della camera nel giorno, al totale della camera per il periodo.
+			totaleCameraPeriodo+=totaleCameraGiorno;
+			// Incremento il giorno di uno.
+			dataInizio.add(Calendar.DAY_OF_MONTH,1);
+		}
+		//System.out.println(totaleCameraPeriodo);
+		return totaleCameraPeriodo;
+		
 	}
+	
+/**
+ * Metodo per calcolare il prezzo in un giorno relativo ad una camera.
+ * 
+ * @param prezziCamera Insieme dei prezzi della camera.	
+ * @param data Giorno in cui bisogna calcolare il prezzo della camera
+ * @return Prezzo della camera in un giorno.
+ */
+private double calcolaPrezzoGiorno(ArrayList<MPrezzoCamera> prezziCamera, GregorianCalendar data){	
+	// Creo un periodo con data inizio uguale a data fine
+	MPeriodo periodo= new MPeriodo();
+	periodo.setDataInizioDaData(data);	
+	periodo.setDataFineDaData(data);
+	// Variabile nella quale andremo a memorizzare il totale per il giorno.
+	double prezzoGiorno=0;
+	
+	MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
+	// Ciclo su tutti gli MPrezzoCamera che ho a disposizione
+	for (Iterator<MPrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
+		MPrezzoCamera prezzoCamera = (MPrezzoCamera) iterator.next();
+		if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
+			prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
+			prezzoGiorno=prezzoCameraPeriodo.get_prezzo();
+		}
+	}
+	return prezzoGiorno;
+}
 	
 
 
