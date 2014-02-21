@@ -1,6 +1,6 @@
 package com.iHotel.model;
 
-public class MOspite implements IMPrenotante {
+public class MOspite extends MPrenotante {
 
 	/* ----------------- Attributi e Costruttore -------------------- */
 	private String _nome;

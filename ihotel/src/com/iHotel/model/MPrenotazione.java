@@ -8,7 +8,7 @@ public class MPrenotazione {
 	private ArrayList<MCamera> _camerePrenotate = new ArrayList<MCamera>();
 	private MPeriodo _periodo;
 	private boolean _completata;
-	private IMPrenotante _prenotante;
+	private MPrenotante _prenotante=new MOspite();
 	
 	public MPrenotazione() {}
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
@@ -21,10 +21,13 @@ public class MPrenotazione {
 		// Variabile nella quale andiamo a salvare il totale.
 		double total=0;
 		// Cicliamo su tutti gli elementi della prenotazione.
-		for (Iterator<MElementoPrenotazione> iterator = _elementiPrenotazione.iterator(); iterator.hasNext();) {
-			MElementoPrenotazione elementoPrenotazione = (MElementoPrenotazione) iterator.next();
-			// Su ogni elemento prenotazione andiamo a chiedere il subTotale e lo sommiamo al totale.
-			total+=elementoPrenotazione.getSubTotal(_periodo);
+		MCatalogoCamere catalogo=MCatalogoCamere.getInstance();
+		MDescrizioneCamera descrizione= new MDescrizioneCamera();
+		for (Iterator<MCamera> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
+			MCamera cameraPrenotata = (MCamera) iterator.next();
+			String tipologia = cameraPrenotata.get_tipologia();
+			descrizione=catalogo.getDescrizioneDaTipologia(tipologia);
+			total+=descrizione.calcolaPrezzoInPeriodo(_periodo);		
 		}
 		return total;				
 	}
@@ -34,9 +37,7 @@ public class MPrenotazione {
 	 * @param camera Camera da aggiungere alla prenotazione
 	 */
 	public void addCamera(MCamera camera) {
-		MElementoPrenotazione elementoPrenotazione= new MElementoPrenotazione();
-		elementoPrenotazione.set_camera(camera);
-		_elementiPrenotazione.add(elementoPrenotazione);
+		_camerePrenotate.add(camera);
 	}
 	/**
 	 * Metodo per aggiungere l'ospite prenotante.
@@ -46,8 +47,9 @@ public class MPrenotazione {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void addPrenotante(String nome, String cognome, String eMail, String telefono){
-		_ospite = new MOspite();
-		_ospite.set_nome(nome);
+	
+		_prenotante = (MOspite) _prenotante;
+		_prenotante.
 		_ospite.set_cognome(cognome);
 		_ospite.set_eMail(eMail);
 		_ospite.set_telefono(telefono);
