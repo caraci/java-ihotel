@@ -242,7 +242,7 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 						// Recupero il controllore e invoco il metodo.
 						CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
 						// Aggiungo la camera alla prenotazione e carico il totale.
-						String total = String.valueOf(gestisciPrenotazione.aggiungiElementoPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText()));
+						String total = String.valueOf(gestisciPrenotazione.aggiungiCameraAllaPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText()));
 						btn.setText("Rimuovi camera");	
 						// Setto il prezzo della Label con il totale della prenotazione
 						lblPrezzoTotale.setText(total + "€");
