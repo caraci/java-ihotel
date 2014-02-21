@@ -69,7 +69,7 @@ public class CGestisciPrenotazione {
 		// Ricavo la MCamera a partire dalla stringa contenente il suo numero.
 		camera = _albergo.getCameraDaNumero(numeroCamera);
 		// Aggiungo la camera all'elemento prenotazione
-		_prenotazione.addElementoPrenotazione(camera);
+		_prenotazione.addCamera(camera);
 		// Restituisco il totale della prenotazione in seguito all'aggiunta della camera
 		return _prenotazione.getTotal();
 	}
@@ -127,7 +127,7 @@ public class CGestisciPrenotazione {
 	 */
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
 		// Aggiungo l'ospite alla prenotazione
-		_prenotazione.addOspite(nome, cognome, eMail, telefono);
+		_prenotazione.addPrenotante(nome, cognome, eMail, telefono);
 		// Occupo le camere scelte dall'utente
 		_prenotazione.occupaCamere();
 		// Setto la prenotazione come completata
