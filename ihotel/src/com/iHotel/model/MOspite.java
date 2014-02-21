@@ -1,6 +1,6 @@
 package com.iHotel.model;
 
-public class MOspite extends MPrenotante {
+public class MOspite{
 
 	/* ----------------- Attributi e Costruttore -------------------- */
 	private String _nome;
@@ -8,7 +8,9 @@ public class MOspite extends MPrenotante {
 	private String _eMail;
 	private String _telefono;
 
-	public MOspite() {}
+	public MOspite() {
+		
+	}
 	/* ----------------- Getter, Setter ------------------------------*/
 	/**
 	 * @return _nome

@@ -8,7 +8,7 @@ public class MPrenotazione {
 	private ArrayList<MCamera> _camerePrenotate = new ArrayList<MCamera>();
 	private MPeriodo _periodo;
 	private boolean _completata;
-	private MPrenotante _prenotante=new MOspite();
+	private MOspite _prenotante=new MOspite();
 	
 	public MPrenotazione() {}
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
@@ -47,13 +47,12 @@ public class MPrenotazione {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void addPrenotante(String nome, String cognome, String eMail, String telefono){
-	/*
-		_prenotante = (MOspite) _prenotante;
-		_prenotante.
-		_ospite.set_cognome(cognome);
-		_ospite.set_eMail(eMail);
-		_ospite.set_telefono(telefono);
-		*/
+	
+		_prenotante.set_nome(nome);		
+		_prenotante.set_cognome(cognome);
+		_prenotante.set_eMail(eMail);
+		_prenotante.set_telefono(telefono);
+		
 	}
 	/**
 	 * Metodo per occupare le camere della prenotazione.

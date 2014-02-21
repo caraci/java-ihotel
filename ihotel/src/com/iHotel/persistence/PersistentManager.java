@@ -7,30 +7,14 @@ import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
 import com.iHotel.model.MCamera;
 
-public abstract class PersistentManager {
+public class PersistentManager {
+	private ObjectContainer _db;
 	
-	/* ---------------- Attributi e costruttore ---------------------*/
-	// Attributo nel quale si memorizza la connessione verso la base dati
-	protected static ObjectContainer _db;
-	/**
-	 * Costruttore protetto in modo che possa essere ereditato dalle sottoclassi.
-	 */
-	protected PersistentManager() {
-		getConnection();
+	public PersistentManager(){		
+		_db = PDb.getDB();
 	}
-	/* ------------------------ Metodi di classe ---------------------- */
-	/**
-	 * Metodo di classe che viene richiamato dal costruttore dell'instanza per connettersi alla base dati.
-	 * Se è già attiva una connessione utilizza quella, altrimenti ne crea una nuova.
-	 */
-	public static void getConnection(){
-		if (_db==null){
-			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-			config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
-			_db=Db4oEmbedded.openFile(config, "dbihotel");
-		}
-	} 
 	
+
 	/* ------------------------- Metodi di instanza ------------------------------ */
 	/**
 	* Store di un oggetto.

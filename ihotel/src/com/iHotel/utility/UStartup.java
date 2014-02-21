@@ -14,6 +14,7 @@ import com.iHotel.model.MCamera;
 import com.iHotel.model.MCatalogoCamere;
 import com.iHotel.model.MDescrizioneCamera;
 import com.iHotel.persistence.PCamera;
+import com.iHotel.persistence.PDb;
 import com.iHotel.persistence.PersistentManager;
 import com.iHotel.persistence.PDescrizioneCamera;
 
@@ -26,17 +27,20 @@ public class UStartup {
 	public void inizializza() {
 		
 		try {
-			PersistentManager db = PCamera.getInstance();
+			PDb.getInstance();
+			//PCamera db = PCamera.getInstance();
 			// Carico tutte le camere
-			List<MCamera> camere = db.query(new Predicate<MCamera>() {
+			@SuppressWarnings("serial")
+			List<MCamera> camere = PCamera.getInstance().query(new Predicate<MCamera>() {
 				public boolean match(MCamera candidate) {
 					return true;
 				}
 			});
 
-			db = PDescrizioneCamera.getInstance();
+			//PDescrizioneCamera database = PDescrizioneCamera.getInstance();
 			// Carico tutte le descrizioni
-			List<MDescrizioneCamera> descrizioniCamere = db.query(new Predicate<MDescrizioneCamera>() {
+			@SuppressWarnings("serial")
+			List<MDescrizioneCamera> descrizioniCamere = PDescrizioneCamera.getInstance().query(new Predicate<MDescrizioneCamera>() {
 				public boolean match(MDescrizioneCamera candidate) {
 					return true;
 				}
