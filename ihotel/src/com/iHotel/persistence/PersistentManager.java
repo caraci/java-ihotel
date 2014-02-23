@@ -1,17 +1,35 @@
 package com.iHotel.persistence;
 
+import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
+import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
+import com.iHotel.model.MCamera;
+import com.iHotel.model.MPeriodo;
+import com.iHotel.model.MPrenotazione;
+import com.iHotel.model.MStatoCamera;
 
 public class PersistentManager {
 	/* --------------- Attributi e costruttore ------------------- */
-	protected ObjectContainer _db;
+	protected static ObjectContainer _db = null;
 	/**
 	 * Costruttore che serve ad ottenre l'instanza della connessione al db.
 	 */
-	public PersistentManager(){		
-		_db = PDb.getInstance().getDB();
+	protected PersistentManager(){		
+		getConnection();
+	}
+	/* --------------------------- Metodi di classe ------------------------------ */
+	protected static void getConnection() {
+		// Se la connessione non è aperta, la si va ad aprire.
+		if (_db==null) {
+			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+			config.common().objectClass(MPrenotazione.class).cascadeOnUpdate(true);
+			config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
+			config.common().objectClass(MStatoCamera.class).cascadeOnUpdate(true);
+			config.common().objectClass(MPeriodo.class).cascadeOnUpdate(true);
+			_db=Db4oEmbedded.openFile(config, "dbihotel");
+		}
 	}
 	/* ------------------------- Metodi di instanza ------------------------------ */
 	/**

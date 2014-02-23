@@ -13,7 +13,6 @@ import com.iHotel.model.MCamera;
 import com.iHotel.model.MCatalogoCamere;
 import com.iHotel.model.MDescrizioneCamera;
 import com.iHotel.persistence.PCamera;
-import com.iHotel.persistence.PDb;
 import com.iHotel.persistence.PDescrizioneCamera;
 
 /**
@@ -23,8 +22,6 @@ import com.iHotel.persistence.PDescrizioneCamera;
 public class UStartup {
 	public void inizializza() {
 		try {
-			// Avvio la connessione alla base dati.
-			PDb.getInstance();
 			// Carico tutte le camere
 			List<MCamera> camere = PCamera.getInstance().caricaCamere();
 			// Carico tutte le descrizioni
