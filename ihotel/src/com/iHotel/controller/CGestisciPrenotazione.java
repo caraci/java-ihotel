@@ -2,7 +2,7 @@ package com.iHotel.controller;
 import com.iHotel.model.*;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
-import com.iHotel.view.VFrameCreaPrenotazioneStep_2;
+import com.iHotel.view.VFrameCreaPrenotazioneStep_2Observer;
 import com.iHotel.view.VFrameHome;
 
 import java.io.IOException;
@@ -16,7 +16,8 @@ public class CGestisciPrenotazione {
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
 	private static CGestisciPrenotazione instance = null;
 	private MAlbergo _albergo;
-	private MPrenotazione _prenotazione;
+	private MPrenotazioneSubject attribute;
+	private MPrenotazioneSubject _prenotazione;
     
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -43,7 +44,7 @@ public class CGestisciPrenotazione {
 		// Carico l'albergo mediante pattern Singleton
 		_albergo = MAlbergo.getInstance();
 		// Creo la nuova prenotazione
-		_prenotazione = new MPrenotazione();
+		_prenotazione = new MPrenotazioneSubject();
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
 		tipologieCamere.addAll(_albergo.get_catalogoCamere().get_descrizioniCamere().keySet());
@@ -59,14 +60,14 @@ public class CGestisciPrenotazione {
 	 * @param numeroCamera Stringa contenente il numero della camera.
 	 * @return Costo totale della prenotazione in seguito all'aggiunta della camera.
 	 */
-	public double aggiungiCameraAllaPrenotazione(String numeroCamera) {
+	public void aggiungiCameraAllaPrenotazione(String numeroCamera) {
 		MCamera camera = null;
 		// Ricavo la MCamera a partire dalla stringa contenente il suo numero.
 		camera = _albergo.getCameraDaNumero(numeroCamera);
 		// Aggiungo la camera all'elemento prenotazione
 		_prenotazione.addCamera(camera);
-		// Restituisco il totale della prenotazione in seguito all'aggiunta della camera
-		return _prenotazione.getTotal();
+		// Calcolo il nuovo totale
+		_prenotazione.calcolaTotale();
 	}
 	/**
 	 * Metodo per ricercare le camere libere nell'albergo, appartenenti a tipologie differenti.
@@ -103,8 +104,12 @@ public class CGestisciPrenotazione {
 			// Aggiungo l'ArrayList delle stringhe relative a tutte le camere appartenenti ad una tipologia
 			camereLibereString.add(camereLibereTipologiaString);
 		}	
+		VFrameCreaPrenotazioneStep_2Observer frameCreaPrenotazioneStep_2 = VFrameCreaPrenotazioneStep_2Observer.getInstance();
+		// Per il pattern Observer aggiungo l'observer alla prenotazione.
+		_prenotazione.Attach((com.iHotel.view.Observer) frameCreaPrenotazioneStep_2);
+		// Per il pattern Observer aggiungo il subject all'observer.
+		frameCreaPrenotazioneStep_2.set_prenotazioneSubject(_prenotazione);
 		// Mostro finestra Step 2
-		VFrameCreaPrenotazioneStep_2 frameCreaPrenotazioneStep_2 = VFrameCreaPrenotazioneStep_2.getInstance();
 		frameCreaPrenotazioneStep_2.creaFrame(camereLibereString);			
 		frameCreaPrenotazioneStep_2.setVisible(true);
 		// Nascondo finestra Step 1
@@ -162,14 +167,22 @@ public class CGestisciPrenotazione {
 	/**
 	 * @return _prenotazione
 	 */
-	public MPrenotazione get_prenotazione() {
-		return _prenotazione;
+	public MPrenotazioneSubject getAttribute() {
+		return attribute;
 	}
 
 	/**
 	 * @param _prenotazione
 	 */
-	public void set_prenotazione(MPrenotazione _prenotazione) {
+	public void setAttribute(MPrenotazioneSubject _prenotazione) {
+		this.attribute = _prenotazione;
+	}
+
+	public MPrenotazioneSubject get_prenotazione() {
+		return this._prenotazione;
+	}
+
+	public void set_prenotazione(MPrenotazioneSubject _prenotazione) {
 		this._prenotazione = _prenotazione;
 	}
 

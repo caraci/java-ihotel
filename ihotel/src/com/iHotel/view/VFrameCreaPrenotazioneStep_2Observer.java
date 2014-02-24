@@ -15,16 +15,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.iHotel.controller.CGestisciPrenotazione;
+import com.iHotel.model.MPrenotazioneSubject;
+import com.iHotel.model.Subject;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
-public class VFrameCreaPrenotazioneStep_2 extends JFrame {
+public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements Observer {
 
-	/* Singleton */
-	private static VFrameCreaPrenotazioneStep_2 instance = null;
 	/* ContentPane */
 	private JPanel contentPane;
 	/* Panel */
@@ -38,64 +38,36 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
     private JLabel lblNome, lblCognome, lbleMail, lblTelefono, lblPrezzoTotale, lblPrezzoScritto;
     /* JTextField */
     private JTextField txtNome, txtCognome, txteMail, txtTelefono;
-	/**
-	 * Panel
-	 */
-	private javax.swing.JPanel[] panelColonne;
+    // Pattern Observer
+    private MPrenotazioneSubject _prenotazioneSubject;
+    /* ----------------- Pattern Singleton  ---------------- */
+	private static VFrameCreaPrenotazioneStep_2Observer instance = null;
    
-    /*
-	 	*
-	 	* Launch the application.
-	 	*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VFrameCreaPrenotazioneStep_2 frame = VFrameCreaPrenotazioneStep_2.getInstance();
-					ArrayList<String> cameraTipologiaSingola = new ArrayList<String>();
-					cameraTipologiaSingola.add("Singola");
-					cameraTipologiaSingola.add("101");
-					cameraTipologiaSingola.add("102");
-					ArrayList<String> cameraTipologiaDoppia = new ArrayList<String>();
-					cameraTipologiaDoppia.add("Doppia");
-					cameraTipologiaDoppia.add("201");
-					cameraTipologiaDoppia.add("202");
-					cameraTipologiaDoppia.add("203");
-					ArrayList<String> cameraTipologiaTripla = new ArrayList<String>();
-					cameraTipologiaTripla.add("Tripla");
-					cameraTipologiaTripla.add("301");
-					cameraTipologiaTripla.add("302");
-					cameraTipologiaTripla.add("303");
-					ArrayList<ArrayList<String>> camereDisponibili = new ArrayList<ArrayList<String>>();
-					camereDisponibili.add(cameraTipologiaSingola);
-					//camereDisponibili.add(cameraTipologiaDoppia);
-					camereDisponibili.add(cameraTipologiaTripla);
-					frame.creaFrame(camereDisponibili);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-	*/
-	
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private VFrameCreaPrenotazioneStep_2() {
+	private VFrameCreaPrenotazioneStep_2Observer() {
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
 	 * 
 	 * @return VFrameCreaPrenotazioneStep_2 Instanza unica di questa classe.
 	 */
-    public static VFrameCreaPrenotazioneStep_2 getInstance() {
+    public static VFrameCreaPrenotazioneStep_2Observer getInstance() {
     	if(instance == null) {
-            instance = new VFrameCreaPrenotazioneStep_2();
+            instance = new VFrameCreaPrenotazioneStep_2Observer();
          }
          return instance;
     }
+    /* ----------------- /Pattern Singleton  ---------------- */
+    /* ------------- Pattern Observer ----------- */
+    @Override
+	public void Update() {
+		String total=String.valueOf(_prenotazioneSubject.get_total());	
+		// Setto il prezzo della Label con il totale della prenotazione
+		lblPrezzoTotale.setText(total + "€");
+	}
+    /* ------------- /Pattern Observer --------- */
     /**
      * Metodo per aggiungere una colonna contenente tipologie di camere dello stesso tipo.
      * 
@@ -242,10 +214,9 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 						// Recupero il controllore e invoco il metodo.
 						CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
 						// Aggiungo la camera alla prenotazione e carico il totale.
-						String total = String.valueOf(gestisciPrenotazione.aggiungiCameraAllaPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText()));
-						btn.setText("Rimuovi camera");	
-						// Setto il prezzo della Label con il totale della prenotazione
-						lblPrezzoTotale.setText(total + "€");
+						gestisciPrenotazione.aggiungiCameraAllaPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText());
+						// Cambio testo al bottone
+						btn.setText("Rimuovi camera");
 					}
 				});
     		}
@@ -261,13 +232,8 @@ public class VFrameCreaPrenotazioneStep_2 extends JFrame {
 				}
 			});		
     }
-
-	/**
-	 * Launch the application.
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO - implement VFrameCreaPrenotazioneStep_2.main
-		throw new UnsupportedOperationException();
-	}
+    /* ------------- Getter, Setter */
+    public void set_prenotazioneSubject(Subject subject) {
+    	this._prenotazioneSubject=(MPrenotazioneSubject) subject;
+    }
 }

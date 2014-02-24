@@ -12,7 +12,7 @@ public class MAlbergo {
 	
  	private MCatalogoCamere _catalogoCamere;
 	private ArrayList<MCamera> _camere;
-	private ArrayList<MPrenotazione> _prenotazioni = new ArrayList<MPrenotazione>();
+	private ArrayList<MPrenotazioneSubject> _prenotazioni = new ArrayList<MPrenotazioneSubject>();
 	private String _nome;
 	private String _telefono;
 	private String _PIVA;
@@ -126,21 +126,21 @@ public class MAlbergo {
 	/**
 	 * @return _prenotazioni	 
 	 */
-	public ArrayList<MPrenotazione> get_prenotazioni() {
+	public ArrayList<MPrenotazioneSubject> get_prenotazioni() {
 		return _prenotazioni;
 	}
 
 	/**
 	 * @param _prenotazioni 
 	 */
-	public void set_prenotazioni(ArrayList<MPrenotazione> _prenotazioni) {
+	public void set_prenotazioni(ArrayList<MPrenotazioneSubject> _prenotazioni) {
 		this._prenotazioni = _prenotazioni;
 	}
 
 	/**
 	 * @param prenotazione 
 	 */
-	public void addPrenotazione(MPrenotazione prenotazione) {
+	public void addPrenotazione(MPrenotazioneSubject prenotazione) {
 		this._prenotazioni.add(prenotazione);
 	}
 	/**

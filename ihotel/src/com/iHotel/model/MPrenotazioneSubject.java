@@ -2,24 +2,42 @@ package com.iHotel.model;
 
 import java.util.*;
 
-public class MPrenotazione {
+public class MPrenotazioneSubject implements Subject {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
 	private ArrayList<MCamera> _camerePrenotate = new ArrayList<MCamera>();
+	private ArrayList<com.iHotel.view.Observer> _osservatori = new ArrayList<com.iHotel.view.Observer>();
 	private MPeriodo _periodo;
 	private boolean _completata;
-	private MOspite _prenotante=new MOspite();
+	private MOspite _prenotante;
+	private double _total;
 	
-	public MPrenotazione() {}
+	public MPrenotazioneSubject() {}
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
+	
+	/* ----------- Pattern Observer -------- */
+	@Override
+	public void Attach(com.iHotel.view.Observer observer) {
+		_osservatori.add(observer);
+		
+	}
+	@Override
+	public void Detach(com.iHotel.view.Observer observer) {
+		_osservatori.remove(observer);
+	}
+	@Override
+	public void Notify() {
+		for (Iterator<com.iHotel.view.Observer> iterator = _osservatori.iterator(); iterator.hasNext();) {
+			com.iHotel.view.Observer observer = (com.iHotel.view.Observer) iterator.next();
+			observer.Update();
+		}
+		
+	}
+	/* ------------ /Pattern Observer -------- */
 	/**
-	 * Metodo per ottenere il totale di una prenotazione.
-	 * 
-	 * @return Totale della prenotazione.
+	 * Metodo per calcolare il totale di una prenotazione
 	 */
-	public double getTotal(){
-		// Variabile nella quale andiamo a salvare il totale.
-		double total=0;
+	public void calcolaTotale(){
 		// Cicliamo su tutti gli elementi della prenotazione.
 		MCatalogoCamere catalogo=MCatalogoCamere.getInstance();
 		MDescrizioneCamera descrizione= new MDescrizioneCamera();
@@ -27,11 +45,12 @@ public class MPrenotazione {
 			MCamera cameraPrenotata = (MCamera) iterator.next();
 			String tipologia = cameraPrenotata.get_tipologia();
 			descrizione=catalogo.getDescrizioneDaTipologia(tipologia);
-			total+=descrizione.calcolaPrezzoInPeriodo(_periodo);		
-		}
-		return total;				
+			_total+=descrizione.calcolaPrezzoInPeriodo(_periodo);		
+		}			
+		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
+		// di stato della prenotazione.
+		this.Notify();
 	}
-	
 	/**
 	 * Metodo per aggiungere un elemento alla prenotazione.
 	 * @param camera Camera da aggiungere alla prenotazione
@@ -47,6 +66,7 @@ public class MPrenotazione {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void addPrenotante(String nome, String cognome, String eMail, String telefono) {
+		_prenotante = new MOspite();
 		_prenotante.set_nome(nome);		
 		_prenotante.set_cognome(cognome);
 		_prenotante.set_eMail(eMail);
@@ -91,7 +111,7 @@ public class MPrenotazione {
 		this._periodo = _periodo;
 	}
 	/**
-	 * @param _completata 
+	 * @return _completata 
 	 */
 	public boolean get_completata() {
 		return this._completata;
@@ -102,5 +122,16 @@ public class MPrenotazione {
 	public void set_completata(boolean _completata) {
 		this._completata = _completata;
 	}
-
+	/**
+	 * @return _total 
+	 */
+	public double get_total() {
+		return this._total;
+	}
+	/**
+	 * @param _total the total to set
+	 */
+	public void set_total(double _total) {
+		this._total = _total;
+	}
 }
