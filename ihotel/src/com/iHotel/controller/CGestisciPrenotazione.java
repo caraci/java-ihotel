@@ -142,6 +142,9 @@ public class CGestisciPrenotazione {
 		_prenotazione.set_completata(true);
 		// Aggiungo la prenotazione all'albergo
 		_albergo.addPrenotazione(_prenotazione);
+		// Rimuovo l'observer dal subject
+		VFrameCreaPrenotazioneStep_2Observer frameCreaPrenotazioneStep_2 = VFrameCreaPrenotazioneStep_2Observer.getInstance();
+		_prenotazione.Detach((com.iHotel.view.Observer) frameCreaPrenotazioneStep_2);
 		// Salvataggio degli oggetti da Ram -> Persistenza.
 		try {
 			//PCamera.getInstance().store(_albergo.get_camere());	
