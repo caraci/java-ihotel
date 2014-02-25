@@ -10,9 +10,6 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.iHotel.model.MAlbergo;
 import com.iHotel.model.MCamera;
-import com.iHotel.model.MCameraDoppia;
-import com.iHotel.model.MCameraSingola;
-import com.iHotel.model.MCameraTripla;
 import com.iHotel.model.MCatalogoCamere;
 import com.iHotel.model.MDescrizioneCamera;
 import com.iHotel.model.MPeriodo;
@@ -172,49 +169,49 @@ public class MainPopolamentoDB {
 		//Camere singole
 				
 		// Camera 101
-		MCamera camera_101 = new MCameraSingola();
+		MCamera camera_101 = new MCamera();
 		camera_101.set_numero("101");
 		camera_101.set_tipologia("Singola");
 		
 		// Camera 102
-		MCamera camera_102 = new MCameraSingola();
+		MCamera camera_102 = new MCamera();
 		camera_102.set_numero("102");
 		camera_102.set_tipologia("Singola");
 		
 		// Camera 103
-		MCamera camera_103 = new MCameraSingola();
+		MCamera camera_103 = new MCamera();
 		camera_103.set_numero("103");
 		camera_103.set_tipologia("Singola");
 		
 		//Camere doppie
 		// Camera 201
-		MCamera camera_201 = new MCameraDoppia();
+		MCamera camera_201 = new MCamera();
 		camera_201.set_numero("201");
 		camera_201.set_tipologia("Doppia");
 		
 		// Camera 202
-		MCamera camera_202 = new MCameraDoppia();
+		MCamera camera_202 = new MCamera();
 		camera_202.set_numero("202");
 		camera_202.set_tipologia("Doppia");
 		
 		// Camera 203
-		MCamera camera_203 = new MCameraDoppia();
+		MCamera camera_203 = new MCamera();
 		camera_203.set_numero("203");
 		camera_203.set_tipologia("Doppia");
 		
 		// Camere triple
 		// Camera 301
-		MCamera camera_301 = new MCameraTripla();
+		MCamera camera_301 = new MCamera();
 		camera_301.set_numero("301");
 		camera_301.set_tipologia("Tripla");
 		
 		// Camera 302
-		MCamera camera_302 = new MCameraTripla();
+		MCamera camera_302 = new MCamera();
 		camera_302.set_numero("302");
 		camera_302.set_tipologia("Tripla");
 		
 		// Camera 303
-		MCamera camera_303 = new MCameraTripla();
+		MCamera camera_303 = new MCamera();
 		camera_303.set_numero("303");
 		camera_303.set_tipologia("Tripla");
 		

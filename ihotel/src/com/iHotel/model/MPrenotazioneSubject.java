@@ -41,12 +41,14 @@ public class MPrenotazioneSubject implements Subject {
 		// Cicliamo su tutti gli elementi della prenotazione.
 		MCatalogoCamere catalogo=MCatalogoCamere.getInstance();
 		MDescrizioneCamera descrizione= new MDescrizioneCamera();
-		for (Iterator<MCamera> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
-			MCamera cameraPrenotata = (MCamera) iterator.next();
-			String tipologia = cameraPrenotata.get_tipologia();
-			descrizione=catalogo.getDescrizioneDaTipologia(tipologia);
-			_total+=descrizione.calcolaPrezzoInPeriodo(_periodo);		
-		}			
+		// Prendo l'ultima camera aggiunta.
+		MCamera cameraPrenotata = new MCamera();
+		cameraPrenotata=_camerePrenotate.get(_camerePrenotate.size()-1);
+		// Prendo la tipologia e carico la giusta descrizione.
+		String tipologia = cameraPrenotata.get_tipologia();
+		descrizione=catalogo.getDescrizioneDaTipologia(tipologia);
+		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
+		_total+=descrizione.calcolaPrezzoInPeriodo(_periodo);				
 		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
 		// di stato della prenotazione.
 		this.Notify();

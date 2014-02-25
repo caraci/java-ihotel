@@ -5,12 +5,8 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
-import com.iHotel.model.MCameraDoppia;
-import com.iHotel.model.MCameraSingola;
-import com.iHotel.model.MCameraTripla;
-import com.iHotel.model.MPeriodo;
+import com.iHotel.model.MCamera;
 import com.iHotel.model.MPrenotazioneSubject;
-import com.iHotel.model.MStatoCamera;
 
 public class PersistentManager {
 	/* --------------- Attributi e costruttore ------------------- */
@@ -27,11 +23,7 @@ public class PersistentManager {
 		if (_db==null) {
 			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 			config.common().objectClass(MPrenotazioneSubject.class).cascadeOnUpdate(true);
-			config.common().objectClass(MCameraSingola.class).cascadeOnUpdate(true);
-			config.common().objectClass(MCameraDoppia.class).cascadeOnUpdate(true);
-			config.common().objectClass(MCameraTripla.class).cascadeOnUpdate(true);
-			config.common().objectClass(MStatoCamera.class).cascadeOnUpdate(true);
-			config.common().objectClass(MPeriodo.class).cascadeOnUpdate(true);
+			config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
 			_db=Db4oEmbedded.openFile(config, "dbihotel");
 		}
 	}
