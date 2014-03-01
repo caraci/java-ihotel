@@ -12,7 +12,6 @@ public class MAlbergo {
 	
  	private MCatalogoCamere _catalogoCamere;
 	private ArrayList<MCamera> _camere;
-	private ArrayList<MPrenotazioneSubject> _prenotazioni = new ArrayList<MPrenotazioneSubject>();
 	private String _nome;
 	private String _telefono;
 	private String _PIVA;
@@ -24,7 +23,6 @@ public class MAlbergo {
 	 * Costruttore privato - pattern Singleton
 	 * @throws IOException 
 	 */
-	
 	private MAlbergo() throws IOException {
 		/*
 		 * Si prendono nome, telefono, partita IVA e email dal defaultLoader, togliendo dalla classe  
@@ -121,27 +119,6 @@ public class MAlbergo {
 	 */
 	public void set_camere(ArrayList<MCamera> _camere) {
 		this._camere = _camere;
-	}
-
-	/**
-	 * @return _prenotazioni	 
-	 */
-	public ArrayList<MPrenotazioneSubject> get_prenotazioni() {
-		return _prenotazioni;
-	}
-
-	/**
-	 * @param _prenotazioni 
-	 */
-	public void set_prenotazioni(ArrayList<MPrenotazioneSubject> _prenotazioni) {
-		this._prenotazioni = _prenotazioni;
-	}
-
-	/**
-	 * @param prenotazione 
-	 */
-	public void addPrenotazione(MPrenotazioneSubject prenotazione) {
-		this._prenotazioni.add(prenotazione);
 	}
 	/**
 	 * @return _nome

@@ -11,6 +11,7 @@ public class MPrenotazioneSubject implements Subject {
 	private boolean _completata;
 	private MOspite _prenotante;
 	private double _total;
+	private String _codice;
 	
 	public MPrenotazioneSubject() {}
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
@@ -135,5 +136,19 @@ public class MPrenotazioneSubject implements Subject {
 	 */
 	public void set_total(double _total) {
 		this._total = _total;
+	}
+
+	/**
+	 * @return the _codice
+	 */
+	public String get_codice() {
+		return _codice;
+	}
+
+	/**
+	 * @param _codice the _codice to set
+	 */
+	public void set_codice(String _codice) {
+		this._codice = _codice;
 	}
 }

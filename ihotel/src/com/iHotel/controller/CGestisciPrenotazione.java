@@ -15,9 +15,8 @@ public class CGestisciPrenotazione {
 	
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
 	private static CGestisciPrenotazione instance = null;
-	private MAlbergo _albergo;
-	private MPrenotazioneSubject attribute;
 	private MPrenotazioneSubject _prenotazione;
+	private MAlbergo _albergo;
     
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -132,16 +131,17 @@ public class CGestisciPrenotazione {
 		_prenotazione.occupaCamere();
 		// Setto la prenotazione come completata
 		_prenotazione.set_completata(true);
-		// Aggiungo la prenotazione all'albergo
-		_albergo.addPrenotazione(_prenotazione);
+		// Aggiungo la prenotazione allo storico
+		MStorico storico = MStorico.getInstance();
+		storico.addPrenotazione(_prenotazione);
 		// Rimuovo l'observer dal subject
 		VFrameCreaPrenotazioneStep_2Observer frameCreaPrenotazioneStep_2 = VFrameCreaPrenotazioneStep_2Observer.getInstance();
 		_prenotazione.Detach((com.iHotel.view.Observer) frameCreaPrenotazioneStep_2);
 		// Salvataggio degli oggetti da Ram -> Persistenza.
 		try {
 			PPrenotazione.getInstance().store(_prenotazione);
-		} finally {
-			PPrenotazione.getInstance().close();
+		} catch(Exception e) {
+			// TODO
 		}
 	}
 	/* -------------------------- Getter, Setter -------------------- */
@@ -159,23 +159,16 @@ public class CGestisciPrenotazione {
 		this._albergo = _albergo;
 	}
 	/**
-	 * @return _prenotazione
+	 * 
+	 * @return
 	 */
-	public MPrenotazioneSubject getAttribute() {
-		return attribute;
-	}
-
-	/**
-	 * @param _prenotazione
-	 */
-	public void setAttribute(MPrenotazioneSubject _prenotazione) {
-		this.attribute = _prenotazione;
-	}
-
 	public MPrenotazioneSubject get_prenotazione() {
 		return this._prenotazione;
 	}
-
+	/**
+	 * 
+	 * @param _prenotazione
+	 */
 	public void set_prenotazione(MPrenotazioneSubject _prenotazione) {
 		this._prenotazione = _prenotazione;
 	}
