@@ -11,6 +11,7 @@ public class MAlbergo {
 	/* -------------------- Attributi e costruttore --------------------------*/
 	
  	private MCatalogoCamere _catalogoCamere;
+ 	private MStorico _storico;
 	private ArrayList<MCamera> _camere;
 	private String _nome;
 	private String _telefono;
@@ -106,6 +107,20 @@ public class MAlbergo {
 		this._catalogoCamere = _catalogoCamere;
 	}
 
+
+	/**
+	 * @return the _storico
+	 */
+	public MStorico get_storico() {
+		return _storico;
+	}
+
+	/**
+	 * @param _storico the _storico to set
+	 */
+	public void set_storico(MStorico _storico) {
+		this._storico = _storico;
+	}
 
 	/**
 	 * @return _camere

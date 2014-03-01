@@ -58,6 +58,7 @@ public class UStartup {
 			}
 			albergo.set_camere(_camere);
 			albergo.set_catalogoCamere(catalogoCamere);	
+			albergo.set_storico(storico);
 		} catch (Exception e) {
 			// TODO
 		}
