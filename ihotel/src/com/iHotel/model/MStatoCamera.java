@@ -1,5 +1,7 @@
 package com.iHotel.model;
 
+import com.iHotel.model.Utility.MPeriodo;
+
 public class MStatoCamera {
 
 	/* ------------------------ Attributi ---------------- */

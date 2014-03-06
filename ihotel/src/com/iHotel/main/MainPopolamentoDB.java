@@ -12,9 +12,9 @@ import com.iHotel.model.MAlbergo;
 import com.iHotel.model.MCamera;
 import com.iHotel.model.MCatalogoCamere;
 import com.iHotel.model.MDescrizioneCamera;
-import com.iHotel.model.MPeriodo;
 import com.iHotel.model.MPrezzoCamera;
 import com.iHotel.model.MStatoCamera;
+import com.iHotel.model.Utility.MPeriodo;
 
 /**
  * @author Eugenio

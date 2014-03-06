@@ -2,11 +2,14 @@ package com.iHotel.model;
 
 import java.util.*;
 
+import com.iHotel.model.Utility.MPeriodo;
+import com.iHotel.view.Observer;
+
 public class MPrenotazioneSubject implements Subject {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
 	private ArrayList<MCamera> _camerePrenotate = new ArrayList<MCamera>();
-	private ArrayList<com.iHotel.view.Observer> _osservatori = new ArrayList<com.iHotel.view.Observer>();
+	private ArrayList<Observer> _osservatori = new ArrayList<com.iHotel.view.Observer>();
 	private MPeriodo _periodo;
 	private boolean _completata;
 	private MOspite _prenotante;

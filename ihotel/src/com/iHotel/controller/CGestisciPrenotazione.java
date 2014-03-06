@@ -1,6 +1,7 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.*;
+import com.iHotel.model.Utility.MPeriodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_1;
 import com.iHotel.view.VFrameCreaPrenotazioneStep_2Observer;

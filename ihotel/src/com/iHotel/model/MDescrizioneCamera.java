@@ -2,6 +2,8 @@ package com.iHotel.model;
 
 import java.util.*;
 
+import com.iHotel.model.Utility.MPeriodo;
+
 public class MDescrizioneCamera {
 
 	/* -------------------------- Attributi -------------------------------------- */

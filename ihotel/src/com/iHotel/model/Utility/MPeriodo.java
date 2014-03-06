@@ -1,4 +1,4 @@
-package com.iHotel.model;
+package com.iHotel.model.Utility;
 
 import java.util.ArrayList;
 import java.util.Calendar;

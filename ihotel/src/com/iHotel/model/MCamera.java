@@ -2,11 +2,13 @@ package com.iHotel.model;
 
 import java.util.*;
 
+import com.iHotel.model.Utility.MPeriodo;
+
 public class MCamera {
 
 	/* --------------------------- Attributi ---------------------- */
 	
-	protected LinkedList<MStatoCamera> _statiCamera = new LinkedList<MStatoCamera>();
+	private LinkedList<MStatoCamera> _statiCamera = new LinkedList<MStatoCamera>();
 	protected String _numero;
 	protected String _tipologia;
 

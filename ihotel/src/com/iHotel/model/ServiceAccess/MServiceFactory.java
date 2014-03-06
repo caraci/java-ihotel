@@ -1,0 +1,23 @@
+package com.iHotel.model.ServiceAccess;
+
+import com.iHotel.model.ForeignSystem.PayTv.*;
+import com.iHotel.model.ForeignSystem.Telephone.*;
+
+public class MServiceFactory {
+
+	private IPayTvAdapter _payTvAdapter;
+	private ITelephoneAdapter _telephoneAdapter;
+	/**
+	 * @return the _payTvAdapter
+	 */
+	public IPayTvAdapter get_payTvAdapter() {
+		return _payTvAdapter;
+	}
+	/**
+	 * @return the _telephoneAdapter
+	 */
+	public ITelephoneAdapter get_telephoneAdapter() {
+		return _telephoneAdapter;
+	}
+
+}
