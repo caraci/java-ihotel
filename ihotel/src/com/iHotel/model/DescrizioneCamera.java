@@ -2,13 +2,13 @@ package com.iHotel.model;
 
 import java.util.*;
 
-import com.iHotel.model.Utility.MPeriodo;
+import com.iHotel.model.Utility.Periodo;
 
-public class MDescrizioneCamera {
+public class DescrizioneCamera {
 
 	/* -------------------------- Attributi -------------------------------------- */
 	
-	private ArrayList<MPrezzoCamera> _prezziCamera=new ArrayList<MPrezzoCamera>();
+	private ArrayList<PrezzoCamera> _prezziCamera=new ArrayList<PrezzoCamera>();
 	private String _tipologia;
 
 	/* ----------------------- Metodi di instanza ----------------------------------------- */
@@ -19,12 +19,12 @@ public class MDescrizioneCamera {
 	 * @param periodo	Periodo generico
 	 * @return 			prezzi per una tipologia di camera in un periodo
 	 */
-	public ArrayList<MPrezzoCamera> getPrezziInPeriodo(MPeriodo periodo) {
-		ArrayList<MPrezzoCamera> prezziCamera = new ArrayList<MPrezzoCamera>();
-		MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
+	public ArrayList<PrezzoCamera> getPrezziInPeriodo(Periodo periodo) {
+		ArrayList<PrezzoCamera> prezziCamera = new ArrayList<PrezzoCamera>();
+		PrezzoCamera prezzoCameraPeriodo = new PrezzoCamera();
 		// Ciclo sugli MPrezzoCamera 
-		for (Iterator<MPrezzoCamera> iterator = _prezziCamera.iterator(); iterator.hasNext();) {
-			MPrezzoCamera prezzoCamera = iterator.next();
+		for (Iterator<PrezzoCamera> iterator = _prezziCamera.iterator(); iterator.hasNext();) {
+			PrezzoCamera prezzoCamera = iterator.next();
 			// Se otteniamo un MPrezzoCamera valido lo aggiungo alla lista.
 			if(prezzoCamera.getPrezzoInPeriodo(periodo) != null) {
 				prezzoCameraPeriodo = prezzoCamera.getPrezzoInPeriodo(periodo);
@@ -39,14 +39,14 @@ public class MDescrizioneCamera {
 	/**
 	 * @return _prezziCamera  
 	 */
-	public ArrayList<MPrezzoCamera> get_prezziCamera() {
+	public ArrayList<PrezzoCamera> get_prezziCamera() {
 		return _prezziCamera;
 	}
 
 	/**
 	 * @param _prezziCamera 
 	 */
-	public void set_prezziCamera(ArrayList<MPrezzoCamera> _prezziCamera) {
+	public void set_prezziCamera(ArrayList<PrezzoCamera> _prezziCamera) {
 		this._prezziCamera = _prezziCamera;
 	}
 
@@ -71,7 +71,7 @@ public class MDescrizioneCamera {
 	 * @param periodo Periodo della prenotazione
 	 * @return totaleCameraPeriodo Costo totale della camera durante il soggiorno
 	 */
-	public double calcolaPrezzoInPeriodo(MPeriodo periodo) {
+	public double calcolaPrezzoInPeriodo(Periodo periodo) {
 		// Data di inizio della richiesta.
 		GregorianCalendar dataInizio = new GregorianCalendar();
 		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio(),periodo.get_oraInizio(),periodo.get_minutoInizio());
@@ -106,18 +106,18 @@ public class MDescrizioneCamera {
  * @param data Giorno in cui bisogna calcolare il prezzo della camera
  * @return Prezzo della camera in un giorno.
  */
-private double calcolaPrezzoGiorno(ArrayList<MPrezzoCamera> prezziCamera, GregorianCalendar data){	
+private double calcolaPrezzoGiorno(ArrayList<PrezzoCamera> prezziCamera, GregorianCalendar data){	
 	// Creo un periodo con data inizio uguale a data fine
-	MPeriodo periodo= new MPeriodo();
+	Periodo periodo= new Periodo();
 	periodo.setDataInizioDaData(data);	
 	periodo.setDataFineDaData(data);
 	// Variabile nella quale andremo a memorizzare il totale per il giorno.
 	double prezzoGiorno=0;
 	
-	MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
+	PrezzoCamera prezzoCameraPeriodo = new PrezzoCamera();
 	// Ciclo su tutti gli MPrezzoCamera che ho a disposizione
-	for (Iterator<MPrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
-		MPrezzoCamera prezzoCamera = (MPrezzoCamera) iterator.next();
+	for (Iterator<PrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
+		PrezzoCamera prezzoCamera = (PrezzoCamera) iterator.next();
 		if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
 			prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
 			prezzoGiorno=prezzoCameraPeriodo.get_prezzo();

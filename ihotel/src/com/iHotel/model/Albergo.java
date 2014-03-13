@@ -3,29 +3,29 @@ package com.iHotel.model;
 import java.io.IOException;
 import java.util.*;
 
-import com.iHotel.model.Utility.MPeriodo;
+import com.iHotel.model.Utility.Periodo;
 import com.iHotel.utility.UDefaultLoader;
 
 
-public class MAlbergo {
+public class Albergo {
     
 	/* -------------------- Attributi e costruttore --------------------------*/
 	
- 	private MCatalogoCamere _catalogoCamere;
- 	private MStorico _storico;
-	private ArrayList<MCamera> _camere;
+ 	private CatalogoCamere _catalogoCamere;
+ 	private Storico _storico;
+	private ArrayList<CameraContext> _camere;
 	private String _nome;
 	private String _telefono;
 	private String _PIVA;
 	private String _eMail;
 	// Singleton 
-	private static MAlbergo instance = null;
+	private static Albergo instance = null;
 	
 	/**
 	 * Costruttore privato - pattern Singleton
 	 * @throws IOException 
 	 */
-	private MAlbergo() throws IOException {
+	private Albergo() throws IOException {
 		/*
 		 * Si prendono nome, telefono, partita IVA e email dal defaultLoader, togliendo dalla classe  
 		 * MAlbergo la responsabilità di recuperare i dati di default.
@@ -48,9 +48,9 @@ public class MAlbergo {
 	 * @return instance
 	 * @throws IOException 
 	 */
-	public static MAlbergo getInstance() throws IOException {
+	public static Albergo getInstance() throws IOException {
     	if(instance == null) {
-            instance = new MAlbergo();
+            instance = new Albergo();
          }
          return instance;
     }
@@ -63,10 +63,10 @@ public class MAlbergo {
 	 * @param numeroCamera Stringa contenente il numero della camera da ricavare.
 	 * @return cameraRicercata Camera che ha il numero passato come parametro.
 	 */
-	public MCamera getCameraDaNumero(String numeroCamera) {
-		MCamera cameraRicercata = null; // = new MCamera();
-		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
-			MCamera camera = (MCamera) iterator.next();
+	public CameraContext getCameraDaNumero(String numeroCamera) {
+		CameraContext cameraRicercata = null; // = new MCamera();
+		for (Iterator<CameraContext> iterator = _camere.iterator(); iterator.hasNext();) {
+			CameraContext camera = (CameraContext) iterator.next();
 			if (camera.get_numero().equals(numeroCamera)) {
 				cameraRicercata = camera;
 			}
@@ -80,10 +80,10 @@ public class MAlbergo {
 	 * @param tipologia è la tipologia delle camere da ricercare
 	 * @return lista_camere lista contenente le camere libere della tipologia indicata, nel periodo indicato
 	 */
-	public ArrayList<MCamera> cercaCamereLibereInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
-		ArrayList<MCamera> lista_camere = new ArrayList<MCamera>();
-		for (Iterator<MCamera> iterator = _camere.iterator(); iterator.hasNext();) {
-			MCamera camera = iterator.next();
+	public ArrayList<CameraContext> cercaCamereLibereInPeriodoDaTipologia(Periodo periodo, String tipologia){
+		ArrayList<CameraContext> lista_camere = new ArrayList<CameraContext>();
+		for (Iterator<CameraContext> iterator = _camere.iterator(); iterator.hasNext();) {
+			CameraContext camera = iterator.next();
 			if (camera.get_tipologia().equals(tipologia)){
 				if(camera.isLiberaInPeriodo(periodo)==true){
 					lista_camere.add(camera);
@@ -97,14 +97,14 @@ public class MAlbergo {
 	/**
 	 * @return _catalogoCamere
 	 */
-	public MCatalogoCamere get_catalogoCamere() {
+	public CatalogoCamere get_catalogoCamere() {
 		return _catalogoCamere;
 	}
 
 	/**
 	 * @param _catalogoCamere 
 	 */
-	public void set_catalogoCamere(MCatalogoCamere _catalogoCamere) {
+	public void set_catalogoCamere(CatalogoCamere _catalogoCamere) {
 		this._catalogoCamere = _catalogoCamere;
 	}
 
@@ -112,28 +112,28 @@ public class MAlbergo {
 	/**
 	 * @return the _storico
 	 */
-	public MStorico get_storico() {
+	public Storico get_storico() {
 		return _storico;
 	}
 
 	/**
 	 * @param _storico the _storico to set
 	 */
-	public void set_storico(MStorico _storico) {
+	public void set_storico(Storico _storico) {
 		this._storico = _storico;
 	}
 
 	/**
 	 * @return _camere
 	 */
-	public ArrayList<MCamera> get_camere() {
+	public ArrayList<CameraContext> get_camere() {
 		return _camere;
 	}
 
 	/**
 	 * @param _camere
 	 */
-	public void set_camere(ArrayList<MCamera> _camere) {
+	public void set_camere(ArrayList<CameraContext> _camere) {
 		this._camere = _camere;
 	}
 	/**

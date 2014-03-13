@@ -1,6 +1,6 @@
 package com.iHotel.view;
 
-public interface Observer {
+public interface IObserver {
 
 	void Update();
 

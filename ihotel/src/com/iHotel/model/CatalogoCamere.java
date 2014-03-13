@@ -2,26 +2,26 @@ package com.iHotel.model;
 
 import java.util.*;
 
-import com.iHotel.model.Utility.MPeriodo;
+import com.iHotel.model.Utility.Periodo;
 
-public class MCatalogoCamere {
+public class CatalogoCamere {
 
 	/* ----------------------------------- Attributi e costruttore ---------------------------------- */
 	
-	private HashMap<String,MDescrizioneCamera> _descrizioniCamere=new HashMap<String,MDescrizioneCamera>();
+	private HashMap<String,DescrizioneCamera> _descrizioniCamere=new HashMap<String,DescrizioneCamera>();
 	// Singleton
-	private static MCatalogoCamere instance = null;
+	private static CatalogoCamere instance = null;
 	
 	/**
 	 * Costruttore privato - pattern singleton
 	 */
-	private MCatalogoCamere() {}
+	private CatalogoCamere() {}
 	
 	/* ---------------------------- Metodi di classe ----------------------------- */	
 	
-	public static MCatalogoCamere getInstance() {
+	public static CatalogoCamere getInstance() {
     	if(instance == null) {
-            instance = new MCatalogoCamere();
+            instance = new CatalogoCamere();
          }
          return instance;
     }
@@ -35,9 +35,9 @@ public class MCatalogoCamere {
 	 * @param tipologia Tipologia di camera di cui si vuole il prezzo in un periodo.
 	 * @return Collezione contenente l'insieme dei prezzi relativi ad una tipologia di camera.
 	 */
-	public ArrayList<MPrezzoCamera> getPrezziInPeriodoDaTipologia(MPeriodo periodo, String tipologia){
+	public ArrayList<PrezzoCamera> getPrezziInPeriodoDaTipologia(Periodo periodo, String tipologia){
 		// Ricavo la descrizione della camera a partire dalla tipologia.
-		MDescrizioneCamera descrizioneCamera = getDescrizioneDaTipologia(tipologia);	
+		DescrizioneCamera descrizioneCamera = getDescrizioneDaTipologia(tipologia);	
 		return descrizioneCamera.getPrezziInPeriodo(periodo);
 	}
 	
@@ -46,7 +46,7 @@ public class MCatalogoCamere {
 	 * 
 	 * @param tipologia	Tipologia di camera di cui si vuole avere la descrizione.
 	 */
-	public MDescrizioneCamera getDescrizioneDaTipologia(String tipologia){
+	public DescrizioneCamera getDescrizioneDaTipologia(String tipologia){
 		return _descrizioniCamere.get(tipologia);
 	}
 	
@@ -55,14 +55,14 @@ public class MCatalogoCamere {
 	/**
 	 * @return  _descrizioniCamere 
 	 */
-	public HashMap<String,MDescrizioneCamera> get_descrizioniCamere() {
+	public HashMap<String,DescrizioneCamera> get_descrizioniCamere() {
 		return _descrizioniCamere;
 	}
 
 	/**
 	 * @param _descrizioniCamere 
 	 */
-	public void set_descrizioniCamere(HashMap<String,MDescrizioneCamera> _descrizioniCamere) {
+	public void set_descrizioniCamere(HashMap<String,DescrizioneCamera> _descrizioniCamere) {
 		this._descrizioniCamere = _descrizioniCamere;
 	}
 }

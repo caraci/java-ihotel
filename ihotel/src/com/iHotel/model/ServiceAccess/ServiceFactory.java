@@ -3,7 +3,7 @@ package com.iHotel.model.ServiceAccess;
 import com.iHotel.model.ForeignSystem.PayTv.*;
 import com.iHotel.model.ForeignSystem.Telephone.*;
 
-public class MServiceFactory {
+public class ServiceFactory {
 
 	private IPayTvAdapter _payTvAdapter;
 	private ITelephoneAdapter _telephoneAdapter;

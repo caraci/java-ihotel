@@ -2,37 +2,37 @@ package com.iHotel.model;
 
 import java.util.*;
 
-import com.iHotel.model.Utility.MPeriodo;
-import com.iHotel.view.Observer;
+import com.iHotel.model.Utility.Periodo;
+import com.iHotel.view.IObserver;
 
-public class MPrenotazioneSubject implements Subject {
+public class PrenotazioneSubject implements ISubject {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
-	private ArrayList<MCamera> _camerePrenotate = new ArrayList<MCamera>();
-	private ArrayList<Observer> _osservatori = new ArrayList<com.iHotel.view.Observer>();
-	private MPeriodo _periodo;
+	private ArrayList<CameraContext> _camerePrenotate = new ArrayList<CameraContext>();
+	private ArrayList<IObserver> _osservatori = new ArrayList<IObserver>();
+	private Periodo _periodo;
 	private boolean _completata;
-	private MOspite _prenotante;
+	private Ospite _prenotante;
 	private double _total;
 	private String _codice;
 	
-	public MPrenotazioneSubject() {}
+	public PrenotazioneSubject() {}
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
 	
 	/* ----------- Pattern Observer -------- */
 	@Override
-	public void Attach(com.iHotel.view.Observer observer) {
+	public void Attach(IObserver observer) {
 		_osservatori.add(observer);
 		
 	}
 	@Override
-	public void Detach(com.iHotel.view.Observer observer) {
+	public void Detach(IObserver observer) {
 		_osservatori.remove(observer);
 	}
 	@Override
 	public void Notify() {
-		for (Iterator<com.iHotel.view.Observer> iterator = _osservatori.iterator(); iterator.hasNext();) {
-			com.iHotel.view.Observer observer = (com.iHotel.view.Observer) iterator.next();
+		for (Iterator<IObserver> iterator = _osservatori.iterator(); iterator.hasNext();) {
+			IObserver observer = (IObserver) iterator.next();
 			observer.Update();
 		}
 		
@@ -43,10 +43,10 @@ public class MPrenotazioneSubject implements Subject {
 	 */
 	public void calcolaTotale(){
 		// Cicliamo su tutti gli elementi della prenotazione.
-		MCatalogoCamere catalogo=MCatalogoCamere.getInstance();
-		MDescrizioneCamera descrizione= new MDescrizioneCamera();
+		CatalogoCamere catalogo=CatalogoCamere.getInstance();
+		DescrizioneCamera descrizione= new DescrizioneCamera();
 		// Prendo l'ultima camera aggiunta.
-		MCamera cameraPrenotata = new MCamera();
+		CameraContext cameraPrenotata = new CameraContext();
 		cameraPrenotata=_camerePrenotate.get(_camerePrenotate.size()-1);
 		// Prendo la tipologia e carico la giusta descrizione.
 		String tipologia = cameraPrenotata.get_tipologia();
@@ -61,7 +61,7 @@ public class MPrenotazioneSubject implements Subject {
 	 * Metodo per aggiungere un elemento alla prenotazione.
 	 * @param camera Camera da aggiungere alla prenotazione
 	 */
-	public void addCamera(MCamera camera) {
+	public void addCamera(CameraContext camera) {
 		_camerePrenotate.add(camera);
 	}
 	/**
@@ -72,7 +72,7 @@ public class MPrenotazioneSubject implements Subject {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void addPrenotante(String nome, String cognome, String eMail, String telefono) {
-		_prenotante = new MOspite();
+		_prenotante = new Ospite();
 		_prenotante.set_nome(nome);		
 		_prenotante.set_cognome(cognome);
 		_prenotante.set_eMail(eMail);
@@ -82,8 +82,8 @@ public class MPrenotazioneSubject implements Subject {
 	 * Metodo per occupare le camere della prenotazione.
 	 */
 	public void occupaCamere() {
-		for (Iterator<MCamera> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
-			MCamera cameraPrenotata = (MCamera) iterator.next();
+		for (Iterator<CameraContext> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
+			CameraContext cameraPrenotata = (CameraContext) iterator.next();
 			cameraPrenotata.occupaInPeriodo(_periodo);
 		}
 	}
@@ -92,28 +92,28 @@ public class MPrenotazioneSubject implements Subject {
 	/**
 	 * @return _elementiPrenotazione
 	 */
-	public ArrayList<MCamera> get_camerePrenotate() {
+	public ArrayList<CameraContext> get_camerePrenotate() {
 		return _camerePrenotate;
 	}
 
 	/**
 	 * @param _elementiPrenotazione
 	 */
-	public void set_camerePrenotate(ArrayList<MCamera> _elementiPrenotazione) {
+	public void set_camerePrenotate(ArrayList<CameraContext> _elementiPrenotazione) {
 		this._camerePrenotate = _elementiPrenotazione;
 	}
 
 	/**
 	 * @return  _periodo
 	 */
-	public MPeriodo get_periodo() {
+	public Periodo get_periodo() {
 		return _periodo;
 	}
 
 	/**
 	 * @param _periodo 
 	 */
-	public void set_periodo(MPeriodo _periodo) {
+	public void set_periodo(Periodo _periodo) {
 		this._periodo = _periodo;
 	}
 	/**

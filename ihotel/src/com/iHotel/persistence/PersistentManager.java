@@ -5,8 +5,8 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
-import com.iHotel.model.MCamera;
-import com.iHotel.model.MPrenotazioneSubject;
+import com.iHotel.model.CameraContext;
+import com.iHotel.model.PrenotazioneSubject;
 
 public class PersistentManager {
 	/* --------------- Attributi e costruttore ------------------- */
@@ -22,8 +22,8 @@ public class PersistentManager {
 		// Se la connessione non è aperta, la si va ad aprire.
 		if (_db==null) {
 			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
-			config.common().objectClass(MPrenotazioneSubject.class).cascadeOnUpdate(true);
-			config.common().objectClass(MCamera.class).cascadeOnUpdate(true);
+			config.common().objectClass(PrenotazioneSubject.class).cascadeOnUpdate(true);
+			config.common().objectClass(CameraContext.class).cascadeOnUpdate(true);
 			_db=Db4oEmbedded.openFile(config, "dbihotel");
 		}
 	}

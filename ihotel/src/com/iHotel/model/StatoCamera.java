@@ -1,11 +1,11 @@
 package com.iHotel.model;
 
-import com.iHotel.model.Utility.MPeriodo;
+import com.iHotel.model.Utility.Periodo;
 
-public class MStatoCamera {
+public class StatoCamera {
 
 	/* ------------------------ Attributi ---------------- */
-	private MPeriodo _periodo;
+	private Periodo _periodo;
 	private boolean _libera;
 	
 	/* --------------------- Metodi di instanza ---------------- */
@@ -15,7 +15,7 @@ public class MStatoCamera {
 	 * @param periodo Periodo da controllare
 	 * @return boolean True se libero. False altrimenti.
 	 */
-	public boolean isLiberaInPeriodo(MPeriodo periodoRichiesta) {
+	public boolean isLiberaInPeriodo(Periodo periodoRichiesta) {
 		// Controllo se il periodo dello statoCamera contiene il periodo della richiesta e se lo stato è libero.
 		if(_periodo.contiene(periodoRichiesta) && _libera==true) {
 			return true;
@@ -29,7 +29,7 @@ public class MStatoCamera {
 	 * @param periodo Periodo da controllare.
 	 * @return this 
 	 * */
-	public MStatoCamera getStatoContenente(MPeriodo periodo){
+	public StatoCamera getStatoContenente(Periodo periodo){
 			
 		if(this.get_periodo().contiene(periodo)==true){
 			return this;
@@ -40,14 +40,14 @@ public class MStatoCamera {
 	/**
 	 * @return _periodo
 	 */
-	public MPeriodo get_periodo() {
+	public Periodo get_periodo() {
 		return _periodo;
 	}
 
 	/**
 	 * @param _periodo
 	 */
-	public void set_periodo(MPeriodo _periodo) {
+	public void set_periodo(Periodo _periodo) {
 		this._periodo = _periodo;
 	}
 	/**

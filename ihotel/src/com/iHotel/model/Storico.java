@@ -2,24 +2,24 @@ package com.iHotel.model;
 
 import java.util.*;
 
-public class MStorico {
+public class Storico {
 
 	/* ------------------------------- Attributi e Costruttore ----------------------------- */
 	// Singleton 
-	private static MStorico instance = null;
-	private ArrayList<MPrenotazioneSubject> _prenotazioni;
+	private static Storico instance = null;
+	private ArrayList<PrenotazioneSubject> _prenotazioni;
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private MStorico() {}
+	private Storico() {}
 	/* -------------------------------- Metodi di classe ----------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza della classe - Pattern singleton
 	 * @return instance 
 	 */
-	public static MStorico getInstance() {
+	public static Storico getInstance() {
     	if(instance == null) {
-            instance = new MStorico();
+            instance = new Storico();
          }
          return instance;
     }
@@ -37,7 +37,7 @@ public class MStorico {
 	 * 
 	 * @param prenotazione
 	 */
-	public void addPrenotazione(MPrenotazioneSubject prenotazione) {
+	public void addPrenotazione(PrenotazioneSubject prenotazione) {
 		_prenotazioni.add(prenotazione);
 	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */
@@ -45,14 +45,14 @@ public class MStorico {
 	/**
 	 * @return _prenotazioni
 	 */
-	public ArrayList<MPrenotazioneSubject> get_prenotazioni() {
+	public ArrayList<PrenotazioneSubject> get_prenotazioni() {
 		return _prenotazioni;
 	}
 
 	/**
 	 * @param _prenotazioni
 	 */
-	public void set_prenotazioni(ArrayList<MPrenotazioneSubject> _prenotazioni) {
+	public void set_prenotazioni(ArrayList<PrenotazioneSubject> _prenotazioni) {
 		this._prenotazioni = _prenotazioni;
 	}
 

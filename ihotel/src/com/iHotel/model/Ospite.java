@@ -1,6 +1,6 @@
 package com.iHotel.model;
 
-public class MOspite{
+public class Ospite{
 
 	/* ----------------- Attributi e Costruttore -------------------- */
 	private String _nome;
@@ -8,7 +8,7 @@ public class MOspite{
 	private String _eMail;
 	private String _telefono;
 
-	public MOspite() {
+	public Ospite() {
 		
 	}
 	/* ----------------- Getter, Setter ------------------------------*/

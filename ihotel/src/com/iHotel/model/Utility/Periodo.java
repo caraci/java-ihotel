@@ -6,7 +6,7 @@ import java.util.GregorianCalendar;
 
 import com.iHotel.utility.UDefaultLoader;
 
-public class MPeriodo {
+public class Periodo {
 
 	/* ----------------------------------------- Attributi e costruttore ------------------------------------- */
 	private int _giornoInizio;
@@ -24,7 +24,7 @@ public class MPeriodo {
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */	
-	public MPeriodo() {
+	public Periodo() {
 		/*
 		 * Si prendono minutoInizio, oraInizio, minutoFine e oraFine dal defaultLoader, togliendo dalla classe  
 		 * MPeriodo la responsabilità di recuperare i dati di default.
@@ -46,7 +46,7 @@ public class MPeriodo {
 	 * @param periodoRichiesta Periodo da confrontare
 	 * @return True se il periodo è contenuto. False altrimenti.
 	 */
-	public boolean contiene (MPeriodo periodoRichiesta) {
+	public boolean contiene (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
 		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
@@ -72,7 +72,7 @@ public class MPeriodo {
 	 * @param periodoRichiesta Periodo da confrontare
 	 * @return True se il periodo si sovrappone. False altrimenti.
 	 */
-	public boolean sovrappone (MPeriodo periodoRichiesta) {
+	public boolean sovrappone (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
 		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
@@ -98,7 +98,7 @@ public class MPeriodo {
 	 * @param periodoRichiesta Periodo da analizzare.
 	 * @return True se il periodo dell'instanza precede quello passato per parametro. False altrimenti.
 	 */
-	public boolean segue (MPeriodo periodoRichiesta) {
+	public boolean segue (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
 		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
@@ -124,7 +124,7 @@ public class MPeriodo {
 	 * @param periodoRichiesta Periodo da analizzare.
 	 * @return True se il periodo dell'instanza anticipa quello passato per parametro. False altrimenti.
 	 */
-	public boolean anticipa (MPeriodo periodoRichiesta) {
+	public boolean anticipa (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
 		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
@@ -152,7 +152,7 @@ public class MPeriodo {
 	 * @param periodoSuccessivo Periodo successivo a quello dell'instanza.
 	 * @return True se il periodo dell'instanza è esattamente contenuto. False altrimenti.
 	 */
-	public boolean contenutoTraPeriodi (MPeriodo periodoPrecedente, MPeriodo periodoSuccessivo) {
+	public boolean contenutoTraPeriodi (Periodo periodoPrecedente, Periodo periodoSuccessivo) {
 		boolean esito;
 		// Controllo se il periodo è esattamente contenuto tra due periodi
 		if(this.segue(periodoPrecedente) && this.anticipa(periodoSuccessivo)) {
@@ -168,7 +168,7 @@ public class MPeriodo {
 	 * 
 	 * @param periodo
 	 */
-	public void setDataInizioPeriodoDaDataInizioPeriodo(MPeriodo periodo){
+	public void setDataInizioPeriodoDaDataInizioPeriodo(Periodo periodo){
 		this.set_minutoInizio(periodo.get_minutoInizio());
 		this.set_oraInizio(periodo.get_oraInizio());
 		this.set_giornoInizio(periodo.get_giornoInizio());
@@ -182,7 +182,7 @@ public class MPeriodo {
 	 * 
 	 * @param periodo
 	 */
-	public void setDataInizioPeriodoDaDataFinePeriodo(MPeriodo periodo){
+	public void setDataInizioPeriodoDaDataFinePeriodo(Periodo periodo){
 		this.set_minutoInizio(this.get_minutoInizio());
 		this.set_oraInizio(this.get_oraInizio());
 		this.set_giornoInizio(periodo.get_giornoFine());
@@ -195,7 +195,7 @@ public class MPeriodo {
 	 * 
 	 * @param periodo
 	 */
-	public void setDataFinePeriodoDaDataFinePeriodo(MPeriodo periodo){		
+	public void setDataFinePeriodoDaDataFinePeriodo(Periodo periodo){		
 		this.set_minutoFine(periodo.get_minutoFine());
 		this.set_oraFine(periodo.get_oraFine());
 		this.set_giornoFine(periodo.get_giornoFine());
@@ -210,7 +210,7 @@ public class MPeriodo {
 	 * 
 	 * @param periodo
 	 */
-	public void setDataFinePeriodoDaDataInizioPeriodo(MPeriodo periodo){
+	public void setDataFinePeriodoDaDataInizioPeriodo(Periodo periodo){
 		this.set_minutoFine(this.get_minutoFine());
 		this.set_oraFine(this.get_oraFine());
 		this.set_giornoFine(periodo.get_giornoInizio());
@@ -224,7 +224,7 @@ public class MPeriodo {
 	 * @param periodo
 	 * @return True se i giorni di inizio sono uguali. False altrimenti.
 	 */
-	public boolean IniziaStessoGiornoInizioDi(MPeriodo periodo){
+	public boolean IniziaStessoGiornoInizioDi(Periodo periodo){
 		if (this.get_giornoInizio()==periodo.get_giornoInizio()&&
 				this.get_meseInizio()==periodo.get_meseInizio()&&
 				this.get_annoInizio()==periodo.get_annoInizio()){
@@ -238,7 +238,7 @@ public class MPeriodo {
 	 * @param periodo
 	 * @return True se i periodi finiscono lo stesso giorno. False altrimenti.
 	 */
-	public boolean FinisceStessoGiornoFineDi(MPeriodo periodo){
+	public boolean FinisceStessoGiornoFineDi(Periodo periodo){
 		if(this.get_giornoFine()==periodo.get_giornoFine()&&
 				this.get_meseFine()==periodo.get_meseFine()&&
 				this.get_annoFine()==periodo.get_annoFine()){

@@ -5,16 +5,16 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 
-import com.iHotel.model.Utility.MPeriodo;
+import com.iHotel.model.Utility.Periodo;
 
 /**
  * @author Eugenio
  */
-public class MElementoPrenotazione {
+public class ElementoPrenotazione {
 
 	/* -------------------------------------- Attributi ------------------------------- */
 	
-	private MCamera _camera;
+	private CameraContext _camera;
 	
 	/* ----------------------------------- Metodi di instanza -------------------------- */
 	
@@ -24,7 +24,7 @@ public class MElementoPrenotazione {
 	 * @param 	periodo	Periodo della prenotazione
 	 * @return 	double 	Subtotale della prenotazione per quella camera in tutto il periodo.
 	 */
-	public double getSubTotal(MPeriodo periodo){
+	public double getSubTotal(Periodo periodo){
 		
 		// Data di inizio della richiesta.
 		GregorianCalendar dataInizio = new GregorianCalendar();
@@ -34,9 +34,9 @@ public class MElementoPrenotazione {
 		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),periodo.get_oraFine(),periodo.get_minutoFine());
 	
 		// Ricavo l'instanza della classe MCatalogoCamere attraverso il pattern Singleton.
-		MCatalogoCamere catalogo = MCatalogoCamere.getInstance();
+		CatalogoCamere catalogo = CatalogoCamere.getInstance();
 		// Ricavo l'insieme dei prezzi della tipologia della camera in un certo periodo.
-		ArrayList<MPrezzoCamera> prezziTipologia = new ArrayList<MPrezzoCamera>();
+		ArrayList<PrezzoCamera> prezziTipologia = new ArrayList<PrezzoCamera>();
 		prezziTipologia=catalogo.getPrezziInPeriodoDaTipologia(periodo, _camera.get_tipologia());
 		
 		// Variabili nelle quali si andranno a memorizzare i totali.
@@ -64,18 +64,18 @@ public class MElementoPrenotazione {
 	 * @param data Giorno in cui bisogna calcolare il prezzo della camera
 	 * @return Prezzo della camera in un giorno.
 	 */
-	private double calcolaPrezzoGiorno(ArrayList<MPrezzoCamera> prezziCamera, GregorianCalendar data){	
+	private double calcolaPrezzoGiorno(ArrayList<PrezzoCamera> prezziCamera, GregorianCalendar data){	
 		// Creo un periodo con data inizio uguale a data fine
-		MPeriodo periodo= new MPeriodo();
+		Periodo periodo= new Periodo();
 		periodo.setDataInizioDaData(data);	
 		periodo.setDataFineDaData(data);
 		// Variabile nella quale andremo a memorizzare il totale per il giorno.
 		double prezzoGiorno=0;
 		
-		MPrezzoCamera prezzoCameraPeriodo = new MPrezzoCamera();
+		PrezzoCamera prezzoCameraPeriodo = new PrezzoCamera();
 		// Ciclo su tutti gli MPrezzoCamera che ho a disposizione
-		for (Iterator<MPrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
-			MPrezzoCamera prezzoCamera = (MPrezzoCamera) iterator.next();
+		for (Iterator<PrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
+			PrezzoCamera prezzoCamera = (PrezzoCamera) iterator.next();
 			if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
 				prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
 				prezzoGiorno=prezzoCameraPeriodo.get_prezzo();
@@ -88,7 +88,7 @@ public class MElementoPrenotazione {
 	 * 
 	 * @param periodo Periodo nel quale si vuole occupare una camera.
 	 */
-	public void occupaCameraInPeriodo(MPeriodo periodo) {
+	public void occupaCameraInPeriodo(Periodo periodo) {
 		_camera.occupaInPeriodo(periodo);
 	}
 	
@@ -96,14 +96,14 @@ public class MElementoPrenotazione {
 	/**
 	 * @return  _camera
 	 */
-	public MCamera get_camera() {
+	public CameraContext get_camera() {
 		return _camera;
 	}
 
 	/**
 	 * @param _camera 
 	 */
-	public void set_camera(MCamera camera) {
+	public void set_camera(CameraContext camera) {
 		this._camera = camera;
 	}
 

@@ -1,11 +1,11 @@
 package com.iHotel.model;
 
-import com.iHotel.model.Utility.MPeriodo;
+import com.iHotel.model.Utility.Periodo;
 
-public class MPrezzoCamera {
+public class PrezzoCamera {
 
 	/* -------------------------- Attributi ------------------------------- */
-	private MPeriodo _periodo;
+	private Periodo _periodo;
 	private double _prezzo;
 	
 	/* ---------------------- Metodi di instanza --------------------------- */ 
@@ -16,7 +16,7 @@ public class MPrezzoCamera {
 	 * @param periodo Periodo per il quale si vuole ottenere l' MPrezzoCamera corretto.
 	 * @return MPrezzoCamera relativo al periodo inserito.
 	 */
-	public MPrezzoCamera getPrezzoInPeriodo(MPeriodo periodo){
+	public PrezzoCamera getPrezzoInPeriodo(Periodo periodo){
 		if(this.get_periodo().contiene(periodo) || this.get_periodo().sovrappone(periodo)) {
 			return this;
 		} else{
@@ -41,14 +41,14 @@ public class MPrezzoCamera {
 	/**
 	 * @return double
 	 */
-	public MPeriodo get_periodo() {
+	public Periodo get_periodo() {
 		return _periodo;
 	}
 	
 	/** 
 	 * @param _periodo 
 	 */
-	public void set_periodo(MPeriodo _periodo) {
+	public void set_periodo(Periodo _periodo) {
 		this._periodo = _periodo;
 	}
 	

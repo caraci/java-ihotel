@@ -1,4 +1,4 @@
-package com.iHotel.view;
+package com.iHotel.view.light;
 
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.iHotel.controller.CGestisciPrenotazione;
+import com.iHotel.controller.CCreaPrenotazione;
 
 @SuppressWarnings("serial")
 public class VFrameHome extends JFrame {
@@ -56,7 +56,7 @@ public class VFrameHome extends JFrame {
 					@Override
 					public void mouseClicked(MouseEvent e) {
 						// Recupero il controllore e invoco il metodo per cercare le camere libere.
-						CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+						CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
 						try {
 							gestisciPrenotazione.creaNuovaPrenotazione();
 						} catch (IOException e1) {

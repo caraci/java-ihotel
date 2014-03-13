@@ -1,4 +1,4 @@
-package com.iHotel.view;
+package com.iHotel.view.light;
 
 import java.awt.Dimension;
 
@@ -14,16 +14,17 @@ import javax.swing.border.EmptyBorder;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.iHotel.controller.CGestisciPrenotazione;
-import com.iHotel.model.MPrenotazioneSubject;
-import com.iHotel.model.Subject;
+import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.model.PrenotazioneSubject;
+import com.iHotel.model.ISubject;
+import com.iHotel.view.IObserver;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
-public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements Observer {
+public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements IObserver {
 
 	/* ContentPane */
 	private JPanel contentPane;
@@ -39,7 +40,7 @@ public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements Obse
     /* JTextField */
     private JTextField txtNome, txtCognome, txteMail, txtTelefono;
     // Pattern Observer
-    private MPrenotazioneSubject _prenotazioneSubject;
+    private PrenotazioneSubject _prenotazioneSubject;
     /* ----------------- Pattern Singleton  ---------------- */
 	private static VFrameCreaPrenotazioneStep_2Observer instance = null;
    
@@ -212,7 +213,7 @@ public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements Obse
 						// Ricavo la sua posizione nell'ArrayList di JButton
 						int numeroLista=btnNumeriCamereDisponibili.indexOf(btn);
 						// Recupero il controllore e invoco il metodo.
-						CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+						CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
 						// Aggiungo la camera alla prenotazione e carico il totale.
 						gestisciPrenotazione.aggiungiCameraAllaPrenotazione(lblNumeriCamereDisponibili.get(numeroLista).getText());
 						// Cambio testo al bottone
@@ -226,14 +227,14 @@ public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements Obse
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					// Recupero il controllore e invoco il metodo.
-					CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+					CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
 					// Invoco il metodo passando come parametro la stringa contenente il numero di camera.
 					gestisciPrenotazione.concludiPrenotazione(txtNome.getText(), txtCognome.getText(), txteMail.getText(), txtTelefono.getText());
 				}
 			});		
     }
     /* ------------- Getter, Setter */
-    public void set_prenotazioneSubject(Subject subject) {
-    	this._prenotazioneSubject=(MPrenotazioneSubject) subject;
+    public void set_prenotazioneSubject(ISubject subject) {
+    	this._prenotazioneSubject=(PrenotazioneSubject) subject;
     }
 }

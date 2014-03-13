@@ -8,12 +8,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import com.iHotel.model.MAlbergo;
-import com.iHotel.model.MCamera;
-import com.iHotel.model.MCatalogoCamere;
-import com.iHotel.model.MDescrizioneCamera;
-import com.iHotel.model.MPrenotazioneSubject;
-import com.iHotel.model.MStorico;
+import com.iHotel.model.Albergo;
+import com.iHotel.model.CameraContext;
+import com.iHotel.model.CatalogoCamere;
+import com.iHotel.model.DescrizioneCamera;
+import com.iHotel.model.PrenotazioneSubject;
+import com.iHotel.model.Storico;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PDescrizioneCamera;
 import com.iHotel.persistence.PPrenotazione;
@@ -26,34 +26,34 @@ public class UStartup {
 	public void inizializza() {
 		try {
 			// Carico tutte le camere
-			List<MCamera> camere = PCamera.getInstance().caricaCamere();
+			List<CameraContext> camere = PCamera.getInstance().caricaCamere();
 			// Carico tutte le descrizioni
-			List<MDescrizioneCamera> descrizioniCamere = PDescrizioneCamera.getInstance().caricaDescrizioniCamere();
+			List<DescrizioneCamera> descrizioniCamere = PDescrizioneCamera.getInstance().caricaDescrizioniCamere();
 			// Carico tutte le prenotazioni
-			List<MPrenotazioneSubject> prenotazioni = PPrenotazione.getInstance().caricaPrenotazioni();
+			List<PrenotazioneSubject> prenotazioni = PPrenotazione.getInstance().caricaPrenotazioni();
 			// Mediante pattern singleton, carico Albergo e Catalogo camere.
-			MAlbergo albergo = MAlbergo.getInstance();
-			MCatalogoCamere catalogoCamere = MCatalogoCamere.getInstance();
-			MStorico storico = MStorico.getInstance();
+			Albergo albergo = Albergo.getInstance();
+			CatalogoCamere catalogoCamere = CatalogoCamere.getInstance();
+			Storico storico = Storico.getInstance();
 			// Setto gli attributi dello storico
-			ArrayList<MPrenotazioneSubject> _prenotazioni = new ArrayList<MPrenotazioneSubject>();
-			for (Iterator<MPrenotazioneSubject> iterator = prenotazioni.iterator(); iterator.hasNext();) {
-				MPrenotazioneSubject prenotazioneSubject = (MPrenotazioneSubject) iterator.next();
+			ArrayList<PrenotazioneSubject> _prenotazioni = new ArrayList<PrenotazioneSubject>();
+			for (Iterator<PrenotazioneSubject> iterator = prenotazioni.iterator(); iterator.hasNext();) {
+				PrenotazioneSubject prenotazioneSubject = (PrenotazioneSubject) iterator.next();
 				System.out.println(prenotazioneSubject.get_completata());
 				_prenotazioni.add(prenotazioneSubject);				
 			}
 			storico.set_prenotazioni(_prenotazioni);
 			// Setto gli attributi del catalogoCamere
-			HashMap<String,MDescrizioneCamera> _descrizioniCamere = new HashMap<String,MDescrizioneCamera>();
-			for (Iterator<MDescrizioneCamera> iterator = descrizioniCamere.iterator(); iterator.hasNext();) {
-				MDescrizioneCamera descrizioneCamera = (MDescrizioneCamera) iterator.next();
+			HashMap<String,DescrizioneCamera> _descrizioniCamere = new HashMap<String,DescrizioneCamera>();
+			for (Iterator<DescrizioneCamera> iterator = descrizioniCamere.iterator(); iterator.hasNext();) {
+				DescrizioneCamera descrizioneCamera = (DescrizioneCamera) iterator.next();
 				_descrizioniCamere.put(descrizioneCamera.get_tipologia(), descrizioneCamera);
 			}
 			catalogoCamere.set_descrizioniCamere(_descrizioniCamere);
 			// Setto gli attributi dell'albergo
-			ArrayList<MCamera> _camere = new ArrayList<MCamera>();
-			for (Iterator<MCamera> iterator = camere.iterator(); iterator.hasNext();) {
-				MCamera camera = (MCamera) iterator.next();
+			ArrayList<CameraContext> _camere = new ArrayList<CameraContext>();
+			for (Iterator<CameraContext> iterator = camere.iterator(); iterator.hasNext();) {
+				CameraContext camera = (CameraContext) iterator.next();
 				_camere.add(camera);
 			}
 			albergo.set_camere(_camere);

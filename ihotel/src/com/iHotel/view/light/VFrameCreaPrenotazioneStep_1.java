@@ -1,4 +1,4 @@
-package com.iHotel.view;
+package com.iHotel.view.light;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import com.iHotel.controller.CGestisciPrenotazione;
+import com.iHotel.controller.CCreaPrenotazione;
 
 import net.sourceforge.jdatepicker.*;
 
@@ -192,7 +192,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 				GregorianCalendar dataFine = new GregorianCalendar();
 				dataFine.set(annoFine, meseFine, giornoFine);		
 				// Recupero il controllore e invoco il metodo per cercare le camere libere.
-				CGestisciPrenotazione gestisciPrenotazione = CGestisciPrenotazione.getInstance();
+				CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
 				gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologieSelezionate);
 			}
 		});

@@ -6,7 +6,7 @@ package com.iHotel.persistence;
 import java.util.List;
 
 import com.db4o.query.Predicate;
-import com.iHotel.model.MPrenotazioneSubject;
+import com.iHotel.model.PrenotazioneSubject;
 
 /**
  * @author Eugenio
@@ -36,10 +36,10 @@ public class PPrenotazione extends PersistentManager {
 	 * Metodo per caricare tutte le prenotazioni presenti nella base dati.
 	 * @return L'insieme delle prenotazioni dell'albergo.
 	 */
-	public List<MPrenotazioneSubject> caricaPrenotazioni() {
+	public List<PrenotazioneSubject> caricaPrenotazioni() {
 		@SuppressWarnings("serial")
-		List<MPrenotazioneSubject> prenotazioni = query(new Predicate<MPrenotazioneSubject>() {
-			public boolean match(MPrenotazioneSubject candidate) {
+		List<PrenotazioneSubject> prenotazioni = query(new Predicate<PrenotazioneSubject>() {
+			public boolean match(PrenotazioneSubject candidate) {
 				return true;
 			}
 		});

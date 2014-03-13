@@ -2,15 +2,15 @@ package com.iHotel.model;
 
 import java.util.*;
 
-import com.iHotel.model.Utility.MPeriodo;
+import com.iHotel.model.Utility.Periodo;
 
-public class MCamera {
+public class CameraContext {
 
 	/* --------------------------- Attributi ---------------------- */
 	
-	private LinkedList<MStatoCamera> _statiCamera = new LinkedList<MStatoCamera>();
-	protected String _numero;
-	protected String _tipologia;
+	private LinkedList<StatoCamera> _statiCamera = new LinkedList<StatoCamera>();
+	private String _numero;
+	private String _tipologia;
 
 	/* -------------------------- Metodi di istanza ----------------------- */
 	
@@ -20,9 +20,9 @@ public class MCamera {
 	 * @param periodoRichiesta Periodo nel quale si vuole prenotare la camera.
 	 * @return True se la camera è libera nel periodo. False altrimenti.
 	 */
-	public boolean isLiberaInPeriodo(MPeriodo periodoRichiesta) {		
-		for (Iterator<MStatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
-			MStatoCamera statoCamera = iterator.next();				
+	public boolean isLiberaInPeriodo(Periodo periodoRichiesta) {		
+		for (Iterator<StatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
+			StatoCamera statoCamera = iterator.next();				
 			if(statoCamera.isLiberaInPeriodo(periodoRichiesta)==true)					
 				return true;							
 		}
@@ -35,11 +35,11 @@ public class MCamera {
 	 * 
 	 * @param periodo Periodo in cui si deve occupare la camera 
 	 */
-	public void occupaInPeriodo(MPeriodo periodo) {
+	public void occupaInPeriodo(Periodo periodo) {
 		//definisco lo stato contenente, lo stato occupato e lo stato residuo. Setto i parametri dello stato occupato
 		//perchè li ho già tutti per farlo.		
 		
-		MStatoCamera statoOccupato = new MStatoCamera();
+		StatoCamera statoOccupato = new StatoCamera();
 		statoOccupato.set_periodo(periodo);
 		statoOccupato.set_libera(false);		
 		
@@ -48,9 +48,9 @@ public class MCamera {
 	
 		//devo prendere lo statoCamera il cui periodo contiene il periodo della prenotazione 
 		
-		MStatoCamera statoContenente = new MStatoCamera();
-		for (Iterator<MStatoCamera> iterator = this._statiCamera.iterator(); iterator.hasNext();) {
-			MStatoCamera statoCamera = (MStatoCamera) iterator.next();
+		StatoCamera statoContenente = new StatoCamera();
+		for (Iterator<StatoCamera> iterator = this._statiCamera.iterator(); iterator.hasNext();) {
+			StatoCamera statoCamera = (StatoCamera) iterator.next();
 			 if (statoCamera.getStatoContenente(periodo)!=null){
 				 statoContenente=statoCamera.getStatoContenente(periodo);
 				 indiceLista =_statiCamera.indexOf(statoContenente);
@@ -60,14 +60,14 @@ public class MCamera {
 		/* questo lo eseguo se il periodo della prenotazione riguarda non il primo periodo in cui la stanza è libera
 		* e non l'ultimo*/
 		if (indiceLista != 0 && indiceLista<(this.get_statiCamera().size()-1)){
-			MPeriodo periodoPrecedente = this.get_statiCamera().get(indiceLista -1).get_periodo();
-			MPeriodo periodoSuccessivo = this.get_statiCamera().get(indiceLista +1).get_periodo();
+			Periodo periodoPrecedente = this.get_statiCamera().get(indiceLista -1).get_periodo();
+			Periodo periodoSuccessivo = this.get_statiCamera().get(indiceLista +1).get_periodo();
 			
 			//quando il periodo è contenuto esattamente tra quello prima e quello dopo
 			if(periodo.contenutoTraPeriodi(periodoPrecedente, periodoSuccessivo)){
 				//creo nuovo periodo lungo dall'inizio del periodo precedente alla fine del periodo occupato
 				
-				MPeriodo periodoOccupazioneAllungato = new MPeriodo();
+				Periodo periodoOccupazioneAllungato = new Periodo();
 				periodoOccupazioneAllungato.setDataInizioPeriodoDaDataInizioPeriodo(periodoPrecedente);
 				periodoOccupazioneAllungato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
 				//vado a cambiare lo stato precedente, assegnandogli il periodo allungato e assegnandogli
@@ -82,7 +82,7 @@ public class MCamera {
 			else if (periodo.segue(periodoPrecedente)){
 				/*Creo un periodo di occupazione allungato che va dal giorno di inizio del periodo
 				*precedente fino alla fine della prenotazione */
-				MPeriodo periodoOccupazioneAllungato = new MPeriodo();
+				Periodo periodoOccupazioneAllungato = new Periodo();
 				periodoOccupazioneAllungato.setDataInizioPeriodoDaDataInizioPeriodo(periodoPrecedente);
 				periodoOccupazioneAllungato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				//cambio lo stato precedente a quello contenente, assegnandogli il periodo di occupazoione allungato 
@@ -92,7 +92,7 @@ public class MCamera {
 				/*Definisco il periodo residuo, che va dal giorno del termine della prenotazione al giorno
 				di fine del periodo dello stato contenente*/
 				
-				MPeriodo periodoResiduo = new MPeriodo();
+				Periodo periodoResiduo = new Periodo();
 				periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
 				periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 				//modifico lo statoContenente assegnandogli il periodo residuo libero
@@ -104,7 +104,7 @@ public class MCamera {
 				/*definisco un nuovo periodo di occupazione che va dal giorno del termine della prenotazione 
 				 * fino al giorno del successivo periodo occupato
 				 */
-				MPeriodo periodoOccupazioneAllungato = new MPeriodo();
+				Periodo periodoOccupazioneAllungato = new Periodo();
 				periodoOccupazioneAllungato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 				periodoOccupazioneAllungato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
 				
@@ -115,7 +115,7 @@ public class MCamera {
 				 * Definisco il periodo antecedente a quello di occupazione, come quello che va dal primo giorno 
 				 * del periodo contenente al primo giorno della prenotazione. in questo periodo la stanza è libera.
 				 */
-				MPeriodo periodoAntecedente = new MPeriodo();
+				Periodo periodoAntecedente = new Periodo();
 				periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
 				periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
 				//assegno il periodo antecedente allo stato precedente a qeullo in cui la stanza sarà occupata
@@ -141,7 +141,7 @@ public class MCamera {
 			/*
 			 * Definisco il periodo successivo, il periodo dello stato successivo allo statoContenente
 			 */
-			MPeriodo periodoSuccessivo = this.get_statiCamera().get(indiceLista +1).get_periodo();			
+			Periodo periodoSuccessivo = this.get_statiCamera().get(indiceLista +1).get_periodo();			
 			
 			//Se il periodo della prenotazione dura quanto tutto il periodo dello statoContenente
 			 
@@ -150,14 +150,14 @@ public class MCamera {
 				 * Creo un nuovo periodo in cui la camera sarà occupata, che va dal primo giorno della
 				 * prenotazione fino all'ultimo giorno del periodo successivo (in cui la camera risulta occupata).
 				 */
-					MPeriodo periodoOccupato = new MPeriodo();
+					Periodo periodoOccupato = new Periodo();
 					periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 					periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
 					/*
 					 * Creo un nuovo stato camera con il periodo lungo, lo associo al periodo in cui la camera
 					 *deve rsultare occupata, e setto l'occupazione
 					 */
-					MStatoCamera nuovoStatoOccupato= new MStatoCamera();
+					StatoCamera nuovoStatoOccupato= new StatoCamera();
 					nuovoStatoOccupato.set_periodo(periodoOccupato);
 					nuovoStatoOccupato.set_libera(false);
 					/*
@@ -175,7 +175,7 @@ public class MCamera {
 					 * Creo il periodo antecedente, che andrà dal primo giorno del periodo dello statoContenente
 					 * fino al primo giorno del periodo della prenotazione
 					 */
-					MPeriodo periodoAntecedente = new MPeriodo();
+					Periodo periodoAntecedente = new Periodo();
 					periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
 					periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
 					//cambio periodo allo stato contenente, assegnandogli il periodo ricavato sopra
@@ -187,11 +187,11 @@ public class MCamera {
 					 * periodo dlla prenotazione, fino all'ultimo giorno del periodo dello stato successivo
 					 * a quello contenente.
 					 */
-					MPeriodo periodoOccupato = new MPeriodo();
+					Periodo periodoOccupato = new Periodo();
 					periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 					periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
 					//Creo lo stato occupato e gli assegno il periodo creato sopra
-					MStatoCamera nuovoStatoOccupato = new MStatoCamera();
+					StatoCamera nuovoStatoOccupato = new StatoCamera();
 					nuovoStatoOccupato.set_periodo(periodoOccupato);
 					nuovoStatoOccupato.set_libera(false);
 					//aggiungo, in coda allo stato contenente, lo stato occupato
@@ -209,11 +209,11 @@ public class MCamera {
 				/*Creo il periodo occupato, che andrà dal primo giorno del periodo della prenotazone, fino 
 				 * all'ultimo giorno del periodo della prenotazione
 				 */				 
-				 MPeriodo periodoOccupato = new MPeriodo();
+				 Periodo periodoOccupato = new Periodo();
 				 periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 				 periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				 //Creo lo statoCamera occupato, al quale assegno il periodo creato sopra
-				 MStatoCamera nuovoStatoOccupato = new MStatoCamera();
+				 StatoCamera nuovoStatoOccupato = new StatoCamera();
 				 nuovoStatoOccupato.set_periodo(periodoOccupato);
 				 nuovoStatoOccupato.set_libera(false);
 				 //aggiungo in testa alla lista lo stato occupato, poiché sarà il primo stato della camera
@@ -223,7 +223,7 @@ public class MCamera {
 				  * Creo il periodo residuo che va dal giorno di fine del periodo della prenotazione al giorno
 				  * di fine del periodo dello stato contenente.
 				  */
-				 MPeriodo periodoResiduo = new MPeriodo();
+				 Periodo periodoResiduo = new Periodo();
 				 periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
 				 periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 				 //modifico lo stato contenente assegnandogli il periodo residuo.
@@ -250,14 +250,14 @@ public class MCamera {
 			/*
 			 * Definisco il periodo precedente, che è il periodo associato allo stato che precede lo stato contenente
 			 */
-			MPeriodo periodoPrecedente = this.get_statiCamera().get(indiceLista-1).get_periodo();
+			Periodo periodoPrecedente = this.get_statiCamera().get(indiceLista-1).get_periodo();
 			//Se il periodo della prenotazione combacia con quello dello stato contenente
 			if(periodo.IniziaStessoGiornoInizioDi(statoContenente.get_periodo())==true&& periodo.FinisceStessoGiornoFineDi(statoContenente.get_periodo())==true){
 				/*
 				 * Definisco il periodo occupato, che comincia lo stesso giorno del periodo occupato precedente e termina l'ultimo giorno del periodo della
 				 * prenotazione
 				 */
-				MPeriodo nuovoPeriodoOccupato= new MPeriodo();
+				Periodo nuovoPeriodoOccupato= new Periodo();
 				nuovoPeriodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodoPrecedente);
 				nuovoPeriodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				//Assegno allo stato precedente quello contenente il nuovo periodo di occupazione
@@ -272,7 +272,7 @@ public class MCamera {
 				 * Definisco il periodo di occupazione che andrà dal primo giorno del periodo dello stato precedente, all'ultimo giorno del 
 				 * periodo della prenotazione				
 				 */
-				MPeriodo nuovoPeriodoOccupato = new MPeriodo();
+				Periodo nuovoPeriodoOccupato = new Periodo();
 				nuovoPeriodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodoPrecedente);
 				nuovoPeriodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				//Assegno allo stato precedente il nuovo periodo di occupazione (più lungo)
@@ -282,7 +282,7 @@ public class MCamera {
 				 * Creo il periodo residuo che andrà dall'ultimo giorno del periodo della prenotazione fino all'ultimo giorno dello
 				 * stato contenente
 				 */
-				MPeriodo periodoResiduo = new MPeriodo();
+				Periodo periodoResiduo = new Periodo();
 				periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
 				periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 				//Assegno allo stato contenente il periodo residuo
@@ -296,7 +296,7 @@ public class MCamera {
 				 * Creo il periodo antecedente a quello dello stato contenente, che andrà dal primo giorno del periodo che contiene il periodo della prenotazione
 				 * fino al primo giorno della prenotazione.
 				 */
-				MPeriodo periodoAntecedente =new MPeriodo();
+				Periodo periodoAntecedente =new Periodo();
 				periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
 				periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
 				//assegno il periodo antecedente allo statoContenente
@@ -306,11 +306,11 @@ public class MCamera {
 				 * Creo il period in cui la stanza sarà occupata. Va dal primo giorno del periodo della prenotazione, fino all'ultimo giorno
 				 * del periodo della prenotazione
 				 */
-				MPeriodo nuovoPeriodoOccupato = new MPeriodo();
+				Periodo nuovoPeriodoOccupato = new Periodo();
 				nuovoPeriodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 				nuovoPeriodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				//creo lo stato occupato e gli assegno il periodo occupato
-				MStatoCamera nuovoStatoOccupato = new MStatoCamera();
+				StatoCamera nuovoStatoOccupato = new StatoCamera();
 				nuovoStatoOccupato.set_periodo(nuovoPeriodoOccupato);
 				nuovoStatoOccupato.set_libera(false);
 				//aggiungo lo stato occupato in fondo alla lista degli stati della camera
@@ -341,16 +341,16 @@ public class MCamera {
 			//Se il periodo comincia lo stesso giorno del periodo che lo contiene
 			else if(periodo.IniziaStessoGiornoInizioDi(statoContenente.get_periodo())==true){
 				/*Creo un nuovo periodo occupato, che comincia il primo giorno della prenotazione e finisce l'ultimo giorno della stessa */
-				MPeriodo nuovoPeriodoOccupato = new MPeriodo();
+				Periodo nuovoPeriodoOccupato = new Periodo();
 				nuovoPeriodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 				nuovoPeriodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				/* Creo il periodo residuo che va dal giorno della fne del periodo della prenotazione fino all'ultimo giorno del periodo residuo*/
-				MPeriodo periodoResiduo = new MPeriodo();				
+				Periodo periodoResiduo = new Periodo();				
 				periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);				
 				periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 				
 				//creo lo stato residuo e gli assegno il periodo residuo
-				MStatoCamera nuovoStatoResiduo = new MStatoCamera();
+				StatoCamera nuovoStatoResiduo = new StatoCamera();
 				nuovoStatoResiduo.set_periodo(periodoResiduo);
 				nuovoStatoResiduo.set_libera(true);
 				//Cambio lo stato contenente e gli assegno il periodo in cui è occupato. poi aggiungo lo stato residuo
@@ -365,18 +365,18 @@ public class MCamera {
 				 * Creo il periodo antecedente che va dal giorno di inizio del periodo dello stato contenente all'ultimo giorno del
 				 * periodo della prenotazione
 				 */
-				MPeriodo periodoAntecedente = new MPeriodo();
+				Periodo periodoAntecedente = new Periodo();
 				periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
 				periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
 				/*
 				 * Creo il periood occupato che va dal primo giorno del periodo della prenotazione fino all'ultimo giorno del periodo 
 				 * dello stato contenente
 				 */
-				MPeriodo periodoOccupato =new MPeriodo();
+				Periodo periodoOccupato =new Periodo();
 				periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 				periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 				//definisco lo stato occupato della camera assegnandogli il periodo dello occupato
-				MStatoCamera nuovoStatoOccupato = new MStatoCamera();
+				StatoCamera nuovoStatoOccupato = new StatoCamera();
 				nuovoStatoOccupato.set_periodo(periodoOccupato);
 				nuovoStatoOccupato.set_libera(false);
 				/*
@@ -410,30 +410,30 @@ public class MCamera {
 	 * @param periodo Periodo per cui si è effettuata la prenotazione.
 	 * @param indiceLista Posizione dello statoContenente all'interno della lista degli stati della camera.
 	 */
-	private void calcolaNuoviPeriodi(MStatoCamera statoContenente,MPeriodo periodo,int indiceLista){	
+	private void calcolaNuoviPeriodi(StatoCamera statoContenente,Periodo periodo,int indiceLista){	
 		/*
 		 * Creo il periodo residuo che va dal giorno di fine della prenotazione fino al giorno di fine del periodo dello stato contenente
 		 */
-		MPeriodo periodoResiduo = new MPeriodo();
+		Periodo periodoResiduo = new Periodo();
 		periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 		periodoResiduo.setDataInizioPeriodoDaDataFinePeriodo(periodo);
 		/*
 		 * Creo il periodo antecedente che va dal giorno di inizio del periodo dello stato contenente fino al primo giorno della prenotazione
 		 */
-		MPeriodo periodoAntecedente = new MPeriodo();
+		Periodo periodoAntecedente = new Periodo();
 		periodoAntecedente.setDataInizioPeriodoDaDataInizioPeriodo(statoContenente.get_periodo());
 		periodoAntecedente.setDataFinePeriodoDaDataInizioPeriodo(periodo);
 		//assegno allo stato contenente il periodo antecedente
 		this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
 		this.get_statiCamera().get(indiceLista).set_libera(true);
 		//creo lo stato occupato, e gli assegno il periodo della prenotazione
-		MStatoCamera nuovoStatoOccupato= new MStatoCamera();
+		StatoCamera nuovoStatoOccupato= new StatoCamera();
 		nuovoStatoOccupato.set_periodo(periodo);
 		nuovoStatoOccupato.set_libera(false);
 		//aggiungo lo stato occupato subito dopo lo stato antecente
 		this._statiCamera.add(indiceLista+1, nuovoStatoOccupato);
 		//creo lo stato residuo e gli assegno il periodo residuo
-		MStatoCamera statoResiduo = new MStatoCamera();
+		StatoCamera statoResiduo = new StatoCamera();
 		statoResiduo.set_periodo(periodoResiduo);
 		statoResiduo.set_libera(true);
 		//aggiungo lo stato residuo dopo lo stato occupato
@@ -445,14 +445,14 @@ public class MCamera {
 	/**
 	 * @return _statiCamera 
 	 */
-	public LinkedList<MStatoCamera> get_statiCamera() {
+	public LinkedList<StatoCamera> get_statiCamera() {
 		return _statiCamera;
 	}
 
 	/**
 	 * @param _statiCamera
 	 */
-	public void set_statiCamera(LinkedList<MStatoCamera> _statiCamera) {
+	public void set_statiCamera(LinkedList<StatoCamera> _statiCamera) {
 		this._statiCamera = _statiCamera;
 	}
 	/**
@@ -487,7 +487,7 @@ public class MCamera {
 	 * @param periodo
 	 * @param tipologia
 	 */
-	public boolean isLiberaInPeriodoDaTipologia(MPeriodo periodo, String tipologia) {
+	public boolean isLiberaInPeriodoDaTipologia(Periodo periodo, String tipologia) {
 		// TODO - implement MCamera.isLiberaInPeriodoDaTipologia
 		throw new UnsupportedOperationException();
 	}

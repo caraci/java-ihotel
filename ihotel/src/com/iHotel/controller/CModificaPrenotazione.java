@@ -6,8 +6,8 @@ public class CModificaPrenotazione {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
 	private static CModificaPrenotazione instance = null;
-	private MPrenotazioneSubject _prenotazione2;
-	private MCamera _numeroCamera2;
+	private PrenotazioneSubject _prenotazione2;
+	private CameraContext _numeroCamera2;
 
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -51,28 +51,28 @@ public class CModificaPrenotazione {
 	/**
 	 * @return the _prenotazione
 	 */
-	public MPrenotazioneSubject get_prenotazione2() {
+	public PrenotazioneSubject get_prenotazione2() {
 		return _prenotazione2;
 	}
 
 	/**
 	 * @param _prenotazione the _prenotazione to set
 	 */
-	public void set_prenotazione2(MPrenotazioneSubject _prenotazione) {
+	public void set_prenotazione2(PrenotazioneSubject _prenotazione) {
 		this._prenotazione2 = _prenotazione;
 	}
 
 	/**
 	 * @return the _numeroCamera
 	 */
-	public MCamera get_numeroCamera2() {
+	public CameraContext get_numeroCamera2() {
 		return _numeroCamera2;
 	}
 
 	/**
 	 * @param _numeroCamera the _numeroCamera to set
 	 */
-	public void set_numeroCamera2(MCamera _numeroCamera) {
+	public void set_numeroCamera2(CameraContext _numeroCamera) {
 		this._numeroCamera2 = _numeroCamera;
 	}
 
