@@ -2,7 +2,7 @@ package com.iHotel.model;
 
 import com.iHotel.model.Utility.Periodo;
 
-public class StatoCamera {
+public class CameraState {
 
 	/* ------------------------ Attributi ---------------- */
 	private Periodo _periodo;
@@ -29,7 +29,7 @@ public class StatoCamera {
 	 * @param periodo Periodo da controllare.
 	 * @return this 
 	 * */
-	public StatoCamera getStatoContenente(Periodo periodo){
+	public CameraState getStatoContenente(Periodo periodo){
 			
 		if(this.get_periodo().contiene(periodo)==true){
 			return this;

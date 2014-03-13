@@ -8,6 +8,8 @@ public class CModificaPrenotazione {
 	private static CModificaPrenotazione instance = null;
 	private PrenotazioneSubject _prenotazione2;
 	private CameraContext _numeroCamera2;
+	private PrenotazioneSubject _prenotazione;
+	private CameraContext _numeroCamera;
 
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -74,6 +76,22 @@ public class CModificaPrenotazione {
 	 */
 	public void set_numeroCamera2(CameraContext _numeroCamera) {
 		this._numeroCamera2 = _numeroCamera;
+	}
+
+	public PrenotazioneSubject get_prenotazione() {
+		return this._prenotazione;
+	}
+
+	public void set_prenotazione(PrenotazioneSubject _prenotazione) {
+		this._prenotazione = _prenotazione;
+	}
+
+	public CameraContext get_numeroCamera() {
+		return this._numeroCamera;
+	}
+
+	public void set_numeroCamera(CameraContext _numeroCamera) {
+		this._numeroCamera = _numeroCamera;
 	}
 
 }

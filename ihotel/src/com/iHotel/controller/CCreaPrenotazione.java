@@ -17,8 +17,9 @@ public class CCreaPrenotazione {
 	
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
 	private static CCreaPrenotazione instance = null;
-	private PrenotazioneSubject _prenotazione;
+	private PrenotazioneSubject attribute;
 	private Albergo _albergo;
+	private PrenotazioneSubject _prenotazione;
     
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -164,13 +165,21 @@ public class CCreaPrenotazione {
 	 * 
 	 * @return
 	 */
-	public PrenotazioneSubject get_prenotazione() {
-		return this._prenotazione;
+	public PrenotazioneSubject getAttribute() {
+		return this.attribute;
 	}
 	/**
 	 * 
 	 * @param _prenotazione
 	 */
+	public void setAttribute(PrenotazioneSubject _prenotazione) {
+		this.attribute = _prenotazione;
+	}
+
+	public PrenotazioneSubject get_prenotazione() {
+		return this._prenotazione;
+	}
+
 	public void set_prenotazione(PrenotazioneSubject _prenotazione) {
 		this._prenotazione = _prenotazione;
 	}

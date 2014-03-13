@@ -12,6 +12,7 @@ public class Albergo {
 	/* -------------------- Attributi e costruttore --------------------------*/
 	
  	private CatalogoCamere _catalogoCamere;
+ 	private CatalogoServizi _catalogoServizi;
  	private Storico _storico;
 	private ArrayList<CameraContext> _camere;
 	private String _nome;
@@ -20,6 +21,7 @@ public class Albergo {
 	private String _eMail;
 	// Singleton 
 	private static Albergo instance = null;
+	
 	
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -108,6 +110,20 @@ public class Albergo {
 		this._catalogoCamere = _catalogoCamere;
 	}
 
+
+	/**
+	 * @return the _catalogoServizi
+	 */
+	public CatalogoServizi get_catalogoServizi() {
+		return _catalogoServizi;
+	}
+
+	/**
+	 * @param _catalogoServizi the _catalogoServizi to set
+	 */
+	public void set_catalogoServizi(CatalogoServizi _catalogoServizi) {
+		this._catalogoServizi = _catalogoServizi;
+	}
 
 	/**
 	 * @return the _storico

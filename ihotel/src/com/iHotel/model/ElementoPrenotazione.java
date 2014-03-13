@@ -14,6 +14,10 @@ public class ElementoPrenotazione {
 
 	/* -------------------------------------- Attributi ------------------------------- */
 	
+	private CameraContext attribute;
+	/**
+	 * -------------------------------------- Attributi -------------------------------
+	 */
 	private CameraContext _camera;
 	
 	/* ----------------------------------- Metodi di instanza -------------------------- */
@@ -96,15 +100,23 @@ public class ElementoPrenotazione {
 	/**
 	 * @return  _camera
 	 */
-	public CameraContext get_camera() {
-		return _camera;
+	public CameraContext getAttribute() {
+		return attribute;
 	}
 
 	/**
 	 * @param _camera 
 	 */
-	public void set_camera(CameraContext camera) {
-		this._camera = camera;
+	public void setAttribute(CameraContext camera) {
+		this.attribute = camera;
+	}
+
+	public CameraContext get_camera() {
+		return this._camera;
+	}
+
+	public void set_camera(CameraContext _camera) {
+		this._camera = _camera;
 	}
 
 	

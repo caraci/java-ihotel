@@ -47,22 +47,15 @@ public class CatalogoCamere {
 	 * @param tipologia	Tipologia di camera di cui si vuole avere la descrizione.
 	 */
 	public DescrizioneCamera getDescrizioneDaTipologia(String tipologia){
-		return _descrizioniCamere.get(tipologia);
-	}
-	
-	/* ------------------------------- Getter e Setter -------------------------- */
-	
-	/**
-	 * @return  _descrizioniCamere 
-	 */
-	public HashMap<String,DescrizioneCamera> get_descrizioniCamere() {
-		return _descrizioniCamere;
+		return this._descrizioniCamere.get(tipologia);
 	}
 
-	/**
-	 * @param _descrizioniCamere 
-	 */
-	public void set_descrizioniCamere(HashMap<String,DescrizioneCamera> _descrizioniCamere) {
-		this._descrizioniCamere = _descrizioniCamere;
+	public void set_descrizioniCamere(HashMap<String, DescrizioneCamera> descrizioniCamere) {
+		this._descrizioniCamere = descrizioniCamere;
+		
+	}
+
+	public HashMap<String, DescrizioneCamera> get_descrizioniCamere() {
+		return this._descrizioniCamere;
 	}
 }
