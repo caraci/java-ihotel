@@ -1,4 +1,4 @@
-package com.iHotel.view.light;
+package com.iHotel.view.CreaPrenotazione;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -13,6 +13,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.view.ViewAccess.StyleAbstractFactory;
+import com.iHotel.view.ViewAccess.ViewFactory;
 
 import net.sourceforge.jdatepicker.*;
 
@@ -21,6 +23,8 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 
 	/* Singleton */
 	private static VFrameCreaPrenotazioneStep_1 instance = null;
+	/* Factory */
+	private StyleAbstractFactory _creaPrenotazioneFactory;
 	/* ContentPane */
 	private JPanel contentPane;
     /* Panel */
@@ -37,7 +41,10 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
     /**
      * Costruttore privato - pattern Singleton
      */
-	private VFrameCreaPrenotazioneStep_1() {}
+	private VFrameCreaPrenotazioneStep_1() {
+		// Richiedo la factory corretta.
+		_creaPrenotazioneFactory=ViewFactory.getInstance().getStyleFactory();
+	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
 	 * 
@@ -55,7 +62,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 	 */
 	private void addPanelTopLeft() {
 		// PanelTopLeft
-		panelTopLeft = new JPanel();
+		panelTopLeft = _creaPrenotazioneFactory.getPanel();
 		panelTop.add(panelTopLeft);
 		panelTopLeft.setLayout(new BoxLayout(panelTopLeft, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
@@ -72,7 +79,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 	 */
 	private void addPanelTopRight() {
 		// PanelTopRight
-		panelTopRight = new JPanel();
+		panelTopRight = _creaPrenotazioneFactory.getPanel();
 		panelTop.add(panelTopRight);
 		panelTopRight.setLayout(new BoxLayout(panelTopRight, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
@@ -90,7 +97,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 	 */
 	private void addPanelBottomLeft(ArrayList<String> tipologieCamere) {
 		// PanelBottomLeft
-		panelBottomLeft = new JPanel();
+		panelBottomLeft = _creaPrenotazioneFactory.getPanel();
 		panelBottom.add(panelBottomLeft);
 		// Layout PanelBottomLeft
 		panelBottomLeft.setLayout(new BoxLayout(panelBottomLeft, BoxLayout.PAGE_AXIS));
@@ -117,7 +124,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
 	 */
 	private void addPanelBottomRight() {
 		// PanelBottomRight
-		panelBottomRight = new JPanel();
+		panelBottomRight = _creaPrenotazioneFactory.getPanel();
 		panelBottom.add(panelBottomRight);
 		// Layout PanelBottomRight
 		panelBottomRight.setLayout(new BorderLayout(0, 0));

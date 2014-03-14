@@ -4,9 +4,9 @@ import com.iHotel.model.*;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.IObserver;
-import com.iHotel.view.light.VFrameCreaPrenotazioneStep_1;
-import com.iHotel.view.light.VFrameCreaPrenotazioneStep_2Observer;
-import com.iHotel.view.light.VFrameHome;
+import com.iHotel.view.VFrameHome;
+import com.iHotel.view.CreaPrenotazione.VFrameCreaPrenotazioneStep_1;
+import com.iHotel.view.CreaPrenotazione.VFrameCreaPrenotazioneStep_2Observer;
 
 import java.io.IOException;
 import java.util.ArrayList;

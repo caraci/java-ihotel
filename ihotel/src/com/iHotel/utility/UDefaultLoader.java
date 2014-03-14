@@ -9,8 +9,7 @@ import java.util.*;
 public class UDefaultLoader {
 	
 	/* -------------------------- Attributi e costruttore ----------------------- */
-	private String _pathToAlbergo = "/configs/Albergo.txt";
-	private String _pathToPeriodo = "/configs/Periodo.txt";
+	private String _pathToConfigs = "/configs/";
 	private static UDefaultLoader instance = null;
 	/**
 	 * Costruttore privato - Pattern singleton
@@ -40,7 +39,7 @@ public class UDefaultLoader {
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToAlbergo))) {  
+		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "albergo.txt"))) {  
 			// Inizializzo gli attributi
 			nome = albergoReader.readLine();
 			telefono = albergoReader.readLine();
@@ -73,7 +72,7 @@ public class UDefaultLoader {
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToPeriodo))) {  
+		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "periodo.txt"))) {  
 			// Inizializzo gli attributi
 			minutoInizioStr = albergoReader.readLine();
 			oraInizioStr = albergoReader.readLine();
@@ -94,31 +93,38 @@ public class UDefaultLoader {
 		
 		return attributiPeriodo;
 	}
+	/**
+	 * Metodo per andare a leggere in un file di configurazione i valori relativi a nome, telefono, PIVA e eMail della
+	 * classe MAlbergo.
+	 * 
+	 * @return Collezione contenente nome, telefono, PIVA e eMail.
+	 */
+	public String getStileInterfaccia(){
+		// Variabile nelle quali andremo a memorizzare lo stile dell'interfaccia.
+		String stile;
+		// Ricavo il path assoluto.
+		String filePath = new File("").getAbsolutePath();
+		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
+		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "interfaccia.txt"))) {  
+			// Inizializzo gli attributi
+			stile = albergoReader.readLine();
+		} catch (IOException e) {
+			stile = "light";
+        }
+		return stile;	
+	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */
 	/**
-	 * @return _pathToAlbergo
+	 * @return _pathToConfigs
 	 */
-	public String get_PathToAlbergo() {
-		return _pathToAlbergo;
+	public String get_PathToConfigs() {
+		return _pathToConfigs;
 	}
 	/**
-	 * @param _pathToAlbergo
+	 * @param _pathToConfigs
 	 */
-	public void set_PathToAlbergo(String _pathToAlbergo) {
-		this._pathToAlbergo = _pathToAlbergo;
+	public void set_PathToConfigs(String _pathToConfigs) {
+		this._pathToConfigs = _pathToConfigs;
 	}
-	/**
-	 * @return _pathToPeriodo
-	 */
-	public String get_PathToPeriodo() {
-		return _pathToPeriodo;
-	}
-	/**
-	 * @param _pathToPeriodo
-	 */
-	public void setPathToPeriodo(String _pathToPeriodo) {
-		this._pathToPeriodo = _pathToPeriodo;
-	}	
-	
 
 }

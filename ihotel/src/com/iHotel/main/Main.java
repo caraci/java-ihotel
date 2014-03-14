@@ -1,7 +1,7 @@
 package com.iHotel.main;
 
 import com.iHotel.utility.UStartup;
-import com.iHotel.view.light.VFrameHome;
+import com.iHotel.view.VFrameHome;
 
 public class Main {
 	/**

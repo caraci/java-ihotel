@@ -1,4 +1,4 @@
-package com.iHotel.view.light;
+package com.iHotel.view.CreaPrenotazione;
 
 import java.awt.Dimension;
 
