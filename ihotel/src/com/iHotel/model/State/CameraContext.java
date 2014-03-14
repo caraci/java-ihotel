@@ -1,14 +1,15 @@
-package com.iHotel.model;
+package com.iHotel.model.State;
 
 import java.util.*;
 
+import com.iHotel.model.StatoCamera;
 import com.iHotel.model.Utility.Periodo;
 
 public class CameraContext {
 
 	/* --------------------------- Attributi ---------------------- */
 	
-	private LinkedList<CameraState> _statiCamera = new LinkedList<CameraState>();
+	private LinkedList<StatoCamera> _statiCamera = new LinkedList<StatoCamera>();
 	private String _numero;
 	private String _tipologia;
 
@@ -21,8 +22,8 @@ public class CameraContext {
 	 * @return True se la camera è libera nel periodo. False altrimenti.
 	 */
 	public boolean isLiberaInPeriodo(Periodo periodoRichiesta) {		
-		for (Iterator<CameraState> iterator = _statiCamera.iterator(); iterator.hasNext();) {
-			CameraState statoCamera = iterator.next();				
+		for (Iterator<StatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
+			StatoCamera statoCamera = iterator.next();				
 			if(statoCamera.isLiberaInPeriodo(periodoRichiesta)==true)					
 				return true;							
 		}
@@ -39,7 +40,7 @@ public class CameraContext {
 		//definisco lo stato contenente, lo stato occupato e lo stato residuo. Setto i parametri dello stato occupato
 		//perchè li ho già tutti per farlo.		
 		
-		CameraState statoOccupato = new CameraState();
+		StatoCamera statoOccupato = new StatoCamera();
 		statoOccupato.set_periodo(periodo);
 		statoOccupato.set_libera(false);		
 		
@@ -48,9 +49,9 @@ public class CameraContext {
 	
 		//devo prendere lo statoCamera il cui periodo contiene il periodo della prenotazione 
 		
-		CameraState statoContenente = new CameraState();
-		for (Iterator<CameraState> iterator = this._statiCamera.iterator(); iterator.hasNext();) {
-			CameraState statoCamera = (CameraState) iterator.next();
+		StatoCamera statoContenente = new StatoCamera();
+		for (Iterator<StatoCamera> iterator = this._statiCamera.iterator(); iterator.hasNext();) {
+			StatoCamera statoCamera = (StatoCamera) iterator.next();
 			 if (statoCamera.getStatoContenente(periodo)!=null){
 				 statoContenente=statoCamera.getStatoContenente(periodo);
 				 indiceLista =_statiCamera.indexOf(statoContenente);
@@ -157,7 +158,7 @@ public class CameraContext {
 					 * Creo un nuovo stato camera con il periodo lungo, lo associo al periodo in cui la camera
 					 *deve rsultare occupata, e setto l'occupazione
 					 */
-					CameraState nuovoStatoOccupato= new CameraState();
+					StatoCamera nuovoStatoOccupato= new StatoCamera();
 					nuovoStatoOccupato.set_periodo(periodoOccupato);
 					nuovoStatoOccupato.set_libera(false);
 					/*
@@ -191,7 +192,7 @@ public class CameraContext {
 					periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 					periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodoSuccessivo);
 					//Creo lo stato occupato e gli assegno il periodo creato sopra
-					CameraState nuovoStatoOccupato = new CameraState();
+					StatoCamera nuovoStatoOccupato = new StatoCamera();
 					nuovoStatoOccupato.set_periodo(periodoOccupato);
 					nuovoStatoOccupato.set_libera(false);
 					//aggiungo, in coda allo stato contenente, lo stato occupato
@@ -213,7 +214,7 @@ public class CameraContext {
 				 periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 				 periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				 //Creo lo statoCamera occupato, al quale assegno il periodo creato sopra
-				 CameraState nuovoStatoOccupato = new CameraState();
+				 StatoCamera nuovoStatoOccupato = new StatoCamera();
 				 nuovoStatoOccupato.set_periodo(periodoOccupato);
 				 nuovoStatoOccupato.set_libera(false);
 				 //aggiungo in testa alla lista lo stato occupato, poiché sarà il primo stato della camera
@@ -310,7 +311,7 @@ public class CameraContext {
 				nuovoPeriodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 				nuovoPeriodoOccupato.setDataFinePeriodoDaDataFinePeriodo(periodo);
 				//creo lo stato occupato e gli assegno il periodo occupato
-				CameraState nuovoStatoOccupato = new CameraState();
+				StatoCamera nuovoStatoOccupato = new StatoCamera();
 				nuovoStatoOccupato.set_periodo(nuovoPeriodoOccupato);
 				nuovoStatoOccupato.set_libera(false);
 				//aggiungo lo stato occupato in fondo alla lista degli stati della camera
@@ -350,7 +351,7 @@ public class CameraContext {
 				periodoResiduo.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 				
 				//creo lo stato residuo e gli assegno il periodo residuo
-				CameraState nuovoStatoResiduo = new CameraState();
+				StatoCamera nuovoStatoResiduo = new StatoCamera();
 				nuovoStatoResiduo.set_periodo(periodoResiduo);
 				nuovoStatoResiduo.set_libera(true);
 				//Cambio lo stato contenente e gli assegno il periodo in cui è occupato. poi aggiungo lo stato residuo
@@ -376,7 +377,7 @@ public class CameraContext {
 				periodoOccupato.setDataInizioPeriodoDaDataInizioPeriodo(periodo);
 				periodoOccupato.setDataFinePeriodoDaDataFinePeriodo(statoContenente.get_periodo());
 				//definisco lo stato occupato della camera assegnandogli il periodo dello occupato
-				CameraState nuovoStatoOccupato = new CameraState();
+				StatoCamera nuovoStatoOccupato = new StatoCamera();
 				nuovoStatoOccupato.set_periodo(periodoOccupato);
 				nuovoStatoOccupato.set_libera(false);
 				/*
@@ -410,7 +411,7 @@ public class CameraContext {
 	 * @param periodo Periodo per cui si è effettuata la prenotazione.
 	 * @param indiceLista Posizione dello statoContenente all'interno della lista degli stati della camera.
 	 */
-	private void calcolaNuoviPeriodi(CameraState statoContenente,Periodo periodo,int indiceLista){	
+	private void calcolaNuoviPeriodi(StatoCamera statoContenente,Periodo periodo,int indiceLista){	
 		/*
 		 * Creo il periodo residuo che va dal giorno di fine della prenotazione fino al giorno di fine del periodo dello stato contenente
 		 */
@@ -427,13 +428,13 @@ public class CameraContext {
 		this.get_statiCamera().get(indiceLista).set_periodo(periodoAntecedente);
 		this.get_statiCamera().get(indiceLista).set_libera(true);
 		//creo lo stato occupato, e gli assegno il periodo della prenotazione
-		CameraState nuovoStatoOccupato= new CameraState();
+		StatoCamera nuovoStatoOccupato= new StatoCamera();
 		nuovoStatoOccupato.set_periodo(periodo);
 		nuovoStatoOccupato.set_libera(false);
 		//aggiungo lo stato occupato subito dopo lo stato antecente
 		this._statiCamera.add(indiceLista+1, nuovoStatoOccupato);
 		//creo lo stato residuo e gli assegno il periodo residuo
-		CameraState statoResiduo = new CameraState();
+		StatoCamera statoResiduo = new StatoCamera();
 		statoResiduo.set_periodo(periodoResiduo);
 		statoResiduo.set_libera(true);
 		//aggiungo lo stato residuo dopo lo stato occupato
@@ -445,14 +446,14 @@ public class CameraContext {
 	/**
 	 * @return _statiCamera 
 	 */
-	public LinkedList<CameraState> get_statiCamera() {
+	public LinkedList<StatoCamera> get_statiCamera() {
 		return _statiCamera;
 	}
 
 	/**
 	 * @param _statiCamera
 	 */
-	public void set_statiCamera(LinkedList<CameraState> _statiCamera) {
+	public void set_statiCamera(LinkedList<StatoCamera> _statiCamera) {
 		this._statiCamera = _statiCamera;
 	}
 	/**

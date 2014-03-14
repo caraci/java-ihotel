@@ -1,6 +1,7 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.*;
+import com.iHotel.model.State.CameraContext;
 
 public class CModificaPrenotazione {
 	

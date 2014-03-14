@@ -9,11 +9,11 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.iHotel.model.Albergo;
-import com.iHotel.model.CameraContext;
 import com.iHotel.model.CatalogoCamere;
 import com.iHotel.model.DescrizioneCamera;
 import com.iHotel.model.PrenotazioneSubject;
 import com.iHotel.model.Storico;
+import com.iHotel.model.State.CameraContext;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PDescrizioneCamera;
 import com.iHotel.persistence.PPrenotazione;

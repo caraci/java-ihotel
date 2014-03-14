@@ -47,7 +47,6 @@ public class ViewFactory {
 			styleAbstractFactory = LightStyleFactory.getInstance();
 			break;
 		}
-        /* end DA MIGLIORARE */
 		return styleAbstractFactory;
 	}
 }

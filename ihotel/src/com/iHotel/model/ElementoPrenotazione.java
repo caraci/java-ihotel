@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 
+import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 
 /**

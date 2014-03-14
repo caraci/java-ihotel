@@ -4,8 +4,9 @@
 package com.iHotel.persistence;
 
 import java.util.List;
+
 import com.db4o.query.Predicate;
-import com.iHotel.model.CameraContext;
+import com.iHotel.model.State.CameraContext;
 
 /**
  * @author Eugenio
