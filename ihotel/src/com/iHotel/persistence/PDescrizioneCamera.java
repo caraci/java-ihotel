@@ -6,7 +6,7 @@ package com.iHotel.persistence;
 import java.util.List;
 
 import com.db4o.query.Predicate;
-import com.iHotel.model.DescrizioneCamera;
+import com.iHotel.model.Albergo.DescrizioneCamera;
 
 /**
  * @author Eugenio

@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.model.PrenotazioneSubject;
-import com.iHotel.model.ISubject;
+import com.iHotel.model.Albergo.ISubject;
+import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.view.IObserver;
 
 import java.awt.GridLayout;

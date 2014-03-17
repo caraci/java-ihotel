@@ -8,11 +8,11 @@ import java.util.LinkedList;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
-import com.iHotel.model.Albergo;
-import com.iHotel.model.CatalogoCamere;
-import com.iHotel.model.DescrizioneCamera;
-import com.iHotel.model.PrezzoCamera;
-import com.iHotel.model.StatoCamera;
+import com.iHotel.model.Albergo.Albergo;
+import com.iHotel.model.Albergo.CatalogoCamere;
+import com.iHotel.model.Albergo.DescrizioneCamera;
+import com.iHotel.model.Albergo.PrezzoCamera;
+import com.iHotel.model.Albergo.StatoCamera;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 

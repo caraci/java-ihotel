@@ -1,4 +1,4 @@
-package com.iHotel.model;
+package com.iHotel.model.Albergo;
 
 import com.iHotel.model.Utility.*;
 

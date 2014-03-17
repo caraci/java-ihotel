@@ -2,7 +2,7 @@ package com.iHotel.model.State;
 
 import java.util.*;
 
-import com.iHotel.model.StatoCamera;
+import com.iHotel.model.Albergo.StatoCamera;
 import com.iHotel.model.Utility.Periodo;
 
 public class CameraContext {
@@ -10,6 +10,7 @@ public class CameraContext {
 	/* --------------------------- Attributi ---------------------- */
 	
 	private LinkedList<StatoCamera> _statiCamera = new LinkedList<StatoCamera>();
+	private LinkedList<CameraState> _statiCameraState = new LinkedList<CameraState>();
 	private String _numero;
 	private String _tipologia;
 
@@ -21,13 +22,36 @@ public class CameraContext {
 	 * @param periodoRichiesta Periodo nel quale si vuole prenotare la camera.
 	 * @return True se la camera è libera nel periodo. False altrimenti.
 	 */
-	public boolean isLiberaInPeriodo(Periodo periodoRichiesta) {		
-		for (Iterator<StatoCamera> iterator = _statiCamera.iterator(); iterator.hasNext();) {
-			StatoCamera statoCamera = iterator.next();				
-			if(statoCamera.isLiberaInPeriodo(periodoRichiesta)==true)					
-				return true;							
+	public boolean isLiberaInPeriodo(Periodo periodoRichiesta) {	
+		boolean esito=false;
+		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			CameraState statoCamera = iterator.next();				
+			if(statoCamera.isLiberaInPeriodo(periodoRichiesta)==true) {					
+				esito=true;	
+			}
 		}
-		return false; 
+		return esito; 
+	}
+	/**
+	 * Metodo per occupare una camera in un periodo. 
+	 * @param periodo Periodo in cui si vuole occupare la camera.
+	 */
+	public void occupaInPeriodoState(Periodo periodo) {
+		int indiceStatoInLista;	
+		List<CameraState> statiCameraDopoOccupazione = new LinkedList<CameraState>();
+		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			CameraState cameraState = (CameraState) iterator.next();
+			// Controllo se mi viene restituita una lista di stati.
+			// Solo uno stato può restituire la lista.
+			// Assegno il risultato alla variabile statiCameraDopoOccupazione
+			if((statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo))!=null) {
+				indiceStatoInLista =_statiCameraState.indexOf(cameraState);	
+				// Rimuovo il vecchio stato camera.
+				_statiCameraState.remove(indiceStatoInLista);
+				// Aggiungo la lista ricavata dallo stato partendo dalla sua vecchia posizione.
+				_statiCameraState.addAll(indiceStatoInLista, statiCameraDopoOccupazione);
+			}
+		}
 	}
 
 	/**
@@ -55,6 +79,7 @@ public class CameraContext {
 			 if (statoCamera.getStatoContenente(periodo)!=null){
 				 statoContenente=statoCamera.getStatoContenente(periodo);
 				 indiceLista =_statiCamera.indexOf(statoContenente);
+				 
 			 }
 		}			
 	

@@ -39,6 +39,34 @@ public class Periodo {
 		_oraFine=orarioDefault.get(3).intValue();
 	}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
+	
+	/**
+	 * Metodo per verificare che il periodo passato come paramentro coincide esattamente con il periodo relativo 
+	 * all'oggetto sul quale si sta invocando il metodo.
+	 * @param periodoRichiesta Periodo da confrontare
+	 * @return True se il periodo è contenuto. False altrimenti.
+	 */
+	public boolean coincideCon(Periodo periodoRichiesta) {
+		boolean esito;
+		// Periodo richiesta
+		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
+		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
+		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio(), periodoRichiesta.get_oraInizio(), periodoRichiesta.get_minutoInizio(),1);
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine(), periodoRichiesta.get_oraFine(), periodoRichiesta.get_minutoFine(),0);
+		// Periodo dell'instanza
+		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
+		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio, _minutoInizio,0);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine, _minutoFine,59);
+		// Controllo se il periodoRichiesta coincide con il periodo dell'istanza
+		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)==0 && dataFinePeriodo.compareTo(dataFineRichiesta) ==0) {
+			esito = true;
+		} else {
+			esito = false;
+		}
+		return esito;
+	}
+	
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro è contenuto all'interno del periodo relativo all'oggetto
 	 * sul quale si sta invocando il metodo.

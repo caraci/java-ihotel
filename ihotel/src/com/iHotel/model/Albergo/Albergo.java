@@ -1,4 +1,4 @@
-package com.iHotel.model;
+package com.iHotel.model.Albergo;
 
 import java.io.IOException;
 import java.util.*;
