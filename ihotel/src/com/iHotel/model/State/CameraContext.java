@@ -8,7 +8,7 @@ public class CameraContext {
 
 	/* --------------------------- Attributi ---------------------- */
 	
-	private LinkedList<CameraState> _statiCameraState = new LinkedList<CameraState>();
+	private LinkedList<CameraState> _statiCameraState;
 	private String _numero;
 	private String _tipologia;
 
@@ -35,11 +35,38 @@ public class CameraContext {
 	 * @param periodo Periodo in cui si vuole occupare la camera.
 	 */
 	public void occupaInPeriodoState(Periodo periodo) {
-		// Si utilizza per memorizzare l'indice dello stato camera che si va ad occupare.
-		int indiceStatoInLista;	
 		// Lista degli stati camera che vengono restituiti dallo stato della camera
 		List<CameraState> statiCameraDopoOccupazione;
 		// Ciclo su tutti gli stati della camera
+		for (int i = 0; i < _statiCameraState.size(); i++) {
+			CameraState cameraState = _statiCameraState.get(i);
+			// Controllo se mi viene restituita una lista di stati.
+			// Solo uno stato può restituire la lista.
+			// Assegno il risultato alla variabile statiCameraDopoOccupazione		
+			statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo);
+			if(statiCameraDopoOccupazione!=null) {	
+				// Rimuovo il vecchio stato camera.
+				_statiCameraState.remove(i);
+				// Aggiungo la lista ricavata dallo stato partendo dalla sua vecchia posizione.
+				_statiCameraState.addAll(i, statiCameraDopoOccupazione);
+			}
+		}
+		/*
+		for (CameraState cameraState : _statiCameraState) {
+			// Controllo se mi viene restituita una lista di stati.
+			// Solo uno stato può restituire la lista.
+			// Assegno il risultato alla variabile statiCameraDopoOccupazione
+			statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo);
+			if(statiCameraDopoOccupazione!=null) {
+				indiceStatoInLista =_statiCameraState.indexOf(cameraState);	
+				// Rimuovo il vecchio stato camera.
+				_statiCameraState.remove(indiceStatoInLista);
+				// Aggiungo la lista ricavata dallo stato partendo dalla sua vecchia posizione.
+				_statiCameraState.addAll(indiceStatoInLista, statiCameraDopoOccupazione);
+			}
+		}
+		*/
+		/*
 		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
 			CameraState cameraState = (CameraState) iterator.next();
 			// Controllo se mi viene restituita una lista di stati.
@@ -53,7 +80,7 @@ public class CameraContext {
 				// Aggiungo la lista ricavata dallo stato partendo dalla sua vecchia posizione.
 				_statiCameraState.addAll(indiceStatoInLista, statiCameraDopoOccupazione);
 			}
-		}
+		}*/
 	}	
 	/*------------------ Getter e Setter --------------*/
 	/**
