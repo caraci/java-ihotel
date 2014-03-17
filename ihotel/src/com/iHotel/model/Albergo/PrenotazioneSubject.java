@@ -85,7 +85,7 @@ public class PrenotazioneSubject implements ISubject {
 	public void occupaCamere() {
 		for (Iterator<CameraContext> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
 			CameraContext cameraPrenotata = (CameraContext) iterator.next();
-			cameraPrenotata.occupaInPeriodo(_periodo);
+			cameraPrenotata.occupaInPeriodoState(_periodo);
 		}
 	}
 		

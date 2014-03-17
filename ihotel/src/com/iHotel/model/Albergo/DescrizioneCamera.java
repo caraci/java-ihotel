@@ -120,7 +120,7 @@ private double calcolaPrezzoGiorno(ArrayList<PrezzoCamera> prezziCamera, Gregori
 		PrezzoCamera prezzoCamera = (PrezzoCamera) iterator.next();
 		if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
 			prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
-			prezzoGiorno=prezzoCameraPeriodo.get_prezzo();
+			prezzoGiorno=prezzoCameraPeriodo.get_prezzo().get_importo();
 		}
 	}
 	return prezzoGiorno;

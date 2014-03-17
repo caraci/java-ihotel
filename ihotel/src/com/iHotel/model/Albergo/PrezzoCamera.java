@@ -1,12 +1,13 @@
 package com.iHotel.model.Albergo;
 
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Prezzo;
 
 public class PrezzoCamera {
 
 	/* -------------------------- Attributi ------------------------------- */
 	private Periodo _periodo;
-	private double _prezzo;
+	private Prezzo _prezzo;
 	
 	/* ---------------------- Metodi di instanza --------------------------- */ 
 	/**
@@ -27,14 +28,14 @@ public class PrezzoCamera {
 	/**
 	 * @return double
 	 */
-	public double get_prezzo() {
+	public Prezzo get_prezzo() {
 		return this._prezzo;
 	}
 
 	/**
 	 * @param _prezzo
 	 */
-	public void set_prezzo(double _prezzo) {
+	public void set_prezzo(Prezzo _prezzo) {
 		this._prezzo = _prezzo;
 	}
 

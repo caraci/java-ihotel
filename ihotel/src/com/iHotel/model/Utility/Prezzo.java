@@ -2,19 +2,19 @@ package com.iHotel.model.Utility;
 
 public class Prezzo {
 
-	private double _quantità;
+	private double _importo;
 	private String _valuta;
 	/**
 	 * @return the _quantità
 	 */
-	public double get_quantità() {
-		return _quantità;
+	public double get_importo() {
+		return _importo;
 	}
 	/**
 	 * @param _quantità the _quantità to set
 	 */
-	public void set_quantità(double _quantità) {
-		this._quantità = _quantità;
+	public void set_importo(double _importo) {
+		this._importo = _importo;
 	}
 	/**
 	 * @return the _valuta

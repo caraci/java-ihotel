@@ -1,6 +1,5 @@
 package com.iHotel.controller;
 
-import com.iHotel.model.*;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
 
@@ -8,8 +7,6 @@ public class CModificaPrenotazione {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
 	private static CModificaPrenotazione instance = null;
-	private PrenotazioneSubject _prenotazione2;
-	private CameraContext _numeroCamera2;
 	private PrenotazioneSubject _prenotazione;
 	private CameraContext _numeroCamera;
 
@@ -52,33 +49,6 @@ public class CModificaPrenotazione {
 		throw new UnsupportedOperationException();
 	}
 	/* ----------------------- Getter, Setter -------------------------- */
-	/**
-	 * @return the _prenotazione
-	 */
-	public PrenotazioneSubject get_prenotazione2() {
-		return _prenotazione2;
-	}
-
-	/**
-	 * @param _prenotazione the _prenotazione to set
-	 */
-	public void set_prenotazione2(PrenotazioneSubject _prenotazione) {
-		this._prenotazione2 = _prenotazione;
-	}
-
-	/**
-	 * @return the _numeroCamera
-	 */
-	public CameraContext get_numeroCamera2() {
-		return _numeroCamera2;
-	}
-
-	/**
-	 * @param _numeroCamera the _numeroCamera to set
-	 */
-	public void set_numeroCamera2(CameraContext _numeroCamera) {
-		this._numeroCamera2 = _numeroCamera;
-	}
 
 	public PrenotazioneSubject get_prenotazione() {
 		return this._prenotazione;
