@@ -294,7 +294,11 @@ public class Periodo {
 		this.set_meseFine(data.get(Calendar.MONTH));
 		this.set_annoFine(data.get(Calendar.YEAR));
 	}
-	
+	@Override
+	public String toString() {
+		return "Inizio: " + get_giornoInizio() + "-" + get_meseInizio() + "-" + get_annoInizio() + "\n" +
+			   "Fine: " + get_giornoFine() + "-" + get_meseFine() + "-" + get_annoFine();	
+	}
 	
 	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**

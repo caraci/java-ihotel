@@ -45,7 +45,8 @@ public class CameraContext {
 			// Controllo se mi viene restituita una lista di stati.
 			// Solo uno stato può restituire la lista.
 			// Assegno il risultato alla variabile statiCameraDopoOccupazione
-			if((statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo))!=null) {
+			statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo);
+			if(statiCameraDopoOccupazione!=null) {
 				indiceStatoInLista =_statiCameraState.indexOf(cameraState);	
 				// Rimuovo il vecchio stato camera.
 				_statiCameraState.remove(indiceStatoInLista);
