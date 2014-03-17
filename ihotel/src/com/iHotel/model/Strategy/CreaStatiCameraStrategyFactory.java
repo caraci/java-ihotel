@@ -25,6 +25,7 @@ public class CreaStatiCameraStrategyFactory {
 	}
 	/*--------------------- Metodi di instanza --------------------- */
 	public CreaStatiCameraStrategy getStrategy(Periodo periodoStato, Periodo periodoRichiesta) {
+		// Strategia da restituire
 		CreaStatiCameraStrategy creaStatiCameraStrategy;
 		// Controllo quale strategia fornire allo stato sulla base dei periodi ricevuti.
 		if (periodoStato.coincideCon(periodoRichiesta)) {

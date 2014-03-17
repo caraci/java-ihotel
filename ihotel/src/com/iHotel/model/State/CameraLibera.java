@@ -13,6 +13,7 @@ public class CameraLibera extends CameraState {
 	 * 
 	 */
 	public LinkedList<CameraState> occupaInPeriodo(Periodo periodoRichiesta) {
+		// Lista degli stati da restituire alla camera.
 		LinkedList<CameraState> nuoviStatiCamera=null;
 		// Controllo che il periodo della richiesta è contenuto nel periodo dell'instanza.
 		if (_periodo.contiene(periodoRichiesta)) {
