@@ -1,6 +1,6 @@
 package com.iHotel.model.Albergo;
 
-public class DescrizioneServizi {
+public class DescrizioneServizio {
 
 	private String _codice;
 	private String _descrizione;
