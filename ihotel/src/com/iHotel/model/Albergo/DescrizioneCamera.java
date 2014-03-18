@@ -34,36 +34,6 @@ public class DescrizioneCamera {
 		}		
 		return prezziCamera;
 	}
-	
-	/* ------------------------------- Getter e Setter -------------------- */
-	/**
-	 * @return _prezziCamera  
-	 */
-	public ArrayList<PrezzoCamera> get_prezziCamera() {
-		return _prezziCamera;
-	}
-
-	/**
-	 * @param _prezziCamera 
-	 */
-	public void set_prezziCamera(ArrayList<PrezzoCamera> _prezziCamera) {
-		this._prezziCamera = _prezziCamera;
-	}
-
-	/**
-	 * @return _tipologia
-	 */
-	public String get_tipologia() {
-		return this._tipologia;
-	}
-
-	/**
-	 * @param _tipologia
-	 */
-	public void set_tipologia(String _tipologia) {
-		this._tipologia = _tipologia;
-	}
-
 	/**
 	 * Metodo che calcola il prezzo per la tipologia di camera descritta dal descrittore,
 	 * nel periodo passato come parametro.
@@ -99,33 +69,59 @@ public class DescrizioneCamera {
 		
 	}
 	
-/**
- * Metodo per calcolare il prezzo in un giorno relativo ad una camera.
- * 
- * @param prezziCamera Insieme dei prezzi della camera.	
- * @param data Giorno in cui bisogna calcolare il prezzo della camera
- * @return Prezzo della camera in un giorno.
- */
-private double calcolaPrezzoGiorno(ArrayList<PrezzoCamera> prezziCamera, GregorianCalendar data){	
-	// Creo un periodo con data inizio uguale a data fine
-	Periodo periodo= new Periodo();
-	periodo.setDataInizioDaData(data);	
-	periodo.setDataFineDaData(data);
-	// Variabile nella quale andremo a memorizzare il totale per il giorno.
-	double prezzoGiorno=0;
-	
-	PrezzoCamera prezzoCameraPeriodo = new PrezzoCamera();
-	// Ciclo su tutti gli MPrezzoCamera che ho a disposizione
-	for (Iterator<PrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
-		PrezzoCamera prezzoCamera = (PrezzoCamera) iterator.next();
-		if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
-			prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
-			prezzoGiorno=prezzoCameraPeriodo.get_prezzo().get_importo();
+	/**
+	 * Metodo per calcolare il prezzo in un giorno relativo ad una camera.
+	 * 
+	 * @param prezziCamera Insieme dei prezzi della camera.	
+	 * @param data Giorno in cui bisogna calcolare il prezzo della camera
+	 * @return Prezzo della camera in un giorno.
+	 */
+	private double calcolaPrezzoGiorno(ArrayList<PrezzoCamera> prezziCamera, GregorianCalendar data){	
+		// Creo un periodo con data inizio uguale a data fine
+		Periodo periodo= new Periodo();
+		periodo.setDataInizioDaData(data);	
+		periodo.setDataFineDaData(data);
+		// Variabile nella quale andremo a memorizzare il totale per il giorno.
+		double prezzoGiorno=0;
+		
+		PrezzoCamera prezzoCameraPeriodo = new PrezzoCamera();
+		// Ciclo su tutti gli MPrezzoCamera che ho a disposizione
+		for (Iterator<PrezzoCamera> iterator = prezziCamera.iterator(); iterator.hasNext();) {
+			PrezzoCamera prezzoCamera = (PrezzoCamera) iterator.next();
+			if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
+				prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
+				prezzoGiorno=prezzoCameraPeriodo.get_prezzo().get_importo();
+			}
 		}
+		return prezzoGiorno;
 	}
-	return prezzoGiorno;
-}
 	
+	/* ------------------------------- Getter e Setter -------------------- */
+	/**
+	 * @return _prezziCamera  
+	 */
+	public ArrayList<PrezzoCamera> get_prezziCamera() {
+		return _prezziCamera;
+	}
 
+	/**
+	 * @param _prezziCamera 
+	 */
+	public void set_prezziCamera(ArrayList<PrezzoCamera> _prezziCamera) {
+		this._prezziCamera = _prezziCamera;
+	}
 
+	/**
+	 * @return _tipologia
+	 */
+	public String get_tipologia() {
+		return this._tipologia;
+	}
+
+	/**
+	 * @param _tipologia
+	 */
+	public void set_tipologia(String _tipologia) {
+		this._tipologia = _tipologia;
+	}
 }

@@ -6,6 +6,7 @@ import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Prezzo;
 
 public class PrenotazioneSubject implements ISubject {
 
@@ -15,7 +16,7 @@ public class PrenotazioneSubject implements ISubject {
 	private Periodo _periodo;
 	private boolean _completata;
 	private Ospite _prenotante;
-	private double _total;
+	private Prezzo _total;
 	private String _codice;
 	
 	public PrenotazioneSubject() {}
@@ -37,7 +38,6 @@ public class PrenotazioneSubject implements ISubject {
 			IObserver observer = (IObserver) iterator.next();
 			observer.Update();
 		}
-		
 	}
 	/* ------------ /Pattern Observer -------- */
 	/**
@@ -54,7 +54,7 @@ public class PrenotazioneSubject implements ISubject {
 		String tipologia = cameraPrenotata.get_tipologia();
 		descrizione=catalogo.getDescrizioneDaTipologia(tipologia);
 		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
-		_total+=descrizione.calcolaPrezzoInPeriodo(_periodo);				
+		_total.set_importo(_total.get_importo()+descrizione.calcolaPrezzoInPeriodo(_periodo));				
 		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
 		// di stato della prenotazione.
 		this.Notify();
@@ -133,13 +133,13 @@ public class PrenotazioneSubject implements ISubject {
 	/**
 	 * @return _total 
 	 */
-	public double get_total() {
+	public Prezzo get_total() {
 		return this._total;
 	}
 	/**
 	 * @param _total the total to set
 	 */
-	public void set_total(double _total) {
+	public void set_total(Prezzo _total) {
 		this._total = _total;
 	}
 
