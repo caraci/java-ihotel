@@ -1,4 +1,4 @@
-package com.iHotel.view;
+package com.iHotel.model.Observer;
 
 public interface IObserver {
 

@@ -2,9 +2,10 @@ package com.iHotel.model.Albergo;
 
 import java.util.*;
 
+import com.iHotel.model.Observer.IObserver;
+import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
-import com.iHotel.view.IObserver;
 
 public class PrenotazioneSubject implements ISubject {
 

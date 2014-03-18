@@ -1,6 +1,5 @@
-package com.iHotel.model.Albergo;
+package com.iHotel.model.Observer;
 
-import com.iHotel.view.IObserver;
 
 public interface ISubject {
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.ViewAccess;
+package com.iHotel.view.Access;
 
 import java.awt.Color;
 

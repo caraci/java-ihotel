@@ -13,8 +13,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.view.ViewAccess.StyleAbstractFactory;
-import com.iHotel.view.ViewAccess.ViewFactory;
+import com.iHotel.view.Access.StyleAbstractFactory;
+import com.iHotel.view.Access.ViewFactory;
 
 import net.sourceforge.jdatepicker.*;
 

@@ -51,36 +51,6 @@ public class CameraContext {
 				_statiCameraState.addAll(i, statiCameraDopoOccupazione);
 			}
 		}
-		/*
-		for (CameraState cameraState : _statiCameraState) {
-			// Controllo se mi viene restituita una lista di stati.
-			// Solo uno stato può restituire la lista.
-			// Assegno il risultato alla variabile statiCameraDopoOccupazione
-			statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo);
-			if(statiCameraDopoOccupazione!=null) {
-				indiceStatoInLista =_statiCameraState.indexOf(cameraState);	
-				// Rimuovo il vecchio stato camera.
-				_statiCameraState.remove(indiceStatoInLista);
-				// Aggiungo la lista ricavata dallo stato partendo dalla sua vecchia posizione.
-				_statiCameraState.addAll(indiceStatoInLista, statiCameraDopoOccupazione);
-			}
-		}
-		*/
-		/*
-		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
-			CameraState cameraState = (CameraState) iterator.next();
-			// Controllo se mi viene restituita una lista di stati.
-			// Solo uno stato può restituire la lista.
-			// Assegno il risultato alla variabile statiCameraDopoOccupazione
-			statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo);
-			if(statiCameraDopoOccupazione!=null) {
-				indiceStatoInLista =_statiCameraState.indexOf(cameraState);	
-				// Rimuovo il vecchio stato camera.
-				_statiCameraState.remove(indiceStatoInLista);
-				// Aggiungo la lista ricavata dallo stato partendo dalla sua vecchia posizione.
-				_statiCameraState.addAll(indiceStatoInLista, statiCameraDopoOccupazione);
-			}
-		}*/
 	}	
 	/*------------------ Getter e Setter --------------*/
 	/**
