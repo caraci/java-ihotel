@@ -91,23 +91,18 @@ public class CCreaPrenotazione {
 		periodo.setDataFineDaData(dataFine);
 		/* Setto il periodo alla prenotazione */
 		_prenotazione.set_periodo(periodo);
-		// Struttura dati nella quale andremo a salvare le informazioni relative alle camere libere.
-		ArrayList<ArrayList<String>> camereLibereString = new ArrayList<ArrayList<String>>();
+		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
+		ArrayList<ArrayList<CameraContext>> camereLibere = new ArrayList<ArrayList<CameraContext>>();
 		
 		// Ciclo sulle tipologie
 		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
 			String tipologia = iterator.next();
-			ArrayList<CameraContext> camereLibereTipologia = new ArrayList<CameraContext>();
-			ArrayList<String> camereLibereTipologiaString= new ArrayList<String>();			 
-			// Aggiunto al primo posto nell'ArrayList la tipologia di camere.
-			camereLibereTipologiaString.add(0, tipologia);			
+			// Struttura dati nella quale si inseriranno le camere disponibili.
+			ArrayList<CameraContext> camereLibereTipologia = new ArrayList<CameraContext>();	
+			// Inserisco nella lista le camere disponibili.
 			camereLibereTipologia = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia);		
-			for (Iterator<CameraContext> iteratorCamereLibere = camereLibereTipologia.iterator(); iteratorCamereLibere.hasNext();) {
-				// Aggiungo il numero della camera all'ArrayList
-				camereLibereTipologiaString.add(iteratorCamereLibere.next().get_numero());
-			}
-			// Aggiungo l'ArrayList delle stringhe relative a tutte le camere appartenenti ad una tipologia
-			camereLibereString.add(camereLibereTipologiaString);
+			// Aggiungo l'ArrayList delle camere appartenenti ad una tipologia
+			camereLibere.add(camereLibereTipologia);
 		}	
 		VFrameCreaPrenotazioneStep_2Observer frameCreaPrenotazioneStep_2 = VFrameCreaPrenotazioneStep_2Observer.getInstance();
 		// Per il pattern Observer aggiungo l'observer alla prenotazione.
@@ -115,7 +110,7 @@ public class CCreaPrenotazione {
 		// Per il pattern Observer aggiungo il subject all'observer.
 		frameCreaPrenotazioneStep_2.set_prenotazioneSubject(_prenotazione);
 		// Mostro finestra Step 2
-		frameCreaPrenotazioneStep_2.creaFrame(camereLibereString);			
+		frameCreaPrenotazioneStep_2.creaFrame(camereLibere);			
 		frameCreaPrenotazioneStep_2.setVisible(true);
 		// Nascondo finestra Step 1
 		VFrameCreaPrenotazioneStep_1 frameCreaPrenotazioneStep_1 = VFrameCreaPrenotazioneStep_1.getInstance();

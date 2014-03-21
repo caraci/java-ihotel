@@ -18,6 +18,7 @@ import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
+import com.iHotel.model.State.CameraContext;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -74,14 +75,14 @@ public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements IObs
      * 
      * @param arrayListCamere Struttura dati contenente tipologia della camera e numeri di camera.
      */
-    private void addColonnaTipologiaCamere(ArrayList<String> arrayListCamere) {
+    private void addColonnaTipologiaCamere(ArrayList<CameraContext> arrayListCamere) {
     	String tipologia;
 	// Creo una colonna per mostrare i risultati della tipologia di camere
 		JPanel panelColonna = new JPanel();
 		panelColonna.setLayout(new  BoxLayout(panelColonna, BoxLayout.PAGE_AXIS));
 		contentPane.add(panelColonna);  		
 	// Ricavo la tipologia dell'ArrayList relativo alle camere di una certa tipologia.
-		tipologia = arrayListCamere.get(0);
+		tipologia = arrayListCamere.get(0).get_tipologia();
 	// Aggiungo la label relativo alla tipologia alla colonna
 		JLabel lblTipologia = new JLabel();
 		lblTipologia.setText(tipologia + ":");
@@ -91,9 +92,9 @@ public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements IObs
 	//Rimuovo la tipologia dall'ArrayList.
 		arrayListCamere.remove(0);
 	// Ciclo sull'arrayList di String contenenti i numeri di camere ed aggiungo i numeri all'array di String creato sopra.
-		for (Iterator<String> iterator = arrayListCamere.iterator(); iterator.hasNext();) {
-			String numeroCamera = (String) iterator.next();
-			JLabel lblNumeroCamera = new JLabel(numeroCamera);
+		for (Iterator<CameraContext> iterator = arrayListCamere.iterator(); iterator.hasNext();) {
+			CameraContext cameraContext = (CameraContext) iterator.next();
+			JLabel lblNumeroCamera = new JLabel(cameraContext.get_numero());
 			JButton btnNumeroCamera = new JButton("Aggiungi camera");
 			lblNumeriCamereDisponibili.add(lblNumeroCamera);
 			btnNumeriCamereDisponibili.add(btnNumeroCamera);
@@ -169,7 +170,7 @@ public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements IObs
     /**
      * Metodo per creare il frame.
      */
-    public void creaFrame(ArrayList<ArrayList<String>> camereDisponibili) {
+    public void creaFrame(ArrayList<ArrayList<CameraContext>> camereDisponibili) {
     	// Imposto il titolo e l'operazione in chiusura alla finestra
     		setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -180,14 +181,14 @@ public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements IObs
 			setContentPane(contentPane);
 		// Tipologie di camere
 			int numeroTipologie = camereDisponibili.size();
-    	// Numero di colonne
+    	// Numero di colonne. Il +1 è dovuta alla colonna di gestione.
 			int numeroColonne = numeroTipologie + 1;
     	// Setto Layout con il numero di colonne ricavato sulla base del risultato e con una riga.
 			contentPane.setLayout(new GridLayout(1, numeroColonne, 0, 0));
     	// Ciclo sull'array di array di camere
-	    	for (Iterator<ArrayList<String>> iteratorArrayCamere = camereDisponibili.iterator(); iteratorArrayCamere.hasNext();) {
+	    	for (Iterator<ArrayList<CameraContext>> iteratorArrayCamere = camereDisponibili.iterator(); iteratorArrayCamere.hasNext();) {
 	    		// In ogni arrayList abbiamo in prima posizione la stringa relativa alla tipologia, e successivamente i numeri di stanza.
-	    		ArrayList<String> arrayListCamere = (ArrayList<String>) iteratorArrayCamere.next();
+	    		ArrayList<CameraContext> arrayListCamere = (ArrayList<CameraContext>) iteratorArrayCamere.next();
 	    		addColonnaTipologiaCamere(arrayListCamere);		
 			}
     	// Aggiungo il pannello finale
