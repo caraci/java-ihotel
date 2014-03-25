@@ -49,8 +49,6 @@ public class DescrizioneCamera {
 		// Data di fine della richiesta.
 		GregorianCalendar dataFine= new GregorianCalendar();
 		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),periodo.get_oraFine(),periodo.get_minutoFine());
-		// Prezzo da ritornare
-		Prezzo prezzo= new Prezzo();
 					
 		// Variabili nelle quali si andranno a memorizzare i totali.
 		double totaleCameraGiorno=0;
@@ -66,7 +64,9 @@ public class DescrizioneCamera {
 			// Incremento il giorno di uno.
 			dataInizio.add(Calendar.DAY_OF_MONTH,1);
 		}
-		//System.out.println(totaleCameraPeriodo);
+		// Prezzo da ritornare
+		Prezzo prezzo= new Prezzo();
+		// Setto l'importo del prezzo
 		prezzo.set_importo(totaleCameraPeriodo);
 		return prezzo;
 		

@@ -2,23 +2,27 @@ package com.iHotel.model.Utility;
 
 public class Prezzo {
 
+	/* ----------------- Attributi --------------------- */
 	private double _importo;
 	private String _valuta="Euro";
 	
-	
+	/* ----------------- Metodi di instanza --------------------- */
+
 	public Prezzo somma(Prezzo prezzo){
-		this._importo += prezzo.get_importo();
+		double importo = this.get_importo() + prezzo.get_importo();
+		this.set_importo(importo);
 		return this;
 	}
 	
+	/* ----------------- Getter, Setter --------------------- */
 	/**
-	 * @return the _quantità
+	 * @return the _importo
 	 */
 	public double get_importo() {
 		return _importo;
 	}
 	/**
-	 * @param _quantità the _quantità to set
+	 * @param _importo the _importo to set
 	 */
 	public void set_importo(double _importo) {
 		this._importo = _importo;

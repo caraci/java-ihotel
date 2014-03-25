@@ -67,9 +67,9 @@ public class VFrameCreaPrenotazioneStep_2Observer extends View implements IObser
     /* ------------- Pattern Observer ----------- */
     @Override
 	public void Update() {
-		String total=String.valueOf(_prenotazioneSubject.get_total());	
+		String total=String.valueOf(_prenotazioneSubject.get_total().get_importo());	
 		// Setto il prezzo della Label con il totale della prenotazione
-		lblPrezzoTotale.setText(total + "€");
+		lblPrezzoTotale.setText(total + _prenotazioneSubject.get_total().get_valuta());
 	}
     /* ------------- /Pattern Observer --------- */
     /**

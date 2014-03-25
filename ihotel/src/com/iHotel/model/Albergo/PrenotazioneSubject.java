@@ -13,15 +13,19 @@ import com.iHotel.model.Utility.Prezzo;
 public class PrenotazioneSubject implements ISubject {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
-	private ArrayList<CameraContext> _camerePrenotate = new ArrayList<CameraContext>();
-	private ArrayList<IObserver> _osservatori = new ArrayList<IObserver>();
+	private ArrayList<CameraContext> _camerePrenotate;
+	private ArrayList<IObserver> _osservatori;
 	private Periodo _periodo;
 	private boolean _completata;
 	private Ospite _prenotante;
 	private Prezzo _total;
 	private String _codice;
 	
-	public PrenotazioneSubject() {}
+	public PrenotazioneSubject() {
+		_camerePrenotate = new ArrayList<CameraContext>();
+		_osservatori = new ArrayList<IObserver>();
+		_total = new Prezzo();
+	}
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
 	
