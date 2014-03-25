@@ -132,6 +132,8 @@ public class CCreaPrenotazione {
 		_prenotazione.occupaCamere();
 		// Setto la prenotazione come completata
 		_prenotazione.set_completata(true);
+		// Setto il codice alla prenotazione
+		_prenotazione.set_codice(PrenotazioneSubject.generaCodice());
 		// Aggiungo la prenotazione allo storico
 		Storico storico = Storico.getInstance();
 		storico.addPrenotazione(_prenotazione);

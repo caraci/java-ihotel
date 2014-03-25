@@ -29,8 +29,11 @@ public class PrenotazioneSubject implements ISubject {
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
 	
-	private static String generaCodice(){
-		return null;
+	public static String generaCodice(){
+		long codice;
+		codice = Calendar.getInstance().getTime().getTime();
+		
+		return String.valueOf(codice);
 	}
 	
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
