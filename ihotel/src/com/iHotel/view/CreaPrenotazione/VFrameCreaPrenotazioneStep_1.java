@@ -13,18 +13,17 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.view.View;
 import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 
 import net.sourceforge.jdatepicker.*;
 
 @SuppressWarnings("serial")
-public class VFrameCreaPrenotazioneStep_1 extends JFrame {
+public class VFrameCreaPrenotazioneStep_1 extends View {
 
 	/* Singleton */
 	private static VFrameCreaPrenotazioneStep_1 instance = null;
-	/* Factory */
-	private StyleAbstractFactory _creaPrenotazioneFactory;
 	/* ContentPane */
 	private JPanel contentPane;
     /* Panel */
@@ -42,8 +41,7 @@ public class VFrameCreaPrenotazioneStep_1 extends JFrame {
      * Costruttore privato - pattern Singleton
      */
 	private VFrameCreaPrenotazioneStep_1() {
-		// Richiedo la factory corretta.
-		_creaPrenotazioneFactory=ViewFactory.getInstance().getStyleFactory();
+		super();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.

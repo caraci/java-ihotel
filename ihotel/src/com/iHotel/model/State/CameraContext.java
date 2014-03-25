@@ -3,6 +3,7 @@ package com.iHotel.model.State;
 import java.util.*;
 
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Prezzo;
 
 public class CameraContext {
 
@@ -13,6 +14,10 @@ public class CameraContext {
 	private String _tipologia;
 
 	/* -------------------------- Metodi di istanza ----------------------- */
+	
+	public Prezzo getPrezzoServiziInPeriodo(Periodo periodo){
+		return null;
+	}
 	
 	/**
 	 * Metodo per controllare se una camera è libera in un periodo.

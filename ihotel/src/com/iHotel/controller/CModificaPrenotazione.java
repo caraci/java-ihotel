@@ -8,7 +8,8 @@ public class CModificaPrenotazione {
 	/* ------------------------- Attributi e costruttore ---------------------------- */
 	private static CModificaPrenotazione instance = null;
 	private PrenotazioneSubject _prenotazione;
-	private CameraContext _numeroCamera;
+	private CameraContext _camera;
+	private String _codiceServizio;
 
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -27,7 +28,7 @@ public class CModificaPrenotazione {
          return instance;
     }
 	/* ------------------------- Metodi di instanza ---------------------------------- */
-	public void modificaPrenotazione() {
+	public void gestionePrenotazione() {
 		// TODO - implement CModificaPrenotazione.modificaPrenotazione
 		throw new UnsupportedOperationException();
 	}
@@ -35,7 +36,7 @@ public class CModificaPrenotazione {
 	 * 
 	 * @param codice
 	 */
-	public void recuperaPrenotazioneDaCodice(String codice) {
+	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) {
 		// TODO - implement CModificaPrenotazione.recuperaPrenotazioneDaCodice
 		throw new UnsupportedOperationException();
 	}
@@ -44,7 +45,7 @@ public class CModificaPrenotazione {
 	 * 
 	 * @param numeroCamera
 	 */
-	public void modificaServiziCamera(String numeroCamera) {
+	public void gestioneCamera(String numeroCamera) {
 		// TODO - implement CModificaPrenotazione.modificaServiziCamera
 		throw new UnsupportedOperationException();
 	}
@@ -59,11 +60,11 @@ public class CModificaPrenotazione {
 	}
 
 	public CameraContext get_numeroCamera() {
-		return this._numeroCamera;
+		return this._camera;
 	}
 
 	public void set_numeroCamera(CameraContext _numeroCamera) {
-		this._numeroCamera = _numeroCamera;
+		this._camera = _numeroCamera;
 	}
 
 }

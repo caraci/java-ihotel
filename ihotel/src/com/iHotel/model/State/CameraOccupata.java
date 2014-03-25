@@ -3,6 +3,7 @@ package com.iHotel.model.State;
 import java.util.*;
 
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Prezzo;
 
 public class CameraOccupata extends CameraState {
 
@@ -17,6 +18,12 @@ public class CameraOccupata extends CameraState {
 	@Override
 	public boolean isLiberaInPeriodo(Periodo periodo) {
 		return false;
+	}
+
+	@Override
+	public Prezzo getPrezzoTotaleServizi(Periodo periodo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

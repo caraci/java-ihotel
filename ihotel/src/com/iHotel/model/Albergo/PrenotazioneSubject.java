@@ -20,6 +20,13 @@ public class PrenotazioneSubject implements ISubject {
 	private String _codice;
 	
 	public PrenotazioneSubject() {}
+	
+	/* ----------------------------------- Metodi di classe ------------------------------------------- */
+	
+	private static String generaCodice(){
+		return null;
+	}
+	
 	/* ----------------------------------- Metodi di instanza ----------------------------------------- */
 	
 	/* ----------- Pattern Observer -------- */
@@ -40,6 +47,11 @@ public class PrenotazioneSubject implements ISubject {
 		}
 	}
 	/* ------------ /Pattern Observer -------- */
+	
+	public Prezzo getPrezzoServizi(){
+		return null;
+	}
+	
 	/**
 	 * Metodo per calcolare il totale di una prenotazione
 	 */

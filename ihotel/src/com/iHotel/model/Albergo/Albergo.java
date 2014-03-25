@@ -3,8 +3,10 @@ package com.iHotel.model.Albergo;
 import java.io.IOException;
 import java.util.*;
 
+import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.utility.UDefaultLoader;
 
 
@@ -13,7 +15,7 @@ public class Albergo {
 	/* -------------------- Attributi e costruttore --------------------------*/
 	
  	private CatalogoCamere _catalogoCamere;
- 	private CatalogoServizi _catalogoServizi;
+ 	private CatalogoServiziInterni _catalogoServizi;
  	private Storico _storico;
 	private ArrayList<CameraContext> _camere;
 	private String _nome;
@@ -59,6 +61,15 @@ public class Albergo {
     }
 	
 	/* -------------------- Metodi di instanza ----------------------*/
+	
+	public ArrayList<ServizioEsterno> getElencoServiziEsterniCamera(CameraContext camera){
+		return null;
+	}
+	
+	public Prezzo getPrezzoServiziEsterniPrenotazione( PrenotazioneSubject prenotazione){
+		return null;
+	}
+	
 	
 	/**
 	 * Metodo per ricavare l'oggetto MCamera a partire dalla stringa contenente il suo numero.
@@ -115,14 +126,14 @@ public class Albergo {
 	/**
 	 * @return the _catalogoServizi
 	 */
-	public CatalogoServizi get_catalogoServizi() {
+	public CatalogoServiziInterni get_catalogoServizi() {
 		return _catalogoServizi;
 	}
 
 	/**
 	 * @param _catalogoServizi the _catalogoServizi to set
 	 */
-	public void set_catalogoServizi(CatalogoServizi _catalogoServizi) {
+	public void set_catalogoServizi(CatalogoServiziInterni _catalogoServizi) {
 		this._catalogoServizi = _catalogoServizi;
 	}
 

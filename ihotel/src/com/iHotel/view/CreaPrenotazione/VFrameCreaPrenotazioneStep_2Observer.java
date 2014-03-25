@@ -19,13 +19,14 @@ import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.view.View;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
-public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements IObserver {
+public class VFrameCreaPrenotazioneStep_2Observer extends View implements IObserver {
 
 	/* ContentPane */
 	private JPanel contentPane;
@@ -49,6 +50,7 @@ public class VFrameCreaPrenotazioneStep_2Observer extends JFrame implements IObs
 	 * Costruttore privato - pattern Singleton
 	 */
 	private VFrameCreaPrenotazioneStep_2Observer() {
+		super();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.

@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 import com.iHotel.controller.CCreaPrenotazione;
 
 @SuppressWarnings("serial")
-public class VFrameHome extends JFrame {
+public class VFrameHome extends View {
 
 	/* Singleton */
 	private static VFrameHome instance = null;
@@ -23,7 +23,9 @@ public class VFrameHome extends JFrame {
 	/**
      * Costruttore privato - pattern Singleton
      */
-	private VFrameHome() {}
+	private VFrameHome() {
+		super();
+	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
 	 * 

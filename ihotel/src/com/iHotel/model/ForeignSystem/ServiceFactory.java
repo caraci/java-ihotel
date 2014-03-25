@@ -1,4 +1,4 @@
-package com.iHotel.model.ForeignSystem.Access;
+package com.iHotel.model.ForeignSystem;
 
 import com.iHotel.model.ForeignSystem.PayTv.*;
 import com.iHotel.model.ForeignSystem.Telephone.*;

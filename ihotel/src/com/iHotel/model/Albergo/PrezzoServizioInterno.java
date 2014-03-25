@@ -2,7 +2,7 @@ package com.iHotel.model.Albergo;
 
 import com.iHotel.model.Utility.*;
 
-public class PrezzoServizio {
+public class PrezzoServizioInterno {
 
 	private Periodo _periodo;
 	private Prezzo _prezzo;
