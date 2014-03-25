@@ -25,6 +25,7 @@ public abstract class CameraState {
 	public abstract LinkedList<CameraState> occupaInPeriodo(Periodo periodo);
 	public abstract boolean isLiberaInPeriodo(Periodo periodo);
 	public abstract Prezzo getPrezzoTotaleServizi(Periodo periodo);
+	public abstract void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo);
 	
 	/* -------------------------- Getter, Setter ----------------------------- */
 	/**

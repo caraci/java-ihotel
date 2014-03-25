@@ -1,8 +1,9 @@
-package com.iHotel.model.Albergo;
+package com.iHotel.model.Albergo.Cataloghi;
 
 import java.util.*;
 
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Prezzo;
 
 public class DescrizioneCamera {
 
@@ -41,14 +42,15 @@ public class DescrizioneCamera {
 	 * @param periodo Periodo della prenotazione
 	 * @return totaleCameraPeriodo Costo totale della camera durante il soggiorno
 	 */
-	public double calcolaPrezzoInPeriodo(Periodo periodo) {
+	public Prezzo calcolaPrezzoInPeriodo(Periodo periodo) {
 		// Data di inizio della richiesta.
 		GregorianCalendar dataInizio = new GregorianCalendar();
 		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio(),periodo.get_oraInizio(),periodo.get_minutoInizio());
 		// Data di fine della richiesta.
 		GregorianCalendar dataFine= new GregorianCalendar();
 		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),periodo.get_oraFine(),periodo.get_minutoFine());
-	
+		// Prezzo da ritornare
+		Prezzo prezzo= new Prezzo();
 					
 		// Variabili nelle quali si andranno a memorizzare i totali.
 		double totaleCameraGiorno=0;
@@ -65,7 +67,8 @@ public class DescrizioneCamera {
 			dataInizio.add(Calendar.DAY_OF_MONTH,1);
 		}
 		//System.out.println(totaleCameraPeriodo);
-		return totaleCameraPeriodo;
+		prezzo.set_importo(totaleCameraPeriodo);
+		return prezzo;
 		
 	}
 	

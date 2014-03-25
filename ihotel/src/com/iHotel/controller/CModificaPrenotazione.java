@@ -1,5 +1,7 @@
 package com.iHotel.controller;
 
+import java.util.GregorianCalendar;
+
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
 
@@ -28,6 +30,18 @@ public class CModificaPrenotazione {
          return instance;
     }
 	/* ------------------------- Metodi di instanza ---------------------------------- */
+    
+    public void aggiungiServizio(GregorianCalendar dataServizio){
+    	
+    }
+    public void aggiungiServiziCamera(){
+    	
+    }
+    
+    public void scegliServizioDaCodice(String codiceServizio){
+    	    	
+    }
+    
 	public void gestionePrenotazione() {
 		// TODO - implement CModificaPrenotazione.modificaPrenotazione
 		throw new UnsupportedOperationException();
@@ -65,6 +79,18 @@ public class CModificaPrenotazione {
 
 	public void set_numeroCamera(CameraContext _numeroCamera) {
 		this._camera = _numeroCamera;
+	}
+	/**
+	 * @return the _codiceServizio
+	 */
+	public String get_codiceServizio() {
+		return _codiceServizio;
+	}
+	/**
+	 * @param _codiceServizio the _codiceServizio to set
+	 */
+	public void set_codiceServizio(String _codiceServizio) {
+		this._codiceServizio = _codiceServizio;
 	}
 
 }

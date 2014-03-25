@@ -3,7 +3,14 @@ package com.iHotel.model.Utility;
 public class Prezzo {
 
 	private double _importo;
-	private String _valuta;
+	private String _valuta="Euro";
+	
+	
+	public Prezzo somma(Prezzo prezzo){
+		this._importo += prezzo.get_importo();
+		return this;
+	}
+	
 	/**
 	 * @return the _quantità
 	 */

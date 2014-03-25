@@ -3,6 +3,8 @@ package com.iHotel.model.Albergo;
 import java.io.IOException;
 import java.util.*;
 
+import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
+import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;

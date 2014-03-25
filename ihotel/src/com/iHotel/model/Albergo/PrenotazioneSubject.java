@@ -2,6 +2,8 @@ package com.iHotel.model.Albergo;
 
 import java.util.*;
 
+import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
+import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.State.CameraContext;
@@ -66,7 +68,7 @@ public class PrenotazioneSubject implements ISubject {
 		String tipologia = cameraPrenotata.get_tipologia();
 		descrizione=catalogo.getDescrizioneDaTipologia(tipologia);
 		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
-		_total.set_importo(_total.get_importo()+descrizione.calcolaPrezzoInPeriodo(_periodo));				
+		_total.somma(descrizione.calcolaPrezzoInPeriodo(_periodo));
 		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
 		// di stato della prenotazione.
 		this.Notify();

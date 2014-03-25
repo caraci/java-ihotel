@@ -14,8 +14,6 @@ import javax.swing.border.EmptyBorder;
 
 import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.view.View;
-import com.iHotel.view.Access.StyleAbstractFactory;
-import com.iHotel.view.Access.ViewFactory;
 
 import net.sourceforge.jdatepicker.*;
 

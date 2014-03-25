@@ -5,8 +5,8 @@ package com.iHotel.model.Strategy;
 
 import java.util.LinkedList;
 
-import com.iHotel.model.State.CameraLibera;
-import com.iHotel.model.State.CameraOccupata;
+import com.iHotel.model.State.CameraStateLibera;
+import com.iHotel.model.State.CameraStateOccupata;
 import com.iHotel.model.State.CameraState;
 import com.iHotel.model.Utility.Periodo;
 
@@ -26,7 +26,7 @@ public class RightCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 		LinkedList<CameraState> nuoviStati = new LinkedList<CameraState>();
 		// Nuovi stati
 			// - Occupato 
-			CameraState cameraStateOccupato = new CameraOccupata();
+			CameraState cameraStateOccupato = new CameraStateOccupata();
 			cameraStateOccupato.set_periodo(periodoRichiesta);
 			// - Libero
 			Periodo periodoLibero = new Periodo();
@@ -34,7 +34,7 @@ public class RightCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 			periodoLibero.setDataInizioPeriodoDaDataInizioPeriodo(cameraState.get_periodo());
 			periodoLibero.setDataFinePeriodoDaDataInizioPeriodo(periodoRichiesta);
 			// Setto il periodo allo stato
-			CameraState cameraStateLibero = new CameraLibera();
+			CameraState cameraStateLibero = new CameraStateLibera();
 			cameraStateLibero.set_periodo(periodoLibero);
 			
 		// Aggiungo stati alla lista

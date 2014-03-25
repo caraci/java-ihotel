@@ -12,6 +12,7 @@ import com.iHotel.view.Access.ViewFactory;
  * @author Gabriele
  *
  */
+@SuppressWarnings("serial")
 public class View extends JFrame {
 	
 	/* Factory */

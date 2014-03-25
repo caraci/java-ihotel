@@ -2,6 +2,7 @@ package com.iHotel.model.State;
 
 import java.util.*;
 
+import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
@@ -14,6 +15,10 @@ public class CameraContext {
 	private String _tipologia;
 
 	/* -------------------------- Metodi di istanza ----------------------- */
+	
+	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo){
+		
+	}
 	
 	public Prezzo getPrezzoServiziInPeriodo(Periodo periodo){
 		return null;

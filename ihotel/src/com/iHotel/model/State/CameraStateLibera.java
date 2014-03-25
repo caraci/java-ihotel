@@ -2,12 +2,13 @@ package com.iHotel.model.State;
 
 import java.util.*;
 
+import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Strategy.CreaStatiCameraStrategy;
 import com.iHotel.model.Strategy.CreaStatiCameraStrategyFactory;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
-public class CameraLibera extends CameraState {
+public class CameraStateLibera extends CameraState {
 
 	@Override
 	/**
@@ -42,5 +43,12 @@ public class CameraLibera extends CameraState {
 	public Prezzo getPrezzoTotaleServizi(Periodo periodo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void aggiungiServizioInPeriodo(ServizioInterno servizio,
+			Periodo periodo) {
+		// TODO Auto-generated method stub
+		
 	}
 }
