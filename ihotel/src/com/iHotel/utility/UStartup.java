@@ -35,14 +35,15 @@ public class UStartup {
 			Albergo albergo = Albergo.getInstance();
 			CatalogoCamere catalogoCamere = CatalogoCamere.getInstance();
 			Storico storico = Storico.getInstance();
+			
 			// Setto gli attributi dello storico
-			ArrayList<PrenotazioneSubject> _prenotazioni = new ArrayList<PrenotazioneSubject>();
+			HashMap<String,PrenotazioneSubject> _prenotazioni = new HashMap<String,PrenotazioneSubject>();
 			for (Iterator<PrenotazioneSubject> iterator = prenotazioni.iterator(); iterator.hasNext();) {
 				PrenotazioneSubject prenotazioneSubject = (PrenotazioneSubject) iterator.next();
-				System.out.println(prenotazioneSubject.get_completata());
-				_prenotazioni.add(prenotazioneSubject);				
+				_prenotazioni.put(prenotazioneSubject.get_codice(), prenotazioneSubject);				
 			}
 			storico.set_prenotazioni(_prenotazioni);
+			
 			// Setto gli attributi del catalogoCamere
 			HashMap<String,DescrizioneCamera> _descrizioniCamere = new HashMap<String,DescrizioneCamera>();
 			for (Iterator<DescrizioneCamera> iterator = descrizioniCamere.iterator(); iterator.hasNext();) {

@@ -26,7 +26,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
-public class VFrameCreaPrenotazioneStep_2Observer extends View implements IObserver {
+public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IObserver {
 
 	/* ContentPane */
 	private JPanel contentPane;
@@ -44,12 +44,12 @@ public class VFrameCreaPrenotazioneStep_2Observer extends View implements IObser
     // Pattern Observer
     private PrenotazioneSubject _prenotazioneSubject;
     /* ----------------- Pattern Singleton  ---------------- */
-	private static VFrameCreaPrenotazioneStep_2Observer instance = null;
+	private static VFCP_SelezioneCamereDatiOspite_Observer instance = null;
    
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private VFrameCreaPrenotazioneStep_2Observer() {
+	private VFCP_SelezioneCamereDatiOspite_Observer() {
 		super();
 	}
 	/**
@@ -57,9 +57,9 @@ public class VFrameCreaPrenotazioneStep_2Observer extends View implements IObser
 	 * 
 	 * @return VFrameCreaPrenotazioneStep_2 Instanza unica di questa classe.
 	 */
-    public static VFrameCreaPrenotazioneStep_2Observer getInstance() {
+    public static VFCP_SelezioneCamereDatiOspite_Observer getInstance() {
     	if(instance == null) {
-            instance = new VFrameCreaPrenotazioneStep_2Observer();
+            instance = new VFCP_SelezioneCamereDatiOspite_Observer();
          }
          return instance;
     }

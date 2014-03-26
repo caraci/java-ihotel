@@ -8,8 +8,8 @@ import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.VFrameHome;
-import com.iHotel.view.CreaPrenotazione.VFrameCreaPrenotazioneStep_1;
-import com.iHotel.view.CreaPrenotazione.VFrameCreaPrenotazioneStep_2Observer;
+import com.iHotel.view.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
+import com.iHotel.view.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ public class CCreaPrenotazione {
 		tipologieCamere.addAll(_albergo.get_catalogoCamere().get_descrizioniCamere().keySet());
 		// Nascondo VFrameHome e mostro VFrameCreaPrenotazioneStep1
 		VFrameHome.getInstance().setVisible(false);
-		VFrameCreaPrenotazioneStep_1 frameCreaPrenotazione1 = VFrameCreaPrenotazioneStep_1.getInstance();
+		VFCP_SelezionePeriodoTipologie frameCreaPrenotazione1 = VFCP_SelezionePeriodoTipologie.getInstance();
 		frameCreaPrenotazione1.creaFrame(tipologieCamere);
 		frameCreaPrenotazione1.setVisible(true);
 		
@@ -104,7 +104,7 @@ public class CCreaPrenotazione {
 			// Aggiungo l'ArrayList delle camere appartenenti ad una tipologia
 			camereLibere.add(camereLibereTipologia);
 		}	
-		VFrameCreaPrenotazioneStep_2Observer frameCreaPrenotazioneStep_2 = VFrameCreaPrenotazioneStep_2Observer.getInstance();
+		VFCP_SelezioneCamereDatiOspite_Observer frameCreaPrenotazioneStep_2 = VFCP_SelezioneCamereDatiOspite_Observer.getInstance();
 		// Per il pattern Observer aggiungo l'observer alla prenotazione.
 		_prenotazione.Attach((IObserver) frameCreaPrenotazioneStep_2);
 		// Per il pattern Observer aggiungo il subject all'observer.
@@ -113,7 +113,7 @@ public class CCreaPrenotazione {
 		frameCreaPrenotazioneStep_2.creaFrame(camereLibere);			
 		frameCreaPrenotazioneStep_2.setVisible(true);
 		// Nascondo finestra Step 1
-		VFrameCreaPrenotazioneStep_1 frameCreaPrenotazioneStep_1 = VFrameCreaPrenotazioneStep_1.getInstance();
+		VFCP_SelezionePeriodoTipologie frameCreaPrenotazioneStep_1 = VFCP_SelezionePeriodoTipologie.getInstance();
 		frameCreaPrenotazioneStep_1.setVisible(false);
 		
 	}
@@ -138,7 +138,7 @@ public class CCreaPrenotazione {
 		Storico storico = Storico.getInstance();
 		storico.addPrenotazione(_prenotazione);
 		// Rimuovo l'observer dal subject
-		VFrameCreaPrenotazioneStep_2Observer frameCreaPrenotazioneStep_2 = VFrameCreaPrenotazioneStep_2Observer.getInstance();
+		VFCP_SelezioneCamereDatiOspite_Observer frameCreaPrenotazioneStep_2 = VFCP_SelezioneCamereDatiOspite_Observer.getInstance();
 		_prenotazione.Detach((IObserver) frameCreaPrenotazioneStep_2);
 		// Salvataggio degli oggetti da Ram -> Persistenza.
 		try {

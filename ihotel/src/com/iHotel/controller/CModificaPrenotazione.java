@@ -1,8 +1,11 @@
 package com.iHotel.controller;
 
+import java.io.IOException;
 import java.util.GregorianCalendar;
 
+import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.State.CameraContext;
 
 public class CModificaPrenotazione {
@@ -49,7 +52,7 @@ public class CModificaPrenotazione {
      * @param codiceServizio Codice del servizio da mostrare
      */
     public void scegliServizioDaCodice(String codiceServizio){
-    	    	
+    	_codiceServizio=codiceServizio;
     }
     /**
      * Metodo per mostrare l'interfaccia per il caricamento della prenotazione da gestire.
@@ -63,17 +66,17 @@ public class CModificaPrenotazione {
 	 * @param codicePrenotazione Codice della prenotazione da caricare.
 	 */
 	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) {
-		// TODO - implement CModificaPrenotazione.recuperaPrenotazioneDaCodice
-		throw new UnsupportedOperationException();
+		_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
+		
 	}
 
 	/**
 	 * Metodo per mostrare l'interfaccia contenente le informazioni sulla camera, relativa al numero fornito. 
 	 * @param numeroCamera
+	 * @throws IOException 
 	 */
-	public void gestioneCamera(String numeroCamera) {
-		// TODO - implement CModificaPrenotazione.modificaServiziCamera
-		throw new UnsupportedOperationException();
+	public void gestioneCamera(String numeroCamera) throws IOException {
+		_camera=Albergo.getInstance().getCameraDaNumero(numeroCamera);
 	}
 	/* ----------------------- Getter, Setter -------------------------- */
 

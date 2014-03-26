@@ -18,10 +18,10 @@ import com.iHotel.view.View;
 import net.sourceforge.jdatepicker.*;
 
 @SuppressWarnings("serial")
-public class VFrameCreaPrenotazioneStep_1 extends View {
+public class VFCP_SelezionePeriodoTipologie extends View {
 
 	/* Singleton */
-	private static VFrameCreaPrenotazioneStep_1 instance = null;
+	private static VFCP_SelezionePeriodoTipologie instance = null;
 	/* ContentPane */
 	private JPanel contentPane;
     /* Panel */
@@ -38,7 +38,7 @@ public class VFrameCreaPrenotazioneStep_1 extends View {
     /**
      * Costruttore privato - pattern Singleton
      */
-	private VFrameCreaPrenotazioneStep_1() {
+	private VFCP_SelezionePeriodoTipologie() {
 		super();
 	}
 	/**
@@ -46,9 +46,9 @@ public class VFrameCreaPrenotazioneStep_1 extends View {
 	 * 
 	 * @return VFrameCreaPrenotazioneStep_1 Instanza unica di questa classe.
 	 */
-    public static VFrameCreaPrenotazioneStep_1 getInstance() {
+    public static VFCP_SelezionePeriodoTipologie getInstance() {
     	if(instance == null) {
-            instance = new VFrameCreaPrenotazioneStep_1();
+            instance = new VFCP_SelezionePeriodoTipologie();
          }
          return instance;
     }

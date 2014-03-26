@@ -7,7 +7,7 @@ public class Storico {
 	/* ------------------------------- Attributi e Costruttore ----------------------------- */
 	// Singleton 
 	private static Storico instance = null;
-	private ArrayList<PrenotazioneSubject> _prenotazioni;
+	private HashMap<String,PrenotazioneSubject> _prenotazioni;
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
@@ -28,9 +28,8 @@ public class Storico {
 	 * 
 	 * @param codice
 	 */
-	public void recuperaPrenotazioneDaCodice(String codice) {
-		// TODO - implement MStorico.recuperaPrenotazioneDaCodice
-		throw new UnsupportedOperationException();
+	public PrenotazioneSubject recuperaPrenotazioneDaCodice(String codice) {
+		return _prenotazioni.get(codice);
 	}
 
 	/**
@@ -38,21 +37,21 @@ public class Storico {
 	 * @param prenotazione
 	 */
 	public void addPrenotazione(PrenotazioneSubject prenotazione) {
-		_prenotazioni.add(prenotazione);
+		_prenotazioni.put(prenotazione.get_codice(), prenotazione);
 	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */
 	
 	/**
 	 * @return _prenotazioni
 	 */
-	public ArrayList<PrenotazioneSubject> get_prenotazioni() {
+	public HashMap<String,PrenotazioneSubject> get_prenotazioni() {
 		return _prenotazioni;
 	}
 
 	/**
 	 * @param _prenotazioni
 	 */
-	public void set_prenotazioni(ArrayList<PrenotazioneSubject> _prenotazioni) {
+	public void set_prenotazioni(HashMap<String,PrenotazioneSubject> _prenotazioni) {
 		this._prenotazioni = _prenotazioni;
 	}
 
