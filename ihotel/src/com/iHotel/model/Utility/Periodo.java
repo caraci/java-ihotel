@@ -39,7 +39,26 @@ public class Periodo {
 		_oraFine=orarioDefault.get(3).intValue();
 	}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
-	
+	/**
+	 * Metodo per vedere se un periodo contiene una data.
+	 * @param dataRichiesta Data da controllare.
+	 * @return True se la data è contenuta. False altrimenti.
+	 */
+	public boolean contieneData(GregorianCalendar dataRichiesta) {
+		boolean esito;
+		// Periodo dell'instanza
+		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
+		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio, _minutoInizio,0);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine, _minutoFine,59);
+		// Controllo se il periodoRichiesta coincide con il periodo dell'istanza
+		if(dataInizioPeriodo.compareTo(dataRichiesta)<=0 && dataFinePeriodo.compareTo(dataRichiesta)>=0) {
+			esito = true;
+		} else {
+			esito = false;
+		}
+		return esito;
+	}
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro coincide esattamente con il periodo relativo 
 	 * all'oggetto sul quale si sta invocando il metodo.

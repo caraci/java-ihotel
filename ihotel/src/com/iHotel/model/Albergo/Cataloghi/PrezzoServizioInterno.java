@@ -1,11 +1,31 @@
 package com.iHotel.model.Albergo.Cataloghi;
 
+import java.util.GregorianCalendar;
+
 import com.iHotel.model.Utility.*;
 
 public class PrezzoServizioInterno {
 
+	/* -------------------------- Attributi ----------------------------------- */
 	private Periodo _periodo;
 	private Prezzo _prezzo;
+	/* -------------------------- Metodi di instanza ----------------------------------- */
+	
+	/**
+	 * Metodo per ottenere il prezzo relativo al servizio, se il periodo di richiesta è contenuto
+	 * in quello dell'instanza su cui si invoca il metodo.
+	 * @param periodoRichiesta Periodo di richiesta
+	 * @return Prezzo relativo al servizo se il periodo è valido. Null altrimenti.
+	 */
+	public Prezzo getPrezzoInData(GregorianCalendar dataServizio) {
+		Prezzo prezzo = null;
+		if(_periodo.contieneData(dataServizio)) {
+			prezzo=_prezzo;
+		}
+		return prezzo;
+	}
+	
+	/* -------------------------- Getter, Setter ----------------------------------- */
 	/**
 	 * @return the _periodo
 	 */

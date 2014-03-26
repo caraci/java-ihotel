@@ -9,17 +9,30 @@ import com.iHotel.model.Utility.Prezzo;
 public class CameraContext {
 
 	/* --------------------------- Attributi ---------------------- */
-	
 	private LinkedList<CameraState> _statiCameraState;
 	private String _numero;
 	private String _tipologia;
 
-	/* -------------------------- Metodi di istanza ----------------------- */
-	
-	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo){
-		
+	public CameraContext() {
+		_statiCameraState = new LinkedList<CameraState>();
 	}
-	
+	/* -------------------------- Metodi di istanza ----------------------- */
+	/**
+	 * Metodo per aggiungere un servizio alla camera in un determinato periodo.
+	 * @param servizio Servizio da aggiungere.
+	 * @param periodo Periodo in cui aggiungere il servizio.
+	 */
+	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo){
+		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			CameraState statoCamera = (CameraState) iterator.next();
+			statoCamera.aggiungiServizioInPeriodo(servizio, periodo);
+		}
+	}
+	/**
+	 * Metodo per ottenere il prezzo totale dei servizi interni della camera in un certo periodo.
+	 * @param periodo Periodo per il quale si vuole ricercare il totale.
+	 * @return Prezzo dei servizi della camera nel periodo.
+	 */
 	public Prezzo getPrezzoServiziInPeriodo(Periodo periodo){
 		return null;
 	}

@@ -17,15 +17,15 @@ public class SkyTvAdapter implements IPayTvAdapter {
 	}
 
 	@Override
-	public Prezzo getPrezzoTotaleServiziPrenotazione(
-			PrenotazioneSubject prenotazione) {
-		// TODO Auto-generated method stub
-		return null;
+	public Prezzo getPrezzoTotaleServiziPrenotazione(PrenotazioneSubject prenotazione) {
+		// TODO - Chiaramente ora si sta utilizzando un prezzo di default.
+		Prezzo prezzoTotale = new Prezzo();
+		prezzoTotale.set_importo(10);
+		return prezzoTotale;
 	}
 
 	@Override
-	public ArrayList<ServizioEsterno> getElencoServiziCamera(
-			CameraContext camera) {
+	public ArrayList<ServizioEsterno> getElencoServiziCamera(CameraContext camera) {
 		// TODO Auto-generated method stub
 		return null;
 	}

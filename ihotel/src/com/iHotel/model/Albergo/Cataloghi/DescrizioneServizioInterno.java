@@ -1,6 +1,10 @@
 package com.iHotel.model.Albergo.Cataloghi;
 
+import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.LinkedList;
+
+import com.iHotel.model.Utility.Prezzo;
 
 public class DescrizioneServizioInterno {
 	
@@ -9,6 +13,28 @@ public class DescrizioneServizioInterno {
 	private String _descrizione;
 	private LinkedList<PrezzoServizioInterno> _prezziServizio;
 	
+	public DescrizioneServizioInterno() {
+		_prezziServizio=new LinkedList<PrezzoServizioInterno>();
+	}
+	
+	/* ---------------------------- Metodi di instanza ------------------- */
+	/**
+	 * Metodo per ottenere il prezzo del servizio in un determinato periodo
+	 * @param periodoRichiesta Periodo per il quale si vuole conoscere il prezzo del servizio.
+	 * @return Prezzo del servizio nel periodo.
+	 */
+	public Prezzo getPrezzoInData(GregorianCalendar dataServizio) {
+		Prezzo prezzo = null;
+		// Ciclo su tutti i prezzi del servizio.
+		for (Iterator<PrezzoServizioInterno> iterator = _prezziServizio.iterator(); iterator.hasNext();) {
+			PrezzoServizioInterno prezzoServizioInterno = (PrezzoServizioInterno) iterator.next();
+			// Controllo se viene restituito il prezzo o un null.
+			if(prezzoServizioInterno.getPrezzoInData(dataServizio)!=null) {
+				prezzo=prezzoServizioInterno.getPrezzoInData(dataServizio);
+			}
+		}
+		return prezzo;
+	}
 	/*-------------------------- Getter e setter --------------------------*/
 
 	/**

@@ -16,13 +16,9 @@ public class ServizioInterno {
 	private String _codice;
 	private GregorianCalendar _data;
 	
-	public ServizioInterno(){
-		
-	}
+	public ServizioInterno(){}
 	
 	/*----------------------- Setter e getter -----------------------*/
-
-
 	/**
 	 * @return the _codice
 	 */

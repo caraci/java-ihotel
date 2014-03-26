@@ -16,9 +16,12 @@ public class CatalogoCamere {
 	 * Costruttore privato - pattern singleton
 	 */
 	private CatalogoCamere() {}
-	
 	/* ---------------------------- Metodi di classe ----------------------------- */	
 	
+	/**
+	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
+	 * @return Instanza unica di questa classe
+	 */
 	public static CatalogoCamere getInstance() {
     	if(instance == null) {
             instance = new CatalogoCamere();

@@ -9,8 +9,12 @@ public class DescrizioneCamera {
 
 	/* -------------------------- Attributi -------------------------------------- */
 	
-	private ArrayList<PrezzoCamera> _prezziCamera=new ArrayList<PrezzoCamera>();
+	private ArrayList<PrezzoCamera> _prezziCamera;
 	private String _tipologia;
+	
+	public DescrizioneCamera() {
+		_prezziCamera=new ArrayList<PrezzoCamera>();
+	}
 
 	/* ----------------------- Metodi di instanza ----------------------------------------- */
 	
@@ -23,13 +27,12 @@ public class DescrizioneCamera {
 	public ArrayList<PrezzoCamera> getPrezziInPeriodo(Periodo periodo) {
 		ArrayList<PrezzoCamera> prezziCamera = new ArrayList<PrezzoCamera>();
 		PrezzoCamera prezzoCameraPeriodo = new PrezzoCamera();
-		// Ciclo sugli MPrezzoCamera 
+		// Ciclo sui PrezzoCamera 
 		for (Iterator<PrezzoCamera> iterator = _prezziCamera.iterator(); iterator.hasNext();) {
 			PrezzoCamera prezzoCamera = iterator.next();
-			// Se otteniamo un MPrezzoCamera valido lo aggiungo alla lista.
+			// Se otteniamo un PrezzoCamera valido lo aggiungo alla lista.
 			if(prezzoCamera.getPrezzoInPeriodo(periodo) != null) {
 				prezzoCameraPeriodo = prezzoCamera.getPrezzoInPeriodo(periodo);
-				//System.out.println(prezzoCameraPeriodo.get_prezzo());
 				prezziCamera.add(prezzoCameraPeriodo);
 			}
 		}		
