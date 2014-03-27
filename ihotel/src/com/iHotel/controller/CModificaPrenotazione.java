@@ -7,6 +7,8 @@ import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.view.VFrameHome;
+import com.iHotel.view.GestionePrenotazione.VFGP_InserimentoCodicePrenotazione;
 
 public class CModificaPrenotazione {
 	
@@ -34,6 +36,24 @@ public class CModificaPrenotazione {
 	/* ------------------------- Metodi di instanza ---------------------------------- */
     
     /**
+     * Metodo che termina l'aggiunta dei servizi e restituisce la schermata precedente
+     */
+    public void terminaAggiuntaServiziCamera(){
+    	
+    }
+    /**
+     * Metodo che conclude la gestione della camera
+     */
+    public void terminaGestioneCamera(){
+    	
+    }
+    /**
+     * Metodo che conclude la gestione della prenotazione
+     */
+    public void terminaGestionePrenotazione(){
+    	
+    }
+    /**
      * Metodo per aggiungere un servizio alla camera selezionata, relativa alla prenotazione che si sta
      * modificando.
      * @param dataServizio Data per il quale si richiede il servizio interno.
@@ -55,18 +75,23 @@ public class CModificaPrenotazione {
     	_codiceServizio=codiceServizio;
     }
     /**
-     * Metodo per mostrare l'interfaccia per il caricamento della prenotazione da gestire.
+     * 
+     * @throws IOException
      */
-	public void gestionePrenotazione() {
-		// TODO - implement CModificaPrenotazione.modificaPrenotazione
-		throw new UnsupportedOperationException();
+	public void gestionePrenotazione() throws IOException {
+		VFrameHome.getInstance().setVisible(false);
+		VFGP_InserimentoCodicePrenotazione frameInserimentoCodicePrenotazione = VFGP_InserimentoCodicePrenotazione.getInstance();
+		frameInserimentoCodicePrenotazione.creaFrame();
+		frameInserimentoCodicePrenotazione.setVisible(true);
 	}
 	/**
 	 * Metodo per mostrare l'interfaccia per la gestione della prenotazione, relativa al codice fornito.
 	 * @param codicePrenotazione Codice della prenotazione da caricare.
+	 * @throws IOException
 	 */
-	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) {
-		_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
+	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) throws IOException {
+		System.out.print(codicePrenotazione.toString());
+		//_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
 		
 	}
 
