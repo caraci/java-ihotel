@@ -1,21 +1,15 @@
 package com.iHotel.view;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
+
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import net.sourceforge.jdatepicker.JDateComponentFactory;
 
 import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.controller.CModificaPrenotazione;

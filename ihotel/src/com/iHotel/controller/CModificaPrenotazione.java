@@ -5,7 +5,6 @@ import java.util.GregorianCalendar;
 
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
-import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.VFrameHome;
 import com.iHotel.view.GestionePrenotazione.VFGP_InserimentoCodicePrenotazione;

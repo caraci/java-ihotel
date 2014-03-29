@@ -23,16 +23,16 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	/* Singleton */
 	private static VFCP_SelezionePeriodoTipologie instance = null;
 	/* ContentPane */
-	private JPanel contentPane;
+	private JPanel _contentPane;
     /* Panel */
-    private JPanel panelTop, panelBottom;
-    private JPanel panelTopLeft, panelTopRight;
-    private JPanel panelBottomLeft, panelBottomRight;
-    private JButton btnAvanti;
+    private JPanel _panelTop, _panelBottom;
+    private JPanel _panelTopLeft, _panelTopRight;
+    private JPanel _panelBottomLeft, _panelBottomRight;
+    private JButton _btnAvanti;
     /* JDatePanel */
-    private JDatePanel datePanelFine, datePanelInizio;
+    private JDatePanel _datePanelFine, _datePanelInizio;
     /* CheckBoxes */
-    private JCheckBox[] checkBoxesTipologie;
+    private JCheckBox[] _checkBoxesTipologie;
     
 	
     /**
@@ -58,34 +58,34 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelTopLeft() {
 		// PanelTopLeft
-		panelTopLeft = _creaPrenotazioneFactory.getPanel();
-		panelTop.add(panelTopLeft);
-		panelTopLeft.setLayout(new BoxLayout(panelTopLeft, BoxLayout.PAGE_AXIS));
+		_panelTopLeft = _creaPrenotazioneFactory.getPanel();
+		_panelTop.add(_panelTopLeft);
+		_panelTopLeft.setLayout(new BoxLayout(_panelTopLeft, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
 		JLabel lblDataDiInizio = new JLabel("Data di inizio:");
-		panelTopLeft.add(lblDataDiInizio);
+		_panelTopLeft.add(lblDataDiInizio);
 		// Spaziatore 
-		panelTopLeft.add(Box.createVerticalGlue());
+		_panelTopLeft.add(Box.createVerticalGlue());
 		// JDatePanel data inizio
-		datePanelInizio = JDateComponentFactory.createJDatePanel();
-		panelTopLeft.add((Component) datePanelInizio);
+		_datePanelInizio = JDateComponentFactory.createJDatePanel();
+		_panelTopLeft.add((Component) _datePanelInizio);
 	}
 	/**
 	 * Metodo per aggiungere la porzione in alto a destra della finestra.
 	 */
 	private void addPanelTopRight() {
 		// PanelTopRight
-		panelTopRight = _creaPrenotazioneFactory.getPanel();
-		panelTop.add(panelTopRight);
-		panelTopRight.setLayout(new BoxLayout(panelTopRight, BoxLayout.PAGE_AXIS));
+		_panelTopRight = _creaPrenotazioneFactory.getPanel();
+		_panelTop.add(_panelTopRight);
+		_panelTopRight.setLayout(new BoxLayout(_panelTopRight, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
 		JLabel lblDataDiFine = new JLabel("Data di fine:");
-		panelTopRight.add(lblDataDiFine);
+		_panelTopRight.add(lblDataDiFine);
 		// Spaziatore 
-		panelTopRight.add(Box.createVerticalGlue());
+		_panelTopRight.add(Box.createVerticalGlue());
 		// JDatePanel data inizio
-		datePanelFine = JDateComponentFactory.createJDatePanel();
-		panelTopRight.add((Component) datePanelFine);
+		_datePanelFine = JDateComponentFactory.createJDatePanel();
+		_panelTopRight.add((Component) _datePanelFine);
 	}
 	/**
 	 * Metodo per aggiungere la porzione in basso a sinistra della finestra, con le tipologie di camere che è possibile scegliere.
@@ -93,26 +93,26 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelBottomLeft(ArrayList<String> tipologieCamere) {
 		// PanelBottomLeft
-		panelBottomLeft = _creaPrenotazioneFactory.getPanel();
-		panelBottom.add(panelBottomLeft);
+		_panelBottomLeft = _creaPrenotazioneFactory.getPanel();
+		_panelBottom.add(_panelBottomLeft);
 		// Layout PanelBottomLeft
-		panelBottomLeft.setLayout(new BoxLayout(panelBottomLeft, BoxLayout.PAGE_AXIS));
+		_panelBottomLeft.setLayout(new BoxLayout(_panelBottomLeft, BoxLayout.PAGE_AXIS));
 		// Label Tipologie
 		JLabel lblTipologie = new JLabel("Tipologie:");
-		panelBottomLeft.add(lblTipologie);
+		_panelBottomLeft.add(lblTipologie);
 		// Spaziatura dinamica
-		panelBottomLeft.add(Box.createVerticalGlue());
+		_panelBottomLeft.add(Box.createVerticalGlue());
 		
 		// Creo i checkBoxes e li aggiungo al panelBottomLeft
 		int numero_tipologie = tipologieCamere.size();
-		checkBoxesTipologie = new JCheckBox[numero_tipologie];
+		_checkBoxesTipologie = new JCheckBox[numero_tipologie];
 		for (int i = 0; i < tipologieCamere.size(); i++) {
 			String tipologia = tipologieCamere.get(i);
-			checkBoxesTipologie[i] = new JCheckBox();
-			checkBoxesTipologie[i].setText(tipologia);
-			panelBottomLeft.add(checkBoxesTipologie[i]);
+			_checkBoxesTipologie[i] = new JCheckBox();
+			_checkBoxesTipologie[i].setText(tipologia);
+			_panelBottomLeft.add(_checkBoxesTipologie[i]);
 			// Spaziatura dinamica
-			panelBottomLeft.add(Box.createVerticalGlue());
+			_panelBottomLeft.add(Box.createVerticalGlue());
 		}
 	}
 	/**
@@ -120,13 +120,13 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelBottomRight() {
 		// PanelBottomRight
-		panelBottomRight = _creaPrenotazioneFactory.getPanel();
-		panelBottom.add(panelBottomRight);
+		_panelBottomRight = _creaPrenotazioneFactory.getPanel();
+		_panelBottom.add(_panelBottomRight);
 		// Layout PanelBottomRight
-		panelBottomRight.setLayout(new BorderLayout(0, 0));
+		_panelBottomRight.setLayout(new BorderLayout(0, 0));
 		
-		btnAvanti = new JButton("Avanti");
-		panelBottomRight.add(btnAvanti, BorderLayout.SOUTH);
+		_btnAvanti = new JButton("Avanti");
+		_panelBottomRight.add(_btnAvanti, BorderLayout.SOUTH);
 	}
 	/**
 	 * Metodo per creare il frame.
@@ -136,16 +136,16 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
 		setBounds(50, 50, 1024, 500);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
+		_contentPane = new JPanel();
+		_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(_contentPane);
+		_contentPane.setLayout(new GridLayout(2, 1, 10, 10));
 			
 		// PanelTop
-		panelTop = new JPanel();
-		panelTop.setForeground(new Color(0, 0, 0));
-		contentPane.add(panelTop);
-		panelTop.setLayout(new GridLayout(1, 2, 20, 20));
+		_panelTop = new JPanel();
+		_panelTop.setForeground(new Color(0, 0, 0));
+		_contentPane.add(_panelTop);
+		_panelTop.setLayout(new GridLayout(1, 2, 20, 20));
 				
 		// PanelTopLeft
 		addPanelTopLeft();
@@ -153,9 +153,9 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 		addPanelTopRight();
 				
 		// PanelBottom
-		panelBottom = new JPanel();
-		contentPane.add(panelBottom);
-		panelBottom.setLayout(new GridLayout(1, 2, 20, 20));
+		_panelBottom = new JPanel();
+		_contentPane.add(_panelBottom);
+		_panelBottom.setLayout(new GridLayout(1, 2, 20, 20));
 				
 		// PanelBottomLeft
 		addPanelBottomLeft(tipologieCamere);		
@@ -163,30 +163,30 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 		addPanelBottomRight();
 				
 		/* ---------------------- Eventi ------------------------------------- */
-
+	
 		// Assegniamo l'eventListener al JButton btnAvanti
-		btnAvanti.addMouseListener(new MouseAdapter() {
+		_btnAvanti.addMouseListener(new MouseAdapter() {
 			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ArrayList<String> tipologieSelezionate = new ArrayList<String>();
 				boolean tipologiaStato;
 				// Controllo lo stato di tutte le CheckBox per verificare le tipologie inserite dall'utente
-				for (int i = 0; i < checkBoxesTipologie.length; i++) {
-					tipologiaStato=checkBoxesTipologie[i].isSelected();
+				for (int i = 0; i < get_checkBoxesTipologie().length; i++) {
+					tipologiaStato=get_checkBoxesTipologie()[i].isSelected();
 					if (tipologiaStato) {
 						// Aggiungo le tipologie scelte dall'utente
-						tipologieSelezionate.add(checkBoxesTipologie[i].getText());
+						tipologieSelezionate.add(get_checkBoxesTipologie()[i].getText());
 					}	
 				}
 				// Data inizio
-				int annoInizio 	 = datePanelInizio.getModel().getYear();
-				int meseInizio 	 = datePanelInizio.getModel().getMonth();
-				int giornoInizio = datePanelInizio.getModel().getDay();
+				int annoInizio 	 = get_datePanelInizio().getModel().getYear();
+				int meseInizio 	 = get_datePanelInizio().getModel().getMonth();
+				int giornoInizio = get_datePanelInizio().getModel().getDay();
 				// Data fine
-				int annoFine 	 = datePanelFine.getModel().getYear();
-				int meseFine 	 = datePanelFine.getModel().getMonth();
-				int giornoFine 	 = datePanelFine.getModel().getDay();
+				int annoFine 	 = get_datePanelFine().getModel().getYear();
+				int meseFine 	 = get_datePanelFine().getModel().getMonth();
+				int giornoFine 	 = get_datePanelFine().getModel().getDay();
 				
 				// Data inizio
 				GregorianCalendar dataInizio = new GregorianCalendar();
@@ -200,13 +200,42 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 			}
 		});
 	}
-
+	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**
-	 * Launch the application.
-	 * @param args
+	 * @return the _datePanelFine
 	 */
-	public static void main(String[] args) {
-		// TODO - implement VFrameCreaPrenotazioneStep_1.main
-		throw new UnsupportedOperationException();
+	public JDatePanel get_datePanelFine() {
+		return _datePanelFine;
 	}
+	/**
+	 * @param _datePanelFine the _datePanelFine to set
+	 */
+	public void set_datePanelFine(JDatePanel _datePanelFine) {
+		this._datePanelFine = _datePanelFine;
+	}
+	/**
+	 * @return the _datePanelInizio
+	 */
+	public JDatePanel get_datePanelInizio() {
+		return _datePanelInizio;
+	}
+	/**
+	 * @param _datePanelInizio the _datePanelInizio to set
+	 */
+	public void set_datePanelInizio(JDatePanel _datePanelInizio) {
+		this._datePanelInizio = _datePanelInizio;
+	}
+	/**
+	 * @return the _checkBoxesTipologie
+	 */
+	public JCheckBox[] get_checkBoxesTipologie() {
+		return _checkBoxesTipologie;
+	}
+	/**
+	 * @param _checkBoxesTipologie the _checkBoxesTipologie to set
+	 */
+	public void set_checkBoxesTipologie(JCheckBox[] _checkBoxesTipologie) {
+		this._checkBoxesTipologie = _checkBoxesTipologie;
+	}
+	
 }
