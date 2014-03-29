@@ -19,8 +19,8 @@ public class VFrameHome extends View {
 
 	/* Singleton */
 	private static VFrameHome instance = null;
-	private JPanel contentPane;
-	private JPanel panelTop, panelBottom;
+	private JPanel _contentPane;
+	private JPanel _panelTop, _panelBottom;
 	private JButton _btnCreaPrenotazione;
 	private JButton _btnModificaPrenotazione;
 
@@ -48,32 +48,32 @@ public class VFrameHome extends View {
 		setTitle("iHotel - Home");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();		
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(2, 1, 10, 10));
+		set_contentPane(new JPanel());		
+		get_contentPane().setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(get_contentPane());
+		get_contentPane().setLayout(new GridLayout(2, 1, 10, 10));
 		
 		
-		panelTop = new JPanel();
-		panelTop.setLayout(new GridLayout(1, 1, 20, 20));
-		panelBottom = new JPanel();
-		panelBottom.setLayout(new GridLayout(1, 1, 20, 20));
+		_panelTop = new JPanel();
+		get_panelTop().setLayout(new GridLayout(1, 1, 20, 20));
+		_panelBottom = new JPanel();
+		get_panelBottom().setLayout(new GridLayout(1, 1, 20, 20));
 		
 		_btnCreaPrenotazione = new JButton();
-		_btnCreaPrenotazione.setText("Crea nuova prenotazione");
+		get_btnCreaPrenotazione().setText("Crea nuova prenotazione");
 		
 		_btnModificaPrenotazione = new JButton();
-		_btnModificaPrenotazione.setText("Gestisci prenotazione");
+		get_btnModificaPrenotazione().setText("Gestisci prenotazione");
 
-		panelTop.add(_btnCreaPrenotazione);		
-		panelBottom.add(_btnModificaPrenotazione);
-		contentPane.add(panelTop);
-		contentPane.add(panelBottom);
+		get_panelTop().add(get_btnCreaPrenotazione());		
+		get_panelBottom().add(get_btnModificaPrenotazione());
+		get_contentPane().add(get_panelTop());
+		get_contentPane().add(get_panelBottom());
 		
 		
 		
 		// Assegniamo l'eventListener al JButton btnCreaPrenotazione
-		_btnCreaPrenotazione.addMouseListener(new MouseAdapter() {
+		get_btnCreaPrenotazione().addMouseListener(new MouseAdapter() {
 			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -89,7 +89,7 @@ public class VFrameHome extends View {
 		});
 		
 		// Assegniamo l'eventListener al JButton btnModificaPrenotazione
-		_btnModificaPrenotazione.addMouseListener(new MouseAdapter() {
+		get_btnModificaPrenotazione().addMouseListener(new MouseAdapter() {
 			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -103,6 +103,67 @@ public class VFrameHome extends View {
 				}
 			}
 		});
+	}
+	/* ------------------------ Getter, Setter -------------------------------- */
+	/**
+	 * @return the _contentPane
+	 */
+	public JPanel get_contentPane() {
+		return _contentPane;
+	}
+	/**
+	 * @param _contentPane the _contentPane to set
+	 */
+	public void set_contentPane(JPanel _contentPane) {
+		this._contentPane = _contentPane;
+	}
+	/**
+	 * @return the _panelTop
+	 */
+	public JPanel get_panelTop() {
+		return _panelTop;
+	}
+	/**
+	 * @param _panelTop the _panelTop to set
+	 */
+	public void set_panelTop(JPanel _panelTop) {
+		this._panelTop = _panelTop;
+	}
+	/**
+	 * @return the _panelBottom
+	 */
+	public JPanel get_panelBottom() {
+		return _panelBottom;
+	}
+	/**
+	 * @param _panelBottom the _panelBottom to set
+	 */
+	public void set_panelBottom(JPanel _panelBottom) {
+		this._panelBottom = _panelBottom;
+	}
+	/**
+	 * @return the _btnCreaPrenotazione
+	 */
+	public JButton get_btnCreaPrenotazione() {
+		return _btnCreaPrenotazione;
+	}
+	/**
+	 * @param _btnCreaPrenotazione the _btnCreaPrenotazione to set
+	 */
+	public void set_btnCreaPrenotazione(JButton _btnCreaPrenotazione) {
+		this._btnCreaPrenotazione = _btnCreaPrenotazione;
+	}
+	/**
+	 * @return the _btnModificaPrenotazione
+	 */
+	public JButton get_btnModificaPrenotazione() {
+		return _btnModificaPrenotazione;
+	}
+	/**
+	 * @param _btnModificaPrenotazione the _btnModificaPrenotazione to set
+	 */
+	public void set_btnModificaPrenotazione(JButton _btnModificaPrenotazione) {
+		this._btnModificaPrenotazione = _btnModificaPrenotazione;
 	}
 	
 	
