@@ -12,14 +12,10 @@ public class Periodo {
 	private int _giornoInizio;
 	private int _meseInizio;
 	private int _annoInizio;
-	private int _oraInizio;
-	private int _minutoInizio;
 	
 	private int _giornoFine;
 	private int _meseFine;
 	private int _annoFine;
-	private int _oraFine;
-	private int _minutoFine;
 	
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -33,32 +29,8 @@ public class Periodo {
 		UDefaultLoader defaultLoader = UDefaultLoader.getInstance();
 		ArrayList<Integer> orarioDefault = new ArrayList<Integer>();
 		orarioDefault = defaultLoader.getMinutoOraInizioMinutoOraFine();
-		_minutoInizio = orarioDefault.get(0).intValue();
-		_oraInizio= orarioDefault.get(1).intValue();
-		_minutoFine = orarioDefault.get(2).intValue();
-		_oraFine=orarioDefault.get(3).intValue();
 	}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
-	/**
-	 * Metodo per vedere se un periodo contiene una data.
-	 * @param dataRichiesta Data da controllare.
-	 * @return True se la data è contenuta. False altrimenti.
-	 */
-	public boolean contieneData(GregorianCalendar dataRichiesta) {
-		boolean esito;
-		// Periodo dell'instanza
-		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
-		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio, _minutoInizio,0);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine, _minutoFine,59);
-		// Controllo se il periodoRichiesta coincide con il periodo dell'istanza
-		if(dataInizioPeriodo.compareTo(dataRichiesta)<=0 && dataFinePeriodo.compareTo(dataRichiesta)>=0) {
-			esito = true;
-		} else {
-			esito = false;
-		}
-		return esito;
-	}
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro coincide esattamente con il periodo relativo 
 	 * all'oggetto sul quale si sta invocando il metodo.
@@ -70,15 +42,21 @@ public class Periodo {
 		// Periodo richiesta
 		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
 		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
-		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio(), periodoRichiesta.get_oraInizio(), periodoRichiesta.get_minutoInizio(),1);
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine(), periodoRichiesta.get_oraFine(), periodoRichiesta.get_minutoFine(),0);
+		// Azzero i parametri delle date della richiesta.
+		dataInizioRichiesta.clear();
+		dataFineRichiesta.clear();
+		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
 		// Periodo dell'instanza
 		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
 		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio, _minutoInizio,0);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine, _minutoFine,59);
+		// Azzero i parametri delle date della richiesta.
+		dataInizioPeriodo.clear();
+		dataFinePeriodo.clear();
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		// Controllo se il periodoRichiesta coincide con il periodo dell'istanza
-		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)==0 && dataFinePeriodo.compareTo(dataFineRichiesta) ==0) {
+		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)==0 && dataFinePeriodo.compareTo(dataFineRichiesta)==0) {
 			esito = true;
 		} else {
 			esito = false;
@@ -98,15 +76,18 @@ public class Periodo {
 		// Periodo richiesta
 		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
 		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
-		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio(), periodoRichiesta.get_oraInizio(), periodoRichiesta.get_minutoInizio(),1);
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine(), periodoRichiesta.get_oraFine(), periodoRichiesta.get_minutoFine(),0);
+		// Azzero i parametri delle date della richiesta.
+		dataInizioRichiesta.clear();
+		dataFineRichiesta.clear();
+		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
 		// Periodo dell'instanza
 		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
 		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio, _minutoInizio,0);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine, _minutoFine,59);
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		// Controllo se il periodoRichiesta è contenuto in periodo.
-		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)<=0 && dataFinePeriodo.compareTo(dataFineRichiesta) >=0) {
+		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)<=0 && dataFinePeriodo.compareTo(dataFineRichiesta)>=0) {
 			esito = true;
 		} else {
 			esito = false;
@@ -124,13 +105,13 @@ public class Periodo {
 		// Periodo richiesta
 		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
 		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
-		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio(), periodoRichiesta.get_oraInizio(), periodoRichiesta.get_minutoInizio());
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine(), periodoRichiesta.get_oraFine(), periodoRichiesta.get_minutoFine());
+		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
+		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
 		// Periodo dell'instanza
 		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
 		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio, _oraInizio, _minutoInizio);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine, _oraFine, _minutoFine);
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		// Controllo se periodoRichiesta si sovrapponde con periodo.
 		if(dataInizioPeriodo.compareTo(dataFineRichiesta)<=0 && dataFinePeriodo.compareTo(dataInizioRichiesta) >=0) {
 			esito = true;
@@ -154,11 +135,7 @@ public class Periodo {
 		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
 		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
 		// Controllo se il periodo della instanza segue quello della richiesta.
-		if (
-		   dataInizioPeriodo.get(Calendar.DATE) == dataFineRichiesta.get(Calendar.DATE) &&
-		   dataInizioPeriodo.get(Calendar.MONTH) == dataFineRichiesta.get(Calendar.MONTH) &&
-		   dataInizioPeriodo.get(Calendar.YEAR) == dataFineRichiesta.get(Calendar.YEAR)
-		   ) {
+		if (dataInizioPeriodo.compareTo(dataFineRichiesta)==0) {
 			esito = true;
 		} else {
 			esito = false;
@@ -180,11 +157,7 @@ public class Periodo {
 		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
 		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		// Controllo se il periodo della instanza segue quello della richiesta.
-		if (
-		   dataInizioRichiesta.get(Calendar.DATE) == dataFinePeriodo.get(Calendar.DATE) &&
-		   dataInizioRichiesta.get(Calendar.MONTH) == dataFinePeriodo.get(Calendar.MONTH) &&
-		   dataInizioRichiesta.get(Calendar.YEAR) == dataFinePeriodo.get(Calendar.YEAR)
-		   ) {
+		if (dataInizioRichiesta.compareTo(dataFinePeriodo)==0) {
 			esito = true;
 		} else {
 			esito = false;
@@ -216,8 +189,6 @@ public class Periodo {
 	 * @param periodo
 	 */
 	public void setDataInizioPeriodoDaDataInizioPeriodo(Periodo periodo){
-		this.set_minutoInizio(periodo.get_minutoInizio());
-		this.set_oraInizio(periodo.get_oraInizio());
 		this.set_giornoInizio(periodo.get_giornoInizio());
 		this.set_meseInizio(periodo.get_meseInizio());
 		this.set_annoInizio(periodo.get_annoInizio());
@@ -230,8 +201,6 @@ public class Periodo {
 	 * @param periodo
 	 */
 	public void setDataInizioPeriodoDaDataFinePeriodo(Periodo periodo){
-		this.set_minutoInizio(this.get_minutoInizio());
-		this.set_oraInizio(this.get_oraInizio());
 		this.set_giornoInizio(periodo.get_giornoFine());
 		this.set_meseInizio(periodo.get_meseFine());
 		this.set_annoInizio(periodo.get_annoFine());
@@ -242,9 +211,7 @@ public class Periodo {
 	 * 
 	 * @param periodo
 	 */
-	public void setDataFinePeriodoDaDataFinePeriodo(Periodo periodo){		
-		this.set_minutoFine(periodo.get_minutoFine());
-		this.set_oraFine(periodo.get_oraFine());
+	public void setDataFinePeriodoDaDataFinePeriodo(Periodo periodo){
 		this.set_giornoFine(periodo.get_giornoFine());
 		this.set_meseFine(periodo.get_meseFine());
 		this.set_annoFine(periodo.get_annoFine());
@@ -258,8 +225,6 @@ public class Periodo {
 	 * @param periodo
 	 */
 	public void setDataFinePeriodoDaDataInizioPeriodo(Periodo periodo){
-		this.set_minutoFine(this.get_minutoFine());
-		this.set_oraFine(this.get_oraFine());
 		this.set_giornoFine(periodo.get_giornoInizio());
 		this.set_meseFine(periodo.get_meseInizio());
 		this.set_annoFine(periodo.get_annoInizio());
@@ -272,12 +237,17 @@ public class Periodo {
 	 * @return True se i giorni di inizio sono uguali. False altrimenti.
 	 */
 	public boolean IniziaStessoGiornoInizioDi(Periodo periodo){
-		if (this.get_giornoInizio()==periodo.get_giornoInizio()&&
+		boolean esito;
+		
+		if (    this.get_giornoInizio()==periodo.get_giornoInizio()&&
 				this.get_meseInizio()==periodo.get_meseInizio()&&
-				this.get_annoInizio()==periodo.get_annoInizio()){
-			return true;			
+				this.get_annoInizio()==periodo.get_annoInizio())
+		{
+			esito=true;			
+		} else {
+			esito=false;
 		}
-		return false;
+		return esito;
 	}
 	/**
 	 * Metodo che confronta il giorno di fine dell'istanza su cui è invocato, con quello del periodo passato
@@ -392,60 +362,4 @@ public class Periodo {
 	public void set_giornoInizio(int _giornoInizio) {
 		this._giornoInizio = _giornoInizio;
 	}
-	/**
-	 * @return _oraInizio
-	 */
-	public int get_oraInizio() {
-		return _oraInizio;
-	}
-	/**
-	 * @param _oraInizio
-	 */
-	public void set_oraInizio(int _oraInizio) {
-		this._oraInizio = _oraInizio;
-	}
-	/**
-	 * @param _oraFine
-	 */
-	public void set_oraFine(int _oraFine) {
-		this._oraFine = _oraFine;
-	}
-	/**
-	 * @return _oraFine
-	 */
-	public int get_oraFine() {
-		return _oraFine;
-	}
-	/**
-	 * @param _minutoInizio
-	 */
-	public void set_minutoInizio(int _minutoInizio) {
-		this._minutoInizio = _minutoInizio;
-	}
-	/**
-	 * @return _minutoInizio
-	 */
-	public int get_minutoInizio() {
-		return _minutoInizio;
-	}
-	/**
-	 * @param _minutoFine
-	 */
-	public void set_minutoFine(int _minutoFine) {
-		this._minutoFine= _minutoFine;
-	}
-	/**
-	 * @return _minutoFine
-	 */
-	public int get_minutoFine() {
-		return _minutoFine;
-	}
-	
-	
-	
-
-	
-	
-	
-
 }

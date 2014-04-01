@@ -6,6 +6,8 @@ package com.iHotel.main;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import com.iHotel.model.Utility.MyDate;
+
 /**
  * @author Eugenio
  *
@@ -19,11 +21,9 @@ public class MainDate {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		GregorianCalendar gc1 = new GregorianCalendar();
-		gc1.clear();
 		gc1.set(2014, 0, 11);
 		
-		GregorianCalendar gc2 = new GregorianCalendar();
-		gc2.clear();
+		MyDate gc2 = new MyDate();
 		gc2.set(2014, 0, 10);
 		
 		System.out.println(gc2.compareTo(gc1));
