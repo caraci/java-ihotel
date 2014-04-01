@@ -1,11 +1,11 @@
 package com.iHotel.controller;
 
 import java.io.IOException;
-import java.util.GregorianCalendar;
 
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Utility.MyDate;
 import com.iHotel.view.VFrameHome;
 import com.iHotel.view.GestionePrenotazione.VFGP_InserimentoCodicePrenotazione;
 
@@ -57,7 +57,7 @@ public class CModificaPrenotazione {
      * modificando.
      * @param dataServizio Data per il quale si richiede il servizio interno.
      */
-    public void aggiungiServizio(GregorianCalendar dataServizio){
+    public void aggiungiServizio(MyDate dataServizio){
     	
     }
     /**

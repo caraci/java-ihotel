@@ -2,6 +2,7 @@ package com.iHotel.model.Albergo.Cataloghi;
 
 import java.util.*;
 
+import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
@@ -47,11 +48,10 @@ public class DescrizioneCamera {
 	 */
 	public Prezzo calcolaPrezzoInPeriodo(Periodo periodo) {
 		// Data di inizio della richiesta.
-		GregorianCalendar dataInizio = new GregorianCalendar();
-		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio(),periodo.get_oraInizio(),periodo.get_minutoInizio());
-		// Data di fine della richiesta.
-		GregorianCalendar dataFine= new GregorianCalendar();
-		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine(),periodo.get_oraFine(),periodo.get_minutoFine());
+		MyDate dataInizio = new MyDate();
+		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
+		MyDate dataFine= new MyDate();
+		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
 					
 		// Variabili nelle quali si andranno a memorizzare i totali.
 		double totaleCameraGiorno=0;
@@ -82,7 +82,7 @@ public class DescrizioneCamera {
 	 * @param data Giorno in cui bisogna calcolare il prezzo della camera
 	 * @return Prezzo della camera in un giorno.
 	 */
-	private double calcolaPrezzoGiorno(ArrayList<PrezzoCamera> prezziCamera, GregorianCalendar data){	
+	private double calcolaPrezzoGiorno(ArrayList<PrezzoCamera> prezziCamera, MyDate data){	
 		// Creo un periodo con data inizio uguale a data fine
 		Periodo periodo= new Periodo();
 		periodo.setDataInizioDaData(data);	

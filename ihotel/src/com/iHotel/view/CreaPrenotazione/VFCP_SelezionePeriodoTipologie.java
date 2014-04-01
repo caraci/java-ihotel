@@ -7,12 +7,12 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.model.Utility.MyDate;
 import com.iHotel.view.View;
 
 import net.sourceforge.jdatepicker.*;
@@ -189,10 +189,10 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 				int giornoFine 	 = get_datePanelFine().getModel().getDay();
 				
 				// Data inizio
-				GregorianCalendar dataInizio = new GregorianCalendar();
+				MyDate dataInizio = new MyDate();
 				dataInizio.set(annoInizio, meseInizio, giornoInizio);
 				// Data fine
-				GregorianCalendar dataFine = new GregorianCalendar();
+				MyDate dataFine = new MyDate();
 				dataFine.set(annoFine, meseFine, giornoFine);		
 				// Recupero il controllore e invoco il metodo per cercare le camere libere.
 				CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();

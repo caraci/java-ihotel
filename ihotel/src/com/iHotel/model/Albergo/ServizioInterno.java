@@ -3,7 +3,8 @@
  */
 package com.iHotel.model.Albergo;
 
-import java.util.GregorianCalendar;
+import com.iHotel.model.Utility.MyDate;
+
 
 
 /**
@@ -14,7 +15,7 @@ public class ServizioInterno {
 	
 	/*----------------------- Attributi e costruttore -----------------------*/
 	private String _codice;
-	private GregorianCalendar _data;
+	private MyDate _data;
 	
 	public ServizioInterno(){}
 	
@@ -36,14 +37,14 @@ public class ServizioInterno {
 	/**
 	 * @return the _data
 	 */
-	public GregorianCalendar get_data() {
+	public MyDate get_data() {
 		return _data;
 	}
 
 	/**
 	 * @param _data the _data to set
 	 */
-	public void set_data(GregorianCalendar _data) {
+	public void set_data(MyDate _data) {
 		this._data = _data;
 	}
 

@@ -1,9 +1,10 @@
 package com.iHotel.model.Albergo.Cataloghi;
 
-import java.util.GregorianCalendar;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Prezzo;
 
 public class DescrizioneServizioInterno {
@@ -23,7 +24,7 @@ public class DescrizioneServizioInterno {
 	 * @param periodoRichiesta Periodo per il quale si vuole conoscere il prezzo del servizio.
 	 * @return Prezzo del servizio nel periodo.
 	 */
-	public Prezzo getPrezzoInData(GregorianCalendar dataServizio) {
+	public Prezzo getPrezzoInData(MyDate dataServizio) {
 		Prezzo prezzo = null;
 		// Ciclo su tutti i prezzi del servizio.
 		for (Iterator<PrezzoServizioInterno> iterator = _prezziServizio.iterator(); iterator.hasNext();) {

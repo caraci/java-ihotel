@@ -1,10 +1,6 @@
 package com.iHotel.model.Utility;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-import com.iHotel.utility.UDefaultLoader;
 
 public class Periodo {
 
@@ -20,16 +16,7 @@ public class Periodo {
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */	
-	public Periodo() {
-		/*
-		 * Si prendono minutoInizio, oraInizio, minutoFine e oraFine dal defaultLoader, togliendo dalla classe  
-		 * MPeriodo la responsabilità di recuperare i dati di default.
-		 */
-		
-		UDefaultLoader defaultLoader = UDefaultLoader.getInstance();
-		ArrayList<Integer> orarioDefault = new ArrayList<Integer>();
-		orarioDefault = defaultLoader.getMinutoOraInizioMinutoOraFine();
-	}
+	public Periodo() {}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro coincide esattamente con il periodo relativo 
@@ -40,19 +27,13 @@ public class Periodo {
 	public boolean coincideCon(Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
-		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
-		// Azzero i parametri delle date della richiesta.
-		dataInizioRichiesta.clear();
-		dataFineRichiesta.clear();
+		MyDate dataInizioRichiesta = new MyDate();
+		MyDate dataFineRichiesta = new MyDate();
 		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
 		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
 		// Periodo dell'instanza
-		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
-		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
-		// Azzero i parametri delle date della richiesta.
-		dataInizioPeriodo.clear();
-		dataFinePeriodo.clear();
+		MyDate dataInizioPeriodo = new MyDate();
+		MyDate dataFinePeriodo = new MyDate();
 		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
 		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		// Controllo se il periodoRichiesta coincide con il periodo dell'istanza
@@ -74,16 +55,13 @@ public class Periodo {
 	public boolean contiene (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
-		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
-		// Azzero i parametri delle date della richiesta.
-		dataInizioRichiesta.clear();
-		dataFineRichiesta.clear();
+		MyDate dataInizioRichiesta = new MyDate();
+		MyDate dataFineRichiesta = new MyDate();
 		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
 		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
 		// Periodo dell'instanza
-		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
-		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
+		MyDate dataInizioPeriodo = new MyDate();
+		MyDate dataFinePeriodo = new MyDate();
 		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
 		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		// Controllo se il periodoRichiesta è contenuto in periodo.
@@ -103,13 +81,13 @@ public class Periodo {
 	public boolean sovrappone (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
-		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
+		MyDate dataInizioRichiesta = new MyDate();
+		MyDate dataFineRichiesta = new MyDate();
 		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
 		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
 		// Periodo dell'instanza
-		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
-		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
+		MyDate dataInizioPeriodo = new MyDate();
+		MyDate dataFinePeriodo = new MyDate();
 		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
 		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		// Controllo se periodoRichiesta si sovrapponde con periodo.
@@ -129,10 +107,10 @@ public class Periodo {
 	public boolean segue (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		GregorianCalendar dataFineRichiesta = new GregorianCalendar();
+		MyDate dataFineRichiesta = new MyDate();
 		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
 		// Periodo dell'instanza
-		GregorianCalendar dataInizioPeriodo = new GregorianCalendar();
+		MyDate dataInizioPeriodo = new MyDate();
 		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
 		// Controllo se il periodo della instanza segue quello della richiesta.
 		if (dataInizioPeriodo.compareTo(dataFineRichiesta)==0) {
@@ -151,10 +129,10 @@ public class Periodo {
 	public boolean anticipa (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		GregorianCalendar dataInizioRichiesta = new GregorianCalendar();
+		MyDate dataInizioRichiesta = new MyDate();
 		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
 		// Periodo dell'instanza
-		GregorianCalendar dataFinePeriodo = new GregorianCalendar();
+		MyDate dataFinePeriodo = new MyDate();
 		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
 		// Controllo se il periodo della instanza segue quello della richiesta.
 		if (dataInizioRichiesta.compareTo(dataFinePeriodo)==0) {
@@ -237,12 +215,15 @@ public class Periodo {
 	 * @return True se i giorni di inizio sono uguali. False altrimenti.
 	 */
 	public boolean IniziaStessoGiornoInizioDi(Periodo periodo){
-		boolean esito;
-		
-		if (    this.get_giornoInizio()==periodo.get_giornoInizio()&&
-				this.get_meseInizio()==periodo.get_meseInizio()&&
-				this.get_annoInizio()==periodo.get_annoInizio())
-		{
+		boolean esito;	
+		// Periodo richiesta
+		MyDate dataInizioRichiesta = new MyDate();
+		dataInizioRichiesta.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
+		// Periodo dell'instanza
+		MyDate dataInizioPeriodo = new MyDate();
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		// Controllo
+		if (dataInizioRichiesta.compareTo(dataInizioPeriodo)==0) {
 			esito=true;			
 		} else {
 			esito=false;
@@ -256,19 +237,27 @@ public class Periodo {
 	 * @return True se i periodi finiscono lo stesso giorno. False altrimenti.
 	 */
 	public boolean FinisceStessoGiornoFineDi(Periodo periodo){
-		if(this.get_giornoFine()==periodo.get_giornoFine()&&
-				this.get_meseFine()==periodo.get_meseFine()&&
-				this.get_annoFine()==periodo.get_annoFine()){
-			return true;
+		boolean esito;	
+		// Periodo richiesta
+		MyDate dataFineRichiesta = new MyDate();
+		dataFineRichiesta.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
+		// Periodo dell'instanza
+		MyDate dataFinePeriodo = new MyDate();
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		// Controllo
+		if (dataFineRichiesta.compareTo(dataFinePeriodo)==0) {
+			esito=true;
+		} else {
+			esito=false;
 		}
-		return false;
+		return esito;
 	}
 	/**
 	 * Metodo per settare la data di inizio del periodo da una data.
 	 * 
 	 * @param data Data attraverso la quale si setta l'inizio del periodo.
 	 */
-	public void setDataInizioDaData (GregorianCalendar data) {
+	public void setDataInizioDaData (MyDate data) {
 		this.set_giornoInizio(data.get(Calendar.DATE));
 		this.set_meseInizio(data.get(Calendar.MONTH));
 		this.set_annoInizio(data.get(Calendar.YEAR));
@@ -278,7 +267,7 @@ public class Periodo {
 	 * 
 	 * @param data Data attraverso la quale si setta la fine del periodo.
 	 */
-	public void setDataFineDaData(GregorianCalendar data) {
+	public void setDataFineDaData(MyDate data) {
 		this.set_giornoFine(data.get(Calendar.DATE));
 		this.set_meseFine(data.get(Calendar.MONTH));
 		this.set_annoFine(data.get(Calendar.YEAR));

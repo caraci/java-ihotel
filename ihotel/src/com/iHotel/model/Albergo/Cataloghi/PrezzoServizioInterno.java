@@ -1,6 +1,5 @@
 package com.iHotel.model.Albergo.Cataloghi;
 
-import java.util.GregorianCalendar;
 
 import com.iHotel.model.Utility.*;
 
@@ -17,11 +16,9 @@ public class PrezzoServizioInterno {
 	 * @param periodoRichiesta Periodo di richiesta
 	 * @return Prezzo relativo al servizo se il periodo è valido. Null altrimenti.
 	 */
-	public Prezzo getPrezzoInData(GregorianCalendar dataServizio) {
+	public Prezzo getPrezzoInData(MyDate dataServizio) {
 		Prezzo prezzo = null;
-		if(_periodo.contieneData(dataServizio)) {
-			prezzo=_prezzo;
-		}
+		
 		return prezzo;
 	}
 	

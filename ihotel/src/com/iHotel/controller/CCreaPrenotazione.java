@@ -5,6 +5,7 @@ import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.VFrameHome;
@@ -13,7 +14,6 @@ import com.iHotel.view.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.Iterator;
 
 public class CCreaPrenotazione {
@@ -81,7 +81,7 @@ public class CCreaPrenotazione {
 	 * @param DataFine Data di fine ricerca
 	 * @param Tipologie Tipologie di camere da ricercare.
 	 */
-	public void cercaCamereLibere(GregorianCalendar dataInizio, GregorianCalendar dataFine, ArrayList<String> Tipologie) {
+	public void cercaCamereLibere(MyDate dataInizio, MyDate dataFine, ArrayList<String> Tipologie) {
 		
 		/* Setto il periodo ricevuto dall'interfaccia */
 		Periodo periodo = new Periodo();

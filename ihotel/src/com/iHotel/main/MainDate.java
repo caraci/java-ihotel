@@ -4,7 +4,6 @@
 package com.iHotel.main;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import com.iHotel.model.Utility.MyDate;
 
@@ -20,7 +19,7 @@ public class MainDate {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		GregorianCalendar gc1 = new GregorianCalendar();
+		MyDate gc1 = new MyDate();
 		gc1.set(2014, 0, 11);
 		
 		MyDate gc2 = new MyDate();
