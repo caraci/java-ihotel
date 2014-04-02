@@ -25,10 +25,15 @@ public class VFGP_InserimentoCodicePrenotazione extends View {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/*Content pane*/
 	private JPanel contentPane;
-	private JPanel panelTop,panelMiddle, panelBottom;
+	/*Panel*/
+	private JPanel panelTop, panelMiddle, panelBottom;
+	/*Label*/
 	private JLabel _labelInstruction;
+	/*TextField*/
 	private JTextField _txtReservationCode;
+	/*Button*/
 	private JButton _btnReservationRecover;
 	private String _codicePrenotazione;
 	
@@ -51,6 +56,36 @@ public class VFGP_InserimentoCodicePrenotazione extends View {
 		return instance;
 	}
 	
+	private void addTopPanel(){
+		_labelInstruction = new JLabel();
+		_labelInstruction.setText("Inserisci qui sotto il codice della prenotazione che vuoi cercare");		
+		panelTop = new JPanel();
+		panelTop.setLayout(new GridLayout(1, 1, 10, 10));
+		panelTop.add(_labelInstruction);
+		contentPane.add(panelTop);
+	}
+	
+	private void addMiddlePanel(){
+		_txtReservationCode = new JTextField();
+		_txtReservationCode.setFocusable(true);
+		panelMiddle =new JPanel();
+		panelMiddle.setLayout(new GridLayout(1, 1, 10, 10));		
+		panelMiddle.add(_txtReservationCode);
+		contentPane.add(panelMiddle);
+		
+	}
+	
+	private void addButtomPanel(){
+		
+		_btnReservationRecover = new JButton();
+		_btnReservationRecover.setText("Cerca prenotazione");		
+		panelBottom = new JPanel();
+		panelBottom.setLayout(new GridLayout(1, 1, 10, 10));
+		panelBottom.add(_btnReservationRecover);
+		contentPane.add(panelBottom);
+		
+	}
+	
 	public void creaFrame(){
 		// Imposto il titolo e l'operazione in chiusura alla finestra
 		setTitle("iHotel - Gestione Prenotazione - Inserimento codice per recuperare la prenotazione");
@@ -58,36 +93,23 @@ public class VFGP_InserimentoCodicePrenotazione extends View {
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
 		setBounds(50, 50, 800, 400);
 		
+		
 		// setto i valori dell'etichetta, metto il cursore sul campo di testo e impongo il testo del pulsante
-		_labelInstruction = new JLabel();
-		_labelInstruction.setText("Inserisci qui sotto il codice della prenotazione che vuoi cercare");
 		
-		_txtReservationCode = new JTextField();
-		_txtReservationCode.setFocusable(true);
 		
-		_btnReservationRecover = new JButton();
-		_btnReservationRecover.setText("Cerca prenotazione");
 		
-		panelTop = new JPanel();
-		panelTop.setLayout(new GridLayout(1, 1, 10, 10));
-		panelTop.add(_labelInstruction);
 		
-		panelMiddle =new JPanel();
-		panelMiddle.setLayout(new GridLayout(1, 1, 10, 10));		
-		panelMiddle.add(_txtReservationCode);
-		
-		panelBottom = new JPanel();
-		panelBottom.setLayout(new GridLayout(1, 1, 10, 10));
-		panelBottom.add(_btnReservationRecover);
 		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(3, 1, 10,10));		
 				
-		contentPane.add(panelTop);
-		contentPane.add(panelMiddle);
-		contentPane.add(panelBottom);
+		addTopPanel();
+		addMiddlePanel();
+		addButtomPanel();
+		
+		
 		
 		//listener al _btnReservationRecover
 		_btnReservationRecover.addMouseListener(new MouseAdapter() {

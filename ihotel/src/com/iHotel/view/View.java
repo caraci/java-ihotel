@@ -16,11 +16,11 @@ import com.iHotel.view.Access.ViewFactory;
 public class View extends JFrame {
 	
 	/* Factory */
-	protected StyleAbstractFactory _creaPrenotazioneFactory;
+	protected StyleAbstractFactory _viewFactory;
 	
 	protected View(){
 		// Richiedo la factory corretta.
-		_creaPrenotazioneFactory=ViewFactory.getInstance().getStyleFactory();
+		_viewFactory=ViewFactory.getInstance().getStyleFactory();
 	}
 
 }
