@@ -34,9 +34,9 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 	/* Panel */
     private JPanel panelFinale;
     /* JList */
-    private ArrayList<JLabel> lblNumeriCamereDisponibili = new ArrayList<JLabel>();
+    private ArrayList<JLabel> lblNumeriCamereDisponibili;
     /* JButton */
-    private ArrayList<JButton> btnNumeriCamereDisponibili = new ArrayList<JButton>();
+    private ArrayList<JButton> btnNumeriCamereDisponibili;
     private JButton btnCompletaPrenotazione;
     /* JLabel */
     private JLabel lblNome, lblCognome, lbleMail, lblTelefono, lblPrezzoTotale, lblPrezzoScritto;
@@ -52,6 +52,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 	 */
 	private VFCP_SelezioneCamereDatiOspite_Observer() {
 		super();
+		lblNumeriCamereDisponibili= new ArrayList<JLabel>();
+		btnNumeriCamereDisponibili= new ArrayList<JButton>();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.

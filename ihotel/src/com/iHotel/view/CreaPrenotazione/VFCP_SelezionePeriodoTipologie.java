@@ -32,7 +32,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
     /* JDatePanel */
     private JDatePanel _datePanelFine, _datePanelInizio;
     /* CheckBoxes */
-    private JCheckBox[] _checkBoxesTipologie;
+    private ArrayList<JCheckBox> _checkBoxesTipologie = new ArrayList<JCheckBox>();
     
 	
     /**
@@ -58,11 +58,12 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelTopLeft() {
 		// PanelTopLeft
-		_panelTopLeft = _creaPrenotazioneFactory.getPanel();
+		_panelTopLeft = _viewFactory.getPanel();
 		_panelTop.add(_panelTopLeft);
 		_panelTopLeft.setLayout(new BoxLayout(_panelTopLeft, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
-		JLabel lblDataDiInizio = new JLabel("Data di inizio:");
+		JLabel lblDataDiInizio = _viewFactory.getLabel();
+		lblDataDiInizio.setText("Data di inizio:");
 		_panelTopLeft.add(lblDataDiInizio);
 		// Spaziatore 
 		_panelTopLeft.add(Box.createVerticalGlue());
@@ -75,11 +76,12 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelTopRight() {
 		// PanelTopRight
-		_panelTopRight = _creaPrenotazioneFactory.getPanel();
+		_panelTopRight = _viewFactory.getPanel();
 		_panelTop.add(_panelTopRight);
 		_panelTopRight.setLayout(new BoxLayout(_panelTopRight, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
-		JLabel lblDataDiFine = new JLabel("Data di fine:");
+		JLabel lblDataDiFine = _viewFactory.getLabel();
+		lblDataDiFine.setText("Data di fine:");
 		_panelTopRight.add(lblDataDiFine);
 		// Spaziatore 
 		_panelTopRight.add(Box.createVerticalGlue());
@@ -93,34 +95,37 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelBottomLeft(ArrayList<String> tipologieCamere) {
 		// PanelBottomLeft
-		_panelBottomLeft = _creaPrenotazioneFactory.getPanel();
+		_panelBottomLeft = _viewFactory.getPanel();
 		_panelBottom.add(_panelBottomLeft);
 		// Layout PanelBottomLeft
 		_panelBottomLeft.setLayout(new BoxLayout(_panelBottomLeft, BoxLayout.PAGE_AXIS));
 		// Label Tipologie
-		JLabel lblTipologie = new JLabel("Tipologie:");
+		JLabel lblTipologie = _viewFactory.getLabel();
+		lblTipologie.setText("Tipologie:");
 		_panelBottomLeft.add(lblTipologie);
 		// Spaziatura dinamica
 		_panelBottomLeft.add(Box.createVerticalGlue());
-		
 		// Creo i checkBoxes e li aggiungo al panelBottomLeft
 		int numero_tipologie = tipologieCamere.size();
-		_checkBoxesTipologie = new JCheckBox[numero_tipologie];
-		for (int i = 0; i < tipologieCamere.size(); i++) {
+		
+		
+		for (int i = 0; i<numero_tipologie;i++){
+			_checkBoxesTipologie.add(_viewFactory.getCheckBox());
 			String tipologia = tipologieCamere.get(i);
-			_checkBoxesTipologie[i] = new JCheckBox();
-			_checkBoxesTipologie[i].setText(tipologia);
-			_panelBottomLeft.add(_checkBoxesTipologie[i]);
-			// Spaziatura dinamica
+			_checkBoxesTipologie.get(i).setText(tipologia);
+			_panelBottomLeft.add(_checkBoxesTipologie.get(i));
 			_panelBottomLeft.add(Box.createVerticalGlue());
-		}
+			
+					
+		}			
+		
 	}
 	/**
 	 * Metodo per aggiungere la porzione di finestra in basso a destra.
 	 */
 	private void addPanelBottomRight() {
 		// PanelBottomRight
-		_panelBottomRight = _creaPrenotazioneFactory.getPanel();
+		_panelBottomRight = _viewFactory.getPanel();
 		_panelBottom.add(_panelBottomRight);
 		// Layout PanelBottomRight
 		_panelBottomRight.setLayout(new BorderLayout(0, 0));
@@ -172,11 +177,11 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 				ArrayList<String> tipologieSelezionate = new ArrayList<String>();
 				boolean tipologiaStato;
 				// Controllo lo stato di tutte le CheckBox per verificare le tipologie inserite dall'utente
-				for (int i = 0; i < get_checkBoxesTipologie().length; i++) {
-					tipologiaStato=get_checkBoxesTipologie()[i].isSelected();
+				for (int i = 0; i < get_checkBoxesTipologie().size(); i++) {
+					tipologiaStato=get_checkBoxesTipologie().get(i).isSelected();
 					if (tipologiaStato) {
 						// Aggiungo le tipologie scelte dall'utente
-						tipologieSelezionate.add(get_checkBoxesTipologie()[i].getText());
+						tipologieSelezionate.add(get_checkBoxesTipologie().get(i).getText());
 					}	
 				}
 				// Data inizio
@@ -228,13 +233,13 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	/**
 	 * @return the _checkBoxesTipologie
 	 */
-	public JCheckBox[] get_checkBoxesTipologie() {
+	public ArrayList<JCheckBox> get_checkBoxesTipologie() {
 		return _checkBoxesTipologie;
 	}
 	/**
 	 * @param _checkBoxesTipologie the _checkBoxesTipologie to set
 	 */
-	public void set_checkBoxesTipologie(JCheckBox[] _checkBoxesTipologie) {
+	public void set_checkBoxesTipologie(ArrayList<JCheckBox> _checkBoxesTipologie) {
 		this._checkBoxesTipologie = _checkBoxesTipologie;
 	}
 	

@@ -3,8 +3,11 @@
  */
 package com.iHotel.view.Access;
 
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  * @author Eugenio
@@ -12,5 +15,8 @@ import javax.swing.JPanel;
  */
 public interface StyleAbstractFactory {
 	public JPanel getPanel();
-	public JLabel gelLabel();
+	public JLabel getLabel();
+	public JButton getButton();
+	public JTextField getTextField();
+	public JCheckBox getCheckBox();
 }

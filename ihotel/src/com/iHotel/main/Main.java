@@ -2,6 +2,7 @@ package com.iHotel.main;
 
 import com.iHotel.utility.UStartup;
 import com.iHotel.view.VFrameHome;
+import com.iHotel.view.Access.ViewHandler;
 
 public class Main {
 	/**
@@ -15,6 +16,7 @@ public class Main {
 		// Apro il frame iniziale.
 		VFrameHome frameHome = VFrameHome.getInstance();
 		frameHome.creaFrame();
-		frameHome.setVisible(true);			
+		//Passo l'interfaccia all'oggetto che la visualizzerà 
+		ViewHandler.getInstance().showFrame(frameHome);
 	}
 }

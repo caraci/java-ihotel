@@ -6,8 +6,8 @@ import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.MyDate;
-import com.iHotel.view.VFrameHome;
-import com.iHotel.view.GestionePrenotazione.VFGP_InserimentoCodicePrenotazione;
+import com.iHotel.view.Access.ViewHandler;
+import com.iHotel.view.GestionePrenotazione.VFGP_RicercaPrenotazioneDaCodice;
 
 public class CModificaPrenotazione {
 	
@@ -78,10 +78,10 @@ public class CModificaPrenotazione {
      * @throws IOException
      */
 	public void gestionePrenotazione() throws IOException {
-		VFrameHome.getInstance().setVisible(false);
-		VFGP_InserimentoCodicePrenotazione frameInserimentoCodicePrenotazione = VFGP_InserimentoCodicePrenotazione.getInstance();
+		
+		VFGP_RicercaPrenotazioneDaCodice frameInserimentoCodicePrenotazione = VFGP_RicercaPrenotazioneDaCodice.getInstance();
 		frameInserimentoCodicePrenotazione.creaFrame();
-		frameInserimentoCodicePrenotazione.setVisible(true);
+		ViewHandler.getInstance().showFrame(frameInserimentoCodicePrenotazione);
 	}
 	/**
 	 * Metodo per mostrare l'interfaccia per la gestione della prenotazione, relativa al codice fornito.
