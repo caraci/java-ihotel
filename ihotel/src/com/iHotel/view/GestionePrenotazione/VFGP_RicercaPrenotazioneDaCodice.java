@@ -13,12 +13,13 @@ import javax.swing.border.EmptyBorder;
 
 import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.view.View;
+import com.iHotel.view.Access.ViewFactory;
 
 /**
  * @author Alessandro
  *
  */
-public class VFGP_InserimentoCodicePrenotazione extends View {
+public class VFGP_RicercaPrenotazioneDaCodice extends View {
 	
 	/**
 	 * 
@@ -38,26 +39,26 @@ public class VFGP_InserimentoCodicePrenotazione extends View {
 	private String _codicePrenotazione;
 	
 	
-	private static VFGP_InserimentoCodicePrenotazione instance = null;
+	private static VFGP_RicercaPrenotazioneDaCodice instance = null;
 	
 	/**
 	 * Costruttore privato
 	 */
-	private VFGP_InserimentoCodicePrenotazione() {};	
+	private VFGP_RicercaPrenotazioneDaCodice() {};	
 	
 	/**
 	 * Metodo che consente di avere una sola istanza della schermata
 	 * @return
 	 */
-	public static VFGP_InserimentoCodicePrenotazione getInstance(){
+	public static VFGP_RicercaPrenotazioneDaCodice getInstance(){
 		if (instance == null){
-			instance = new VFGP_InserimentoCodicePrenotazione();
+			instance = new VFGP_RicercaPrenotazioneDaCodice();
 		}
 		return instance;
 	}
 	
 	private void addTopPanel(){
-		_labelInstruction = new JLabel();
+		_labelInstruction = _viewFactory.getLabel();
 		_labelInstruction.setText("Inserisci qui sotto il codice della prenotazione che vuoi cercare");		
 		panelTop = new JPanel();
 		panelTop.setLayout(new GridLayout(1, 1, 10, 10));
@@ -95,9 +96,6 @@ public class VFGP_InserimentoCodicePrenotazione extends View {
 		
 		
 		// setto i valori dell'etichetta, metto il cursore sul campo di testo e impongo il testo del pulsante
-		
-		
-		
 		
 		
 		contentPane = new JPanel();
