@@ -13,18 +13,13 @@ import javax.swing.border.EmptyBorder;
 
 import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.view.View;
-import com.iHotel.view.Access.ViewFactory;
 
 /**
  * @author Alessandro
  *
  */
+@SuppressWarnings("serial")
 public class VFGP_RicercaPrenotazioneDaCodice extends View {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	/*Content pane*/
 	private JPanel contentPane;

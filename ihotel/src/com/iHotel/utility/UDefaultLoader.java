@@ -61,39 +61,6 @@ public class UDefaultLoader {
 		return attributiAlbergo;	
 	}
 	/**
-	 * Metodo per andare a leggere in un file di configurazione i valori relativi a minuto inizio, ora inizio, minuto fine
-	 * e ora fine della classe MPeriodo.
-	 * 
-	 * @return Collezione contenente minuto inizio, ora inizio, minuto fine, ora fine.
-	 */
-	public ArrayList<Integer> getMinutoOraInizioMinutoOraFine(){
-		// Variabili nelle quali andremo a memorizzare gli attributi del periodo.
-		String minutoInizioStr, oraInizioStr, minutoFineStr, oraFineStr;
-		// Ricavo il path assoluto.
-		String filePath = new File("").getAbsolutePath();
-		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "periodo.txt"))) {  
-			// Inizializzo gli attributi
-			minutoInizioStr = albergoReader.readLine();
-			oraInizioStr = albergoReader.readLine();
-			minutoFineStr = albergoReader.readLine();
-			oraFineStr = albergoReader.readLine();
-		} catch (IOException e) {
-			minutoInizioStr = "0";
-			oraInizioStr = "16";
-			minutoFineStr = "0";
-			oraFineStr = "10";
-        } 
-		ArrayList<Integer> attributiPeriodo = new ArrayList<Integer>();
-		// Aggiungi gli attributi all'ArrayList di interi.
-		attributiPeriodo.add(Integer.parseInt(minutoInizioStr));
-		attributiPeriodo.add(Integer.parseInt(oraInizioStr));
-		attributiPeriodo.add(Integer.parseInt(minutoFineStr));
-		attributiPeriodo.add(Integer.parseInt(oraFineStr));
-		
-		return attributiPeriodo;
-	}
-	/**
 	 * Metodo per andare a leggere in un file di configurazione che tipo di stile vogliamo assegnare all'interfaccia.
 	 * 
 	 * @return Stringa contenente lo stile da utilizzare.
@@ -104,9 +71,9 @@ public class UDefaultLoader {
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "interfaccia.txt"))) {  
+		try (BufferedReader interfacciaReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "interfaccia.txt"))) {  
 			// Inizializzo gli attributi
-			stile = albergoReader.readLine();
+			stile = interfacciaReader.readLine();
 		} catch (IOException e) {
 			stile = "light";
         }
@@ -123,10 +90,10 @@ public class UDefaultLoader {
 			// Ricavo il path assoluto.
 			String filePath = new File("").getAbsolutePath();
 			// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-			try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "albergo.txt"))) {  
+			try (BufferedReader sistemiEsterniReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "sistemiEsterni.txt"))) {  
 				// Inizializzo gli attributi
-				payTvSystem = albergoReader.readLine();
-				telephoneSystem = albergoReader.readLine();
+				payTvSystem = sistemiEsterniReader.readLine();
+				telephoneSystem = sistemiEsterniReader.readLine();
 			} catch (IOException e) {
 				payTvSystem = "Sky";
 				telephoneSystem = "Telecom";

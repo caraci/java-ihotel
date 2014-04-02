@@ -38,7 +38,7 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 
 	@Override
 	public JLabel getLabel() {
-		JLabel label= new JLabel();
+		JLabel label = new JLabel();
 		label.setBackground(new Color(30, 30, 30));
 		label.setForeground(new Color(255,255,255));
 		return label;

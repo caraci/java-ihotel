@@ -46,23 +46,23 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	
 	@Override
 	public JLabel getLabel() {
-		// TODO Auto-generated method stub
-		return null;
+		JLabel label = new JLabel();
+		return label;
 	}
 	@Override
 	public JButton getButton() {
-		// TODO Auto-generated method stub
-		return null;
+		JButton button = new JButton();
+		return button;
 	}
 	@Override
 	public JTextField getTextField() {
-		// TODO Auto-generated method stub
-		return null;
+		JTextField text = new JTextField();
+		return text;
 	}
 	@Override
 	public JCheckBox getCheckBox() {
-		// TODO Auto-generated method stub
-		return null;
+		JCheckBox checkBox = new JCheckBox();
+		return checkBox;
 	}
 
 }

@@ -20,12 +20,20 @@ public class ServiceFactory {
 		// Ricavo da file di configurazione i sistemi esterni dei servizi da utilizzare.
 		ArrayList<String> sistemiServiziEsterni = UDefaultLoader.getInstance().getSistemiServiziEsterni();
 		// Sistema payTv
-		if(sistemiServiziEsterni.get(0).equals("Sky")) {
+		switch (sistemiServiziEsterni.get(0)) {
+		case "Sky":
 			_payTvAdapter = new SkyTvAdapter();
+			break;
+		default:
+			break;
 		}
 		// Sistema Telefono
-		if(sistemiServiziEsterni.get(1).equals("Telecom")) {
+		switch (sistemiServiziEsterni.get(1)) {
+		case "Telecom":
 			_telephoneAdapter = new TelecomAdapter();
+			break;
+		default:
+			break;
 		}
 	}
 	

@@ -50,13 +50,12 @@ public class Albergo {
         _eMail=informazioniAlbergo.get(3);
         // Ricavo dalla factory tutti i sistemi esterni addetti alla gestione dei servizi.
         _sistemiServiziEsterni=ServiceFactory.getInstance().getSistemiServiziEsterni();
-
 	}
 	
 	/* ----------------------------- Metodi di classe -----------------------*/
 	
 	/**
-	 * 
+	 * Metodo per ottenere l'unica instanza di questa classe - Pattern Singleton
 	 * @return instance
 	 * @throws IOException 
 	 */

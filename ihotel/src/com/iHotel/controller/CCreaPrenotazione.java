@@ -9,6 +9,7 @@ import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.VFrameHome;
+import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
 import com.iHotel.view.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
 
@@ -147,6 +148,10 @@ public class CCreaPrenotazione {
 		} catch(Exception e) {
 			// TODO
 		}
+		// Torno alla schermata iniziale.
+		VFrameHome frameHome = VFrameHome.getInstance();
+		frameHome.creaFrame();
+		ViewHandler.getInstance().showFrame(frameHome);
 	}
 	/* -------------------------- Getter, Setter -------------------- */
 	/**
