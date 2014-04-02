@@ -90,17 +90,19 @@ public class Albergo {
 		return cameraRicercata;
 	}
 	/**
-	 * Restituisce una lista di camere libere data una tipologia e un periodo.
+	 * Restituisce una lista di camere libere di una tipologia e in un periodo.
 	 * 
-	 * @param periodo il periodo per cui si vogliono ricercare le camere libere
-	 * @param tipologia è la tipologia delle camere da ricercare
-	 * @return lista_camere lista contenente le camere libere della tipologia indicata, nel periodo indicato
+	 * @param periodo Periodo per cui si vogliono ricercare le camere libere.
+	 * @param tipologia Tipologia delle camere da ricercare.
+	 * @return Lista contenente le camere libere della tipologia indicata, nel periodo indicato.
 	 */
 	public ArrayList<CameraContext> cercaCamereLibereInPeriodoDaTipologia(Periodo periodo, String tipologia){
 		ArrayList<CameraContext> lista_camere = new ArrayList<CameraContext>();
 		for (Iterator<CameraContext> iterator = _camere.iterator(); iterator.hasNext();) {
 			CameraContext camera = iterator.next();
+			// Controllo se la tipologia della camera è uguale a quella per cui stiamo cercando informazioni
 			if (camera.get_tipologia().equals(tipologia)){
+				// Controllo se la camera è libera nel periodo richiesto.
 				if(camera.isLiberaInPeriodo(periodo)==true){
 					lista_camere.add(camera);
 				}
