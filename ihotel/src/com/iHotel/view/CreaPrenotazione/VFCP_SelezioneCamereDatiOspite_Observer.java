@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import com.iHotel.controller.CCreaPrenotazione;
@@ -77,22 +78,17 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
      * 
      * @param arrayListCamere Struttura dati contenente tipologia della camera e numeri di camera.
      */
-    private void addColonnaTipologiaCamere(ArrayList<CameraContext> arrayListCamere) {
-    	String tipologia;
+    private void addColonnaTipologiaCamere(String tipologia, ArrayList<CameraContext> arrayListCamere) {
 	// Creo una colonna per mostrare i risultati della tipologia di camere
 		JPanel panelColonna = new JPanel();
 		panelColonna.setLayout(new  BoxLayout(panelColonna, BoxLayout.PAGE_AXIS));
 		contentPane.add(panelColonna);  		
-	// Ricavo la tipologia dell'ArrayList relativo alle camere di una certa tipologia.
-		tipologia = arrayListCamere.get(0).get_tipologia();
 	// Aggiungo la label relativo alla tipologia alla colonna
 		JLabel lblTipologia = new JLabel();
 		lblTipologia.setText(tipologia + ":");
 		panelColonna.add(lblTipologia);
 	// Aggiungo spaziatura statica
 		panelColonna.add(Box.createRigidArea(new Dimension(0,20)));
-	//Rimuovo la tipologia dall'ArrayList.
-		arrayListCamere.remove(0);
 	// Ciclo sull'arrayList di String contenenti i numeri di camere ed aggiungo i numeri all'array di String creato sopra.
 		for (Iterator<CameraContext> iterator = arrayListCamere.iterator(); iterator.hasNext();) {
 			CameraContext cameraContext = (CameraContext) iterator.next();
@@ -172,7 +168,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     /**
      * Metodo per creare il frame.
      */
-    public void creaFrame(ArrayList<ArrayList<CameraContext>> camereDisponibili) {
+    public void creaFrame(HashMap<String, ArrayList<CameraContext>> camereDisponibili) {
     	// Imposto il titolo e l'operazione in chiusura alla finestra
     		setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -187,12 +183,13 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 			int numeroColonne = numeroTipologie + 1;
     	// Setto Layout con il numero di colonne ricavato sulla base del risultato e con una riga.
 			contentPane.setLayout(new GridLayout(1, numeroColonne, 0, 0));
-    	// Ciclo sull'array di array di camere
-	    	for (Iterator<ArrayList<CameraContext>> iteratorArrayCamere = camereDisponibili.iterator(); iteratorArrayCamere.hasNext();) {
-	    		// In ogni arrayList abbiamo in prima posizione la stringa relativa alla tipologia, e successivamente i numeri di stanza.
-	    		ArrayList<CameraContext> arrayListCamere = (ArrayList<CameraContext>) iteratorArrayCamere.next();
-	    		addColonnaTipologiaCamere(arrayListCamere);		
-			}
+    	// Ciclo sulle camere ottenute.
+		for (Iterator<String> iterator = camereDisponibili.keySet().iterator(); iterator.hasNext();) {
+			String tipologia = (String) iterator.next();
+			// Aggiungo la colonna relativa a camere della stessa tipologia.
+			addColonnaTipologiaCamere(tipologia, camereDisponibili.get(tipologia));
+		}
+			
     	// Aggiungo il pannello finale
 	    	panelFinale = new JPanel();
 	    	panelFinale.setLayout(new GridLayout(2, 1, 20, 20));

@@ -14,6 +14,7 @@ import com.iHotel.view.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class CCreaPrenotazione {
@@ -92,7 +93,7 @@ public class CCreaPrenotazione {
 		/* Setto il periodo alla prenotazione */
 		_prenotazione.set_periodo(periodo);
 		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
-		ArrayList<ArrayList<CameraContext>> camereLibere = new ArrayList<ArrayList<CameraContext>>();
+		HashMap<String, ArrayList<CameraContext>> camereLibere = new HashMap<String, ArrayList<CameraContext>>();
 		
 		// Ciclo sulle tipologie
 		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
@@ -101,8 +102,8 @@ public class CCreaPrenotazione {
 			ArrayList<CameraContext> camereLibereTipologia = new ArrayList<CameraContext>();	
 			// Inserisco nella lista le camere disponibili.
 			camereLibereTipologia = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia);		
-			// Aggiungo l'ArrayList delle camere appartenenti ad una tipologia
-			camereLibere.add(camereLibereTipologia);
+			// Aggiungo le camere appartenenti ad una tipologia
+			camereLibere.put(tipologia, camereLibereTipologia);
 		}	
 		VFCP_SelezioneCamereDatiOspite_Observer frameCreaPrenotazioneStep_2 = VFCP_SelezioneCamereDatiOspite_Observer.getInstance();
 		// Per il pattern Observer aggiungo l'observer alla prenotazione.
