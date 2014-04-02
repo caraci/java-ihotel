@@ -56,9 +56,18 @@ public class PrenotazioneSubject implements ISubject {
 		}
 	}
 	/* ------------ /Pattern Observer -------- */
-	
-	public Prezzo getPrezzoServizi(){
-		return null;
+	/**
+	 * Metodo per ottenere il prezzo dei servizi interni di una prenotazione.
+	 * @return Prezzo dei servizi interni di una prenotazione.
+	 */
+	public Prezzo getPrezzoServiziInterni(){
+		Prezzo prezzo = new Prezzo();
+		// Ciclo su tutte le camere
+		for (Iterator<CameraContext> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
+			CameraContext camera = (CameraContext) iterator.next();
+			prezzo.somma(camera.getPrezzoServiziInPeriodo(_periodo));
+		}
+		return prezzo;
 	}
 	
 	/**

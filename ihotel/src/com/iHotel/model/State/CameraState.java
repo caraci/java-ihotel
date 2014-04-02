@@ -19,6 +19,7 @@ public abstract class CameraState {
 	protected Periodo _periodo;
 	protected ArrayList<Ospite> _ospiti;
 	protected ArrayList<ServizioInterno> _serviziInterni;
+	protected Prezzo _prezzoServizi;
 	
 	/* ------------------------ Metodi di instanza --------------------------- */
 	
@@ -39,6 +40,18 @@ public abstract class CameraState {
 	 */
 	public void set_periodo(Periodo _periodo) {
 		this._periodo = _periodo;
+	}
+	/**
+	 * @return the _prezzoServizi
+	 */
+	public Prezzo get_prezzoServizi() {
+		return _prezzoServizi;
+	}
+	/**
+	 * @param _prezzoServizi the _prezzoServizi to set
+	 */
+	public void set_prezzoServizi(Prezzo _prezzoServizi) {
+		this._prezzoServizi = _prezzoServizi;
 	}
 }
 

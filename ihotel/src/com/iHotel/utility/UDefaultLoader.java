@@ -94,10 +94,9 @@ public class UDefaultLoader {
 		return attributiPeriodo;
 	}
 	/**
-	 * Metodo per andare a leggere in un file di configurazione i valori relativi a nome, telefono, PIVA e eMail della
-	 * classe MAlbergo.
+	 * Metodo per andare a leggere in un file di configurazione che tipo di stile vogliamo assegnare all'interfaccia.
 	 * 
-	 * @return Collezione contenente nome, telefono, PIVA e eMail.
+	 * @return Stringa contenente lo stile da utilizzare.
 	 */
 	public String getStileInterfaccia(){
 		// Variabile nelle quali andremo a memorizzare lo stile dell'interfaccia.
@@ -112,6 +111,32 @@ public class UDefaultLoader {
 			stile = "light";
         }
 		return stile;	
+	}
+	/**
+	 * Metodo per andare a leggere in un file di configurazione quali sistemi esterni utilizzare in merito alla gestione dei servizi.
+	 * 
+	 * @return Lista contenente i sistemi esterni da utilizzare
+	 */
+	public ArrayList<String> getSistemiServiziEsterni() {
+		// Variabili nelle quali andremo a memorizzare gli attributi dell'albergo.
+			String payTvSystem, telephoneSystem;
+			// Ricavo il path assoluto.
+			String filePath = new File("").getAbsolutePath();
+			// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
+			try (BufferedReader albergoReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "albergo.txt"))) {  
+				// Inizializzo gli attributi
+				payTvSystem = albergoReader.readLine();
+				telephoneSystem = albergoReader.readLine();
+			} catch (IOException e) {
+				payTvSystem = "Sky";
+				telephoneSystem = "Telecom";
+	        } 
+			ArrayList<String> sistemiEsterni = new ArrayList<String>();
+			// Aggiungi gli attributi all'ArrayList di stringhe.
+			sistemiEsterni.add(payTvSystem);
+			sistemiEsterni.add(telephoneSystem);
+			
+			return sistemiEsterni;
 	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */
 	/**

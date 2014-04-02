@@ -1,10 +1,16 @@
+
 package com.iHotel.model.Utility;
 
 public class Prezzo {
 
 	/* ----------------- Attributi --------------------- */
 	private double _importo;
-	private String _valuta="Euro";
+	private String _valuta;
+	
+	public Prezzo() {
+		_importo = 0;
+		_valuta = "Euro";
+	}
 	
 	/* ----------------- Metodi di instanza --------------------- */
 

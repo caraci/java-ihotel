@@ -29,12 +29,22 @@ public class CameraContext {
 		}
 	}
 	/**
-	 * Metodo per ottenere il prezzo totale dei servizi interni della camera in un certo periodo.
+	 * Metodo per ottenere il prezzo dei servizi interni della camera in un certo periodo.
+	 * 
 	 * @param periodo Periodo per il quale si vuole ricercare il totale.
 	 * @return Prezzo dei servizi della camera nel periodo.
 	 */
 	public Prezzo getPrezzoServiziInPeriodo(Periodo periodo){
-		return null;
+		Prezzo prezzo = new Prezzo();
+		// Ciclo sugli stati della camera
+		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			CameraState cameraState = (CameraState) iterator.next();
+			// Controllo che non mi venga fornito un null
+			if(cameraState.getPrezzoTotaleServizi(periodo)!=null) {
+				prezzo=cameraState.getPrezzoTotaleServizi(periodo);
+			}
+		}
+		return prezzo;
 	}
 	
 	/**

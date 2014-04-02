@@ -5,6 +5,8 @@ import java.util.*;
 
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
+import com.iHotel.model.ForeignSystem.IServiceSystem;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
@@ -20,6 +22,8 @@ public class Albergo {
  	private CatalogoServiziInterni _catalogoServizi;
  	private Storico _storico;
 	private ArrayList<CameraContext> _camere;
+	private ArrayList<IServiceSystem> _sistemiServiziEsterni;
+	
 	private String _nome;
 	private String _telefono;
 	private String _PIVA;
@@ -38,13 +42,14 @@ public class Albergo {
 		 * MAlbergo la responsabilità di recuperare i dati di default.
 		 */
 		UDefaultLoader defaultLoader = UDefaultLoader.getInstance();
-        ArrayList<String> informazioniAlbergo = new ArrayList<String>();
-        informazioniAlbergo =defaultLoader.getInformazioniAlbergo();
+        ArrayList<String> informazioniAlbergo;
+        informazioniAlbergo=defaultLoader.getInformazioniAlbergo();
         _nome = informazioniAlbergo.get(0);
         _telefono = informazioniAlbergo.get(1);
         _PIVA = informazioniAlbergo.get(2);
         _eMail=informazioniAlbergo.get(3);
-
+        // Ricavo dalla factory tutti i sistemi esterni addetti alla gestione dei servizi.
+        _sistemiServiziEsterni=ServiceFactory.getInstance().getSistemiServiziEsterni();
 
 	}
 	
@@ -67,9 +72,21 @@ public class Albergo {
 	public ArrayList<ServizioEsterno> getElencoServiziEsterniCamera(CameraContext camera){
 		return null;
 	}
-	
-	public Prezzo getPrezzoServiziEsterniPrenotazione( PrenotazioneSubject prenotazione){
-		return null;
+	/**
+	 * Metodo per ottenere il prezzo dei servizi esterni correlati ad una prenotazione.
+	 * 
+	 * @param prenotazione Prenotazione da analizzare.
+	 * @return Prezzo totale dei servizi esterni correlati ad una prenotazione.
+	 */
+	public Prezzo getPrezzoServiziEsterniPrenotazione(PrenotazioneSubject prenotazione){
+		Prezzo prezzo = new Prezzo();
+		// Ciclo sui sistemi di servizi esterni
+		for (Iterator<IServiceSystem> iterator = _sistemiServiziEsterni.iterator(); iterator.hasNext();) {
+			IServiceSystem sistemaServiziEsterno = (IServiceSystem) iterator.next();
+			// Sommo il totale dei prezzi dovuti alla prenotazione
+			prezzo.somma(sistemaServiziEsterno.getPrezzoTotaleServiziPrenotazione(prenotazione));
+		}
+		return prezzo;
 	}
 	
 	
@@ -168,6 +185,20 @@ public class Albergo {
 	public void set_camere(ArrayList<CameraContext> _camere) {
 		this._camere = _camere;
 	}
+	/**
+	 * @return the _sistemiServiziEsterni
+	 */
+	public ArrayList<IServiceSystem> get_sistemiServiziEsterni() {
+		return _sistemiServiziEsterni;
+	}
+
+	/**
+	 * @param _sistemiServiziEsterni the _sistemiServiziEsterni to set
+	 */
+	public void set_sistemiServiziEsterni(ArrayList<IServiceSystem> _sistemiServiziEsterni) {
+		this._sistemiServiziEsterni = _sistemiServiziEsterni;
+	}
+
 	/**
 	 * @return _nome
 	 */
