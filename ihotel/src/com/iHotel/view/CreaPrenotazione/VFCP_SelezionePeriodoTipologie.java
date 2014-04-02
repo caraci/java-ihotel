@@ -58,7 +58,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelTopLeft() {
 		// PanelTopLeft
-		_panelTopLeft = _creaPrenotazioneFactory.getPanel();
+		_panelTopLeft = _viewFactory.getPanel();
 		_panelTop.add(_panelTopLeft);
 		_panelTopLeft.setLayout(new BoxLayout(_panelTopLeft, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
@@ -75,7 +75,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelTopRight() {
 		// PanelTopRight
-		_panelTopRight = _creaPrenotazioneFactory.getPanel();
+		_panelTopRight = _viewFactory.getPanel();
 		_panelTop.add(_panelTopRight);
 		_panelTopRight.setLayout(new BoxLayout(_panelTopRight, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
@@ -93,7 +93,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelBottomLeft(ArrayList<String> tipologieCamere) {
 		// PanelBottomLeft
-		_panelBottomLeft = _creaPrenotazioneFactory.getPanel();
+		_panelBottomLeft = _viewFactory.getPanel();
 		_panelBottom.add(_panelBottomLeft);
 		// Layout PanelBottomLeft
 		_panelBottomLeft.setLayout(new BoxLayout(_panelBottomLeft, BoxLayout.PAGE_AXIS));
@@ -120,7 +120,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	private void addPanelBottomRight() {
 		// PanelBottomRight
-		_panelBottomRight = _creaPrenotazioneFactory.getPanel();
+		_panelBottomRight = _viewFactory.getPanel();
 		_panelBottom.add(_panelBottomRight);
 		// Layout PanelBottomRight
 		_panelBottomRight.setLayout(new BorderLayout(0, 0));
