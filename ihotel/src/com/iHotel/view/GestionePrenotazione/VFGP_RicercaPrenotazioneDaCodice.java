@@ -109,11 +109,10 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
-				_codicePrenotazione = _txtReservationCode.getText();
-				// Recupero il controllore e invoco il metodo per cercare la prenotazione.
-				CModificaPrenotazione gestorePrenotazione = CModificaPrenotazione.getInstance();
+				_codicePrenotazione = _txtReservationCode.getText();				
 				try {
+					// Recupero il controllore e invoco il metodo per cercare la prenotazione.
+					CModificaPrenotazione gestorePrenotazione = CModificaPrenotazione.getInstance();
 					gestorePrenotazione.recuperaPrenotazioneDaCodice(_codicePrenotazione);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block

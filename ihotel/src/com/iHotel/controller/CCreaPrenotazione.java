@@ -55,11 +55,10 @@ public class CCreaPrenotazione {
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
 		tipologieCamere.addAll(_albergo.get_catalogoCamere().get_descrizioniCamere().keySet());
-		// Nascondo VFrameHome e mostro VFrameCreaPrenotazioneStep1
-		VFrameHome.getInstance().setVisible(false);
+		// Mostro VFrameCreaPrenotazioneStep1
 		VFCP_SelezionePeriodoTipologie frameCreaPrenotazione1 = VFCP_SelezionePeriodoTipologie.getInstance();
 		frameCreaPrenotazione1.creaFrame(tipologieCamere);
-		frameCreaPrenotazione1.setVisible(true);
+		ViewHandler.getInstance().showFrame(frameCreaPrenotazione1);
 		
 	}
 	/**
@@ -113,11 +112,8 @@ public class CCreaPrenotazione {
 		frameCreaPrenotazioneStep_2.set_prenotazioneSubject(_prenotazione);
 		// Mostro finestra Step 2
 		frameCreaPrenotazioneStep_2.creaFrame(camereLibere);			
-		frameCreaPrenotazioneStep_2.setVisible(true);
-		// Nascondo finestra Step 1
-		VFCP_SelezionePeriodoTipologie frameCreaPrenotazioneStep_1 = VFCP_SelezionePeriodoTipologie.getInstance();
-		frameCreaPrenotazioneStep_1.setVisible(false);
-		
+		ViewHandler.getInstance().showFrame(frameCreaPrenotazioneStep_2);
+		frameCreaPrenotazioneStep_2.setVisible(true);	
 	}
 	/**
 	 * Metodo per concludere una prenotazione.

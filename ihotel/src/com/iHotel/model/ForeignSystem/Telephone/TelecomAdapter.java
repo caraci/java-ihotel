@@ -5,6 +5,7 @@ import java.util.*;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
 public class TelecomAdapter implements ITelephoneAdapter {
@@ -23,9 +24,11 @@ public class TelecomAdapter implements ITelephoneAdapter {
 	}
 
 	@Override
-	public ArrayList<ServizioEsterno> getElencoServiziCamera(
-			CameraContext camera) {
+	public ArrayList<ServizioEsterno> getElencoServiziCameraInPeriodo(
+			CameraContext camera, Periodo periodo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 }

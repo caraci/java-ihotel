@@ -94,12 +94,13 @@ public class VFrameHome extends View {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// Recupero il controllore e invoco il metodo per cercare le camere libere.
-				CModificaPrenotazione gestorePrenotazione = CModificaPrenotazione.getInstance();
+				CModificaPrenotazione gestorePrenotazione;
 				try {
+					gestorePrenotazione = CModificaPrenotazione.getInstance();
 					gestorePrenotazione.gestionePrenotazione();
-				} catch (IOException e1) {
+				} catch (IOException e2) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					e2.printStackTrace();
 				}
 			}
 		});

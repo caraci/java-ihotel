@@ -7,17 +7,14 @@ import java.util.ArrayList;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
  * @author Gabriele
  *
  */
-public interface IServiceSystem {
-	
+public interface IServiceSystem {	
 	public Prezzo getPrezzoTotaleServiziPrenotazione(PrenotazioneSubject prenotazione);
-	public ArrayList<ServizioEsterno> getElencoServiziCamera(CameraContext camera);
-	
-	
-
+	public ArrayList<ServizioEsterno> getElencoServiziCameraInPeriodo(CameraContext camera, Periodo periodo);
 }

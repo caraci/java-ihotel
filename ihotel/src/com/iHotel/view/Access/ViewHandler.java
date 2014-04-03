@@ -39,7 +39,7 @@ public class ViewHandler {
 	 */
 	public void showFrame(View view){
 		if (_currentInterface!=null){
-			_currentInterface.removeAll();
+			_currentInterface.setVisible(false);
 		}
 		_currentInterface=view;
 		_currentInterface.setVisible(true);

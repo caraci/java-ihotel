@@ -53,7 +53,6 @@ public class Albergo {
 	}
 	
 	/* ----------------------------- Metodi di classe -----------------------*/
-	
 	/**
 	 * Metodo per ottenere l'unica instanza di questa classe - Pattern Singleton
 	 * @return instance
@@ -65,11 +64,22 @@ public class Albergo {
          }
          return instance;
     }
-	
 	/* -------------------- Metodi di instanza ----------------------*/
-	
-	public ArrayList<ServizioEsterno> getElencoServiziEsterniCamera(CameraContext camera){
-		return null;
+	/**
+	 * Metodo per ottenere tutti i servizi esterni di una camera in un periodo.
+	 * @param camera Camera da analizzare.
+	 * @param periodo Periodo di richiesta.
+	 * @return Lista di servizi relativi ad una camera
+	 */
+	public ArrayList<ServizioEsterno> getElencoServiziEsterniCameraInPeriodo(CameraContext camera, Periodo periodo){
+		ArrayList<ServizioEsterno> serviziEsterniCamera = new ArrayList<ServizioEsterno>();
+		// Ciclo sui sistemi di servizi esterni
+		for (Iterator<IServiceSystem> iterator = _sistemiServiziEsterni.iterator(); iterator.hasNext();) {
+			IServiceSystem sistemaServiziEsterno = (IServiceSystem) iterator.next();
+			// Aggiungo i servizi esterni dovuti allo specifico sistema esterno.
+			serviziEsterniCamera.addAll(sistemaServiziEsterno.getElencoServiziCameraInPeriodo(camera,periodo));
+		}
+		return serviziEsterniCamera;
 	}
 	/**
 	 * Metodo per ottenere il prezzo dei servizi esterni correlati ad una prenotazione.
