@@ -9,12 +9,14 @@ import java.util.*;
 public class UDefaultLoader {
 	
 	/* -------------------------- Attributi e costruttore ----------------------- */
-	private String _pathToConfigs = "/configs/";
+	private String _pathToConfigs;
 	private static UDefaultLoader instance = null;
 	/**
 	 * Costruttore privato - Pattern singleton
 	 */
-	private UDefaultLoader(){}
+	private UDefaultLoader(){
+		_pathToConfigs = "/ihotel/configs/";
+	}
 	/**
 	 * Metodo per ottenere l'instanza unica di questa classe - Pattern singleton
 	 * @return
