@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.GestionePrenotazione.VFGP_InfoCamera;
+import com.iHotel.view.GestionePrenotazione.VFGP_InfoPrenotazione;
 import com.iHotel.view.GestionePrenotazione.VFGP_RicercaPrenotazioneDaCodice;
 
 public class CModificaPrenotazione {
@@ -95,8 +97,12 @@ public class CModificaPrenotazione {
 	 * @param codicePrenotazione Codice della prenotazione da caricare.
 	 */
 	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) {
-		System.out.print(codicePrenotazione.toString());
-		//_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
+		//System.out.print(codicePrenotazione.toString());
+		_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
+		
+		VFGP_InfoPrenotazione infoPrenotazione= VFGP_InfoPrenotazione.getInstance();
+		infoPrenotazione.creaFrame(_prenotazione);
+		ViewHandler.getInstance().showFrame(infoPrenotazione);
 		
 	}
 

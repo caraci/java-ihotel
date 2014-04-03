@@ -110,6 +110,15 @@ public class PrenotazioneSubject implements ISubject {
 		_prenotante.set_eMail(eMail);
 		_prenotante.set_telefono(telefono);
 	}
+	
+	/**
+	 * Metodo che restituisce l'ospite titolare della prenotazione
+	 * @return prenotante Ospite titolare dlela prenotazione.
+	 */
+	public Ospite getPrenotante(){
+		return this._prenotante;
+	}
+	
 	/**
 	 * Metodo per occupare le camere della prenotazione.
 	 */
