@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 
 
 
+import javax.swing.border.EmptyBorder;
+
 import com.iHotel.model.Albergo.Ospite;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
@@ -142,7 +144,7 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * @param prenotazione
 	 */
 	private void addCamerePrenotate (PrenotazioneSubject prenotazione){	
-	
+		_panelCamerePrenotate = _viewFactory.getPanel();
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
 		for (Iterator<CameraContext> iterator = prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
 			CameraContext cameraContext = (CameraContext) iterator.next();
@@ -180,7 +182,7 @@ private static VFGP_InfoPrenotazione instance = null;
 	private void addPanelBottom(PrenotazioneSubject prenotazione){
 		/*Creo il pannello*/
 		_panelBottom= _viewFactory.getPanel();
-		_panelBottom.setLayout(new GridLayout(2,2,10,10));
+		_panelBottom.setLayout(new GridLayout(10,2,10,10));
 		
 		/*Aggiungo quello che mi serve al pannello*/
 		
@@ -200,8 +202,16 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * @param prenotazione
 	 */
 	public void creaFrame(PrenotazioneSubject prenotazione){
+		/*ContentPane 2 righe 1 colonna*/
+		_contentPane = _viewFactory.getPanel();
+		_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(_contentPane);
+		_contentPane.setLayout(new GridLayout(2,1,10,10));
+		
+		/*Aggiungo i pannelli al contentPane*/
 		addPanelTop(prenotazione);
 		addPanelBottom(prenotazione);
+		
 	}
 
 }
