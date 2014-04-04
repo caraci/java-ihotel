@@ -12,6 +12,7 @@ import java.util.Iterator;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -53,6 +54,8 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * Costruttore privato
 	 */
 	private VFGP_InfoPrenotazione() {
+		/*Istanzio gli oggetti da mostrare nell'interfaccia*/
+		
 		/*Panel*/
 		_contentPane = _viewFactory.getPanel();
 		_panelTop = _viewFactory.getPanel();
@@ -111,7 +114,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		_panelInfoPrenotante.add(_lblPrenotante);
 		
 		/*Aggiungo il panelPrenotante al panelTop*/
-		_panelTop.add(_panelInfoPrenotante);
+		_contentPane.add(_panelInfoPrenotante, BorderLayout.LINE_START);
 	}
 	
 	/**
@@ -130,6 +133,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		/*Sommo il prezzo dei servizi interni con quelli esterni*/
 		Prezzo totaleServizi = new Prezzo();
 		totaleServizi.set_importo(prezzoServiziInterni.get_importo()+prezzoServiziEsterni.get_importo());
+		
 		totaleServizi.set_valuta(prezzoServiziInterni.get_valuta());
 		
 		/*Setto il periodo della prenotazione nell'etichetta*/		
@@ -148,7 +152,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		_panelInfoPrenotazione.add(_lblPrezzoServizi);		
 		
 		/*Aggiungo al contentPanel*/		
-		_contentPane.add(_panelInfoPrenotazione);		
+		_contentPane.add(_panelInfoPrenotazione,BorderLayout.CENTER);		
 		
 	}
 	
@@ -157,10 +161,12 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * @param prenotazione
 	 */
 	private void addCamerePrenotate (PrenotazioneSubject prenotazione){	
-		_panelCamerePrenotate = _viewFactory.getPanel();
+		
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
 		for (Iterator<CameraContext> iterator = prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
 			CameraContext cameraContext = (CameraContext) iterator.next();
+			/*Istanzio un button, gli assegno il numero della camera prenotata come testo e lo aggiungo al pannello delle camere
+			  prenotate*/
 			JButton button= _viewFactory.getButton();
 			button.setText(cameraContext.get_numero());
 			_btnCamere.add(button);
@@ -168,7 +174,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		}
 		
 		/*Aggiungo il pannello con le camere al panelBottom*/
-		_panelBottom.add(_panelCamerePrenotate);
+		_contentPane.add(_panelCamerePrenotate,BorderLayout.LINE_END);
 		
 	}
 	
@@ -185,7 +191,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		_panelTop.add(_lblTitoloPrenotazione);
 		
 		/*Aggiungo il panelTop al contentPane*/
-		_contentPane.add(_panelTop);
+		_contentPane.add(_panelTop,BorderLayout.PAGE_START);
 	}
 	
 	/**
@@ -215,6 +221,10 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * @param prenotazione
 	 */
 	public void creaFrame(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){
+		
+		setTitle("iHotel - Gestione Prenotazione - Informazioni prenotazione");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		/*ContentPane 2 righe 1 colonna*/
 		_contentPane = _viewFactory.getPanel();
 		_contentPane.setLayout(new BorderLayout(3,3));
