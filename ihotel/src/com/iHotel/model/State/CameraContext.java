@@ -8,7 +8,7 @@ import com.iHotel.model.Utility.Prezzo;
 
 public class CameraContext {
 
-	/* --------------------------- Attributi ---------------------- */
+	/* --------------------------- Attributi e Costruttore ---------------------- */
 	private LinkedList<CameraState> _statiCameraState;
 	private String _numero;
 	private String _tipologia;

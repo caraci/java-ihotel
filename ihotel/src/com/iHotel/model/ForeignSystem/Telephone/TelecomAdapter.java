@@ -17,10 +17,11 @@ public class TelecomAdapter implements ITelephoneAdapter {
 	}
 
 	@Override
-	public Prezzo getPrezzoTotaleServiziPrenotazione(
-			PrenotazioneSubject prenotazione) {
-		// TODO Auto-generated method stub
-		return null;
+	public Prezzo getPrezzoTotaleServiziPrenotazione(PrenotazioneSubject prenotazione) {
+		// TODO - Chiaramente ora si sta utilizzando un prezzo di default.
+		Prezzo prezzoTotale = new Prezzo();
+		prezzoTotale.set_importo(10);
+		return prezzoTotale;
 	}
 
 	@Override
