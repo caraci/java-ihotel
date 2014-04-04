@@ -3,12 +3,14 @@
  */
 package com.iHotel.view.GestionePrenotazione;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -36,9 +38,9 @@ public class VFGP_InfoPrenotazione extends View {
 	/*Content pane*/
 	private JPanel _contentPane;
 	/*Panel*/
-	private JPanel _panelTop, _panelBottom, _panelInfoPrenotazione, _panelInfoPrenotante, _panelPeriodo,_panelCamerePrenotate;
+	private JPanel _panelTop, _panelBottom, _panelInfoPrenotazione, _panelInfoPrenotante,_panelCamerePrenotate;
 	/*Label*/
-	private JLabel _lblTitoloPrenotante, _lblPrenotante, _lblTitoloPrenotazione,_lblDataInizio,_lblDataFine,_lblPrezzoCamere,_lblPrezzoServizi, _lblScegliCamera;
+	private JLabel _lblTitoloPrenotante, _lblPrenotante, _lblTitoloPrenotazione,_lblPeriodo,_lblPrezzoCamere,_lblPrezzoServizi, _lblScegliCamera;
 	
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
@@ -51,6 +53,25 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * Costruttore privato
 	 */
 	private VFGP_InfoPrenotazione() {
+		/*Panel*/
+		_contentPane = _viewFactory.getPanel();
+		_panelTop = _viewFactory.getPanel();
+		_panelBottom =_viewFactory.getPanel();
+		_panelInfoPrenotante=_viewFactory.getPanel();
+		_panelInfoPrenotazione=_viewFactory.getPanel();
+		_panelCamerePrenotate=_viewFactory.getPanel();
+		
+		/*Label*/
+		_lblTitoloPrenotante= _viewFactory.getLabel();
+		_lblPrenotante= _viewFactory.getLabel();
+		_lblTitoloPrenotazione= _viewFactory.getLabel();
+		_lblPeriodo= _viewFactory.getLabel();
+		_lblPrezzoCamere= _viewFactory.getLabel();
+		_lblPrezzoServizi= _viewFactory.getLabel();
+		_lblScegliCamera= _viewFactory.getLabel();
+		
+		/*Button*/
+		_btnTerminaModifichePrenotazione = _viewFactory.getButton();
 		_btnCamere = new ArrayList<JButton>();
 	};	
 	
@@ -70,21 +91,22 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * @param prenotazione
 	 */
 	private void addInfoPrenotante(PrenotazioneSubject prenotazione){
+		
 		/*Recupero il prenotante della prenotazione */
 		Ospite prenotante = prenotazione.getPrenotante();
 		
 		/*Setto il testo dell'intestazione*/
-		_lblTitoloPrenotante =_viewFactory.getLabel();
 		_lblTitoloPrenotante.setText("Titolare della prenotazione: ");
 		
 		/*Setto il corpo della label con i dati del prenotante*/
-		_lblPrenotante= _viewFactory.getLabel();
+
 		_lblPrenotante.setText("Cognome: "+prenotante.get_cognome()+"\n"+
 		"Nome: "+prenotante.get_nome()+"\n");
 		
-		/*Aggiungo le label al pannello giusto*/
-		_panelInfoPrenotante= _viewFactory.getPanel();
-		_panelInfoPrenotante.setLayout(new GridLayout(2, 1, 10, 10));
+		/*Aggiungo il layuot al pannello*/	
+		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante,BoxLayout.PAGE_AXIS));
+		
+		/*Aggiungo le label al pannello*/
 		_panelInfoPrenotante.add(_lblTitoloPrenotante);
 		_panelInfoPrenotante.add(_lblPrenotante);
 		
@@ -96,46 +118,37 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * Metodo privato che recupera le informazioni della prenotazione
 	 * @param prenotazione
 	 */
-	private void addInfoPrenotazione(PrenotazioneSubject prenotazione){
+	private void addInfoPrenotazione(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){
 		/*Recupero il periodo*/
 		Periodo periodo = prenotazione.get_periodo();
 		
 		/*Recupero il prezzo delle camere*/
 		Prezzo prezzoCamere = prenotazione.get_total();
+		/*Recupero il prezzo dei servizi interni*/
 		Prezzo prezzoServiziInterni = prenotazione.getPrezzoServiziInterni();
 		
-		/*Mostro il codice della prenotazione, il periodo e il prezzo per le camere*/
-		_lblTitoloPrenotazione = _viewFactory.getLabel();
-		_lblTitoloPrenotante.setText("Informazioni prenotazione numero: "+ prenotazione.get_codice()+"\n");
+		/*Sommo il prezzo dei servizi interni con quelli esterni*/
+		Prezzo totaleServizi = new Prezzo();
+		totaleServizi.set_importo(prezzoServiziInterni.get_importo()+prezzoServiziEsterni.get_importo());
+		totaleServizi.set_valuta(prezzoServiziInterni.get_valuta());
 		
-		_lblDataInizio = _viewFactory.getLabel();
-		_lblDataInizio.setText("Inizio soggiorno: "+ periodo.toString());
+		/*Setto il periodo della prenotazione nell'etichetta*/		
+		_lblPeriodo.setText("Fine soggiorno: "+ periodo.toString());
 		
-		_lblDataFine = _viewFactory.getLabel();
-		_lblDataFine.setText("Fine soggiorno: "+ periodo.toString());
-		
-		_panelPeriodo = _viewFactory.getPanel();
-		_panelPeriodo.setLayout(new GridLayout(1,2,10,10));
-		_panelPeriodo.add(_lblDataInizio);
-		_panelPeriodo.add(_lblDataFine);
-		
-		_lblPrezzoCamere=_viewFactory.getLabel();
+		/*Setto il prezzo delle camere*/
 		_lblPrezzoCamere.setText("Il totale delle camere è di: "+prezzoCamere.get_importo()+" "+prezzoCamere.get_valuta());
 		
-		//da completare sto metodo inserendo il prezzo per i servizi esterni
-		_lblPrezzoServizi = _viewFactory.getLabel();
-		_lblPrezzoServizi.setText("Il totale per i servizi di cui si è usufruito è: ");
+		/*Setto il prezzo dei servizi*/
+		_lblPrezzoServizi.setText("Il totale per i servizi di cui si è usufruito è: "+totaleServizi.get_importo()+ " "+totaleServizi.get_valuta());
 		
-		/*Aggiugo al _panelInfoPrenotazione*/
-		_panelInfoPrenotazione = _viewFactory.getPanel();
-		_panelInfoPrenotazione.setLayout(new GridLayout(3,1,10,10));
-		_panelInfoPrenotazione.add(_lblTitoloPrenotazione);
-		_panelInfoPrenotazione.add(_panelPeriodo);
+		/*Aggiugo le etichette di periodo e prezzo al _panelInfoPrenotazione*/
+		_panelInfoPrenotazione.setLayout(new BoxLayout(_panelInfoPrenotazione,BoxLayout.PAGE_AXIS) );
+		_panelInfoPrenotazione.add(_lblPeriodo);		
 		_panelInfoPrenotazione.add(_lblPrezzoCamere);
+		_panelInfoPrenotazione.add(_lblPrezzoServizi);		
 		
-		
-		/*Aggiungo al _panelTop*/		
-		_panelTop.add(_panelInfoPrenotazione);		
+		/*Aggiungo al contentPanel*/		
+		_contentPane.add(_panelInfoPrenotazione);		
 		
 	}
 	
@@ -163,13 +176,13 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * @param prenotazione
 	 */
 	private void addPanelTop(PrenotazioneSubject prenotazione){	
-		/*Istanzio un pannello*/
-		_panelTop = _viewFactory.getPanel();
-		_panelTop.setLayout(new GridLayout(2, 2, 10,10));
 		
-		/*Aggiungo le due parti al  pannello*/
-		addInfoPrenotante(prenotazione);
-		addInfoPrenotazione(prenotazione);
+		/*Setto il layout al pannello*/
+		_panelTop.setLayout(new GridLayout(1, 1, 10,10));
+		
+		/*Aggiungo il testo all'etichetta e l'etichetta al pannello*/		
+		_lblTitoloPrenotazione.setText("Prenotazione numero: "+prenotazione.get_codice());
+		_panelTop.add(_lblTitoloPrenotazione);
 		
 		/*Aggiungo il panelTop al contentPane*/
 		_contentPane.add(_panelTop);
@@ -201,15 +214,17 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * Metodo che permette di creare la schermata di visualizzazione delle informazioni della prenotazione
 	 * @param prenotazione
 	 */
-	public void creaFrame(PrenotazioneSubject prenotazione){
+	public void creaFrame(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){
 		/*ContentPane 2 righe 1 colonna*/
 		_contentPane = _viewFactory.getPanel();
-		_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		_contentPane.setLayout(new BorderLayout(3,3));
 		setContentPane(_contentPane);
-		_contentPane.setLayout(new GridLayout(2,1,10,10));
 		
 		/*Aggiungo i pannelli al contentPane*/
 		addPanelTop(prenotazione);
+		addInfoPrenotante(prenotazione);
+		addInfoPrenotazione(prenotazione,prezzoServiziEsterni);
+		addCamerePrenotate(prenotazione);
 		addPanelBottom(prenotazione);
 		
 	}
