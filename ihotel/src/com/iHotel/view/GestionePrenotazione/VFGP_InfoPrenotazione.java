@@ -4,6 +4,7 @@
 package com.iHotel.view.GestionePrenotazione;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,6 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+
 
 
 
@@ -36,7 +39,7 @@ public class VFGP_InfoPrenotazione extends View {
 	/*Panel*/
 	private JPanel _panelTop, _panelBottom, _panelInfoPrenotazione, _panelInfoPrenotante,_panelCamerePrenotate;
 	/*Label*/
-	private JLabel _lblTitoloPrenotante, _lblPrenotante, _lblTitoloPrenotazione,_lblPeriodo,_lblPrezzoCamere,_lblPrezzoServizi, _lblScegliCamera;
+	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, _lblTitoloPrenotazione,_lblPeriodo,_lblPrezzoCamere,_lblPrezzoServizi, _lblScegliCamera;
 	
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
@@ -61,7 +64,8 @@ private static VFGP_InfoPrenotazione instance = null;
 		
 		/*Label*/
 		_lblTitoloPrenotante= _viewFactory.getLabel();
-		_lblPrenotante= _viewFactory.getLabel();
+		_lblCognomePrenotante= _viewFactory.getLabel();
+		_lblNomePrenotante= _viewFactory.getLabel();
 		_lblTitoloPrenotazione= _viewFactory.getLabel();
 		_lblPeriodo= _viewFactory.getLabel();
 		_lblPrezzoCamere= _viewFactory.getLabel();
@@ -95,18 +99,21 @@ private static VFGP_InfoPrenotazione instance = null;
 		
 		/*Setto il testo dell'intestazione*/
 		_lblTitoloPrenotante.setText("Titolare della prenotazione: ");
+		_lblTitoloPrenotante.setPreferredSize(new Dimension(300,150));
 		
 		/*Setto il corpo della label con i dati del prenotante*/
 
-		_lblPrenotante.setText("Cognome: "+prenotante.get_cognome()+"\n"+
-		"Nome: "+prenotante.get_nome()+"\n");
+		_lblCognomePrenotante.setText("Cognome: "+prenotante.get_cognome());
+		_lblNomePrenotante.setText("Nome: "+prenotante.get_nome());
+		_lblCognomePrenotante.setPreferredSize(new Dimension(400,200));
 		
 		/*Aggiungo il layuot al pannello*/	
 		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante,BoxLayout.PAGE_AXIS));
 		
 		/*Aggiungo le label al pannello*/
 		_panelInfoPrenotante.add(_lblTitoloPrenotante);
-		_panelInfoPrenotante.add(_lblPrenotante);
+		_panelInfoPrenotante.add(_lblCognomePrenotante);
+		_panelInfoPrenotante.add(_lblNomePrenotante);
 		
 		/*Aggiungo il panelPrenotante al panelTop*/
 		_contentPane.add(_panelInfoPrenotante, BorderLayout.LINE_START);
@@ -156,7 +163,7 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * @param prenotazione
 	 */
 	private void addCamerePrenotate (PrenotazioneSubject prenotazione){	
-		
+		int i=0;
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
 		for (Iterator<CameraContext> iterator = prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
 			CameraContext cameraContext = (CameraContext) iterator.next();
@@ -166,6 +173,8 @@ private static VFGP_InfoPrenotazione instance = null;
 			button.setText(cameraContext.get_numero());
 			_btnCamere.add(button);
 			_panelCamerePrenotate.add(button);
+			System.out.println(i);
+			i++;
 		}
 		
 		/*Aggiungo il pannello con le camere al panelBottom*/
@@ -195,19 +204,15 @@ private static VFGP_InfoPrenotazione instance = null;
 	 */
 	private void addPanelBottom(PrenotazioneSubject prenotazione){
 		/*Creo il pannello*/
-		_panelBottom= _viewFactory.getPanel();
-		_panelBottom.setLayout(new GridLayout(10,2,10,10));
+		_panelBottom.setLayout(new GridLayout(10,7,10,10));
 		
 		/*Aggiungo quello che mi serve al pannello*/
 		
-		addCamerePrenotate(prenotazione);
-		
-		_btnTerminaModifichePrenotazione = _viewFactory.getButton();
 		_btnTerminaModifichePrenotazione.setText("Termina Modifiche");		
 		_panelBottom.add(_btnTerminaModifichePrenotazione);
 		
 		/*Aggiungo il pannello al contentPanel*/
-		_contentPane.add(_panelBottom);
+		_contentPane.add(_panelBottom,BorderLayout.PAGE_END);
 		
 	}
 	
@@ -220,7 +225,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		setTitle("iHotel - Gestione Prenotazione - Informazioni prenotazione");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		/*ContentPane 2 righe 1 colonna*/
+		/*ContentPane 3 righe 1 colonna*/
 		_contentPane = _viewFactory.getPanel();
 		_contentPane.setLayout(new BorderLayout(3,3));
 		setContentPane(_contentPane);
