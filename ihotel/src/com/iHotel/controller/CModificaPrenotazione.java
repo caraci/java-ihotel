@@ -16,10 +16,10 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.VFrameHome;
 import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.GestionePrenotazione.VFGP_AggiungiServiziInterni;
-import com.iHotel.view.GestionePrenotazione.VFGP_InfoCamera;
-import com.iHotel.view.GestionePrenotazione.VFGP_InfoPrenotazione;
-import com.iHotel.view.GestionePrenotazione.VFGP_RicercaPrenotazioneDaCodice;
+import com.iHotel.view.GestionePrenotazione.Frame.VFGP_AggiungiServiziInterni;
+import com.iHotel.view.GestionePrenotazione.Frame.VFGP_InfoCamera;
+import com.iHotel.view.GestionePrenotazione.Frame.VFGP_InfoPrenotazione;
+import com.iHotel.view.GestionePrenotazione.Frame.VFGP_RicercaPrenotazioneDaCodice;
 
 public class CModificaPrenotazione {
 	
@@ -32,17 +32,20 @@ public class CModificaPrenotazione {
 
 	/**
 	 * Costruttore privato - pattern Singleton
-	 * @throws IOException 
 	 */
-	private CModificaPrenotazione() throws IOException {
-		_albergo=Albergo.getInstance();
+	private CModificaPrenotazione() {
+		try {
+			_albergo=Albergo.getInstance();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * @throws IOException 
 	 */
-    public static CModificaPrenotazione getInstance() throws IOException {
+    public static CModificaPrenotazione getInstance() {
     	if(instance == null) {
             instance = new CModificaPrenotazione();
          }

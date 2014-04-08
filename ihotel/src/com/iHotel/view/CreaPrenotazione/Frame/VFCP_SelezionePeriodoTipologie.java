@@ -1,19 +1,16 @@
-package com.iHotel.view.CreaPrenotazione;
+package com.iHotel.view.CreaPrenotazione.Frame;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.model.Utility.MyDate;
 import com.iHotel.view.View;
+import com.iHotel.view.CreaPrenotazione.Event.RicercaCamereLibereListener;
 
 import net.sourceforge.jdatepicker.*;
 
@@ -114,9 +111,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 			String tipologia = tipologieCamere.get(i);
 			_checkBoxesTipologie.get(i).setText(tipologia);
 			_panelBottomLeft.add(_checkBoxesTipologie.get(i));
-			_panelBottomLeft.add(Box.createVerticalGlue());
-			
-					
+			_panelBottomLeft.add(Box.createVerticalGlue());				
 		}			
 		
 	}
@@ -166,44 +161,9 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 		addPanelBottomLeft(tipologieCamere);		
 		// PanelBottomRigth
 		addPanelBottomRight();
-				
-		/* ---------------------- Eventi ------------------------------------- */
 	
 		// Assegniamo l'eventListener al JButton btnAvanti
-		_btnAvanti.addMouseListener(new MouseAdapter() {
-			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ArrayList<String> tipologieSelezionate = new ArrayList<String>();
-				boolean tipologiaStato;
-				// Controllo lo stato di tutte le CheckBox per verificare le tipologie inserite dall'utente
-				for (int i = 0; i < get_checkBoxesTipologie().size(); i++) {
-					tipologiaStato=get_checkBoxesTipologie().get(i).isSelected();
-					if (tipologiaStato) {
-						// Aggiungo le tipologie scelte dall'utente
-						tipologieSelezionate.add(get_checkBoxesTipologie().get(i).getText());
-					}	
-				}
-				// Data inizio
-				int annoInizio 	 = get_datePanelInizio().getModel().getYear();
-				int meseInizio 	 = get_datePanelInizio().getModel().getMonth();
-				int giornoInizio = get_datePanelInizio().getModel().getDay();
-				// Data fine
-				int annoFine 	 = get_datePanelFine().getModel().getYear();
-				int meseFine 	 = get_datePanelFine().getModel().getMonth();
-				int giornoFine 	 = get_datePanelFine().getModel().getDay();
-				
-				// Data inizio
-				MyDate dataInizio = new MyDate();
-				dataInizio.set(annoInizio, meseInizio, giornoInizio);
-				// Data fine
-				MyDate dataFine = new MyDate();
-				dataFine.set(annoFine, meseFine, giornoFine);		
-				// Recupero il controllore e invoco il metodo per cercare le camere libere.
-				CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
-				gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologieSelezionate);
-			}
-		});
+		_btnAvanti.addMouseListener(new RicercaCamereLibereListener());
 	}
 	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**

@@ -4,7 +4,6 @@ package com.iHotel.view;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -79,12 +78,7 @@ public class VFrameHome extends View {
 			public void mouseClicked(MouseEvent e) {
 				// Recupero il controllore e invoco il metodo per cercare le camere libere.
 				CCreaPrenotazione creatorePrenotazione = CCreaPrenotazione.getInstance();
-				try {
-					creatorePrenotazione.creaNuovaPrenotazione();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				creatorePrenotazione.creaNuovaPrenotazione();
 			}
 		});
 		
@@ -94,14 +88,8 @@ public class VFrameHome extends View {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// Recupero il controllore e invoco il metodo per cercare le camere libere.
-				CModificaPrenotazione gestorePrenotazione;
-				try {
-					gestorePrenotazione = CModificaPrenotazione.getInstance();
-					gestorePrenotazione.gestionePrenotazione();
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
+				CModificaPrenotazione gestorePrenotazione = CModificaPrenotazione.getInstance();
+				gestorePrenotazione.gestionePrenotazione();
 			}
 		});
 	}

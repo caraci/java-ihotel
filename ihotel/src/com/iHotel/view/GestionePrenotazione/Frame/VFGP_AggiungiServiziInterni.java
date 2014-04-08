@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.GestionePrenotazione;
+package com.iHotel.view.GestionePrenotazione.Frame;
 
 import java.util.HashMap;
 

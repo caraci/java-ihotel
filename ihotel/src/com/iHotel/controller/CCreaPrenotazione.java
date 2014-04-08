@@ -10,8 +10,8 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.VFrameHome;
 import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
-import com.iHotel.view.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.CreaPrenotazione.Frame.VFCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.CreaPrenotazione.Frame.VFCP_SelezionePeriodoTipologie;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +29,15 @@ public class CCreaPrenotazione {
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private CCreaPrenotazione() {}
+	private CCreaPrenotazione() {
+		// Carico l'albergo mediante pattern Singleton
+		try {
+			_albergo = Albergo.getInstance();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
@@ -47,9 +55,7 @@ public class CCreaPrenotazione {
      * Metodo per creare una nuova prenotazione
      * @throws IOException 
      */
-	public void creaNuovaPrenotazione() throws IOException {
-		// Carico l'albergo mediante pattern Singleton
-		_albergo = Albergo.getInstance();
+	public void creaNuovaPrenotazione() {
 		// Creo la nuova prenotazione
 		_prenotazione = new PrenotazioneSubject();
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.

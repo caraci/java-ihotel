@@ -1,18 +1,15 @@
 /**
  * 
  */
-package com.iHotel.view.GestionePrenotazione;
+package com.iHotel.view.GestionePrenotazione.Frame;
 
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.view.View;
+import com.iHotel.view.GestionePrenotazione.Event.RicercaPrenotazioneDaCodiceListener;
 
 /**
  * @author Alessandro
@@ -91,8 +88,7 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 		
 		
 		// setto i valori dell'etichetta, metto il cursore sul campo di testo e impongo il testo del pulsante
-		
-		
+			
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -102,25 +98,39 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 		addMiddlePanel();
 		addButtomPanel();
 		
+		// Aggiungo l'eventListener a _btnReservationRecover
+		_btnReservationRecover.addMouseListener(new RicercaPrenotazioneDaCodiceListener());
 		
-		
-		//listener al _btnReservationRecover
-		_btnReservationRecover.addMouseListener(new MouseAdapter() {
-			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				_codicePrenotazione = _txtReservationCode.getText();				
-				try {
-					// Recupero il controllore e invoco il metodo per cercare la prenotazione.
-					CModificaPrenotazione gestorePrenotazione = CModificaPrenotazione.getInstance();
-					gestorePrenotazione.recuperaPrenotazioneDaCodice(_codicePrenotazione);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		
+	}
+	
+	/* -------------------- Getter, Setter ----------------------- */
+
+	/**
+	 * @return the _codicePrenotazione
+	 */
+	public String get_codicePrenotazione() {
+		return _codicePrenotazione;
+	}
+
+	/**
+	 * @param _codicePrenotazione the _codicePrenotazione to set
+	 */
+	public void set_codicePrenotazione(String _codicePrenotazione) {
+		this._codicePrenotazione = _codicePrenotazione;
+	}
+
+	/**
+	 * @return the _txtReservationCode
+	 */
+	public JTextField get_txtReservationCode() {
+		return _txtReservationCode;
+	}
+
+	/**
+	 * @param _txtReservationCode the _txtReservationCode to set
+	 */
+	public void set_txtReservationCode(JTextField _txtReservationCode) {
+		this._txtReservationCode = _txtReservationCode;
 	}
 	
 	
