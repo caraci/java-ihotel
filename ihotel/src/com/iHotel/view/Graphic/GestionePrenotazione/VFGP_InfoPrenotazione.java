@@ -4,8 +4,14 @@
 package com.iHotel.view.Graphic.GestionePrenotazione;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -18,6 +24,10 @@ import javax.swing.JPanel;
 
 
 
+
+
+
+import javax.swing.border.Border;
 
 import com.iHotel.model.Albergo.Ospite;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
@@ -44,7 +54,8 @@ public class VFGP_InfoPrenotazione extends View {
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
 	private ArrayList<JButton> _btnCamere;
-	
+	/*insets*/
+	private Insets _insets_lbl;
 	
 private static VFGP_InfoPrenotazione instance = null;
 	
@@ -75,6 +86,9 @@ private static VFGP_InfoPrenotazione instance = null;
 		/*Button*/
 		_btnTerminaModifichePrenotazione = _viewFactory.getButton();
 		_btnCamere = new ArrayList<JButton>();
+		
+		/*insets*/
+		_insets_lbl = new Insets(7, 2, 7, 2);
 	};	
 	
 	/**
@@ -92,38 +106,76 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * Metodo privato che recupera le informazioni sul prenotante e le inserisce nel pannello di competenza
 	 * @param prenotazione
 	 */
-	private void addInfoPrenotante(PrenotazioneSubject prenotazione){
+	private JPanel creaInfoPrenotante(PrenotazioneSubject prenotazione){
 		
 		/*Recupero il prenotante della prenotazione */
 		Ospite prenotante = prenotazione.getPrenotante();
 		
 		/*Setto il testo dell'intestazione*/
 		_lblTitoloPrenotante.setText("Titolare della prenotazione: ");
-		_lblTitoloPrenotante.setPreferredSize(new Dimension(300,150));
+		
 		
 		/*Setto il corpo della label con i dati del prenotante*/
 
 		_lblCognomePrenotante.setText("Cognome: "+prenotante.get_cognome());
 		_lblNomePrenotante.setText("Nome: "+prenotante.get_nome());
-		_lblCognomePrenotante.setPreferredSize(new Dimension(400,200));
+		
 		
 		/*Aggiungo il layuot al pannello*/	
-		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante,BoxLayout.PAGE_AXIS));
+		_panelInfoPrenotante.setLayout(new GridBagLayout());
+		
+		/*Definisco i vincoli*/
+		GridBagConstraints constraints_lbl_titolare = new GridBagConstraints();
+		GridBagConstraints constraints_lbl_nome = new GridBagConstraints();
+		GridBagConstraints constraints_lbl_cognome = new GridBagConstraints();
+		
+		/*setto i vincoli*/
+		//prima riga, prima colonna		
+		constraints_lbl_titolare.fill = GridBagConstraints.HORIZONTAL;
+		constraints_lbl_titolare.gridx=0;
+		constraints_lbl_titolare.gridy=0;
+		//padding
+		constraints_lbl_titolare.insets = _insets_lbl;		
+		
+		//seconda riga, prima colonna
+		constraints_lbl_nome.fill = GridBagConstraints.HORIZONTAL;
+		constraints_lbl_nome.gridx=0;
+		//posiziono dopo il titolare
+		constraints_lbl_nome.gridy=constraints_lbl_titolare.RELATIVE;		
+		constraints_lbl_nome.insets = _insets_lbl;
+		
+		//terza riga, prima colonna
+		constraints_lbl_cognome.fill = GridBagConstraints.HORIZONTAL;
+		constraints_lbl_cognome.gridx=0;
+		//posiziono dopo il nome
+		constraints_lbl_cognome.gridy=constraints_lbl_nome.RELATIVE;
+		constraints_lbl_cognome.insets = _insets_lbl;
+		
+		
 		
 		/*Aggiungo le label al pannello*/
-		_panelInfoPrenotante.add(_lblTitoloPrenotante);
-		_panelInfoPrenotante.add(_lblCognomePrenotante);
-		_panelInfoPrenotante.add(_lblNomePrenotante);
+		_panelInfoPrenotante.add(_lblTitoloPrenotante,constraints_lbl_titolare);
+		_panelInfoPrenotante.add(_lblCognomePrenotante,constraints_lbl_cognome);
+		_panelInfoPrenotante.add(_lblNomePrenotante,constraints_lbl_nome);
+		/*_lblTitoloPrenotante.setOpaque(true);
+		_lblCognomePrenotante.setOpaque(true);
+		_lblNomePrenotante.setOpaque(true);
+		_lblTitoloPrenotante.setBackground(new Color(30, 14,14));
+		_lblCognomePrenotante.setBackground(new Color( 14,30,14));
+		_lblNomePrenotante.setBackground(new Color( 14,14,30));*/
+		//_panelInfoPrenotante.setBackground(new Color(33, 33, 33));
 		
-		/*Aggiungo il panelPrenotante al panelTop*/
-		_contentPane.add(_panelInfoPrenotante, BorderLayout.LINE_START);
+		
+		/*Restituisco il pannello con le informazioni sul prenotante*/
+		return _panelInfoPrenotante;
+		
 	}
 	
 	/**
 	 * Metodo privato che recupera le informazioni della prenotazione
 	 * @param prenotazione
 	 */
-	private void addInfoPrenotazione(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){
+	private JPanel creaInfoPrenotazione(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){
 		/*Recupero il periodo*/
 		Periodo periodo = prenotazione.get_periodo();
 		
@@ -147,14 +199,37 @@ private static VFGP_InfoPrenotazione instance = null;
 		/*Setto il prezzo dei servizi*/
 		_lblPrezzoServizi.setText("Il totale per i servizi di cui si è usufruito è: "+totaleServizi.get_importo()+ " "+totaleServizi.get_valuta());
 		
-		/*Aggiugo le etichette di periodo e prezzo al _panelInfoPrenotazione*/
-		_panelInfoPrenotazione.setLayout(new BoxLayout(_panelInfoPrenotazione,BoxLayout.PAGE_AXIS) );
-		_panelInfoPrenotazione.add(_lblPeriodo);		
-		_panelInfoPrenotazione.add(_lblPrezzoCamere);
-		_panelInfoPrenotazione.add(_lblPrezzoServizi);		
+		/*Definisco i vincoli*/
+		GridBagConstraints constraints_periodo = new GridBagConstraints();
+		GridBagConstraints constraints_prezzo_camere = new GridBagConstraints();
+		GridBagConstraints constraints_prezzo_servizi = new GridBagConstraints();
 		
-		/*Aggiungo al contentPanel*/		
-		_contentPane.add(_panelInfoPrenotazione,BorderLayout.CENTER);		
+		/*Setto i vincoli*/
+		constraints_periodo.fill = GridBagConstraints.HORIZONTAL;
+		constraints_periodo.gridx=0;
+		constraints_periodo.gridy=0;
+		constraints_periodo.insets = _insets_lbl;	
+		
+		constraints_prezzo_camere.fill = GridBagConstraints.HORIZONTAL;
+		constraints_prezzo_camere.gridx=0;
+		constraints_prezzo_camere.gridy=constraints_periodo.RELATIVE;		
+		constraints_periodo.insets = _insets_lbl;
+		
+		constraints_prezzo_servizi.fill = GridBagConstraints.HORIZONTAL;
+		constraints_prezzo_servizi.gridx=0;
+		constraints_prezzo_servizi.gridy=constraints_prezzo_camere.RELATIVE;
+		constraints_prezzo_servizi.insets = _insets_lbl;
+	
+		
+		/*Aggiugo le etichette di periodo e prezzo al _panelInfoPrenotazione*/
+		_panelInfoPrenotazione.setLayout(new GridBagLayout());
+		
+		_panelInfoPrenotazione.add(_lblPeriodo,constraints_periodo);		
+		_panelInfoPrenotazione.add(_lblPrezzoCamere,constraints_prezzo_camere);
+		_panelInfoPrenotazione.add(_lblPrezzoServizi,constraints_prezzo_servizi);		
+		
+		return _panelInfoPrenotazione;
+			
 		
 	}
 	
@@ -227,15 +302,35 @@ private static VFGP_InfoPrenotazione instance = null;
 		
 		/*ContentPane 3 righe 1 colonna*/
 		_contentPane = _viewFactory.getPanel();
-		_contentPane.setLayout(new BorderLayout(3,3));
+		_contentPane.setLayout(new GridBagLayout());	
 		setContentPane(_contentPane);
 		
+		/*Vincoli*/
+		GridBagConstraints constraints_panel_prenotante = new GridBagConstraints();
+		GridBagConstraints constraints_panel_prenotazione = new GridBagConstraints();
+		
+		/*Setto i vincoli*/
+		constraints_panel_prenotante.gridx=0;
+		constraints_panel_prenotante.gridy=1;
+		constraints_panel_prenotante.gridheight=2;
+		constraints_panel_prenotante.gridwidth=2;
+		
+		constraints_panel_prenotazione.gridx=constraints_panel_prenotante.RELATIVE;
+		constraints_panel_prenotazione.gridy=1;
+		constraints_panel_prenotazione.gridheight=2;
+		constraints_panel_prenotazione.gridwidth=1;
+		
 		/*Aggiungo i pannelli al contentPane*/
-		addPanelTop(prenotazione);
-		addInfoPrenotante(prenotazione);
-		addInfoPrenotazione(prenotazione,prezzoServiziEsterni);
-		addCamerePrenotate(prenotazione);
-		addPanelBottom(prenotazione);
+		//addPanelTop(prenotazione);
+		creaInfoPrenotante(prenotazione);
+		creaInfoPrenotazione(prenotazione,prezzoServiziEsterni);
+		//addCamerePrenotate(prenotazione);
+		//addPanelBottom(prenotazione);
+		
+		/*Aggiungo il panelPrenotante al panelTop*/
+		_contentPane.add(_panelInfoPrenotante, constraints_panel_prenotante);
+		/*Aggiungo al contentPanel*/		
+		_contentPane.add(_panelInfoPrenotazione,constraints_panel_prenotazione);	
 		
 	}
 
