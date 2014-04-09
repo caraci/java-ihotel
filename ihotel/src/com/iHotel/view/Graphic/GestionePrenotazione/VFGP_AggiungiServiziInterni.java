@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -24,6 +25,12 @@ public class VFGP_AggiungiServiziInterni extends View {
 	// Singleton
 	private static VFGP_AggiungiServiziInterni instance=null;
 	private HashMap<String,DescrizioneServizioInterno> _descrizioniServizi;
+	// JPanel
+	private JPanel _pnlTop;
+	private JPanel _pnlMiddle;
+		private JPanel _pnlMiddleLeft;
+		private JPanel _pnlMiddleRight;
+	private JPanel _pnlBottom;
 	
 	/* JComboBox */
 	private JComboBox<JLabel> _comboBoxServizi;
@@ -31,7 +38,13 @@ public class VFGP_AggiungiServiziInterni extends View {
 	 * Costruttore privato - Pattern Singleton
 	 */
 	private VFGP_AggiungiServiziInterni() {
+		// TODO - Usare pattern Singleton
 		_comboBoxServizi=new JComboBox<>();
+		// JPanel
+		_pnlTop=_viewFactory.getPanel();
+		_pnlMiddle=_viewFactory.getPanel();
+		_pnlMiddleLeft=_viewFactory.getPanel();
+		_pnlMiddleRight=_viewFactory.getPanel();
 	}
 	/* ------------------------------- Metodi di classe -------------------------- */
 	/**
@@ -45,7 +58,7 @@ public class VFGP_AggiungiServiziInterni extends View {
     }
 	/* ------------------------------ Metodi di instanza ------------------------ */
 	
-	public JPanel creaListaServizi() {
+	public JPanel creaPanelListaServizi() {
 		// Ciclo sui servizi interni.
 		for (Iterator<String> iterator = _descrizioniServizi.keySet().iterator(); iterator.hasNext();) {
 			String codiceServizio = (String) iterator.next();
@@ -60,10 +73,13 @@ public class VFGP_AggiungiServiziInterni extends View {
 		return null;
 	}
 	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi) {
+		// 
+		setTitle("iHotel - Gestione Prenotazione - Informazioni prenotazione");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Memorizzo come attributo dell'interfaccia il parametro ricevuto.
 		_descrizioniServizi=descrizioniServizi;
 		// Pannello per creare la lista dei servizi
-		creaListaServizi();
+		creaPanelListaServizi();
 	}
 	/* ----------------------------- Getter, Setter ------------------------------- */
 	/**
@@ -78,5 +94,17 @@ public class VFGP_AggiungiServiziInterni extends View {
 	public void set_descrizioniServizi(
 			HashMap<String, DescrizioneServizioInterno> _descrizioniServizi) {
 		this._descrizioniServizi = _descrizioniServizi;
+	}
+	/**
+	 * @return the _pnlMiddleRight
+	 */
+	public JPanel get_pnlMiddleRight() {
+		return _pnlMiddleRight;
+	}
+	/**
+	 * @param _pnlMiddleRight the _pnlMiddleRight to set
+	 */
+	public void set_pnlMiddleRight(JPanel _pnlMiddleRight) {
+		this._pnlMiddleRight = _pnlMiddleRight;
 	}
 }

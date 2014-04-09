@@ -10,7 +10,9 @@ import java.util.ArrayList;
 
 
 
+
 import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
@@ -31,6 +33,7 @@ public class VFGP_InfoCamera extends View {
 	
 	private JButton _btnAggiungiServizi;
 	private JButton _btnTornaPrenotazione;
+	
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */

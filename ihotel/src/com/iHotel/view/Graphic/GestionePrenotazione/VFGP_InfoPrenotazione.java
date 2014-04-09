@@ -35,6 +35,7 @@ import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.View;
+import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
 
 
 /**
@@ -244,8 +245,10 @@ private static VFGP_InfoPrenotazione instance = null;
 			CameraContext cameraContext = (CameraContext) iterator.next();
 			/*Istanzio un button, gli assegno il numero della camera prenotata come testo e lo aggiungo al pannello delle camere
 			  prenotate*/
-			JButton button= _viewFactory.getButton();
-			button.setText(cameraContext.get_numero());
+			JButton button=_viewFactory.getButton();
+			button.setText("Gestisci Camera" + cameraContext.get_numero());
+			// Assegno l'eventListener al JButton.
+			button.addMouseListener(new GestisciCameraPrenotazioneListener(cameraContext.get_numero()));
 			_btnCamere.add(button);
 			_panelCamerePrenotate.add(button);
 			System.out.println(i);
@@ -285,6 +288,8 @@ private static VFGP_InfoPrenotazione instance = null;
 		
 		_btnTerminaModifichePrenotazione.setText("Termina Modifiche");		
 		_panelBottom.add(_btnTerminaModifichePrenotazione);
+		
+		// 
 		
 		/*Aggiungo il pannello al contentPanel*/
 		_contentPane.add(_panelBottom,BorderLayout.PAGE_END);
