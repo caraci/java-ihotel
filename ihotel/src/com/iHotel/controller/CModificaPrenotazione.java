@@ -14,12 +14,12 @@ import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
-import com.iHotel.view.VFrameHome;
 import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.GestionePrenotazione.Frame.VFGP_AggiungiServiziInterni;
-import com.iHotel.view.GestionePrenotazione.Frame.VFGP_InfoCamera;
-import com.iHotel.view.GestionePrenotazione.Frame.VFGP_InfoPrenotazione;
-import com.iHotel.view.GestionePrenotazione.Frame.VFGP_RicercaPrenotazioneDaCodice;
+import com.iHotel.view.Graphic.VFrameHome;
+import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
+import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoCamera;
+import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoPrenotazione;
+import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_RicercaPrenotazioneDaCodice;
 
 public class CModificaPrenotazione {
 	

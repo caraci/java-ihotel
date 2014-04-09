@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.GestionePrenotazione.Frame;
+package com.iHotel.view.Graphic.GestionePrenotazione;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

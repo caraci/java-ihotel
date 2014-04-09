@@ -1,13 +1,13 @@
 /**
  * 
  */
-package com.iHotel.view.GestionePrenotazione.Event;
+package com.iHotel.view.Event.GestionePrenotazione;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import com.iHotel.controller.CModificaPrenotazione;
-import com.iHotel.view.GestionePrenotazione.Frame.VFGP_RicercaPrenotazioneDaCodice;
+import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_RicercaPrenotazioneDaCodice;
 
 /**
  * @author Eugenio

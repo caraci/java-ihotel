@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.CreaPrenotazione.Event;
+package com.iHotel.view.Event.CreaPrenotazione;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.model.Utility.MyDate;
-import com.iHotel.view.CreaPrenotazione.Frame.VFCP_SelezionePeriodoTipologie;
+import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
 
 /**
  * @author Eugenio

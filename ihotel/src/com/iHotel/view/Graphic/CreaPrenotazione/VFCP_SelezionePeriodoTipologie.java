@@ -1,4 +1,4 @@
-package com.iHotel.view.CreaPrenotazione.Frame;
+package com.iHotel.view.Graphic.CreaPrenotazione;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,7 +10,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.iHotel.view.View;
-import com.iHotel.view.CreaPrenotazione.Event.RicercaCamereLibereListener;
+import com.iHotel.view.Event.CreaPrenotazione.RicercaCamereLibereListener;
 
 import net.sourceforge.jdatepicker.*;
 

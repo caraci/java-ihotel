@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.GestionePrenotazione.Frame;
+package com.iHotel.view.Graphic.GestionePrenotazione;
 
 import java.awt.GridLayout;
 
@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import com.iHotel.view.View;
-import com.iHotel.view.GestionePrenotazione.Event.RicercaPrenotazioneDaCodiceListener;
+import com.iHotel.view.Event.GestionePrenotazione.RicercaPrenotazioneDaCodiceListener;
 
 /**
  * @author Alessandro

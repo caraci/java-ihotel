@@ -8,10 +8,10 @@ import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
-import com.iHotel.view.VFrameHome;
 import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.CreaPrenotazione.Frame.VFCP_SelezioneCamereDatiOspite_Observer;
-import com.iHotel.view.CreaPrenotazione.Frame.VFCP_SelezionePeriodoTipologie;
+import com.iHotel.view.Graphic.VFrameHome;
+import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
 
 import java.io.IOException;
 import java.util.ArrayList;

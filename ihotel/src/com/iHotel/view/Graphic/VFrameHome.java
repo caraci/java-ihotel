@@ -1,4 +1,4 @@
-package com.iHotel.view;
+package com.iHotel.view.Graphic;
 
 
 import java.awt.GridLayout;
@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.view.View;
 
 @SuppressWarnings("serial")
 public class VFrameHome extends View {

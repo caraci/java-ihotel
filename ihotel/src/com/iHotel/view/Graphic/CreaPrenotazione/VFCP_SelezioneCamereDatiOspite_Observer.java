@@ -1,4 +1,4 @@
-package com.iHotel.view.CreaPrenotazione.Frame;
+package com.iHotel.view.Graphic.CreaPrenotazione;
 
 import java.awt.Dimension;
 
@@ -20,8 +20,8 @@ import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.View;
-import com.iHotel.view.CreaPrenotazione.Event.AggiungiCameraPrenotazioneListener;
-import com.iHotel.view.CreaPrenotazione.Event.EffettuaNuovaPrenotazioneListener;
+import com.iHotel.view.Event.CreaPrenotazione.AggiungiCameraPrenotazioneListener;
+import com.iHotel.view.Event.CreaPrenotazione.EffettuaNuovaPrenotazioneListener;
 
 import java.awt.GridLayout;
 

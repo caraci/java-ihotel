@@ -1,8 +1,8 @@
 package com.iHotel.main;
 
 import com.iHotel.utility.UStartup;
-import com.iHotel.view.VFrameHome;
 import com.iHotel.view.Access.ViewHandler;
+import com.iHotel.view.Graphic.VFrameHome;
 
 public class Main {
 	/**
