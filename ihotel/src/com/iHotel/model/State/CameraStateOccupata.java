@@ -43,4 +43,9 @@ public class CameraStateOccupata extends CameraState {
 		}
 	}
 
+	@Override
+	public ArrayList<ServizioInterno> getServiziInterni() {
+		return this._serviziInterni;
+	}
+
 }

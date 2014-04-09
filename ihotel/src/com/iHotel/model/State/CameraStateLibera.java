@@ -49,4 +49,10 @@ public class CameraStateLibera extends CameraState {
 	public void aggiungiServizioInPeriodo(ServizioInterno servizio,	Periodo periodo) {
 		// TODO Auto-generated method stub
 	}
+
+	@Override
+	public ArrayList<ServizioInterno> getServiziInterni() {
+		return null;
+	}
+	
 }

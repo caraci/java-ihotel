@@ -150,7 +150,7 @@ public class CModificaPrenotazione {
 		ArrayList<ServizioEsterno> serviziEsterni = _albergo.getElencoServiziEsterniCameraInPeriodo(_camera,periodo);
 		// Preparo l'interfaccia da visualizzare
 		VFGP_InfoCamera infoCamera = VFGP_InfoCamera.getInstance();
-		infoCamera.creaFrame(_camera, serviziEsterni);
+		infoCamera.creaFrame(_camera,_prenotazione, serviziEsterni);
 		// Visualizzo la nuova interfaccia.
 		ViewHandler.getInstance().showFrame(infoCamera);
 	}

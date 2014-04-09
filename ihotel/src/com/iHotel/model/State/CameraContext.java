@@ -85,6 +85,19 @@ public class CameraContext {
 			}
 		}
 	}	
+	/**
+	 * metodo per recuperare i servizi interni associati ad una camera in un periodo
+	 * */
+	public ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo){
+		ArrayList<ServizioInterno> serviziInterni=new ArrayList<ServizioInterno>() ;
+		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			CameraState statoCamera = iterator.next();
+			if(statoCamera.get_periodo().coincideCon(periodo)){
+				serviziInterni=statoCamera.getServiziInterni();
+			}
+		}
+		return serviziInterni;
+	}
 	/*------------------ Getter e Setter --------------*/
 	/**
 	 * @return _statiCameraState 

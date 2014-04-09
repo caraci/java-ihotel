@@ -27,6 +27,7 @@ public abstract class CameraState {
 	public abstract boolean isLiberaInPeriodo(Periodo periodo);
 	public abstract Prezzo getPrezzoTotaleServizi(Periodo periodo);
 	public abstract void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo);
+	public abstract ArrayList<ServizioInterno> getServiziInterni();
 	
 	/* -------------------------- Getter, Setter ----------------------------- */
 	/**
