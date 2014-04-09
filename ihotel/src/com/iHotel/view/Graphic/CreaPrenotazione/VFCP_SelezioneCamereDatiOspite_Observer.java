@@ -5,11 +5,9 @@ import java.awt.Dimension;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +26,6 @@ import java.awt.GridLayout;
 @SuppressWarnings("serial")
 public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IObserver {
 
-	/* ContentPane */
-	private JPanel _contentPane;
 	/* Panel */
     private JPanel _panelFinale;
     /* JButton */
@@ -167,14 +163,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
      * Metodo per creare il frame.
      */
     public void creaFrame(HashMap<String, ArrayList<CameraContext>> camereDisponibili) {
-    	// Imposto il titolo e l'operazione in chiusura alla finestra
+    	// Imposto il titolo.
     		setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
-			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
-			setBounds(50, 50, 1024, 500);
-			_contentPane = new JPanel();
-			_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-			setContentPane(_contentPane);
 		// Tipologie di camere
 			int numeroTipologie = camereDisponibili.size();
     	// Numero di colonne. Il +1 è dovuta alla colonna di gestione.

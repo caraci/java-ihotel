@@ -1,12 +1,9 @@
 package com.iHotel.view.Graphic;
 
-
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import com.iHotel.view.View;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
@@ -17,7 +14,6 @@ public class VFrameHome extends View {
 
 	/* Singleton */
 	private static VFrameHome instance = null;
-	private JPanel _contentPane;
 	private JPanel _panelTop, _panelBottom;
 	private JButton _btnCreaPrenotazione;
 	private JButton _btnModificaPrenotazione;
@@ -27,6 +23,10 @@ public class VFrameHome extends View {
      */
 	private VFrameHome() {
 		super();
+		_panelTop = _viewFactory.getPanel();
+		_panelBottom = _viewFactory.getPanel();
+		_btnCreaPrenotazione = _viewFactory.getButton();
+		_btnModificaPrenotazione = _viewFactory.getButton();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
@@ -43,24 +43,14 @@ public class VFrameHome extends View {
 	 * Create the frame.
 	 */
 	public void creaFrame() {
-		setTitle("iHotel - Home");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		set_contentPane(new JPanel());		
-		get_contentPane().setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(get_contentPane());
+		setTitle("iHotel - Home");		
+		// Setto il layout al contentPane
 		get_contentPane().setLayout(new GridLayout(2, 1, 10, 10));
 		
-		
-		_panelTop = new JPanel();
 		get_panelTop().setLayout(new GridLayout(1, 1, 20, 20));
-		_panelBottom = new JPanel();
 		get_panelBottom().setLayout(new GridLayout(1, 1, 20, 20));
 		
-		_btnCreaPrenotazione = new JButton();
 		get_btnCreaPrenotazione().setText("Crea nuova prenotazione");
-		
-		_btnModificaPrenotazione = new JButton();
 		get_btnModificaPrenotazione().setText("Gestisci prenotazione");
 
 		get_panelTop().add(get_btnCreaPrenotazione());		

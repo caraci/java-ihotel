@@ -3,9 +3,13 @@
  */
 package com.iHotel.view.Graphic.GestionePrenotazione;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,6 +35,8 @@ public class VFGP_AggiungiServiziInterni extends View {
 		private JPanel _pnlMiddleLeft;
 		private JPanel _pnlMiddleRight;
 	private JPanel _pnlBottom;
+	// JLabel
+	private JLabel _lblScegliServizio;
 	
 	/* JComboBox */
 	private JComboBox<JLabel> _comboBoxServizi;
@@ -45,6 +51,8 @@ public class VFGP_AggiungiServiziInterni extends View {
 		_pnlMiddle=_viewFactory.getPanel();
 		_pnlMiddleLeft=_viewFactory.getPanel();
 		_pnlMiddleRight=_viewFactory.getPanel();
+		// JLabel
+		_lblScegliServizio=_viewFactory.getLabel();
 	}
 	/* ------------------------------- Metodi di classe -------------------------- */
 	/**
@@ -58,28 +66,58 @@ public class VFGP_AggiungiServiziInterni extends View {
     }
 	/* ------------------------------ Metodi di instanza ------------------------ */
 	
-	public JPanel creaPanelListaServizi() {
-		// Ciclo sui servizi interni.
-		for (Iterator<String> iterator = _descrizioniServizi.keySet().iterator(); iterator.hasNext();) {
+	public JPanel creaPanelTop() {
+		
+		return _pnlTop;
+	}
+	public JPanel creaPanelMiddle() {
+		_pnlMiddle.setLayout(new GridLayout(2, 1, 10, 10));
+		// Creo i pannelli destro e sinistro e li aggiungo al pnlMiddle.
+		_pnlMiddle.add(creaPanelMiddleLeft());
+		_pnlMiddle.add(creaPanelMiddleRight());
+		return _pnlMiddle;
+	}
+	public JPanel creaPanelMiddleLeft() {
+		
+		return _pnlMiddleLeft;
+	}
+	public JPanel creaPanelMiddleRight() {
+		
+		return _pnlMiddleRight;
+	}
+	public JPanel creaPanelBottom() {
+		
+		return _pnlBottom;
+	}
+	
+	public JPanel creaPanelListaServizi(HashMap<String,DescrizioneServizioInterno> descrizioniServizi) {
+		// Setto il layout al panel.
+		_pnlMiddleLeft.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
+		// Aggiungo la label al panel.
+		_lblScegliServizio.setText("Scegli un servizio:");
+		_pnlMiddleLeft.add(_lblScegliServizio);
+		// Aggiungo spaziatura statica
+		_pnlMiddleLeft.add(Box.createRigidArea(new Dimension(0,20)));
+		// Ciclo sui servizi interni per creare la comboBox.
+		for (Iterator<String> iterator = descrizioniServizi.keySet().iterator(); iterator.hasNext();) {
 			String codiceServizio = (String) iterator.next();
 			// Chiedo una nuova label alla factory e ne setto il testo.
 			JLabel lblServizioInterno=_viewFactory.getLabel();
-			lblServizioInterno.setText(_descrizioniServizi.get(codiceServizio).get_nome());
+			lblServizioInterno.setText(descrizioniServizi.get(codiceServizio).get_nome());
 			// Aggiungo l'eventListener alla label, e fornisco il codice del servizio.
 			lblServizioInterno.addMouseListener(new MostraInformazioniServizioListener(codiceServizio));
 			// Aggiungo la label alla comboBox
 			_comboBoxServizi.addItem(lblServizioInterno);
 		}
-		return null;
+		_pnlMiddleLeft.add(_comboBoxServizi);
+		return _pnlMiddleLeft;
 	}
 	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi) {
-		// 
-		setTitle("iHotel - Gestione Prenotazione - Informazioni prenotazione");
+		// Setto titolo del frame.
+		setTitle("iHotel - Gestione Prenotazione - Aggiungi servizi alla camera");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Memorizzo come attributo dell'interfaccia il parametro ricevuto.
-		_descrizioniServizi=descrizioniServizi;
 		// Pannello per creare la lista dei servizi
-		creaPanelListaServizi();
+		creaPanelListaServizi(descrizioniServizi);
 	}
 	/* ----------------------------- Getter, Setter ------------------------------- */
 	/**

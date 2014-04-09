@@ -7,7 +7,6 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 import com.iHotel.view.View;
 import com.iHotel.view.Event.CreaPrenotazione.RicercaCamereLibereListener;
@@ -19,8 +18,6 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 
 	/* Singleton */
 	private static VFCP_SelezionePeriodoTipologie instance = null;
-	/* ContentPane */
-	private JPanel _contentPane;
     /* Panel */
     private JPanel _panelTop, _panelBottom;
     private JPanel _panelTopLeft, _panelTopRight;
@@ -133,12 +130,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	 */
 	public void creaFrame(ArrayList<String> tipologieCamere) {
 		setTitle("iHotel - Crea nuova prenotazione - Step 1 di 2");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
-		setBounds(50, 50, 1024, 500);
-		_contentPane = new JPanel();
-		_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(_contentPane);
+		// Setto il layout al contentPane.
 		_contentPane.setLayout(new GridLayout(2, 1, 10, 10));
 			
 		// PanelTop
