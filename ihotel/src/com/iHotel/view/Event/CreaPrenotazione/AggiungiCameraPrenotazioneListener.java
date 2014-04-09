@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
 
 /**
  * @author Eugenio
@@ -18,11 +17,10 @@ import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_O
 public class AggiungiCameraPrenotazioneListener extends MouseAdapter {
 
 	/* -------------------- Attributi e Costruttore ----------------------- */
-	private VFCP_SelezioneCamereDatiOspite_Observer _selezioneCamereDatiOspite;
+	private String _numeroCamera;
 	
-	public AggiungiCameraPrenotazioneListener() {
-		super();
-		_selezioneCamereDatiOspite=VFCP_SelezioneCamereDatiOspite_Observer.getInstance();
+	public AggiungiCameraPrenotazioneListener(String numeroCamera) {
+		_numeroCamera=numeroCamera;
 	}
 	/* ------------------- Metodi di instanza ----------------------------- */
 	@Override
@@ -34,14 +32,13 @@ public class AggiungiCameraPrenotazioneListener extends MouseAdapter {
 		JButton btn;
 		// Ricavo il JButton che ha generato l'evento
 		btn=(JButton) e.getComponent();
-		// Ricavo la sua posizione nell'ArrayList di JButton
-		int numeroLista=_selezioneCamereDatiOspite.get_btnNumeriCamereDisponibili().indexOf(btn);
+		// Rimuovo il listener e lo disabilito. 
+		btn.removeMouseListener(this);
+		btn.setEnabled(false);
 		// Recupero il controllore e invoco il metodo.
 		CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
 		// Aggiungo la camera alla prenotazione e carico il totale.
-		gestisciPrenotazione.aggiungiCameraAllaPrenotazione(_selezioneCamereDatiOspite.get_lblNumeriCamereDisponibili().get(numeroLista).getText());
-		// Cambio testo al bottone
-		btn.setText("Rimuovi camera");
+		gestisciPrenotazione.aggiungiCameraAllaPrenotazione(_numeroCamera);
 	}
 
 }

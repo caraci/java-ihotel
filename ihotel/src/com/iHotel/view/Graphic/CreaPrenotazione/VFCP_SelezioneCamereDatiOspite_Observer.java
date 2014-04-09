@@ -32,10 +32,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 	private JPanel _contentPane;
 	/* Panel */
     private JPanel _panelFinale;
-    /* JList */
-    private ArrayList<JLabel> _lblNumeriCamereDisponibili;
     /* JButton */
-    private ArrayList<JButton> _btnNumeriCamereDisponibili;
     private JButton _btnCompletaPrenotazione;
     /* JLabel */
     private JLabel _lblNome, _lblCognome, _lbleMail, _lblTelefono, _lblPrezzoTotale, _lblPrezzoScritto;
@@ -51,8 +48,6 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 	 */
 	private VFCP_SelezioneCamereDatiOspite_Observer() {
 		super();
-		_lblNumeriCamereDisponibili= new ArrayList<JLabel>();
-		_btnNumeriCamereDisponibili= new ArrayList<JButton>();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
@@ -95,8 +90,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 			CameraContext cameraContext = (CameraContext) iterator.next();
 			JLabel lblNumeroCamera = new JLabel(cameraContext.get_numero());
 			JButton btnNumeroCamera = new JButton("Aggiungi camera");
-			_lblNumeriCamereDisponibili.add(lblNumeroCamera);
-			_btnNumeriCamereDisponibili.add(btnNumeroCamera);
+			// Aggiungo l'eventListener al JButton.
+			btnNumeroCamera.addMouseListener(new AggiungiCameraPrenotazioneListener(cameraContext.get_numero()));
 			// Aggiungo label e button al panelColonna
 			panelColonna.add(lblNumeroCamera);
 			// Aggiungo uno spaziatore statica
@@ -145,6 +140,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 			_txtTelefono = new JTextField();
 		// Button completa prenotazione
 			_btnCompletaPrenotazione = new JButton("Completa Prenotazione");
+		// Assegniamo l'eventListener al JButton btnCompletaPrenotazione
+			_btnCompletaPrenotazione.addMouseListener(new EffettuaNuovaPrenotazioneListener());
 		// Aggiungo gli elementi al panelOspite
 			panelOspite.add(_lblNome);
 			panelOspite.add(Box.createVerticalGlue());
@@ -197,48 +194,12 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     	// Aggiungi i pezzi del panelFinale
 	    	addPanelPrezzo();
 	    	addPanelOspite();
-	    	_contentPane.add(_panelFinale);
-	    
-	    // Ciclo sui bottoni relativi all'aggiunta di una camera alla prenotazione.
-    	for (Iterator<JButton> iterator = _btnNumeriCamereDisponibili.iterator(); iterator.hasNext();) {
-			JButton btnCameraDisponibile = (JButton) iterator.next();				
-			// Assegniamo l'eventListener al JButton btnCameraDisponibile
-			btnCameraDisponibile.addMouseListener(new AggiungiCameraPrenotazioneListener());
-		}
-	    	
-		// Assegniamo l'eventListener al JButton btnCompletaPrenotazione
-		_btnCompletaPrenotazione.addMouseListener(new EffettuaNuovaPrenotazioneListener());		
+	    	_contentPane.add(_panelFinale);	    			
     }
     /* ------------- Getter, Setter ---------------------------- */
     public void set_prenotazioneSubject(ISubject subject) {
     	this._prenotazioneSubject=(PrenotazioneSubject) subject;
     }
-	/**
-	 * @return the _btnNumeriCamereDisponibili
-	 */
-	public ArrayList<JButton> get_btnNumeriCamereDisponibili() {
-		return _btnNumeriCamereDisponibili;
-	}
-	/**
-	 * @param _btnNumeriCamereDisponibili the _btnNumeriCamereDisponibili to set
-	 */
-	public void set_btnNumeriCamereDisponibili(
-			ArrayList<JButton> _btnNumeriCamereDisponibili) {
-		this._btnNumeriCamereDisponibili = _btnNumeriCamereDisponibili;
-	}
-	/**
-	 * @return the _lblNumeriCamereDisponibili
-	 */
-	public ArrayList<JLabel> get_lblNumeriCamereDisponibili() {
-		return _lblNumeriCamereDisponibili;
-	}
-	/**
-	 * @param _lblNumeriCamereDisponibili the _lblNumeriCamereDisponibili to set
-	 */
-	public void set_lblNumeriCamereDisponibili(
-			ArrayList<JLabel> _lblNumeriCamereDisponibili) {
-		this._lblNumeriCamereDisponibili = _lblNumeriCamereDisponibili;
-	}
 	/**
 	 * @return the _txtNome
 	 */

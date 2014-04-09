@@ -11,6 +11,7 @@ public class DescrizioneServizioInterno {
 	
 	/*-------------------------- Attributi --------------------------*/
 	private String _codice;
+	private String _nome;
 	private String _descrizione;
 	private LinkedList<PrezzoServizioInterno> _prezziServizio;
 	
@@ -50,6 +51,20 @@ public class DescrizioneServizioInterno {
 	public void set_codice(String _codice) {
 		this._codice = _codice;
 	}
+	/**
+	 * @return the _nome
+	 */
+	public String get_nome() {
+		return _nome;
+	}
+
+	/**
+	 * @param _nome the _nome to set
+	 */
+	public void set_nome(String _nome) {
+		this._nome = _nome;
+	}
+
 	/**
 	 * @return the _descrizione
 	 */
