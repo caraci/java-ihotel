@@ -6,7 +6,6 @@ package com.iHotel.view.Graphic.GestionePrenotazione;
 import java.awt.GridLayout;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.RicercaPrenotazioneDaCodiceListener;
@@ -17,26 +16,34 @@ import com.iHotel.view.Event.GestionePrenotazione.RicercaPrenotazioneDaCodiceLis
  */
 @SuppressWarnings("serial")
 public class VFGP_RicercaPrenotazioneDaCodice extends View {
-	
-	/*Content pane*/
-	private JPanel contentPane;
+
+	private String _codicePrenotazione;
+	// Singleton
+	private static VFGP_RicercaPrenotazioneDaCodice instance = null;
 	/*Panel*/
-	private JPanel panelTop, panelMiddle, panelBottom;
+	private JPanel _panelTop, _panelMiddle, _panelBottom;
 	/*Label*/
 	private JLabel _labelInstruction;
 	/*TextField*/
 	private JTextField _txtReservationCode;
 	/*Button*/
 	private JButton _btnReservationRecover;
-	private String _codicePrenotazione;
-	
-	
-	private static VFGP_RicercaPrenotazioneDaCodice instance = null;
 	
 	/**
 	 * Costruttore privato
 	 */
-	private VFGP_RicercaPrenotazioneDaCodice() {};	
+	private VFGP_RicercaPrenotazioneDaCodice() {
+		// JPanel
+		_panelTop=_viewFactory.getPanel();
+		_panelMiddle=_viewFactory.getPanel();
+		_panelBottom=_viewFactory.getPanel();
+		// JLabel
+		_labelInstruction=_viewFactory.getLabel();
+		// JButton
+		_btnReservationRecover=_viewFactory.getButton();
+		// JTextField
+		_txtReservationCode=_viewFactory.getTextField();
+	};	
 	
 	/**
 	 * Metodo che consente di avere una sola istanza della schermata
@@ -50,49 +57,33 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 	}
 	
 	private void addTopPanel(){
-		_labelInstruction = _viewFactory.getLabel();
-		_labelInstruction.setText("Inserisci qui sotto il codice della prenotazione che vuoi cercare");		
-		panelTop = new JPanel();
-		panelTop.setLayout(new GridLayout(1, 1, 10, 10));
-		panelTop.add(_labelInstruction);
-		contentPane.add(panelTop);
+		_labelInstruction.setText("Inserisci qui sotto il codice della prenotazione che vuoi cercare");
+		_panelTop.setLayout(new GridLayout(1, 1, 10, 10));
+		_panelTop.add(_labelInstruction);
+		_contentPane.add(_panelTop);
 	}
 	
 	private void addMiddlePanel(){
-		_txtReservationCode = new JTextField();
 		_txtReservationCode.setFocusable(true);
-		panelMiddle =new JPanel();
-		panelMiddle.setLayout(new GridLayout(1, 1, 10, 10));		
-		panelMiddle.add(_txtReservationCode);
-		contentPane.add(panelMiddle);
+		_panelMiddle.setLayout(new GridLayout(1, 1, 10, 10));		
+		_panelMiddle.add(_txtReservationCode);
+		_contentPane.add(_panelMiddle);
 		
 	}
 	
 	private void addButtomPanel(){
-		
-		_btnReservationRecover = new JButton();
-		_btnReservationRecover.setText("Cerca prenotazione");		
-		panelBottom = new JPanel();
-		panelBottom.setLayout(new GridLayout(1, 1, 10, 10));
-		panelBottom.add(_btnReservationRecover);
-		contentPane.add(panelBottom);
-		
+		_btnReservationRecover.setText("Cerca prenotazione");	
+		_panelBottom.setLayout(new GridLayout(1, 1, 10, 10));
+		_panelBottom.add(_btnReservationRecover);
+		_contentPane.add(_panelBottom);
 	}
 	
 	public void creaFrame(){
 		// Imposto il titolo e l'operazione in chiusura alla finestra
 		setTitle("iHotel - Gestione Prenotazione - Inserimento codice per recuperare la prenotazione");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
-		setBounds(50, 50, 800, 400);
-		
 		
 		// setto i valori dell'etichetta, metto il cursore sul campo di testo e impongo il testo del pulsante
-			
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(3, 1, 10,10));		
+		_contentPane.setLayout(new GridLayout(3, 1, 10,10));		
 				
 		addTopPanel();
 		addMiddlePanel();

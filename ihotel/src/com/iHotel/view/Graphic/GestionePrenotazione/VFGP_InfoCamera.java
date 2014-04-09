@@ -9,17 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
 
-
-
-
-
-
-
-
-
-
 import java.util.Iterator;
-import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -29,7 +19,6 @@ import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
-import com.iHotel.model.State.CameraState;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
@@ -42,8 +31,6 @@ import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
 public class VFGP_InfoCamera extends View {
 
 	/* ----------------------------- Attributi e costruttore -------------------------------- */
-	/*Content pane*/
-	private JPanel _contentPane;
 	/*Panel*/
 	private JPanel _panelTop, _panelBottom, _panelOspiti, _panelServiziInterniRichiesti,_panelServiziEsterniRichiesti;
 	/*Label*/
@@ -66,7 +53,6 @@ public class VFGP_InfoCamera extends View {
 		/*Istanzio gli oggetti da mostrare nell'interfaccia*/
 		
 		/*Panel*/
-		_contentPane = _viewFactory.getPanel();
 		_panelTop = _viewFactory.getPanel();
 		_panelBottom =_viewFactory.getPanel();
 		_panelOspiti=_viewFactory.getPanel();
@@ -125,7 +111,7 @@ public class VFGP_InfoCamera extends View {
 		
 		_lblServiziInterniRichiesti.setText("Servizi interni richiesti");
 		
-		for (Iterator iterator = serviziInterni.iterator(); iterator.hasNext();) {
+		for (Iterator<ServizioInterno> iterator = serviziInterni.iterator(); iterator.hasNext();) {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
 			JLabel lblServizioInterno=_viewFactory.getLabel();
 			lblServizioInterno.setText(servizioInterno.get_codice()+servizioInterno.get_data());

@@ -36,6 +36,7 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
+import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
 
 
 /**
@@ -294,6 +295,8 @@ private static VFGP_InfoPrenotazione instance = null;
 		
 		/*Aggiungo quello che mi serve al pannello*/
 		
+		// Aggiungo l'eventListener al bottone per concludere le modifiche
+		_btnTerminaModifichePrenotazione.addMouseListener(new TerminaModifichePrenotazione());
 		_btnTerminaModifichePrenotazione.setText("Termina Modifiche");		
 		_panelBottom.add(_btnTerminaModifichePrenotazione,constraints_termina_btn);
 		
@@ -310,12 +313,9 @@ private static VFGP_InfoPrenotazione instance = null;
 	public void creaFrame(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){
 		
 		setTitle("iHotel - Gestione Prenotazione - Informazioni prenotazione");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		/*ContentPane 3 righe 1 colonna*/
-		_contentPane = _viewFactory.getPanel();
-		_contentPane.setLayout(new GridBagLayout());	
-		setContentPane(_contentPane);
+		_contentPane.setLayout(new GridBagLayout());
 		
 		/*Vincoli*/
 		GridBagConstraints constraints_panel_prenotante = new GridBagConstraints();
