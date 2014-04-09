@@ -2,17 +2,15 @@ package com.iHotel.view.Graphic;
 
 
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.view.View;
+import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
+import com.iHotel.view.Event.CaricaGestionePrenotazioneListener;
 
 @SuppressWarnings("serial")
 public class VFrameHome extends View {
@@ -70,29 +68,10 @@ public class VFrameHome extends View {
 		get_contentPane().add(get_panelTop());
 		get_contentPane().add(get_panelBottom());
 		
-		
-		
 		// Assegniamo l'eventListener al JButton btnCreaPrenotazione
-		get_btnCreaPrenotazione().addMouseListener(new MouseAdapter() {
-			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// Recupero il controllore e invoco il metodo per cercare le camere libere.
-				CCreaPrenotazione creatorePrenotazione = CCreaPrenotazione.getInstance();
-				creatorePrenotazione.creaNuovaPrenotazione();
-			}
-		});
-		
+		get_btnCreaPrenotazione().addMouseListener(new CaricaCreaNuovaPrenotazioneListener());	
 		// Assegniamo l'eventListener al JButton btnModificaPrenotazione
-		get_btnModificaPrenotazione().addMouseListener(new MouseAdapter() {
-			// La classe MouseAdapter implementa le interfacce MouseListener, MouseMotionListener e MouseWheelListener.
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// Recupero il controllore e invoco il metodo per cercare le camere libere.
-				CModificaPrenotazione gestorePrenotazione = CModificaPrenotazione.getInstance();
-				gestorePrenotazione.gestionePrenotazione();
-			}
-		});
+		get_btnModificaPrenotazione().addMouseListener(new CaricaGestionePrenotazioneListener());
 	}
 	/* ------------------------ Getter, Setter -------------------------------- */
 	/**
