@@ -2,6 +2,7 @@ package com.iHotel.model.State;
 
 import java.util.*;
 
+import com.iHotel.model.Albergo.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
@@ -46,6 +47,11 @@ public class CameraStateOccupata extends CameraState {
 	@Override
 	public ArrayList<ServizioInterno> getServiziInterni() {
 		return this._serviziInterni;
+	}
+
+	@Override
+	public ArrayList<Ospite> getOspiti() {
+		return this._ospiti;
 	}
 
 }

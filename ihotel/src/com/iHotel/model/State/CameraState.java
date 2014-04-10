@@ -28,6 +28,7 @@ public abstract class CameraState {
 	public abstract Prezzo getPrezzoTotaleServizi(Periodo periodo);
 	public abstract void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo);
 	public abstract ArrayList<ServizioInterno> getServiziInterni();
+	public abstract ArrayList<Ospite> getOspiti();
 	
 	/* -------------------------- Getter, Setter ----------------------------- */
 	/**

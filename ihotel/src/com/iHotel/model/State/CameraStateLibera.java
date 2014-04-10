@@ -2,6 +2,7 @@ package com.iHotel.model.State;
 
 import java.util.*;
 
+import com.iHotel.model.Albergo.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Strategy.CreaStatiCameraStrategy;
 import com.iHotel.model.Strategy.CreaStatiCameraStrategyFactory;
@@ -52,6 +53,11 @@ public class CameraStateLibera extends CameraState {
 
 	@Override
 	public ArrayList<ServizioInterno> getServiziInterni() {
+		return null;
+	}
+
+	@Override
+	public ArrayList<Ospite> getOspiti() {
 		return null;
 	}
 	

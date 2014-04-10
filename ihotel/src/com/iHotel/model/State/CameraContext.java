@@ -2,6 +2,7 @@ package com.iHotel.model.State;
 
 import java.util.*;
 
+import com.iHotel.model.Albergo.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -98,6 +99,21 @@ public class CameraContext {
 		}
 		return serviziInterni;
 	}
+	/**
+	 * Metodo per recuperare gli ospiti ossoociati ad una camera in un periodo
+	 * */
+	public ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo){
+		ArrayList<Ospite> ospiti=new ArrayList<Ospite>() ;
+		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			CameraState statoCamera = iterator.next();
+			if(statoCamera.get_periodo().coincideCon(periodo)){
+				ospiti=statoCamera.getOspiti();
+			}
+		}
+		return ospiti;
+	}
+
+	
 	/*------------------ Getter e Setter --------------*/
 	/**
 	 * @return _statiCameraState 
