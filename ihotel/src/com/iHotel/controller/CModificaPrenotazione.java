@@ -14,6 +14,8 @@ import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.persistence.PCamera;
+import com.iHotel.persistence.PersistentManager;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.VFrameHome;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
@@ -91,6 +93,8 @@ public class CModificaPrenotazione {
     	Periodo periodo = _prenotazione.get_periodo();
     	// Aggiungo il servizio interno alla Camera che si sta gestendo, fornendo periodo e servizio.
     	_camera.aggiungiServizioInPeriodo(servizioInterno, periodo);
+    	// Salvo nel db la camera.
+    	PCamera.getInstance().store(_camera);
     }
     /**
      * Metodo per mostrare l'interfaccia per aggiungere nuovi servizi alla camera della prenotazione.
@@ -98,7 +102,7 @@ public class CModificaPrenotazione {
     public void aggiungiServiziCamera(){
     	VFGP_AggiungiServiziInterni aggiungiServiziInterni = VFGP_AggiungiServiziInterni.getInstance();
     	// Creo l'interfaccia fornendo l'insieme di descrittori dei servizi interni
-    	aggiungiServiziInterni.creaFrame(CatalogoServiziInterni.getInstance().get_descrizioneServizi());
+    	aggiungiServiziInterni.creaFrame(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
     	// Mostro vfgpAggiungiServiziInterni
     	ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
     }

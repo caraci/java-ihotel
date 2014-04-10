@@ -12,10 +12,13 @@ import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
+import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
+import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PDescrizioneCamera;
+import com.iHotel.persistence.PDescrizioneServiziInterni;
 import com.iHotel.persistence.PPrenotazione;
 
 /**
@@ -27,13 +30,16 @@ public class UStartup {
 		try {
 			// Carico tutte le camere
 			List<CameraContext> camere = PCamera.getInstance().caricaCamere();
-			// Carico tutte le descrizioni
+			// Carico tutte le descrizioni delle camere
 			List<DescrizioneCamera> descrizioniCamere = PDescrizioneCamera.getInstance().caricaDescrizioniCamere();
+			// Carico tutte le descrizioni dei servizi
+			List<DescrizioneServizioInterno> descrizioniServiziInterni = PDescrizioneServiziInterni.getInstance().caricaDescrizioniServizi();
 			// Carico tutte le prenotazioni
 			List<PrenotazioneSubject> prenotazioni = PPrenotazione.getInstance().caricaPrenotazioni();
-			// Mediante pattern singleton, carico Albergo e Catalogo camere.
+			// Mediante pattern singleton, carico Albergo, Catalogo camere, Catalogo Servizi e Storico.
 			Albergo albergo = Albergo.getInstance();
 			CatalogoCamere catalogoCamere = CatalogoCamere.getInstance();
+			CatalogoServiziInterni catalogoServiziInterni = CatalogoServiziInterni.getInstance();
 			Storico storico = Storico.getInstance();
 			
 			// Setto gli attributi dello storico
@@ -44,6 +50,14 @@ public class UStartup {
 			}
 			storico.set_prenotazioni(_prenotazioni);
 			
+			// Setto gli attributi del CatalogoServiziInterni
+			HashMap<String, DescrizioneServizioInterno> _descrizioniServizi = new HashMap<String,DescrizioneServizioInterno>();
+			for (Iterator<DescrizioneServizioInterno> iterator = descrizioniServiziInterni.iterator(); iterator.hasNext();) {
+				DescrizioneServizioInterno descrizioneServizio = (DescrizioneServizioInterno) iterator.next();
+				_descrizioniServizi.put(descrizioneServizio.get_codice(), descrizioneServizio);
+			}
+			catalogoServiziInterni.set_descrizioneServizi(_descrizioniServizi);
+			
 			// Setto gli attributi del catalogoCamere
 			HashMap<String,DescrizioneCamera> _descrizioniCamere = new HashMap<String,DescrizioneCamera>();
 			for (Iterator<DescrizioneCamera> iterator = descrizioniCamere.iterator(); iterator.hasNext();) {
@@ -51,6 +65,7 @@ public class UStartup {
 				_descrizioniCamere.put(descrizioneCamera.get_tipologia(), descrizioneCamera);
 			}
 			catalogoCamere.set_descrizioniCamere(_descrizioniCamere);
+			
 			// Setto gli attributi dell'albergo
 			ArrayList<CameraContext> _camere = new ArrayList<CameraContext>();
 			for (Iterator<CameraContext> iterator = camere.iterator(); iterator.hasNext();) {

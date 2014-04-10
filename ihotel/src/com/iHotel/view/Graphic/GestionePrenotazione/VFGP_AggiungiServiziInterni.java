@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
+import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.MostraInformazioniServizioListener;
 
@@ -29,6 +30,7 @@ public class VFGP_AggiungiServiziInterni extends View {
 	// Singleton
 	private static VFGP_AggiungiServiziInterni instance=null;
 	private HashMap<String,DescrizioneServizioInterno> _descrizioniServizi;
+	private CameraContext _camera;
 	// JPanel
 	private JPanel _pnlTop;
 	private JPanel _pnlMiddle;
@@ -36,11 +38,11 @@ public class VFGP_AggiungiServiziInterni extends View {
 		private JPanel _pnlMiddleRight;
 	private JPanel _pnlBottom;
 	// JLabel
-	private JLabel _lblScegliServizio;
+	private JLabel _lblScegliServizio, _lblAggiungiServizi;
 	// JButton
 	private JButton _btnAggiungiServizio, _btnTornaAllaCamera;
 	/* JComboBox */
-	private JComboBox<JLabel> _comboBoxServizi;
+	private JComboBox<String> _comboBoxServizi;
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
@@ -52,8 +54,13 @@ public class VFGP_AggiungiServiziInterni extends View {
 		_pnlMiddle=_viewFactory.getPanel();
 		_pnlMiddleLeft=_viewFactory.getPanel();
 		_pnlMiddleRight=_viewFactory.getPanel();
+		_pnlBottom=_viewFactory.getPanel();
 		// JLabel
+		_lblAggiungiServizi=_viewFactory.getLabel();
 		_lblScegliServizio=_viewFactory.getLabel();
+		// JButton
+		_btnAggiungiServizio=_viewFactory.getButton();
+		_btnTornaAllaCamera=_viewFactory.getButton();
 	}
 	/* ------------------------------- Metodi di classe -------------------------- */
 	/**
@@ -67,17 +74,35 @@ public class VFGP_AggiungiServiziInterni extends View {
     }
 	/* ------------------------------ Metodi di instanza ------------------------ */
 	
+	/**
+	 * Metodo per creare il pannello superiore.
+	 * @return Pannello superiore.
+	 */
 	public JPanel creaPanelTop() {
-		
+		// Setto il layout al panel
+		_pnlTop.setLayout(new GridLayout(2, 1, 10, 10));
+		// Setto il testo alla label
+		_lblAggiungiServizi.setText("Aggiungi servizi per la camera" + _camera.get_numero() + " :");
+		// Aggiungo la label al panel
+		_pnlTop.add(_lblAggiungiServizi);
 		return _pnlTop;
 	}
+	/**
+	 * Metodo per creare il pannello centrale
+	 * @return Pannello centrale.
+	 */
 	public JPanel creaPanelMiddle() {
-		_pnlMiddle.setLayout(new GridLayout(2, 1, 10, 10));
+		// Setto il layout al panel
+		_pnlMiddle.setLayout(new GridLayout(1, 2, 10, 10));
 		// Creo i pannelli destro e sinistro e li aggiungo al pnlMiddle.
 		_pnlMiddle.add(creaPanelMiddleLeft());
 		_pnlMiddle.add(creaPanelMiddleRight());
 		return _pnlMiddle;
 	}
+	/**
+	 * Metodo per creare il pannello contenente la lista dei servizi interni.
+	 * @return Pannello centrale sinistro.
+	 */
 	public JPanel creaPanelMiddleLeft() {
 		// Setto il layout al panel.
 		_pnlMiddleLeft.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
@@ -94,27 +119,50 @@ public class VFGP_AggiungiServiziInterni extends View {
 			lblServizioInterno.setText(_descrizioniServizi.get(codiceServizio).get_nome());
 			// Aggiungo l'eventListener alla label, e fornisco il codice del servizio.
 			lblServizioInterno.addMouseListener(new MostraInformazioniServizioListener(codiceServizio));
-			// Aggiungo la label alla comboBox
-			_comboBoxServizi.addItem(lblServizioInterno);
+			// Aggiungo la stringa del servizio alla comboBox
+			_comboBoxServizi.addItem(_descrizioniServizi.get(codiceServizio).get_nome());
 		}
 		_pnlMiddleLeft.add(_comboBoxServizi);
 		return _pnlMiddleLeft;
 	}
+	/**
+	 * Metodo per creare il pannello nella parte centrale destra della pagina.
+	 * @return Pannello centrale destro.
+	 */
 	public JPanel creaPanelMiddleRight() {
-		
+		// Setto il layout al panel
+		_pnlMiddleRight.setLayout(new BoxLayout(_pnlMiddleRight, BoxLayout.PAGE_AXIS));
+		// Setto il testo della Label
+		_lblScegliServizio.setText("Aggiungi un servizio, scegliendo tra uno di quelli proposti.");
+		// Aggiungo la Label al panel
+		_pnlMiddleRight.add(_lblScegliServizio);
 		return _pnlMiddleRight;
 	}
+	/**
+	 * Metodo per creare il pannello inferiore della pagina, quello contenente i bottoni per tornare alla pagina
+	 * precedente e per aggiungere il servizio in analisi.
+	 * @return Pannello inferiore.
+	 */
 	public JPanel creaPanelBottom() {
-		
+		_pnlBottom.setLayout(new GridLayout(1, 2, 5, 30));
+		// Setto il testo ai bottoni
+		_btnAggiungiServizio.setText("Aggiungi servizio");
+		_btnTornaAllaCamera.setText("Torna alla camera");
+		// Setto il pulsante per aggiungere un servizio disabilitato
+		_btnAggiungiServizio.setEnabled(false);
+		// Aggiungo i bottoni al pannello
+		_pnlBottom.add(_btnTornaAllaCamera);
+		_pnlBottom.add(_btnAggiungiServizio);
 		return _pnlBottom;
 	}
 	
-	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi) {
+	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi, CameraContext camera) {
 		// Setto titolo del frame.
 		setTitle("iHotel - Gestione Prenotazione - Aggiungi servizi alla camera");
 		// Pannello per creare la lista dei servizi
 		_contentPane.setLayout(new BoxLayout(_contentPane, BoxLayout.PAGE_AXIS));
-		// 
+		// Setto gli attributi dell'interfaccia attraverso ciò che ricevo per parametro.
+		_camera = camera;
 		_descrizioniServizi=descrizioniServizi;
 		// Aggiungo i pannelli al _contentPane
 		_contentPane.add(creaPanelTop());

@@ -11,7 +11,9 @@ import com.db4o.ObjectContainer;
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
+import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.PrezzoCamera;
+import com.iHotel.model.Albergo.Cataloghi.PrezzoServizioInterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.State.CameraStateLibera;
 import com.iHotel.model.State.CameraStateOccupata;
@@ -30,7 +32,10 @@ public class MainPopolamentoDB {
 		db.store(periodo);		
 	}
 	
-	public static void aggiungiDescrizione(ObjectContainer db,DescrizioneCamera descrizione){
+	public static void aggiungiDescrizioneCamera(ObjectContainer db,DescrizioneCamera descrizione){
+		db.store(descrizione);
+	}
+	public static void aggiungiDescrizioneServizi(ObjectContainer db,DescrizioneServizioInterno descrizione){
 		db.store(descrizione);
 	}
 	
@@ -412,6 +417,25 @@ public class MainPopolamentoDB {
 		d3.set_tipologia("Tripla");
 		d3.set_prezziCamera(prezzi_tripla);
 		
+		// Catalogo Servizi Interni
+		
+		Prezzo pChampagne = new Prezzo();
+		pChampagne.set_importo(35);
+		// Prezzi Champagne
+		PrezzoServizioInterno psiChampagne = new PrezzoServizioInterno();
+		psiChampagne.set_periodo(periodo_5);
+		psiChampagne.set_prezzo(pChampagne);
+		// Lista Prezzi Champagne
+		LinkedList<PrezzoServizioInterno> prezziChampagne = new LinkedList<PrezzoServizioInterno>();
+		prezziChampagne.add(psiChampagne);
+		
+		// Descrizione Servizio Interno Champagne
+		
+		DescrizioneServizioInterno dsChampagne = new DescrizioneServizioInterno();
+		dsChampagne.set_codice("A012");
+		dsChampagne.set_descrizione("Un'ottimo champagne di annata, per una notte speciale.");
+		dsChampagne.set_nome("Champagne in camera");
+		dsChampagne.set_prezziServizio(prezziChampagne);
 		
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {
@@ -432,10 +456,13 @@ public class MainPopolamentoDB {
 			aggiungiPrezzo(db,p_tripla_2);
 			aggiungiPrezzo(db,p_tripla_3);
 			
-			//aggiunta descrizioni
-			aggiungiDescrizione(db,d1);
-			aggiungiDescrizione(db,d2);
-			aggiungiDescrizione(db,d3);
+			//aggiunta descrizioni camere
+			aggiungiDescrizioneCamera(db,d1);
+			aggiungiDescrizioneCamera(db,d2);
+			aggiungiDescrizioneCamera(db,d3);
+			
+			//aggiunta servizi interni
+			aggiungiDescrizioneServizi(db,dsChampagne);
 			
 			//aggiunta camere
 			aggiungiCamera(db,camera_101);
