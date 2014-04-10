@@ -346,8 +346,6 @@ public class MainPopolamentoDB {
 		tripla.set_importo(30);
 		tripla.set_valuta(valuta);
 		
-		
-		
 		PrezzoCamera p_singola_1 = new PrezzoCamera();
 		p_singola_1.set_prezzo(singola);
 		p_singola_1.set_periodo(periodo_1);
@@ -419,6 +417,7 @@ public class MainPopolamentoDB {
 		
 		// Catalogo Servizi Interni
 		
+		// CHAMPAGNE
 		Prezzo pChampagne = new Prezzo();
 		pChampagne.set_importo(35);
 		// Prezzi Champagne
@@ -436,6 +435,25 @@ public class MainPopolamentoDB {
 		dsChampagne.set_descrizione("Un'ottimo champagne di annata, per una notte speciale.");
 		dsChampagne.set_nome("Champagne in camera");
 		dsChampagne.set_prezziServizio(prezziChampagne);
+		
+		// ROSE
+		Prezzo pRose = new Prezzo();
+		pRose.set_importo(15);
+		// Prezzi Rose
+		PrezzoServizioInterno psiRose = new PrezzoServizioInterno();
+		psiRose.set_periodo(periodo_5);
+		psiRose.set_prezzo(pRose);
+		// Lista Prezzi Rose
+		LinkedList<PrezzoServizioInterno> prezziRose = new LinkedList<PrezzoServizioInterno>();
+		prezziRose.add(psiRose);
+		
+		// Descrizione Servizio Interno Rose
+		
+		DescrizioneServizioInterno dsRose = new DescrizioneServizioInterno();
+		dsRose.set_codice("A013");
+		dsRose.set_descrizione("Fiori maravigliosi.");
+		dsRose.set_nome("Fiori in camera");
+		dsRose.set_prezziServizio(prezziRose);
 		
 		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
 		try {
@@ -463,6 +481,7 @@ public class MainPopolamentoDB {
 			
 			//aggiunta servizi interni
 			aggiungiDescrizioneServizi(db,dsChampagne);
+			aggiungiDescrizioneServizi(db,dsRose);
 			
 			//aggiunta camere
 			aggiungiCamera(db,camera_101);

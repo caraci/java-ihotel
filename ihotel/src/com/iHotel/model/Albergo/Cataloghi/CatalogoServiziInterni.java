@@ -38,6 +38,24 @@ public class CatalogoServiziInterni {
 		return _descrizioneServizi.get(codiceDescrittore);
 	}
 	
+	/**
+	 * Metodo per fornire il codice del servizio dal suo nome.
+	 * @param nomeServizio Nome del servizio.
+	 * @return Codice del servizio richiesto.
+	 */
+	public String getCodiceServizioDaNome(String nomeServizio) {
+		String codiceServizioRicercato = null;
+		// Ciclo sui descrittori
+		for (Iterator<String> iterator = _descrizioneServizi.keySet().iterator(); iterator.hasNext();) {
+			String codiceServizio = (String) iterator.next();
+			// Controllo se la stringa ricevuta come parametro è uguale al nome del descrittore.
+			if(_descrizioneServizi.get(codiceServizio).get_nome().equals(nomeServizio)) {
+				codiceServizioRicercato=codiceServizio;
+			}
+		}
+		return codiceServizioRicercato;
+	}
+ 	
 	/*--------------------------- Getter, Setter ---------------------------*/
 	/**
 	 * @return the _descrizioneServizi

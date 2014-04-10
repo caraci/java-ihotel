@@ -21,7 +21,6 @@ import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
-import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
 
 /**

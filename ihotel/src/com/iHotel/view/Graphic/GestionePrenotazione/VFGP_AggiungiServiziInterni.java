@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.View;
-import com.iHotel.view.Event.GestionePrenotazione.MostraInformazioniServizioListener;
+import com.iHotel.view.Event.GestionePrenotazione.MostraDettagliServizioListener;
 
 /**
  * @author Eugenio
@@ -114,14 +114,12 @@ public class VFGP_AggiungiServiziInterni extends View {
 		// Ciclo sui servizi interni per creare la comboBox.
 		for (Iterator<String> iterator = _descrizioniServizi.keySet().iterator(); iterator.hasNext();) {
 			String codiceServizio = (String) iterator.next();
-			// Chiedo una nuova label alla factory e ne setto il testo.
-			JLabel lblServizioInterno=_viewFactory.getLabel();
-			lblServizioInterno.setText(_descrizioniServizi.get(codiceServizio).get_nome());
-			// Aggiungo l'eventListener alla label, e fornisco il codice del servizio.
-			lblServizioInterno.addMouseListener(new MostraInformazioniServizioListener(codiceServizio));
-			// Aggiungo la stringa del servizio alla comboBox
+			// Aggiungo la stringa del nome del servizio alla comboBox
 			_comboBoxServizi.addItem(_descrizioniServizi.get(codiceServizio).get_nome());
 		}
+		// Assegno il gestore dell'evento alla JComboBox
+		_comboBoxServizi.addItemListener(new MostraDettagliServizioListener());
+		// Aggiungo la comboBox al Panel
 		_pnlMiddleLeft.add(_comboBoxServizi);
 		return _pnlMiddleLeft;
 	}
