@@ -46,10 +46,9 @@ import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
 @SuppressWarnings("serial")
 public class VFGP_InfoPrenotazione extends View {
 	
-	/*Content pane*/
-	private JPanel _contentPane;
+	
 	/*Panel*/
-	private JPanel _panelTop, _panelBottom, _panelInfoPrenotazione, _panelInfoPrenotante,_panelCamerePrenotate;
+	private JPanel _panelTop,_panelMiddle, _panelBottom, _panelInfoPrenotazione, _panelInfoPrenotante,_panelCamerePrenotate;
 	/*Label*/
 	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, _lblTitoloPrenotazione,_lblPeriodo,_lblPrezzoCamere,_lblPrezzoServizi, _lblScegliCamera;
 	
@@ -58,6 +57,7 @@ public class VFGP_InfoPrenotazione extends View {
 	private ArrayList<JButton> _btnCamere;
 	/*insets*/
 	private Insets _insets_lbl;
+	private Insets _insets_panel;
 	
 private static VFGP_InfoPrenotazione instance = null;
 	
@@ -70,6 +70,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		/*Panel*/
 		_contentPane = _viewFactory.getPanel();
 		_panelTop = _viewFactory.getPanel();
+		_panelMiddle = _viewFactory.getPanel();
 		_panelBottom =_viewFactory.getPanel();
 		_panelInfoPrenotante=_viewFactory.getPanel();
 		_panelInfoPrenotazione=_viewFactory.getPanel();
@@ -91,6 +92,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		
 		/*insets*/
 		_insets_lbl = new Insets(7, 2, 7, 2);
+		_insets_panel= new Insets(20,20,20,20);
 	};	
 	
 	/**
@@ -240,7 +242,6 @@ private static VFGP_InfoPrenotazione instance = null;
 	 * @param prenotazione
 	 */
 	private void creaCamerePrenotate (PrenotazioneSubject prenotazione){	
-		int i=0;
 		_panelCamerePrenotate.setLayout(new BoxLayout(_panelCamerePrenotate, BoxLayout.PAGE_AXIS));
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
 		for (Iterator<CameraContext> iterator = prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
@@ -253,8 +254,7 @@ private static VFGP_InfoPrenotazione instance = null;
 			button.addMouseListener(new GestisciCameraPrenotazioneListener(cameraContext.get_numero()));
 			_btnCamere.add(button);
 			_panelCamerePrenotate.add(button);
-			System.out.println(i);
-			i++;
+			
 		}
 		
 		
@@ -267,7 +267,7 @@ private static VFGP_InfoPrenotazione instance = null;
 	private void creaPanelTop(PrenotazioneSubject prenotazione){	
 		
 		/*Setto il layout al pannello*/
-		_panelTop.setLayout(new GridLayout(1, 1, 10,10));
+		_panelTop.setLayout(new GridLayout(1, 1, 1,1));
 		
 		/*Aggiungo il testo all'etichetta e l'etichetta al pannello*/		
 		_lblTitoloPrenotazione.setText("Prenotazione numero: "+prenotazione.get_codice());
@@ -275,7 +275,16 @@ private static VFGP_InfoPrenotazione instance = null;
 		
 		
 	}
-	
+	/**
+	 * Metodo che crea il pannello centrale
+	 * @param prenotazione
+	 * @return
+	 */
+	private JPanel creaPanelMiddle(PrenotazioneSubject prenotazione){
+		creaInfoPrenotante(prenotazione);
+		return _panelMiddle;
+		
+	}
 	/**
 	 * Metodo che inserisce il pannello inferiore della schermata
 	 * @param prenotazione
@@ -325,30 +334,45 @@ private static VFGP_InfoPrenotazione instance = null;
 		GridBagConstraints constraints_panel_bottom = new GridBagConstraints();
 		
 		/*Setto i vincoli*/
+		
+		constraints_panel_top.gridx=0;
+		constraints_panel_top.gridy=0;
+		constraints_panel_top.weightx=1;
+		constraints_panel_top.weighty=0.1;
+		constraints_panel_top.gridwidth=4;
+		constraints_panel_top.fill=GridBagConstraints.HORIZONTAL;
+		constraints_panel_top.anchor=GridBagConstraints.PAGE_START;
+		constraints_panel_top.anchor=GridBagConstraints.LINE_START;
+		constraints_panel_top.insets=_insets_panel;
+		
 		constraints_panel_prenotante.gridx=0;
-		constraints_panel_prenotante.gridy=1;
+		constraints_panel_prenotante.weighty=0.3;
+		constraints_panel_prenotante.weighty=0.5;
+		constraints_panel_prenotante.gridy=constraints_panel_top.RELATIVE;
 		constraints_panel_prenotante.gridheight=2;
 		constraints_panel_prenotante.gridwidth=2;
 		constraints_panel_prenotante.fill = GridBagConstraints.HORIZONTAL;
 		
 		constraints_panel_prenotazione.gridx=constraints_panel_prenotante.RELATIVE;
 		constraints_panel_prenotazione.gridy=1;
+		constraints_panel_prenotazione.weighty=0.4;
+		constraints_panel_prenotazione.weighty=0.5;
 		constraints_panel_prenotazione.gridheight=2;
 		constraints_panel_prenotazione.gridwidth=1;
 		constraints_panel_prenotazione.fill = GridBagConstraints.HORIZONTAL;
 		
 		constraints_panel_camere_prenotate.gridx=constraints_panel_prenotazione.RELATIVE;
 		constraints_panel_camere_prenotate.gridy=1;
-		constraints_panel_prenotante.gridheight=2;
-		constraints_panel_prenotante.gridwidth=2;
+		constraints_panel_camere_prenotate.weighty=0.3;
+		constraints_panel_camere_prenotate.weighty=0.5;
+		constraints_panel_camere_prenotate.gridheight=2;
+		constraints_panel_camere_prenotate.gridwidth=2;
 		constraints_panel_camere_prenotate.fill = GridBagConstraints.HORIZONTAL;
 		
-		constraints_panel_top.gridx=0;
-		constraints_panel_top.gridy=0;
-		constraints_panel_top.anchor=GridBagConstraints.PAGE_START;
 		
 		constraints_panel_bottom.gridx=3;
-		constraints_panel_bottom.gridy=constraints_panel_top.RELATIVE;
+		constraints_panel_bottom.weighty=0.4;
+		constraints_panel_bottom.gridy=constraints_panel_camere_prenotate.RELATIVE;
 		constraints_panel_bottom.anchor=GridBagConstraints.PAGE_END;
 		
 		
@@ -362,6 +386,8 @@ private static VFGP_InfoPrenotazione instance = null;
 		_panelInfoPrenotante.setBackground(new Color(44,44,44));
 		_panelInfoPrenotazione.setBackground(new Color(44,44,44));
 		_panelCamerePrenotate.setBackground(new Color(44,44,44));
+		
+		_contentPane.add(_panelTop,constraints_panel_top);
 		/*Aggiungo il panelPrenotante al*/
 		_contentPane.add(_panelInfoPrenotante, constraints_panel_prenotante);
 		/*Aggiungo al contentPanel*/		
@@ -369,10 +395,13 @@ private static VFGP_InfoPrenotazione instance = null;
 		/*Aggiungo il pannello con le camere*/
 		_contentPane.add(_panelCamerePrenotate,constraints_panel_camere_prenotate);		
 		/*Aggiungo il panelTop al contentPane*/
-		_contentPane.add(_panelTop,constraints_panel_top);
+		
 		
 		/*Aggiungo il pannello al contentPanel*/
 		_contentPane.add(_panelBottom,constraints_panel_bottom);
+		_contentPane.setBackground(new Color(150,0,0));
+		_panelTop.setBackground(new Color(0,150,0));
+		setContentPane(_contentPane);
 		
 	}
 
