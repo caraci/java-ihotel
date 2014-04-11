@@ -1,6 +1,5 @@
 package com.iHotel.model.Albergo;
 
-import java.io.IOException;
 import java.util.*;
 
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
@@ -34,9 +33,8 @@ public class Albergo {
 	
 	/**
 	 * Costruttore privato - pattern Singleton
-	 * @throws IOException 
 	 */
-	private Albergo() throws IOException {
+	private Albergo() {
 		/*
 		 * Si prendono nome, telefono, partita IVA e email dal defaultLoader, togliendo dalla classe  
 		 * MAlbergo la responsabilità di recuperare i dati di default.
@@ -56,9 +54,8 @@ public class Albergo {
 	/**
 	 * Metodo per ottenere l'unica instanza di questa classe - Pattern Singleton
 	 * @return instance
-	 * @throws IOException 
 	 */
-	public static Albergo getInstance() throws IOException {
+	public static Albergo getInstance() {
     	if(instance == null) {
             instance = new Albergo();
          }

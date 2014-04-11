@@ -7,7 +7,6 @@ import java.awt.CardLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
@@ -35,11 +34,8 @@ public class MostraDettagliServizioListener implements ItemListener {
 		String nomeServizioInterno = (String) e.getItem();
 		// Prendo l'elemento selezionato
 		if (e.getStateChange() == ItemEvent.SELECTED) {
-			// Recupero il codice del servizio
-			String codiceServizio=CatalogoServiziInterni.getInstance().getCodiceServizioDaNome(nomeServizioInterno);
-			// Recupero il controllore e invoco il metodo per avere ulteriori informazioni sul servizio.
-			CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
-			DescrizioneServizioInterno descrizioneServizioInterno = modificaPrenotazione.scegliServizioDaCodice(codiceServizio);
+			// Recupero il descrittore del servizio.
+			DescrizioneServizioInterno descrizioneServizioInterno=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaNome(nomeServizioInterno);
 			// Aggiungo una scheda al pannello.
 			_aggiungiServiziInterni.get_pnlMiddleRight().add(_aggiungiServiziInterni.creaPanelDescrittore(descrizioneServizioInterno));
 			// Ricavo il gestore del layout.

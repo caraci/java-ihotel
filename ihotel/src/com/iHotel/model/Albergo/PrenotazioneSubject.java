@@ -28,11 +28,13 @@ public class PrenotazioneSubject implements ISubject {
 	}
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
-	
+	/**
+	 * Metodo per generare il codice della prenotazione.
+	 * @return Codice della prenotazione, legato al timestamp del sistema.
+	 */
 	public static String generaCodice(){
 		long codice;
 		codice = Calendar.getInstance().getTime().getTime();
-		
 		return String.valueOf(codice);
 	}
 	
@@ -74,15 +76,13 @@ public class PrenotazioneSubject implements ISubject {
 	 * Metodo per calcolare il totale di una prenotazione
 	 */
 	public void calcolaTotale(){
-		// Cicliamo su tutti gli elementi della prenotazione.
-		CatalogoCamere catalogo=CatalogoCamere.getInstance();
-		DescrizioneCamera descrizione= new DescrizioneCamera();
+		DescrizioneCamera descrizione;
 		// Prendo l'ultima camera aggiunta.
-		CameraContext cameraPrenotata = new CameraContext();
+		CameraContext cameraPrenotata;
 		cameraPrenotata=_camerePrenotate.get(_camerePrenotate.size()-1);
 		// Prendo la tipologia e carico la giusta descrizione.
-		String tipologia = cameraPrenotata.get_tipologia();
-		descrizione=catalogo.getDescrizioneDaTipologia(tipologia);
+		String tipologia=cameraPrenotata.get_tipologia();
+		descrizione=CatalogoCamere.getInstance().getDescrizioneDaTipologia(tipologia);
 		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
 		_total.somma(descrizione.calcolaPrezzoInPeriodo(_periodo));
 		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio

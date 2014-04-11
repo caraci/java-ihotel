@@ -3,6 +3,7 @@ package com.iHotel.controller;
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
+import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.MyDate;
@@ -31,12 +32,7 @@ public class CCreaPrenotazione {
 	 */
 	private CCreaPrenotazione() {
 		// Carico l'albergo mediante pattern Singleton
-		try {
-			_albergo = Albergo.getInstance();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		_albergo = Albergo.getInstance();
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
@@ -60,7 +56,7 @@ public class CCreaPrenotazione {
 		_prenotazione = new PrenotazioneSubject();
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
-		tipologieCamere.addAll(_albergo.get_catalogoCamere().get_descrizioniCamere().keySet());
+		tipologieCamere.addAll(CatalogoCamere.getInstance().get_descrizioniCamere().keySet());
 		// Mostro VFrameCreaPrenotazioneStep1
 		VFCP_SelezionePeriodoTipologie frameCreaPrenotazione1 = VFCP_SelezionePeriodoTipologie.getInstance();
 		frameCreaPrenotazione1.creaFrame(tipologieCamere);
@@ -119,7 +115,6 @@ public class CCreaPrenotazione {
 		// Mostro finestra Step 2
 		frameCreaPrenotazioneStep_2.creaFrame(camereLibere);			
 		ViewHandler.getInstance().showFrame(frameCreaPrenotazioneStep_2);
-		frameCreaPrenotazioneStep_2.setVisible(true);	
 	}
 	/**
 	 * Metodo per concludere una prenotazione.

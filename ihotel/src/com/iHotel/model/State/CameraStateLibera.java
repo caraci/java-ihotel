@@ -13,7 +13,7 @@ public class CameraStateLibera extends CameraState {
 
 	@Override
 	/**
-	 * 
+	 * Metodo per generare la lista di CameraState, seguente ad una occupazione.
 	 */
 	public LinkedList<CameraState> occupaInPeriodo(Periodo periodoRichiesta) {
 		// Lista degli stati da restituire alla camera.

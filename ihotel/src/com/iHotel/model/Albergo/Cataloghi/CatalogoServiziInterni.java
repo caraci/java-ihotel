@@ -39,6 +39,24 @@ public class CatalogoServiziInterni {
 	}
 	
 	/**
+	 * Metodo per fornire il descrittore del servizio dal suo nome.
+	 * @param codiceDescrittore Codice del servizio.
+	 * @return Descrizione del servizio richiesto.
+	 */
+	public DescrizioneServizioInterno getDescrizioneServizioDaNome(String nomeDescrittore) {
+		DescrizioneServizioInterno descrizioneServizioInterno=null;
+		// Ciclo sui servizi
+		for (Iterator<String> iterator = _descrizioneServizi.keySet().iterator(); iterator.hasNext();) {
+			String codiceServizio = (String) iterator.next();
+			// Controllo che il nome sia quello del servizio.
+			if(_descrizioneServizi.get(codiceServizio).get_nome().equals(nomeDescrittore)) {
+				descrizioneServizioInterno=_descrizioneServizi.get(codiceServizio);
+			}
+		}
+		return descrizioneServizioInterno;
+	}
+	
+	/**
 	 * Metodo per fornire il codice del servizio dal suo nome.
 	 * @param nomeServizio Nome del servizio.
 	 * @return Codice del servizio richiesto.
