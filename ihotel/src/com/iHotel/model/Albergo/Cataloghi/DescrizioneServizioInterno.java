@@ -89,5 +89,13 @@ public class DescrizioneServizioInterno {
 	public void set_prezziServizio(LinkedList<PrezzoServizioInterno> _prezziServizio) {
 		this._prezziServizio = _prezziServizio;
 	}
+	
+	/* --- UTILITY --- */
+	public String toString() {
+		String out;
+		out = "Codice: " + get_codice() + "\n" +
+			  "Nome : "  + get_nome();
+		return out;	
+	}
 
 }

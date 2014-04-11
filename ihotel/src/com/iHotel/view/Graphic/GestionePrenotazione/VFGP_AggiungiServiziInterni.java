@@ -3,6 +3,8 @@
  */
 package com.iHotel.view.Graphic.GestionePrenotazione;
 
+import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.HashMap;
@@ -15,6 +17,10 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import net.sourceforge.jdatepicker.JDateComponentFactory;
+import net.sourceforge.jdatepicker.JDatePanel;
+
+import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.View;
@@ -129,12 +135,37 @@ public class VFGP_AggiungiServiziInterni extends View {
 	 */
 	public JPanel creaPanelMiddleRight() {
 		// Setto il layout al panel
-		_pnlMiddleRight.setLayout(new BoxLayout(_pnlMiddleRight, BoxLayout.PAGE_AXIS));
-		// Setto il testo della Label
-		_lblScegliServizio.setText("Aggiungi un servizio, scegliendo tra uno di quelli proposti.");
-		// Aggiungo la Label al panel
-		_pnlMiddleRight.add(_lblScegliServizio);
+		_pnlMiddleRight.setLayout(new CardLayout());
+		// Recupero il descrittore
+		String codiceServizio = CatalogoServiziInterni.getInstance().getCodiceServizioDaNome(_comboBoxServizi.getItemAt(0));
+		DescrizioneServizioInterno descrizioneServizio = CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(codiceServizio);	
+		// Aggiungo il panel del descrittore al padre
+		_pnlMiddleRight.add(creaPanelDescrittore(descrizioneServizio));
 		return _pnlMiddleRight;
+	}
+	/**
+	 * Metodo per creare il pannello contenente le informazioni di un servizio
+	 * @param descrizioneServizio
+	 * @return
+	 */
+	public JPanel creaPanelDescrittore(DescrizioneServizioInterno descrizioneServizio) {
+		// Pannello per il servizio
+		JPanel pnlDescrittoreServizio=_viewFactory.getPanel();
+		// Setto il gestore del Layout al panel
+		pnlDescrittoreServizio.setLayout(new BoxLayout(pnlDescrittoreServizio, BoxLayout.PAGE_AXIS));
+		// Codice servizio
+		JLabel lblCodice=_viewFactory.getLabel();
+		lblCodice.setText("Codice del servizio: " + descrizioneServizio.get_codice());
+		pnlDescrittoreServizio.add(lblCodice);
+		// Nome servizio
+		JLabel lblNome=_viewFactory.getLabel();
+		lblNome.setText("Nome del servizio: " + descrizioneServizio.get_nome());
+		pnlDescrittoreServizio.add(lblNome);
+		// JDatePanel data servizio
+		JDatePanel datePanelServizio = JDateComponentFactory.createJDatePanel();
+		pnlDescrittoreServizio.add((Component) datePanelServizio);
+		
+		return pnlDescrittoreServizio;
 	}
 	/**
 	 * Metodo per creare il pannello inferiore della pagina, quello contenente i bottoni per tornare alla pagina

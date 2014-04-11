@@ -15,7 +15,6 @@ import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PCamera;
-import com.iHotel.persistence.PersistentManager;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.VFrameHome;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
