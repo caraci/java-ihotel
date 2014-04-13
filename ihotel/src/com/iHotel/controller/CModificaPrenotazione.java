@@ -89,11 +89,13 @@ public class CModificaPrenotazione {
 	/**
      * Metodo per mostrare l'interfaccia per aggiungere nuovi servizi alla camera della prenotazione.
      */
-    public void aggiungiServiziCamera(){
-    	VFGP_AggiungiServiziInterni aggiungiServiziInterni = VFGP_AggiungiServiziInterni.getInstance();
-    	aggiungiServiziInterni.creaFrame(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
-    	ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
-    }
+	public void aggiungiServiziCamera(){
+		VFGP_AggiungiServiziInterni aggiungiServiziInterni = VFGP_AggiungiServiziInterni.getInstance();
+		// Creo l'interfaccia fornendo l'insieme di descrittori dei servizi interni
+		aggiungiServiziInterni.creaFrame(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
+		// Mostro vfgpAggiungiServiziInterni
+		ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
+	}
     /**
      * Metodo per aggiungere un servizio alla camera selezionata, relativa alla prenotazione che si sta
      * modificando.
