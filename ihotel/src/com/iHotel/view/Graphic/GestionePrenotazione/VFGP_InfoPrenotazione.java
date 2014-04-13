@@ -295,11 +295,7 @@ private static VFGP_InfoPrenotazione instance = null;
 		_btnTerminaModifichePrenotazione.addMouseListener(new TerminaModifichePrenotazione());
 		_btnTerminaModifichePrenotazione.setText("Termina Modifiche");		
 		_panelBottom.add(_btnTerminaModifichePrenotazione,constraints_termina_btn);
-		
 		// 
-		
-		
-		
 	}
 	
 	/**

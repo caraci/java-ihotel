@@ -45,8 +45,74 @@ public class CModificaPrenotazione {
          return instance;
     }
 	/* ------------------------- Metodi di instanza ---------------------------------- */
-    
     /**
+     * Metodo per mostrare l'interfaccia 
+     */
+	public void gestionePrenotazione() {
+		VFGP_RicercaPrenotazioneDaCodice ricercaPrenotazioneDaCodice = VFGP_RicercaPrenotazioneDaCodice.getInstance();
+		ricercaPrenotazioneDaCodice.creaFrame();
+		ViewHandler.getInstance().showFrame(ricercaPrenotazioneDaCodice);
+	}
+	/**
+	 * Metodo per mostrare l'interfaccia per la gestione della prenotazione, relativa al codice fornito.
+	 * @param codicePrenotazione Codice della prenotazione da caricare.
+	 */
+	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) {
+		// Recupero la prenotazione dallo storico.
+		_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
+		// Recupero il prezzo dei servizi esterni della prenotazione.
+		Prezzo prezzo=_albergo.getPrezzoServiziEsterniPrenotazione(_prenotazione);
+		// Prendo l'interfaccia correlata.
+		VFGP_InfoPrenotazione infoPrenotazione=VFGP_InfoPrenotazione.getInstance();
+		// Creo l'interfaccia relativa alla prenotazione
+		infoPrenotazione.creaFrame(_prenotazione,prezzo);
+		// Mostro l'interfaccia relativa alla gestione della prenotazione
+		ViewHandler.getInstance().showFrame(infoPrenotazione);
+	}
+	/**
+	 * Metodo per mostrare l'interfaccia contenente le informazioni sulla camera, relativa al numero fornito. 
+	 * @param numeroCamera 
+	 */
+	public void gestioneCamera(String numeroCamera) {
+		// Ricavo la camera da visualizzare e la salvo come attributo del controllore.
+		_camera=_albergo.getCameraDaNumero(numeroCamera);
+		// Ricavo il periodo della prenotazione.
+		Periodo periodo = _prenotazione.get_periodo();
+		// Ricavo i servizi esterni della camera nel periodo della prenotazione.
+		ArrayList<ServizioEsterno> serviziEsterni = _albergo.getElencoServiziEsterniCameraInPeriodo(_camera,periodo);
+		// Preparo l'interfaccia da visualizzare
+		VFGP_InfoCamera infoCamera = VFGP_InfoCamera.getInstance();
+		infoCamera.creaFrame(_camera,_prenotazione, serviziEsterni);
+		// Visualizzo la nuova interfaccia.
+		ViewHandler.getInstance().showFrame(infoCamera);
+	}
+	/**
+     * Metodo per mostrare l'interfaccia per aggiungere nuovi servizi alla camera della prenotazione.
+     */
+    public void aggiungiServiziCamera(){
+    	VFGP_AggiungiServiziInterni aggiungiServiziInterni = VFGP_AggiungiServiziInterni.getInstance();
+    	aggiungiServiziInterni.creaFrame(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
+    	ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
+    }
+    /**
+     * Metodo per aggiungere un servizio alla camera selezionata, relativa alla prenotazione che si sta
+     * modificando.
+     * @param dataServizio Data per il quale si richiede il servizio interno.
+     * @param codiceServizio Codice del servizio da mostrare
+     */
+    public void aggiungiServizio(MyDate dataServizio, String codiceServizio){
+    	// Creo il nuovo oggetto di tipo ServizioInterno
+    	ServizioInterno servizioInterno = new ServizioInterno();
+    	servizioInterno.set_codice(codiceServizio);
+    	servizioInterno.set_data(dataServizio);
+    	// Ricavo il periodo della prenotazione
+    	Periodo periodo = _prenotazione.get_periodo();
+    	// Aggiungo il servizio interno alla Camera che si sta gestendo, fornendo periodo e servizio.
+    	_camera.aggiungiServizioInPeriodo(servizioInterno, periodo);
+    	// Salvo nel db la camera.
+    	PCamera.getInstance().store(_camera);
+    }	
+	/**
      * Metodo che termina l'aggiunta dei servizi e restituisce la schermata precedente
      */
     public void terminaAggiuntaServiziCamera(){
@@ -70,76 +136,6 @@ public class CModificaPrenotazione {
     	// Mostro l'interfaccia iniziale.
     	ViewHandler.getInstance().showFrame(frameHome);
     }
-    /**
-     * Metodo per aggiungere un servizio alla camera selezionata, relativa alla prenotazione che si sta
-     * modificando.
-     * @param dataServizio Data per il quale si richiede il servizio interno.
-     * @param codiceServizio Codice del servizio da mostrare
-     */
-    public void aggiungiServizio(MyDate dataServizio, String codiceServizio){
-    	// Creo il nuovo oggetto di tipo ServizioInterno
-    	ServizioInterno servizioInterno = new ServizioInterno();
-    	servizioInterno.set_codice(codiceServizio);
-    	servizioInterno.set_data(dataServizio);
-    	// Ricavo il periodo della prenotazione
-    	Periodo periodo = _prenotazione.get_periodo();
-    	// Aggiungo il servizio interno alla Camera che si sta gestendo, fornendo periodo e servizio.
-    	_camera.aggiungiServizioInPeriodo(servizioInterno, periodo);
-    	// Salvo nel db la camera.
-    	PCamera.getInstance().store(_camera);
-    }
-    /**
-     * Metodo per mostrare l'interfaccia per aggiungere nuovi servizi alla camera della prenotazione.
-     */
-    public void aggiungiServiziCamera(){
-    	VFGP_AggiungiServiziInterni aggiungiServiziInterni = VFGP_AggiungiServiziInterni.getInstance();
-    	// Creo l'interfaccia fornendo l'insieme di descrittori dei servizi interni
-    	aggiungiServiziInterni.creaFrame(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
-    	// Mostro vfgpAggiungiServiziInterni
-    	ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
-    }
-    /**
-     * Metodo per mostrare l'interfaccia 
-     */
-	public void gestionePrenotazione() {
-		VFGP_RicercaPrenotazioneDaCodice ricercaPrenotazioneDaCodice = VFGP_RicercaPrenotazioneDaCodice.getInstance();
-		ricercaPrenotazioneDaCodice.creaFrame();
-		ViewHandler.getInstance().showFrame(ricercaPrenotazioneDaCodice);
-	}
-	/**
-	 * Metodo per mostrare l'interfaccia per la gestione della prenotazione, relativa al codice fornito.
-	 * @param codicePrenotazione Codice della prenotazione da caricare.
-	 */
-	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) {
-		// Recupero la prenotazione dallo storico.
-		_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
-		// Recupero il prezzo dei servizi esterni della prenotazione.
-		Prezzo prezzo=_albergo.getPrezzoServiziEsterniPrenotazione(_prenotazione);
-		
-		VFGP_InfoPrenotazione infoPrenotazione=VFGP_InfoPrenotazione.getInstance();
-		// Creo l'interfaccia relativa alla prenotazione
-		infoPrenotazione.creaFrame(_prenotazione,prezzo);
-		// Mostro l'interfaccia relativa alla gestione della prenotazione
-		ViewHandler.getInstance().showFrame(infoPrenotazione);
-	}
-
-	/**
-	 * Metodo per mostrare l'interfaccia contenente le informazioni sulla camera, relativa al numero fornito. 
-	 * @param numeroCamera 
-	 */
-	public void gestioneCamera(String numeroCamera) {
-		// Ricavo la camera da visualizzare e la salvo come attributo del controllore.
-		_camera=_albergo.getCameraDaNumero(numeroCamera);
-		// Ricavo il periodo della prenotazione.
-		Periodo periodo = _prenotazione.get_periodo();
-		// Ricavo i servizi esterni della camera nel periodo della prenotazione.
-		ArrayList<ServizioEsterno> serviziEsterni = _albergo.getElencoServiziEsterniCameraInPeriodo(_camera,periodo);
-		// Preparo l'interfaccia da visualizzare
-		VFGP_InfoCamera infoCamera = VFGP_InfoCamera.getInstance();
-		infoCamera.creaFrame(_camera,_prenotazione, serviziEsterni);
-		// Visualizzo la nuova interfaccia.
-		ViewHandler.getInstance().showFrame(infoCamera);
-	}
 	/* ----------------------- Getter, Setter -------------------------- */
 
 	public PrenotazioneSubject get_prenotazione() {

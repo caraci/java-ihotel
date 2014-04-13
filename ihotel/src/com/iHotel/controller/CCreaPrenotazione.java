@@ -56,7 +56,7 @@ public class CCreaPrenotazione {
 		_prenotazione = new PrenotazioneSubject();
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
-		tipologieCamere.addAll(CatalogoCamere.getInstance().get_descrizioniCamere().keySet());
+		tipologieCamere.addAll(CatalogoCamere.getInstance().getTipologieCamere());
 		// Mostro VFrameCreaPrenotazioneStep1
 		VFCP_SelezionePeriodoTipologie frameCreaPrenotazione1 = VFCP_SelezionePeriodoTipologie.getInstance();
 		frameCreaPrenotazione1.creaFrame(tipologieCamere);

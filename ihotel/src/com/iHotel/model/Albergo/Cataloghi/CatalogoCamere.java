@@ -8,14 +8,16 @@ public class CatalogoCamere {
 
 	/* ----------------------------------- Attributi e costruttore ---------------------------------- */
 	
-	private HashMap<String,DescrizioneCamera> _descrizioniCamere=new HashMap<String,DescrizioneCamera>();
+	private HashMap<String,DescrizioneCamera> _descrizioniCamere;
 	// Singleton
 	private static CatalogoCamere instance = null;
 	
 	/**
 	 * Costruttore privato - pattern singleton
 	 */
-	private CatalogoCamere() {}
+	private CatalogoCamere() {
+		_descrizioniCamere=new HashMap<String,DescrizioneCamera>();
+	}
 	/* ---------------------------- Metodi di classe ----------------------------- */	
 	
 	/**
@@ -30,7 +32,13 @@ public class CatalogoCamere {
     }
 	
 	/* --------------------------- Metodi di instanza --------------------------------- */
-	
+	/**
+	 * Metodo per ottenere le tipologie di camere presenti nel catalogo.
+	 * @return Tipologie di camere presenti nel catalogo
+	 */
+	public Set<String> getTipologieCamere() {
+		return _descrizioniCamere.keySet();
+	}
 	/**
 	 * Metodo che restituisce tutti i prezzi di una tipologia, in un determinato periodo.
 	 * 

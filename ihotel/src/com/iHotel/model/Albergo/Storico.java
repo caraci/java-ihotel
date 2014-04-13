@@ -25,16 +25,17 @@ public class Storico {
     }
 	/* ------------------------------ Metodi di instanza ----------------------------------- */
 	/**
-	 * 
-	 * @param codice
+	 * Metodo per ottenere una prenotazione a partire dal suo codice.
+	 * @param codice Codice della prenotazione
+	 * @return Prenotazione ricercata
 	 */
 	public PrenotazioneSubject recuperaPrenotazioneDaCodice(String codice) {
 		return _prenotazioni.get(codice);
 	}
 
 	/**
-	 * 
-	 * @param prenotazione
+	 * Metodo per aggiungere una prenotazione allo storico
+	 * @param prenotazione Prenotazione da aggiungere.
 	 */
 	public void addPrenotazione(PrenotazioneSubject prenotazione) {
 		_prenotazioni.put(prenotazione.get_codice(), prenotazione);

@@ -18,7 +18,7 @@ public class Albergo {
 	/* -------------------- Attributi e costruttore --------------------------*/
 	
  	private CatalogoCamere _catalogoCamere;
- 	private CatalogoServiziInterni _catalogoServizi;
+ 	private CatalogoServiziInterni _catalogoServiziInterni;
  	private Storico _storico;
 	private ArrayList<CameraContext> _camere;
 	private ArrayList<IServiceSystem> _sistemiServiziEsterni;
@@ -103,7 +103,7 @@ public class Albergo {
 	 * @return cameraRicercata Camera che ha il numero passato come parametro.
 	 */
 	public CameraContext getCameraDaNumero(String numeroCamera) {
-		CameraContext cameraRicercata = null; // = new MCamera();
+		CameraContext cameraRicercata = null;
 		for (Iterator<CameraContext> iterator = _camere.iterator(); iterator.hasNext();) {
 			CameraContext camera = (CameraContext) iterator.next();
 			if (camera.get_numero().equals(numeroCamera)) {
@@ -154,14 +154,14 @@ public class Albergo {
 	 * @return the _catalogoServizi
 	 */
 	public CatalogoServiziInterni get_catalogoServizi() {
-		return _catalogoServizi;
+		return _catalogoServiziInterni;
 	}
 
 	/**
 	 * @param _catalogoServizi the _catalogoServizi to set
 	 */
 	public void set_catalogoServizi(CatalogoServiziInterni _catalogoServizi) {
-		this._catalogoServizi = _catalogoServizi;
+		this._catalogoServiziInterni = _catalogoServizi;
 	}
 
 	/**
