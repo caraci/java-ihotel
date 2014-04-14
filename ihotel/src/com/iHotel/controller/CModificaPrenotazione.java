@@ -19,6 +19,7 @@ import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoCamera;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoPrenotazione;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_RicercaPrenotazioneDaCodice;
+import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione2;
 
 public class CModificaPrenotazione {
 	
@@ -63,9 +64,9 @@ public class CModificaPrenotazione {
 		// Recupero il prezzo dei servizi esterni della prenotazione.
 		Prezzo prezzo=_albergo.getPrezzoServiziEsterniPrenotazione(_prenotazione);
 		// Prendo l'interfaccia correlata.
-		VFGP_InfoPrenotazione infoPrenotazione=VFGP_InfoPrenotazione.getInstance();
+		VFPG_InfoPrenotazione2 infoPrenotazione = VFPG_InfoPrenotazione2.getInstance();
 		// Creo l'interfaccia relativa alla prenotazione
-		infoPrenotazione.creaFrame(_prenotazione,prezzo);
+		infoPrenotazione.creaFrame(_prenotazione, prezzo);		
 		// Mostro l'interfaccia relativa alla gestione della prenotazione
 		ViewHandler.getInstance().showFrame(infoPrenotazione);
 	}
