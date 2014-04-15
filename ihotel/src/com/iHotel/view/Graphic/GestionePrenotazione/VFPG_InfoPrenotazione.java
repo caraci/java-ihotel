@@ -21,6 +21,7 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
+import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
 
 /**
  * @author Alessandro
@@ -115,6 +116,10 @@ public class VFPG_InfoPrenotazione extends View {
 		/*Aggiungo il pulsante al panelBottom*/
 		_panelBottom.setLayout(new BorderLayout());		
 		_panelBottom.add(_btnTerminaModifichePrenotazione,BorderLayout.EAST);
+		
+		/*Aggiungo il listener al click sul pulsante*/
+		
+		_btnTerminaModifichePrenotazione.addMouseListener(new TerminaModifichePrenotazione());
 	}
 	
 	/**

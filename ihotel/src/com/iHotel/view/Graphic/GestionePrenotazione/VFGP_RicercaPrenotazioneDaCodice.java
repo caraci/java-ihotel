@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 import com.iHotel.view.View;
+import com.iHotel.view.Event.GestionePrenotazione.EvidenziaTextBoxListener;
 import com.iHotel.view.Event.GestionePrenotazione.RicercaPrenotazioneDaCodiceListener;
 
 /**
@@ -121,6 +122,7 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 		/*Aggiungo la casella di testo al pannello*/
 		_panelMiddleBottom.add(_txtReservationCode,BorderLayout.CENTER);
 		
+		_txtReservationCode.addMouseListener(new EvidenziaTextBoxListener());
 		/*Restituisco il pannello*/
 		return _panelMiddleBottom;
 	}
