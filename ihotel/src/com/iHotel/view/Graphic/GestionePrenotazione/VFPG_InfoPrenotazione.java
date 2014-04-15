@@ -26,13 +26,13 @@ import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneList
  * @author Alessandro
  *
  */
-public class VFPG_InfoPrenotazione2 extends View {
+public class VFPG_InfoPrenotazione extends View {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static VFPG_InfoPrenotazione2 instance;
+	private static VFPG_InfoPrenotazione instance;
 	
 	/*Panel*/
 	private JPanel _panelInfoPrenotante,_panelInfoPrenotazione,_panelCamerePrenotate;
@@ -46,7 +46,7 @@ public class VFPG_InfoPrenotazione2 extends View {
 	/*insets*/
 	
 	
-	private VFPG_InfoPrenotazione2(){
+	private VFPG_InfoPrenotazione(){
 		// JPanel		
 		_panelInfoPrenotante = _viewFactory.getPanel();
 		_panelInfoPrenotazione = _viewFactory.getPanel();
@@ -71,9 +71,9 @@ public class VFPG_InfoPrenotazione2 extends View {
 	 * Metodo che consente di avere una sola istanza della schermata
 	 * @return VFPG_InfoPrenotazione istanza unica della classe
 	 */
-	public static VFPG_InfoPrenotazione2 getInstance(){
+	public static VFPG_InfoPrenotazione getInstance(){
 		if (instance == null){
-			instance = new VFPG_InfoPrenotazione2();
+			instance = new VFPG_InfoPrenotazione();
 		}
 		return instance;
 	}
