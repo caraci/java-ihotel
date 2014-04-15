@@ -41,7 +41,7 @@ public class View extends JFrame {
 		// Operazione di default in chiusura.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
-		setBounds(50, 50, 1024, 500);
+		setBounds(50, 50, 1024, 510);
 		
 		//ora preparo il layout interno al contentPane
 		
@@ -57,12 +57,12 @@ public class View extends JFrame {
 		
 		//Setto le dimensioni dei pannelli in base alla dimensione della schermata.
 		/*	il panelTop è alto il 10% della pagina,
-		 * 	il panelMiddle è alto l'80%, 
+		 * 	il panelMiddle è alto l'70%, 
 		 * 	il panelBottom è alto il 10%
 		 */
-		_panelTop.setPreferredSize(new Dimension(getWidth(),(int)((0.1)*(getHeight()))));
-		_panelMiddle.setPreferredSize(new Dimension(getWidth(),(int)((0.8)*(getHeight()))));
-		_panelBottom.setPreferredSize(new Dimension(getWidth(), (int)((0.1)*(getHeight()))));
+		_panelTop.setPreferredSize(new Dimension((int)(0.95*getWidth()),(int)((0.09)*(getHeight()))));
+		_panelMiddle.setPreferredSize(new Dimension((int)(0.95*getWidth()),(int)((0.7)*(getHeight()))));
+		_panelBottom.setPreferredSize(new Dimension((int)(0.95*getWidth()), (int)((0.09)*(getHeight()))));
 		
 	}
 

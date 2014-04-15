@@ -2,6 +2,7 @@ package com.iHotel.view.Access;
 
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -33,6 +34,7 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 	public JPanel getPanel() {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 0));
+		panel.setBorder(BorderFactory.createLineBorder(Color.white));
 		return panel;
 	}
 

@@ -5,11 +5,13 @@ package com.iHotel.view.Access;
 
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 
 /**
  * @author Eugenio
@@ -40,6 +42,7 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	public JPanel getPanel() {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
+		panel.setBorder(BorderFactory.createLineBorder(Color.black));
 		return panel;
 	}
 
