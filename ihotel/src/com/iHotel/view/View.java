@@ -3,6 +3,9 @@
  */
 package com.iHotel.view;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -22,6 +25,11 @@ public class View extends JFrame {
 	/* ContentPane */
 	protected JPanel _contentPane;
 	
+	/*JPanel*/
+	//La struttura della pagina è divisa in 3 pannelli, top, middle e bottom. Tutte le pagine devono rispettare questa struttura
+	
+	protected JPanel _panelTop,_panelMiddle,_panelBottom;
+	
 	protected View(){
 		// Richiedo la factory corretta.
 		_viewFactory=ViewFactory.getInstance().getStyleFactory();
@@ -33,7 +41,29 @@ public class View extends JFrame {
 		// Operazione di default in chiusura.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
-		setBounds(50, 50, 1024, 500);	
+		setBounds(50, 50, 1024, 500);
+		
+		//ora preparo il layout interno al contentPane
+		
+		//prendo i pannelli
+		_panelTop=_viewFactory.getPanel();
+		_panelMiddle=_viewFactory.getPanel();
+		_panelBottom=_viewFactory.getPanel();
+		
+		//Aggiungo i pannelli al contentPane
+		_contentPane.add(_panelTop,BorderLayout.PAGE_START);
+		_contentPane.add(_panelMiddle,BorderLayout.CENTER);
+		_contentPane.add(_panelBottom,BorderLayout.PAGE_END);
+		
+		//Setto le dimensioni dei pannelli in base alla dimensione della schermata.
+		/*	il panelTop è alto il 10% della pagina,
+		 * 	il panelMiddle è alto l'80%, 
+		 * 	il panelBottom è alto il 10%
+		 */
+		_panelTop.setPreferredSize(new Dimension(getWidth(),(int)((0.1)*(getHeight()))));
+		_panelMiddle.setPreferredSize(new Dimension(getWidth(),(int)((0.8)*(getHeight()))));
+		_panelBottom.setPreferredSize(new Dimension(getWidth(), (int)((0.1)*(getHeight()))));
+		
 	}
 
 }

@@ -38,7 +38,7 @@ public class VFPG_InfoPrenotazione2 extends View {
 	private static VFPG_InfoPrenotazione2 instance;
 	
 	/*Panel*/
-	private JPanel _panelTop, _panelMiddle, _panelBottom, _panelInfoPrenotante,_panelInfoPrenotazione,_panelCamerePrenotate;
+	private JPanel _panelInfoPrenotante,_panelInfoPrenotazione,_panelCamerePrenotate;
 	
 	/*Label*/
 	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, _lblTitoloPrenotazione,_lblPeriodo,_lblPrezzoCamere,_lblPrezzoServizi, _lblScegliCamera;
@@ -47,14 +47,11 @@ public class VFPG_InfoPrenotazione2 extends View {
 	private JButton _btnTerminaModifichePrenotazione;
 	private ArrayList<JButton> _btnCamere;
 	/*insets*/
-	private Insets _insets_lbl;
-	private Insets _insets_panel;
+	
 	
 	private VFPG_InfoPrenotazione2(){
 		// JPanel
-		_panelTop=_viewFactory.getPanel();
-		_panelMiddle=_viewFactory.getPanel();
-		_panelBottom=_viewFactory.getPanel();
+		
 		_panelInfoPrenotante = _viewFactory.getPanel();
 		_panelInfoPrenotazione = _viewFactory.getPanel();
 		_panelCamerePrenotate = _viewFactory.getPanel();
@@ -89,7 +86,7 @@ public class VFPG_InfoPrenotazione2 extends View {
 	 * @param prenotazione
 	 * @return
 	 */
-	private JPanel creaPanelTop(PrenotazioneSubject prenotazione){
+	private void creaPanelTop(PrenotazioneSubject prenotazione){
 		
 		//setto la dimensione di default del pannello superiore
 		_panelTop.setPreferredSize(new Dimension(1024,50));
@@ -98,8 +95,7 @@ public class VFPG_InfoPrenotazione2 extends View {
 		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ prenotazione.get_codice());
 		_panelTop.add(_lblTitoloPrenotazione);
 		
-		//restituisco il pannello
-		return _panelTop;
+		
 	}
 	/**
 	 * Metodo privato che crea il pannello di metà pagina
@@ -108,7 +104,7 @@ public class VFPG_InfoPrenotazione2 extends View {
 	 * @return
 	 */
 	
-	private JPanel creaPanelMiddle(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){
+	private void creaPanelMiddle(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){
 		
 		/*invoco i 3 metodi privati che mi consentono di creare i pannelli con le informazioni sul prenotante*/
 		/*della prenotazione, sulla prenotazione e sulle camere*/
@@ -117,15 +113,14 @@ public class VFPG_InfoPrenotazione2 extends View {
 		_panelMiddle.add(creaPanelRight(prenotazione),BorderLayout.LINE_END);	
 		
 		/*restituisco il pannello*/
-		return _panelMiddle;
+		
 	}
 	/**
 	 * Metodo privato che crea il pannello di fondo pagina
 	 * @return
 	 */
-	private JPanel creaPanelBottom(){
-		//da implementare
-		return _panelBottom;
+	private void creaPanelBottom(){
+		
 	}
 	/**
 	 * Metodo privato che crea il pannello con le informazioni sul prenotante
@@ -137,7 +132,8 @@ public class VFPG_InfoPrenotazione2 extends View {
 		_panelInfoPrenotante.setBackground(new Color(150,00,00));
 		
 		/*Setto la dimensione*/
-		_panelInfoPrenotante.setPreferredSize(new Dimension(300,150));
+		System.out.print(getWidth());
+		_panelInfoPrenotante.setPreferredSize(new Dimension((int)(0.32*_panelMiddle.getPreferredSize().getWidth()) ,(int)(_panelMiddle.getPreferredSize().getHeight())));
 		_panelInfoPrenotante.setLayout(new GridLayout(3,1,10,10));
 		
 		/*Recupero il prenotante della prenotazione */
@@ -170,7 +166,7 @@ public class VFPG_InfoPrenotazione2 extends View {
 	private JPanel creaPanelCenter(PrenotazioneSubject prenotazione,Prezzo prezzoServiziEsterni){
 		_panelInfoPrenotazione.setBackground(new Color(00,150,00));
 		
-		_panelInfoPrenotazione.setPreferredSize(new Dimension(410,150));
+		_panelInfoPrenotazione.setPreferredSize(new Dimension((int)(0.32*_panelMiddle.getPreferredSize().getWidth()) ,(int)(_panelMiddle.getPreferredSize().getHeight())));
 		
 		/*Recupero il periodo*/
 		Periodo periodo = prenotazione.get_periodo();
@@ -208,7 +204,7 @@ public class VFPG_InfoPrenotazione2 extends View {
 	private JPanel creaPanelRight(PrenotazioneSubject prenotazione){
 		_panelCamerePrenotate.setBackground(new Color(00,00,150));
 		
-		_panelCamerePrenotate.setPreferredSize(new Dimension(300,150));
+		_panelCamerePrenotate.setPreferredSize(new Dimension((int)(0.32*_panelMiddle.getPreferredSize().getWidth()) ,(int)(_panelMiddle.getPreferredSize().getHeight())));
 		
 		_panelCamerePrenotate.setLayout(new BoxLayout(_panelCamerePrenotate, BoxLayout.PAGE_AXIS));
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
@@ -234,9 +230,9 @@ public class VFPG_InfoPrenotazione2 extends View {
 	 * @param prezzoServiziEsterni
 	 */
 	public void creaFrame(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){	
-		_contentPane.add(creaPanelTop(prenotazione),BorderLayout.PAGE_START);
-		_contentPane.add(creaPanelMiddle(prenotazione, prezzoServiziEsterni),BorderLayout.CENTER);
-		_contentPane.add(creaPanelBottom(),BorderLayout.PAGE_END);
+		creaPanelTop(prenotazione);
+		creaPanelMiddle(prenotazione, prezzoServiziEsterni);
+		creaPanelBottom();
 		
 		
 	}
