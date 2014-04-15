@@ -53,9 +53,24 @@ public class LightStyleFactory implements StyleAbstractFactory {
 		return label;
 	}
 	@Override
+	public JLabel getLabelIntestazione_1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public JLabel getLabelIntestazione_2() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
 	public JButton getButton() {
 		JButton button = new JButton();
 		return button;
+	}
+	@Override
+	public JButton getButtonAvanti() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	@Override
 	public JTextField getTextField() {
@@ -67,5 +82,8 @@ public class LightStyleFactory implements StyleAbstractFactory {
 		JCheckBox checkBox = new JCheckBox();
 		return checkBox;
 	}
+	
+	
+	
 
 }

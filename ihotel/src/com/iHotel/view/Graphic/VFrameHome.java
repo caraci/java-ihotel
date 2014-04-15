@@ -35,7 +35,7 @@ public class VFrameHome extends View {
 		_btnModificaPrenotazione = _viewFactory.getButton();
 		
 		/*Label*/
-		_lblInstructions= _viewFactory.getLabel();
+		_lblInstructions= _viewFactory.getLabelIntestazione_1();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.

@@ -1,6 +1,7 @@
 package com.iHotel.view.Access;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -45,12 +46,39 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 		label.setForeground(new Color(255,255,255));
 		return label;
 	}
-	
+	@Override
+	public JLabel getLabelIntestazione_1() {
+		JLabel label=getLabel();
+		// Setto il font.
+		Font font = new Font("Serif", Font.BOLD, 20);
+		label.setFont(font);
+		return label;
+	}
+	@Override
+	public JLabel getLabelIntestazione_2() {
+		JLabel label=getLabel();
+		// Setto il font.
+		Font font = new Font("Serif", Font.BOLD, 16);
+		label.setFont(font);
+		return label;
+	}
 	@Override
 	public JButton getButton(){
 		JButton button = new JButton();
 		button.setBackground(new Color(50, 50, 50));
 		button.setForeground(new Color(255,255,255));
+		return button;
+	}
+	@Override
+	public JButton getButtonAvanti() {
+		JButton button=getButton();
+		// Setto il font.
+		Font font = new Font("Serif", Font.BOLD, 12);
+		button.setFont(font);
+		// Setto colori - Sfondo Vere - Testo Nero
+		button.setBackground(new Color(127,255,0));
+		button.setForeground(new Color(0,0,0));
+		
 		return button;
 	}
 	@Override
@@ -63,9 +91,11 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JCheckBox getCheckBox() {
 		JCheckBox checkBox = new JCheckBox();
-		checkBox.setBackground(new Color(255, 255, 255));
-		checkBox.setForeground(new Color(0, 0, 0));
+		checkBox.setBackground(new Color(0, 0, 0));
+		checkBox.setForeground(new Color(255, 255, 255));
 		return checkBox;
 	}
+	
+	
 
 }

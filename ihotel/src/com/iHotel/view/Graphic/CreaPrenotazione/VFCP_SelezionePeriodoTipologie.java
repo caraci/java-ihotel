@@ -1,7 +1,6 @@
 package com.iHotel.view.Graphic.CreaPrenotazione;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -16,15 +15,18 @@ import net.sourceforge.jdatepicker.*;
 @SuppressWarnings("serial")
 public class VFCP_SelezionePeriodoTipologie extends View {
 
+	private ArrayList<String> _tipologieCamere; 
 	/* Singleton */
 	private static VFCP_SelezionePeriodoTipologie instance = null;
     /* Panel */
-    private JPanel _panelTop, _panelBottom;
     private JPanel _panelTopLeft, _panelTopRight;
-    private JPanel _panelBottomLeft, _panelBottomRight;
+    private JPanel _panelBottomLeft;
+    /* JButton */
     private JButton _btnAvanti;
     /* JDatePanel */
     private JDatePanel _datePanelFine, _datePanelInizio;
+    /* JLabel */
+    private JLabel _lblTitolo, _lblTipologie, _lblDataDiInizio, _lblDataDiFine;
     /* CheckBoxes */
     private ArrayList<JCheckBox> _checkBoxesTipologie = new ArrayList<JCheckBox>();
     
@@ -34,6 +36,17 @@ public class VFCP_SelezionePeriodoTipologie extends View {
      */
 	private VFCP_SelezionePeriodoTipologie() {
 		super();
+		// JPanel
+		_panelTopLeft = _viewFactory.getPanel();
+		_panelTopRight = _viewFactory.getPanel();
+		_panelBottomLeft = _viewFactory.getPanel();
+		// JLabel
+		_lblDataDiInizio = _viewFactory.getLabelIntestazione_2();
+		_lblDataDiFine = _viewFactory.getLabelIntestazione_2();
+		_lblTipologie = _viewFactory.getLabelIntestazione_2();
+		_lblTitolo=_viewFactory.getLabelIntestazione_1();
+		// JButton
+		_btnAvanti=_viewFactory.getButtonAvanti();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
@@ -46,116 +59,115 @@ public class VFCP_SelezionePeriodoTipologie extends View {
          }
          return instance;
     }
-	
 	/**
-	 * Metodo per aggiungere la porzione in alto a sinistra della finestra.
+	 * Metodo per creare il panelTop.
 	 */
-	private void addPanelTopLeft() {
+    private void creaPanelTop() {
+    	// Layout PanelTop
+    	_panelTop.setLayout(new BorderLayout(0, 0));
+		/*Testo della label*/
+		_lblTitolo.setText("Scegli il periodo e le tipologie di camere.");
+		/*Aggiungo la label al centro*/
+		_panelTop.add(_lblTitolo, BorderLayout.CENTER);
+    }
+    /**
+     * Metodo per creare il panelMiddle.
+     */
+    private void creaPanelMiddle() {
+    	// Setto il layout al panelMiddle
+    	_panelMiddle.setLayout(new GridLayout(2, 1, 10, 10));
+    	// Aggiungo i panel al panelMiddle
+    	_panelMiddle.add(creaPanelMiddleTopLeft());
+    	_panelMiddle.add(creaPanelMiddleTopRight());
+    	_panelMiddle.add(creaPanelMiddleBottomLeft());
+    }
+
+	/**
+	 * Metodo per aggiungere la porzione centrale, in alto a sinistra.
+	 * @return Pannello centrale in alto a sinistra.
+	 */
+	private JPanel creaPanelMiddleTopLeft() {
 		// PanelTopLeft
-		_panelTopLeft = _viewFactory.getPanel();
-		_panelTop.add(_panelTopLeft);
 		_panelTopLeft.setLayout(new BoxLayout(_panelTopLeft, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
-		JLabel lblDataDiInizio = _viewFactory.getLabel();
-		lblDataDiInizio.setText("Data di inizio:");
-		_panelTopLeft.add(lblDataDiInizio);
+		_lblDataDiInizio.setText("Data di inizio:");
+		_panelTopLeft.add(_lblDataDiInizio);
 		// Spaziatore 
 		_panelTopLeft.add(Box.createVerticalGlue());
 		// JDatePanel data inizio
 		_datePanelInizio = JDateComponentFactory.createJDatePanel();
 		_panelTopLeft.add((Component) _datePanelInizio);
+		
+		return _panelTopLeft;
 	}
 	/**
-	 * Metodo per aggiungere la porzione in alto a destra della finestra.
+	 * Metodo per aggiungere la porzione centrale, in alto a destra.
+	 * @return Pannelo centrale in alto a destra.
 	 */
-	private void addPanelTopRight() {
+	private JPanel creaPanelMiddleTopRight() {
 		// PanelTopRight
-		_panelTopRight = _viewFactory.getPanel();
-		_panelTop.add(_panelTopRight);
 		_panelTopRight.setLayout(new BoxLayout(_panelTopRight, BoxLayout.PAGE_AXIS));
 		// Label Data di inizio
-		JLabel lblDataDiFine = _viewFactory.getLabel();
-		lblDataDiFine.setText("Data di fine:");
-		_panelTopRight.add(lblDataDiFine);
+		_lblDataDiFine.setText("Data di fine:");
+		_panelTopRight.add(_lblDataDiFine);
 		// Spaziatore 
 		_panelTopRight.add(Box.createVerticalGlue());
 		// JDatePanel data inizio
 		_datePanelFine = JDateComponentFactory.createJDatePanel();
 		_panelTopRight.add((Component) _datePanelFine);
+		
+		return _panelTopRight;
 	}
 	/**
-	 * Metodo per aggiungere la porzione in basso a sinistra della finestra, con le tipologie di camere che è possibile scegliere.
-	 * @param tipologieCamere Tipologie di camere presenti nell'albergo.
+	 * Metodo per aggiungere la porzione in basso a sinistra della finestra.
+	 * @return Pannello centrale in basso a sinistra.
 	 */
-	private void addPanelBottomLeft(ArrayList<String> tipologieCamere) {
-		// PanelBottomLeft
-		_panelBottomLeft = _viewFactory.getPanel();
-		_panelBottom.add(_panelBottomLeft);
+	private JPanel creaPanelMiddleBottomLeft() {
 		// Layout PanelBottomLeft
 		_panelBottomLeft.setLayout(new BoxLayout(_panelBottomLeft, BoxLayout.PAGE_AXIS));
 		// Label Tipologie
-		JLabel lblTipologie = _viewFactory.getLabel();
-		lblTipologie.setText("Tipologie:");
-		_panelBottomLeft.add(lblTipologie);
+		_lblTipologie.setText("Tipologie:");
+		_panelBottomLeft.add(_lblTipologie);
 		// Spaziatura dinamica
 		_panelBottomLeft.add(Box.createVerticalGlue());
-		// Creo i checkBoxes e li aggiungo al panelBottomLeft
-		int numero_tipologie = tipologieCamere.size();
-		
-		
+		// Prendo il numero di tipologie di camere.
+		int numero_tipologie = _tipologieCamere.size();	
+		// Ciclo sulle tipologie per aggiungere le checkbox.
 		for (int i = 0; i<numero_tipologie;i++){
 			_checkBoxesTipologie.add(_viewFactory.getCheckBox());
-			String tipologia = tipologieCamere.get(i);
+			String tipologia = _tipologieCamere.get(i);
 			_checkBoxesTipologie.get(i).setText(tipologia);
 			_panelBottomLeft.add(_checkBoxesTipologie.get(i));
 			_panelBottomLeft.add(Box.createVerticalGlue());				
 		}			
 		
+		return _panelBottomLeft;
 	}
 	/**
-	 * Metodo per aggiungere la porzione di finestra in basso a destra.
+	 * Metodo per creare la porzione di finestra in basso.
 	 */
-	private void addPanelBottomRight() {
-		// PanelBottomRight
-		_panelBottomRight = _viewFactory.getPanel();
-		_panelBottom.add(_panelBottomRight);
-		// Layout PanelBottomRight
-		_panelBottomRight.setLayout(new BorderLayout(0, 0));
-		
-		_btnAvanti = new JButton("Avanti");
-		_panelBottomRight.add(_btnAvanti, BorderLayout.SOUTH);
+	private void creaPanelBottom() {
+		// Layout PanelBottom
+		_panelBottom.setLayout(new BorderLayout(0, 0));
+		// Testo JButton avanti.
+		_btnAvanti.setText("Avanti");
+		// Assegniamo l'eventListener al JButton btnAvanti
+		_btnAvanti.addMouseListener(new RicercaCamereLibereListener());
+		// Aggiungo il componenente al JPanel
+		_panelBottom.add(_btnAvanti, BorderLayout.EAST);
 	}
 	/**
 	 * Metodo per creare il frame.
 	 */
 	public void creaFrame(ArrayList<String> tipologieCamere) {
 		setTitle("iHotel - Crea nuova prenotazione - Step 1 di 2");
-		// Setto il layout al contentPane.
-		_contentPane.setLayout(new GridLayout(2, 1, 10, 10));
-			
-		// PanelTop
-		_panelTop = new JPanel();
-		_panelTop.setForeground(new Color(0, 0, 0));
-		_contentPane.add(_panelTop);
-		_panelTop.setLayout(new GridLayout(1, 2, 20, 20));
-				
-		// PanelTopLeft
-		addPanelTopLeft();
-		// PanelTopRight
-		addPanelTopRight();
-				
-		// PanelBottom
-		_panelBottom = new JPanel();
-		_contentPane.add(_panelBottom);
-		_panelBottom.setLayout(new GridLayout(1, 2, 20, 20));
-				
-		// PanelBottomLeft
-		addPanelBottomLeft(tipologieCamere);		
-		// PanelBottomRigth
-		addPanelBottomRight();
-	
-		// Assegniamo l'eventListener al JButton btnAvanti
-		_btnAvanti.addMouseListener(new RicercaCamereLibereListener());
+		// Setto l'attributo contenente le tipologie di camere
+		_tipologieCamere=tipologieCamere;
+
+		creaPanelTop();
+		creaPanelMiddle();
+		creaPanelBottom();
+
 	}
 	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**

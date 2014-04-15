@@ -16,7 +16,10 @@ import javax.swing.JTextField;
 public interface StyleAbstractFactory {
 	public JPanel getPanel();
 	public JLabel getLabel();
+	public JLabel getLabelIntestazione_1();
+	public JLabel getLabelIntestazione_2();
 	public JButton getButton();
+	public JButton getButtonAvanti();
 	public JTextField getTextField();
 	public JCheckBox getCheckBox();
 }

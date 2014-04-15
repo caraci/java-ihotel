@@ -26,7 +26,9 @@ public class View extends JFrame {
 	protected JPanel _contentPane;
 	
 	/*JPanel*/
-	//La struttura della pagina è divisa in 3 pannelli, top, middle e bottom. Tutte le pagine devono rispettare questa struttura
+	
+	// La struttura della pagina è divisa in 3 pannelli, top, middle e bottom. 
+	// Tutte le pagine devono rispettare questa struttura
 	
 	protected JPanel _panelTop,_panelMiddle,_panelBottom;
 	
@@ -41,7 +43,7 @@ public class View extends JFrame {
 		// Operazione di default in chiusura.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
-		setBounds(50, 50, 1024, 510);
+		setBounds(50, 50, 1280, 700);
 		
 		//ora preparo il layout interno al contentPane
 		
