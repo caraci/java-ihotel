@@ -32,6 +32,8 @@ public class VFPG_InfoPrenotazione extends View {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	//Singleton
 	private static VFPG_InfoPrenotazione instance;
 	
 	/*Panel*/
@@ -209,8 +211,7 @@ public class VFPG_InfoPrenotazione extends View {
 	 * @param prenotazione La prenotazione di cui si stanno visualizzando le informazioni
 	 * @return JPanel il pannello che contiene le camere prenotate
 	 */
-	private JPanel creaPanelRight(PrenotazioneSubject prenotazione){
-		
+	private JPanel creaPanelRight(PrenotazioneSubject prenotazione){		
 		
 		/*Setto il layout*/
 		_panelCamerePrenotate.setLayout(new BoxLayout(_panelCamerePrenotate, BoxLayout.PAGE_AXIS));
@@ -247,6 +248,9 @@ public class VFPG_InfoPrenotazione extends View {
 	 * 	 	  passata come parametro
 	 */
 	public void creaFrame(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){	
+		/*Setto il titolo della finestra*/
+		setTitle("iHotel - Gestione Prenotazione - Informazioni sulla prenotazione");
+		
 		creaPanelTop(prenotazione);
 		creaPanelMiddle(prenotazione, prezzoServiziEsterni);
 		creaPanelBottom();
