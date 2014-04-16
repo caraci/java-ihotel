@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class DarkStyleFactory implements StyleAbstractFactory {
@@ -37,6 +38,20 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 		panel.setBackground(new Color(0, 0, 0));
 		panel.setBorder(BorderFactory.createLineBorder(Color.white));
 		return panel;
+	}
+	@Override
+	public JPanel getContentPane() {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(200, 200, 200));
+		return panel;
+	}
+	
+	@Override
+	public JScrollPane getScrollPane() {
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(new Color(0, 0, 0));
+		scrollPane.setBorder(BorderFactory.createLineBorder(Color.white));
+		return scrollPane;
 	}
 
 	@Override
@@ -95,7 +110,4 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 		checkBox.setForeground(new Color(255, 255, 255));
 		return checkBox;
 	}
-	
-	
-
 }

@@ -1,5 +1,6 @@
 package com.iHotel.view.Graphic.CreaPrenotazione;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.Box;
@@ -7,6 +8,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import java.util.ArrayList;
@@ -27,11 +29,11 @@ import java.awt.GridLayout;
 public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IObserver {
 
 	/* Panel */
-    private JPanel _panelFinale;
+    private JPanel _panelFinale, _panelPrezzo, _panelOspite;
     /* JButton */
     private JButton _btnCompletaPrenotazione;
     /* JLabel */
-    private JLabel _lblNome, _lblCognome, _lbleMail, _lblTelefono, _lblPrezzoTotale, _lblPrezzoScritto;
+    private JLabel _lblNome, _lblCognome, _lbleMail, _lblTelefono, _lblPrezzoTotale, _lblPrezzoScritto, _lblTitolo;
     /* JTextField */
     private JTextField _txtNome, _txtCognome, _txteMail, _txtTelefono;
     // Pattern Observer
@@ -44,11 +46,28 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 	 */
 	private VFCP_SelezioneCamereDatiOspite_Observer() {
 		super();
+		// JLabel
+		_lblNome=_viewFactory.getLabel();
+		_lblCognome=_viewFactory.getLabel();
+		_lbleMail=_viewFactory.getLabel();
+		_lblTelefono=_viewFactory.getLabel();
+		_lblPrezzoTotale=_viewFactory.getLabel();
+		_lblPrezzoScritto=_viewFactory.getLabel();
+		_lblTitolo=_viewFactory.getLabelIntestazione_1();
+		// JTextField
+		_txtNome=_viewFactory.getTextField();
+		_txtCognome=_viewFactory.getTextField();
+		_txteMail=_viewFactory.getTextField();
+		_txtTelefono=_viewFactory.getTextField();
+		// JPanel
+		_panelPrezzo=_viewFactory.getPanel();
+		_panelOspite=_viewFactory.getPanel();
+		_panelFinale=_viewFactory.getPanel();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
 	 * 
-	 * @return VFrameCreaPrenotazioneStep_2 Instanza unica di questa classe.
+	 * @return VFCP_SelezioneCamereDatiOspite_Observer Instanza unica di questa classe.
 	 */
     public static VFCP_SelezioneCamereDatiOspite_Observer getInstance() {
     	if(instance == null) {
@@ -66,125 +85,161 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 	}
     /* ------------- /Pattern Observer --------- */
     /**
+	 * Metodo per creare il panelTop.
+	 */
+    public void creaPanelTop() {
+    	// Layout PanelTop
+    	_panelTop.setLayout(new BorderLayout(0, 0));
+		/*Testo della label*/
+		_lblTitolo.setText("Scegli le camere e inserisci le informazioni sul prenotante.");
+		/*Aggiungo la label al centro*/
+		_panelTop.add(_lblTitolo, BorderLayout.CENTER);
+    }
+    /**
+	 * Metodo per creare il panelMiddle.
+	 */
+    public void creaPanelMiddle(HashMap<String, ArrayList<CameraContext>> camereDisponibili) {
+    	// Numero di tipologie di camere
+		int numeroTipologie = camereDisponibili.size();
+    	// Numero di colonne. Il +1 è dovuta alla colonna di gestione.
+		int numeroColonne = numeroTipologie + 1;
+    	// Setto Layout con il numero di colonne ricavato sulla base del risultato e con una riga.
+		_panelMiddle.setLayout(new GridLayout(1, numeroColonne, 5, 0));
+    	// Ciclo sulle camere ottenute.
+		for (Iterator<String> iterator = camereDisponibili.keySet().iterator(); iterator.hasNext();) {
+			String tipologia = (String) iterator.next();
+			// Aggiungo la colonna relativa a camere della stessa tipologia.
+			_panelMiddle.add(creaColonnaTipologiaCamere(tipologia, camereDisponibili.get(tipologia)));
+		}
+		// Aggiungo il pannello finale
+		_panelMiddle.add(creaPanelFinale());
+    }
+    /**
      * Metodo per aggiungere una colonna contenente tipologie di camere dello stesso tipo.
-     * 
-     * @param arrayListCamere Struttura dati contenente tipologia della camera e numeri di camera.
+     * @param tipologia Tipologia di camere della colonna.
+     * @param arrayListCamere Lista di camere disponibili.
+     * @return Pannello con le camere disponibili.
      */
-    private void addColonnaTipologiaCamere(String tipologia, ArrayList<CameraContext> arrayListCamere) {
-	// Creo una colonna per mostrare i risultati della tipologia di camere
-		JPanel panelColonna = new JPanel();
-		panelColonna.setLayout(new  BoxLayout(panelColonna, BoxLayout.PAGE_AXIS));
-		_contentPane.add(panelColonna);  		
-	// Aggiungo la label relativo alla tipologia alla colonna
-		JLabel lblTipologia = new JLabel();
+    private JScrollPane creaColonnaTipologiaCamere(String tipologia, ArrayList<CameraContext> arrayListCamere) {
+    	// Creo uno scollPane, all'interno del quale andrò ad inserire il JPanel contenente le camere
+    	JScrollPane scrollPaneColonna = _viewFactory.getScrollPane();
+    	// Creo una colonna per mostrare i risultati della tipologia di camere
+		JPanel panelColonna = _viewFactory.getPanel();
+		panelColonna.setLayout(new BoxLayout(panelColonna, BoxLayout.PAGE_AXIS));	
+		// Aggiungo la label relativo alla tipologia alla colonna
+		JLabel lblTipologia = _viewFactory.getLabelIntestazione_2();
 		lblTipologia.setText(tipologia + ":");
 		panelColonna.add(lblTipologia);
-	// Aggiungo spaziatura statica
+		// Aggiungo spaziatura statica
 		panelColonna.add(Box.createRigidArea(new Dimension(0,20)));
-	// Ciclo sull'arrayList di String contenenti i numeri di camere ed aggiungo i numeri all'array di String creato sopra.
+		// Ciclo sull'arrayList di String contenenti i numeri di camere ed aggiungo i numeri all'array di String creato sopra.
 		for (Iterator<CameraContext> iterator = arrayListCamere.iterator(); iterator.hasNext();) {
 			CameraContext cameraContext = (CameraContext) iterator.next();
-			JLabel lblNumeroCamera = new JLabel(cameraContext.get_numero());
-			JButton btnNumeroCamera = new JButton("Aggiungi camera");
+			// Creo il bottone per aggiungere la camera
+			JButton btnNumeroCamera = _viewFactory.getButton();
+			btnNumeroCamera.setText("Aggiungi camera" + cameraContext.get_numero());
 			// Aggiungo l'eventListener al JButton.
 			btnNumeroCamera.addMouseListener(new AggiungiCameraPrenotazioneListener(cameraContext.get_numero()));
-			// Aggiungo label e button al panelColonna
-			panelColonna.add(lblNumeroCamera);
-			// Aggiungo uno spaziatore statica
-			panelColonna.add(Box.createRigidArea(new Dimension(0,4)));
+			// Aggiungo il bottone al JPanel
 			panelColonna.add(btnNumeroCamera);
 			// Aggiungo uno spaziatore statica
 			panelColonna.add(Box.createRigidArea(new Dimension(0,10)));
 		}
+		// Aggiungo il JPanel con le camere allo JScrollPane
+		scrollPaneColonna.setViewportView(panelColonna);
+		
+		return scrollPaneColonna;
     }
     /**
-     * Metodo per aggiungere il pannello dove si visualizza il prezzo della prenotazione.
+     * Metodo per creare il pannello sulla parte destra contenente le informazioni su prezzo e sul prenotante.
+     * @return Pannello a destra del frame.
      */
-    private void addPanelPrezzo() {
-    	// Creo un panel per far inserire all'utente i dati sul cliente
-			JPanel panelPrezzo = new JPanel();
-			panelPrezzo.setLayout(new  BoxLayout(panelPrezzo, BoxLayout.PAGE_AXIS));
+    private JPanel creaPanelFinale() {
+    	// Setto il layout al panel
+    	_panelFinale.setLayout(new GridLayout(2, 1, 5, 10));
+    	// Aggiungo il pannello relativo al prezzo
+    	_panelFinale.add(creaPanelPrezzo());
+    	// Aggiungo il pannelo relativo alle informazioni sul prenotante.
+    	_panelFinale.add(creaPanelPrenotante());
+    	
+    	return _panelFinale;
+    }
+    /**
+     * Metodo per creare il pannello dove si visualizza il prezzo della prenotazione.
+     * @return Pannello relativo al prezzo.
+     */
+    private JPanel creaPanelPrezzo() {
+    	// Setto il Layout al panel
+		_panelPrezzo.setLayout(new BoxLayout(_panelPrezzo, BoxLayout.PAGE_AXIS));
 		// Nome
-			_lblPrezzoScritto = new JLabel("Prezzo Totale:");
-			_lblPrezzoTotale = new JLabel("0€");
+		_lblPrezzoScritto.setText("Prezzo Totale:");
+		_lblPrezzoTotale.setText("0€");
 		// Aggiungo gli elementi al panelOspite
-			panelPrezzo.add(_lblPrezzoScritto);
-			panelPrezzo.add(Box.createRigidArea(new Dimension(0,20)));
-			panelPrezzo.add(_lblPrezzoTotale);
-		// Aggiungo il panelOspite a panelFinale
-			_panelFinale.add(panelPrezzo);
+		_panelPrezzo.add(_lblPrezzoScritto);
+		_panelPrezzo.add(Box.createRigidArea(new Dimension(0,20)));
+		_panelPrezzo.add(_lblPrezzoTotale);
+
+		return _panelPrezzo;
     }
     /**
-     * Metodo per aggiungere il pannello dove si inseriscono le informazioni sul cliente e dove si mostra
-     * il bottone per concludere la prenotazione.
+     * Metodo per creare il pannello dove si inseriscono le informazioni sul cliente prenotante.
+     * @return Pannello relativo alle informazioni sull'ospite prenotante.
      */
-    private void addPanelOspite() {
-    	// Creo un panel per far inserire all'utente i dati sul cliente
-			JPanel panelOspite = new JPanel();
-			panelOspite.setLayout(new  BoxLayout(panelOspite, BoxLayout.PAGE_AXIS));
+    private JPanel creaPanelPrenotante() {
+    	// Setto il layout al JPanel
+		_panelOspite.setLayout(new BoxLayout(_panelOspite, BoxLayout.PAGE_AXIS));
 		// Nome
-			_lblNome = new JLabel("Nome:");
-			_txtNome = new JTextField();
+		_lblNome.setText("Nome:");
 		// Cognome
-			_lblCognome = new JLabel("Cognome:");
-			_txtCognome = new JTextField();
+		_lblCognome.setText("Cognome:");
 		// eMail
-			_lbleMail = new JLabel("e-Mail:");
-			_txteMail = new JTextField();
+		_lbleMail.setText("e-Mail:");
 		// telefono
-			_lblTelefono = new JLabel("Telefono:");
-			_txtTelefono = new JTextField();
-		// Button completa prenotazione
-			_btnCompletaPrenotazione = new JButton("Completa Prenotazione");
-		// Assegniamo l'eventListener al JButton btnCompletaPrenotazione
-			_btnCompletaPrenotazione.addMouseListener(new EffettuaNuovaPrenotazioneListener());
+		_lblTelefono.setText("Telefono:");	
 		// Aggiungo gli elementi al panelOspite
-			panelOspite.add(_lblNome);
-			panelOspite.add(Box.createVerticalGlue());
-			panelOspite.add(_txtNome);
-			panelOspite.add(Box.createVerticalGlue());
-			panelOspite.add(_lblCognome);
-			panelOspite.add(Box.createVerticalGlue());
-			panelOspite.add(_txtCognome);
-			panelOspite.add(Box.createVerticalGlue());
-			panelOspite.add(_lbleMail);
-			panelOspite.add(Box.createVerticalGlue());
-			panelOspite.add(_txteMail);
-			panelOspite.add(Box.createVerticalGlue());
-			panelOspite.add(_lblTelefono);
-			panelOspite.add(Box.createVerticalGlue());
-			panelOspite.add(_txtTelefono);
-			panelOspite.add(Box.createRigidArea(new Dimension(0,20)));
-			panelOspite.add(_btnCompletaPrenotazione);
-		// Aggiungo il panelOspite a panelFinale
-			_panelFinale.add(panelOspite);
+		_panelOspite.add(_lblNome);
+		_panelOspite.add(Box.createVerticalGlue());
+		_panelOspite.add(_txtNome);
+		_panelOspite.add(Box.createVerticalGlue());
+		_panelOspite.add(_lblCognome);
+		_panelOspite.add(Box.createVerticalGlue());
+		_panelOspite.add(_txtCognome);
+		_panelOspite.add(Box.createVerticalGlue());
+		_panelOspite.add(_lbleMail);
+		_panelOspite.add(Box.createVerticalGlue());
+		_panelOspite.add(_txteMail);
+		_panelOspite.add(Box.createVerticalGlue());
+		_panelOspite.add(_lblTelefono);
+		_panelOspite.add(Box.createVerticalGlue());
+		_panelOspite.add(_txtTelefono);
+
+		return _panelOspite;
+    }
+    /**
+     * Metodo per creare il pannelBottom.
+     */
+    private void creaPanelBottom() {
+    	// Layout PanelBottom
+		_panelBottom.setLayout(new BorderLayout(0, 0));
+		// Button completa prenotazione
+		_btnCompletaPrenotazione = new JButton("Completa Prenotazione");
+		// Assegniamo l'eventListener al JButton btnCompletaPrenotazione
+		_btnCompletaPrenotazione.addMouseListener(new EffettuaNuovaPrenotazioneListener());
+		// Aggiungo il componenente al JPanel
+		_panelBottom.add(_btnCompletaPrenotazione, BorderLayout.EAST);
     }
     /**
      * Metodo per creare il frame.
      */
     public void creaFrame(HashMap<String, ArrayList<CameraContext>> camereDisponibili) {
     	// Imposto il titolo.
-    		setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
-		// Tipologie di camere
-			int numeroTipologie = camereDisponibili.size();
-    	// Numero di colonne. Il +1 è dovuta alla colonna di gestione.
-			int numeroColonne = numeroTipologie + 1;
-    	// Setto Layout con il numero di colonne ricavato sulla base del risultato e con una riga.
-			_contentPane.setLayout(new GridLayout(1, numeroColonne, 0, 0));
-    	// Ciclo sulle camere ottenute.
-		for (Iterator<String> iterator = camereDisponibili.keySet().iterator(); iterator.hasNext();) {
-			String tipologia = (String) iterator.next();
-			// Aggiungo la colonna relativa a camere della stessa tipologia.
-			addColonnaTipologiaCamere(tipologia, camereDisponibili.get(tipologia));
-		}
-			
-    	// Aggiungo il pannello finale
-	    	_panelFinale = new JPanel();
-	    	_panelFinale.setLayout(new GridLayout(2, 1, 20, 20));
-    	// Aggiungi i pezzi del panelFinale
-	    	addPanelPrezzo();
-	    	addPanelOspite();
-	    	_contentPane.add(_panelFinale);	    			
+    	setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
+    	// Creo il pannello in alto
+		creaPanelTop();
+		// Creo il pannello centrale
+		creaPanelMiddle(camereDisponibili);
+		// Creo il pannello in basso
+		creaPanelBottom();    			
     }
     /* ------------- Getter, Setter ---------------------------- */
     public void set_prenotazioneSubject(ISubject subject) {

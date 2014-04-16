@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 /**
@@ -15,6 +16,8 @@ import javax.swing.JTextField;
  */
 public interface StyleAbstractFactory {
 	public JPanel getPanel();
+	public JPanel getContentPane();
+	public JScrollPane getScrollPane();
 	public JLabel getLabel();
 	public JLabel getLabelIntestazione_1();
 	public JLabel getLabelIntestazione_2();

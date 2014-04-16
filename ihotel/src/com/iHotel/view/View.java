@@ -36,7 +36,7 @@ public class View extends JFrame {
 		// Richiedo la factory corretta.
 		_viewFactory=ViewFactory.getInstance().getStyleFactory();
 		// Setto il contentPane
-		_contentPane=_viewFactory.getPanel();
+		_contentPane=_viewFactory.getContentPane();
 		_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		// Aggiungo il contentPane al Frame
 		setContentPane(_contentPane);

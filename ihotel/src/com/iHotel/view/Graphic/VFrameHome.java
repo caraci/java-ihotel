@@ -1,7 +1,6 @@
 package com.iHotel.view.Graphic;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,7 +21,6 @@ public class VFrameHome extends View {
 	
 	/*JLabel*/
 	private JLabel _lblInstructions;
-
 
 	/**
      * Costruttore privato - pattern Singleton
@@ -60,18 +58,14 @@ public class VFrameHome extends View {
      */
     private void creaPanelMiddle(){
     	/*Setto il layout*/
-    	_panelMiddle.setLayout(new BorderLayout());
+    	_panelMiddle.setLayout(new GridLayout(2, 1, 0, 10));
     	/*Setto il testo dei pulsanti*/
     	_btnCreaPrenotazione.setText("Crea nuova prenotazione");   	   	
 		_btnModificaPrenotazione.setText("Gestisci prenotazione");
 		
-		/*Setto la dimensione ai pulsanti*/
-		_btnCreaPrenotazione.setPreferredSize(new Dimension((int)(_panelMiddle.getPreferredSize().getWidth()),(int)(0.5*_panelMiddle.getPreferredSize().getHeight())));		
-		_btnModificaPrenotazione.setPreferredSize(new Dimension((int)(_panelMiddle.getPreferredSize().getWidth()),(int)(0.5*_panelMiddle.getPreferredSize().getHeight())));
-		
 		/*Aggiungo i pulsanti al pannello*/
-		_panelMiddle.add(_btnCreaPrenotazione,BorderLayout.NORTH);
-		_panelMiddle.add(_btnModificaPrenotazione,BorderLayout.SOUTH);
+		_panelMiddle.add(_btnCreaPrenotazione);
+		_panelMiddle.add(_btnModificaPrenotazione);
 		
 		// Assegniamo l'eventListener al JButton btnCreaPrenotazione
 		_btnCreaPrenotazione.addMouseListener(new CaricaCreaNuovaPrenotazioneListener()); 
