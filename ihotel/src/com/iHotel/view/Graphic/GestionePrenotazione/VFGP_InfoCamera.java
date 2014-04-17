@@ -233,4 +233,22 @@ public class VFGP_InfoCamera extends View {
 	public void set_btnTornaPrenotazione(JButton _btnTornaPrenotazione) {
 		this._btnTornaPrenotazione = _btnTornaPrenotazione;
 	}
+
+	@Override
+	protected void creaPanelTop() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void creaPanelMiddle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void creaPanelBottom() {
+		// TODO Auto-generated method stub
+		
+	}
 }

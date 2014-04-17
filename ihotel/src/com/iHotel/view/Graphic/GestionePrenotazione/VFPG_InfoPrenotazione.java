@@ -27,13 +27,12 @@ import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
  * @author Alessandro
  *
  */
+@SuppressWarnings("serial")
 public class VFPG_InfoPrenotazione extends View {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+
+	/* ----------------------------------- Attributi e Costruttore ------------------------------------ */
+	private PrenotazioneSubject _prenotazione;
+	private Prezzo _prezzoServiziEsterni;
 	//Singleton
 	private static VFPG_InfoPrenotazione instance;
 	
@@ -46,9 +45,9 @@ public class VFPG_InfoPrenotazione extends View {
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
 	private ArrayList<JButton> _btnCamere;
-	/*insets*/
-	
-	
+	/**
+	 * Costruttore
+	 */
 	private VFPG_InfoPrenotazione(){
 		// JPanel		
 		_panelInfoPrenotante = _viewFactory.getPanel();
@@ -70,6 +69,7 @@ public class VFPG_InfoPrenotazione extends View {
 		_btnTerminaModifichePrenotazione = _viewFactory.getButton();
 		_btnCamere = new ArrayList<JButton>();
 	}
+	/* -------------------------- Metodi di classe ----------------------------- */
 	/**
 	 * Metodo che consente di avere una sola istanza della schermata
 	 * @return VFPG_InfoPrenotazione istanza unica della classe
@@ -80,36 +80,24 @@ public class VFPG_InfoPrenotazione extends View {
 		}
 		return instance;
 	}
-	
-	/**
-	 * Metodo privato che aggiunge il pannello superiore
-	 * @param prenotazione La prenotazione di cui si vogliono visualizzare i dettagli
-	 */
-	private void creaPanelTop(PrenotazioneSubject prenotazione){				
+	/* --------------------- Metodi di instanza ------------------------- */
+	@Override
+	protected void creaPanelTop(){				
 		//setto la label con il codice della prenotazione
-		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ prenotazione.get_codice());
+		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ _prenotazione.get_codice());
 		//aggiungo la label al panelTop
 		_panelTop.add(_lblTitoloPrenotazione);		
 	}
-	
-	/**
-	 * Metodo privato che crea il pannello di metà pagina
-	 * @param prenotazione La prenotazione di cui si vogliono visualizzare i dettagli
-	 * @param prezzoServiziEsterni Il prezzo dei servizi esterni che sono stati richiesti dalle camere della prenotazione
-	 *        corrente
-	 */	
-	private void creaPanelMiddle(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){		
+	@Override
+	protected void creaPanelMiddle(){		
 		/*invoco i 3 metodi privati che mi consentono di creare i pannelli con le informazioni sul prenotante*/
 		/*della prenotazione, sulla prenotazione e sulle camere*/
-		_panelMiddle.add(creaPanelLeft(prenotazione),BorderLayout.LINE_START);
-		_panelMiddle.add(creaPanelCenter(prenotazione,prezzoServiziEsterni),BorderLayout.CENTER);
-		_panelMiddle.add(creaPanelRight(prenotazione),BorderLayout.LINE_END);	
-		
+		_panelMiddle.add(creaPanelMiddleLeft(),BorderLayout.LINE_START);
+		_panelMiddle.add(creaPanelMiddleCenter(),BorderLayout.CENTER);
+		_panelMiddle.add(creaPanelMiddleRight(),BorderLayout.LINE_END);	
 	}
-	/**
-	 * Metodo privato che crea il pannello di fondo pagina
-	 */
-	private void creaPanelBottom(){
+	@Override
+	protected void creaPanelBottom(){
 		/*Setto il testo del bottone*/
 		_btnTerminaModifichePrenotazione.setText("Termina modifiche alla prenotazione");
 		
@@ -121,13 +109,11 @@ public class VFPG_InfoPrenotazione extends View {
 		
 		_btnTerminaModifichePrenotazione.addMouseListener(new TerminaModifichePrenotazione());
 	}
-	
 	/**
 	 * Metodo privato che crea il pannello con le informazioni sul prenotante
-	 * @param prenotazione La prenotazione dalla quale bisogna prelevare le informazioni
 	 * @return JPanel il pannello che contiene le informazioni sul cliente prenotante
 	 */
-	private JPanel creaPanelLeft(PrenotazioneSubject prenotazione){
+	private JPanel creaPanelMiddleLeft(){
 				
 		/*Setto il layout*/
 		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante, BoxLayout.PAGE_AXIS));
@@ -136,7 +122,7 @@ public class VFPG_InfoPrenotazione extends View {
 		_panelInfoPrenotante.setPreferredSize(new Dimension((int)(0.32*_panelMiddle.getPreferredSize().getWidth()) ,(int)(0.95*_panelMiddle.getPreferredSize().getHeight())));
 				
 		/*Recupero il prenotante della prenotazione */
-		Ospite prenotante = prenotazione.getPrenotante();
+		Ospite prenotante = _prenotazione.getPrenotante();
 		
 		/*Setto il testo dell'intestazione*/
 		_lblTitoloPrenotante.setText("Titolare della prenotazione: ");
@@ -159,13 +145,10 @@ public class VFPG_InfoPrenotazione extends View {
 		return _panelInfoPrenotante;
 	}
 	/**
-	 * Metodo privato che crea il pannello con le informazioni sulla prenotazione	
-	 * @param prenotazione La prenotazione della quale si stanno visualizzando le informazioni
-	 * @param prezzoServiziEsterni Il prezzo dei servizi esterni utilizzati dalle camere prenotate dalla prenotazione 
- * 			  passata come parametro
+	 * Metodo privato che crea il pannello con le informazioni sulla prenotazione.
 	 * @return JPanel Il pannello contenente le informazioni di riepilogo sulla prenotazione
 	 */
-	private JPanel creaPanelCenter(PrenotazioneSubject prenotazione,Prezzo prezzoServiziEsterni){
+	private JPanel creaPanelMiddleCenter(){
 		
 		/*Setto il layout*/
 		_panelInfoPrenotazione.setLayout(new BoxLayout(_panelInfoPrenotazione, BoxLayout.PAGE_AXIS));
@@ -174,17 +157,17 @@ public class VFPG_InfoPrenotazione extends View {
 		_panelInfoPrenotazione.setPreferredSize(new Dimension((int)(0.32*_panelMiddle.getPreferredSize().getWidth()) ,(int)(0.95*_panelMiddle.getPreferredSize().getHeight())));
 		
 		/*Recupero il periodo*/
-		Periodo periodo = prenotazione.get_periodo();
+		Periodo periodo = _prenotazione.get_periodo();
 		
 		/*Recupero il prezzo delle camere*/
-		Prezzo prezzoCamere = prenotazione.get_total();
+		Prezzo prezzoCamere = _prenotazione.get_total();
 		
 		/*Recupero il prezzo dei servizi interni*/
-		Prezzo prezzoServiziInterni = prenotazione.getPrezzoServiziInterni();
+		Prezzo prezzoServiziInterni = _prenotazione.getPrezzoServiziInterni();
 		
 		/*Sommo il prezzo dei servizi interni con quelli esterni*/
 		Prezzo totaleServizi = new Prezzo();
-		totaleServizi.set_importo(prezzoServiziInterni.get_importo()+prezzoServiziEsterni.get_importo());
+		totaleServizi.set_importo(prezzoServiziInterni.get_importo()+_prezzoServiziEsterni.get_importo());
 		
 		totaleServizi.set_valuta(prezzoServiziInterni.get_valuta());
 		
@@ -213,10 +196,9 @@ public class VFPG_InfoPrenotazione extends View {
 	}
 	/**
 	 * Metodo privato che crea il pannello con le camere prenotate
-	 * @param prenotazione La prenotazione di cui si stanno visualizzando le informazioni
 	 * @return JPanel il pannello che contiene le camere prenotate
 	 */
-	private JPanel creaPanelRight(PrenotazioneSubject prenotazione){		
+	private JPanel creaPanelMiddleRight(){		
 		
 		/*Setto il layout*/
 		_panelCamerePrenotate.setLayout(new BoxLayout(_panelCamerePrenotate, BoxLayout.PAGE_AXIS));
@@ -230,7 +212,7 @@ public class VFPG_InfoPrenotazione extends View {
 		_panelCamerePrenotate.add(Box.createRigidArea(new Dimension(0,15)));
 		
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
-		for (Iterator<CameraContext> iterator = prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
+		for (Iterator<CameraContext> iterator = _prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
 			CameraContext cameraContext = (CameraContext) iterator.next();
 			/*Istanzio un button, gli assegno il numero della camera prenotata come testo e lo aggiungo al pannello delle camere
 			  prenotate*/
@@ -255,11 +237,12 @@ public class VFPG_InfoPrenotazione extends View {
 	public void creaFrame(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){	
 		/*Setto il titolo della finestra*/
 		setTitle("iHotel - Gestione Prenotazione - Informazioni sulla prenotazione");
-		
-		creaPanelTop(prenotazione);
-		creaPanelMiddle(prenotazione, prezzoServiziEsterni);
+		// Setto gli attributi dell'interfaccia
+		_prenotazione=prenotazione;
+		_prezzoServiziEsterni=prezzoServiziEsterni;
+		// Creo i pannelli
+		creaPanelTop();
+		creaPanelMiddle();
 		creaPanelBottom();
-		
-		
 	}
 }
