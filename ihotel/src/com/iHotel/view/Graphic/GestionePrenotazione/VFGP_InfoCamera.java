@@ -4,6 +4,7 @@
 package com.iHotel.view.Graphic.GestionePrenotazione;
 
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -11,6 +12,8 @@ import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,16 +34,19 @@ import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
 public class VFGP_InfoCamera extends View {
 
 	/* ----------------------------- Attributi e costruttore -------------------------------- */
-	/*Panel*/
-	private JPanel _panelTop, _panelBottom, _panelOspitiCamera, _panelServiziInterniRichiesti,_panelServiziEsterniRichiesti;
-	/*Label*/
-	private JLabel _lblCamera, _lblOspitiCamera, _lblServiziInterniRichiesti, _lblServiziEsterniRichiesti; 
+	private CameraContext _camera;
+	private PrenotazioneSubject _prenotazione;
+
+	//JPanel
+	private JPanel _pnlMiddleLeft, _pnlMiddleCenter, _pnlMiddleRight;
+
+	//Label
+	private JLabel _lblInfoCamera, _lblOspitiCamera,_lblServiziInterniRichiesti, _lblServiziEsterniRichiesti;
 	private ArrayList<JLabel> _lblServizioInternoRichiesto;
-	/*Button*/
-	private JButton _btnAggiungiServizi, _btnTornaPrenotazione;
-	/*insets*/
-	private Insets _insets_lbl;
 	
+	//Button
+	private JButton _btnAggiungiServizi, _btnTornaPrenotazione;
+		
 	//Singleton
 	private static VFGP_InfoCamera instance=null;
 	
@@ -53,25 +59,20 @@ public class VFGP_InfoCamera extends View {
 		/*Istanzio gli oggetti da mostrare nell'interfaccia*/
 		
 		/*Panel*/
-		_panelTop = _viewFactory.getPanel();
-		_panelBottom =_viewFactory.getPanel();
-		_panelOspitiCamera=_viewFactory.getPanel();
-		_panelServiziInterniRichiesti=_viewFactory.getPanel();
-		_panelServiziEsterniRichiesti=_viewFactory.getPanel();
+		_pnlMiddleLeft = _viewFactory.getPanel();
+		_pnlMiddleCenter =_viewFactory.getPanel();
+		_pnlMiddleRight=_viewFactory.getPanel();
+	
 		
 		/*Label*/
-		_lblCamera=_viewFactory.getLabel();
+		_lblInfoCamera=_viewFactory.getLabel();
 		_lblOspitiCamera= _viewFactory.getLabel();
 		_lblServiziInterniRichiesti=_viewFactory.getLabel();
 		_lblServiziEsterniRichiesti=_viewFactory.getLabel();
 		
 		/*Button*/
 		_btnAggiungiServizi=_viewFactory.getButton();
-		_btnTornaPrenotazione=_viewFactory.getButton();
-		
-		/*insets*/
-		_insets_lbl = new Insets(7, 2, 7, 2);
-		
+		_btnTornaPrenotazione=_viewFactory.getButton();	
 	}
 	
 	/* ------------------------- Metodi di classe ---------------------------- */
@@ -86,124 +87,87 @@ public class VFGP_InfoCamera extends View {
          return instance;
     }
 	/* -------------------------- Metodi di instanza -------------------------- */
-	
+	@Override
+	protected void creaPanelTop() {
+		// Setto il layout al panel
+		_panelTop.setLayout(new GridLayout(2, 1, 10, 10));
+		// Setto il testo alla label
+		_lblInfoCamera.setText("Informazioni sulla camera" + _camera.get_numero() + " :");
+		// Aggiungo la label al panel
+		_panelTop.add(_lblInfoCamera);
+	}
+
+	@Override
+	protected void creaPanelMiddle() {
+		// Setto il layout al panel
+		_panelMiddle.setLayout(new GridLayout(1, 2, 10, 10));
+		// Creo i pannelli destro e sinistro e li aggiungo al pnlMiddle.
+		_panelMiddle.add(creaPanelMiddleLeft());
+		_panelMiddle.add(creaPanelMiddleCenter());				
+		_panelMiddle.add(creaPanelMiddleRight());		
+	}
 	/**
-	 * Metodo privato che recupera le informazioni sui servizi interni richiesti e le inserisce nel pannello di competenza
-	 * @param camera, prenotazione
+	 * Metodo per creare il pannello contenente la lista degli ospiti della camera.
+	 * @return Pannello centrale sinistro.
 	 */
-	private JPanel creaServiziInterniRichiesti(CameraContext camera, PrenotazioneSubject prenotazione){
-		ArrayList<ServizioInterno> serviziInterni = camera.getServiziInterniInPeriodo(prenotazione.get_periodo());
-		
-		/*Setto il testo dell'intestazione del pannello*/		
+	private JPanel creaPanelMiddleLeft(){
+		// Setto il layout al panel.
+		_pnlMiddleLeft.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
+		// Aggiungo la label al panel.
+		_lblOspitiCamera.setText("Ospiti della camera");
+		return _pnlMiddleLeft;
+	}
+	/**
+	 * Metodo per creare il pannello contenente la lista dei servizi interni richiesti.
+	 * @return Pannello centrale sinistro.
+	 */
+	private JPanel creaPanelMiddleCenter(){
+		// Setto il layout al panel.
+		_pnlMiddleCenter.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
+		// Aggiungo la label al panel.
 		_lblServiziInterniRichiesti.setText("Servizi interni richiesti");
 		
+		ArrayList<ServizioInterno> serviziInterni = _camera.getServiziInterniInPeriodo(_prenotazione.get_periodo());
 		/*Scorre l'array dei servizi interni collegati alla camera e li inserisce in un array di label*/
 		for (Iterator<ServizioInterno> iterator = serviziInterni.iterator(); iterator.hasNext();) {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
 			JLabel lblServizioInterno=_viewFactory.getLabel();
 			lblServizioInterno.setText(servizioInterno.get_codice()+servizioInterno.get_data());
-			_lblServizioInternoRichiesto.add(lblServizioInterno);	
+			_lblServizioInternoRichiesto.add(lblServizioInterno);
+			/*Aggiungo ogni servizio al panel*/
+			_pnlMiddleCenter.add(lblServizioInterno);
+			/*Aggiungo lo spazio*/
+			_pnlMiddleCenter.add(Box.createRigidArea(new Dimension(0,15)));
 		}
 		
-		/*Aggiungo il layuot al pannello*/	
-		_panelServiziInterniRichiesti.setLayout(new GridBagLayout());
-		
-		/*Definisco i vincoli*/
-		GridBagConstraints constraints_lbl_serviziInterniRichiesti = new GridBagConstraints();
-		
-		/*setto i vincoli*/
-		//prima riga, prima colonna		
-		constraints_lbl_serviziInterniRichiesti.fill = GridBagConstraints.HORIZONTAL;
-		constraints_lbl_serviziInterniRichiesti.gridx=0;
-		constraints_lbl_serviziInterniRichiesti.gridy=0;
-		//padding
-		constraints_lbl_serviziInterniRichiesti.insets = _insets_lbl;
-		
-		/*Aggiungo la label al pannello*/
-		_panelServiziInterniRichiesti.add(_lblServiziInterniRichiesti,constraints_lbl_serviziInterniRichiesti);
-		
-		return _panelServiziInterniRichiesti;
-	}
-	
-	/**
-	 * Metodo privato che recupera gli ospiti di una camera e li inserisce nel pannello di competenza
-	 * @param camera, prenotazione
-	 */
-	private JPanel creaOspitiCamera(CameraContext camera, PrenotazioneSubject prenotazione){
-		
-		/*Setto il testo dell'intestazione del pannello*/		
-		_lblOspitiCamera.setText("Ospiti della camera: ");
-		
-		/*Aggiungo il layuot al pannello*/	
-		_panelOspitiCamera.setLayout(new GridBagLayout());
-		
-		/*Definisco i vincoli*/
-		GridBagConstraints constraints_lbl_ospitiCamera = new GridBagConstraints();
-		
-		/*setto i vincoli*/
-		//prima riga, prima colonna		
-		constraints_lbl_ospitiCamera.fill = GridBagConstraints.HORIZONTAL;
-		constraints_lbl_ospitiCamera.gridx=0;
-		constraints_lbl_ospitiCamera.gridy=0;
-		//padding
-		constraints_lbl_ospitiCamera.insets = _insets_lbl;
-		
-		/*Aggiungo la label al pannello*/
-		_panelOspitiCamera.add(_lblOspitiCamera,constraints_lbl_ospitiCamera);
-		
-		return null;
-	}
-	 /** Metodo che inserisce il pannello superiore della schermata
-	 * @param prenotazione
-	 */
-	private void creaPanelTop(CameraContext camera){	
-		
-		/*Setto il layout al pannello*/
-		_panelTop.setLayout(new GridLayout(1, 1, 10,10));
-		
-		/*Aggiungo il testo all'etichetta e l'etichetta al pannello*/		
-		_lblCamera.setText("Camera numero: "+camera.get_numero());
-		_panelTop.add(_lblCamera);
+		return _pnlMiddleCenter;
 	}
 	/**
-	 * Metodo che inserisce il pannello inferiore della schermata
-	 * @param prenotazione
+	 * Metodo per creare il pannello contenente la lista dei servizi esterni richiesti.
+	 * @return Pannello centrale destro.
 	 */
-	private void creaPanelBottom(PrenotazioneSubject prenotazione){
-		/*Creo il pannello*/
-		_panelBottom.setLayout(new GridBagLayout());
-		/*creo i vincoli*/
-		GridBagConstraints constraints_aggiungiServizi_btn = new GridBagConstraints();
-		GridBagConstraints constraints_tornaPrenotazione_btn = new GridBagConstraints();
-		/*setto i vincoli*/
-		constraints_aggiungiServizi_btn.fill = GridBagConstraints.HORIZONTAL;
-		constraints_aggiungiServizi_btn.gridx=2;
-		constraints_aggiungiServizi_btn.gridy=0;
-		
-		constraints_tornaPrenotazione_btn.fill = GridBagConstraints.HORIZONTAL;
-		constraints_tornaPrenotazione_btn.gridx=1;
-		constraints_tornaPrenotazione_btn.gridy=0;
+	private JPanel creaPanelMiddleRight(){
+		// Setto il layout al panel.
+		_pnlMiddleRight.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
+		// Aggiungo la label al panel.
+		_lblServiziEsterniRichiesti.setText("Servizi esterni richiesti");
+		return _pnlMiddleRight;
+	}
+	@Override
+	protected void creaPanelBottom() {
+		/*Setto il testo dei bottoni*/
 		_btnAggiungiServizi.setText("Aggiungi servizi");
 		_btnTornaPrenotazione.setText("Torna alla prenotazione");
-		_panelBottom.add(_btnAggiungiServizi,constraints_aggiungiServizi_btn);
-		_panelBottom.add(_btnTornaPrenotazione,constraints_tornaPrenotazione_btn);
-
-
-	}
-	
-	/**
-	 * Metodo per mostrare l'interfaccia relativa alle informazioni della camera, in una prenotazione.
-	 * @param camera Camera da visualizzare.
-	 * @param serviziEsterni Servizi esterni della camera.
-	 */
-	public void creaFrame(CameraContext camera, PrenotazioneSubject prenotazione, ArrayList<ServizioEsterno> serviziEsterni) {
 		
-		// Assegno l'eventListener al bottone per tornare alla gestione della prenotazione.
-		get_btnTornaPrenotazione().addMouseListener(new TornaAllaPrenotazioneListener());
-		// Assegno l'eventListener al bottone per mostrare l'interfaccia relativa all'inserimento di nuovi
-		// servizi alla prenotazione.
-		get_btnTornaPrenotazione().addMouseListener(new CaricaAggiungiServiziListener());
+		/*Aggiungo i pulsanti al panelBottom*/
+		_panelBottom.add(_btnAggiungiServizi);
+		_panelBottom.add(_btnTornaPrenotazione);
+		
+		/*Aggiungo il listener al click sul bottone*/
+		_btnAggiungiServizi.addMouseListener(new CaricaAggiungiServiziListener());
+		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneListener());
 	}
+
 	/* ----------------------------- Getter, Setter ---------------------------------- */
 	
 	/**
@@ -234,21 +198,5 @@ public class VFGP_InfoCamera extends View {
 		this._btnTornaPrenotazione = _btnTornaPrenotazione;
 	}
 
-	@Override
-	protected void creaPanelTop() {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	protected void creaPanelMiddle() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void creaPanelBottom() {
-		// TODO Auto-generated method stub
-		
-	}
 }
