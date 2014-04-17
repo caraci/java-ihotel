@@ -28,6 +28,7 @@ import java.awt.GridLayout;
 @SuppressWarnings("serial")
 public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IObserver {
 
+	private HashMap<String, ArrayList<CameraContext>> _camereDisponibili;
 	/* Panel */
     private JPanel _panelFinale, _panelPrezzo, _panelOspite;
     /* JButton */
@@ -84,10 +85,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 		_lblPrezzoTotale.setText(total + _prenotazioneSubject.get_total().get_valuta());
 	}
     /* ------------- /Pattern Observer --------- */
-    /**
-	 * Metodo per creare il panelTop.
-	 */
-    public void creaPanelTop() {
+    @Override
+    protected void creaPanelTop() {
     	// Layout PanelTop
     	_panelTop.setLayout(new BorderLayout(0, 0));
 		/*Testo della label*/
@@ -95,21 +94,19 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 		/*Aggiungo la label al centro*/
 		_panelTop.add(_lblTitolo, BorderLayout.CENTER);
     }
-    /**
-	 * Metodo per creare il panelMiddle.
-	 */
-    public void creaPanelMiddle(HashMap<String, ArrayList<CameraContext>> camereDisponibili) {
+    @Override
+    protected void creaPanelMiddle() {
     	// Numero di tipologie di camere
-		int numeroTipologie = camereDisponibili.size();
+		int numeroTipologie = _camereDisponibili.size();
     	// Numero di colonne. Il +1 è dovuta alla colonna di gestione.
 		int numeroColonne = numeroTipologie + 1;
     	// Setto Layout con il numero di colonne ricavato sulla base del risultato e con una riga.
 		_panelMiddle.setLayout(new GridLayout(1, numeroColonne, 5, 0));
     	// Ciclo sulle camere ottenute.
-		for (Iterator<String> iterator = camereDisponibili.keySet().iterator(); iterator.hasNext();) {
+		for (Iterator<String> iterator = _camereDisponibili.keySet().iterator(); iterator.hasNext();) {
 			String tipologia = (String) iterator.next();
 			// Aggiungo la colonna relativa a camere della stessa tipologia.
-			_panelMiddle.add(creaColonnaTipologiaCamere(tipologia, camereDisponibili.get(tipologia)));
+			_panelMiddle.add(creaColonnaTipologiaCamere(tipologia, _camereDisponibili.get(tipologia)));
 		}
 		// Aggiungo il pannello finale
 		_panelMiddle.add(creaPanelFinale());
@@ -215,10 +212,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 
 		return _panelOspite;
     }
-    /**
-     * Metodo per creare il pannelBottom.
-     */
-    private void creaPanelBottom() {
+    @Override
+    protected void creaPanelBottom() {
     	// Layout PanelBottom
 		_panelBottom.setLayout(new BorderLayout(0, 0));
 		// Button completa prenotazione
@@ -234,10 +229,12 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     public void creaFrame(HashMap<String, ArrayList<CameraContext>> camereDisponibili) {
     	// Imposto il titolo.
     	setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
+    	// Setto l'attributo relativo alle camere libere
+    	_camereDisponibili=camereDisponibili;
     	// Creo il pannello in alto
 		creaPanelTop();
 		// Creo il pannello centrale
-		creaPanelMiddle(camereDisponibili);
+		creaPanelMiddle();
 		// Creo il pannello in basso
 		creaPanelBottom();    			
     }

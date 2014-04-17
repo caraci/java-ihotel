@@ -18,20 +18,21 @@ import com.iHotel.view.Access.ViewFactory;
  *
  */
 @SuppressWarnings("serial")
-public class View extends JFrame {
+public abstract class View extends JFrame {
 	
+	/* ----------------------------- Attributi e costruttore --------------------- */
 	/* Factory */
 	protected StyleAbstractFactory _viewFactory;
 	/* ContentPane */
 	protected JPanel _contentPane;
-	
-	/*JPanel*/
-	
-	// La struttura della pagina è divisa in 3 pannelli, top, middle e bottom. 
-	// Tutte le pagine devono rispettare questa struttura
-	
+	/* 
+	   La struttura della finestra è divisa in 3 pannelli, top, middle e bottom. 
+	   Tutte le pagine devono rispettare questa struttura
+	 */
 	protected JPanel _panelTop,_panelMiddle,_panelBottom;
-	
+	/**
+	 * Costruttore 
+	 */
 	protected View(){
 		// Richiedo la factory corretta.
 		_viewFactory=ViewFactory.getInstance().getStyleFactory();
@@ -64,8 +65,20 @@ public class View extends JFrame {
 		 */
 		_panelTop.setPreferredSize(new Dimension((int)(0.95*getWidth()),(int)((0.09)*(getHeight()))));
 		_panelMiddle.setPreferredSize(new Dimension((int)(0.95*getWidth()),(int)((0.7)*(getHeight()))));
-		_panelBottom.setPreferredSize(new Dimension((int)(0.95*getWidth()), (int)((0.09)*(getHeight()))));
-		
+		_panelBottom.setPreferredSize(new Dimension((int)(0.95*getWidth()), (int)((0.09)*(getHeight()))));	
 	}
+	/* ----------------------------- Metodi di instanza ---------------------------- */
+	/**
+	 * Metodo per creare il panelTop
+	 */
+	protected abstract void creaPanelTop();
+	/**
+	 * Metodo per creare il panelMiddle
+	 */
+	protected abstract void creaPanelMiddle();
+	/**
+	 * Metodo per creare il panelBottom
+	 */
+	protected abstract void creaPanelBottom();
 
 }

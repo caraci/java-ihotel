@@ -59,10 +59,8 @@ public class VFCP_SelezionePeriodoTipologie extends View {
          }
          return instance;
     }
-	/**
-	 * Metodo per creare il panelTop.
-	 */
-    private void creaPanelTop() {
+    @Override
+    protected void creaPanelTop() {
     	// Layout PanelTop
     	_panelTop.setLayout(new BorderLayout(0, 0));
 		/*Testo della label*/
@@ -70,10 +68,8 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 		/*Aggiungo la label al centro*/
 		_panelTop.add(_lblTitolo, BorderLayout.CENTER);
     }
-    /**
-     * Metodo per creare il panelMiddle.
-     */
-    private void creaPanelMiddle() {
+    @Override
+    protected void creaPanelMiddle() {
     	// Setto il layout al panelMiddle
     	_panelMiddle.setLayout(new GridLayout(2, 1, 10, 10));
     	// Aggiungo i panel al panelMiddle
@@ -143,10 +139,8 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 		
 		return _panelBottomLeft;
 	}
-	/**
-	 * Metodo per creare la porzione di finestra in basso.
-	 */
-	private void creaPanelBottom() {
+	@Override
+	protected void creaPanelBottom() {
 		// Layout PanelBottom
 		_panelBottom.setLayout(new BorderLayout(0, 0));
 		// Testo JButton avanti.

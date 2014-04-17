@@ -1,4 +1,4 @@
-package com.iHotel.view.Graphic;
+ package com.iHotel.view.Graphic;
 
 import java.awt.GridLayout;
 
@@ -46,17 +46,13 @@ public class VFrameHome extends View {
          }
          return instance;
     }
-    /**
-     * Metodo privato che crea il panelTop
-     */
-    private void creaPanelTop(){
+    @Override
+    protected void creaPanelTop(){
     	_lblInstructions.setText("Scegli l'operazione che vuoi fare.");
     	_panelTop.add(_lblInstructions);
     }
-    /**
-     * Metodo privato che crea il panelMiddle e ci inserisce i due pulsanti    
-     */
-    private void creaPanelMiddle(){
+    @Override
+    protected void creaPanelMiddle(){
     	/*Setto il layout*/
     	_panelMiddle.setLayout(new GridLayout(2, 1, 0, 10));
     	/*Setto il testo dei pulsanti*/
@@ -72,6 +68,11 @@ public class VFrameHome extends View {
 		// Assegniamo l'eventListener al JButton btnModificaPrenotazione
 		_btnModificaPrenotazione.addMouseListener(new CaricaGestionePrenotazioneListener());
     }
+    @Override
+	public void creaPanelBottom() {
+		// TODO Auto-generated method stub
+		
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -144,7 +145,4 @@ public class VFrameHome extends View {
 	public void set_btnModificaPrenotazione(JButton _btnModificaPrenotazione) {
 		this._btnModificaPrenotazione = _btnModificaPrenotazione;
 	}
-	
-	
-
 }

@@ -63,38 +63,23 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 		}
 		return instance;
 	}
-	/**
-	 * Metodo privato che setta il panelTop
-	 */
-	private void addTopPanel(){
+	@Override
+	protected void creaPanelTop() {
 		/*Testo della label*/
 		_lblTitolo.setText("Inserimento Codice della prenotazione");
 		/*Aggiungo la label*/
 		_panelTop.add(_lblTitolo);
 	}
-	/**
-	 * Metodo privato che aggiunge il pannello centrale
-	 */
-	private void addMiddlePanel(){
+
+	@Override
+	protected void creaPanelMiddle() {
 		/*Setto il layout*/
 		_panelMiddle.setLayout(new BorderLayout());
 		
 		/*Aggiungo i pannelli superiore e inferiore*/
 		_panelMiddle.add(creaPanelMiddleTop(),BorderLayout.PAGE_START);
-		_panelMiddle.add(creaPanelMiddleBottom(),BorderLayout.CENTER);				
+		_panelMiddle.add(creaPanelMiddleBottom(),BorderLayout.CENTER);	
 	}
-	/**
-	 * Metodo privato che aggiunge il pannello a fine pagina
-	 */
-	private void addButtomPanel(){		
-		/*Setto il layout*/
-		_panelBottom.setLayout(new BorderLayout());
-		
-		/*Testo del pulsante e lo aggiungo*/
-		_btnReservationRecover.setText("Cerca prenotazione");
-		_panelBottom.add(_btnReservationRecover,BorderLayout.EAST);
-	}
-	
 	/**
 	 * Metodo che aggiunge il pannello alto al panelMiddle
 	 * @return _panelMiddleTop Il pannello alto del panelMiddle
@@ -106,7 +91,6 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 		/*Restituisco il pannello*/
 		return _panelMiddleTop;
 	}
-	
 	/**
 	 * Aggiungo il pannello basso al panelMiddle
 	 * @return _panelMiddleBottom Il pannello basso del panelMiddle
@@ -126,6 +110,18 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 		/*Restituisco il pannello*/
 		return _panelMiddleBottom;
 	}
+
+	@Override
+	protected void creaPanelBottom() {
+		/*Setto il layout*/
+		_panelBottom.setLayout(new BorderLayout());
+		
+		/*Testo del pulsante e lo aggiungo*/
+		_btnReservationRecover.setText("Cerca prenotazione");
+		_panelBottom.add(_btnReservationRecover,BorderLayout.EAST);
+		// Aggiungo l'eventListener a _btnReservationRecover
+		_btnReservationRecover.addMouseListener(new RicercaPrenotazioneDaCodiceListener());
+	}
 	
 	/**
 	 * Metodo che crea il frame
@@ -135,13 +131,9 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 		setTitle("iHotel - Gestione Prenotazione - Inserimento codice per recuperare la prenotazione");
 		
 		/*Aggiungo i pannelli*/			
-		addTopPanel();
-		addMiddlePanel();
-		addButtomPanel();
-		
-		// Aggiungo l'eventListener a _btnReservationRecover
-		_btnReservationRecover.addMouseListener(new RicercaPrenotazioneDaCodiceListener());
-		
+		creaPanelTop();
+		creaPanelMiddle();
+		creaPanelBottom();
 	}
 	
 	/* -------------------- Getter, Setter ----------------------- */
@@ -173,7 +165,4 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 	public void set_txtReservationCode(JTextField _txtReservationCode) {
 		this._txtReservationCode = _txtReservationCode;
 	}
-	
-	
-
 }
