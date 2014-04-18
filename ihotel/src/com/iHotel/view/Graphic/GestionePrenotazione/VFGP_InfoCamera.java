@@ -130,12 +130,11 @@ public class VFGP_InfoCamera extends View {
 	 */
 	private JPanel creaPanelMiddleCenter(){
 		// Setto il layout al panel.
-		_pnlMiddleCenter.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
+		_pnlMiddleCenter.setLayout(new BoxLayout(_pnlMiddleCenter, BoxLayout.PAGE_AXIS));
 		// Aggiungo la label al panel.
 		_lblServiziInterniRichiesti.setText("Servizi interni richiesti");
 		
 		ArrayList<ServizioInterno> serviziInterni = _camera.getServiziInterniInPeriodo(_prenotazione.get_periodo());
-				System.out.print(serviziInterni.get(0).get_codice());
 		/*Scorre l'array dei servizi interni collegati alla camera e li inserisce in un array di label*/
 		for (Iterator<ServizioInterno> iterator = serviziInterni.iterator(); iterator.hasNext();) {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
@@ -157,7 +156,7 @@ public class VFGP_InfoCamera extends View {
 	 */
 	private JPanel creaPanelMiddleRight(){
 		// Setto il layout al panel.
-		_pnlMiddleRight.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
+		_pnlMiddleRight.setLayout(new BoxLayout(_pnlMiddleRight, BoxLayout.PAGE_AXIS));
 		// Aggiungo la label al panel.
 		_lblServiziEsterniRichiesti.setText("Servizi esterni richiesti");
 		// Ciclo sui servizi esterni

@@ -20,7 +20,13 @@ public abstract class CameraState {
 	protected ArrayList<Ospite> _ospiti;
 	protected ArrayList<ServizioInterno> _serviziInterni;
 	protected Prezzo _prezzoServizi;
-	
+	/**
+	 * Costruttore
+	 */
+	protected CameraState() {
+		_serviziInterni=new ArrayList<ServizioInterno>();
+		_ospiti=new ArrayList<Ospite>();
+	}
 	/* ------------------------ Metodi di instanza --------------------------- */
 	
 	public abstract LinkedList<CameraState> occupaInPeriodo(Periodo periodo);
