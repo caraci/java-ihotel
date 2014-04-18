@@ -30,6 +30,7 @@ public class GestisciCameraPrenotazioneListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per gestire una camera di una prenotazione.
 		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
+		
 		modificaPrenotazione.gestioneCamera(_numeroCamera);
 	}
 

@@ -5,10 +5,7 @@ package com.iHotel.view.Graphic.GestionePrenotazione;
 
 
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -36,6 +33,7 @@ public class VFGP_InfoCamera extends View {
 	/* ----------------------------- Attributi e costruttore -------------------------------- */
 	private CameraContext _camera;
 	private PrenotazioneSubject _prenotazione;
+	private ArrayList<ServizioEsterno> _serviziEsterni;
 
 	//JPanel
 	private JPanel _pnlMiddleLeft, _pnlMiddleCenter, _pnlMiddleRight;
@@ -49,9 +47,7 @@ public class VFGP_InfoCamera extends View {
 		
 	//Singleton
 	private static VFGP_InfoCamera instance=null;
-	
 
-	
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
@@ -166,6 +162,24 @@ public class VFGP_InfoCamera extends View {
 		/*Aggiungo il listener al click sul bottone*/
 		_btnAggiungiServizi.addMouseListener(new CaricaAggiungiServiziListener());
 		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneListener());
+	}
+	/**
+	 * Metodo per creare il frame relativo alle informazioni della camera in merito alla prenotazione
+	 * @param camera
+	 * @param prenotazione
+	 * @param serviziEsterni
+	 */
+	public void creaFrame(CameraContext camera, PrenotazioneSubject prenotazione, ArrayList<ServizioEsterno> serviziEsterni) {
+		/*Setto il titolo della finestra*/
+		setTitle("iHotel - Gestione Prenotazione - Informazioni sulla camera");
+		// Setto gli attributi dell'interfaccia
+		_camera=camera;
+		_prenotazione=prenotazione;
+		_serviziEsterni=serviziEsterni;
+		// Creo i pannelli
+		creaPanelTop();
+		creaPanelMiddle();
+		creaPanelBottom();
 	}
 
 	/* ----------------------------- Getter, Setter ---------------------------------- */
