@@ -140,7 +140,7 @@ public class VFGP_InfoCamera extends View {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
 			// Creo una label per inserire le informazioni del servizio
 			JLabel lblServizioInterno=_viewFactory.getLabel();
-			lblServizioInterno.setText(servizioInterno.get_codice()+servizioInterno.get_data());
+			lblServizioInterno.setText(servizioInterno.get_codice());
 			//_lblServizioInternoRichiesto.add(lblServizioInterno);
 			/*Aggiungo la label del servizio al panel*/
 			_pnlMiddleCenter.add(lblServizioInterno);
@@ -164,7 +164,7 @@ public class VFGP_InfoCamera extends View {
 			ServizioEsterno servizioEsterno = (ServizioEsterno) iterator.next();
 			// Creo una label per inserire le informazioni del servizio
 			JLabel lblServizioEsterno=_viewFactory.getLabel();
-			lblServizioEsterno.setText(servizioEsterno.get_codice()+servizioEsterno.get_data());
+			lblServizioEsterno.setText(servizioEsterno.get_codice()+servizioEsterno.get_descrizione());
 			/*Aggiungo la label del servizio al panel*/
 			_pnlMiddleRight.add(lblServizioEsterno);
 			/*Aggiungo lo spazio*/

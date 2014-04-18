@@ -7,6 +7,7 @@ import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.State.CameraStateOccupata;
 
 public class PersistentManager {
 	/* --------------- Attributi e costruttore ------------------- */
@@ -24,6 +25,7 @@ public class PersistentManager {
 			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 			config.common().objectClass(PrenotazioneSubject.class).cascadeOnUpdate(true);
 			config.common().objectClass(CameraContext.class).cascadeOnUpdate(true);
+			config.common().objectClass(CameraStateOccupata.class).cascadeOnUpdate(true);
 			_db=Db4oEmbedded.openFile(config, "dbihotel");
 		}
 	}

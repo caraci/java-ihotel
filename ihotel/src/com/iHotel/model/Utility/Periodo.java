@@ -297,8 +297,11 @@ public class Periodo {
 	}
 	@Override
 	public String toString() {
-		return "Inizio: " + get_giornoInizio() + "-" + get_meseInizio() + "-" + get_annoInizio() + "\n" +
-			   "Fine: " + get_giornoFine() + "-" + get_meseFine() + "-" + get_annoFine();	
+		// Per problemi legati al salvataggio delle date da parte della classe MyDate dobbiamo incrementare il valore del mese.
+		int meseInizio = get_meseFine()+1;
+		int meseFine = get_meseFine()+1;
+		return "Inizio: " + get_giornoInizio() + "-" + meseInizio + "-" + get_annoInizio() + "\n" +
+			   "Fine: " + get_giornoFine() + "-" + meseFine + "-" + get_annoFine();	
 	}
 	
 	/* ------------------------- Getter, Setter ------------------------------------- */

@@ -140,20 +140,28 @@ public class CModificaPrenotazione {
     }
 	/* ----------------------- Getter, Setter -------------------------- */
 
+    /**
+	 * @return the _prenotazione
+	 */
 	public PrenotazioneSubject get_prenotazione() {
-		return this._prenotazione;
+		return _prenotazione;
 	}
-
+	/**
+	 * @param _prenotazione the _prenotazione to set
+	 */
 	public void set_prenotazione(PrenotazioneSubject _prenotazione) {
 		this._prenotazione = _prenotazione;
 	}
-
-	public CameraContext get_numeroCamera() {
-		return this._camera;
+	/**
+	 * @return the _camera
+	 */
+	public CameraContext get_camera() {
+		return _camera;
 	}
-
-	public void set_numeroCamera(CameraContext _numeroCamera) {
-		this._camera = _numeroCamera;
+	/**
+	 * @param _camera the _camera to set
+	 */
+	public void set_camera(CameraContext _camera) {
+		this._camera = _camera;
 	}
-
 }

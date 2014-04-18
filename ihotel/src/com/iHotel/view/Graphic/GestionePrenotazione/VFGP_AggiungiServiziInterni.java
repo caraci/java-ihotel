@@ -24,7 +24,9 @@ import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.View;
+import com.iHotel.view.Event.GestionePrenotazione.AggiungiServizioListener;
 import com.iHotel.view.Event.GestionePrenotazione.MostraDettagliServizioListener;
+import com.iHotel.view.Event.GestionePrenotazione.TornaAllaCameraListener;
 
 /**
  * @author Eugenio
@@ -153,20 +155,24 @@ public class VFGP_AggiungiServiziInterni extends View {
 		// JDatePanel data servizio
 		JDatePanel datePanelServizio = JDateComponentFactory.createJDatePanel();
 		pnlDescrittoreServizio.add((Component) datePanelServizio);
+		// Aggiungo il bottone per aggiungere il servizio
+		JButton btnAggiungiServizio = _viewFactory.getButtonAvanti();
+		btnAggiungiServizio.setText("Aggiungi servizio");
+		pnlDescrittoreServizio.add(btnAggiungiServizio);
+		// Aggiungo l'eventListener al bottone per aggiungere un servizio
+		btnAggiungiServizio.addMouseListener(new AggiungiServizioListener(datePanelServizio, descrizioneServizio.get_codice()));
 		
 		return pnlDescrittoreServizio;
 	}
 	@Override
 	protected void creaPanelBottom() {
 		_panelBottom.setLayout(new GridLayout(1, 2, 5, 30));
-		// Setto il testo ai bottoni
-		_btnAggiungiServizio.setText("Aggiungi servizio");
+		// Setto il testo al bottone
 		_btnTornaAllaCamera.setText("Torna alla camera");
-		// Setto il pulsante per aggiungere un servizio disabilitato
-		_btnAggiungiServizio.setEnabled(false);
-		// Aggiungo i bottoni al pannello
+		// Aggiungo l'eventListener al bottone per tornare alla gestione della camera
+		_btnAggiungiServizio.addMouseListener(new TornaAllaCameraListener());
+		// Aggiungo il bottoni al pannello
 		_panelBottom.add(_btnTornaAllaCamera);
-		_panelBottom.add(_btnAggiungiServizio);
 	}
 	
 	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi, CameraContext camera) {
@@ -205,5 +211,17 @@ public class VFGP_AggiungiServiziInterni extends View {
 	 */
 	public void set_pnlMiddleRight(JPanel _pnlMiddleRight) {
 		this._pnlMiddleRight = _pnlMiddleRight;
+	}
+	/**
+	 * @return the _btnAggiungiServizio
+	 */
+	public JButton get_btnAggiungiServizio() {
+		return _btnAggiungiServizio;
+	}
+	/**
+	 * @param _btnAggiungiServizio the _btnAggiungiServizio to set
+	 */
+	public void set_btnAggiungiServizio(JButton _btnAggiungiServizio) {
+		this._btnAggiungiServizio = _btnAggiungiServizio;
 	}
 }

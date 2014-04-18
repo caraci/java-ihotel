@@ -26,6 +26,7 @@ public abstract class CameraState {
 	protected CameraState() {
 		_serviziInterni=new ArrayList<ServizioInterno>();
 		_ospiti=new ArrayList<Ospite>();
+		_prezzoServizi=new Prezzo();
 	}
 	/* ------------------------ Metodi di instanza --------------------------- */
 	

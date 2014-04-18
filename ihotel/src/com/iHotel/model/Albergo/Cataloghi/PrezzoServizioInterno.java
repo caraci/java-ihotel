@@ -18,7 +18,7 @@ public class PrezzoServizioInterno {
 	 */
 	public Prezzo getPrezzoInData(MyDate dataServizio) {
 		Prezzo prezzo = null;
-		if (_periodo.contieneData(dataServizio)) {
+		if (_periodo.contieneData(dataServizio)==true) {
 			prezzo=_prezzo;
 		}
 		return prezzo;
