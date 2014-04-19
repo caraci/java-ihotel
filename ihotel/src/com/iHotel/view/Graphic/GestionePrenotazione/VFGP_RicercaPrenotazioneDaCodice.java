@@ -52,7 +52,7 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 		// JTextField
 		_txtReservationCode=_viewFactory.getTextField();
 	};	
-	
+	/* ----------------------- Metodi di classe -------------------- */
 	/**
 	 * Metodo che consente di avere una sola istanza della schermata
 	 * @return
@@ -62,6 +62,11 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 			instance = new VFGP_RicercaPrenotazioneDaCodice();
 		}
 		return instance;
+	}
+	/* ----------------- Metodi di instanza ------------------------ */
+	@Override
+    public void removeInstance() {
+    	instance = null;
 	}
 	@Override
 	protected void creaPanelTop() {

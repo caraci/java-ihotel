@@ -47,6 +47,10 @@ public class VFrameHome extends View {
          return instance;
     }
     @Override
+	public void removeInstance() {
+    	instance = null;
+	}
+    @Override
     protected void creaPanelTop(){
     	_lblInstructions.setText("Scegli l'operazione che vuoi fare.");
     	_panelTop.add(_lblInstructions);

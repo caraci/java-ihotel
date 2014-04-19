@@ -82,6 +82,10 @@ public class VFPG_InfoPrenotazione extends View {
 	}
 	/* --------------------- Metodi di instanza ------------------------- */
 	@Override
+    public void removeInstance() {
+    	instance = null;
+	}
+	@Override
 	protected void creaPanelTop(){				
 		//setto la label con il codice della prenotazione
 		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ _prenotazione.get_codice());

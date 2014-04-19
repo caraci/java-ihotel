@@ -48,6 +48,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 		// JButton
 		_btnAvanti=_viewFactory.getButtonAvanti();
 	}
+	/* ----------------------------- Metodi di classe ---------------------------- */ 
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
 	 * 
@@ -59,6 +60,11 @@ public class VFCP_SelezionePeriodoTipologie extends View {
          }
          return instance;
     }
+    /* ------------------------- Metodi di instanza ------------------------------- */
+    @Override
+    public void removeInstance() {
+    	instance = null;
+	}
     @Override
     protected void creaPanelTop() {
     	// Layout PanelTop

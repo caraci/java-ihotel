@@ -75,7 +75,10 @@ public class VFGP_AggiungiServiziInterni extends View {
          return instance;
     }
 	/* ------------------------------ Metodi di instanza ------------------------ */
-	
+	@Override
+    public void removeInstance() {
+    	instance = null;
+	}
 	@Override
 	protected void creaPanelTop() {
 		// Setto il layout al panel

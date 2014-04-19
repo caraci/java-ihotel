@@ -86,6 +86,10 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 	}
     /* ------------- /Pattern Observer --------- */
     @Override
+    public void removeInstance() {
+    	instance = null;
+	}
+    @Override
     protected void creaPanelTop() {
     	// Layout PanelTop
     	_panelTop.setLayout(new BorderLayout(0, 0));

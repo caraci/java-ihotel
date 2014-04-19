@@ -86,6 +86,10 @@ public class VFGP_InfoCamera extends View {
     }
 	/* -------------------------- Metodi di instanza -------------------------- */
 	@Override
+    public void removeInstance() {
+    	instance = null;
+	}
+	@Override
 	protected void creaPanelTop() {
 		// Setto il layout al panel
 		_panelTop.setLayout(new BorderLayout(0, 0));

@@ -68,6 +68,7 @@ public abstract class View extends JFrame {
 		_panelBottom.setPreferredSize(new Dimension((int)(0.95*getWidth()), (int)((0.09)*(getHeight()))));	
 	}
 	/* ----------------------------- Metodi di instanza ---------------------------- */
+	public abstract void removeInstance();
 	/**
 	 * Metodo per creare il panelTop
 	 */
