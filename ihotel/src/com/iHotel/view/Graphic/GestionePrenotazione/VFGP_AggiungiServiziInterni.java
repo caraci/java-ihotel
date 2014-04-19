@@ -173,7 +173,7 @@ public class VFGP_AggiungiServiziInterni extends View {
 		// Setto il testo al bottone
 		_btnTornaAllaCamera.setText("Torna alla camera");
 		// Aggiungo l'eventListener al bottone per tornare alla gestione della camera
-		_btnAggiungiServizio.addMouseListener(new TornaAllaCameraListener());
+		_btnTornaAllaCamera.addMouseListener(new TornaAllaCameraListener());
 		// Aggiungo il bottoni al pannello
 		_panelBottom.add(_btnTornaAllaCamera);
 	}

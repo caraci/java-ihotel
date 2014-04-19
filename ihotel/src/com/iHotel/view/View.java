@@ -50,7 +50,7 @@ public abstract class View extends JFrame {
 		
 		//prendo i pannelli
 		_panelTop=_viewFactory.getPanel();
-		_panelMiddle=_viewFactory.getPanel();
+		_panelMiddle=_viewFactory.getPanelMiddle();
 		_panelBottom=_viewFactory.getPanel();
 		
 		//Aggiungo i pannelli al contentPane

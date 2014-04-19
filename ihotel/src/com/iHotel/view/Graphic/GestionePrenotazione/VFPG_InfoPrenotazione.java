@@ -178,8 +178,14 @@ public class VFPG_InfoPrenotazione extends View {
 		/*Setto il testo da riportare nell'intestazione del blocco del riepilogo informazioni sulla prenotazione*/
 		_lblRiepilogoPrenotazione.setText("Riepilogo prenotazione:");
 		
-		/*Setto il periodo della prenotazione nell'etichetta*/		
-		_lblPeriodo.setText("Periodo del soggiorno: "+ periodo.toString());
+		/*Setto il periodo della prenotazione nell'etichetta*/
+		
+		// Per problemi legati al salvataggio delle date da parte della classe MyDate dobbiamo incrementare il valore del mese.
+		int meseInizio = periodo.get_meseFine()+1;
+		int meseFine = periodo.get_meseFine()+1;
+		
+		_lblPeriodo.setText("Periodo del soggiorno: "+ "Inizio: " + periodo.get_giornoInizio() + "-" + meseInizio + "-" + periodo.get_annoInizio() +" "+
+				   "Fine: " + periodo.get_giornoFine() + "-" + meseFine + "-" + periodo.get_annoFine());
 		
 		/*Setto il prezzo delle camere*/
 		_lblPrezzoCamere.setText("Il totale delle camere è di: "+prezzoCamere.get_importo()+" "+prezzoCamere.get_valuta());

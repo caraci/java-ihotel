@@ -118,6 +118,12 @@ public class LightStyleFactory implements StyleAbstractFactory {
 		checkBox.setForeground(new Color(0, 0, 0));
 		return checkBox;
 	}
+	@Override
+	public JPanel getPanelMiddle() {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
+		return panel;
+	}
 	
 	
 	

@@ -295,14 +295,6 @@ public class Periodo {
 		this.set_meseFine(data.get(Calendar.MONTH));
 		this.set_annoFine(data.get(Calendar.YEAR));
 	}
-	@Override
-	public String toString() {
-		// Per problemi legati al salvataggio delle date da parte della classe MyDate dobbiamo incrementare il valore del mese.
-		int meseInizio = get_meseFine()+1;
-		int meseFine = get_meseFine()+1;
-		return "Inizio: " + get_giornoInizio() + "-" + meseInizio + "-" + get_annoInizio() + "\n" +
-			   "Fine: " + get_giornoFine() + "-" + meseFine + "-" + get_annoFine();	
-	}
 	
 	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**

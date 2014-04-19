@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 public interface StyleAbstractFactory {
 	public JPanel getPanel();
 	public JPanel getContentPane();
+	public JPanel getPanelMiddle();
 	public JScrollPane getScrollPane();
 	public JLabel getLabel();
 	public JLabel getLabelIntestazione_1();

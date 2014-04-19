@@ -110,4 +110,10 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 		checkBox.setForeground(new Color(255, 255, 255));
 		return checkBox;
 	}
+	@Override
+	public JPanel getPanelMiddle() {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(200, 200, 200));
+		return panel;
+	}
 }
