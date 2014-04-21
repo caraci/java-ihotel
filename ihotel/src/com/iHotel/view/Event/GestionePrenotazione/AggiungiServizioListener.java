@@ -6,10 +6,13 @@ package com.iHotel.view.Event.GestionePrenotazione;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JOptionPane;
+
 import net.sourceforge.jdatepicker.JDatePanel;
 
 import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.model.Utility.MyDate;
+import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 
 /**
  * @author Eugenio
@@ -41,6 +44,8 @@ public class AggiungiServizioListener extends MouseAdapter {
 		dataServizio.set(anno, mese, giorno);		
 		// Invoco il metodo al controllore
 		modificaPrenotazione.aggiungiServizio(dataServizio, _codiceServizio);
+		// Mostro la dialog per confermare l'inserimento del servizio nella prenotazione.
+		JOptionPane.showMessageDialog(VFGP_AggiungiServiziInterni.getInstance(), "Il servizio è stato aggiunto alla prenotazione.");
 	}
 
 }

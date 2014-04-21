@@ -5,6 +5,7 @@ package com.iHotel.view.Graphic.GestionePrenotazione;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -19,6 +20,7 @@ import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.utility.UtoString;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
@@ -94,11 +96,13 @@ public class VFPG_InfoPrenotazione extends View {
 	}
 	@Override
 	protected void creaPanelMiddle(){		
+		//
+		_panelMiddle.setLayout(new GridLayout(1, 3, 5, 0));
 		/*invoco i 3 metodi privati che mi consentono di creare i pannelli con le informazioni sul prenotante*/
 		/*della prenotazione, sulla prenotazione e sulle camere*/
-		_panelMiddle.add(creaPanelMiddleLeft(),BorderLayout.LINE_START);
-		_panelMiddle.add(creaPanelMiddleCenter(),BorderLayout.CENTER);
-		_panelMiddle.add(creaPanelMiddleRight(),BorderLayout.LINE_END);	
+		_panelMiddle.add(creaPanelMiddleLeft());
+		_panelMiddle.add(creaPanelMiddleCenter());
+		_panelMiddle.add(creaPanelMiddleRight());	
 	}
 	@Override
 	protected void creaPanelBottom(){
@@ -121,9 +125,6 @@ public class VFPG_InfoPrenotazione extends View {
 				
 		/*Setto il layout*/
 		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante, BoxLayout.PAGE_AXIS));
-		
-		/*Setto la dimensione che ha come altezza il 100% del _panelMiddle e larghezza pari al 32% del _panelMiddle*/
-		_panelInfoPrenotante.setPreferredSize(new Dimension((int)(0.32*_panelMiddle.getPreferredSize().getWidth()) ,(int)(0.95*_panelMiddle.getPreferredSize().getHeight())));
 				
 		/*Recupero il prenotante della prenotazione */
 		Ospite prenotante = _prenotazione.getPrenotante();
@@ -157,9 +158,6 @@ public class VFPG_InfoPrenotazione extends View {
 		/*Setto il layout*/
 		_panelInfoPrenotazione.setLayout(new BoxLayout(_panelInfoPrenotazione, BoxLayout.PAGE_AXIS));
 		
-		/*Setto la dimensione che ha come altezza il 100% del _panelMiddle e larghezza pari al 32% del _panelMiddle*/
-		_panelInfoPrenotazione.setPreferredSize(new Dimension((int)(0.32*_panelMiddle.getPreferredSize().getWidth()) ,(int)(0.95*_panelMiddle.getPreferredSize().getHeight())));
-		
 		/*Recupero il periodo*/
 		Periodo periodo = _prenotazione.get_periodo();
 		
@@ -180,12 +178,7 @@ public class VFPG_InfoPrenotazione extends View {
 		
 		/*Setto il periodo della prenotazione nell'etichetta*/
 		
-		// Per problemi legati al salvataggio delle date da parte della classe MyDate dobbiamo incrementare il valore del mese.
-		int meseInizio = periodo.get_meseFine()+1;
-		int meseFine = periodo.get_meseFine()+1;
-		
-		_lblPeriodo.setText("Periodo del soggiorno: "+ "Inizio: " + periodo.get_giornoInizio() + "-" + meseInizio + "-" + periodo.get_annoInizio() +" "+
-				   "Fine: " + periodo.get_giornoFine() + "-" + meseFine + "-" + periodo.get_annoFine());
+		_lblPeriodo.setText(UtoString.getInstance().periodoToString(periodo));
 		
 		/*Setto il prezzo delle camere*/
 		_lblPrezzoCamere.setText("Il totale delle camere è di: "+prezzoCamere.get_importo()+" "+prezzoCamere.get_valuta());
@@ -213,9 +206,6 @@ public class VFPG_InfoPrenotazione extends View {
 		/*Setto il layout*/
 		_panelCamerePrenotate.setLayout(new BoxLayout(_panelCamerePrenotate, BoxLayout.PAGE_AXIS));
 		
-		/*Setto la dimensione che ha come altezza il 100% del _panelMiddle e larghezza pari al 32% del _panelMiddle*/
-		_panelCamerePrenotate.setPreferredSize(new Dimension((int)(0.32*_panelMiddle.getPreferredSize().getWidth()) ,(int)(0.95*_panelMiddle.getPreferredSize().getHeight())));
-				
 		/*Setto il testo alla label che indica il titolo della sezione*/
 		_lblScegliCamera.setText("Lista di camere prenotate. Clicca su una per visualizzarne i dettagli");
 		_panelCamerePrenotate.add(_lblScegliCamera);

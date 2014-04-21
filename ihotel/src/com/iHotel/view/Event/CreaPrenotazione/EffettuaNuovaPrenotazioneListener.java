@@ -6,7 +6,10 @@ package com.iHotel.view.Event.CreaPrenotazione;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JOptionPane;
+
 import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.view.Graphic.VFrameHome;
 import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
 
 /**
@@ -37,6 +40,10 @@ public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 												  _selezioneCamereDatiOspite.get_txtCognome().getText(), 
 												  _selezioneCamereDatiOspite.get_txteMail().getText(), 
 												  _selezioneCamereDatiOspite.get_txtTelefono().getText());
+		// Mostro la dialog per confermare l'inserimento della prenotazione.
+		String codicePrenotazione = CCreaPrenotazione.getInstance().get_prenotazione().get_codice();
+		JOptionPane.showMessageDialog(VFrameHome.getInstance(), "La prenotazione è stata creata, codice: " + codicePrenotazione);
+		
 	}
 
 }

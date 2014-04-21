@@ -21,6 +21,7 @@ import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.utility.UtoString;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
@@ -115,16 +116,16 @@ public class VFGP_InfoCamera extends View {
 		// Setto il layout al panel.
 		_pnlMiddleLeft.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
 		// Aggiungo la label al panel.
-		_lblOspitiCamera.setText("Ospiti della camera");
+		_lblOspitiCamera.setText("Ospiti della camera:");
+		_pnlMiddleLeft.add(_lblOspitiCamera);
 		// Ciclo sugli ospiti della camera
 		for (Iterator<Ospite> iterator = _camera.getOspitiInPeriodo(_prenotazione.get_periodo()).iterator(); iterator.hasNext();) {
 			Ospite ospite = (Ospite) iterator.next();
 			// Creo una label per inserire nome e cognome dell'ospite
 			JLabel lblOspite = _viewFactory.getLabel();
-			lblOspite.setText(ospite.get_nome() + ospite.get_cognome());
+			lblOspite.setText(UtoString.getInstance().ospiteToString(ospite));
 			// Aggiungo la label al pannello
 			_pnlMiddleLeft.add(lblOspite);
-			
 		}
 		return _pnlMiddleLeft;
 	}
@@ -136,16 +137,15 @@ public class VFGP_InfoCamera extends View {
 		// Setto il layout al panel.
 		_pnlMiddleCenter.setLayout(new BoxLayout(_pnlMiddleCenter, BoxLayout.PAGE_AXIS));
 		// Aggiungo la label al panel.
-		_lblServiziInterniRichiesti.setText("Servizi interni richiesti");
+		_lblServiziInterniRichiesti.setText("Servizi interni richiesti:");
+		_pnlMiddleCenter.add(_lblServiziInterniRichiesti);
 		
-		ArrayList<ServizioInterno> serviziInterni = _camera.getServiziInterniInPeriodo(_prenotazione.get_periodo());
 		/*Scorre l'array dei servizi interni collegati alla camera e li inserisce in un array di label*/
-		for (Iterator<ServizioInterno> iterator = serviziInterni.iterator(); iterator.hasNext();) {
+		for (Iterator<ServizioInterno> iterator = _camera.getServiziInterniInPeriodo(_prenotazione.get_periodo()).iterator(); iterator.hasNext();) {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
 			// Creo una label per inserire le informazioni del servizio
 			JLabel lblServizioInterno=_viewFactory.getLabel();
-			lblServizioInterno.setText(servizioInterno.get_codice());
-			//_lblServizioInternoRichiesto.add(lblServizioInterno);
+			lblServizioInterno.setText(UtoString.getInstance().servizioInternoInPrenotazioneToString(servizioInterno));
 			/*Aggiungo la label del servizio al panel*/
 			_pnlMiddleCenter.add(lblServizioInterno);
 			/*Aggiungo lo spazio*/
@@ -168,7 +168,7 @@ public class VFGP_InfoCamera extends View {
 			ServizioEsterno servizioEsterno = (ServizioEsterno) iterator.next();
 			// Creo una label per inserire le informazioni del servizio
 			JLabel lblServizioEsterno=_viewFactory.getLabel();
-			lblServizioEsterno.setText(servizioEsterno.get_codice()+servizioEsterno.get_descrizione());
+			lblServizioEsterno.setText(UtoString.getInstance().servizioEsternoInPrenotazioneToString(servizioEsterno));
 			/*Aggiungo la label del servizio al panel*/
 			_pnlMiddleRight.add(lblServizioEsterno);
 			/*Aggiungo lo spazio*/
