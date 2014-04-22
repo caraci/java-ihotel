@@ -169,13 +169,17 @@ public class VFGP_AggiungiServiziInterni extends View {
 	}
 	@Override
 	protected void creaPanelBottom() {
-		_panelBottom.setLayout(new GridLayout(1, 2, 5, 30));
 		// Setto il testo al bottone
 		_btnTornaAllaCamera.setText("Torna alla camera");
 		// Aggiungo l'eventListener al bottone per tornare alla gestione della camera
 		_btnTornaAllaCamera.addMouseListener(new TornaAllaCameraListener());
-		// Aggiungo il bottoni al pannello
-		_panelBottom.add(_btnTornaAllaCamera);
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(0,_btnTornaAllaCamera);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 6;
+		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
 	}
 	
 	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi, CameraContext camera) {

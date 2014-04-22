@@ -64,6 +64,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 		_panelPrezzo=_viewFactory.getPanel();
 		_panelOspite=_viewFactory.getPanel();
 		_panelFinale=_viewFactory.getPanel();
+		// JButton
+		_btnCompletaPrenotazione=_viewFactory.getButtonAvanti();
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
@@ -218,14 +220,17 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     }
     @Override
     protected void creaPanelBottom() {
-    	// Layout PanelBottom
-		_panelBottom.setLayout(new BorderLayout(0, 0));
-		// Button completa prenotazione
-		_btnCompletaPrenotazione = new JButton("Completa Prenotazione");
-		// Assegniamo l'eventListener al JButton btnCompletaPrenotazione
+		// Button completa prenotazione.
+		_btnCompletaPrenotazione.setText("Completa Prenotazione");
+		// Assegniamo l'eventListener al JButton btnCompletaPrenotazione.
 		_btnCompletaPrenotazione.addMouseListener(new EffettuaNuovaPrenotazioneListener());
-		// Aggiungo il componenente al JPanel
-		_panelBottom.add(_btnCompletaPrenotazione, BorderLayout.EAST);
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(5,_btnCompletaPrenotazione);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 6;
+		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
     }
     /**
      * Metodo per creare il frame.

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -147,14 +148,17 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	}
 	@Override
 	protected void creaPanelBottom() {
-		// Layout PanelBottom
-		_panelBottom.setLayout(new BorderLayout(0, 0));
 		// Testo JButton avanti.
 		_btnAvanti.setText("Avanti");
 		// Assegniamo l'eventListener al JButton btnAvanti
 		_btnAvanti.addMouseListener(new RicercaCamereLibereListener());
-		// Aggiungo il componenente al JPanel
-		_panelBottom.add(_btnAvanti, BorderLayout.EAST);
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(5,_btnAvanti);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 6;
+		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
 	}
 	/**
 	 * Metodo per creare il frame.

@@ -6,6 +6,7 @@ package com.iHotel.view.Graphic.GestionePrenotazione;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -118,14 +119,17 @@ public class VFGP_RicercaPrenotazioneDaCodice extends View {
 
 	@Override
 	protected void creaPanelBottom() {
-		/*Setto il layout*/
-		_panelBottom.setLayout(new BorderLayout());
-		
 		/*Testo del pulsante e lo aggiungo*/
 		_btnReservationRecover.setText("Cerca prenotazione");
-		_panelBottom.add(_btnReservationRecover,BorderLayout.EAST);
 		// Aggiungo l'eventListener a _btnReservationRecover
 		_btnReservationRecover.addMouseListener(new RicercaPrenotazioneDaCodiceListener());
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(5,_btnReservationRecover);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 6;
+		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
 	}
 	
 	/**

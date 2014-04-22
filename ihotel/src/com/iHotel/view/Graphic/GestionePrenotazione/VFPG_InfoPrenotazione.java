@@ -3,10 +3,10 @@
  */
 package com.iHotel.view.Graphic.GestionePrenotazione;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.Box;
@@ -108,14 +108,15 @@ public class VFPG_InfoPrenotazione extends View {
 	protected void creaPanelBottom(){
 		/*Setto il testo del bottone*/
 		_btnTerminaModifichePrenotazione.setText("Termina modifiche alla prenotazione");
-		
-		/*Aggiungo il pulsante al panelBottom*/
-		_panelBottom.setLayout(new BorderLayout());		
-		_panelBottom.add(_btnTerminaModifichePrenotazione,BorderLayout.EAST);
-		
 		/*Aggiungo il listener al click sul pulsante*/
-		
 		_btnTerminaModifichePrenotazione.addMouseListener(new TerminaModifichePrenotazione());
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(5,_btnTerminaModifichePrenotazione);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 6;
+		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);		
 	}
 	/**
 	 * Metodo privato che crea il pannello con le informazioni sul prenotante

@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.Box;
@@ -182,14 +183,17 @@ public class VFGP_InfoCamera extends View {
 		/*Setto il testo dei bottoni*/
 		_btnAggiungiServizi.setText("Aggiungi servizi");
 		_btnTornaPrenotazione.setText("Torna alla prenotazione");
-		
-		/*Aggiungo i pulsanti al panelBottom*/
-		_panelBottom.add(_btnAggiungiServizi);
-		_panelBottom.add(_btnTornaPrenotazione);
-		
 		/*Aggiungo il listener al click sul bottone*/
 		_btnAggiungiServizi.addMouseListener(new CaricaAggiungiServiziListener());
 		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneListener());
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo i bottoni alla struttura.
+		Bottoni.put(0,_btnTornaPrenotazione);
+		Bottoni.put(5,_btnAggiungiServizi);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 6;
+		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
 	}
 	/**
 	 * Metodo per creare il frame relativo alle informazioni della camera in merito alla prenotazione
