@@ -7,8 +7,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.utility.UDialogManager;
 import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.Utility.UDialogManager;
 
 /**
  * @author Eugenio

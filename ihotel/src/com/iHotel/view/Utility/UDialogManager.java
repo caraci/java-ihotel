@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.utility;
+package com.iHotel.view.Utility;
 
 import javax.swing.JOptionPane;
 
@@ -42,7 +42,7 @@ public class UDialogManager extends JOptionPane{
 	 */
 	public String getDialogInserimentoCodice(){
 		/*Si passa l'interfaccia corrente al JOptionPane, in questo modo questa viene "bloccata" finchè la dialog rimane visualizzata*/
-		return JOptionPane.showInputDialog(ViewHandler.getInstance().getCurrentInterface(),"Inserisci il codice della prenotazione");	
+		return JOptionPane.showInputDialog(ViewHandler.getInstance().getCurrentInterface(),"Inserisci il codice della prenotazione", "Inserimento codice per recuperare la prenotazione", JOptionPane.QUESTION_MESSAGE);	
 	}
 	
 	/**
@@ -50,7 +50,7 @@ public class UDialogManager extends JOptionPane{
 	 * @param codicePrenotazione è il codice della prenotazione inserita.
 	 */
 	public void showDialogConfermaPrenotazione(String codicePrenotazione){
-		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "La prenotazione è stata creata, codice: " + codicePrenotazione);
+		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "La prenotazione è stata creata. Il suo codice è " + codicePrenotazione, "Conferma creazione prenotazione", JOptionPane.INFORMATION_MESSAGE);
 
 	}
 	
@@ -58,6 +58,6 @@ public class UDialogManager extends JOptionPane{
 	 * Metodo che mostra la dialog che conferma l'inserimento di un servizio.
 	 */
 	public void showDialogConfermaInserimentoServizio(){
-		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "Il servizio è stato aggiunto alla prenotazione.");
+		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "Il servizio è stato aggiunto alla prenotazione.", "Conferma inserimento servizio", JOptionPane.INFORMATION_MESSAGE);
 	}
 }

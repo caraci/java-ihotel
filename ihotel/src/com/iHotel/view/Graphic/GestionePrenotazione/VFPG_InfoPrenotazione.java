@@ -20,10 +20,10 @@ import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
-import com.iHotel.utility.UtoString;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
+import com.iHotel.view.Utility.UtoString;
 
 /**
  * @author Alessandro

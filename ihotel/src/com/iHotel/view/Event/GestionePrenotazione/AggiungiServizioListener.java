@@ -7,11 +7,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
+
 import net.sourceforge.jdatepicker.JDatePanel;
 
 import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.model.Utility.MyDate;
-import com.iHotel.utility.UDialogManager;
+import com.iHotel.view.Utility.UDialogManager;
 
 /**
  * @author Eugenio

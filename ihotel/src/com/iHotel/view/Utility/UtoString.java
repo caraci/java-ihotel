@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.utility;
+package com.iHotel.view.Utility;
 
 import java.util.Calendar;
 
