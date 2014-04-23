@@ -45,5 +45,9 @@ public class ViewHandler {
 		_currentInterface=view;
 		_currentInterface.setVisible(true);
 	}
+	
+	public View getCurrentInterface(){
+		return _currentInterface;
+	}
 
 }
