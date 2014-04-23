@@ -46,11 +46,18 @@ public class UDialogManager extends JOptionPane{
 	}
 	
 	/**
-	 * Metodo che restituisce la dialog che conferma l'inserimento della prenotazione
+	 * Metodo che mostra la dialog che conferma l'inserimento della prenotazione
 	 * @param codicePrenotazione è il codice della prenotazione inserita.
 	 */
 	public void showDialogConfermaPrenotazione(String codicePrenotazione){
 		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "La prenotazione è stata creata, codice: " + codicePrenotazione);
 
+	}
+	
+	/**
+	 * Metodo che mostra la dialog che conferma l'inserimento di un servizio.
+	 */
+	public void showDialogConfermaInserimentoServizio(){
+		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "Il servizio è stato aggiunto alla prenotazione.");
 	}
 }

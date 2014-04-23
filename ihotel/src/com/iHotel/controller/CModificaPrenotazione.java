@@ -18,7 +18,6 @@ import com.iHotel.view.Graphic.VFrameHome;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoCamera;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
-import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_RicercaPrenotazioneDaCodice;
 
 public class CModificaPrenotazione {
 	
@@ -45,14 +44,7 @@ public class CModificaPrenotazione {
          return instance;
     }
 	/* ------------------------- Metodi di instanza ---------------------------------- */
-    /**
-     * Metodo per mostrare l'interfaccia 
-     */
-	public void gestionePrenotazione() {
-		VFGP_RicercaPrenotazioneDaCodice ricercaPrenotazioneDaCodice = VFGP_RicercaPrenotazioneDaCodice.getInstance();
-		ricercaPrenotazioneDaCodice.creaFrame();
-		ViewHandler.getInstance().showFrame(ricercaPrenotazioneDaCodice);
-	}
+    
 	/**
 	 * Metodo per mostrare l'interfaccia per la gestione della prenotazione, relativa al codice fornito.
 	 * @param codicePrenotazione Codice della prenotazione da caricare.
