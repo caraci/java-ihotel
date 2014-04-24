@@ -22,8 +22,6 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * 
-	 * @return CGestisciPrenotazione Instanza unica di questa classe
 	 */
     public static DarkStyleFactory getInstance() {
     	if(instance == null) {
@@ -53,7 +51,6 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 		scrollPane.setBorder(BorderFactory.createLineBorder(Color.white));
 		return scrollPane;
 	}
-
 	@Override
 	public JLabel getLabel() {
 		JLabel label = new JLabel();

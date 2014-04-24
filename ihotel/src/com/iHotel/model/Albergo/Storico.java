@@ -26,6 +26,7 @@ public class Storico {
 	/* ------------------------------ Metodi di instanza ----------------------------------- */
 	/**
 	 * Metodo per ottenere una prenotazione a partire dal suo codice.
+	 * 
 	 * @param codice Codice della prenotazione
 	 * @return Prenotazione ricercata
 	 */
@@ -34,7 +35,8 @@ public class Storico {
 	}
 
 	/**
-	 * Metodo per aggiungere una prenotazione allo storico
+	 * Metodo per aggiungere una prenotazione allo storico.
+	 * 
 	 * @param prenotazione Prenotazione da aggiungere.
 	 */
 	public void addPrenotazione(PrenotazioneSubject prenotazione) {

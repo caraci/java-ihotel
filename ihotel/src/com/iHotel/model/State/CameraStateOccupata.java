@@ -15,12 +15,10 @@ public class CameraStateOccupata extends CameraState {
 	public LinkedList<CameraState> occupaInPeriodo(Periodo periodo) {
 		return null;
 	}
-
 	@Override
 	public boolean isLiberaInPeriodo(Periodo periodo) {
 		return false;
 	}
-
 	@Override
 	public Prezzo getPrezzoTotaleServizi(Periodo periodo) {
 		Prezzo prezzo = null;
@@ -30,7 +28,6 @@ public class CameraStateOccupata extends CameraState {
 		}
 		return prezzo;
 	}
-
 	@Override
 	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo) {
 		// Controllo se il periodo di richiesta, ovvero quello della prenotazione è effettivamente
@@ -45,15 +42,12 @@ public class CameraStateOccupata extends CameraState {
 			System.out.println(_serviziInterni.get(0).get_codice());
 		}
 	}
-
 	@Override
 	public ArrayList<ServizioInterno> getServiziInterni() {
 		return this._serviziInterni;
 	}
-
 	@Override
 	public ArrayList<Ospite> getOspiti() {
 		return this._ospiti;
 	}
-
 }

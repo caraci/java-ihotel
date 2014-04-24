@@ -14,10 +14,8 @@ public class SkyTvAdapter implements IPayTvAdapter {
 
 	@Override
 	public LinkedList<ServizioPayTv> getElencoEventi() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public Prezzo getPrezzoTotaleServiziPrenotazione(PrenotazioneSubject prenotazione) {
 		// TODO - Chiaramente ora si sta utilizzando un prezzo di default.
@@ -25,7 +23,6 @@ public class SkyTvAdapter implements IPayTvAdapter {
 		prezzoTotale.set_importo(10);
 		return prezzoTotale;
 	}
-
 	@Override
 	public ArrayList<ServizioEsterno> getElencoServiziCameraInPeriodo(CameraContext camera, Periodo periodo) {
 		// TODO - Chiaramente ora si stanno fornendo dei servizi di default.

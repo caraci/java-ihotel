@@ -21,8 +21,9 @@ public class DescrizioneServizioInterno {
 	
 	/* ---------------------------- Metodi di instanza ------------------- */
 	/**
-	 * Metodo per ottenere il prezzo del servizio in un determinato periodo
-	 * @param periodoRichiesta Periodo per il quale si vuole conoscere il prezzo del servizio.
+	 * Metodo per ottenere il prezzo del servizio in un determinato periodo.
+	 * 
+	 * @param periodoRichiesta Periodo da analizzare.
 	 * @return Prezzo del servizio nel periodo.
 	 */
 	public Prezzo getPrezzoInData(MyDate dataServizio) {

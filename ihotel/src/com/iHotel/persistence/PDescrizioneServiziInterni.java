@@ -24,7 +24,6 @@ public class PDescrizioneServiziInterni extends PersistentManager {
 	/* ------------------ Metodi di classe ----------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza della classe - Pattern Singleton
-	 * @return
 	 */
 	public static PDescrizioneServiziInterni getInstance(){
 		if(instance == null) {

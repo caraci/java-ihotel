@@ -16,7 +16,9 @@ public class ServizioInterno {
 	/*----------------------- Attributi e costruttore -----------------------*/
 	private String _codice;
 	private MyDate _data;
-	
+	/**
+	 * Costruttore.
+	 */
 	public ServizioInterno(){}
 	
 	/*----------------------- Setter e getter -----------------------*/

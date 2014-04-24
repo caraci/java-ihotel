@@ -24,7 +24,6 @@ public class PDescrizioneCamera extends PersistentManager{
 	/* ------------------ Metodi di classe ----------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza della classe - Pattern Singleton
-	 * @return
 	 */
 	public static PDescrizioneCamera getInstance(){
 		if(instance == null) {

@@ -18,7 +18,6 @@ public class CatalogoServiziInterni {
 	
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * @return Instanza unica di questa classe
 	 */
 	public static CatalogoServiziInterni getInstance() {
     	if(instance == null) {
@@ -31,6 +30,7 @@ public class CatalogoServiziInterni {
 	
 	/**
 	 * Metodo per fornire il descrittore del servizio dal suo codice.
+	 * 
 	 * @param codiceDescrittore Codice del servizio.
 	 * @return Descrizione del servizio richiesto.
 	 */
@@ -40,6 +40,7 @@ public class CatalogoServiziInterni {
 	
 	/**
 	 * Metodo per fornire il descrittore del servizio dal suo nome.
+	 * 
 	 * @param codiceDescrittore Codice del servizio.
 	 * @return Descrizione del servizio richiesto.
 	 */
@@ -58,6 +59,7 @@ public class CatalogoServiziInterni {
 	
 	/**
 	 * Metodo per fornire il codice del servizio dal suo nome.
+	 * 
 	 * @param nomeServizio Nome del servizio.
 	 * @return Codice del servizio richiesto.
 	 */
@@ -88,8 +90,4 @@ public class CatalogoServiziInterni {
 	public void set_descrizioneServizi(HashMap<String,DescrizioneServizioInterno> _descrizioneServizi) {
 		this._descrizioneServizi = _descrizioneServizi;
 	}
-	
-	
-
-
 }

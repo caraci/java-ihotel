@@ -49,6 +49,10 @@ public class ServiceFactory {
          return instance;
     }
 	/* ----------------------------- Metodi di instanza -------------------- */
+	/**
+	 * Metodo per ottenere la lista dei sistemi per la gestione dei servizi esterni.
+	 * @return Lista di sistemi per la gestione dei servizi esterni.
+	 */
 	public ArrayList<IServiceSystem> getSistemiServiziEsterni() {
 		ArrayList<IServiceSystem> sistemiServiziEsterni = new ArrayList<IServiceSystem>();
 		// Aggiungo i sistemi esterni alla lista

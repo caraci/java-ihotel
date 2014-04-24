@@ -12,9 +12,6 @@ import com.iHotel.model.Utility.Prezzo;
 public class CameraStateLibera extends CameraState {
 
 	@Override
-	/**
-	 * Metodo per generare la lista di CameraState, seguente ad una occupazione.
-	 */
 	public LinkedList<CameraState> occupaInPeriodo(Periodo periodoRichiesta) {
 		// Lista degli stati da restituire alla camera.
 		LinkedList<CameraState> nuoviStatiCamera=null;
@@ -25,11 +22,7 @@ public class CameraStateLibera extends CameraState {
 		}
 		return nuoviStatiCamera;
 	}
-
 	@Override
-	/**
-	 * Controllo se il periodo dello stato della camera, contiene il periodo ricevuto come parametro.
-	 */
 	public boolean isLiberaInPeriodo(Periodo periodo) {
 		boolean esito;
 		if(this.get_periodo().contiene(periodo)) {
@@ -39,26 +32,21 @@ public class CameraStateLibera extends CameraState {
 		}
 		return esito;
 	}
-
 	@Override
 	public Prezzo getPrezzoTotaleServizi(Periodo periodo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
 	public void aggiungiServizioInPeriodo(ServizioInterno servizio,	Periodo periodo) {
 		// TODO Auto-generated method stub
 	}
-
 	@Override
 	public ArrayList<ServizioInterno> getServiziInterni() {
 		return null;
 	}
-
 	@Override
 	public ArrayList<Ospite> getOspiti() {
 		return null;
-	}
-	
+	}	
 }

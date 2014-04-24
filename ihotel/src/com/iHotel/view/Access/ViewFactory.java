@@ -17,8 +17,7 @@ public class ViewFactory {
 	 */
 	private ViewFactory() {}
 	/**
-	 * 
-	 * @return
+	 * Metodo per ottenere l'instanza unica di questa classe - Pattern Singleton.
 	 */
 	public static ViewFactory getInstance() {
 		if(instance==null) {
@@ -28,7 +27,7 @@ public class ViewFactory {
 	}
 	/**
 	 * Metodo per fornire la factory per la creazione dell'interfaccia grafica secondo un certo stile.
-	 * @return
+	 * @return Factory che fornisce i componenti grafici.
 	 */
 	public StyleAbstractFactory getStyleFactory() {
 		// Leggo da file esterno quale Factory utilizzare

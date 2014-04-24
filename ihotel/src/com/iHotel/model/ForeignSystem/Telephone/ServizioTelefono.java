@@ -1,11 +1,12 @@
 package com.iHotel.model.ForeignSystem.Telephone;
 
 public class ServizioTelefono {
-
+	/* -------------------- Attributi -------------------------------- */
 	private String _codice;
 	private String _descrizione;
 	private int _durata;
 	private double _prezzo;
+	/* --------------------- Getter, Setter ---------------------------- */
 	/**
 	 * @return the _codice
 	 */

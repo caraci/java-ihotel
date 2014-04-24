@@ -21,6 +21,7 @@ public class Periodo {
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro coincide esattamente con il periodo relativo 
 	 * all'oggetto sul quale si sta invocando il metodo.
+	 * 
 	 * @param periodoRichiesta Periodo da confrontare
 	 * @return True se il periodo è contenuto. False altrimenti.
 	 */

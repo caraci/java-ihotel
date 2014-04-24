@@ -11,11 +11,11 @@ public class PrezzoCamera {
 	
 	/* ---------------------- Metodi di instanza --------------------------- */ 
 	/**
-	 * Metodo per farsi restituire un MPrezzoCamera, se il periodo passato come parametro, ha almeno un giorno in comune 
+	 * Metodo per farsi restituire un PrezzoCamera, se il periodo passato come parametro, ha almeno un giorno in comune 
 	 * con quello relativo all'oggetto su cui si invoca il metodo.
 	 * 
 	 * @param periodo Periodo per il quale si vuole ottenere l' MPrezzoCamera corretto.
-	 * @return MPrezzoCamera relativo al periodo inserito.
+	 * @return Prezzo relativo al periodo richiesto.
 	 */
 	public PrezzoCamera getPrezzoInPeriodo(Periodo periodo){
 		if(this.get_periodo().contiene(periodo) || this.get_periodo().sovrappone(periodo)) {

@@ -8,12 +8,17 @@ public class Prezzo {
 	private String _valuta;
 	
 	public Prezzo() {
+		// Valori di default.
 		_importo = 0;
 		_valuta = "Euro";
 	}
 	
 	/* ----------------- Metodi di instanza --------------------- */
-
+	/**
+	 * Metodo per sommare due prezzi.
+	 * @param prezzo Prezzo da sommare.
+	 * @return Prezzo in seguito alla somma.
+	 */
 	public Prezzo somma(Prezzo prezzo){
 		double importo = this.get_importo() + prezzo.get_importo();
 		this.set_importo(importo);

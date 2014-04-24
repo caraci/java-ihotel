@@ -23,7 +23,6 @@ public class PPrenotazione extends PersistentManager {
 	/* ------------------ Metodi di classe ----------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza della classe - Pattern Singleton.
-	 * @return
 	 */
 	public static PPrenotazione getInstance(){
 		if(instance == null) {

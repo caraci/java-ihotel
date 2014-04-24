@@ -32,8 +32,6 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * 
-	 * @return CGestisciPrenotazione Instanza unica di questa classe
 	 */
     public static LightStyleFactory getInstance() {
     	if(instance == null) {

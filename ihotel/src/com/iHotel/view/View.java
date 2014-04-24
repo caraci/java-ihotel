@@ -72,6 +72,9 @@ public abstract class View extends JFrame {
 		_panelBottom.setPreferredSize(new Dimension((int)(0.95*getWidth()), (int)((0.09)*(getHeight()))));	
 	}
 	/* ----------------------------- Metodi di instanza ---------------------------- */
+	/**
+	 * Metodo per rimuovere l'instanza, dall'attributo statico.
+	 */
 	public abstract void removeInstance();
 	/**
 	 * Metodo per creare il panelTop
@@ -87,6 +90,7 @@ public abstract class View extends JFrame {
 	protected abstract void creaPanelBottom();
 	/**
 	 * Metodo per creare un pannello con un certo numero di pulsanti.
+	 * 
 	 * @param panel Pannello sul quale si vuole creare la pulsantiera.
 	 * @param numeroColonne Numero di colonne nel quale si vuole effettuare la suddivisione della larghezza.
 	 * @param Bottoni Bottoni che si vogliono inserire.

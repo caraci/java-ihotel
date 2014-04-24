@@ -19,7 +19,6 @@ public class UDefaultLoader {
 	}
 	/**
 	 * Metodo per ottenere l'instanza unica di questa classe - Pattern singleton
-	 * @return
 	 */
 	/* ----------------------- Metodi di classe -------------------------------- */
 	public static UDefaultLoader getInstance(){
@@ -31,9 +30,9 @@ public class UDefaultLoader {
 	/* ------------------------- Metodi di instanza ------------------------------ */
 	/**
 	 * Metodo per andare a leggere in un file di configurazione i valori relativi a nome, telefono, PIVA e eMail della
-	 * classe MAlbergo.
+	 * classe Albergo.
 	 * 
-	 * @return Collezione contenente nome, telefono, PIVA e eMail.
+	 * @return Collezione contenente nome, telefono, PIVA e eMail dell'albergo.
 	 */
 	public ArrayList<String> getInformazioniAlbergo(){
 		// Variabili nelle quali andremo a memorizzare gli attributi dell'albergo.

@@ -23,7 +23,6 @@ public class PCamera extends PersistentManager {
 	/* ------------------ Metodi di classe ----------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza della classe - Pattern Singleton
-	 * @return
 	 */
 	public static PCamera getInstance(){
 		if(instance == null) {

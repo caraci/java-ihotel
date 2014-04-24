@@ -35,11 +35,13 @@ public class ViewHandler {
 	/* ---------------------- Metodi di instanza --------------------------------------- */
 	/**
 	 * Metodo che mostra la nuova interfaccia grafica ed elimina quella vecchia.
+	 * 
 	 * @param view Finestra da visualizzare.
 	 */
 	public void showFrame(View view){
 		if (_currentInterface!=null){
 			_currentInterface.setVisible(false);
+			// Rimuovo l'interfaccia dall'attributo statico della classe.
 			_currentInterface.removeInstance();
 		}
 		_currentInterface=view;

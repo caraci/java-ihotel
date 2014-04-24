@@ -23,9 +23,11 @@ public class PersistentManager {
 		// Se la connessione non è aperta, la si va ad aprire.
 		if (_db==null) {
 			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
+			// Configurazioni per l'aggiornamento in cascata degli oggetti delle seguenti classi.
 			config.common().objectClass(PrenotazioneSubject.class).cascadeOnUpdate(true);
 			config.common().objectClass(CameraContext.class).cascadeOnUpdate(true);
 			config.common().objectClass(CameraStateOccupata.class).cascadeOnUpdate(true);
+			// Posizione del file contenente la base dati.
 			_db=Db4oEmbedded.openFile(config, "dbihotel");
 		}
 	}

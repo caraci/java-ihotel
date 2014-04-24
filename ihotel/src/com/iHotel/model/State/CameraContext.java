@@ -13,13 +13,16 @@ public class CameraContext {
 	private LinkedList<CameraState> _statiCameraState;
 	private String _numero;
 	private String _tipologia;
-
+	/**
+	 * Costruttore.
+	 */
 	public CameraContext() {
 		_statiCameraState = new LinkedList<CameraState>();
 	}
 	/* -------------------------- Metodi di istanza ----------------------- */
 	/**
 	 * Metodo per aggiungere un servizio alla camera in un determinato periodo.
+	 * 
 	 * @param servizio Servizio da aggiungere.
 	 * @param periodo Periodo in cui aggiungere il servizio.
 	 */
@@ -47,7 +50,6 @@ public class CameraContext {
 		}
 		return prezzo;
 	}
-	
 	/**
 	 * Metodo per controllare se una camera è libera in un periodo.
 	 * 
@@ -65,7 +67,8 @@ public class CameraContext {
 		return esito; 
 	}
 	/**
-	 * Metodo per occupare una camera in un periodo. 
+	 * Metodo per occupare una camera in un periodo.
+	 *  
 	 * @param periodo Periodo in cui si vuole occupare la camera.
 	 */
 	public void occupaInPeriodoState(Periodo periodo) {
@@ -87,12 +90,17 @@ public class CameraContext {
 		}
 	}	
 	/**
-	 * metodo per recuperare i servizi interni associati ad una camera in un periodo
-	 * */
+	 * Metodo per ottenere la lista dei servizi interni relativi ad un periodo.
+	 * 
+	 * @param periodo Periodo da analizzare.
+	 * @return Lista dei servizi interni della camera nel periodo.
+	 */
 	public ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo){
 		ArrayList<ServizioInterno> serviziInterni=new ArrayList<ServizioInterno>() ;
+		// Ciclo sugli stati interni della camera.
 		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
 			CameraState statoCamera = iterator.next();
+			// Controllo se il periodo dello stato coincide con quello passato come parametro.
 			if(statoCamera.get_periodo().coincideCon(periodo)){
 				serviziInterni=statoCamera.getServiziInterni();
 			}
@@ -100,12 +108,17 @@ public class CameraContext {
 		return serviziInterni;
 	}
 	/**
-	 * Metodo per recuperare gli ospiti ossoociati ad una camera in un periodo
-	 * */
+	 * Metodo per ottenere la lista degli ospiti in un periodo.
+	 * 
+	 * @param periodo Periodo da analizzare.
+	 * @return Lista degli ospiti della camera nel periodo.
+	 */
 	public ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo){
 		ArrayList<Ospite> ospiti=new ArrayList<Ospite>() ;
+		// Ciclo sugli stati interni della camera.
 		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
 			CameraState statoCamera = iterator.next();
+			// Controllo se il periodo dello stato coincide con quello passato come parametro.
 			if(statoCamera.get_periodo().coincideCon(periodo)){
 				ospiti=statoCamera.getOspiti();
 			}

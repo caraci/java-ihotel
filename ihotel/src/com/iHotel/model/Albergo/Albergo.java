@@ -64,6 +64,7 @@ public class Albergo {
 	/* -------------------- Metodi di instanza ----------------------*/
 	/**
 	 * Metodo per ottenere tutti i servizi esterni di una camera in un periodo.
+	 * 
 	 * @param camera Camera da analizzare.
 	 * @param periodo Periodo di richiesta.
 	 * @return Lista di servizi relativi ad una camera
@@ -94,8 +95,6 @@ public class Albergo {
 		}
 		return prezzo;
 	}
-	
-	
 	/**
 	 * Metodo per ricavare l'oggetto MCamera a partire dalla stringa contenente il suo numero.
 	 * 

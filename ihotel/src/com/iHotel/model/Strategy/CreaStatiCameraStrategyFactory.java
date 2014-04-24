@@ -14,9 +14,14 @@ public class CreaStatiCameraStrategyFactory {
 
 	/*--------------- Attributi e Costruttore ----------------------------*/
 	private static CreaStatiCameraStrategyFactory instance = null;
-	
+	/**
+	 * Costruttore privato - Pattern singletone.
+	 */
 	private CreaStatiCameraStrategyFactory() {}
 	/*---------------- Metodi di classe ------------------------------ */
+	/**
+	 * Metodo per ottenere l'instanza unica della classe - Pattern Singleton
+	 */
 	public static CreaStatiCameraStrategyFactory getInstance() {
 		if(instance == null) {
             instance = new CreaStatiCameraStrategyFactory();
@@ -24,6 +29,13 @@ public class CreaStatiCameraStrategyFactory {
          return instance;
 	}
 	/*--------------------- Metodi di instanza --------------------- */
+	/**
+	 * Metodo per ottenere la giusta strategia per la creazione di nuovi stati camera in seguito all'occupazione.
+	 * 
+	 * @param periodoStato Periodo dello stato camera nel quale si farà l'occupazione.
+	 * @param periodoRichiesta Periodo in cui si vuole occupare.
+	 * @return Strategia corretta per l'occupazione della camera.
+	 */
 	public CreaStatiCameraStrategy getStrategy(Periodo periodoStato, Periodo periodoRichiesta) {
 		// Strategia da restituire
 		CreaStatiCameraStrategy creaStatiCameraStrategy;

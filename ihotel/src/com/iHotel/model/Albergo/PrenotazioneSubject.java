@@ -20,7 +20,9 @@ public class PrenotazioneSubject implements ISubject {
 	private Ospite _prenotante;
 	private Prezzo _total;
 	private String _codice;
-	
+	/**
+	 * Costruttore.
+	 */
 	public PrenotazioneSubject() {
 		_camerePrenotate = new ArrayList<CameraContext>();
 		_osservatori = new ArrayList<IObserver>();
@@ -30,6 +32,7 @@ public class PrenotazioneSubject implements ISubject {
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
 	/**
 	 * Metodo per generare il codice della prenotazione.
+	 * 
 	 * @return Codice della prenotazione, legato al timestamp del sistema.
 	 */
 	public static String generaCodice(){
@@ -44,7 +47,6 @@ public class PrenotazioneSubject implements ISubject {
 	@Override
 	public void Attach(IObserver observer) {
 		_osservatori.add(observer);
-		
 	}
 	@Override
 	public void Detach(IObserver observer) {
@@ -90,14 +92,15 @@ public class PrenotazioneSubject implements ISubject {
 		this.Notify();
 	}
 	/**
-	 * Metodo per aggiungere un elemento alla prenotazione.
-	 * @param camera Camera da aggiungere alla prenotazione
+	 * Metodo per aggiungere una camera alla prenotazione.
+	 * @param camera Camera da aggiungere alla prenotazione.
 	 */
 	public void addCamera(CameraContext camera) {
 		_camerePrenotate.add(camera);
 	}
 	/**
 	 * Metodo per aggiungere l'ospite prenotante.
+	 * 
 	 * @param nome Nome dell'ospite.
 	 * @param cognome Cognome dell'ospite.
 	 * @param eMail eMail dell'ospite.
@@ -110,15 +113,14 @@ public class PrenotazioneSubject implements ISubject {
 		_prenotante.set_eMail(eMail);
 		_prenotante.set_telefono(telefono);
 	}
-	
 	/**
-	 * Metodo che restituisce l'ospite titolare della prenotazione
+	 * Metodo che restituisce l'ospite titolare della prenotazione.
+	 * 
 	 * @return prenotante Ospite titolare dlela prenotazione.
 	 */
 	public Ospite getPrenotante(){
 		return this._prenotante;
 	}
-	
 	/**
 	 * Metodo per occupare le camere della prenotazione.
 	 */
@@ -128,7 +130,6 @@ public class PrenotazioneSubject implements ISubject {
 			cameraPrenotata.occupaInPeriodoState(_periodo);
 		}
 	}
-		
 	/* -------------------------------- Getter, Setter ------------------------------------------ */
 	/**
 	 * @return _elementiPrenotazione

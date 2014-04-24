@@ -12,7 +12,9 @@ public class DescrizioneCamera {
 	
 	private ArrayList<PrezzoCamera> _prezziCamera;
 	private String _tipologia;
-	
+	/**
+	 * Costruttore.
+	 */
 	public DescrizioneCamera() {
 		_prezziCamera=new ArrayList<PrezzoCamera>();
 	}
@@ -22,8 +24,8 @@ public class DescrizioneCamera {
 	/**
 	 * Metodo per ottenere tutti i prezzi per una tipologia di camera, in un certo periodo.
 	 * 
-	 * @param periodo	Periodo generico
-	 * @return 			prezzi per una tipologia di camera in un periodo
+	 * @param periodo Periodo da analizzare.
+	 * @return Lista dei prezzi per una tipologia di camera in un periodo
 	 */
 	public ArrayList<PrezzoCamera> getPrezziInPeriodo(Periodo periodo) {
 		ArrayList<PrezzoCamera> prezziCamera = new ArrayList<PrezzoCamera>();
@@ -43,8 +45,8 @@ public class DescrizioneCamera {
 	 * Metodo che calcola il prezzo per la tipologia di camera descritta dal descrittore,
 	 * nel periodo passato come parametro.
 	 * 
-	 * @param periodo Periodo della prenotazione
-	 * @return totaleCameraPeriodo Costo totale della camera durante il soggiorno
+	 * @param periodo Periodo da analizzare.
+	 * @return Prezzo totale della camera nel periodo.
 	 */
 	public Prezzo calcolaPrezzoInPeriodo(Periodo periodo) {
 		// Data di inizio della richiesta.

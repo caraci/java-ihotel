@@ -29,12 +29,45 @@ public abstract class CameraState {
 		_prezzoServizi=new Prezzo();
 	}
 	/* ------------------------ Metodi di instanza --------------------------- */
-	
+	/**
+	 * Metodo per occupare la camera in un periodo.
+	 * 
+	 * @param periodo Periodo in cui occupare la camera.
+	 * @return Lista di stati della camera in seguito all'occupazione.
+	 */
 	public abstract LinkedList<CameraState> occupaInPeriodo(Periodo periodo);
+	/**
+	 * Metodo per controllare se la camera è libera in un periodo.
+	 * 
+	 * @param periodo Periodo da analizzare.
+	 * @return True se libera. False altrimenti.
+	 */
 	public abstract boolean isLiberaInPeriodo(Periodo periodo);
+	/**
+	 * Metodo per ottenere il prezzo totale dei servizi interni della camera nel periodo.
+	 * 
+	 * @param periodo Periodo da analizzare.
+	 * @return Prezzo totale dei servizi.
+	 */
 	public abstract Prezzo getPrezzoTotaleServizi(Periodo periodo);
+	/**
+	 * Metodo per aggiungere un servizio interno in un periodo alla camera.
+	 * 
+	 * @param servizio Servizio da aggiungere.
+	 * @param periodo Periodo in cui aggiungere il servizio.
+	 */
 	public abstract void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo);
+	/**
+	 * Metodo per ottenere la lista dei servizi interni della camera.
+	 * 
+	 * @return Lista dei servizi interni della camera.
+	 */
 	public abstract ArrayList<ServizioInterno> getServiziInterni();
+	/**
+	 * Metodo per ottenere la lista degli ospiti della camera.
+	 * 
+	 * @return Lista degli ospiti della camera.
+	 */
 	public abstract ArrayList<Ospite> getOspiti();
 	
 	/* -------------------------- Getter, Setter ----------------------------- */

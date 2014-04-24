@@ -16,14 +16,12 @@ public class ServizioEsterno {
 	private Prezzo _prezzo;
 	private String _descrizione;
 	private MyDate _data;
-	
-	public ServizioEsterno(){
-		
-	}
+	/**
+	 * Costruttore.
+	 */
+	public ServizioEsterno(){}
 	
 	/*----------------------- Setter e getter -----------------------*/
-
-
 	/**
 	 * @return the _codice
 	 */

@@ -22,7 +22,6 @@ public class CatalogoCamere {
 	
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * @return Instanza unica di questa classe
 	 */
 	public static CatalogoCamere getInstance() {
     	if(instance == null) {
@@ -34,6 +33,7 @@ public class CatalogoCamere {
 	/* --------------------------- Metodi di instanza --------------------------------- */
 	/**
 	 * Metodo per ottenere le tipologie di camere presenti nel catalogo.
+	 * 
 	 * @return Tipologie di camere presenti nel catalogo
 	 */
 	public Set<String> getTipologieCamere() {
@@ -51,7 +51,6 @@ public class CatalogoCamere {
 		DescrizioneCamera descrizioneCamera = getDescrizioneDaTipologia(tipologia);	
 		return descrizioneCamera.getPrezziInPeriodo(periodo);
 	}
-	
 	/**
 	 * Metodo che restituisce la descrizione della camera di una specifica tipologia.
 	 * 
@@ -60,7 +59,7 @@ public class CatalogoCamere {
 	public DescrizioneCamera getDescrizioneDaTipologia(String tipologia){
 		return this._descrizioniCamere.get(tipologia);
 	}
-
+	/* ------------------------- Getter, Setter ---------------------------------- */
 	public void set_descrizioniCamere(HashMap<String, DescrizioneCamera> descrizioniCamere) {
 		this._descrizioniCamere = descrizioniCamere;
 		

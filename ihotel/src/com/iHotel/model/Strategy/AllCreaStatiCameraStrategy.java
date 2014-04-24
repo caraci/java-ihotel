@@ -16,10 +16,6 @@ import com.iHotel.model.Utility.Periodo;
 public class AllCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 
 	@Override
-	/**
-	 * Metodo per creare nuovi stati della camera, quando il periodo dello stato ed il periodo della richiesta
-	 * iniziano e finiscio gli stessi giorni.
-	 */
 	public LinkedList<CameraState> creaNuoviStati(CameraState cameraState, Periodo periodoRichiesta) {
 		// Lista da restituire
 		LinkedList<CameraState> nuoviStati = new LinkedList<CameraState>();
