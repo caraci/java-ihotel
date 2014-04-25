@@ -98,6 +98,7 @@ public class VFGP_AggiungiServiziInterni extends View {
 	}
 	/**
 	 * Metodo per creare il pannello contenente la lista dei servizi interni.
+	 * 
 	 * @return Pannello centrale sinistro.
 	 */
 	private JPanel creaPanelMiddleLeft() {
@@ -122,6 +123,7 @@ public class VFGP_AggiungiServiziInterni extends View {
 	}
 	/**
 	 * Metodo per creare il pannello nella parte centrale destra della pagina.
+	 * 
 	 * @return Pannello centrale destro.
 	 */
 	private JPanel creaPanelMiddleRight() {
@@ -138,6 +140,7 @@ public class VFGP_AggiungiServiziInterni extends View {
 	 * Metodo per creare il pannello contenente le informazioni di un servizio.
 	 * A differenza degli altri metodi usati per costruire l'interfaccia è pubblico visto
 	 * che viene usato da un gestore dell'evento.
+	 * 
 	 * @see com.iHotel.view.Event.GestionePrenotazione.MostraDettagliServizioListener.java
 	 * @param descrizioneServizio Descrittore del servizio
 	 * @return Pannello relativo al descrittore del servizio.
@@ -181,7 +184,11 @@ public class VFGP_AggiungiServiziInterni extends View {
 		Integer numeroColonne = 6;
 		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
 	}
-	
+	/**
+	 * Metodo per creare il frame.
+	 * @param descrizioniServizi Collezione contenente i descrittori dei servizi interni.
+	 * @param camera Camera sulla quale si vogliono aggiungere servizi.
+	 */
 	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi, CameraContext camera) {
 		// Setto titolo del frame.
 		setTitle("iHotel - Gestione Prenotazione - Aggiungi servizi alla camera");

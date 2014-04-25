@@ -37,8 +37,6 @@ public class VFrameHome extends View {
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * 
-	 * @return VFrameHome Instanza unica di questa classe.
 	 */
     public static VFrameHome getInstance() {
     	if(instance == null) {
@@ -86,7 +84,6 @@ public class VFrameHome extends View {
 		/*Setto il testo alla label*/
 		creaPanelTop();
 		creaPanelMiddle();
-			
 	}
 	/* ------------------------ Getter, Setter -------------------------------- */
 	/**

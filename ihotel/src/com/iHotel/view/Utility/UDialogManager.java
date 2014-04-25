@@ -11,11 +11,8 @@ import com.iHotel.view.Access.ViewHandler;
  * @author Alessandro
  *
  */
-public class UDialogManager extends JOptionPane{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@SuppressWarnings("serial")
+public class UDialogManager extends JOptionPane {
 	
 	//Singleton
 	private static UDialogManager instance = null;
@@ -26,8 +23,7 @@ public class UDialogManager extends JOptionPane{
 	private UDialogManager(){}
 	
 	/**
-	 * Metodo per ottenere l'unica istanza di UDialogManager - Pattern Singleton
-	 * @return
+	 * Metodo per ottenere l'unica istanza di questa classe - Pattern Singleton
 	 */
 	public static UDialogManager getInstance(){
 		if (instance == null){
@@ -37,8 +33,9 @@ public class UDialogManager extends JOptionPane{
 	}
 	
 	/**
-	 * Metodo che restituisce la dialog per l'inserimento del codice. 
-	 * @return String La stringa inserita dall'utente, che è il codice della prenotazione.
+	 * Metodo che restituisce la dialog per l'inserimento del codice.
+	 *  
+	 * @return Stringa inserita dall'utente, che è il codice della prenotazione.
 	 */
 	public String getDialogInserimentoCodice(){
 		/*Si passa l'interfaccia corrente al JOptionPane, in questo modo questa viene "bloccata" finchè la dialog rimane visualizzata*/
@@ -46,7 +43,8 @@ public class UDialogManager extends JOptionPane{
 	}
 	
 	/**
-	 * Metodo che mostra la dialog che conferma l'inserimento della prenotazione
+	 * Metodo che mostra la dialog che conferma l'inserimento della prenotazione.
+	 * 
 	 * @param codicePrenotazione è il codice della prenotazione inserita.
 	 */
 	public void showDialogConfermaPrenotazione(String codicePrenotazione){

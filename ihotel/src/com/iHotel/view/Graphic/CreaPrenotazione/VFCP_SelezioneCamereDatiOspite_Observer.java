@@ -69,8 +69,6 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 	}
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * 
-	 * @return VFCP_SelezioneCamereDatiOspite_Observer Instanza unica di questa classe.
 	 */
     public static VFCP_SelezioneCamereDatiOspite_Observer getInstance() {
     	if(instance == null) {
@@ -119,6 +117,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     }
     /**
      * Metodo per aggiungere una colonna contenente tipologie di camere dello stesso tipo.
+     * 
      * @param tipologia Tipologia di camere della colonna.
      * @param arrayListCamere Lista di camere disponibili.
      * @return Pannello con le camere disponibili.
@@ -155,7 +154,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     }
     /**
      * Metodo per creare il pannello sulla parte destra contenente le informazioni su prezzo e sul prenotante.
-     * @return Pannello a destra del frame.
+     * 
+     * @return Pannello contenente il pannello del prezzo e quello del prenotante.
      */
     private JPanel creaPanelFinale() {
     	// Setto il layout al panel
@@ -169,6 +169,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     }
     /**
      * Metodo per creare il pannello dove si visualizza il prezzo della prenotazione.
+     * 
      * @return Pannello relativo al prezzo.
      */
     private JPanel creaPanelPrezzo() {
@@ -186,6 +187,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     }
     /**
      * Metodo per creare il pannello dove si inseriscono le informazioni sul cliente prenotante.
+     * 
      * @return Pannello relativo alle informazioni sull'ospite prenotante.
      */
     private JPanel creaPanelPrenotante() {

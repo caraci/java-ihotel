@@ -48,7 +48,7 @@ public class VFPG_InfoPrenotazione extends View {
 	private JButton _btnTerminaModifichePrenotazione;
 	private ArrayList<JButton> _btnCamere;
 	/**
-	 * Costruttore
+	 * Costruttore privato - Pattern Singleton
 	 */
 	private VFPG_InfoPrenotazione(){
 		// JPanel		
@@ -73,8 +73,7 @@ public class VFPG_InfoPrenotazione extends View {
 	}
 	/* -------------------------- Metodi di classe ----------------------------- */
 	/**
-	 * Metodo che consente di avere una sola istanza della schermata
-	 * @return VFPG_InfoPrenotazione istanza unica della classe
+	 * Metodo che consente di avere l'unica instanza di questa classe - Pattern Singleton.
 	 */
 	public static VFPG_InfoPrenotazione getInstance(){
 		if (instance == null){
@@ -119,8 +118,9 @@ public class VFPG_InfoPrenotazione extends View {
 		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);		
 	}
 	/**
-	 * Metodo privato che crea il pannello con le informazioni sul prenotante
-	 * @return JPanel il pannello che contiene le informazioni sul cliente prenotante
+	 * Metodo che crea il pannello con le informazioni sul prenotante.
+	 * 
+	 * @return Pannello che contiene le informazioni sul cliente prenotante.
 	 */
 	private JPanel creaPanelMiddleLeft(){
 				
@@ -151,8 +151,9 @@ public class VFPG_InfoPrenotazione extends View {
 		return _panelInfoPrenotante;
 	}
 	/**
-	 * Metodo privato che crea il pannello con le informazioni sulla prenotazione.
-	 * @return JPanel Il pannello contenente le informazioni di riepilogo sulla prenotazione
+	 * Metodo che crea il pannello con le informazioni sulla prenotazione.
+	 * 
+	 * @return Pannello contenente le informazioni di riepilogo sulla prenotazione
 	 */
 	private JPanel creaPanelMiddleCenter(){
 		
@@ -199,8 +200,9 @@ public class VFPG_InfoPrenotazione extends View {
 		return _panelInfoPrenotazione;
 	}
 	/**
-	 * Metodo privato che crea il pannello con le camere prenotate
-	 * @return JPanel il pannello che contiene le camere prenotate
+	 * Metodo che crea il pannello con le camere prenotate.
+	 * 
+	 * @return Pannello che contiene le camere prenotate.
 	 */
 	private JPanel creaPanelMiddleRight(){		
 		
@@ -229,11 +231,12 @@ public class VFPG_InfoPrenotazione extends View {
 		return _panelCamerePrenotate;
 	}
 	/**
-	 * Metodo pubblico che permette di creare il frame che contiene le informazioni sul prenotante, sulla prenotazione
+	 * Metodo che permette di creare il frame che contiene le informazioni sul prenotante, sulla prenotazione
 	 * e sulle camere prenotate.
-	 * @param prenotazione La prenotazione di cui si vogliono visualizzare i dettagli
+	 * 
+	 * @param prenotazione La prenotazione di cui si vogliono visualizzare i dettagli.
 	 * @param prezzoServiziEsterni Il prezzo dei servizi esterni richiesti dalle camere appartenenti alla prenotazione
-	 * 	 	  passata come parametro
+	 * 	 	  passata come parametro.
 	 */
 	public void creaFrame(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){	
 		/*Setto il titolo della finestra*/

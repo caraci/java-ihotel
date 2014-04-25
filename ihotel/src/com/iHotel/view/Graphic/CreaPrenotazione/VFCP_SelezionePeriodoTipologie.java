@@ -52,8 +52,6 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	/* ----------------------------- Metodi di classe ---------------------------- */ 
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * 
-	 * @return VFrameCreaPrenotazioneStep_1 Instanza unica di questa classe.
 	 */
     public static VFCP_SelezionePeriodoTipologie getInstance() {
     	if(instance == null) {
@@ -87,6 +85,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 
 	/**
 	 * Metodo per aggiungere la porzione centrale, in alto a sinistra.
+	 * 
 	 * @return Pannello centrale in alto a sinistra.
 	 */
 	private JPanel creaPanelMiddleTopLeft() {
@@ -105,6 +104,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	}
 	/**
 	 * Metodo per aggiungere la porzione centrale, in alto a destra.
+	 * 
 	 * @return Pannelo centrale in alto a destra.
 	 */
 	private JPanel creaPanelMiddleTopRight() {
@@ -123,6 +123,7 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 	}
 	/**
 	 * Metodo per aggiungere la porzione in basso a sinistra della finestra.
+	 * 
 	 * @return Pannello centrale in basso a sinistra.
 	 */
 	private JPanel creaPanelMiddleBottomLeft() {

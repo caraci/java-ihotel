@@ -19,10 +19,16 @@ import com.iHotel.model.Utility.Periodo;
  */
 public class UtoString {
 	/* ------------------------------ Attributi e costruttore ----------------------------------- */
+	// Singleton
 	private static UtoString instance=null;
-	
+	/**
+	 * Costruttore privato - Pattern Singleton
+	 */
 	private UtoString() {}
 	/* --------------------------------- Metodi statici -------------------------------------- */ 
+	/**
+	 * Metodo per ottenere l'unica instanza di questa classe.
+	 */
 	public static UtoString getInstance() {
 		if(instance == null) {
             instance = new UtoString();
@@ -31,9 +37,9 @@ public class UtoString {
 	}
 	/* --------------------------------- Metodi di instanza -------------------------------------- */
 	/**
-	 * 
-	 * @param ospite
-	 * @return
+	 * Metodo per ottenere la stringa relativa alle informazioni di un ospite.
+	 * @param ospite Ospite in analisi.
+	 * @return Stringa contenente le informazioni dell'ospite.
 	 */
 	public String ospiteToString(Ospite ospite) {
 		// Stringa
@@ -41,9 +47,9 @@ public class UtoString {
 		return string;
 	}
 	/**
-	 * 
-	 * @param periodo
-	 * @return
+	 * Metodo per ottenere la stringa relativa ad un periodo.
+	 * @param periodo Periodo in analisi.
+	 * @return Stringa contenente le informazioni del periodo.
 	 */
 	public String periodoToString(Periodo periodo) {
 		// Per problemi legati al salvataggio delle date da parte della classe MyDate dobbiamo incrementare il valore del mese.
@@ -56,9 +62,9 @@ public class UtoString {
 		
 	}
 	/**
-	 * 
-	 * @param date
-	 * @return
+	 * Metodo per ottenere la stringa relativa ad una data.
+	 * @param date Data in analisi.
+	 * @return Stringa contenente le informazioni della data.
 	 */
 	public String myDateToString(MyDate date) {
 		// Stringa
@@ -66,9 +72,9 @@ public class UtoString {
 		return toString;
 	}
 	/**
-	 * 
-	 * @param servizioInterno
-	 * @return
+	 * Metodo per ottenere la stringa relativa ad un servizio interno.
+	 * @param servizioInterno Servizio in analisi.
+	 * @return Stringa contenente le informazioni di un servizio.
 	 */
 	public String servizioInternoInPrenotazioneToString(ServizioInterno servizioInterno) {
 		// Chiedo al catalogo il descrittore del servizio
@@ -79,9 +85,9 @@ public class UtoString {
 		return toString;
 	}
 	/**
-	 * 
-	 * @param servizioEsterno
-	 * @return
+	 * Metodo per ottenere la stringa relativa ad un servizio esterno.
+	 * @param servizioEsterno Servizio in analisi.
+	 * @return Stringa contenente le informazioni di un servizio.
 	 */
 	public String servizioEsternoInPrenotazioneToString(ServizioEsterno servizioEsterno) {
 		// String

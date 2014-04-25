@@ -111,6 +111,7 @@ public class VFGP_InfoCamera extends View {
 	}
 	/**
 	 * Metodo per creare il pannello contenente la lista degli ospiti della camera.
+	 * 
 	 * @return Pannello centrale sinistro.
 	 */
 	private JPanel creaPanelMiddleLeft(){
@@ -132,7 +133,8 @@ public class VFGP_InfoCamera extends View {
 	}
 	/**
 	 * Metodo per creare il pannello contenente la lista dei servizi interni richiesti.
-	 * @return Pannello centrale sinistro.
+	 * 
+	 * @return Pannello centrale.
 	 */
 	private JPanel creaPanelMiddleCenter(){
 		// Setto il layout al panel.
@@ -157,6 +159,7 @@ public class VFGP_InfoCamera extends View {
 	}
 	/**
 	 * Metodo per creare il pannello contenente la lista dei servizi esterni richiesti.
+	 * 
 	 * @return Pannello centrale destro.
 	 */
 	private JPanel creaPanelMiddleRight(){
@@ -196,10 +199,11 @@ public class VFGP_InfoCamera extends View {
 		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
 	}
 	/**
-	 * Metodo per creare il frame relativo alle informazioni della camera in merito alla prenotazione
-	 * @param camera
-	 * @param prenotazione
-	 * @param serviziEsterni
+	 * Metodo per creare il frame relativo alle informazioni della camera in merito alla prenotazione.
+	 * 
+	 * @param camera Camera di cui si vogliono mostrare le informazioni.
+	 * @param prenotazione Prenotazione a cui è legata la camera.
+	 * @param serviziEsterni Lista dei servizi esterni richiesti dalla camera per la prenotazione in analisi.
 	 */
 	public void creaFrame(CameraContext camera, PrenotazioneSubject prenotazione, ArrayList<ServizioEsterno> serviziEsterni) {
 		/*Setto il titolo della finestra*/
