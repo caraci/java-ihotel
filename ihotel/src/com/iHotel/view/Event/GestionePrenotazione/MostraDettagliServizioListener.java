@@ -19,16 +19,18 @@ public class MostraDettagliServizioListener implements ItemListener {
 
 	/* ---------------------- Attributi e Costruttore --------------------- */
 	private VFGP_AggiungiServiziInterni _aggiungiServiziInterni;
-	
+	/**
+	 * Costruttore.
+	 */
 	public MostraDettagliServizioListener() {
 		_aggiungiServiziInterni=VFGP_AggiungiServiziInterni.getInstance();
 	}
 	
-	@Override
 	/**
 	 * Con questo metodo si va a gestire l'evento scaturito a seguito della selezione di un elemento della 
 	 * lista dei servizi interni.
 	 */
+	@Override
 	public void itemStateChanged(ItemEvent e) {
 		// Stringa contenente il nome del servizio interno
 		String nomeServizioInterno = (String) e.getItem();

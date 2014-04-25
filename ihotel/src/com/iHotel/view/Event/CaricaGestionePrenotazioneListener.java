@@ -15,10 +15,10 @@ import com.iHotel.view.Utility.UDialogManager;
  */
 public class CaricaGestionePrenotazioneListener extends MouseAdapter {
 
-	@Override
 	/**
 	 * Con questo metodo si va a gestire l'evento relativo al click sul bottone per la gestione di una prenotazione.
 	 */
+	@Override
 	public void mouseClicked(MouseEvent e) {		
 		//Creo la Input dialog
 		String codice = UDialogManager.getInstance().getDialogInserimentoCodice();

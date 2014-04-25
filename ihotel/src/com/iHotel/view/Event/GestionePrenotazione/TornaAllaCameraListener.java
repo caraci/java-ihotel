@@ -15,15 +15,14 @@ import com.iHotel.controller.CModificaPrenotazione;
 public class TornaAllaCameraListener extends MouseAdapter {
 	
 	/* ------------------------------------ Metodi di instanza --------------------------------- */
-	@Override
 	/**
 	 * Con questo metodo si gestisce l'evento scaturito dal click sul bottone per tornare alla
 	 * gestione della camera.
 	 */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per tornare alla gestione della camera della prenotazione.
 		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
-		System.out.println(modificaPrenotazione.get_camera().get_numero());
 		modificaPrenotazione.gestioneCamera(modificaPrenotazione.get_camera().get_numero());
 	}
 	

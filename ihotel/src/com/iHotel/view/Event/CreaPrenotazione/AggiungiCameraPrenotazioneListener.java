@@ -18,16 +18,19 @@ public class AggiungiCameraPrenotazioneListener extends MouseAdapter {
 
 	/* -------------------- Attributi e Costruttore ----------------------- */
 	private String _numeroCamera;
-	
+	/**
+	 * Costruttore.
+	 * @param numeroCamera Numero della camera da aggiungere.
+	 */
 	public AggiungiCameraPrenotazioneListener(String numeroCamera) {
 		_numeroCamera=numeroCamera;
 	}
 	/* ------------------- Metodi di instanza ----------------------------- */
-	@Override
 	/**
 	 * Con questo metodo si gestisce l'evento scaturito dal click sul bottone relativo all'aggiunta
 	 * di una camera alla prenotazione.
 	 */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		JButton btn;
 		// Ricavo il JButton che ha generato l'evento

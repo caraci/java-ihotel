@@ -15,10 +15,10 @@ import com.iHotel.controller.CModificaPrenotazione;
 public class TerminaModifichePrenotazione extends MouseAdapter {
 
 	/* --------------------- Metodi di instanza ------------------ */
-	@Override
 	/**
 	 * Con questo metodo si va a gestire l'evento relativo al click, per terminare la gestione di una prenotazione.
 	 */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per tornare alla schermata principale.
 		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();

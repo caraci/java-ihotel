@@ -18,18 +18,20 @@ import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
 public class RicercaCamereLibereListener extends MouseAdapter {
 	/* -------------------- Attributi e Costruttore ----------------------- */
 	private VFCP_SelezionePeriodoTipologie _selezionePeriodoTipologie;
-	
+	/**
+	 * Costruttore.
+	 */
 	public RicercaCamereLibereListener() {
 		super();
 		_selezionePeriodoTipologie=VFCP_SelezionePeriodoTipologie.getInstance();
 	}
 	/* ------------------------ Metodi di instanza ------------------------ */
 	
-	@Override
 	/**
 	 * Con questo metodo si gestisce l'evento scaturito dal click sul bottone per avviare la 
 	 * ricerca delle camere libere.
 	 */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		ArrayList<String> tipologieSelezionate = new ArrayList<String>();
 		boolean tipologiaStato;

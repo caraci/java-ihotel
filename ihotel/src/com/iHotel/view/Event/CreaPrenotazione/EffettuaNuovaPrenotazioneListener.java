@@ -18,18 +18,20 @@ public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 
 	/* ---------------------- Attributi e Costruttore ---------------------- */
 	private VFCP_SelezioneCamereDatiOspite_Observer _selezioneCamereDatiOspite;
-	
+	/**
+	 * Costruttore.
+	 */
 	public EffettuaNuovaPrenotazioneListener() {
 		super();
 		_selezioneCamereDatiOspite=VFCP_SelezioneCamereDatiOspite_Observer.getInstance();
 	}
 	
 	/* ---------------------- Metodi di instanza ------------------------ */
-	@Override
 	/**
 	 * Con questo metodo si gestisce l'evento scaturito dal click sul bottone relativo alla
 	 * creazione di una nuova prenotazione.
 	 */
+	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo.
 		CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
