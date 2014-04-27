@@ -65,13 +65,13 @@ public class VFGP_InfoCamera extends View {
 	
 		
 		/*Label*/
-		_lblInfoCamera=_viewFactory.getLabel();
-		_lblOspitiCamera= _viewFactory.getLabel();
-		_lblServiziInterniRichiesti=_viewFactory.getLabel();
-		_lblServiziEsterniRichiesti=_viewFactory.getLabel();
+		_lblInfoCamera=_viewFactory.getLabelIntestazione_1();
+		_lblOspitiCamera= _viewFactory.getLabelIntestazione_2();
+		_lblServiziInterniRichiesti=_viewFactory.getLabelIntestazione_2();
+		_lblServiziEsterniRichiesti=_viewFactory.getLabelIntestazione_2();
 		
 		/*Button*/
-		_btnAggiungiServizi=_viewFactory.getButton();
+		_btnAggiungiServizi=_viewFactory.getButtonAvanti();
 		_btnTornaPrenotazione=_viewFactory.getButton();	
 	}
 	
@@ -166,7 +166,8 @@ public class VFGP_InfoCamera extends View {
 		// Setto il layout al panel.
 		_pnlMiddleRight.setLayout(new BoxLayout(_pnlMiddleRight, BoxLayout.PAGE_AXIS));
 		// Aggiungo la label al panel.
-		_lblServiziEsterniRichiesti.setText("Servizi esterni richiesti");
+		_lblServiziEsterniRichiesti.setText("Servizi esterni richiesti:");
+		_pnlMiddleRight.add(_lblServiziEsterniRichiesti);
 		// Ciclo sui servizi esterni
 		for (Iterator<ServizioEsterno> iterator = _serviziEsterni.iterator(); iterator.hasNext();) {
 			ServizioEsterno servizioEsterno = (ServizioEsterno) iterator.next();

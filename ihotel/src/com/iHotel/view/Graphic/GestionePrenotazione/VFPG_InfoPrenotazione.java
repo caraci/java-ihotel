@@ -57,15 +57,15 @@ public class VFPG_InfoPrenotazione extends View {
 		_panelCamerePrenotate = _viewFactory.getPanel();
 		
 		/*Label*/
-		_lblTitoloPrenotante= _viewFactory.getLabel();
-		_lblRiepilogoPrenotazione = _viewFactory.getLabel();
+		_lblTitoloPrenotante= _viewFactory.getLabelIntestazione_2();
+		_lblRiepilogoPrenotazione = _viewFactory.getLabelIntestazione_2();
 		_lblCognomePrenotante= _viewFactory.getLabel();
 		_lblNomePrenotante= _viewFactory.getLabel();
-		_lblTitoloPrenotazione= _viewFactory.getLabel();
+		_lblTitoloPrenotazione= _viewFactory.getLabelIntestazione_1();
 		_lblPeriodo= _viewFactory.getLabel();
 		_lblPrezzoCamere= _viewFactory.getLabel();
 		_lblPrezzoServizi= _viewFactory.getLabel();
-		_lblScegliCamera= _viewFactory.getLabel();
+		_lblScegliCamera= _viewFactory.getLabelIntestazione_2();
 		
 		/*Button*/
 		_btnTerminaModifichePrenotazione = _viewFactory.getButton();
