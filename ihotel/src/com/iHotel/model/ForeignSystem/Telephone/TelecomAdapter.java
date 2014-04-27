@@ -35,7 +35,7 @@ public class TelecomAdapter implements ITelephoneAdapter {
 		periodoServizio.setDataInizioDaData(data);
 		periodoServizio.setDataFineDaData(data);
 		// Setto la data al servizio
-		servizioEsterno.set_data(periodoServizio);
+		servizioEsterno.set_periodo(periodoServizio);
 		// Descrizione
 		servizioEsterno.set_descrizione("Urbana verso 06******23");
 		// Prezzo

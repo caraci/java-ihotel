@@ -37,7 +37,7 @@ public class CameraStateOccupata extends CameraState {
 			_serviziInterni.add(servizio);
 			// Ricavo il prezzo del servizio e lo aggiungo al prezzo dei servizi per lo stato della camera.
 			DescrizioneServizioInterno descrizioneServizioInterno = CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(servizio.get_codice());
-			_prezzoServizi.somma(descrizioneServizioInterno.getPrezzoInData(servizio.get_data()));
+			_prezzoServizi.somma(descrizioneServizioInterno.getPrezzoInData(servizio.get_periodo()));
 		}
 	}
 	@Override

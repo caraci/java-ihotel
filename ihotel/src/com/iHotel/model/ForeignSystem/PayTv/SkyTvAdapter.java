@@ -36,7 +36,7 @@ public class SkyTvAdapter implements IPayTvAdapter {
 		periodoServizio.setDataInizioDaData(data);
 		periodoServizio.setDataFineDaData(data);
 		// Setto la data al servizio
-		servizioEsterno.set_data(periodoServizio);
+		servizioEsterno.set_periodo(periodoServizio);
 		// Descrizione
 		servizioEsterno.set_descrizione("C'era una volta in America - S. Leone");
 		// Prezzo

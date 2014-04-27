@@ -104,7 +104,7 @@ public class CModificaPrenotazione {
     	periodoServizio.setDataInizioDaData(dataServizio);
     	periodoServizio.setDataFineDaData(dataServizio);
     	// Aggiungo la data al servizio.
-    	servizioInterno.set_data(periodoServizio);
+    	servizioInterno.set_periodo(periodoServizio);
     	// Ricavo il periodo della prenotazione
     	Periodo periodo = _prenotazione.get_periodo();
     	// Aggiungo il servizio interno alla Camera che si sta gestendo, fornendo periodo e servizio.

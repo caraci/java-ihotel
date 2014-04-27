@@ -15,7 +15,7 @@ public class ServizioEsterno {
 	private String _codice;
 	private Prezzo _prezzo;
 	private String _descrizione;
-	private Periodo _data;
+	private Periodo _periodo;
 	/**
 	 * Costruttore.
 	 */
@@ -67,15 +67,15 @@ public class ServizioEsterno {
 	/**
 	 * @return the _data
 	 */
-	public Periodo get_data() {
-		return _data;
+	public Periodo get_periodo() {
+		return _periodo;
 	}
 
 	/**
 	 * @param _data the _data to set
 	 */
-	public void set_data(Periodo _data) {
-		this._data = _data;
+	public void set_periodo(Periodo _data) {
+		this._periodo = _data;
 	}
 
 }
