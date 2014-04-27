@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import net.sourceforge.jdatepicker.JDateComponentFactory;
 import net.sourceforge.jdatepicker.JDatePanel;
@@ -148,6 +149,7 @@ public class VFGP_AggiungiServiziInterni extends View {
 	public JPanel creaPanelDescrittore(DescrizioneServizioInterno descrizioneServizio) {
 		// Pannello per il servizio
 		JPanel pnlDescrittoreServizio=_viewFactory.getPanel();
+		pnlDescrittoreServizio.setBorder(new EmptyBorder(5, 5, 5, 5));
 		// Setto il gestore del Layout al panel
 		pnlDescrittoreServizio.setLayout(new BoxLayout(pnlDescrittoreServizio, BoxLayout.PAGE_AXIS));
 		// Creo pannello superiore dove inserire codice e nome.

@@ -106,7 +106,7 @@ public class VFPG_InfoPrenotazione extends View {
 	@Override
 	protected void creaPanelBottom(){
 		/*Setto il testo del bottone*/
-		_btnTerminaModifichePrenotazione.setText("Termina modifiche alla prenotazione");
+		_btnTerminaModifichePrenotazione.setText("Termina modifiche");
 		/*Aggiungo il listener al click sul pulsante*/
 		_btnTerminaModifichePrenotazione.addMouseListener(new TerminaModifichePrenotazione());
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
