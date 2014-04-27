@@ -3,9 +3,7 @@
  */
 package com.iHotel.model.Albergo;
 
-import com.iHotel.model.Utility.MyDate;
-
-
+import com.iHotel.model.Utility.Periodo;
 
 /**
  * @author Gabriele
@@ -15,7 +13,7 @@ public class ServizioInterno {
 	
 	/*----------------------- Attributi e costruttore -----------------------*/
 	private String _codice;
-	private MyDate _data;
+	private Periodo _data;
 	/**
 	 * Costruttore.
 	 */
@@ -39,14 +37,14 @@ public class ServizioInterno {
 	/**
 	 * @return the _data
 	 */
-	public MyDate get_data() {
+	public Periodo get_data() {
 		return _data;
 	}
 
 	/**
 	 * @param _data the _data to set
 	 */
-	public void set_data(MyDate _data) {
+	public void set_data(Periodo _data) {
 		this._data = _data;
 	}
 

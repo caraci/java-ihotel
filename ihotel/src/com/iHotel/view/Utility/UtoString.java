@@ -80,7 +80,7 @@ public class UtoString {
 		// Chiedo al catalogo il descrittore del servizio
 		DescrizioneServizioInterno descrizioneServizio=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(servizioInterno.get_codice());
 		// Stringa
-		String toString = descrizioneServizio.get_codice() + " " + descrizioneServizio.get_nome() + " " + myDateToString(servizioInterno.get_data());
+		String toString = descrizioneServizio.get_codice() + " " + descrizioneServizio.get_nome() + " " + myDateToString(servizioInterno.get_data().getDataInizio());
 		
 		return toString;
 	}
@@ -91,7 +91,7 @@ public class UtoString {
 	 */
 	public String servizioEsternoInPrenotazioneToString(ServizioEsterno servizioEsterno) {
 		// String
-		String string = servizioEsterno.get_codice() + " " + servizioEsterno.get_descrizione() + " " + myDateToString(servizioEsterno.get_data());
+		String string = servizioEsterno.get_codice() + " " + servizioEsterno.get_descrizione() + " " + myDateToString(servizioEsterno.get_data().getDataInizio());
 		return string;
 	}
 

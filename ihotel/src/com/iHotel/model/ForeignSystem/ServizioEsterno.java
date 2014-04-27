@@ -3,7 +3,7 @@
  */
 package com.iHotel.model.ForeignSystem;
 
-import com.iHotel.model.Utility.MyDate;
+import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
@@ -15,7 +15,7 @@ public class ServizioEsterno {
 	private String _codice;
 	private Prezzo _prezzo;
 	private String _descrizione;
-	private MyDate _data;
+	private Periodo _data;
 	/**
 	 * Costruttore.
 	 */
@@ -67,14 +67,14 @@ public class ServizioEsterno {
 	/**
 	 * @return the _data
 	 */
-	public MyDate get_data() {
+	public Periodo get_data() {
 		return _data;
 	}
 
 	/**
 	 * @param _data the _data to set
 	 */
-	public void set_data(MyDate _data) {
+	public void set_data(Periodo _data) {
 		this._data = _data;
 	}
 

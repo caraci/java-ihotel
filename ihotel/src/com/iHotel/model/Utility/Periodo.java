@@ -296,6 +296,16 @@ public class Periodo {
 		this.set_meseFine(data.get(Calendar.MONTH));
 		this.set_annoFine(data.get(Calendar.YEAR));
 	}
+	/**
+	 * Metodo per fornire la data relativa al giorno di inizio del periodo.
+	 * 
+	 * @return Data del giorno di inizio del periodo.
+	 */
+	public MyDate getDataInizio() {
+		MyDate dataInizio = new MyDate();
+		dataInizio.set(get_annoInizio(), get_meseInizio(), get_giornoInizio());
+		return dataInizio;
+	}
 	
 	/* ------------------------- Getter, Setter ------------------------------------- */
 	/**

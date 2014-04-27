@@ -17,9 +17,9 @@ public class PrezzoServizioInterno {
 	 * @param periodoRichiesta Periodo di richiesta
 	 * @return Prezzo relativo al servizo se il periodo è valido. Null altrimenti.
 	 */
-	public Prezzo getPrezzoInData(MyDate dataServizio) {
+	public Prezzo getPrezzoInData(Periodo dataServizio) {
 		Prezzo prezzo = null;
-		if (_periodo.contieneData(dataServizio)==true) {
+		if (_periodo.contiene(dataServizio)==true) {
 			prezzo=_prezzo;
 		}
 		return prezzo;

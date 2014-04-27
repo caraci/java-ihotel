@@ -91,6 +91,7 @@ public class CModificaPrenotazione {
     /**
      * Metodo per aggiungere un servizio alla camera selezionata, relativa alla prenotazione che si sta
      * modificando.
+     * 
      * @param dataServizio Data per il quale si richiede il servizio interno.
      * @param codiceServizio Codice del servizio da mostrare
      */
@@ -98,13 +99,18 @@ public class CModificaPrenotazione {
     	// Creo il nuovo oggetto di tipo ServizioInterno
     	ServizioInterno servizioInterno = new ServizioInterno();
     	servizioInterno.set_codice(codiceServizio);
-    	servizioInterno.set_data(dataServizio);
+    	// Creo il periodo per il servizio
+    	Periodo periodoServizio = new Periodo();
+    	periodoServizio.setDataInizioDaData(dataServizio);
+    	periodoServizio.setDataFineDaData(dataServizio);
+    	// Aggiungo la data al servizio.
+    	servizioInterno.set_data(periodoServizio);
     	// Ricavo il periodo della prenotazione
     	Periodo periodo = _prenotazione.get_periodo();
     	// Aggiungo il servizio interno alla Camera che si sta gestendo, fornendo periodo e servizio.
     	_camera.aggiungiServizioInPeriodo(servizioInterno, periodo);
-    	// Salvo nel db la camera.
-    	PCamera.getInstance().store(_camera);
+    	// Salvo nel db lo stato camera in seguito all'aggiornamento.
+    	PCamera.getInstance().store(_camera.getStatoCameraInPeriodo(periodo));
     }	
 	/**
      * Metodo che termina l'aggiunta dei servizi e restituisce la schermata precedente

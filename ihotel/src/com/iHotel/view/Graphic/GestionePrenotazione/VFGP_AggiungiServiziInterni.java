@@ -84,7 +84,7 @@ public class VFGP_AggiungiServiziInterni extends View {
 		// Setto il layout al panel
 		_panelTop.setLayout(new GridLayout(2, 1, 10, 10));
 		// Setto il testo alla label
-		_lblAggiungiServizi.setText("Aggiungi servizi per la camera" + _camera.get_numero() + " :");
+		_lblAggiungiServizi.setText("Aggiungi servizi per la camera " + _camera.get_numero() + " :");
 		// Aggiungo la label al panel
 		_panelTop.add(_lblAggiungiServizi);
 	}
@@ -150,24 +150,38 @@ public class VFGP_AggiungiServiziInterni extends View {
 		JPanel pnlDescrittoreServizio=_viewFactory.getPanel();
 		// Setto il gestore del Layout al panel
 		pnlDescrittoreServizio.setLayout(new BoxLayout(pnlDescrittoreServizio, BoxLayout.PAGE_AXIS));
+		// Creo pannello superiore dove inserire codice e nome.
+		JPanel panelTopServizio = _viewFactory.getPanel();
+		panelTopServizio.setLayout(new GridLayout(2, 1, 5, 0));
 		// Codice servizio
-		JLabel lblCodice=_viewFactory.getLabel();
+		JLabel lblCodice=_viewFactory.getLabelIntestazione_2();
 		lblCodice.setText("Codice del servizio: " + descrizioneServizio.get_codice());
-		pnlDescrittoreServizio.add(lblCodice);
+		panelTopServizio.add(lblCodice);
 		// Nome servizio
-		JLabel lblNome=_viewFactory.getLabel();
+		JLabel lblNome=_viewFactory.getLabelIntestazione_2();
 		lblNome.setText("Nome del servizio: " + descrizioneServizio.get_nome());
-		pnlDescrittoreServizio.add(lblNome);
+		panelTopServizio.add(lblNome);
+		// Aggiungo il panelTopServizio al panel padre.
+		pnlDescrittoreServizio.add(panelTopServizio);
 		// JDatePanel data servizio
 		JDatePanel datePanelServizio = JDateComponentFactory.createJDatePanel();
 		pnlDescrittoreServizio.add((Component) datePanelServizio);
-		// Aggiungo il bottone per aggiungere il servizio
+		// Creo pannello inferiore dove inserire il bottone.
+		JPanel panelBottomServizio = _viewFactory.getPanel();
+		// Creo bottone per aggiungere il servizio
 		JButton btnAggiungiServizio = _viewFactory.getButtonAvanti();
 		btnAggiungiServizio.setText("Aggiungi servizio");
-		pnlDescrittoreServizio.add(btnAggiungiServizio);
 		// Aggiungo l'eventListener al bottone per aggiungere un servizio
 		btnAggiungiServizio.addMouseListener(new AggiungiServizioListener(datePanelServizio, descrizioneServizio.get_codice()));
-		
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(2,btnAggiungiServizio);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 3;
+		creaPanelPulsanti(panelBottomServizio, numeroColonne, Bottoni);
+		// Aggiungo il pannello dei pulsanti al pannello padre.
+		pnlDescrittoreServizio.add(panelBottomServizio);
 		return pnlDescrittoreServizio;
 	}
 	@Override

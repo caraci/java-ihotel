@@ -125,6 +125,24 @@ public class CameraContext {
 		}
 		return ospiti;
 	}
+	/**
+	 * Metodo per ottenere il corretto stato camera in relazione ad un periodo.
+	 * 
+	 * @param periodo Periodo da analizzare.
+	 * @return Stato camera relativo al periodo.
+	 */
+	public CameraState getStatoCameraInPeriodo(Periodo periodo) {
+		CameraState statoCameraPeriodo = null;
+		// Ciclo sugli stati interni della camera.
+		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			CameraState statoCamera = iterator.next();
+			// Controllo se il periodo dello stato coincide con quello passato come parametro.
+			if(statoCamera.get_periodo().coincideCon(periodo)){
+				statoCameraPeriodo=statoCamera;
+			}
+		}
+		return statoCameraPeriodo;
+	}
 
 	
 	/*------------------ Getter e Setter --------------*/
