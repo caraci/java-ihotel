@@ -11,15 +11,20 @@ import javax.swing.JButton;
 import com.iHotel.controller.CCreaPrenotazione;
 
 /**
+ * Classe addetta alla gestione dell'evento per aggiungere una camera alla prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class AggiungiCameraPrenotazioneListener extends MouseAdapter {
 
 	/* -------------------- Attributi e Costruttore ----------------------- */
+	/**
+	 * Numero di camera che si vuole aggiungere alla prenotazione.
+	 */
 	private String _numeroCamera;
 	/**
 	 * Costruttore.
+	 * 
 	 * @param numeroCamera Numero della camera da aggiungere.
 	 */
 	public AggiungiCameraPrenotazioneListener(String numeroCamera) {

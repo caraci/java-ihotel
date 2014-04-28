@@ -12,8 +12,9 @@ import com.iHotel.model.Utility.MyDate;
 import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
 
 /**
+ * Classe addetta alla gestione dell'evento per ricercare le camere libere per l'inserimento di una nuova prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class RicercaCamereLibereListener extends MouseAdapter {
 	/* -------------------- Attributi e Costruttore ----------------------- */

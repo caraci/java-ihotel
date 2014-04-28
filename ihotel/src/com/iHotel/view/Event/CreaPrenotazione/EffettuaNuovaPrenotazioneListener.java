@@ -11,8 +11,9 @@ import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_O
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
+ * Classe addetta alla gestione dell'evento per completare l'inserimento di una nuova prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 

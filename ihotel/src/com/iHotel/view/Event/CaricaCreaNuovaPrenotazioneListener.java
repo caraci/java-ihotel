@@ -9,8 +9,9 @@ import java.awt.event.MouseEvent;
 import com.iHotel.controller.CCreaPrenotazione;
 
 /**
+ * Classe addetta alla gestione dell'evento per caricare la finestra per creare una nuova prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class CaricaCreaNuovaPrenotazioneListener extends MouseAdapter {
 	

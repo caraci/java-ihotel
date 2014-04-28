@@ -10,8 +10,9 @@ import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
+ * Classe addetta alla gestione dell'evento per gestire una prenotazione precedentemente inserita.
+ * 
  * @author Eugenio
- *
  */
 public class CaricaGestionePrenotazioneListener extends MouseAdapter {
 
