@@ -28,15 +28,26 @@ import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
 import com.iHotel.view.Utility.UtoString;
 
 /**
+ * Classe addetta alla realizzazione della finestra relativa al mostrare le informazioni di una camera
+ * in relazione ad una prenotazione.
+ * 
  * @author Eugenio
- *
  */
 @SuppressWarnings("serial")
 public class VFGP_InfoCamera extends View {
 
 	/* ----------------------------- Attributi e costruttore -------------------------------- */
+	/**
+	 * Camera di cui si mostrano le informazioni.
+	 */
 	private CameraContext _camera;
+	/**
+	 * Prenotazione alla quale appartiene la camera.
+	 */
 	private PrenotazioneSubject _prenotazione;
+	/**
+	 * Lista dei servizi esterni della camera, per la prenotazione.
+	 */
 	private ArrayList<ServizioEsterno> _serviziEsterni;
 
 	//JPanel
