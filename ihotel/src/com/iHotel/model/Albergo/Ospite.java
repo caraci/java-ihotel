@@ -1,5 +1,10 @@
 package com.iHotel.model.Albergo;
 
+/**
+ * Questa classe rappresenta il concetto di "Ospite" di un albergo del modo reale.
+ * @author Alessandro
+ *
+ */
 public class Ospite{
 
 	/* ----------------- Attributi e Costruttore -------------------- */

@@ -12,7 +12,11 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.utility.UDefaultLoader;
 
-
+/**
+ * Questa classe rappresenta il concetto di "Albergo" del mondo reale.
+ * @author Alessandro
+ *
+ */
 public class Albergo {
     
 	/* -------------------- Attributi e costruttore --------------------------*/
@@ -21,13 +25,14 @@ public class Albergo {
  	private CatalogoServiziInterni _catalogoServiziInterni;
  	private Storico _storico;
 	private ArrayList<CameraContext> _camere;
+	//Mantiene le maniglie ai sistemi esterni cui l'albergo si poggia per la gestione dei servizi esterni e.g.: telefono e pay tv
 	private ArrayList<IServiceSystem> _sistemiServiziEsterni;
 	
 	private String _nome;
 	private String _telefono;
 	private String _PIVA;
 	private String _eMail;
-	// Singleton 
+	// Attributo privato - Pattern Singleto 
 	private static Albergo instance = null;
 	
 	
