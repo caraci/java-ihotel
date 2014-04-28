@@ -413,6 +413,10 @@ public class MainPopolamentoDB {
 		p_singola_3.set_prezzo(singola);
 		p_singola_3.set_periodo(periodo_3);
 		
+		PrezzoCamera p_singola_6 = new PrezzoCamera();
+		p_singola_6.set_prezzo(singola);
+		p_singola_6.set_periodo(periodo_6);
+		
 		PrezzoCamera p_doppia_1 = new PrezzoCamera();
 		p_doppia_1.set_prezzo(doppia);
 		p_doppia_1.set_periodo(periodo_1);
@@ -424,6 +428,10 @@ public class MainPopolamentoDB {
 		PrezzoCamera p_doppia_3 = new PrezzoCamera();
 		p_doppia_3.set_prezzo(doppia);
 		p_doppia_3.set_periodo(periodo_3);
+		
+		PrezzoCamera p_doppia_6 = new PrezzoCamera();
+		p_doppia_6.set_prezzo(doppia);
+		p_doppia_6.set_periodo(periodo_6);
 		
 		PrezzoCamera p_tripla_1 = new PrezzoCamera();
 		p_tripla_1.set_prezzo(tripla);
@@ -437,6 +445,10 @@ public class MainPopolamentoDB {
 		p_tripla_3.set_prezzo(tripla);
 		p_tripla_3.set_periodo(periodo_3);
 		
+		PrezzoCamera p_tripla_6 = new PrezzoCamera();
+		p_tripla_6.set_prezzo(tripla);
+		p_tripla_6.set_periodo(periodo_6);
+		
 		//fine prezzi camere
 		
 		//inizializzazione map prezzi camere
@@ -446,16 +458,19 @@ public class MainPopolamentoDB {
 		prezzi_singola.add(p_singola_1);
 		prezzi_singola.add(p_singola_2);
 		prezzi_singola.add(p_singola_3);
+		prezzi_singola.add(p_singola_6);
 		//doppia
 		ArrayList<PrezzoCamera> prezzi_doppia = new ArrayList<PrezzoCamera>();
 		prezzi_doppia.add(p_doppia_1);
 		prezzi_doppia.add(p_doppia_2);
 		prezzi_doppia.add(p_doppia_3);
+		prezzi_doppia.add(p_doppia_6);
 		//tripla
 		ArrayList<PrezzoCamera> prezzi_tripla = new ArrayList<PrezzoCamera>();
 		prezzi_tripla.add(p_tripla_1);
 		prezzi_tripla.add(p_tripla_2);
-		prezzi_tripla.add(p_tripla_3);	
+		prezzi_tripla.add(p_tripla_3);
+		prezzi_tripla.add(p_tripla_6);
 		
 		//inizializzazione descrizioni camere
 		DescrizioneCamera d1 = new DescrizioneCamera();
