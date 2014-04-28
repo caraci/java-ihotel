@@ -10,18 +10,22 @@ import com.iHotel.view.View;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.CaricaGestionePrenotazioneListener;
 
+/**
+ * Classe addetta alla realizzazione della finestra iniziale dell'applicazione.
+ * 
+ * @author Eugenio
+ */
 @SuppressWarnings("serial")
 public class VFrameHome extends View {
+	
+	/*JButton*/
+	private JButton _btnCreaPrenotazione,_btnModificaPrenotazione;
+	/*JLabel*/
+	private JLabel _lblInstructions;
 
 	/* Singleton */
 	private static VFrameHome instance = null;
 	
-	/*JButton*/
-	private JButton _btnCreaPrenotazione,_btnModificaPrenotazione;
-	
-	/*JLabel*/
-	private JLabel _lblInstructions;
-
 	/**
      * Costruttore privato - pattern Singleton
      */
