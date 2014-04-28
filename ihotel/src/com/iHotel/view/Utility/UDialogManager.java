@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 import com.iHotel.view.Access.ViewHandler;
 
 /**
+ * Classe addetta alla gestione delle finestre di dialogo.
  * @author Alessandro
- *
  */
 @SuppressWarnings("serial")
 public class UDialogManager extends JOptionPane {
