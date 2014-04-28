@@ -15,11 +15,15 @@ import com.iHotel.model.Utility.MyDate;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
+ * Classe addetta alla gestione dell'evento per aggiungere un servizio alla prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class AggiungiServizioListener extends MouseAdapter {
 
+	/**
+	 * Pannello relativo alla data del servizio.
+	 */
 	private JDatePanel _datePanelServizio;
 	private String _codiceServizio;
 	/**

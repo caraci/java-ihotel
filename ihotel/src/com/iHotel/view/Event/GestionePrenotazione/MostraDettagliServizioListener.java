@@ -12,8 +12,9 @@ import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 
 /**
+ * Classe addetta alla gestione dell'evento per mostrare le informazioni in merito ad un servizio interno dell'albergo.
+ * 
  * @author Eugenio
- *
  */
 public class MostraDettagliServizioListener implements ItemListener {
 
@@ -41,7 +42,7 @@ public class MostraDettagliServizioListener implements ItemListener {
 			// Aggiungo una scheda al pannello.
 			_aggiungiServiziInterni.get_pnlMiddleRight().add(_aggiungiServiziInterni.creaPanelDescrittore(descrizioneServizioInterno));
 			// Ricavo il gestore del layout.
-			CardLayout cardLayout= (CardLayout) _aggiungiServiziInterni.get_pnlMiddleRight().getLayout();
+			CardLayout cardLayout = (CardLayout) _aggiungiServiziInterni.get_pnlMiddleRight().getLayout();
 			// Mostro la prossima scheda, ovvero quella riferita al nuovo servizio
 			cardLayout.next(_aggiungiServiziInterni.get_pnlMiddleRight());
 	      }

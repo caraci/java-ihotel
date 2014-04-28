@@ -9,8 +9,9 @@ import java.awt.event.MouseEvent;
 import com.iHotel.controller.CModificaPrenotazione;
 
 /**
+ * Classe addetta alla gestione dell'evento per terminare le modifiche di una prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class TerminaModifichePrenotazione extends MouseAdapter {
 

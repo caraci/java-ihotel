@@ -9,8 +9,10 @@ import java.awt.event.MouseEvent;
 import com.iHotel.controller.CModificaPrenotazione;
 
 /**
+ * Classe addetta alla gestione dell'evento per tornare alla gestione della camera, dalla finestra per aggiungere
+ * i servizi interni alla prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class TornaAllaCameraListener extends MouseAdapter {
 	

@@ -9,12 +9,17 @@ import java.awt.event.MouseEvent;
 import com.iHotel.controller.CModificaPrenotazione;
 
 /**
+ * Classe addetta alla gestione dell'evento per caricare la finestra per la gestione di una camera relativa
+ * ad una prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class GestisciCameraPrenotazioneListener extends MouseAdapter {
 
 	/* ---------------- Attributi e Costruttore ------------------ */
+	/**
+	 * Numero della camera per la quale si vuole caricare la finestra.
+	 */
 	private String _numeroCamera;
 	/**
 	 * Costruttore.

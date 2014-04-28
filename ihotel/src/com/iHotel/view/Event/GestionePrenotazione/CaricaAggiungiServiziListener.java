@@ -9,8 +9,10 @@ import java.awt.event.MouseEvent;
 import com.iHotel.controller.CModificaPrenotazione;
 
 /**
+ * Classe addetta alla gestione dell'evento per caricare la finestra per aggiungere servizi interni
+ * ad una camera di una prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class CaricaAggiungiServiziListener extends MouseAdapter {
 	/* ---------------- Metodi di instanza -------------------- */
