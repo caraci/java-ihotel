@@ -19,9 +19,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+/**
+ * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Crea Prenotazione"
+ * @author Alessandro
+ *
+ */
 public class CCreaPrenotazione {
 	
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
+	//Attributo privato - Pattern Singleton
 	private static CCreaPrenotazione instance = null;
 	private Albergo _albergo;
 	private PrenotazioneSubject _prenotazione;

@@ -18,12 +18,19 @@ import com.iHotel.view.Graphic.VFrameHome;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoCamera;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
-
+/**
+ * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
+ * @author Alessandro
+ *
+ */
 public class CModificaPrenotazione {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
+	//Attributo privato - Pattern Singleton
 	private static CModificaPrenotazione instance = null;
+	//Attributo che mantiene la maniglia alla prenotazione che si sta modificando
 	private PrenotazioneSubject _prenotazione;
+	//Attributo che mantiene la maniglia alla camera che si sta gestendo, all'interno della prenotazione corrente
 	private CameraContext _camera;
 	private Albergo _albergo;
 
