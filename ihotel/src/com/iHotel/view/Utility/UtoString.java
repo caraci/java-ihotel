@@ -14,8 +14,8 @@ import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 
 /**
+ * Classe addetta alla creazione delle stringhe relative a gli oggetti dello strato di dominio.
  * @author Eugenio
- *
  */
 public class UtoString {
 	/* ------------------------------ Attributi e costruttore ----------------------------------- */

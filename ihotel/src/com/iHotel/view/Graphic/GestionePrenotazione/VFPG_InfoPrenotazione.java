@@ -26,14 +26,21 @@ import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
 import com.iHotel.view.Utility.UtoString;
 
 /**
+ * Classe addetta alla realizzazione della finestra per mostrare le informazioni di una prenotazione.
+ * 
  * @author Alessandro
- *
  */
 @SuppressWarnings("serial")
 public class VFPG_InfoPrenotazione extends View {
 
 	/* ----------------------------------- Attributi e Costruttore ------------------------------------ */
+	/**
+	 * Prenotazione di cui si mostrano le informazioni.
+	 */
 	private PrenotazioneSubject _prenotazione;
+	/**
+	 * Prezzo dei servizi esterni, richiesti dalle camere della prenotazione, nel periodo di quest'ultima.
+	 */
 	private Prezzo _prezzoServiziEsterni;
 	//Singleton
 	private static VFPG_InfoPrenotazione instance;
@@ -166,14 +173,10 @@ public class VFPG_InfoPrenotazione extends View {
 		/*Recupero il prezzo delle camere*/
 		Prezzo prezzoCamere = _prenotazione.get_total();
 		
-		/*Recupero il prezzo dei servizi interni*/
-		Prezzo prezzoServiziInterni = _prenotazione.getPrezzoServiziInterni();
-		
 		/*Sommo il prezzo dei servizi interni con quelli esterni*/
 		Prezzo totaleServizi = new Prezzo();
-		totaleServizi.set_importo(prezzoServiziInterni.get_importo()+_prezzoServiziEsterni.get_importo());
-		
-		totaleServizi.set_valuta(prezzoServiziInterni.get_valuta());
+		totaleServizi.somma(_prezzoServiziEsterni);
+		totaleServizi.somma(_prenotazione.getPrezzoServiziInterni());
 		
 		/*Setto il testo da riportare nell'intestazione del blocco del riepilogo informazioni sulla prenotazione*/
 		_lblRiepilogoPrenotazione.setText("Riepilogo prenotazione:");

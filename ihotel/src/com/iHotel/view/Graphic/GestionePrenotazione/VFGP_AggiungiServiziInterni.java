@@ -30,16 +30,24 @@ import com.iHotel.view.Event.GestionePrenotazione.MostraDettagliServizioListener
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaCameraListener;
 
 /**
+ * Classe addetta alla realizzazione della finestra per l'aggiunta di un servizio interno ad una camera relativa
+ * ad una prenotazione.
+ * 
  * @author Eugenio
- *
  */
 @SuppressWarnings("serial")
 public class VFGP_AggiungiServiziInterni extends View {
 	/* ----------------------------- Attributi e Costruttore ----------------- */
-	// Singleton
-	private static VFGP_AggiungiServiziInterni instance=null;
+	/**
+	 * Mappa contenente l'insieme dei servizi interni dell'albergo.
+	 */
 	private HashMap<String,DescrizioneServizioInterno> _descrizioniServizi;
+	/**
+	 * Camera alla quale vogliamo aggiungere un servizio.
+	 */
 	private CameraContext _camera;
+	// Singleton
+		private static VFGP_AggiungiServiziInterni instance=null;
 	// JPanel
 		private JPanel _pnlMiddleLeft;
 		private JPanel _pnlMiddleRight;
