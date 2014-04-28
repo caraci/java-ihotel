@@ -60,7 +60,7 @@ public class MainPopolamentoDB {
 		
 		//periodi
 
-		// periodo_1 - 1 Gennaio 2014 - 16:00.00 - 31 Gennaio 2014 - 10.00.00
+		// periodo_1 - 1 Gennaio 2014 - 31 Gennaio 2014
 				Periodo periodo_1 = new Periodo();
 				int giornoInizio_1 = 1;
 				int meseInizio_1 = 0;
@@ -78,7 +78,7 @@ public class MainPopolamentoDB {
 				periodo_1.set_annoFine(annoFine_1);
 				
 				
-			// periodo_2 - 31 Gennaio 2014 - 16:00.00 - 28 Febbraio 2014 - 10:00.00				
+			// periodo_2 - 31 Gennaio 2014 - 28 Febbraio 2014				
 				Periodo periodo_2 = new Periodo();
 				int giornoInizio_2 = 31;
 				int meseInizio_2 = 0;
@@ -96,7 +96,7 @@ public class MainPopolamentoDB {
 				periodo_2.set_annoFine(annoFine_2);
 				
 				
-			// periodo_3 - 28 Febbraio 2014 - 16:00.00 - 31 Marzo 2014 - 10:00.00
+			// periodo_3 - 28 Febbraio 2014 - 31 Marzo 2014
 				Periodo periodo_3 = new Periodo();
 				int giornoInizio_3 = 28;
 				int meseInizio_3 = 1;
@@ -113,7 +113,7 @@ public class MainPopolamentoDB {
 				periodo_3.set_meseFine(meseFine_3);
 				periodo_3.set_annoFine(annoFine_3);
 				
-			// periodo_4 - 31 Gennaio 2014 - 16:00.00 - 31 Marzo 2014 - 10:00.00
+			// periodo_4 - 31 Gennaio 2014 - 31 Marzo 2014
 				Periodo periodo_4 = new Periodo();
 				int giornoInizio_4 = 31;
 				int meseInizio_4 = 0;
@@ -130,7 +130,7 @@ public class MainPopolamentoDB {
 				periodo_4.set_meseFine(meseFine_4);
 				periodo_4.set_annoFine(annoFine_4);
 				
-			// periodo_5 - 1 Gennaio 2014 - 16:00.00 - 31 Marzo 2014 - 10:00.00
+			// periodo_5 - 1 Gennaio 2014 - 31 Marzo 2014
 				Periodo periodo_5 = new Periodo();
 				int giornoInizio_5 = 1;
 				int meseInizio_5 = 0;
@@ -146,6 +146,23 @@ public class MainPopolamentoDB {
 				periodo_5.set_giornoFine(giornoFine_5);
 				periodo_5.set_meseFine(meseFine_5);
 				periodo_5.set_annoFine(annoFine_5);
+				
+			// periodo_6 - 31 Marzo 2014 - 31 Maggio 2014
+				Periodo periodo_6 = new Periodo();
+				int giornoInizio_6 = 31;
+				int meseInizio_6 = 2;
+				int annoInizio_6 = 2014;
+				int giornoFine_6 = 31;
+				int meseFine_6 = 5;
+				int annoFine_6 = 2014;
+				// Inizio
+				periodo_6.set_giornoInizio(giornoInizio_6);
+				periodo_6.set_meseInizio(meseInizio_6);
+				periodo_6.set_annoInizio(annoInizio_6);
+				// Fine
+				periodo_6.set_giornoFine(giornoFine_6);
+				periodo_6.set_meseFine(meseFine_6);
+				periodo_6.set_annoFine(annoFine_6);
 				
 		//fine periodi
 		
@@ -222,6 +239,16 @@ public class MainPopolamentoDB {
 		CameraState statoCamera_103_Periodo4 = new CameraStateOccupata();
 		statoCamera_103_Periodo4.set_periodo(periodo_4);
 		
+		// StatoCamera_101_Periodo_6
+		CameraState statoCamera_101_Periodo6 = new CameraStateLibera();
+		statoCamera_101_Periodo6.set_periodo(periodo_6);
+		// StatoCamera_102_Periodo_6
+		CameraState statoCamera_102_Periodo6 = new CameraStateLibera();
+		statoCamera_102_Periodo6.set_periodo(periodo_6);
+		// StatoCamera_103_Periodo_6
+		CameraState statoCamera_103_Periodo6 = new CameraStateLibera();
+		statoCamera_103_Periodo6.set_periodo(periodo_6);
+		
 		/* --------------------------- stati camere DOPPIE ------------------------------- */
 		
 		//Stati camere doppie periodo 5
@@ -235,6 +262,16 @@ public class MainPopolamentoDB {
 		// StatoCamera_203_Periodo_5
 		CameraState statoCamera_203_Periodo5 = new CameraStateLibera();
 		statoCamera_203_Periodo5.set_periodo(periodo_5);
+		
+		// StatoCamera_201_Periodo_6
+		CameraState statoCamera_201_Periodo6 = new CameraStateLibera();
+		statoCamera_201_Periodo6.set_periodo(periodo_6);
+		// StatoCamera_202_Periodo_6
+		CameraState statoCamera_202_Periodo6 = new CameraStateLibera();
+		statoCamera_202_Periodo6.set_periodo(periodo_5);
+		// StatoCamera_203_Periodo_6
+		CameraState statoCamera_203_Periodo6 = new CameraStateLibera();
+		statoCamera_203_Periodo6.set_periodo(periodo_6);
 		
 		/* --------------------------- stati camere TRIPLE ------------------------------- */
 		
@@ -259,16 +296,25 @@ public class MainPopolamentoDB {
 		CameraState statoCamera_303_Periodo2 = new CameraStateOccupata();
 		statoCamera_303_Periodo2.set_periodo(periodo_2);
 		
-		
-		// StatoCamera_101_Periodo_3
+		// StatoCamera_301_Periodo_3
 		CameraState statoCamera_301_Periodo3 = new CameraStateLibera();
 		statoCamera_301_Periodo3.set_periodo(periodo_3);
-		// StatoCamera_102_Periodo_3
+		// StatoCamera_302_Periodo_3
 		CameraState statoCamera_302_Periodo3 = new CameraStateLibera();
 		statoCamera_302_Periodo3.set_periodo(periodo_3);
-		// StatoCamera_103_Periodo_3
+		// StatoCamera_303_Periodo_3
 		CameraState statoCamera_303_Periodo3 = new CameraStateLibera();
 		statoCamera_303_Periodo3.set_periodo(periodo_3);
+		
+		// StatoCamera_301_Periodo_6
+		CameraState statoCamera_301_Periodo6 = new CameraStateLibera();
+		statoCamera_301_Periodo6.set_periodo(periodo_6);
+		// StatoCamera_302_Periodo_6
+		CameraState statoCamera_302_Periodo6 = new CameraStateLibera();
+		statoCamera_302_Periodo6.set_periodo(periodo_6);
+		// StatoCamera_303_Periodo_3
+		CameraState statoCamera_303_Periodo6 = new CameraStateLibera();
+		statoCamera_303_Periodo6.set_periodo(periodo_6);
 
 		//Creo le map di stati di camere
 		//map di stati camere singole
@@ -276,29 +322,35 @@ public class MainPopolamentoDB {
 		LinkedList<CameraState> statiCamera_101 = new LinkedList<CameraState>();
 		statiCamera_101.add(statoCamera_101_Periodo1);
 		statiCamera_101.add(statoCamera_101_Periodo4);
+		statiCamera_101.add(statoCamera_101_Periodo6);
 		
 		// Stati occupazione Camera 102
 		LinkedList<CameraState> statiCamera_102 = new LinkedList<CameraState>();
 		statiCamera_102.add(statoCamera_102_Periodo1);
 		statiCamera_102.add(statoCamera_102_Periodo4);
+		statiCamera_102.add(statoCamera_102_Periodo6);
 		
 		// Stati occupazione Camera 103
 		LinkedList<CameraState> statiCamera_103 = new LinkedList<CameraState>();
 		statiCamera_103.add(statoCamera_103_Periodo1);
 		statiCamera_103.add(statoCamera_103_Periodo4);
+		statiCamera_103.add(statoCamera_103_Periodo6);
 		
 		//map di stati camere doppie
 		// Stati occupazione Camera 201
 		LinkedList<CameraState> statiCamera_201 = new LinkedList<CameraState>();
 		statiCamera_201.add(statoCamera_201_Periodo5);
+		statiCamera_201.add(statoCamera_201_Periodo6);
 		
 		// Stati occupazione Camera 202
 		LinkedList<CameraState> statiCamera_202 = new LinkedList<CameraState>();
 		statiCamera_202.add(statoCamera_202_Periodo5);
+		statiCamera_202.add(statoCamera_202_Periodo6);
 		
 		// Stati occupazione Camera 203
 		LinkedList<CameraState> statiCamera_203 = new LinkedList<CameraState>();
 		statiCamera_203.add(statoCamera_203_Periodo5);
+		statiCamera_203.add(statoCamera_203_Periodo6);
 		
 		//map di stati camere triple
 		// Stati occupazione Camera 201
@@ -306,18 +358,21 @@ public class MainPopolamentoDB {
 		statiCamera_301.add(statoCamera_301_Periodo1);
 		statiCamera_301.add(statoCamera_301_Periodo2);
 		statiCamera_301.add(statoCamera_301_Periodo3);
+		statiCamera_301.add(statoCamera_301_Periodo6);
 		
 		// Stati occupazione Camera 201
 		LinkedList<CameraState> statiCamera_302 = new LinkedList<CameraState>();
 		statiCamera_302.add(statoCamera_302_Periodo1);
 		statiCamera_302.add(statoCamera_302_Periodo2);
 		statiCamera_302.add(statoCamera_302_Periodo3);
+		statiCamera_302.add(statoCamera_302_Periodo6);
 		
 		// Stati occupazione Camera 201
 		LinkedList<CameraState> statiCamera_303 = new LinkedList<CameraState>();
 		statiCamera_303.add(statoCamera_303_Periodo1);
 		statiCamera_303.add(statoCamera_303_Periodo2);
 		statiCamera_303.add(statoCamera_303_Periodo3);
+		statiCamera_303.add(statoCamera_303_Periodo6);
 		
 		// Aggiungo stati alle rispettive camere
 		
