@@ -10,8 +10,10 @@ import com.iHotel.model.State.CameraState;
 import com.iHotel.model.Utility.Periodo;
 
 /**
+ * Classe addetta alla creazione di nuovi stati camera, quando il periodo della prenotazione che si vuole effettuare è uguale 
+ * al periodo dello stato camera contenente.
+ * 
  * @author Eugenio
- *
  */
 public class AllCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 

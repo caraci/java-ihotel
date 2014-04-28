@@ -7,8 +7,10 @@ import com.iHotel.model.Utility.Periodo;
 
 
 /**
+ * Classe addetta all'ottenimento della corretta strategia per la creazione di nuovi stati camera in seguito
+ * alla creazione di una nuova prenotazione.
+ * 
  * @author Eugenio
- *
  */
 public class CreaStatiCameraStrategyFactory {
 
