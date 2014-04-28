@@ -1,6 +1,6 @@
 package com.iHotel.model.ForeignSystem.PayTv;
 /**
- * Questa classe ha il compito di descrivere il servizio esterno di "Pay tv in tutte le sue caratteristiche"
+ * Questa classe ha il compito di descrivere il servizio esterno di "Pay tv" in tutte le sue caratteristiche.
  * @author Alessandro
  *
  */
