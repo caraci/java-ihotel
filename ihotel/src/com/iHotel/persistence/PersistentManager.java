@@ -13,9 +13,13 @@ import com.iHotel.model.State.CameraStateOccupata;
 
 public class PersistentManager {
 	/* --------------- Attributi e costruttore ------------------- */
+	/**
+	 * Attributo rappresentante la connessione alla base dati. Per le sue tecnologie, è necessario
+	 * che la connessione resti sempre attiva.
+	 */
 	protected static ObjectContainer _db = null;
 	/**
-	 * Costruttore che serve ad ottenre l'instanza della connessione al db.
+	 * Costruttore che serve ad ottenere la connessione al db.
 	 */
 	protected PersistentManager(){		
 		getConnection();
@@ -38,15 +42,14 @@ public class PersistentManager {
 	/* ------------------------- Metodi di instanza ------------------------------ */
 	/**
 	* Store di un oggetto.
+	* 
 	* @param arg0
 	*/
 	public void store(Object arg0) {
 		_db.store(arg0);
 	}
-	/** Metodo per caricare oggetti dal DB.
-	* @param <T>
-	* @param arg0
-	* @return
+	/** 
+	* Metodo per caricare oggetti dal DB.
 	*/
 	public <T> ObjectSet<T> query(Predicate<T> arg0) {
 		return _db.query(arg0);

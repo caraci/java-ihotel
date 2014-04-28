@@ -9,8 +9,9 @@ import com.db4o.query.Predicate;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 
 /**
+ * Classe addetta alla persistenza per la classe PrenotazioneSubject.
+ * 
  * @author Eugenio
- *
  */
 public class PPrenotazione extends PersistentManager {
 	
@@ -33,6 +34,7 @@ public class PPrenotazione extends PersistentManager {
 	/* ----------------------- Metodi di instanza ----------------------- */
 	/**
 	 * Metodo per caricare tutte le prenotazioni presenti nella base dati.
+	 * 
 	 * @return L'insieme delle prenotazioni dell'albergo.
 	 */
 	public List<PrenotazioneSubject> caricaPrenotazioni() {

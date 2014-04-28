@@ -9,8 +9,9 @@ import com.db4o.query.Predicate;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 
 /**
+ * Classe addetta alla persistenza per la classe DescrizioneServizioInterno.
+ * 
  * @author Eugenio
- *
  */
 public class PDescrizioneServiziInterni extends PersistentManager {
 
@@ -34,6 +35,7 @@ public class PDescrizioneServiziInterni extends PersistentManager {
 	/*--------------------- Metodi di instanza ------------------------- */
 	/**
 	 * Metodo per caricare tutte le descrizioni dei servizi presenti nella base dati.
+	 * 
 	 * @return L'insieme delle descrizioni dei servizi interni
 	 */
 	public List<DescrizioneServizioInterno> caricaDescrizioniServizi() {

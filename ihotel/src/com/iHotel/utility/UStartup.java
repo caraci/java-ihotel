@@ -3,7 +3,6 @@
  */
 package com.iHotel.utility;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -15,19 +14,20 @@ import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PDescrizioneCamera;
 import com.iHotel.persistence.PDescrizioneServiziInterni;
 import com.iHotel.persistence.PPrenotazione;
 
 /**
+ * Classe addetta alla realizzazione dello strato di dominio.
+ *  
  * @author Eugenio
- *
  */
 public class UStartup {
 	/**
-	 * Metodo per inizializzare il catalogo delle camere
+	 * Metodo per inizializzare il catalogo delle camere.
+	 * 
 	 * @return Catalogo delle camere.
 	 */
 	public CatalogoCamere getCatalogoCamere() {
@@ -65,7 +65,8 @@ public class UStartup {
 		return catalogoServiziInterni;
 	}
 	/**
-	 * Metodo per ottenere lo storico delle prenotazioni dell'albergo
+	 * Metodo per ottenere lo storico delle prenotazioni dell'albergo.
+	 * 
 	 * @return Storico delle prenotazioni dell'albergo.
 	 */
 	public Storico getStorico() {
@@ -84,21 +85,6 @@ public class UStartup {
 		return storico;
 	}
 	/**
-	 * Metodo per ottenere la lista di camere dell'albergo
-	 * @return Lista delle camere dell'albergo
-	 */
-	public ArrayList<CameraContext> getListaCamere() {
-		// Carico tutte le camere
-		List<CameraContext> camere = PCamera.getInstance().caricaCamere();
-		// Creo la lista di camere
-		ArrayList<CameraContext> _camere = new ArrayList<CameraContext>();
-		for (Iterator<CameraContext> iterator = camere.iterator(); iterator.hasNext();) {
-			CameraContext camera = (CameraContext) iterator.next();
-			_camere.add(camera);
-		}
-		return _camere;
-	}
-	/**
 	 * Metodo per inizializzare lo strato di dominio.
 	 */
 	public void inizializza() {
@@ -106,12 +92,18 @@ public class UStartup {
 			// Mediante pattern singleton carico Albergo.
 			Albergo albergo = Albergo.getInstance();
 			// Setto gli attributi dell'albergo
-			albergo.set_camere(getListaCamere());
+			albergo.set_camere(PCamera.getInstance().caricaCamere());
 			albergo.set_catalogoServizi(getCatalogoServiziInterni());
 			albergo.set_catalogoCamere(getCatalogoCamere());	
 			albergo.set_storico(getStorico());
 		} catch (Exception e) {
-			// TODO
+			// Mediante pattern singleton carico Albergo.
+			Albergo albergo = Albergo.getInstance();
+			// Setto tutti gli attributi a null.
+			albergo.set_camere(null);
+			albergo.set_catalogoServizi(null);
+			albergo.set_catalogoCamere(null);	
+			albergo.set_storico(null);
 		}
 	}
 }

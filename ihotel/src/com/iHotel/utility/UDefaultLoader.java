@@ -6,9 +6,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class UDefaultLoader {
-	
+/**
+ * Classe addetta all'accesso ai file di configurazione, per il recupero delle informazioni di diverso genere.
+ * 
+ * @author Eugenio
+ */
+public class UDefaultLoader {	
 	/* -------------------------- Attributi e costruttore ----------------------- */
+	/**
+	 * Stringa contenente il percorso verso la cartella configs.
+	 */
 	private String _pathToConfigs;
 	private static UDefaultLoader instance = null;
 	/**

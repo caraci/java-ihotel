@@ -3,14 +3,17 @@
  */
 package com.iHotel.persistence;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.db4o.query.Predicate;
 import com.iHotel.model.State.CameraContext;
 
 /**
+ * Classe addetta alla persistenza per la classe CameraContext.
+ * 
  * @author Eugenio
- *
  */
 public class PCamera extends PersistentManager {
 	
@@ -33,15 +36,22 @@ public class PCamera extends PersistentManager {
 	/* ------------------- Metodi di instanza -------------------------- */
 	/**
 	 * Metodo per caricare tutte le camere presenti nella base dati.
+	 * 
 	 * @return L'insieme delle camere dell'albergo.
 	 */
-	public List<CameraContext> caricaCamere() {
+	public ArrayList<CameraContext> caricaCamere() {
 		@SuppressWarnings("serial")
 		List<CameraContext> camere = query(new Predicate<CameraContext>() {
 			public boolean match(CameraContext candidate) {
 				return true;
 			}
 		});
-		return camere;
+		// Creo la lista di camere
+		ArrayList<CameraContext> _camere = new ArrayList<CameraContext>();
+		for (Iterator<CameraContext> iterator = camere.iterator(); iterator.hasNext();) {
+			CameraContext camera = (CameraContext) iterator.next();
+			_camere.add(camera);
+		}
+		return _camere;
 	}
 }

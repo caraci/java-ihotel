@@ -9,8 +9,9 @@ import com.db4o.query.Predicate;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 
 /**
+ * Classe addetta alla persistenza per la classe DescrizioneCamera.
+ * 
  * @author Eugenio
- *
  */
 public class PDescrizioneCamera extends PersistentManager{
 	
@@ -34,6 +35,7 @@ public class PDescrizioneCamera extends PersistentManager{
 	/*--------------------- Metodi di instanza ------------------------- */
 	/**
 	 * Metodo per caricare tutte le descrizioni delle camere presenti nella base dati.
+	 * 
 	 * @return L'insieme delle descrizioni delle camere.
 	 */
 	public List<DescrizioneCamera> caricaDescrizioniCamere() {
