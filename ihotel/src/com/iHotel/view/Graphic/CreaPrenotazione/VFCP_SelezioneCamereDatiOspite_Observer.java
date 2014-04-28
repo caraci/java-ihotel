@@ -25,9 +25,19 @@ import com.iHotel.view.Event.CreaPrenotazione.EffettuaNuovaPrenotazioneListener;
 
 import java.awt.GridLayout;
 
+/**
+ * Classe addetta alla realizzazione della finestra per la selezione delle camere che si vogliono
+ * aggiungere ad una prenotazione.
+ * 
+ * @author Eugenio
+ */
 @SuppressWarnings("serial")
 public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IObserver {
 
+	/**
+	 * Mappa contenente l'insieme di tutte le camere disponibili a seguito della richiesta effettuata precedentemente.
+	 * La chiave della mappa rappresenta la tipologia della camera, il valore è la lista delle camere disponibili.
+	 */
 	private HashMap<String, ArrayList<CameraContext>> _camereDisponibili;
 	/* Panel */
     private JPanel _panelFinale, _panelPrezzo, _panelOspite;
@@ -38,6 +48,9 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
     /* JTextField */
     private JTextField _txtNome, _txtCognome, _txteMail, _txtTelefono;
     // Pattern Observer
+    /**
+     * Per il pattern Observer, memorizziamo il subject della finestra.
+     */
     private PrenotazioneSubject _prenotazioneSubject;
     /* ----------------- Pattern Singleton  ---------------- */
 	private static VFCP_SelezioneCamereDatiOspite_Observer instance = null;
@@ -53,7 +66,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends View implements IOb
 		_lbleMail=_viewFactory.getLabel();
 		_lblTelefono=_viewFactory.getLabel();
 		_lblPrezzoTotale=_viewFactory.getLabel();
-		_lblPrezzoScritto=_viewFactory.getLabel();
+		_lblPrezzoScritto=_viewFactory.getLabelIntestazione_2();
 		_lblTitolo=_viewFactory.getLabelIntestazione_1();
 		// JTextField
 		_txtNome=_viewFactory.getTextField();

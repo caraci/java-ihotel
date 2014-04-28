@@ -13,12 +13,19 @@ import com.iHotel.view.Event.CreaPrenotazione.RicercaCamereLibereListener;
 
 import net.sourceforge.jdatepicker.*;
 
+/**
+ * Classe addetta alla realizzazione della finestra per effettuare una nuova prenotazione. In particolare
+ * con questa finestra si vanno ad indicare il periodo di richiesta e le tipologie a cui si è interessati.
+ * 
+ * @author Eugenio
+ */
 @SuppressWarnings("serial")
 public class VFCP_SelezionePeriodoTipologie extends View {
 
+	/**
+	 * Tipologie di camere presenti nell'albergo.
+	 */
 	private ArrayList<String> _tipologieCamere; 
-	/* Singleton */
-	private static VFCP_SelezionePeriodoTipologie instance = null;
     /* Panel */
     private JPanel _panelTopLeft, _panelTopRight;
     private JPanel _panelBottomLeft;
@@ -29,8 +36,10 @@ public class VFCP_SelezionePeriodoTipologie extends View {
     /* JLabel */
     private JLabel _lblTitolo, _lblTipologie, _lblDataDiInizio, _lblDataDiFine;
     /* CheckBoxes */
-    private ArrayList<JCheckBox> _checkBoxesTipologie = new ArrayList<JCheckBox>();
+    private ArrayList<JCheckBox> _checkBoxesTipologie;
     
+    /* Singleton */
+	private static VFCP_SelezionePeriodoTipologie instance = null;
 	
     /**
      * Costruttore privato - pattern Singleton
@@ -48,6 +57,8 @@ public class VFCP_SelezionePeriodoTipologie extends View {
 		_lblTitolo=_viewFactory.getLabelIntestazione_1();
 		// JButton
 		_btnAvanti=_viewFactory.getButtonAvanti();
+		// CheckBox
+		_checkBoxesTipologie = new ArrayList<JCheckBox>();
 	}
 	/* ----------------------------- Metodi di classe ---------------------------- */ 
 	/**
