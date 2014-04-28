@@ -6,8 +6,9 @@ package com.iHotel.view.Access;
 import com.iHotel.utility.UDefaultLoader;
 
 /**
+ * Classe addetta al reperimento della giusta factory per la creazione di oggetti grafici.
+ * 
  * @author Eugenio
- *
  */
 public class ViewFactory {
 	/* Singleton */

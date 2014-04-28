@@ -6,12 +6,17 @@ package com.iHotel.view.Access;
 import com.iHotel.view.View;
 
 /**
+ * Classe addetta alla gestione delle diverse finestre dell'applicazione. In particolare ha la responsabilità di far sì
+ * che sia sempre visibile una sola finestra.
+ * 
  * @author Alessandro
- *
  */
 public class ViewHandler {
 	
 	/* ------------------- Attributi e Costruttore --------------------------- */
+	/**
+	 * Finestra attualmente visualizzata.
+	 */
 	private View _currentInterface = null;
 	// Singleton
 	private static ViewHandler instance = null;

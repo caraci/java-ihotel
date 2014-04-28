@@ -11,6 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+/**
+ * Classe addetta alla fornitura di elementi grafici di uno stile "Dark".
+ * 
+ * @author Eugenio
+ */
 public class DarkStyleFactory implements StyleAbstractFactory {
 
 	/* -------------------------------- Attributi e costruttore -------------------------------*/

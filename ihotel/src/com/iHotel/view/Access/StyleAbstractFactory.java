@@ -11,8 +11,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 /**
+ * Interfaccia che definisce gli elementi grafici che si utilizzano nell'applicazione.
+ * 
  * @author Eugenio
- *
  */
 public interface StyleAbstractFactory {
 	/**

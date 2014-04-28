@@ -16,8 +16,9 @@ import javax.swing.JTextField;
 
 
 /**
+ * Classe addetta alla fornitura di elementi grafici di uno stile "Light".
+ * 
  * @author Eugenio
- *
  */
 public class LightStyleFactory implements StyleAbstractFactory {
 
