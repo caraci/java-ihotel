@@ -5,7 +5,13 @@ import java.util.*;
 import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
-
+/**
+ * Questa classe rappresenta il descrittore di una camera. Ha quindi il compito di mantere le informazioni generali
+ * della camera(e.g.: prezzo). L'uso di questo descrittore si basa non sulla singola camera, ma sul fatto che l'albergo
+ * ha più camere della stessa tipologia, quindi che condividono le stesse informazioni, ed aiuta a ridurre la ridondanza.
+ * @author Alessandro
+ *
+ */
 public class DescrizioneCamera {
 
 	/* -------------------------- Attributi -------------------------------------- */

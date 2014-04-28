@@ -2,10 +2,17 @@ package com.iHotel.model.Albergo.Cataloghi;
 
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
-
+/**
+ * Questa classe rappresenta il prezzo che può avere una camera. Poichè nella realtà una camera assume prezzi 
+ * differenti da periodo a periodo, è stato legato al prezzo un periodo di validità. (e.g.: La camera X costa Y nel periodo Z
+ * ma costa W nel periodo T) 
+ * @author Alessandro
+ *
+ */
 public class PrezzoCamera {
 
 	/* -------------------------- Attributi ------------------------------- */
+	//Periodo di validità del prezzo
 	private Periodo _periodo;
 	private Prezzo _prezzo;
 	

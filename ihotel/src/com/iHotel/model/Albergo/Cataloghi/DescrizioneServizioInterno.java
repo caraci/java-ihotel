@@ -7,6 +7,14 @@ import java.util.LinkedList;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
+/**
+ * Questa classe rappresenta il descrittore di un servizio interno. Ha quindi il compito di mantere le informazioni generali
+ * sul servizio(e.g.: prezzo). L'uso di questo descrittore si basa non sul singolo servizio, ma sul fatto che ci possono essere
+ * più servizi che condividono le stesse informazioni. L'uso del descrittore aiuta a ridurre la ridondanza, ed è abbinato
+ * al codice del servizio.
+ * @author Alessandro
+ *
+ */
 public class DescrizioneServizioInterno {
 	
 	/*-------------------------- Attributi --------------------------*/

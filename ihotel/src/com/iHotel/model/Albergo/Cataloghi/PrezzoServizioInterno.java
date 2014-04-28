@@ -2,10 +2,17 @@ package com.iHotel.model.Albergo.Cataloghi;
 
 
 import com.iHotel.model.Utility.*;
-
+/**
+ * Questa classe rappresenta il prezzo che può avere un servizio interno. Poichè nella realtà un servizio può avere prezzi 
+ * differenti da periodo a periodo, è stato legato al prezzo un periodo di validità. (e.g.: Il servizio X costa Y nel periodo Z
+ * ma costa W nel periodo T) 
+ * @author Alessandro
+ *
+ */
 public class PrezzoServizioInterno {
 
 	/* -------------------------- Attributi ----------------------------------- */
+	//Periodo di validità del prezzo
 	private Periodo _periodo;
 	private Prezzo _prezzo;
 	/* -------------------------- Metodi di instanza ----------------------------------- */

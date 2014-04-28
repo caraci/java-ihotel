@@ -1,11 +1,18 @@
 package com.iHotel.model.Albergo.Cataloghi;
 
 import java.util.*;
-
+/**
+ * Questa classe rispecchia un vero e proprio catalogo di servizi interni offerti dall'albergo. Ha quindi il compito di 
+ * mantere e fornire gli oggetti software che descrivono i servizi interni. Fanno parte dei servizi interni tutti quei
+ * servizi che l'albergo offre direttamente al cliente, senza la necessità che questo passi per terze parti.
+ * @author Alessandro
+ *
+ */
 public class CatalogoServiziInterni {
 	
 	/*--------------------------- Attributi e costruttore ---------------------------*/
-	
+	/** Questa mappa contiene le maniglie agli oggetti descrittori dei servizi interni. La chiave rappresenta il codice
+	 * del servizo interno. */
 	private HashMap<String,DescrizioneServizioInterno> _descrizioneServizi;
 	// Singleton
 	private static CatalogoServiziInterni instance = null;
