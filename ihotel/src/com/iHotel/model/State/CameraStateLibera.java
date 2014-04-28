@@ -9,6 +9,11 @@ import com.iHotel.model.Strategy.CreaStatiCameraStrategyFactory;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
+/**
+ * Classe che realizza uno stato camera "libero".
+ * 
+ * @author Eugenio
+ */
 public class CameraStateLibera extends CameraState {
 
 	@Override

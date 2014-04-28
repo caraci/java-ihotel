@@ -11,14 +11,28 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
+ * Classe che realizza un generico stato della camera, questo potrà poi essere uno stato "libero" o "occupato". Si
+ * è applicato il pattern State.
+ * 
  * @author Eugenio
- *
  */
 public abstract class CameraState {
 	/* -------------------------- Attributi ---------------------------------- */
+	/**
+	 * Periodo dello stato camera.
+	 */
 	protected Periodo _periodo;
+	/**
+	 * Ospiti della camera in questo stato.
+	 */
 	protected ArrayList<Ospite> _ospiti;
+	/**
+	 * Lista dei servizi interni in questo stato.
+	 */
 	protected ArrayList<ServizioInterno> _serviziInterni;
+	/**
+	 * Prezzo totale dei servizi interni richiesti in questo stato.
+	 */
 	protected Prezzo _prezzoServizi;
 	/**
 	 * Costruttore

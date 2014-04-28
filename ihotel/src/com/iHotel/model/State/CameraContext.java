@@ -7,9 +7,17 @@ import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
+/**
+ * Classe che realizza una camera all'interno dell'albergo.
+ * 
+ * @author Eugenio
+ */
 public class CameraContext {
 
 	/* --------------------------- Attributi e Costruttore ---------------------- */
+	/**
+	 * Stati della camera.
+	 */
 	private LinkedList<CameraState> _statiCameraState;
 	private String _numero;
 	private String _tipologia;

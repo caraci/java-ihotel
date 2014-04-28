@@ -9,6 +9,11 @@ import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
+/**
+ * Classe che realizza uno stato camera "occupato".
+ * 
+ * @author Eugenio
+ */
 public class CameraStateOccupata extends CameraState {
 
 	@Override
