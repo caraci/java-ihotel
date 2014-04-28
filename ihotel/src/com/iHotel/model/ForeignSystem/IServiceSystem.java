@@ -11,7 +11,8 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
- * @author Gabriele
+ * Questa classe rappresenta l'interfaccia ai sistemi esterni che forniscono servizi esterni all'albergo. (e.g.:telefono e pay tv)
+ * @author Alessandro
  *
  */
 public interface IServiceSystem {	
