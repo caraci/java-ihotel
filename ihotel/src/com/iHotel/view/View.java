@@ -18,24 +18,33 @@ import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 
 /**
+ * Classe a capo della gerarchia di tutte le finestre, dell'applicazione. Definisce una struttra di base per le finestre, e 
+ * dei metodi di base da implementare.
+ * 
  * @author Gabriele
- *
  */
 @SuppressWarnings("serial")
 public abstract class View extends JFrame {
 	
 	/* ----------------------------- Attributi e costruttore --------------------- */
-	/* Factory */
-	protected StyleAbstractFactory _viewFactory;
 	/* ContentPane */
 	protected JPanel _contentPane;
-	/* 
-	   La struttura della finestra è divisa in 3 pannelli, top, middle e bottom. 
-	   Tutte le pagine devono rispettare questa struttura
-	 */
-	protected JPanel _panelTop,_panelMiddle,_panelBottom;
 	/**
-	 * Costruttore 
+	 * Pannello superiore della pagina.
+	 */
+	protected JPanel _panelTop;
+	/**
+	 * Pannello centrale della pagina.
+	 */
+	protected JPanel _panelMiddle;
+	/**
+	 * Pannello inferiore della pagina.
+	 */
+	protected JPanel _panelBottom;
+	/* Factory */
+	protected StyleAbstractFactory _viewFactory;
+	/**
+	 * Costruttore.
 	 */
 	protected View(){
 		// Richiedo la factory corretta.
@@ -77,15 +86,15 @@ public abstract class View extends JFrame {
 	 */
 	public abstract void removeInstance();
 	/**
-	 * Metodo per creare il panelTop
+	 * Metodo per creare il panelTop.
 	 */
 	protected abstract void creaPanelTop();
 	/**
-	 * Metodo per creare il panelMiddle
+	 * Metodo per creare il panelMiddle.
 	 */
 	protected abstract void creaPanelMiddle();
 	/**
-	 * Metodo per creare il panelBottom
+	 * Metodo per creare il panelBottom.
 	 */
 	protected abstract void creaPanelBottom();
 	/**
