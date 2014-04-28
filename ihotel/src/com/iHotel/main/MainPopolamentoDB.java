@@ -491,12 +491,17 @@ public class MainPopolamentoDB {
 		Prezzo pChampagne = new Prezzo();
 		pChampagne.set_importo(35);
 		// Prezzi Champagne
-		PrezzoServizioInterno psiChampagne = new PrezzoServizioInterno();
-		psiChampagne.set_periodo(periodo_5);
-		psiChampagne.set_prezzo(pChampagne);
+		PrezzoServizioInterno psiChampagne_5 = new PrezzoServizioInterno();
+		psiChampagne_5.set_periodo(periodo_5);
+		psiChampagne_5.set_prezzo(pChampagne);
+		
+		PrezzoServizioInterno psiChampagne_6 = new PrezzoServizioInterno();
+		psiChampagne_6.set_periodo(periodo_6);
+		psiChampagne_6.set_prezzo(pChampagne);
 		// Lista Prezzi Champagne
 		LinkedList<PrezzoServizioInterno> prezziChampagne = new LinkedList<PrezzoServizioInterno>();
-		prezziChampagne.add(psiChampagne);
+		prezziChampagne.add(psiChampagne_5);
+		prezziChampagne.add(psiChampagne_6);
 		
 		// Descrizione Servizio Interno Champagne
 		
@@ -510,12 +515,17 @@ public class MainPopolamentoDB {
 		Prezzo pRose = new Prezzo();
 		pRose.set_importo(15);
 		// Prezzi Rose
-		PrezzoServizioInterno psiRose = new PrezzoServizioInterno();
-		psiRose.set_periodo(periodo_5);
-		psiRose.set_prezzo(pRose);
+		PrezzoServizioInterno psiRose_5 = new PrezzoServizioInterno();
+		psiRose_5.set_periodo(periodo_5);
+		psiRose_5.set_prezzo(pRose);
+		
+		PrezzoServizioInterno psiRose_6 = new PrezzoServizioInterno();
+		psiRose_6.set_periodo(periodo_6);
+		psiRose_6.set_prezzo(pRose);
 		// Lista Prezzi Rose
 		LinkedList<PrezzoServizioInterno> prezziRose = new LinkedList<PrezzoServizioInterno>();
-		prezziRose.add(psiRose);
+		prezziRose.add(psiRose_5);
+		prezziRose.add(psiRose_6);
 		
 		// Descrizione Servizio Interno Rose
 		
