@@ -2,6 +2,11 @@ package com.iHotel.model.Utility;
 
 import java.util.Calendar;
 
+/**
+ * Classe addetta alla gestione del periodo.
+ * 
+ * @author Eugenio
+ */
 public class Periodo {
 
 	/* ----------------------------------------- Attributi e costruttore ------------------------------------- */

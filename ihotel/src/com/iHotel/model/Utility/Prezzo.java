@@ -1,6 +1,11 @@
 
 package com.iHotel.model.Utility;
 
+/**
+ * Classe addetta alla gestione dei prezzi.
+ * 
+ * @author Eugenio
+ */
 public class Prezzo {
 
 	/* ----------------- Attributi --------------------- */
@@ -16,6 +21,7 @@ public class Prezzo {
 	/* ----------------- Metodi di instanza --------------------- */
 	/**
 	 * Metodo per sommare due prezzi.
+	 * 
 	 * @param prezzo Prezzo da sommare.
 	 * @return Prezzo in seguito alla somma.
 	 */
