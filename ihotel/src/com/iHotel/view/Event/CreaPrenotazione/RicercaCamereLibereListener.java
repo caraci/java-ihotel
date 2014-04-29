@@ -58,9 +58,15 @@ public class RicercaCamereLibereListener extends MouseAdapter {
 		dataInizio.set(annoInizio, meseInizio, giornoInizio);
 		// Data fine
 		MyDate dataFine = new MyDate();
-		dataFine.set(annoFine, meseFine, giornoFine);		
-		// Recupero il controllore e invoco il metodo per cercare le camere libere.
-		CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
-		gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologieSelezionate);
+		dataFine.set(annoFine, meseFine, giornoFine);	
+		// Controllo che la data di fine sia maggiore della data di inizio 
+		if (dataFine.compareTo(dataInizio)==1) {
+			// Recupero il controllore e invoco il metodo per cercare le camere libere.
+			CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
+			gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologieSelezionate);
+		} else {
+			// TODO - Decidere come gestire un inserimento di data errato.
+		}
+		
 	}
 }

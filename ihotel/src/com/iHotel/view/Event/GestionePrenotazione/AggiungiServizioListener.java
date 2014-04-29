@@ -49,11 +49,17 @@ public class AggiungiServizioListener extends MouseAdapter {
 		int giorno   = _datePanelServizio.getModel().getDay();
 		// Data Servizio
 		MyDate dataServizio = new MyDate();
-		dataServizio.set(anno, mese, giorno);		
-		// Invoco il metodo al controllore
-		modificaPrenotazione.aggiungiServizio(dataServizio, _codiceServizio);
-		// Mostro la dialog per confermare l'inserimento del servizio nella prenotazione.		
-		UDialogManager.getInstance().showDialogConfermaInserimentoServizio();
+		dataServizio.set(anno, mese, giorno);	
+		// Controllo che la data sia inclusa nel periodo della prenotazione
+		if (CModificaPrenotazione.getInstance().get_prenotazione().get_periodo().contieneData(dataServizio)) {
+			// Invoco il metodo al controllore
+			modificaPrenotazione.aggiungiServizio(dataServizio, _codiceServizio);
+			// Mostro la dialog per confermare l'inserimento del servizio nella prenotazione.		
+			UDialogManager.getInstance().showDialogConfermaInserimentoServizio();
+		} else {
+			// TODO - Decidere come gestire un inserimento di data errato.
+		}
+		
 	}
 
 }
