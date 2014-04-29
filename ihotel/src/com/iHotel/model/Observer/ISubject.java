@@ -5,8 +5,8 @@ package com.iHotel.model.Observer;
  * di "attaccargli" un osservatore, di "rimuovergli" un osservatore, e di notificare a tutti i suoi osservatori
  * un suo cambiamento di stato. E' stato introdotto questo design pattern, perchè alcuni oggetti software devono 
  * aggiornarsi quando cambia lo stato interno di altri oggetti software.
+ * 
  * @author Alessandro
- *
  */
 public interface ISubject {
 	/**

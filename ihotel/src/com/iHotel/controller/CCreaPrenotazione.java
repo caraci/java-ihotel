@@ -27,7 +27,9 @@ import java.util.Iterator;
 public class CCreaPrenotazione {
 	
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
-	//Attributo privato - Pattern Singleton
+	/**
+	 * Attributo privato - Pattern Singleton
+	 */
 	private static CCreaPrenotazione instance = null;
 	private Albergo _albergo;
 	private PrenotazioneSubject _prenotazione;

@@ -22,7 +22,7 @@ public class UDefaultLoader {
 	 * Costruttore privato - Pattern singleton
 	 */
 	private UDefaultLoader(){
-		_pathToConfigs = "./configs/";
+		_pathToConfigs = "./ihotel/configs/";
 	}
 	/**
 	 * Metodo per ottenere l'instanza unica di questa classe - Pattern singleton

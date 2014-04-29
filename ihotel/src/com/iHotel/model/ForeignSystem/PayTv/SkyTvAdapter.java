@@ -13,8 +13,8 @@ import com.iHotel.model.Utility.Prezzo;
  * Questa classe ha il compito di modellare un adattatore concreto al sistema esterno di "Sky" per il servizio di "Pay TV".
  * Si è reso necessario l'uso del design pattern "Adapter" in modo che questi presentassero la stessa interfaccia al
  * sistema "iHotel". 
+ * 
  * @author Alessandro
- *
  */
 public class SkyTvAdapter implements IPayTvAdapter {
 

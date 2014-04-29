@@ -25,7 +25,9 @@ public class Albergo {
  	private CatalogoServiziInterni _catalogoServiziInterni;
  	private Storico _storico;
 	private ArrayList<CameraContext> _camere;
-	//Mantiene le maniglie ai sistemi esterni cui l'albergo si poggia per la gestione dei servizi esterni e.g.: telefono e pay tv
+	/**
+	 * Mantiene le maniglie ai sistemi esterni cui l'albergo si poggia per la gestione dei servizi esterni e.g.: telefono e pay tv
+	 */
 	private ArrayList<IServiceSystem> _sistemiServiziEsterni;
 	
 	private String _nome;

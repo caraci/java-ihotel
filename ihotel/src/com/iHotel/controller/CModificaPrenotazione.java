@@ -26,11 +26,17 @@ import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
 public class CModificaPrenotazione {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
-	//Attributo privato - Pattern Singleton
+	/**
+	 * Attributo privato - Pattern Singleton
+	 */
 	private static CModificaPrenotazione instance = null;
-	//Attributo che mantiene la maniglia alla prenotazione che si sta modificando
+	/**
+	 * Attributo che mantiene la maniglia alla prenotazione che si sta modificando
+	 */
 	private PrenotazioneSubject _prenotazione;
-	//Attributo che mantiene la maniglia alla camera che si sta gestendo, all'interno della prenotazione corrente
+	/**
+	 * Attributo che mantiene la maniglia alla camera che si sta gestendo, all'interno della prenotazione corrente
+	 */
 	private CameraContext _camera;
 	private Albergo _albergo;
 

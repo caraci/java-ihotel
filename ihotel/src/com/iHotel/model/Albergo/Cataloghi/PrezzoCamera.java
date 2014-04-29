@@ -4,8 +4,9 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 /**
  * Questa classe rappresenta il prezzo che può avere una camera. Poichè nella realtà una camera assume prezzi 
- * differenti da periodo a periodo, è stato legato al prezzo un periodo di validità. (e.g.: La camera X costa Y nel periodo Z
- * ma costa W nel periodo T) 
+ * differenti da periodo a periodo, è stato legato al prezzo un periodo di validità. (e.g.: La camera X costa P1 nel periodo 1
+ * ma costa P2 nel periodo 2).
+ * 
  * @author Alessandro
  *
  */

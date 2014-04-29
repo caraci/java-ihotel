@@ -3,16 +3,20 @@ package com.iHotel.model.Albergo;
 import java.util.*;
 /**
  * Questa classe rappresenta lo storico delle prenotazioni dell'albergo.
+ * 
  * @author Alessandro
- *
  */
 public class Storico {
 
 	/* ------------------------------- Attributi e Costruttore ----------------------------- */
-	// Attributo privato - Pattern Singleton
+	/**
+	 *  Attributo privato - Pattern Singleton
+	 */
 	private static Storico instance = null;
-	//Questa mappa ha come chiave i codici delle prenotazioni, perchè in questo modo, l'accesso alla prenotazione 
-	//viene fatto in maniera efficiente ricercandola per codice.
+	/**
+	 * Questa mappa ha come chiave i codici delle prenotazioni, perchè in questo modo, l'accesso alla prenotazione 
+	 * viene fatto in maniera efficiente ricercandola per codice.
+	 */
 	private HashMap<String,PrenotazioneSubject> _prenotazioni;
 	/**
 	 * Costruttore privato - pattern Singleton

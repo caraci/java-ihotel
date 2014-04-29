@@ -11,16 +11,24 @@ import com.iHotel.utility.UDefaultLoader;
  * E' stata realizzata seguendo il design pattern "Abstract Factory" secondo cui si delega ad un oggetto terzo 
  * la responsabilità di creare istanze di classi che verranno determinate solo a runtime.
  * In questo modo è possibile cambiare il tipo di oggetto da creare senza intervenire sul codice.
+ * 
  * @author Alessandro
  *
  */
 public class ServiceFactory {
 
 	/* ------------------------------- Attributi e costruttore -------------------- */
-	//Maniglie agli adattatori verso i sistemi esterni
+	/**
+	 * Maniglia all'adattatore del sistema relativo alla payTv.
+	 */
 	private IPayTvAdapter _payTvAdapter;
+	/**
+	 * Maniglia all'adattatore del sistema relativo alla telefonia.
+	 */
 	private ITelephoneAdapter _telephoneAdapter;
-	// Attributo privato - Pattern Singleton
+	/**
+	 *  Attributo privato - Pattern Singleton
+	 */
 	private static ServiceFactory instance = null;
 	/**
 	 * Costruttore privato - Pattern Singleton

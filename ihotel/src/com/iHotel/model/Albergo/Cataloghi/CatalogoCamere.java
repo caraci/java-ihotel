@@ -6,14 +6,16 @@ import com.iHotel.model.Utility.Periodo;
 /**
  * Questa classe rispecchia un vero e proprio catalogo di camere del dominio applicativo. Ha quindi il compito di 
  * mantere e fornire gli oggetti software che descrivono le camere dell'albergo.
+ * 
  * @author Alessandro
- *
  */
 public class CatalogoCamere {
 
 	/* ----------------------------------- Attributi e costruttore ---------------------------------- */
-	/** Questa mappa contiene le maniglie agli oggetti descrittori delle camere. La chiave rappresenta le tipologie
-	 di camere presenti nell'albergo (e.g.: singola, doppia, tripla)*/
+	/** 
+	 *  Questa mappa contiene le maniglie agli oggetti descrittori delle camere. La chiave rappresenta le tipologie
+	 *	di camere presenti nell'albergo (e.g.: singola, doppia, tripla)
+	 */
 	private HashMap<String,DescrizioneCamera> _descrizioniCamere;
 	
 	// Attributo privato - Pattern Singleton

@@ -15,18 +15,24 @@ import com.iHotel.model.Utility.Prezzo;
  * attributi di un'oggetto di questa classe (e.g.: si aggiunge una camera alla prenotazione, deve essere notificato un 
  * cambiamento di prezzo all'operatore che si trova davanti al pc) questa classe è stata realizzata sfruttando il design
  * pattern "Observer". In particolare implementa la classe ISubject.
+ * 
  * @author Alessandro
- *
  */
 public class PrenotazioneSubject implements ISubject {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
-	//Vengono mantenute le maniglie alle camere della prenotazione
+	/**
+	 * Vengono mantenute le maniglie alle camere della prenotazione.
+	 */
 	private ArrayList<CameraContext> _camerePrenotate;
-	//Vengono mantenute le maniglie agli osservatori di questa istanza - Pattern Observer
+	/**
+	 * Vengono mantenute le maniglie agli osservatori di questa istanza - Pattern Observer
+	 */
 	private ArrayList<IObserver> _osservatori;
-	//Il periodo della prenotazione va dal giorno in cui l'ospite inizia il soggiorno, al giorno in cui l'ospite 
-	//termina il soggiorono e lascia la struttura ricettiva
+	/**
+	 * Il periodo della prenotazione va dal giorno in cui l'ospite inizia il soggiorno, al giorno in cui l'ospite 
+	 * termina il soggiorono e lascia la struttura ricettiva.
+	 */
 	private Periodo _periodo;
 	private boolean _completata;
 	private Ospite _prenotante;

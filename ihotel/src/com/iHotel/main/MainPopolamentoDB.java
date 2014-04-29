@@ -147,14 +147,14 @@ public class MainPopolamentoDB {
 				periodo_5.set_meseFine(meseFine_5);
 				periodo_5.set_annoFine(annoFine_5);
 				
-			// periodo_6 - 31 Marzo 2014 - 31 Maggio 2014
+			// periodo_6 - 31 Marzo 2014 - 31 Maggio 2015
 				Periodo periodo_6 = new Periodo();
 				int giornoInizio_6 = 31;
 				int meseInizio_6 = 2;
 				int annoInizio_6 = 2014;
 				int giornoFine_6 = 31;
 				int meseFine_6 = 5;
-				int annoFine_6 = 2014;
+				int annoFine_6 = 2015;
 				// Inizio
 				periodo_6.set_giornoInizio(giornoInizio_6);
 				periodo_6.set_meseInizio(meseInizio_6);
