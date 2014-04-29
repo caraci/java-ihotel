@@ -67,8 +67,9 @@ public class UtoString {
 	 * @return Stringa contenente le informazioni della data.
 	 */
 	public String myDateToString(MyDate date) {
+		int mese = date.get(Calendar.MONTH) + 1;
 		// Stringa
-		String toString="Data: " + date.get(Calendar.DATE) + "-" + date.get(Calendar.MONTH) + "-" + date.get(Calendar.YEAR);
+		String toString="Data: " + date.get(Calendar.DATE) + "-" + mese + "-" + date.get(Calendar.YEAR);
 		return toString;
 	}
 	/**

@@ -35,6 +35,8 @@ public class PersistentManager {
 			config.common().objectClass(CameraState.class).cascadeOnUpdate(true);
 			config.common().objectClass(CameraStateOccupata.class).cascadeOnUpdate(true);
 			config.common().objectClass(ServizioInterno.class).cascadeOnUpdate(true);
+			// Configurazione per tirare su l'oggetto completo
+			config.common().objectClass(CameraContext.class).minimumActivationDepth(20);
 			// Posizione del file contenente la base dati.
 			_db=Db4oEmbedded.openFile(config, "dbihotel");
 		}
