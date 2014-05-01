@@ -6,6 +6,8 @@ package com.iHotel.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -56,8 +58,19 @@ public abstract class View extends JFrame {
 		setContentPane(_contentPane);
 		// Operazione di default in chiusura.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Ricavo le dimensioni dello schermo.
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		// Prendo l'80% della larghezza dello schermo.
+		int widthDesktop = (int) screenSize.getWidth();
+		int widthFrame = (int) ((int) widthDesktop*0.8);
+		// Prendo l'80% dell'altezza dello schermo.
+		int heightDesktop = (int) screenSize.getHeight();
+		int heightFrame = (int) ((int) heightDesktop*0.8);
+		// Posizione iniziale
+		int x_position = (int) ((int) widthDesktop*0.1);
+		int y_position = (int) ((int) heightDesktop*0.1);
 		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
-		setBounds(50, 50, 1280, 700);
+		setBounds(x_position, y_position, widthFrame, heightFrame);
 		
 		//ora preparo il layout interno al contentPane
 		
