@@ -88,7 +88,7 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JButton getButton() {
 		JButton button = new JButton();
-		button.setBackground(new Color(200, 200, 200));
+		button.setBackground(new Color(240, 240, 240));
 		button.setForeground(new Color(30,30,30));
 		return button;
 	}
@@ -113,7 +113,7 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JCheckBox getCheckBox() {
 		JCheckBox checkBox = new JCheckBox();
-		checkBox.setBackground(new Color(255, 255, 255));
+		checkBox.setBackground(new Color(200, 200, 200));
 		checkBox.setForeground(new Color(0, 0, 0));
 		return checkBox;
 	}
