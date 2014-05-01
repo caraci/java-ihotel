@@ -56,6 +56,8 @@ public abstract class View extends JFrame {
 		_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		// Aggiungo il contentPane al Frame
 		setContentPane(_contentPane);
+		// Non permetto il resize della finestra
+		setResizable(false);
 		// Operazione di default in chiusura.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Ricavo le dimensioni dello schermo.
