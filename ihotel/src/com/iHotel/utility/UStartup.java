@@ -3,17 +3,10 @@
  */
 package com.iHotel.utility;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-
 import com.iHotel.model.Albergo.Albergo;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
-import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
-import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PDescrizioneCamera;
 import com.iHotel.persistence.PDescrizioneServiziInterni;
@@ -31,36 +24,23 @@ public class UStartup {
 	 * @return Catalogo delle camere.
 	 */
 	public CatalogoCamere getCatalogoCamere() {
-		// Carico tutte le descrizioni delle camere
-		List<DescrizioneCamera> descrizioniCamere = PDescrizioneCamera.getInstance().caricaDescrizioniCamere();
 		// Recupero il catalogo delle camere attraverso pattern Singleton
 		CatalogoCamere catalogoCamere = CatalogoCamere.getInstance();
 		// Setto gli attributi del catalogoCamere
-		HashMap<String,DescrizioneCamera> _descrizioniCamere = new HashMap<String,DescrizioneCamera>();
-		for (Iterator<DescrizioneCamera> iterator = descrizioniCamere.iterator(); iterator.hasNext();) {
-			DescrizioneCamera descrizioneCamera = (DescrizioneCamera) iterator.next();
-			_descrizioniCamere.put(descrizioneCamera.get_tipologia(), descrizioneCamera);
-		}
-		catalogoCamere.set_descrizioniCamere(_descrizioniCamere);
+		catalogoCamere.set_descrizioniCamere(PDescrizioneCamera.getInstance().caricaMappaCodiceDescrittoreCamera());
 		
 		return catalogoCamere;
 	}
 	/**
 	 * Metodo per inizializzare il catalogo dei servizi interni.
+	 * 
 	 * @return Catalogo dei servizi interni.
 	 */
 	public CatalogoServiziInterni getCatalogoServiziInterni() {
-		// Carico tutte le descrizioni dei servizi
-		List<DescrizioneServizioInterno> descrizioniServiziInterni = PDescrizioneServiziInterni.getInstance().caricaDescrizioniServizi();
 		// Recupero il catalogo dei servizi attraverso pattern Singleton
 		CatalogoServiziInterni catalogoServiziInterni = CatalogoServiziInterni.getInstance();
 		// Setto gli attributi del CatalogoServiziInterni
-		HashMap<String, DescrizioneServizioInterno> _descrizioniServizi = new HashMap<String,DescrizioneServizioInterno>();
-		for (Iterator<DescrizioneServizioInterno> iterator = descrizioniServiziInterni.iterator(); iterator.hasNext();) {
-			DescrizioneServizioInterno descrizioneServizio = (DescrizioneServizioInterno) iterator.next();
-			_descrizioniServizi.put(descrizioneServizio.get_codice(), descrizioneServizio);
-		}
-		catalogoServiziInterni.set_descrizioneServizi(_descrizioniServizi);
+		catalogoServiziInterni.set_descrizioneServizi(PDescrizioneServiziInterni.getInstance().caricaMappaCodiceDescrittoreServizi());
 		
 		return catalogoServiziInterni;
 	}
@@ -70,17 +50,10 @@ public class UStartup {
 	 * @return Storico delle prenotazioni dell'albergo.
 	 */
 	public Storico getStorico() {
-		// Carico tutte le prenotazioni
-		List<PrenotazioneSubject> prenotazioni = PPrenotazione.getInstance().caricaPrenotazioni();
 		// Recupero lo storico attraverso pattern Singleton
 		Storico storico = Storico.getInstance();
-		// Setto gli attributi dello storico
-		HashMap<String,PrenotazioneSubject> _prenotazioni = new HashMap<String,PrenotazioneSubject>();
-		for (Iterator<PrenotazioneSubject> iterator = prenotazioni.iterator(); iterator.hasNext();) {
-			PrenotazioneSubject prenotazioneSubject = (PrenotazioneSubject) iterator.next();
-			_prenotazioni.put(prenotazioneSubject.get_codice(), prenotazioneSubject);				
-		}
-		storico.set_prenotazioni(_prenotazioni);
+		// Setto gli attributi dello storico.
+		storico.set_prenotazioni(PPrenotazione.getInstance().caricaMappaCodicePrenotazione());
 		
 		return storico;
 	}

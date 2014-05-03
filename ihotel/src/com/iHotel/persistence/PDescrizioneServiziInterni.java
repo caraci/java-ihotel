@@ -3,6 +3,8 @@
  */
 package com.iHotel.persistence;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import com.db4o.query.Predicate;
@@ -46,5 +48,28 @@ public class PDescrizioneServiziInterni extends PersistentManager {
 			}
 		});
 		return descrizioniServiziInterni;
+	}
+	
+	/**
+	 * Metodo per caricare la mappa dei descrittori.
+	 * 
+	 * @return Mappa dove la chiave è il codice del descrittore, e il valore è il descrittore.
+	 */
+	public HashMap<String, DescrizioneServizioInterno> caricaMappaCodiceDescrittoreServizi() {
+		@SuppressWarnings("serial")
+		List<DescrizioneServizioInterno> descrizioniServiziInterni = query(new Predicate<DescrizioneServizioInterno>() {
+			public boolean match(DescrizioneServizioInterno candidate) {
+				return true;
+			}
+		});
+		// Creo la mappa
+		HashMap<String, DescrizioneServizioInterno> descrizioniServizi = new HashMap<String,DescrizioneServizioInterno>();
+		// Ciclo sui descrittori
+		for (Iterator<DescrizioneServizioInterno> iterator = descrizioniServiziInterni.iterator(); iterator.hasNext();) {
+			DescrizioneServizioInterno descrizioneServizio = (DescrizioneServizioInterno) iterator.next();
+			descrizioniServizi.put(descrizioneServizio.get_codice(), descrizioneServizio);
+		}
+				
+		return descrizioniServizi;
 	}
 }

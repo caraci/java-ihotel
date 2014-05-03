@@ -3,6 +3,8 @@
  */
 package com.iHotel.persistence;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import com.db4o.query.Predicate;
@@ -45,5 +47,27 @@ public class PPrenotazione extends PersistentManager {
 			}
 		});
 		return prenotazioni;
+	}
+	/**
+	 * Metodo per caricare la mappa delle prenotazioni.
+	 * 
+	 * @return Mappa delle prenotazioni dove la chiave è il codice della prenotazione, e il valore è la prenotazione.
+	 */
+	public HashMap<String, PrenotazioneSubject> caricaMappaCodicePrenotazione() {
+		@SuppressWarnings("serial")
+		List<PrenotazioneSubject> listPrenotazioni = query(new Predicate<PrenotazioneSubject>() {
+			public boolean match(PrenotazioneSubject candidate) {
+				return true;
+			}
+		});
+		// Creo la mappa.
+		HashMap<String,PrenotazioneSubject> mappaPrenotazioni = new HashMap<String,PrenotazioneSubject>();
+		// Ciclo sulle prenotazioni.
+		for (Iterator<PrenotazioneSubject> iterator = listPrenotazioni.iterator(); iterator.hasNext();) {
+			PrenotazioneSubject prenotazioneSubject = (PrenotazioneSubject) iterator.next();
+			mappaPrenotazioni.put(prenotazioneSubject.get_codice(), prenotazioneSubject);				
+		}
+		
+		return mappaPrenotazioni;
 	}
 }
