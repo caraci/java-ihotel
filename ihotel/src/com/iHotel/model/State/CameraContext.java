@@ -108,9 +108,9 @@ public class CameraContext {
 		// Ciclo sugli stati interni della camera.
 		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
 			CameraState statoCamera = iterator.next();
-			// Controllo se il periodo dello stato coincide con quello passato come parametro.
-			if(statoCamera.get_periodo().coincideCon(periodo)){
-				serviziInterni=statoCamera.getServiziInterni();
+			// Controllo che la richiesta fornisca un risultato.
+			if(statoCamera.getServiziInterniInPeriodo(periodo)!=null){
+				serviziInterni=statoCamera.getServiziInterniInPeriodo(periodo);
 			}
 		}
 		return serviziInterni;
@@ -126,9 +126,9 @@ public class CameraContext {
 		// Ciclo sugli stati interni della camera.
 		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
 			CameraState statoCamera = iterator.next();
-			// Controllo se il periodo dello stato coincide con quello passato come parametro.
-			if(statoCamera.get_periodo().coincideCon(periodo)){
-				ospiti=statoCamera.getOspiti();
+			// Controllo che la richiesta fornisca un risultato.
+			if(statoCamera.getOspitiInPeriodo(periodo)!=null){
+				ospiti=statoCamera.getOspitiInPeriodo(periodo);
 			}
 		}
 		return ospiti;

@@ -74,15 +74,17 @@ public abstract class CameraState {
 	/**
 	 * Metodo per ottenere la lista dei servizi interni della camera.
 	 * 
+	 * @param periodo Periodo in cui aggiungere il servizio.
 	 * @return Lista dei servizi interni della camera.
 	 */
-	public abstract ArrayList<ServizioInterno> getServiziInterni();
+	public abstract ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo);
 	/**
 	 * Metodo per ottenere la lista degli ospiti della camera.
 	 * 
+	 * @param periodo Periodo in analisi.
 	 * @return Lista degli ospiti della camera.
 	 */
-	public abstract ArrayList<Ospite> getOspiti();
+	public abstract ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo);
 	
 	/* -------------------------- Getter, Setter ----------------------------- */
 	/**

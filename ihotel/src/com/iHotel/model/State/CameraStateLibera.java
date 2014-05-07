@@ -47,11 +47,11 @@ public class CameraStateLibera extends CameraState {
 		// TODO Auto-generated method stub
 	}
 	@Override
-	public ArrayList<ServizioInterno> getServiziInterni() {
+	public ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo) {
 		return null;
 	}
 	@Override
-	public ArrayList<Ospite> getOspiti() {
+	public ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo) {
 		return null;
 	}	
 }

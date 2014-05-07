@@ -46,11 +46,21 @@ public class CameraStateOccupata extends CameraState {
 		}
 	}
 	@Override
-	public ArrayList<ServizioInterno> getServiziInterni() {
-		return this._serviziInterni;
+	public ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo) {
+		ArrayList<ServizioInterno> serviziInterniInPeriodo=null;
+		// Controllo che il periodo di richiesta coincida con il periodo dello stato.
+		if(_periodo.coincideCon(periodo)) {
+			serviziInterniInPeriodo=this._serviziInterni;
+		}
+		return serviziInterniInPeriodo;
 	}
 	@Override
-	public ArrayList<Ospite> getOspiti() {
-		return this._ospiti;
+	public ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo) {
+		ArrayList<Ospite> ospitiInPeriodo=null;
+		// Controllo che il periodo di richiesta coincida con il periodo dello stato.
+		if(_periodo.coincideCon(periodo)) {
+			ospitiInPeriodo=this._ospiti;
+		}
+		return ospitiInPeriodo;
 	}
 }
