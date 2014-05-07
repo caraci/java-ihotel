@@ -268,7 +268,7 @@ public class MainPopolamentoDB {
 		statoCamera_201_Periodo6.set_periodo(periodo_6);
 		// StatoCamera_202_Periodo_6
 		CameraState statoCamera_202_Periodo6 = new CameraStateLibera();
-		statoCamera_202_Periodo6.set_periodo(periodo_5);
+		statoCamera_202_Periodo6.set_periodo(periodo_6);
 		// StatoCamera_203_Periodo_6
 		CameraState statoCamera_203_Periodo6 = new CameraStateLibera();
 		statoCamera_203_Periodo6.set_periodo(periodo_6);
