@@ -71,9 +71,8 @@ public class CCreaPrenotazione {
 		
 	}
 	/**
-	 * Metodo per aggiungere una Camera alla prenotazione ed ottenere il totale di quest'ultima.
-	 * @param numeroCamera Stringa contenente il numero della camera.
-	 * @return Costo totale della prenotazione in seguito all'aggiunta della camera.
+	 * Metodo per aggiungere una camera alla prenotazione.
+	 * @param numeroCamera Stringa contenente il numero della camera che si vuole aggiungere.
 	 */
 	public void aggiungiCameraAllaPrenotazione(String numeroCamera) {
 		CameraContext camera = null;
@@ -87,8 +86,8 @@ public class CCreaPrenotazione {
 	/**
 	 * Metodo per ricercare le camere libere nell'albergo, appartenenti a tipologie differenti.
 	 * 
-	 * @param DataInizio Data di inizio ricerca.
-	 * @param DataFine Data di fine ricerca
+	 * @param dataInizio Data di inizio ricerca.
+	 * @param dataFine Data di fine ricerca.
 	 * @param Tipologie Tipologie di camere da ricercare.
 	 */
 	public void cercaCamereLibere(MyDate dataInizio, MyDate dataFine, ArrayList<String> Tipologie) {
@@ -128,7 +127,7 @@ public class CCreaPrenotazione {
 	 * 
 	 * @param nome Nome dell'ospite.
 	 * @param cognome Cognome dell'ospite.
-	 * @param email e-Mail dell'ospite.
+	 * @param eMail e-Mail dell'ospite.
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
@@ -173,7 +172,7 @@ public class CCreaPrenotazione {
 	}
 	/**
 	 * 
-	 * @return
+	 * @return _prenotazione
 	 */
 	public PrenotazioneSubject get_prenotazione() {
 		return this._prenotazione;

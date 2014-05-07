@@ -49,7 +49,7 @@ public class CatalogoServiziInterni {
 	/**
 	 * Metodo per fornire il descrittore del servizio dal suo nome.
 	 * 
-	 * @param codiceDescrittore Codice del servizio.
+	 * @param nomeDescrittore Nome del servizio.
 	 * @return Descrizione del servizio richiesto.
 	 */
 	public DescrizioneServizioInterno getDescrizioneServizioDaNome(String nomeDescrittore) {

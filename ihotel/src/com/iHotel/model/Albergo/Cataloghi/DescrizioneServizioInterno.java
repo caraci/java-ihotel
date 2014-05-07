@@ -30,7 +30,7 @@ public class DescrizioneServizioInterno {
 	/**
 	 * Metodo per ottenere il prezzo del servizio in un determinato periodo.
 	 * 
-	 * @param periodoRichiesta Periodo da analizzare.
+	 * @param dataServizio Periodo da analizzare.
 	 * @return Prezzo del servizio nel periodo.
 	 */
 	public Prezzo getPrezzoInData(Periodo dataServizio) {

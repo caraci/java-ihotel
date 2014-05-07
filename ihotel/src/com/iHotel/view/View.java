@@ -118,7 +118,6 @@ public abstract class View extends JFrame {
 	 * @param panel Pannello sul quale si vuole creare la pulsantiera.
 	 * @param numeroColonne Numero di colonne nel quale si vuole effettuare la suddivisione della larghezza.
 	 * @param Bottoni Bottoni che si vogliono inserire.
-	 * @return Pannello contenente i bottoni
 	 */
 	protected void creaPanelPulsanti(JPanel panel, int numeroColonne, HashMap<Integer, JButton> Bottoni) {
 		// Setto layout

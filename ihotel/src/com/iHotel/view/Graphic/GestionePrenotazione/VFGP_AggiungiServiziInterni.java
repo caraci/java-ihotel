@@ -150,7 +150,6 @@ public class VFGP_AggiungiServiziInterni extends View {
 	 * A differenza degli altri metodi usati per costruire l'interfaccia è pubblico visto
 	 * che viene usato da un gestore dell'evento.
 	 * 
-	 * @see com.iHotel.view.Event.GestionePrenotazione.MostraDettagliServizioListener.java
 	 * @param descrizioneServizio Descrittore del servizio
 	 * @return Pannello relativo al descrittore del servizio.
 	 */

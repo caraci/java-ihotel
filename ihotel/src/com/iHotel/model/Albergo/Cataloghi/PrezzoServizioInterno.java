@@ -21,7 +21,7 @@ public class PrezzoServizioInterno {
 	 * Metodo per ottenere il prezzo relativo al servizio, se il periodo di richiesta è contenuto
 	 * in quello dell'instanza su cui si invoca il metodo.
 	 * 
-	 * @param periodoRichiesta Periodo di richiesta
+	 * @param dataServizio Periodo di richiesta
 	 * @return Prezzo relativo al servizo se il periodo è valido. Null altrimenti.
 	 */
 	public Prezzo getPrezzoInData(Periodo dataServizio) {
