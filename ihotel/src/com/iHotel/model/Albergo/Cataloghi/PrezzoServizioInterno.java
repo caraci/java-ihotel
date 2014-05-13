@@ -21,12 +21,13 @@ public class PrezzoServizioInterno {
 	 * Metodo per ottenere il prezzo relativo al servizio, se il periodo di richiesta è contenuto
 	 * in quello dell'instanza su cui si invoca il metodo.
 	 * 
-	 * @param dataServizio Periodo di richiesta
+	 * @param giorno Periodo di richiesta
 	 * @return Prezzo relativo al servizo se il periodo è valido. Null altrimenti.
 	 */
-	public Prezzo getPrezzoInData(Periodo dataServizio) {
+	public Prezzo getPrezzoInData(Giorno giorno) {
 		Prezzo prezzo = null;
-		if (_periodo.contiene(dataServizio)==true) {
+		
+		if (_periodo.contieneGiorno(giorno)==true) {
 			prezzo=_prezzo;
 		}
 		return prezzo;

@@ -3,7 +3,7 @@
  */
 package com.iHotel.model.Albergo;
 
-import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Giorno;
 
 /**
  * Questa classe serve a modellare un servizio interno all'albergo, per cui la struttura ricettiva
@@ -15,11 +15,8 @@ public class ServizioInterno {
 	
 	/*----------------------- Attributi e costruttore -----------------------*/
 	private String _codice;
-	/**
-	* [ IMPORTANTE ] questo periodo ha lo stesso giorno di inizio e di fine, perchè modella una data. 
-	* Un servizio, infatti, è associato per un giorno particolare alla camera. 
-	*/
-	private Periodo _periodo;
+	
+	private Giorno _giorno;
 	/**
 	 * Costruttore.
 	 */
@@ -41,17 +38,17 @@ public class ServizioInterno {
 	}
 
 	/**
-	 * @return the _data
+	 * @return the _giorno
 	 */
-	public Periodo get_periodo() {
-		return _periodo;
+	public Giorno get_giorno() {
+		return _giorno;
 	}
 
 	/**
-	 * @param _data the _data to set
+	 * @param _giorno the _giorno to set
 	 */
-	public void set_periodo(Periodo _data) {
-		this._periodo = _data;
+	public void set_giorno(Giorno _giorno) {
+		this._giorno = _giorno;
 	}
 
 }

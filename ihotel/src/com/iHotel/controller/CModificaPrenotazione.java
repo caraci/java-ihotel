@@ -1,6 +1,7 @@
 package com.iHotel.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
@@ -9,6 +10,7 @@ import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -112,12 +114,10 @@ public class CModificaPrenotazione {
     	// Creo il nuovo oggetto di tipo ServizioInterno
     	ServizioInterno servizioInterno = new ServizioInterno();
     	servizioInterno.set_codice(codiceServizio);
-    	// Creo il periodo per il servizio
-    	Periodo periodoServizio = new Periodo();
-    	periodoServizio.setDataInizioDaData(dataServizio);
-    	periodoServizio.setDataFineDaData(dataServizio);
+    	// Creo il giorno del servizio
+    	Giorno giornoServizio = new Giorno(dataServizio.get(Calendar.DATE),dataServizio.get(Calendar.MONTH),dataServizio.get(Calendar.YEAR));
     	// Aggiungo la data al servizio.
-    	servizioInterno.set_periodo(periodoServizio);
+    	servizioInterno.set_giorno(giornoServizio);
     	// Ricavo il periodo della prenotazione
     	Periodo periodo = _prenotazione.get_periodo();
     	// Aggiungo il servizio interno alla Camera che si sta gestendo, fornendo periodo e servizio.

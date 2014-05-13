@@ -10,6 +10,9 @@ import java.util.Calendar;
 public class Periodo {
 
 	/* ----------------------------------------- Attributi e costruttore ------------------------------------- */
+	//private Giorno _dataInizio;
+	//private Giorno _dataFine;
+	
 	private int _giornoInizio;
 	private int _meseInizio;
 	private int _annoInizio;
@@ -17,11 +20,16 @@ public class Periodo {
 	private int _giornoFine;
 	private int _meseFine;
 	private int _annoFine;
-	
-	/**
-	 * Costruttore privato - pattern Singleton
-	 */	
+
 	public Periodo() {}
+	/**
+	 * Costruttore della classe Periodo.
+	 * @param dataInizio Data inizio del periodo.
+	 * @param dataFine Data fine del periodo.
+	 */
+	public Periodo(Giorno dataInizio, Giorno dataFine) {
+		
+	}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
 	/**
 	 * Metodo per verificare che il periodo passato come paramentro coincide esattamente con il periodo relativo 
@@ -58,7 +66,7 @@ public class Periodo {
 	 * @param periodoRichiesta Periodo da confrontare
 	 * @return True se il periodo è contenuto. False altrimenti.
 	 */
-	public boolean contiene (Periodo periodoRichiesta) {
+	public boolean contiene(Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
 		MyDate dataInizioRichiesta = new MyDate();
@@ -98,8 +106,29 @@ public class Periodo {
 		} else {
 			esito = false;
 		}
+		return esito;			
+	}
+	/**
+	 * Metodo per verificare se un periodo contiene un giorno.
+	 * @param giornoRichiesta Giorno da analizzare
+	 * @return True se il giorno è contenuto. False altrimenti.
+	 */
+	public boolean contieneGiorno(Giorno giornoRichiesta) {
+		boolean esito;
+		// Periodo dell'instanza
+		MyDate dataInizioPeriodo = new MyDate();
+		MyDate dataFinePeriodo = new MyDate();
+		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		// Data da analizzare
+		MyDate dataRichiesta = giornoRichiesta.toMyDate();
+		// Controllo se il periodoRichiesta è contenuto in periodo.
+		if(dataInizioPeriodo.compareTo(dataRichiesta)<=0 && dataFinePeriodo.compareTo(dataRichiesta)>=0) {
+			esito = true;
+		} else {
+			esito = false;
+		}
 		return esito;
-				
 	}
 	/**
 	 * Metodo per verificare che il periodo passato come parametro si sovrappone con quello passato come parametro.

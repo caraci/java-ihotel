@@ -4,7 +4,7 @@ package com.iHotel.model.Albergo.Cataloghi;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
@@ -30,17 +30,17 @@ public class DescrizioneServizioInterno {
 	/**
 	 * Metodo per ottenere il prezzo del servizio in un determinato periodo.
 	 * 
-	 * @param dataServizio Periodo da analizzare.
+	 * @param giorno Giorno da analizzare.
 	 * @return Prezzo del servizio nel periodo.
 	 */
-	public Prezzo getPrezzoInData(Periodo dataServizio) {
+	public Prezzo getPrezzoInData(Giorno giorno) {
 		Prezzo prezzo = null;
 		// Ciclo su tutti i prezzi del servizio.
 		for (Iterator<PrezzoServizioInterno> iterator = _prezziServizio.iterator(); iterator.hasNext();) {
 			PrezzoServizioInterno prezzoServizioInterno = (PrezzoServizioInterno) iterator.next();
 			// Controllo se viene restituito il prezzo o un null.
-			if(prezzoServizioInterno.getPrezzoInData(dataServizio)!=null) {
-				prezzo=prezzoServizioInterno.getPrezzoInData(dataServizio);
+			if(prezzoServizioInterno.getPrezzoInData(giorno)!=null) {
+				prezzo=prezzoServizioInterno.getPrezzoInData(giorno);
 			}
 		}
 		return prezzo;

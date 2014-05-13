@@ -3,7 +3,7 @@
  */
 package com.iHotel.model.ForeignSystem;
 
-import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
@@ -17,11 +17,8 @@ public class ServizioEsterno {
 	private String _codice;
 	private Prezzo _prezzo;
 	private String _descrizione;
-	/**
-	* [ IMPORTANTE ] Questo periodo ha lo stesso giorno di inizio e di fine, perchè modella una data. 
-	* Un servizio esterno, infatti, è associato per un giorno particolare alla camera. 
-	*/
-	private Periodo _periodo;
+	
+	private Giorno _giorno;
 	/**
 	 * Costruttore.
 	 */
@@ -71,17 +68,17 @@ public class ServizioEsterno {
 	}
 
 	/**
-	 * @return the _data
+	 * @return the _giorno
 	 */
-	public Periodo get_periodo() {
-		return _periodo;
+	public Giorno get_giorno() {
+		return _giorno;
 	}
 
 	/**
-	 * @param _data the _data to set
+	 * @param _giorno the _giorno to set
 	 */
-	public void set_periodo(Periodo _data) {
-		this._periodo = _data;
+	public void set_giorno(Giorno _giorno) {
+		this._giorno = _giorno;
 	}
 
 }

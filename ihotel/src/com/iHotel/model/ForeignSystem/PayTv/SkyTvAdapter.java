@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
-import com.iHotel.model.Utility.MyDate;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 /**
@@ -34,15 +34,10 @@ public class SkyTvAdapter implements IPayTvAdapter {
 		// TODO - Chiaramente ora si stanno fornendo dei servizi di default.
 		ServizioEsterno servizioEsterno = new ServizioEsterno();
 		servizioEsterno.set_codice("SKY001");
-		// Data
-		MyDate data = new MyDate();
-		data.set(2014, 2, 13, 21, 0);
-		// Periodo
-		Periodo periodoServizio = new Periodo();
-		periodoServizio.setDataInizioDaData(data);
-		periodoServizio.setDataFineDaData(data);
+		// Creo il giorno del servizio
+    	Giorno giornoServizio = new Giorno(13,2,2014);
 		// Setto la data al servizio
-		servizioEsterno.set_periodo(periodoServizio);
+		servizioEsterno.set_giorno(giornoServizio);
 		// Descrizione
 		servizioEsterno.set_descrizione("C'era una volta in America - S. Leone");
 		// Prezzo
