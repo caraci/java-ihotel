@@ -74,16 +74,18 @@ public class Periodo {
 	 * Metodo per verificare che la data passata come paramentro è contenuta all'interno del periodo relativo all'oggetto
 	 * sul quale si sta invocando il metodo.
 	 * 
-	 * @param dataRichiesta Data da confrontare
+	 * @param giornoServizio Giorno da confrontare.
 	 * @return True se la data è contenuta. False altrimenti.
 	 */
-	public boolean contieneData(MyDate dataRichiesta) {
+	public boolean contieneData(Giorno giornoServizio) {
 		boolean esito;
 		// Periodo dell'instanza
 		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
 		MyDate dataFinePeriodo = _dataFine.toMyDate();
+		// Giorno -> myDate
+		MyDate dataServizio = giornoServizio.toMyDate();
 		// Controllo se il periodoRichiesta è contenuto in periodo.
-		if(dataInizioPeriodo.compareTo(dataRichiesta)<=0 && dataFinePeriodo.compareTo(dataRichiesta)>=0) {
+		if(dataInizioPeriodo.compareTo(dataServizio)<=0 && dataFinePeriodo.compareTo(dataServizio)>=0) {
 			esito = true;
 		} else {
 			esito = false;

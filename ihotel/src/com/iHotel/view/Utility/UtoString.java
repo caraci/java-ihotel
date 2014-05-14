@@ -3,15 +3,12 @@
  */
 package com.iHotel.view.Utility;
 
-import java.util.Calendar;
-
 import com.iHotel.model.Albergo.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.Utility.Giorno;
-import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 
 /**
@@ -55,21 +52,25 @@ public class UtoString {
 	public String periodoToString(Periodo periodo) {
 		Giorno dataInizio = periodo.get_dataInizio();
 		Giorno dataFine = periodo.get_dataFine();
+		// Mesi
+		int meseInizio = dataInizio.get_mese() + 1;
+		int meseFine = dataFine.get_mese() + 1;
 		// Stringa 
-		String toString="Periodo: "+ "Inizio: " + dataInizio.get_giorno() + "-" + dataInizio.get_mese() + "-" + dataInizio.get_anno() +" "+
-				   					 "Fine: " + dataFine.get_giorno() + "-" + dataFine.get_mese() + "-" + dataFine.get_anno();
+		String toString="Periodo: "+ "Inizio: " + dataInizio.get_giorno() + "-" + meseInizio + "-" + dataInizio.get_anno() +" "+
+				   					 "Fine: " + dataFine.get_giorno() + "-" + meseFine + "-" + dataFine.get_anno();
 		return toString;
 		
 	}
 	/**
 	 * Metodo per ottenere la stringa relativa ad una data.
-	 * @param date Data in analisi.
+	 * @param giorno Giorno in analisi.
 	 * @return Stringa contenente le informazioni della data.
 	 */
-	public String myDateToString(MyDate date) {
-		int mese = date.get(Calendar.MONTH) + 1;
+	public String giornoToString(Giorno giorno) {
+		// Mese
+		int mese = giorno.get_mese() + 1;
 		// Stringa
-		String toString="Data: " + date.get(Calendar.DATE) + "-" + mese + "-" + date.get(Calendar.YEAR);
+		String toString="Data: " + giorno.get_giorno() + "-" + mese + "-" + giorno.get_anno();
 		return toString;
 	}
 	/**
@@ -81,7 +82,7 @@ public class UtoString {
 		// Chiedo al catalogo il descrittore del servizio
 		DescrizioneServizioInterno descrizioneServizio=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(servizioInterno.get_codice());
 		// Stringa
-		String toString = descrizioneServizio.get_codice() + " " + descrizioneServizio.get_nome() + " " + myDateToString(servizioInterno.get_giorno().toMyDate());
+		String toString = descrizioneServizio.get_codice() + " " + descrizioneServizio.get_nome() + " " + giornoToString(servizioInterno.get_giorno());
 		
 		return toString;
 	}
@@ -92,7 +93,7 @@ public class UtoString {
 	 */
 	public String servizioEsternoInPrenotazioneToString(ServizioEsterno servizioEsterno) {
 		// String
-		String string = servizioEsterno.get_codice() + " " + servizioEsterno.get_descrizione() + " " + myDateToString(servizioEsterno.get_giorno().toMyDate());
+		String string = servizioEsterno.get_codice() + " " + servizioEsterno.get_descrizione() + " " + giornoToString(servizioEsterno.get_giorno());
 		return string;
 	}
 

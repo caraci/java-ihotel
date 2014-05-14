@@ -1,7 +1,6 @@
 package com.iHotel.controller;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
@@ -11,7 +10,6 @@ import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Giorno;
-import com.iHotel.model.Utility.MyDate;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PCamera;
@@ -110,18 +108,17 @@ public class CModificaPrenotazione {
      * @param dataServizio Data per il quale si richiede il servizio interno.
      * @param codiceServizio Codice del servizio da mostrare
      */
-    public void aggiungiServizio(MyDate dataServizio, String codiceServizio){
+    public void aggiungiServizio(Giorno dataServizio, String codiceServizio){
     	// Creo il nuovo oggetto di tipo ServizioInterno
     	ServizioInterno servizioInterno = new ServizioInterno();
     	servizioInterno.set_codice(codiceServizio);
-    	// Creo il giorno del servizio
-    	Giorno giornoServizio = new Giorno(dataServizio.get(Calendar.DATE),dataServizio.get(Calendar.MONTH),dataServizio.get(Calendar.YEAR));
     	// Aggiungo la data al servizio.
-    	servizioInterno.set_giorno(giornoServizio);
+    	servizioInterno.set_giorno(dataServizio);
     	// Ricavo il periodo della prenotazione
     	Periodo periodo = _prenotazione.get_periodo();
     	// Aggiungo il servizio interno alla Camera che si sta gestendo, fornendo periodo e servizio.
     	_camera.aggiungiServizioInPeriodo(servizioInterno, periodo);
+    	
     	// Salvo nel db lo stato camera in seguito all'aggiornamento.
     	PCamera.getInstance().store(_camera.getStatoCameraInPeriodo(periodo));
     }	

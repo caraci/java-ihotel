@@ -8,10 +8,11 @@ import java.awt.event.MouseEvent;
 
 
 
+
 import net.sourceforge.jdatepicker.JDatePanel;
 
 import com.iHotel.controller.CModificaPrenotazione;
-import com.iHotel.model.Utility.MyDate;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
@@ -48,8 +49,7 @@ public class AggiungiServizioListener extends MouseAdapter {
 		int mese 	 = _datePanelServizio.getModel().getMonth();
 		int giorno   = _datePanelServizio.getModel().getDay();
 		// Data Servizio
-		MyDate dataServizio = new MyDate();
-		dataServizio.set(anno, mese, giorno);	
+		Giorno dataServizio = new Giorno(giorno, mese, anno);
 		// Controllo che la data sia inclusa nel periodo della prenotazione
 		if (CModificaPrenotazione.getInstance().get_prenotazione().get_periodo().contieneData(dataServizio)) {
 			// Invoco il metodo al controllore
