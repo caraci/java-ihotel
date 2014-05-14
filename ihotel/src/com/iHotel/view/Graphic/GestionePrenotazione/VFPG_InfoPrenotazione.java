@@ -21,6 +21,7 @@ import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.View;
+import com.iHotel.view.Event.GestionePrenotazione.CheckInPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
 import com.iHotel.view.Utility.UtoString;
@@ -53,6 +54,7 @@ public class VFPG_InfoPrenotazione extends View {
 
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
+	private JButton _btnCheckIn;
 	private ArrayList<JButton> _btnCamere;
 	/**
 	 * Costruttore privato - Pattern Singleton
@@ -76,6 +78,7 @@ public class VFPG_InfoPrenotazione extends View {
 		
 		/*Button*/
 		_btnTerminaModifichePrenotazione = _viewFactory.getButton();
+		_btnCheckIn = _viewFactory.getButton();
 		_btnCamere = new ArrayList<JButton>();
 	}
 	/* -------------------------- Metodi di classe ----------------------------- */
@@ -112,13 +115,20 @@ public class VFPG_InfoPrenotazione extends View {
 	}
 	@Override
 	protected void creaPanelBottom(){
+		/*Setto il testo del bottone checkin*/
+		_btnCheckIn.setText("CheckIn");
+		/*Aggiungo il listener al click*/
+		_btnCheckIn.addMouseListener(new CheckInPrenotazioneListener());
 		/*Setto il testo del bottone*/
 		_btnTerminaModifichePrenotazione.setText("Termina modifiche");
 		/*Aggiungo il listener al click sul pulsante*/
 		_btnTerminaModifichePrenotazione.addMouseListener(new TerminaModifichePrenotazione());
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
-		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
-		// Aggiungo il bottone alla struttura.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();		
+		// Aggiungo i bottoni alla struttura.
+		//Colonna 0, sarebbe la 1
+		Bottoni.put(0, _btnCheckIn);
+		//Colonna 5, sarebbe la 6
 		Bottoni.put(5,_btnTerminaModifichePrenotazione);
 		// Creo la pulsantiera.
 		Integer numeroColonne = 6;
