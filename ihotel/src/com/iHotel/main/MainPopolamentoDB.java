@@ -18,6 +18,7 @@ import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.State.CameraStateLibera;
 import com.iHotel.model.State.CameraStateOccupata;
 import com.iHotel.model.State.CameraState;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
@@ -61,108 +62,65 @@ public class MainPopolamentoDB {
 		//periodi
 
 		// periodo_1 - 1 Gennaio 2014 - 31 Gennaio 2014
-				Periodo periodo_1 = new Periodo();
 				int giornoInizio_1 = 1;
 				int meseInizio_1 = 0;
 				int annoInizio_1 = 2014;
 				int giornoFine_1 = 31;
 				int meseFine_1 = 0;
 				int annoFine_1 = 2014;
-				// Inizio 
-				periodo_1.set_giornoInizio(giornoInizio_1);
-				periodo_1.set_meseInizio(meseInizio_1);
-				periodo_1.set_annoInizio(annoInizio_1);
-				// Fine
-				periodo_1.set_giornoFine(giornoFine_1);
-				periodo_1.set_meseFine(meseFine_1);
-				periodo_1.set_annoFine(annoFine_1);
 				
+				Periodo periodo_1 = new Periodo(new Giorno(giornoInizio_1,meseInizio_1,annoInizio_1),new Giorno(giornoFine_1,meseFine_1,annoFine_1));
 				
-			// periodo_2 - 31 Gennaio 2014 - 28 Febbraio 2014				
-				Periodo periodo_2 = new Periodo();
+			// periodo_2 - 31 Gennaio 2014 - 28 Febbraio 2014	
 				int giornoInizio_2 = 31;
 				int meseInizio_2 = 0;
 				int annoInizio_2 = 2014;
 				int giornoFine_2 = 28;
 				int meseFine_2 = 1;
 				int annoFine_2 = 2014;
-				// Inizio
-				periodo_2.set_giornoInizio(giornoInizio_2);
-				periodo_2.set_meseInizio(meseInizio_2);
-				periodo_2.set_annoInizio(annoInizio_2);
-				// Fine
-				periodo_2.set_giornoFine(giornoFine_2);
-				periodo_2.set_meseFine(meseFine_2);
-				periodo_2.set_annoFine(annoFine_2);
+				
+				Periodo periodo_2 = new Periodo(new Giorno(giornoInizio_2,meseInizio_2,annoInizio_2),new Giorno(giornoFine_2,meseFine_2,annoFine_2));
 				
 				
 			// periodo_3 - 28 Febbraio 2014 - 31 Marzo 2014
-				Periodo periodo_3 = new Periodo();
 				int giornoInizio_3 = 28;
 				int meseInizio_3 = 1;
 				int annoInizio_3 = 2014;
 				int giornoFine_3 = 31;
 				int meseFine_3 = 2;
 				int annoFine_3 = 2014;
-				// Inizio
-				periodo_3.set_giornoInizio(giornoInizio_3);
-				periodo_3.set_meseInizio(meseInizio_3);
-				periodo_3.set_annoInizio(annoInizio_3);
-				// Fine
-				periodo_3.set_giornoFine(giornoFine_3);
-				periodo_3.set_meseFine(meseFine_3);
-				periodo_3.set_annoFine(annoFine_3);
+
+				Periodo periodo_3 = new Periodo(new Giorno(giornoInizio_3,meseInizio_3,annoInizio_3),new Giorno(giornoFine_3,meseFine_3,annoFine_3));
 				
 			// periodo_4 - 31 Gennaio 2014 - 31 Marzo 2014
-				Periodo periodo_4 = new Periodo();
 				int giornoInizio_4 = 31;
 				int meseInizio_4 = 0;
 				int annoInizio_4 = 2014;
 				int giornoFine_4 = 31;
 				int meseFine_4 = 2;
 				int annoFine_4 = 2014;
-				// Inizio
-				periodo_4.set_giornoInizio(giornoInizio_4);
-				periodo_4.set_meseInizio(meseInizio_4);
-				periodo_4.set_annoInizio(annoInizio_4);
-				// Fine
-				periodo_4.set_giornoFine(giornoFine_4);
-				periodo_4.set_meseFine(meseFine_4);
-				periodo_4.set_annoFine(annoFine_4);
+
+				Periodo periodo_4 = new Periodo(new Giorno(giornoInizio_4,meseInizio_4,annoInizio_4),new Giorno(giornoFine_4,meseFine_4,annoFine_4));
 				
 			// periodo_5 - 1 Gennaio 2014 - 31 Marzo 2014
-				Periodo periodo_5 = new Periodo();
 				int giornoInizio_5 = 1;
 				int meseInizio_5 = 0;
 				int annoInizio_5 = 2014;
 				int giornoFine_5 = 31;
 				int meseFine_5 = 2;
 				int annoFine_5 = 2014;
-				// Inizio
-				periodo_5.set_giornoInizio(giornoInizio_5);
-				periodo_5.set_meseInizio(meseInizio_5);
-				periodo_5.set_annoInizio(annoInizio_5);
-				// Fine
-				periodo_5.set_giornoFine(giornoFine_5);
-				periodo_5.set_meseFine(meseFine_5);
-				periodo_5.set_annoFine(annoFine_5);
+
+				Periodo periodo_5 = new Periodo(new Giorno(giornoInizio_5,meseInizio_5,annoInizio_5),new Giorno(giornoFine_5,meseFine_5,annoFine_5));
 				
 			// periodo_6 - 31 Marzo 2014 - 31 Maggio 2015
-				Periodo periodo_6 = new Periodo();
 				int giornoInizio_6 = 31;
 				int meseInizio_6 = 2;
 				int annoInizio_6 = 2014;
 				int giornoFine_6 = 31;
 				int meseFine_6 = 5;
 				int annoFine_6 = 2015;
-				// Inizio
-				periodo_6.set_giornoInizio(giornoInizio_6);
-				periodo_6.set_meseInizio(meseInizio_6);
-				periodo_6.set_annoInizio(annoInizio_6);
-				// Fine
-				periodo_6.set_giornoFine(giornoFine_6);
-				periodo_6.set_meseFine(meseFine_6);
-				periodo_6.set_annoFine(annoFine_6);
+
+				Periodo periodo_6 = new Periodo(new Giorno(giornoInizio_6,meseInizio_6,annoInizio_6),new Giorno(giornoFine_6,meseFine_6,annoFine_6));
 				
 		//fine periodi
 		

@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.model.Utility.MyDate;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
 
 /**
@@ -54,13 +54,11 @@ public class RicercaCamereLibereListener extends MouseAdapter {
 		int giornoFine 	 = _selezionePeriodoTipologie.get_datePanelFine().getModel().getDay();
 		
 		// Data inizio
-		MyDate dataInizio = new MyDate();
-		dataInizio.set(annoInizio, meseInizio, giornoInizio);
+		Giorno dataInizio = new Giorno(giornoInizio,meseInizio,annoInizio);
 		// Data fine
-		MyDate dataFine = new MyDate();
-		dataFine.set(annoFine, meseFine, giornoFine);	
+		Giorno dataFine = new Giorno(giornoFine, meseFine, annoFine);
 		// Controllo che la data di fine sia maggiore della data di inizio 
-		if (dataFine.compareTo(dataInizio)==1) {
+		if (dataFine.toMyDate().compareTo(dataInizio.toMyDate())==1) {
 			// Recupero il controllore e invoco il metodo per cercare le camere libere.
 			CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
 			gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologieSelezionate);

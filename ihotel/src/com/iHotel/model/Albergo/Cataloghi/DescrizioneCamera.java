@@ -57,10 +57,8 @@ public class DescrizioneCamera {
 	 */
 	public Prezzo calcolaPrezzoInPeriodo(Periodo periodo) {
 		// Data di inizio della richiesta.
-		MyDate dataInizio = new MyDate();
-		dataInizio.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
-		MyDate dataFine= new MyDate();
-		dataFine.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
+		MyDate dataInizio = periodo.get_dataInizio().toMyDate();
+		MyDate dataFine= periodo.get_dataFine().toMyDate();
 					
 		// Variabili nelle quali si andranno a memorizzare i totali.
 		double totaleCameraGiorno=0;

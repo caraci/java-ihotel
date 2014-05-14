@@ -15,7 +15,8 @@ public class Giorno {
 	private int _anno;
 
 	/**
-	 * Costruttore della classe Giorno
+	 * Costruttore della classe Giorno.
+	 * 
 	 * @param giorno
 	 * @param mese
 	 * @param anno 
@@ -25,9 +26,14 @@ public class Giorno {
 		set_mese(mese);
 		set_anno(anno);
 	}
+	/**
+	 * 
+	 */
+	public Giorno() {}
 	/* ----------------------------- Metodi di instanza -------------------------- */
 	/**
 	 * Metodo per ottenere un oggetto della classe MyDate dall'instanza della classe Giorno.
+	 * 
 	 * @return
 	 */
 	public MyDate toMyDate() {

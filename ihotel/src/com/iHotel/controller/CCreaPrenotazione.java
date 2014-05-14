@@ -6,7 +6,7 @@ import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.State.CameraContext;
-import com.iHotel.model.Utility.MyDate;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.Access.ViewHandler;
@@ -90,14 +90,14 @@ public class CCreaPrenotazione {
 	 * @param dataFine Data di fine ricerca.
 	 * @param Tipologie Tipologie di camere da ricercare.
 	 */
-	public void cercaCamereLibere(MyDate dataInizio, MyDate dataFine, ArrayList<String> Tipologie) {
+	public void cercaCamereLibere(Giorno dataInizio, Giorno dataFine, ArrayList<String> Tipologie) {
 		
 		/* Setto il periodo ricevuto dall'interfaccia */
 		Periodo periodo = new Periodo();
 		/* Setto la data di inizio */
-		periodo.setDataInizioDaData(dataInizio);
+		periodo.set_dataInizio(dataInizio);
 		/* Setto la data di fine*/
-		periodo.setDataFineDaData(dataFine);
+		periodo.set_dataFine(dataFine);
 		/* Setto il periodo alla prenotazione */
 		_prenotazione.set_periodo(periodo);
 		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.

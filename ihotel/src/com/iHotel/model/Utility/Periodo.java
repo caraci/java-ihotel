@@ -1,6 +1,5 @@
 package com.iHotel.model.Utility;
 
-import java.util.Calendar;
 
 /**
  * Classe addetta alla gestione del periodo.
@@ -10,17 +9,9 @@ import java.util.Calendar;
 public class Periodo {
 
 	/* ----------------------------------------- Attributi e costruttore ------------------------------------- */
-	//private Giorno _dataInizio;
-	//private Giorno _dataFine;
+	private Giorno _dataInizio;
+	private Giorno _dataFine;
 	
-	private int _giornoInizio;
-	private int _meseInizio;
-	private int _annoInizio;
-	
-	private int _giornoFine;
-	private int _meseFine;
-	private int _annoFine;
-
 	public Periodo() {}
 	/**
 	 * Costruttore della classe Periodo.
@@ -28,7 +19,8 @@ public class Periodo {
 	 * @param dataFine Data fine del periodo.
 	 */
 	public Periodo(Giorno dataInizio, Giorno dataFine) {
-		
+		set_dataInizio(dataInizio);
+		set_dataFine(dataFine);
 	}
 	/* --------------------- Metodi di instanza ----------------------------------------- */
 	/**
@@ -41,15 +33,11 @@ public class Periodo {
 	public boolean coincideCon(Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		MyDate dataInizioRichiesta = new MyDate();
-		MyDate dataFineRichiesta = new MyDate();
-		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
+		MyDate dataInizioRichiesta = periodoRichiesta.get_dataInizio().toMyDate();
+		MyDate dataFineRichiesta = periodoRichiesta.get_dataFine().toMyDate();
 		// Periodo dell'instanza
-		MyDate dataInizioPeriodo = new MyDate();
-		MyDate dataFinePeriodo = new MyDate();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
+		MyDate dataFinePeriodo = _dataFine.toMyDate();
 		// Controllo se il periodoRichiesta coincide con il periodo dell'istanza
 		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)==0 && dataFinePeriodo.compareTo(dataFineRichiesta)==0) {
 			esito = true;
@@ -69,15 +57,11 @@ public class Periodo {
 	public boolean contiene(Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		MyDate dataInizioRichiesta = new MyDate();
-		MyDate dataFineRichiesta = new MyDate();
-		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
+		MyDate dataInizioRichiesta = periodoRichiesta.get_dataInizio().toMyDate();
+		MyDate dataFineRichiesta = periodoRichiesta.get_dataFine().toMyDate();
 		// Periodo dell'instanza
-		MyDate dataInizioPeriodo = new MyDate();
-		MyDate dataFinePeriodo = new MyDate();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
+		MyDate dataFinePeriodo = _dataFine.toMyDate();
 		// Controllo se il periodoRichiesta è contenuto in periodo.
 		if(dataInizioPeriodo.compareTo(dataInizioRichiesta)<=0 && dataFinePeriodo.compareTo(dataFineRichiesta)>=0) {
 			esito = true;
@@ -96,10 +80,8 @@ public class Periodo {
 	public boolean contieneData(MyDate dataRichiesta) {
 		boolean esito;
 		// Periodo dell'instanza
-		MyDate dataInizioPeriodo = new MyDate();
-		MyDate dataFinePeriodo = new MyDate();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
+		MyDate dataFinePeriodo = _dataFine.toMyDate();
 		// Controllo se il periodoRichiesta è contenuto in periodo.
 		if(dataInizioPeriodo.compareTo(dataRichiesta)<=0 && dataFinePeriodo.compareTo(dataRichiesta)>=0) {
 			esito = true;
@@ -116,10 +98,8 @@ public class Periodo {
 	public boolean contieneGiorno(Giorno giornoRichiesta) {
 		boolean esito;
 		// Periodo dell'instanza
-		MyDate dataInizioPeriodo = new MyDate();
-		MyDate dataFinePeriodo = new MyDate();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
+		MyDate dataFinePeriodo = _dataFine.toMyDate();
 		// Data da analizzare
 		MyDate dataRichiesta = giornoRichiesta.toMyDate();
 		// Controllo se il periodoRichiesta è contenuto in periodo.
@@ -139,15 +119,11 @@ public class Periodo {
 	public boolean sovrappone (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		MyDate dataInizioRichiesta = new MyDate();
-		MyDate dataFineRichiesta = new MyDate();
-		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
+		MyDate dataInizioRichiesta = periodoRichiesta.get_dataInizio().toMyDate();
+		MyDate dataFineRichiesta = periodoRichiesta.get_dataFine().toMyDate();
 		// Periodo dell'instanza
-		MyDate dataInizioPeriodo = new MyDate();
-		MyDate dataFinePeriodo = new MyDate();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
+		MyDate dataFinePeriodo = _dataFine.toMyDate();
 		// Controllo se periodoRichiesta si sovrapponde con periodo.
 		if(dataInizioPeriodo.compareTo(dataFineRichiesta)<=0 && dataFinePeriodo.compareTo(dataInizioRichiesta) >=0) {
 			esito = true;
@@ -165,11 +141,9 @@ public class Periodo {
 	public boolean segue (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		MyDate dataFineRichiesta = new MyDate();
-		dataFineRichiesta.set(periodoRichiesta.get_annoFine(), periodoRichiesta.get_meseFine(), periodoRichiesta.get_giornoFine());
+		MyDate dataFineRichiesta = periodoRichiesta.get_dataFine().toMyDate();
 		// Periodo dell'instanza
-		MyDate dataInizioPeriodo = new MyDate();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
 		// Controllo se il periodo della instanza segue quello della richiesta.
 		if (dataInizioPeriodo.compareTo(dataFineRichiesta)==0) {
 			esito = true;
@@ -187,11 +161,9 @@ public class Periodo {
 	public boolean anticipa (Periodo periodoRichiesta) {
 		boolean esito;
 		// Periodo richiesta
-		MyDate dataInizioRichiesta = new MyDate();
-		dataInizioRichiesta.set(periodoRichiesta.get_annoInizio(), periodoRichiesta.get_meseInizio(), periodoRichiesta.get_giornoInizio());
+		MyDate dataInizioRichiesta = periodoRichiesta.get_dataInizio().toMyDate();
 		// Periodo dell'instanza
-		MyDate dataFinePeriodo = new MyDate();
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		MyDate dataFinePeriodo = _dataFine.toMyDate();
 		// Controllo se il periodo della instanza segue quello della richiesta.
 		if (dataInizioRichiesta.compareTo(dataFinePeriodo)==0) {
 			esito = true;
@@ -225,9 +197,7 @@ public class Periodo {
 	 * @param periodo
 	 */
 	public void setDataInizioPeriodoDaDataInizioPeriodo(Periodo periodo){
-		this.set_giornoInizio(periodo.get_giornoInizio());
-		this.set_meseInizio(periodo.get_meseInizio());
-		this.set_annoInizio(periodo.get_annoInizio());
+		_dataInizio=periodo.get_dataInizio();
 	}
 	/**
 	 * Metodo che setta la data di inizio dell'istanza su cui è invocato, alla data di fine del periodo
@@ -237,9 +207,7 @@ public class Periodo {
 	 * @param periodo
 	 */
 	public void setDataInizioPeriodoDaDataFinePeriodo(Periodo periodo){
-		this.set_giornoInizio(periodo.get_giornoFine());
-		this.set_meseInizio(periodo.get_meseFine());
-		this.set_annoInizio(periodo.get_annoFine());
+		_dataInizio=periodo.get_dataFine();
 	}
 	/**
 	 * Metodo che setta la data di fine del periodo dell'istanza su cui è invocato, alla fine del periodo
@@ -248,9 +216,7 @@ public class Periodo {
 	 * @param periodo
 	 */
 	public void setDataFinePeriodoDaDataFinePeriodo(Periodo periodo){
-		this.set_giornoFine(periodo.get_giornoFine());
-		this.set_meseFine(periodo.get_meseFine());
-		this.set_annoFine(periodo.get_annoFine());
+		_dataFine=periodo.get_dataFine();
 		
 	}	
 	/**
@@ -261,9 +227,7 @@ public class Periodo {
 	 * @param periodo
 	 */
 	public void setDataFinePeriodoDaDataInizioPeriodo(Periodo periodo){
-		this.set_giornoFine(periodo.get_giornoInizio());
-		this.set_meseFine(periodo.get_meseInizio());
-		this.set_annoFine(periodo.get_annoInizio());
+		_dataFine=periodo.get_dataInizio();
 	}
 	/**
 	 * Metodo che confronta il giorno di inizio dell'istanza su cui è invocato, con quello del periodo passato
@@ -275,11 +239,9 @@ public class Periodo {
 	public boolean IniziaStessoGiornoInizioDi(Periodo periodo){
 		boolean esito;	
 		// Periodo richiesta
-		MyDate dataInizioRichiesta = new MyDate();
-		dataInizioRichiesta.set(periodo.get_annoInizio(), periodo.get_meseInizio(), periodo.get_giornoInizio());
+		MyDate dataInizioRichiesta = periodo.get_dataInizio().toMyDate();
 		// Periodo dell'instanza
-		MyDate dataInizioPeriodo = new MyDate();
-		dataInizioPeriodo.set(_annoInizio, _meseInizio, _giornoInizio);
+		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
 		// Controllo
 		if (dataInizioRichiesta.compareTo(dataInizioPeriodo)==0) {
 			esito=true;			
@@ -297,11 +259,9 @@ public class Periodo {
 	public boolean FinisceStessoGiornoFineDi(Periodo periodo){
 		boolean esito;	
 		// Periodo richiesta
-		MyDate dataFineRichiesta = new MyDate();
-		dataFineRichiesta.set(periodo.get_annoFine(), periodo.get_meseFine(), periodo.get_giornoFine());
+		MyDate dataFineRichiesta = periodo.get_dataFine().toMyDate();
 		// Periodo dell'instanza
-		MyDate dataFinePeriodo = new MyDate();
-		dataFinePeriodo.set(_annoFine, _meseFine, _giornoFine);
+		MyDate dataFinePeriodo = _dataFine.toMyDate();
 		// Controllo
 		if (dataFineRichiesta.compareTo(dataFinePeriodo)==0) {
 			esito=true;
@@ -316,9 +276,7 @@ public class Periodo {
 	 * @param data Data attraverso la quale si setta l'inizio del periodo.
 	 */
 	public void setDataInizioDaData (MyDate data) {
-		this.set_giornoInizio(data.get(Calendar.DATE));
-		this.set_meseInizio(data.get(Calendar.MONTH));
-		this.set_annoInizio(data.get(Calendar.YEAR));
+		set_dataInizio(data.toGiorno());
 	}
 	/**
 	 * Metodo per settare la data di fine del periodo da una data.
@@ -326,92 +284,32 @@ public class Periodo {
 	 * @param data Data attraverso la quale si setta la fine del periodo.
 	 */
 	public void setDataFineDaData(MyDate data) {
-		this.set_giornoFine(data.get(Calendar.DATE));
-		this.set_meseFine(data.get(Calendar.MONTH));
-		this.set_annoFine(data.get(Calendar.YEAR));
-	}
-	/**
-	 * Metodo per fornire la data relativa al giorno di inizio del periodo.
-	 * 
-	 * @return Data del giorno di inizio del periodo.
-	 */
-	public MyDate getDataInizio() {
-		MyDate dataInizio = new MyDate();
-		dataInizio.set(get_annoInizio(), get_meseInizio(), get_giornoInizio());
-		return dataInizio;
+		set_dataFine(data.toGiorno());
 	}
 	
-	/* ------------------------- Getter, Setter ------------------------------------- */
+	/* ------------------------ Getter, Setter ----------------------------- */
 	/**
-	 * @return _annoFine
+	 * @return the _dataInizio
 	 */
-	public int get_annoFine() {
-		return _annoFine;
+	public Giorno get_dataInizio() {
+		return _dataInizio;
 	}
 	/**
-	 * @param _annoFine 
+	 * @param _dataInizio the _dataInizio to set
 	 */
-	public void set_annoFine(int _annoFine) {
-		this._annoFine = _annoFine;
+	public void set_dataInizio(Giorno _dataInizio) {
+		this._dataInizio = _dataInizio;
 	}
 	/**
-	 * @return _meseFine
+	 * @return the _dataFine
 	 */
-	public int get_meseFine() {
-		return _meseFine;
+	public Giorno get_dataFine() {
+		return _dataFine;
 	}
 	/**
-	 * @param _meseFine 
+	 * @param _dataFine the _dataFine to set
 	 */
-	public void set_meseFine(int _meseFine) {
-		this._meseFine = _meseFine;
-	}
-	/**
-	 * @return _giornoFine
-	 */
-	public int get_giornoFine() {
-		return _giornoFine;
-	}
-	/**
-	 * @param _giornoFine
-	 */
-	public void set_giornoFine(int _giornoFine) {
-		this._giornoFine = _giornoFine;
-	}
-	/**
-	 * @return _annoInizio
-	 */
-	public int get_annoInizio() {
-		return _annoInizio;
-	}
-	/**
-	 * @param _annoInizio
-	 */
-	public void set_annoInizio(int _annoInizio) {
-		this._annoInizio = _annoInizio;
-	}
-	/**
-	 * @return _meseInizio
-	 */
-	public int get_meseInizio() {
-		return _meseInizio;
-	}
-	/**
-	 * @param _meseInizio
-	 */
-	public void set_meseInizio(int _meseInizio) {
-		this._meseInizio = _meseInizio;
-	}
-	/**
-	 * @return _giornoInizio
-	 */
-	public int get_giornoInizio() {
-		return _giornoInizio;
-	}
-	/**
-	 * @param _giornoInizio
-	 */
-	public void set_giornoInizio(int _giornoInizio) {
-		this._giornoInizio = _giornoInizio;
+	public void set_dataFine(Giorno _dataFine) {
+		this._dataFine = _dataFine;
 	}
 }
