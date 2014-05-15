@@ -12,6 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 
@@ -54,7 +55,13 @@ public class LightStyleFactory implements StyleAbstractFactory {
 		panel.setBackground(new Color(255, 255, 255));
 		return panel;
 	}
-
+	
+	@Override
+	public JTabbedPane getTabbedPane() {
+		JTabbedPane tabbedPane = new JTabbedPane();
+		return tabbedPane;
+	}
+	
 	@Override
 	public JScrollPane getScrollPane() {
 		JScrollPane scrollPane = new JScrollPane();
@@ -123,9 +130,4 @@ public class LightStyleFactory implements StyleAbstractFactory {
 		panel.setBackground(new Color(255, 255, 255));
 		return panel;
 	}
-	
-	
-	
-	
-
 }

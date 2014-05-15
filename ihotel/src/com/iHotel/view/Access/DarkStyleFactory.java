@@ -9,6 +9,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 /**
@@ -47,6 +48,12 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(200, 200, 200));
 		return panel;
+	}
+	
+	@Override
+	public JTabbedPane getTabbedPane() {
+		JTabbedPane tabbedPane = new JTabbedPane();
+		return tabbedPane;
 	}
 	
 	@Override

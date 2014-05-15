@@ -8,6 +8,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 /**
@@ -36,6 +37,11 @@ public interface StyleAbstractFactory {
 	 * @return JScrollPane generico.
 	 */
 	public JScrollPane getScrollPane();
+	/**
+	 * Metodo per ottenere un generico JTabbedPane
+	 * @return JTabbedPane generico.
+	 */
+	public JTabbedPane getTabbedPane();
 	/**
 	 * Metodo per ottenere una label normale.
 	 * @return Label normale.

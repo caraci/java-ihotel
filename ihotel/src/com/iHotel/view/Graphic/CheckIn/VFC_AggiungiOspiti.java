@@ -3,14 +3,28 @@
  */
 package com.iHotel.view.Graphic.CheckIn;
 
-import java.util.HashMap;
 
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
+import com.iHotel.model.State.CameraContext;
 import com.iHotel.utility.UStartup;
 import com.iHotel.view.View;
+import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
+import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
 
 /**
  * @author Eugenio
@@ -24,12 +38,15 @@ public class VFC_AggiungiOspiti extends View {
 	private PrenotazioneSubject _prenotazione;
 	
 	private JTabbedPane _panelMiddleTabbed;
-
+	private JButton _btnTerminaCheckin, _btnTornaPrenotazione;
 	/**
 	 * 
 	 */
 	public VFC_AggiungiOspiti() {
-		// TODO Auto-generated constructor stub
+		_panelMiddleTabbed=_viewFactory.getTabbedPane();
+		// Bottoni
+		_btnTerminaCheckin=_viewFactory.getButtonAvanti();
+		_btnTornaPrenotazione=_viewFactory.getButton();
 	}
 
 	/* (non-Javadoc)
@@ -55,8 +72,83 @@ public class VFC_AggiungiOspiti extends View {
 	 */
 	@Override
 	protected void creaPanelMiddle() {
-		// TODO Auto-generated method stub
+		// Setto il layout al panelMiddle
+    	_panelMiddle.setLayout(new BoxLayout(_panelMiddle, BoxLayout.PAGE_AXIS));
+    	// Creo il tabbedPane
+    	ArrayList<CameraContext> camerePrenotazione = _prenotazione.get_camerePrenotate();
+    	// Ciclo sulle camere per aggiungere i tab.
+    	for (Iterator<CameraContext> iterator = camerePrenotazione.iterator(); iterator.hasNext();) {
+			CameraContext camera = (CameraContext) iterator.next();
+			// Creo panel per tab
+			JPanel panelCamera = creaPanelCamera();
+			// Aggiungo tab al tabbedPane
+			_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), panelCamera);
+			// Aggiungo il tabbedPane al panelMiddle
+			_panelMiddle.add(_panelMiddleTabbed);
+		}
 
+	}
+	/**
+	 * Metodo per creare un pannello relativo ad una camera. In particolare si costituisce
+	 * di una parte per l'inserimento dei dati degli ospiti della camera, e di una parte
+	 * per visualizzare la lista degli ospiti della camera.
+	 * @return
+	 */
+	private JPanel creaPanelCamera() {
+		JPanel panelCamera = _viewFactory.getPanel();
+		// Setto il layout 1 riga - 2 colonne - 5px tra righe - 0px tra colonne
+		panelCamera.setLayout(new GridLayout(1, 2, 5, 0));
+		// Panel inserimento dati
+		panelCamera.add(creaPanelCameraDatiOspite());
+		// Panel lista ospiti
+		panelCamera.add(creaPanelCameraListaOspiti());
+		return panelCamera;
+	}
+	/**
+	 * Metodo per ottenere un pannello per inserire i dati dell'ospite.
+	 * @return
+	 */
+	private JScrollPane creaPanelCameraDatiOspite() {
+		JScrollPane scrollPaneCameraDatiOspite = _viewFactory.getScrollPane();
+		// Creo il panel.
+		JPanel panelCameraDatiOspite = _viewFactory.getPanel();
+		// Setto layout panel.
+		panelCameraDatiOspite.setLayout(new BoxLayout(panelCameraDatiOspite, BoxLayout.PAGE_AXIS));
+		// Dati ospite
+			// Nome
+			JLabel lblNome = _viewFactory.getLabelIntestazione_2();
+			lblNome.setText("Nome:");
+			JTextField txtNome = _viewFactory.getTextField();
+			// Cognome
+			JLabel lblCognome = _viewFactory.getLabelIntestazione_2();
+			lblCognome.setText("Cognome:");
+			JTextField txtCognome = _viewFactory.getTextField();
+		
+			
+		// Aggiungo campi al panel
+			// Nome
+			panelCameraDatiOspite.add(lblNome);
+			panelCameraDatiOspite.add(Box.createVerticalGlue());
+			panelCameraDatiOspite.add(txtNome);
+			// Cognome
+			panelCameraDatiOspite.add(lblCognome);
+			panelCameraDatiOspite.add(Box.createVerticalGlue());
+			panelCameraDatiOspite.add(txtCognome);
+		
+		// Aggiungo il JPanel con i dati dell'ospite allo JScrollPane
+		scrollPaneCameraDatiOspite.setViewportView(panelCameraDatiOspite);
+		
+		return scrollPaneCameraDatiOspite;
+	}
+	/**
+	 * Metodo per ottenere il pannello contenente la lista degli ospiti della camera per
+	 * una specifica prenotazione.
+	 * @return
+	 */
+	private JPanel creaPanelCameraListaOspiti() {
+		JPanel panelCameraListaOspiti = _viewFactory.getPanel();
+		
+		return panelCameraListaOspiti;
 	}
 
 	/* (non-Javadoc)
@@ -64,8 +156,24 @@ public class VFC_AggiungiOspiti extends View {
 	 */
 	@Override
 	protected void creaPanelBottom() {
-		// TODO Auto-generated method stub
-
+		// Button completa prenotazione.
+		_btnTerminaCheckin.setText("Termina CheckIn");
+		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
+		_btnTerminaCheckin.addMouseListener(new TerminaCheckInListener());
+		
+		// Button torna alla prenotazione.
+		_btnTornaPrenotazione.setText("Torna Prenotazione");
+		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
+		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneDaCheckInListener());
+		
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(0, _btnTornaPrenotazione);
+		Bottoni.put(5,_btnTerminaCheckin);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 6;
+		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
 	}
 	
 	/**
