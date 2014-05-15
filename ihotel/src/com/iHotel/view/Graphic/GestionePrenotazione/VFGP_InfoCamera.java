@@ -17,7 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.iHotel.model.Albergo.Ospite;
+import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;

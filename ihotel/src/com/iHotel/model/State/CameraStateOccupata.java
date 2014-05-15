@@ -2,7 +2,7 @@ package com.iHotel.model.State;
 
 import java.util.*;
 
-import com.iHotel.model.Albergo.Ospite;
+import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;

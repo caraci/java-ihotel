@@ -6,6 +6,7 @@ import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
+import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
