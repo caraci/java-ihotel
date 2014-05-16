@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.iHotel.model.Persona.Ospite;
+import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
@@ -145,7 +145,7 @@ public class VFPG_InfoPrenotazione extends View {
 		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante, BoxLayout.PAGE_AXIS));
 				
 		/*Recupero il prenotante della prenotazione */
-		Ospite prenotante = _prenotazione.getPrenotante();
+		ClientePrenotante prenotante = _prenotazione.getPrenotante();
 		
 		/*Setto il testo dell'intestazione*/
 		_lblTitoloPrenotante.setText("Titolare della prenotazione: ");

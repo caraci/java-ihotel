@@ -6,7 +6,7 @@ import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
-import com.iHotel.model.Persona.Ospite;
+import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -36,7 +36,7 @@ public class PrenotazioneSubject implements ISubject {
 	 */
 	private Periodo _periodo;
 	private boolean _completata;
-	private Ospite _prenotante;
+	private ClientePrenotante _prenotante;
 	private Prezzo _total;
 	private String _codice;
 	/**
@@ -126,10 +126,10 @@ public class PrenotazioneSubject implements ISubject {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void addPrenotante(String nome, String cognome, String eMail, String telefono) {
-		_prenotante = new Ospite();
+		_prenotante = new ClientePrenotante();
 		_prenotante.set_nome(nome);		
 		_prenotante.set_cognome(cognome);
-		_prenotante.set_eMail(eMail);
+		_prenotante.set_email(eMail);
 		_prenotante.set_telefono(telefono);
 	}
 	/**
@@ -137,7 +137,7 @@ public class PrenotazioneSubject implements ISubject {
 	 * 
 	 * @return prenotante Ospite titolare dlela prenotazione.
 	 */
-	public Ospite getPrenotante(){
+	public ClientePrenotante getPrenotante(){
 		return this._prenotante;
 	}
 	/**
