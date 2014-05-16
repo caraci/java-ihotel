@@ -3,7 +3,7 @@
  */
 package com.iHotel.model.Pagamento;
 
-import com.iHotel.model.Persona.CartaDiCredito;
+import com.iHotel.model.Persona.Documenti.CartaDiCredito;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Prezzo;
 

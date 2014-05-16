@@ -1,8 +1,9 @@
 /**
  * 
  */
-package com.iHotel.model.Persona;
+package com.iHotel.model.Persona.Documenti;
 
+import com.iHotel.model.Persona.Residenza;
 import com.iHotel.model.Utility.Giorno;
 
 /**

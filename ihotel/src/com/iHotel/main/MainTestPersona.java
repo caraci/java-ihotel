@@ -1,9 +1,9 @@
 package com.iHotel.main;
 
-import com.iHotel.model.Persona.CartaIdentita;
 import com.iHotel.model.Persona.Indirizzo;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Persona.Residenza;
+import com.iHotel.model.Persona.Documenti.CartaIdentita;
 import com.iHotel.model.Utility.Giorno;
 
 public class MainTestPersona {

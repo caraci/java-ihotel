@@ -1,7 +1,9 @@
 /**
  * 
  */
-package com.iHotel.model.Persona;
+package com.iHotel.model.Persona.Documenti;
+
+import com.iHotel.model.Persona.Persona;
 
 /**
  * Classe che modella una carta di credito

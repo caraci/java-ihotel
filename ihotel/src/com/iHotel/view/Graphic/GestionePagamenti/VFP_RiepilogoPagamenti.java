@@ -23,7 +23,7 @@ public class VFP_RiepilogoPagamenti extends View{
 	private JPanel _contanti, _bonifico, _cartaDiCredito;
 	
 	/*JLabel*/
-	private JLabel _titoloContanti,_titoloBonifico,_titoloCarta;
+	private JLabel _titoloContanti, _titoloBonifico, _titoloCarta;
  
 	@Override
 	public void removeInstance() {

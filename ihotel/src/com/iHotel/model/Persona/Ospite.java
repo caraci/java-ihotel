@@ -1,5 +1,7 @@
 package com.iHotel.model.Persona;
 
+import com.iHotel.model.Persona.Documenti.Documento;
+
 
 
 /**
