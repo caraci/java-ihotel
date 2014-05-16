@@ -4,6 +4,8 @@
 package com.iHotel.view.Graphic.CheckIn;
 
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +14,8 @@ import java.util.Iterator;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,9 +24,12 @@ import javax.swing.JTextField;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
+import com.iHotel.model.Persona.Documento;
+import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.utility.UStartup;
 import com.iHotel.view.View;
+import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
 import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
 import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
 
@@ -39,6 +46,7 @@ public class VFC_AggiungiOspiti extends View {
 	
 	private JTabbedPane _panelMiddleTabbed;
 	private JButton _btnTerminaCheckin, _btnTornaPrenotazione;
+	private JLabel _lblTitolo;
 	/**
 	 * 
 	 */
@@ -47,6 +55,8 @@ public class VFC_AggiungiOspiti extends View {
 		// Bottoni
 		_btnTerminaCheckin=_viewFactory.getButtonAvanti();
 		_btnTornaPrenotazione=_viewFactory.getButton();
+		// Label
+		_lblTitolo=_viewFactory.getLabelIntestazione_1();
 	}
 
 	/* (non-Javadoc)
@@ -63,8 +73,12 @@ public class VFC_AggiungiOspiti extends View {
 	 */
 	@Override
 	protected void creaPanelTop() {
-		// TODO Auto-generated method stub
-
+		// Layout PanelTop
+    	_panelTop.setLayout(new BorderLayout(0, 0));
+		/*Testo della label*/
+		_lblTitolo.setText("Inserisci gli ospiti nelle camere.");
+		/*Aggiungo la label al centro*/
+		_panelTop.add(_lblTitolo, BorderLayout.CENTER);
 	}
 
 	/* (non-Javadoc)
@@ -80,7 +94,7 @@ public class VFC_AggiungiOspiti extends View {
     	for (Iterator<CameraContext> iterator = camerePrenotazione.iterator(); iterator.hasNext();) {
 			CameraContext camera = (CameraContext) iterator.next();
 			// Creo panel per tab
-			JPanel panelCamera = creaPanelCamera();
+			JPanel panelCamera = creaPanelCamera(camera);
 			// Aggiungo tab al tabbedPane
 			_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), panelCamera);
 			// Aggiungo il tabbedPane al panelMiddle
@@ -92,28 +106,36 @@ public class VFC_AggiungiOspiti extends View {
 	 * Metodo per creare un pannello relativo ad una camera. In particolare si costituisce
 	 * di una parte per l'inserimento dei dati degli ospiti della camera, e di una parte
 	 * per visualizzare la lista degli ospiti della camera.
+	 * 
+	 * @param camera
 	 * @return
 	 */
-	private JPanel creaPanelCamera() {
+	private JPanel creaPanelCamera(CameraContext camera) {
 		JPanel panelCamera = _viewFactory.getPanel();
 		// Setto il layout 1 riga - 2 colonne - 5px tra righe - 0px tra colonne
 		panelCamera.setLayout(new GridLayout(1, 2, 5, 0));
 		// Panel inserimento dati
-		panelCamera.add(creaPanelCameraDatiOspite());
+		panelCamera.add(creaPanelMiddleLeft(camera));
 		// Panel lista ospiti
-		panelCamera.add(creaPanelCameraListaOspiti());
+		panelCamera.add(creaPanelMiddleRight(camera));
 		return panelCamera;
 	}
 	/**
-	 * Metodo per ottenere un pannello per inserire i dati dell'ospite.
+	 * Metodo per creare la parte centrale sinistra della pagina.
 	 * @return
 	 */
-	private JScrollPane creaPanelCameraDatiOspite() {
+	private JScrollPane creaPanelMiddleLeft(CameraContext camera) {
 		JScrollPane scrollPaneCameraDatiOspite = _viewFactory.getScrollPane();
 		// Creo il panel.
 		JPanel panelCameraDatiOspite = _viewFactory.getPanel();
 		// Setto layout panel.
 		panelCameraDatiOspite.setLayout(new BoxLayout(panelCameraDatiOspite, BoxLayout.PAGE_AXIS));
+		// Intestazione del pannello
+		JLabel lblIntestazione = _viewFactory.getLabelIntestazione_2();
+		lblIntestazione.setText("Ospiti camera: " + camera.get_numero());
+		// Aggiungo intestazione e spaziatura al pannello
+		panelCameraDatiOspite.add(lblIntestazione);
+		panelCameraDatiOspite.add(Box.createVerticalStrut(15));
 		// Dati ospite
 			// Nome
 			JLabel lblNome = _viewFactory.getLabelIntestazione_2();
@@ -123,7 +145,28 @@ public class VFC_AggiungiOspiti extends View {
 			JLabel lblCognome = _viewFactory.getLabelIntestazione_2();
 			lblCognome.setText("Cognome:");
 			JTextField txtCognome = _viewFactory.getTextField();
+			// JComboBox - Scelta tipo documento
+			JCheckBox comboBoxTipoDocumento = _viewFactory.getCheckBox();
+			
+			// Pannello in cui inserire le informazioni sul documento
+			JPanel pnlTipoDocumento = _viewFactory.getPanel();
+			// Setto il layout al pannello per le informazioni sul documento.
+			pnlTipoDocumento.setLayout(new CardLayout());
 		
+		// Creo pannello in cui inserire il bottone avanti
+			JPanel pnlBtnAggiungiOspite = _viewFactory.getPanel();		
+			// Bottone per aggiungere ospite
+			JButton btnAggiungiOspite = _viewFactory.getButtonAvanti();
+			btnAggiungiOspite.setText("Aggiungi ospite");
+			// Aggiungo l'eventListener al btnAggiungiOspite
+			btnAggiungiOspite.addActionListener(new AggiungiOspiteAllaPrenotazioneListener());
+			// Struttura dati dove si salvano i bottoni con la relativa posizione.
+			HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+			// Aggiungo il bottone alla struttura.
+			Bottoni.put(1, btnAggiungiOspite);
+			// Creo la pulsantiera.
+			Integer numeroColonne = 2;
+			creaPanelPulsanti(pnlBtnAggiungiOspite, numeroColonne, Bottoni);
 			
 		// Aggiungo campi al panel
 			// Nome
@@ -134,6 +177,14 @@ public class VFC_AggiungiOspiti extends View {
 			panelCameraDatiOspite.add(lblCognome);
 			panelCameraDatiOspite.add(Box.createVerticalGlue());
 			panelCameraDatiOspite.add(txtCognome);
+			// ComboBox Scelta tipo documento
+			
+			
+			// pnlBottone
+			panelCameraDatiOspite.add(Box.createVerticalStrut(15));
+			panelCameraDatiOspite.add(pnlBtnAggiungiOspite);
+	
+		
 		
 		// Aggiungo il JPanel con i dati dell'ospite allo JScrollPane
 		scrollPaneCameraDatiOspite.setViewportView(panelCameraDatiOspite);
@@ -141,14 +192,80 @@ public class VFC_AggiungiOspiti extends View {
 		return scrollPaneCameraDatiOspite;
 	}
 	/**
-	 * Metodo per ottenere il pannello contenente la lista degli ospiti della camera per
-	 * una specifica prenotazione.
+	 * Metodo per creare il pannello corretto in base al tipo di documento.
 	 * @return
 	 */
-	private JPanel creaPanelCameraListaOspiti() {
-		JPanel panelCameraListaOspiti = _viewFactory.getPanel();
+	private JPanel creaPanelDocumento(Documento documento) {
+		// Recupero l'effettivo documento concreto
+		Class<? extends Documento> documentoConcreto = documento.getClass();
+		String tipoDocumento = documentoConcreto.getName();
 		
-		return panelCameraListaOspiti;
+		switch (tipoDocumento) {
+		case "CartaIdentita":
+			
+			break;
+		case "Passaporto":
+			break;
+		case "Patente":
+			
+			break;
+		default:
+			break;
+		}
+		
+		JPanel pnlDocumento = _viewFactory.getPanel();
+		
+		return pnlDocumento;
+	}
+	/**
+	 * Metodo per creare la parte centrale destra della pagina.
+	 * 
+	 * @param camera
+	 * @return
+	 */
+	private JScrollPane creaPanelMiddleRight(CameraContext camera) {
+		// panelContenitore a cui applico il card Layout
+		JPanel panelListaConenitore = _viewFactory.getPanel();
+		// Setto il layout al panelContenitore
+		panelListaConenitore.setLayout(new CardLayout());
+		// ScrollPane nel quale inserisco il panel per la lista.
+		JScrollPane scrollPaneCameraListaOspiti = _viewFactory.getScrollPane();		
+		// Aggiungo il JPanel con la lista degli ospiti allo JScrollPane
+		scrollPaneCameraListaOspiti.setViewportView(creaPanelListaOspiti(camera));
+		// Aggiuno lo scrollPane al panelContenitore
+		panelListaConenitore.add(scrollPaneCameraListaOspiti);
+		return scrollPaneCameraListaOspiti;
+	}
+	/**
+	 * Metodo per creare il pannello dove si mostrano gli ospiti della camera.
+	 * 
+	 * @param camera
+	 * @return
+	 */
+	private JPanel creaPanelListaOspiti(CameraContext camera) {
+		JPanel panelListaOspiti = _viewFactory.getPanel();
+		// Setto il layout al panelListaOspiti
+		panelListaOspiti.setLayout(new BoxLayout(panelListaOspiti, BoxLayout.PAGE_AXIS));
+		// Intestazione del pannello
+		JLabel lblIntestazione = _viewFactory.getLabelIntestazione_2();
+		lblIntestazione.setText("Ospiti camera: " + camera.get_numero());
+		// Aggiungo intestazione e spaziatura al pannello
+		panelListaOspiti.add(lblIntestazione);
+		panelListaOspiti.add(Box.createVerticalStrut(15));
+		// Lista degli ospiti della camera per la prenotazione.
+		ArrayList<Ospite> ospitiCamera = camera.getOspitiInPeriodo(_prenotazione.get_periodo());
+		// Ciclo sugli ospiti della camera.
+		for (Iterator<Ospite> iterator = ospitiCamera.iterator(); iterator.hasNext();) {
+			Ospite ospite = (Ospite) iterator.next();
+			// Nome Cognome
+			JLabel lblNomeCognome = _viewFactory.getLabel();
+			lblNomeCognome.setText(ospite.get_nome() + " " + ospite.get_cognome());
+			// Aggiungo elementi al panel
+			panelListaOspiti.add(lblNomeCognome);
+			// Aggiungo spaziatura
+			panelListaOspiti.add(Box.createVerticalGlue());
+		}
+		return panelListaOspiti;
 	}
 
 	/* (non-Javadoc)
