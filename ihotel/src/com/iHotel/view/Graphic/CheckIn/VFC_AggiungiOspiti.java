@@ -130,18 +130,13 @@ public class VFC_AggiungiOspiti extends View {
 		panelCameraDatiOspite.setLayout(new BoxLayout(panelCameraDatiOspite, BoxLayout.PAGE_AXIS));
 		// Intestazione del pannello
 		JLabel lblIntestazione = _viewFactory.getLabelIntestazione_2();
-		lblIntestazione.setText("Ospiti camera: " + camera.get_numero());
-		// Aggiungo intestazione e spaziatura al pannello
-		panelCameraDatiOspite.add(lblIntestazione);
-		panelCameraDatiOspite.add(Box.createVerticalStrut(15));
+		lblIntestazione.setText("Aggiungi ospite:");
 		
 		// ComboBox Scelta tipo documento
 		JComboBox<String> comboBoxTipologieDocumenti = new JComboBox<String>();
-		// Aggiungo tipologie di documenti alla comboBox
+			// TODO - Aggiungo tipologie di documenti alla comboBox
 		comboBoxTipologieDocumenti.addItem("Carta d'identità");
 		comboBoxTipologieDocumenti.addItem("Patente");
-		// Assegno il gestore dell'evento alla JComboBox
-		comboBoxTipologieDocumenti.addItemListener(new InserisciDocumentoListener());
 			
 		// Pannello in cui inserire le informazioni sul documento
 		JPanel pnlTipoDocumento = _viewFactory.getPanel(false);
@@ -150,31 +145,25 @@ public class VFC_AggiungiOspiti extends View {
 		// Aggiungo il pannello al pnlTipoDocumento
 		pnlTipoDocumento.add(creaPanelDocumento(comboBoxTipologieDocumenti.getItemAt(0)));
 		
-		// Creo pannello in cui inserire il bottone avanti
-		JPanel pnlBtnAggiungiOspite = _viewFactory.getPanel(false);		
-		// Bottone per aggiungere ospite
-		JButton btnAggiungiOspite = _viewFactory.getButtonAvanti();
-		btnAggiungiOspite.setText("Aggiungi ospite");
-		// Aggiungo l'eventListener al btnAggiungiOspite
-		btnAggiungiOspite.addActionListener(new AggiungiOspiteAllaPrenotazioneListener());
-		// Struttura dati dove si salvano i bottoni con la relativa posizione.
-		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
-		// Aggiungo il bottone alla struttura.
-		Bottoni.put(1, btnAggiungiOspite);
-		// Creo la pulsantiera.
-		Integer numeroColonne = 2;
-		creaPanelPulsanti(pnlBtnAggiungiOspite, numeroColonne, Bottoni);
+		// Assegno il gestore dell'evento alla JComboBox per visualizzare il tipo di documento corretto.
+		comboBoxTipologieDocumenti.addItemListener(new InserisciDocumentoListener(pnlTipoDocumento));
 			
 		// Aggiungo campi al panel
+		// Aggiungo intestazione e spaziatura al pannello
+		panelCameraDatiOspite.add(lblIntestazione);
+		panelCameraDatiOspite.add(Box.createVerticalStrut(15));
 		// Pannello info generali ospite
 		panelCameraDatiOspite.add(creaPanelInformazioniOspiteGenerale());
+		panelCameraDatiOspite.add(Box.createVerticalGlue());
 		// ComboBox
 		panelCameraDatiOspite.add(comboBoxTipologieDocumenti);
+		panelCameraDatiOspite.add(Box.createVerticalGlue());
 		// pnlTipoDocumento
 		panelCameraDatiOspite.add(pnlTipoDocumento);
+		panelCameraDatiOspite.add(Box.createVerticalGlue());
 		// pnlBottone
 		panelCameraDatiOspite.add(Box.createVerticalStrut(15));
-		panelCameraDatiOspite.add(pnlBtnAggiungiOspite);
+		panelCameraDatiOspite.add(creaPanelBottoneInserisciOspite());
 	
 		// Aggiungo il JPanel con i dati dell'ospite allo JScrollPane
 		scrollPaneCameraDatiOspite.setViewportView(panelCameraDatiOspite);
@@ -190,6 +179,7 @@ public class VFC_AggiungiOspiti extends View {
 		// Setto layout
 		pnlInformazioniOspiteGenerale.setLayout(new GridLayout(4, 2, 0, 0));
 		// Dati ospite
+		
 		// Nome
 		JLabel lblNome = _viewFactory.getLabelIntestazione_2();
 		lblNome.setText("Nome:");
@@ -278,6 +268,28 @@ public class VFC_AggiungiOspiti extends View {
 		JPanel pnlPassaporto = _viewFactory.getPanel(false);
 		
 		return pnlPassaporto;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	private JPanel creaPanelBottoneInserisciOspite() {
+		// Creo pannello in cui inserire il bottone avanti
+		JPanel pnlBtnAggiungiOspite = _viewFactory.getPanel(false);		
+		// Bottone per aggiungere ospite
+		JButton btnAggiungiOspite = _viewFactory.getButtonAvanti();
+		btnAggiungiOspite.setText("Aggiungi ospite");
+		// Aggiungo l'eventListener al btnAggiungiOspite
+		btnAggiungiOspite.addActionListener(new AggiungiOspiteAllaPrenotazioneListener());
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(1, btnAggiungiOspite);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 2;
+		creaPanelPulsanti(pnlBtnAggiungiOspite, numeroColonne, Bottoni);
+		
+		return pnlBtnAggiungiOspite;
 	}
 	/**
 	 * Metodo per creare la parte centrale destra della pagina.

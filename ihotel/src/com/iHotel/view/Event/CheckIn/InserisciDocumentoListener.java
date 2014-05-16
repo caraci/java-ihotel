@@ -6,11 +6,19 @@ package com.iHotel.view.Event.CheckIn;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.JPanel;
+
 /**
  * @author Eugenio
  *
  */
 public class InserisciDocumentoListener implements ItemListener {
+	
+	private JPanel _pnlInserisciDocumento;
+
+	public InserisciDocumentoListener(JPanel pnlTipoDocumento) {
+		_pnlInserisciDocumento=pnlTipoDocumento;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.awt.event.ItemListener#itemStateChanged(java.awt.event.ItemEvent)
