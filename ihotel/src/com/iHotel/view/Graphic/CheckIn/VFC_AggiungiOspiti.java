@@ -24,12 +24,12 @@ import javax.swing.JTextField;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
-import com.iHotel.model.Persona.Documento;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.utility.UStartup;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
+import com.iHotel.view.Event.CheckIn.InserisciDocumentoListener;
 import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
 import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
 
@@ -145,13 +145,20 @@ public class VFC_AggiungiOspiti extends View {
 			JLabel lblCognome = _viewFactory.getLabelIntestazione_2();
 			lblCognome.setText("Cognome:");
 			JTextField txtCognome = _viewFactory.getTextField();
-			// JComboBox - Scelta tipo documento
-			JCheckBox comboBoxTipoDocumento = _viewFactory.getCheckBox();
+			// ComboBox Scelta tipo documento
+			JComboBox<String> comboBoxTipologieDocumenti = new JComboBox<String>();
+			// Aggiungo tipologie di documenti alla comboBox
+			comboBoxTipologieDocumenti.addItem("Carta d'identità");
+			comboBoxTipologieDocumenti.addItem("Patente");
+			// Assegno il gestore dell'evento alla JComboBox
+			comboBoxTipologieDocumenti.addItemListener(new InserisciDocumentoListener());
 			
 			// Pannello in cui inserire le informazioni sul documento
 			JPanel pnlTipoDocumento = _viewFactory.getPanel();
 			// Setto il layout al pannello per le informazioni sul documento.
 			pnlTipoDocumento.setLayout(new CardLayout());
+			// Aggiungo il pannello al pnlTipoDocumento
+			pnlTipoDocumento.add(creaPanelDocumento(comboBoxTipologieDocumenti.getItemAt(0)));
 		
 		// Creo pannello in cui inserire il bottone avanti
 			JPanel pnlBtnAggiungiOspite = _viewFactory.getPanel();		
@@ -173,19 +180,20 @@ public class VFC_AggiungiOspiti extends View {
 			panelCameraDatiOspite.add(lblNome);
 			panelCameraDatiOspite.add(Box.createVerticalGlue());
 			panelCameraDatiOspite.add(txtNome);
+			panelCameraDatiOspite.add(Box.createVerticalGlue());
 			// Cognome
 			panelCameraDatiOspite.add(lblCognome);
 			panelCameraDatiOspite.add(Box.createVerticalGlue());
 			panelCameraDatiOspite.add(txtCognome);
-			// ComboBox Scelta tipo documento
-			
-			
+			panelCameraDatiOspite.add(Box.createVerticalGlue());
+			// ComboBox
+			panelCameraDatiOspite.add(comboBoxTipologieDocumenti);
+			// pnlTipoDocumento
+			panelCameraDatiOspite.add(pnlTipoDocumento);
 			// pnlBottone
 			panelCameraDatiOspite.add(Box.createVerticalStrut(15));
 			panelCameraDatiOspite.add(pnlBtnAggiungiOspite);
 	
-		
-		
 		// Aggiungo il JPanel con i dati dell'ospite allo JScrollPane
 		scrollPaneCameraDatiOspite.setViewportView(panelCameraDatiOspite);
 		
@@ -193,29 +201,57 @@ public class VFC_AggiungiOspiti extends View {
 	}
 	/**
 	 * Metodo per creare il pannello corretto in base al tipo di documento.
+	 * 
 	 * @return
 	 */
-	private JPanel creaPanelDocumento(Documento documento) {
-		// Recupero l'effettivo documento concreto
-		Class<? extends Documento> documentoConcreto = documento.getClass();
-		String tipoDocumento = documentoConcreto.getName();
-		
+	private JPanel creaPanelDocumento(String tipoDocumento) {
+		JPanel pnlDocumento;
 		switch (tipoDocumento) {
 		case "CartaIdentita":
-			
-			break;
-		case "Passaporto":
+			pnlDocumento=creaPanelCartaIdentita();
 			break;
 		case "Patente":
-			
+			pnlDocumento=creaPanelPatente();
+			break;
+		case "Passaporto":
+			pnlDocumento=creaPanelPassaporto();
 			break;
 		default:
+			// Di default forniamo il panel per la carta d'identità.
+			pnlDocumento=creaPanelCartaIdentita();
 			break;
 		}
-		
-		JPanel pnlDocumento = _viewFactory.getPanel();
-		
 		return pnlDocumento;
+	}
+	/**
+	 * Pannello per inserire le informazioni della carta d'identità.
+	 * 
+	 * @return
+	 */
+	private JPanel creaPanelCartaIdentita() {
+		JPanel pnlCartaIdentita = _viewFactory.getPanel();
+		
+		return pnlCartaIdentita;
+	}
+	/**
+	 * Pannello per inserire le informazioni della patente.
+	 * 
+	 * @return
+	 */
+	private JPanel creaPanelPatente() {
+		JPanel pnlPatente = _viewFactory.getPanel();
+		
+		return pnlPatente;
+	}
+	/**
+	 * Pannello per inserire le informazioni del passaporto.
+	 * 
+	 * @return
+	 */
+	private JPanel creaPanelPassaporto() {
+		JPanel pnlPassaporto = _viewFactory.getPanel();
+		
+		return pnlPassaporto;
 	}
 	/**
 	 * Metodo per creare la parte centrale destra della pagina.
