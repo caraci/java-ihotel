@@ -23,6 +23,7 @@ import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.GestionePrenotazione.CheckInPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
+import com.iHotel.view.Event.GestionePrenotazione.GestisciPagamentoListener;
 import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
 import com.iHotel.view.Utility.UtoString;
 
@@ -55,6 +56,7 @@ public class VFPG_InfoPrenotazione extends View {
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
 	private JButton _btnCheckIn;
+	private JButton _btnGestionePagamenti;
 	private ArrayList<JButton> _btnCamere;
 	/**
 	 * Costruttore privato - Pattern Singleton
@@ -79,6 +81,7 @@ public class VFPG_InfoPrenotazione extends View {
 		/*Button*/
 		_btnTerminaModifichePrenotazione = _viewFactory.getButton();
 		_btnCheckIn = _viewFactory.getButton();
+		_btnGestionePagamenti = _viewFactory.getButton();
 		_btnCamere = new ArrayList<JButton>();
 	}
 	/* -------------------------- Metodi di classe ----------------------------- */
@@ -119,6 +122,10 @@ public class VFPG_InfoPrenotazione extends View {
 		_btnCheckIn.setText("CheckIn");
 		/*Aggiungo il listener al click*/
 		_btnCheckIn.addMouseListener(new CheckInPrenotazioneListener());
+		/*Setto il testo del bottone Gestione pagamenti*/
+		_btnGestionePagamenti.setText("Gestisci pagamenti");
+		/*Aggiungo il listener all'evento*/
+		_btnGestionePagamenti.addMouseListener(new GestisciPagamentoListener(_prenotazione));
 		/*Setto il testo del bottone*/
 		_btnTerminaModifichePrenotazione.setText("Termina modifiche");
 		/*Aggiungo il listener al click sul pulsante*/
@@ -128,10 +135,12 @@ public class VFPG_InfoPrenotazione extends View {
 		// Aggiungo i bottoni alla struttura.
 		//Colonna 0, sarebbe la 1
 		Bottoni.put(0, _btnCheckIn);
-		//Colonna 5, sarebbe la 6
-		Bottoni.put(5,_btnTerminaModifichePrenotazione);
+		//Colonna 3, sarebbe la 4
+		Bottoni.put(3, _btnGestionePagamenti);
+		//Colonna 6, sarebbe la 7
+		Bottoni.put(6,_btnTerminaModifichePrenotazione);
 		// Creo la pulsantiera.
-		Integer numeroColonne = 6;
+		Integer numeroColonne = 7;
 		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);		
 	}
 	/**

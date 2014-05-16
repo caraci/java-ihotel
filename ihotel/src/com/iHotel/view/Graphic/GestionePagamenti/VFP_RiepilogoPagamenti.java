@@ -11,16 +11,23 @@ import javax.swing.JPanel;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.view.View;
+import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
 
 /**
  * @author Alessandro
  *
  */
+@SuppressWarnings("serial")
 public class VFP_RiepilogoPagamenti extends View{
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */
 	private PrenotazioneSubject _prenotazione;
+	
+	/**
+	 * Singleton
+	 */
+	private static VFP_RiepilogoPagamenti instance= null;
 	
 	/*JPanel*/
 	private JPanel _panelContanti, _panelBonifico, _panelCartaDiCredito;
@@ -38,6 +45,17 @@ public class VFP_RiepilogoPagamenti extends View{
 		_lblTitoloContanti = _viewFactory.getLabel();
 		_lblTitoloBonifico = _viewFactory.getLabel();
 		_lblTitoloCarta = _viewFactory.getLabel();
+	}
+	
+	/* -------------------------- Metodi di classe ----------------------------- */
+	/**
+	 * Metodo che consente di avere l'unica instanza di questa classe - Pattern Singleton.
+	 */
+	public static VFP_RiepilogoPagamenti getInstance(){
+		if (instance == null){
+			instance = new VFP_RiepilogoPagamenti();
+		}
+		return instance;
 	}
 	@Override
 	public void removeInstance() {
@@ -113,6 +131,15 @@ public class VFP_RiepilogoPagamenti extends View{
 		_panelCartaDiCredito.add(_lblTitoloCarta);
 		//restitiuisco il pannello con il bonifici
 		return _panelCartaDiCredito;
+	}
+	
+	public void creaFrame(PrenotazioneSubject prenotazione){
+		//Titolo della finestra
+		setTitle("iHotel - Gestione Prenotazione - Informazioni sul pagamento");
+		//Creo il pannello centrale
+		
+		/* ATTENZIONE MANCANO I METODI PER CREARE PANNELLO SUPERIORE ED INFERIORE*********************************************/
+		creaPanelMiddle();
 	}
 
 }
