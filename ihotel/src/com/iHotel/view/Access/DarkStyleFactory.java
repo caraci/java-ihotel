@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 /**
  * Classe addetta alla fornitura di elementi grafici di uno stile "Dark".
@@ -41,6 +42,18 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 0));
 		panel.setBorder(BorderFactory.createLineBorder(Color.white));
+		return panel;
+	}
+	@Override
+	public JPanel getPanel(boolean bordo) {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 0, 0));
+		// Controllo se si vuole il bordo o meno
+		if (bordo) {
+			panel.setBorder(BorderFactory.createLineBorder(Color.white));
+		} else {
+			panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		}
 		return panel;
 	}
 	@Override

@@ -23,6 +23,12 @@ public interface StyleAbstractFactory {
 	 */
 	public JPanel getPanel();
 	/**
+	 * Metodo per ottenere un generico Pannello, con o senza bordo.
+	 * @param bordo Se true fornisce un pannello con bordo. Se false un pannello senza bordo.
+	 * @return
+	 */
+	public JPanel getPanel(boolean bordo);
+	/**
 	 * Metodo per ottenere il contentPanel.
 	 * @return Pannello per il contentPanel.
 	 */

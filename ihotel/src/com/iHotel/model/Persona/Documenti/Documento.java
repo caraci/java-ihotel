@@ -25,9 +25,7 @@ public class Documento {
 	protected Residenza _residenza;
 	
 	//Costruttore di default
-	public Documento(){
-		
-	}
+	public Documento(){}
 	
 	/**
 	 * Costruttore con tutti i parametri

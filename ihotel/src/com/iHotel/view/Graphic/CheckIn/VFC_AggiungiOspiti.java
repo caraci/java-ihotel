@@ -14,7 +14,6 @@ import java.util.Iterator;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -100,7 +99,6 @@ public class VFC_AggiungiOspiti extends View {
 			// Aggiungo il tabbedPane al panelMiddle
 			_panelMiddle.add(_panelMiddleTabbed);
 		}
-
 	}
 	/**
 	 * Metodo per creare un pannello relativo ad una camera. In particolare si costituisce
@@ -111,7 +109,7 @@ public class VFC_AggiungiOspiti extends View {
 	 * @return
 	 */
 	private JPanel creaPanelCamera(CameraContext camera) {
-		JPanel panelCamera = _viewFactory.getPanel();
+		JPanel panelCamera = _viewFactory.getPanelMiddle();
 		// Setto il layout 1 riga - 2 colonne - 5px tra righe - 0px tra colonne
 		panelCamera.setLayout(new GridLayout(1, 2, 5, 0));
 		// Panel inserimento dati
@@ -127,7 +125,7 @@ public class VFC_AggiungiOspiti extends View {
 	private JScrollPane creaPanelMiddleLeft(CameraContext camera) {
 		JScrollPane scrollPaneCameraDatiOspite = _viewFactory.getScrollPane();
 		// Creo il panel.
-		JPanel panelCameraDatiOspite = _viewFactory.getPanel();
+		JPanel panelCameraDatiOspite = _viewFactory.getPanel(false);
 		// Setto layout panel.
 		panelCameraDatiOspite.setLayout(new BoxLayout(panelCameraDatiOspite, BoxLayout.PAGE_AXIS));
 		// Intestazione del pannello
@@ -136,68 +134,94 @@ public class VFC_AggiungiOspiti extends View {
 		// Aggiungo intestazione e spaziatura al pannello
 		panelCameraDatiOspite.add(lblIntestazione);
 		panelCameraDatiOspite.add(Box.createVerticalStrut(15));
-		// Dati ospite
-			// Nome
-			JLabel lblNome = _viewFactory.getLabelIntestazione_2();
-			lblNome.setText("Nome:");
-			JTextField txtNome = _viewFactory.getTextField();
-			// Cognome
-			JLabel lblCognome = _viewFactory.getLabelIntestazione_2();
-			lblCognome.setText("Cognome:");
-			JTextField txtCognome = _viewFactory.getTextField();
-			// ComboBox Scelta tipo documento
-			JComboBox<String> comboBoxTipologieDocumenti = new JComboBox<String>();
-			// Aggiungo tipologie di documenti alla comboBox
-			comboBoxTipologieDocumenti.addItem("Carta d'identità");
-			comboBoxTipologieDocumenti.addItem("Patente");
-			// Assegno il gestore dell'evento alla JComboBox
-			comboBoxTipologieDocumenti.addItemListener(new InserisciDocumentoListener());
+		
+		// ComboBox Scelta tipo documento
+		JComboBox<String> comboBoxTipologieDocumenti = new JComboBox<String>();
+		// Aggiungo tipologie di documenti alla comboBox
+		comboBoxTipologieDocumenti.addItem("Carta d'identità");
+		comboBoxTipologieDocumenti.addItem("Patente");
+		// Assegno il gestore dell'evento alla JComboBox
+		comboBoxTipologieDocumenti.addItemListener(new InserisciDocumentoListener());
 			
-			// Pannello in cui inserire le informazioni sul documento
-			JPanel pnlTipoDocumento = _viewFactory.getPanel();
-			// Setto il layout al pannello per le informazioni sul documento.
-			pnlTipoDocumento.setLayout(new CardLayout());
-			// Aggiungo il pannello al pnlTipoDocumento
-			pnlTipoDocumento.add(creaPanelDocumento(comboBoxTipologieDocumenti.getItemAt(0)));
+		// Pannello in cui inserire le informazioni sul documento
+		JPanel pnlTipoDocumento = _viewFactory.getPanel(false);
+		// Setto il layout al pannello per le informazioni sul documento.
+		pnlTipoDocumento.setLayout(new CardLayout());
+		// Aggiungo il pannello al pnlTipoDocumento
+		pnlTipoDocumento.add(creaPanelDocumento(comboBoxTipologieDocumenti.getItemAt(0)));
 		
 		// Creo pannello in cui inserire il bottone avanti
-			JPanel pnlBtnAggiungiOspite = _viewFactory.getPanel();		
-			// Bottone per aggiungere ospite
-			JButton btnAggiungiOspite = _viewFactory.getButtonAvanti();
-			btnAggiungiOspite.setText("Aggiungi ospite");
-			// Aggiungo l'eventListener al btnAggiungiOspite
-			btnAggiungiOspite.addActionListener(new AggiungiOspiteAllaPrenotazioneListener());
-			// Struttura dati dove si salvano i bottoni con la relativa posizione.
-			HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
-			// Aggiungo il bottone alla struttura.
-			Bottoni.put(1, btnAggiungiOspite);
-			// Creo la pulsantiera.
-			Integer numeroColonne = 2;
-			creaPanelPulsanti(pnlBtnAggiungiOspite, numeroColonne, Bottoni);
+		JPanel pnlBtnAggiungiOspite = _viewFactory.getPanel(false);		
+		// Bottone per aggiungere ospite
+		JButton btnAggiungiOspite = _viewFactory.getButtonAvanti();
+		btnAggiungiOspite.setText("Aggiungi ospite");
+		// Aggiungo l'eventListener al btnAggiungiOspite
+		btnAggiungiOspite.addActionListener(new AggiungiOspiteAllaPrenotazioneListener());
+		// Struttura dati dove si salvano i bottoni con la relativa posizione.
+		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		// Aggiungo il bottone alla struttura.
+		Bottoni.put(1, btnAggiungiOspite);
+		// Creo la pulsantiera.
+		Integer numeroColonne = 2;
+		creaPanelPulsanti(pnlBtnAggiungiOspite, numeroColonne, Bottoni);
 			
 		// Aggiungo campi al panel
-			// Nome
-			panelCameraDatiOspite.add(lblNome);
-			panelCameraDatiOspite.add(Box.createVerticalGlue());
-			panelCameraDatiOspite.add(txtNome);
-			panelCameraDatiOspite.add(Box.createVerticalGlue());
-			// Cognome
-			panelCameraDatiOspite.add(lblCognome);
-			panelCameraDatiOspite.add(Box.createVerticalGlue());
-			panelCameraDatiOspite.add(txtCognome);
-			panelCameraDatiOspite.add(Box.createVerticalGlue());
-			// ComboBox
-			panelCameraDatiOspite.add(comboBoxTipologieDocumenti);
-			// pnlTipoDocumento
-			panelCameraDatiOspite.add(pnlTipoDocumento);
-			// pnlBottone
-			panelCameraDatiOspite.add(Box.createVerticalStrut(15));
-			panelCameraDatiOspite.add(pnlBtnAggiungiOspite);
+		// Pannello info generali ospite
+		panelCameraDatiOspite.add(creaPanelInformazioniOspiteGenerale());
+		// ComboBox
+		panelCameraDatiOspite.add(comboBoxTipologieDocumenti);
+		// pnlTipoDocumento
+		panelCameraDatiOspite.add(pnlTipoDocumento);
+		// pnlBottone
+		panelCameraDatiOspite.add(Box.createVerticalStrut(15));
+		panelCameraDatiOspite.add(pnlBtnAggiungiOspite);
 	
 		// Aggiungo il JPanel con i dati dell'ospite allo JScrollPane
 		scrollPaneCameraDatiOspite.setViewportView(panelCameraDatiOspite);
 		
 		return scrollPaneCameraDatiOspite;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	private JPanel creaPanelInformazioniOspiteGenerale() {
+		JPanel pnlInformazioniOspiteGenerale = _viewFactory.getPanel(false);
+		// Setto layout
+		pnlInformazioniOspiteGenerale.setLayout(new GridLayout(4, 2, 0, 0));
+		// Dati ospite
+		// Nome
+		JLabel lblNome = _viewFactory.getLabelIntestazione_2();
+		lblNome.setText("Nome:");
+		JTextField txtNome = _viewFactory.getTextField();
+		// Cognome
+		JLabel lblCognome = _viewFactory.getLabelIntestazione_2();
+		lblCognome.setText("Cognome:");
+		JTextField txtCognome = _viewFactory.getTextField();
+		// Città nascita
+		JLabel lblCittaNascita = _viewFactory.getLabelIntestazione_2();
+		lblCittaNascita.setText("Città Nascita:");
+		JTextField txtCittaNascita = _viewFactory.getTextField();
+		// Città residenza
+		JLabel lblCittaResidenza = _viewFactory.getLabelIntestazione_2();
+		lblCittaResidenza.setText("Città Nascita:");
+		JTextField txtCittaResidenza = _viewFactory.getTextField();
+		
+		// Aggiungo componenti al pannello
+		// Riga 1
+		pnlInformazioniOspiteGenerale.add(lblNome);
+		pnlInformazioniOspiteGenerale.add(lblCognome);
+		// Riga 2
+		pnlInformazioniOspiteGenerale.add(txtNome);		
+		pnlInformazioniOspiteGenerale.add(txtCognome);
+		// Riga 3
+		pnlInformazioniOspiteGenerale.add(lblCittaResidenza);
+		pnlInformazioniOspiteGenerale.add(lblCittaNascita);
+		// Riga 4
+		pnlInformazioniOspiteGenerale.add(txtCittaResidenza);
+		pnlInformazioniOspiteGenerale.add(txtCittaNascita);
+		
+		return pnlInformazioniOspiteGenerale;
 	}
 	/**
 	 * Metodo per creare il pannello corretto in base al tipo di documento.
@@ -229,7 +253,9 @@ public class VFC_AggiungiOspiti extends View {
 	 * @return
 	 */
 	private JPanel creaPanelCartaIdentita() {
-		JPanel pnlCartaIdentita = _viewFactory.getPanel();
+		JPanel pnlCartaIdentita = _viewFactory.getPanel(false);
+		// Setto layout
+		pnlCartaIdentita.setLayout(new GridLayout(5, 2, 5, 5));
 		
 		return pnlCartaIdentita;
 	}
@@ -239,7 +265,7 @@ public class VFC_AggiungiOspiti extends View {
 	 * @return
 	 */
 	private JPanel creaPanelPatente() {
-		JPanel pnlPatente = _viewFactory.getPanel();
+		JPanel pnlPatente = _viewFactory.getPanel(false);
 		
 		return pnlPatente;
 	}
@@ -249,7 +275,7 @@ public class VFC_AggiungiOspiti extends View {
 	 * @return
 	 */
 	private JPanel creaPanelPassaporto() {
-		JPanel pnlPassaporto = _viewFactory.getPanel();
+		JPanel pnlPassaporto = _viewFactory.getPanel(false);
 		
 		return pnlPassaporto;
 	}
@@ -261,7 +287,7 @@ public class VFC_AggiungiOspiti extends View {
 	 */
 	private JScrollPane creaPanelMiddleRight(CameraContext camera) {
 		// panelContenitore a cui applico il card Layout
-		JPanel panelListaConenitore = _viewFactory.getPanel();
+		JPanel panelListaConenitore = _viewFactory.getPanel(false);
 		// Setto il layout al panelContenitore
 		panelListaConenitore.setLayout(new CardLayout());
 		// ScrollPane nel quale inserisco il panel per la lista.
@@ -279,7 +305,7 @@ public class VFC_AggiungiOspiti extends View {
 	 * @return
 	 */
 	private JPanel creaPanelListaOspiti(CameraContext camera) {
-		JPanel panelListaOspiti = _viewFactory.getPanel();
+		JPanel panelListaOspiti = _viewFactory.getPanel(false);
 		// Setto il layout al panelListaOspiti
 		panelListaOspiti.setLayout(new BoxLayout(panelListaOspiti, BoxLayout.PAGE_AXIS));
 		// Intestazione del pannello

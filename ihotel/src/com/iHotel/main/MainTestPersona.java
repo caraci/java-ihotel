@@ -17,10 +17,9 @@ public class MainTestPersona {
 		Giorno dataRilascio = new Giorno(10,10,2010);
 		Giorno dataScadenza =new Giorno(10,10,2020);
 		float altezza = (float) 1.74;
-		String telefono = "1980";
 		CartaIdentita cartaIdentita = new CartaIdentita("alessandro","Ranalli",dataNascita, "Rieti", dataRilascio, dataScadenza, "Comune", "XXX",residenza,"nubile","Studente",altezza,"castani","castani","");
 		
-		Ospite ospite = new Ospite("alessandro", "Ranalli","la@ga",telefono,cartaIdentita);
+		Ospite ospite = new Ospite("alessandro", "Ranalli","la@ga",cartaIdentita);
 		
 		System.out.println(ospite.get_documento().get_residenza().get_cittaResidenza());
 	}

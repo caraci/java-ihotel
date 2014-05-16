@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 
 /**
@@ -49,6 +50,19 @@ public class LightStyleFactory implements StyleAbstractFactory {
 		panel.setBorder(BorderFactory.createLineBorder(Color.black));
 		return panel;
 	}
+	@Override
+	public JPanel getPanel(boolean bordo) {
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(200, 200, 200));
+		// Controllo se si vuole il bordo o meno
+		if (bordo) {
+			panel.setBorder(BorderFactory.createLineBorder(Color.black));
+		} else {
+			panel.setBorder(new EmptyBorder(5, 5, 5, 5));	
+		}
+		return panel;
+	}
+	
 	@Override
 	public JPanel getContentPane() {
 		JPanel panel = new JPanel();
