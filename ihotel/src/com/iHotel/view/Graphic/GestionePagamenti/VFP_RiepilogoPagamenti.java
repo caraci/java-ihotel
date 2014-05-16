@@ -3,6 +3,7 @@
  */
 package com.iHotel.view.Graphic.GestionePagamenti;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,10 +21,10 @@ public class VFP_RiepilogoPagamenti extends View{
 	private PrenotazioneSubject _prenotazione;
 	
 	/*JPanel*/
-	private JPanel _contanti, _bonifico, _cartaDiCredito;
+	private JPanel _panelContanti, _panelBonifico, _panelCartaDiCredito;
 	
 	/*JLabel*/
-	private JLabel _titoloContanti, _titoloBonifico, _titoloCarta;
+	private JLabel _lblTitoloContanti, _lblTitoloBonifico, _lblTitoloCarta;
  
 	@Override
 	public void removeInstance() {
@@ -39,13 +40,25 @@ public class VFP_RiepilogoPagamenti extends View{
 
 	@Override
 	protected void creaPanelMiddle() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	protected void creaPanelBottom() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	private JPanel creaPanelMiddleLeft(){
+		//Assegno il layout
+		_panelContanti.setLayout(new BoxLayout(_panelContanti, BoxLayout.PAGE_AXIS));
+		//Assegno il titolo
+		_lblTitoloContanti.setText("Contanti:");
+		//Assegno il titolo al pannello
+		_panelContanti.add(_lblTitoloContanti);
+		//Restituisco il pannello
+		return _panelContanti;
 		
 	}
 
