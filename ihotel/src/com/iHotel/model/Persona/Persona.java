@@ -13,9 +13,7 @@ public class Persona {
 	/*Attributi e costruttore*/
 	private String _nome;
 	private String _cognome;
-	//Recapiti
-	private String _eMail;
-	private String _telefono;
+	
 	
 	//Costruttore di default
 	public Persona(){
@@ -26,14 +24,10 @@ public class Persona {
 	 * Costruttore della persona con nome e cognome 
 	 * @param nome Nome della persona
 	 * @param cognome Cognome della persona
-	 * @param email Indirizzo email della persona
-	 * @param telefono Numero di telefono della persona
 	 */
-	public Persona(String nome, String cognome, String email, String telefono){
+	public Persona(String nome, String cognome){
 		this.set_nome(nome);
 		this.set_cognome(cognome);
-		this.set_eMail(email);
-		this.set_telefono(telefono);
 	}
 
 	/**
@@ -62,30 +56,6 @@ public class Persona {
 	 */
 	public void set_cognome(String _cognome) {
 		this._cognome = _cognome;
-	}
-	/**
-	 * @return _eMail
-	 */
-	public String get_eMail() {
-		return _eMail;
-	}
-	/**
-	 * @param _eMail
-	 */
-	public void set_eMail(String _eMail) {
-		this._eMail = _eMail;
-	}
-	/**
-	 * @return _telefono
-	 */
-	public String get_telefono() {
-		return _telefono;
-	}
-	/**
-	 * @param _telefono
-	 */
-	public void set_telefono(String _telefono) {
-		this._telefono = _telefono;
 	}
 	
 

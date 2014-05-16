@@ -7,7 +7,7 @@ package com.iHotel.model.Persona;
  * @author Alessandro
  *
  */
-public class Ospite extends Persona{
+public class Ospite extends Cliente{
 
 	/* ----------------- Attributi e Costruttore -------------------- */
 	
@@ -19,17 +19,16 @@ public class Ospite extends Persona{
 	public Ospite() {
 		
 	}
+	
 	/**
-	 * Costruttore con tutti gli attributi di un ospite
-	 * 
+	 * Costruttore con parametri
 	 * @param nome 		Nome dell'ospite
 	 * @param cognome 	Cognome dell'ospite
-	 * @param email 	Indirizzo email dell'ospite
-	 * @param telefono 	Numero di telefono dell'ospite
-	 * @param documento Documento dell'ospite
+	 * @param codice	Codice del cliente ospite
+	 * @param documento	Documento dell'ospite
 	 */
-	public Ospite(String nome, String cognome, String email, String telefono, Documento documento){
-		super(nome,cognome,email,telefono);
+	public Ospite(String nome, String cognome,String codice, Documento documento){
+		super(nome,cognome,codice);
 		this.set_documento(documento);
 		
 	}
