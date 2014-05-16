@@ -28,7 +28,7 @@ import com.iHotel.model.State.CameraContext;
 import com.iHotel.utility.UStartup;
 import com.iHotel.view.View;
 import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
-import com.iHotel.view.Event.CheckIn.InserisciDocumentoListener;
+import com.iHotel.view.Event.CheckIn.ScegliDocumentoListener;
 import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
 import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
 
@@ -125,9 +125,10 @@ public class VFC_AggiungiOspiti extends View {
 	private JScrollPane creaPanelMiddleLeft(CameraContext camera) {
 		JScrollPane scrollPaneCameraDatiOspite = _viewFactory.getScrollPane();
 		// Creo il panel.
-		JPanel panelCameraDatiOspite = _viewFactory.getPanel(false);
+		JPanel panelCameraDatiOspite = _viewFactory.getPanel(true);
 		// Setto layout panel.
 		panelCameraDatiOspite.setLayout(new BoxLayout(panelCameraDatiOspite, BoxLayout.PAGE_AXIS));
+		
 		// Intestazione del pannello
 		JLabel lblIntestazione = _viewFactory.getLabelIntestazione_2();
 		lblIntestazione.setText("Aggiungi ospite:");
@@ -135,18 +136,23 @@ public class VFC_AggiungiOspiti extends View {
 		// ComboBox Scelta tipo documento
 		JComboBox<String> comboBoxTipologieDocumenti = new JComboBox<String>();
 			// TODO - Aggiungo tipologie di documenti alla comboBox
-		comboBoxTipologieDocumenti.addItem("Carta d'identità");
+		comboBoxTipologieDocumenti.addItem("CartaIdentita");
 		comboBoxTipologieDocumenti.addItem("Patente");
+		comboBoxTipologieDocumenti.addItem("Passaporto");
 			
 		// Pannello in cui inserire le informazioni sul documento
 		JPanel pnlTipoDocumento = _viewFactory.getPanel(false);
 		// Setto il layout al pannello per le informazioni sul documento.
 		pnlTipoDocumento.setLayout(new CardLayout());
-		// Aggiungo il pannello al pnlTipoDocumento
-		pnlTipoDocumento.add(creaPanelDocumento(comboBoxTipologieDocumenti.getItemAt(0)));
+		// Inizializzo il pnlTipoDocumento
+		creaPanelDocumento(pnlTipoDocumento);
+		/* 
+		* Assegno il gestore dell'evento alla JComboBox per visualizzare il tipo di documento corretto.
+		* Fornisco come parametro il pannello pnlTipoDocumento in quanto poi alla scelta di uno o di uno o
+		* di un altro dovrà fornire quello corretto.
+		*/
 		
-		// Assegno il gestore dell'evento alla JComboBox per visualizzare il tipo di documento corretto.
-		comboBoxTipologieDocumenti.addItemListener(new InserisciDocumentoListener(pnlTipoDocumento));
+		comboBoxTipologieDocumenti.addItemListener(new ScegliDocumentoListener(pnlTipoDocumento));
 			
 		// Aggiungo campi al panel
 		// Aggiungo intestazione e spaziatura al pannello
@@ -171,6 +177,7 @@ public class VFC_AggiungiOspiti extends View {
 		return scrollPaneCameraDatiOspite;
 	}
 	/**
+	 * Metodo per fornire il pannello contenente le informazioni generali dell'ospite.
 	 * 
 	 * @return
 	 */
@@ -178,7 +185,6 @@ public class VFC_AggiungiOspiti extends View {
 		JPanel pnlInformazioniOspiteGenerale = _viewFactory.getPanel(false);
 		// Setto layout
 		pnlInformazioniOspiteGenerale.setLayout(new GridLayout(4, 2, 0, 0));
-		// Dati ospite
 		
 		// Nome
 		JLabel lblNome = _viewFactory.getLabelIntestazione_2();
@@ -198,6 +204,7 @@ public class VFC_AggiungiOspiti extends View {
 		JTextField txtCittaResidenza = _viewFactory.getTextField();
 		
 		// Aggiungo componenti al pannello
+		
 		// Riga 1
 		pnlInformazioniOspiteGenerale.add(lblNome);
 		pnlInformazioniOspiteGenerale.add(lblCognome);
@@ -218,24 +225,15 @@ public class VFC_AggiungiOspiti extends View {
 	 * 
 	 * @return
 	 */
-	private JPanel creaPanelDocumento(String tipoDocumento) {
-		JPanel pnlDocumento;
-		switch (tipoDocumento) {
-		case "CartaIdentita":
-			pnlDocumento=creaPanelCartaIdentita();
-			break;
-		case "Patente":
-			pnlDocumento=creaPanelPatente();
-			break;
-		case "Passaporto":
-			pnlDocumento=creaPanelPassaporto();
-			break;
-		default:
-			// Di default forniamo il panel per la carta d'identità.
-			pnlDocumento=creaPanelCartaIdentita();
-			break;
-		}
-		return pnlDocumento;
+	private void creaPanelDocumento(JPanel pnlTipoDocumento) {
+		// Recupero il gestore del layout
+		CardLayout cardLayout = (CardLayout) pnlTipoDocumento.getLayout();
+		// Aggiungo le schede
+		pnlTipoDocumento.add(creaPanelCartaIdentita(), "CartaIdentita");
+		pnlTipoDocumento.add(creaPanelPatente(), "Patente");
+		pnlTipoDocumento.add(creaPanelPassaporto(), "Passaporto");
+		// Mostro la scheda relativa alla carta d'identita
+		cardLayout.show(pnlTipoDocumento, (String) "CartaIdentita");
 	}
 	/**
 	 * Pannello per inserire le informazioni della carta d'identità.
@@ -245,7 +243,35 @@ public class VFC_AggiungiOspiti extends View {
 	private JPanel creaPanelCartaIdentita() {
 		JPanel pnlCartaIdentita = _viewFactory.getPanel(false);
 		// Setto layout
-		pnlCartaIdentita.setLayout(new GridLayout(5, 2, 5, 5));
+		pnlCartaIdentita.setLayout(new BoxLayout(pnlCartaIdentita, BoxLayout.PAGE_AXIS));
+		// Intestazione
+		JLabel lblIntestazioneCartaIdentita = _viewFactory.getLabelIntestazione_2();
+		lblIntestazioneCartaIdentita.setText("Dati carta d'identità:");
+		// Pannello per i dati.
+		JPanel pnlCartaIdentitaDati = _viewFactory.getPanel(false);
+		// Setto layout.
+		pnlCartaIdentitaDati.setLayout(new GridLayout(2, 2, 5, 5));
+		// Codice.
+		JLabel lblCodice = _viewFactory.getLabelIntestazione_2();
+		lblCodice.setText("Codice:");
+		JTextField txtCodice = _viewFactory.getTextField();
+		// Ente.
+		JLabel lblEnte = _viewFactory.getLabelIntestazione_2();
+		lblEnte.setText("Ente:");
+		JTextField txtEnte = _viewFactory.getTextField();
+		
+		// Aggiungo campi al pannello pnlCartaIdentitaDati
+		// riga 1
+		pnlCartaIdentitaDati.add(lblCodice);
+		pnlCartaIdentitaDati.add(lblEnte);
+		// riga 2
+		pnlCartaIdentitaDati.add(txtCodice);
+		pnlCartaIdentitaDati.add(txtEnte);
+		
+		// Aggiungo campi al pannello pnlCartaIdentita
+		pnlCartaIdentita.add(lblIntestazioneCartaIdentita);
+		pnlCartaIdentita.add(Box.createVerticalStrut(15));
+		pnlCartaIdentita.add(pnlCartaIdentitaDati);
 		
 		return pnlCartaIdentita;
 	}
@@ -255,7 +281,38 @@ public class VFC_AggiungiOspiti extends View {
 	 * @return
 	 */
 	private JPanel creaPanelPatente() {
+		
 		JPanel pnlPatente = _viewFactory.getPanel(false);
+		// Setto layout
+		pnlPatente.setLayout(new BoxLayout(pnlPatente, BoxLayout.PAGE_AXIS));
+		// Intestazione
+		JLabel lblIntestazionePatente = _viewFactory.getLabelIntestazione_2();
+		lblIntestazionePatente.setText("Dati Patente:");
+		// Pannello per i dati.
+		JPanel pnlPatenteDati = _viewFactory.getPanel(false);
+		// Setto layout.
+		pnlPatenteDati.setLayout(new GridLayout(2, 2, 5, 5));
+		// Codice.
+		JLabel lblCodice = _viewFactory.getLabelIntestazione_2();
+		lblCodice.setText("Codice:");
+		JTextField txtCodice = _viewFactory.getTextField();
+		// Ente.
+		JLabel lblEnte = _viewFactory.getLabelIntestazione_2();
+		lblEnte.setText("Ente:");
+		JTextField txtEnte = _viewFactory.getTextField();
+		
+		// Aggiungo campi al pannello pnlPatenteDati
+		// riga 1
+		pnlPatenteDati.add(lblCodice);
+		pnlPatenteDati.add(lblEnte);
+		// riga 2
+		pnlPatenteDati.add(txtCodice);
+		pnlPatenteDati.add(txtEnte);
+		
+		// Aggiungo campi al pannello pnlCartaIdentita
+		pnlPatente.add(lblIntestazionePatente);
+		pnlPatente.add(Box.createVerticalStrut(15));
+		pnlPatente.add(pnlPatenteDati);
 		
 		return pnlPatente;
 	}
@@ -266,6 +323,36 @@ public class VFC_AggiungiOspiti extends View {
 	 */
 	private JPanel creaPanelPassaporto() {
 		JPanel pnlPassaporto = _viewFactory.getPanel(false);
+		// Setto layout
+		pnlPassaporto.setLayout(new BoxLayout(pnlPassaporto, BoxLayout.PAGE_AXIS));
+		// Intestazione
+		JLabel lblIntestazionePassaporto = _viewFactory.getLabelIntestazione_2();
+		lblIntestazionePassaporto.setText("Dati Passaporto:");
+		// Pannello per i dati.
+		JPanel pnlPassaportoDati = _viewFactory.getPanel(false);
+		// Setto layout.
+		pnlPassaportoDati.setLayout(new GridLayout(2, 2, 5, 5));
+		// Codice.
+		JLabel lblCodice = _viewFactory.getLabelIntestazione_2();
+		lblCodice.setText("Codice:");
+		JTextField txtCodice = _viewFactory.getTextField();
+		// Ente.
+		JLabel lblEnte = _viewFactory.getLabelIntestazione_2();
+		lblEnte.setText("Ente:");
+		JTextField txtEnte = _viewFactory.getTextField();
+		
+		// Aggiungo campi al pannello pnlPassaportoDati
+		// riga 1
+		pnlPassaportoDati.add(lblCodice);
+		pnlPassaportoDati.add(lblEnte);
+		// riga 2
+		pnlPassaportoDati.add(txtCodice);
+		pnlPassaportoDati.add(txtEnte);
+		
+		// Aggiungo campi al pannello pnlPassaporto
+		pnlPassaporto.add(lblIntestazionePassaporto);
+		pnlPassaporto.add(Box.createVerticalStrut(15));
+		pnlPassaporto.add(pnlPassaportoDati);
 		
 		return pnlPassaporto;
 	}
@@ -299,7 +386,7 @@ public class VFC_AggiungiOspiti extends View {
 	 */
 	private JScrollPane creaPanelMiddleRight(CameraContext camera) {
 		// panelContenitore a cui applico il card Layout
-		JPanel panelListaConenitore = _viewFactory.getPanel(false);
+		JPanel panelListaConenitore = _viewFactory.getPanel(true);
 		// Setto il layout al panelContenitore
 		panelListaConenitore.setLayout(new CardLayout());
 		// ScrollPane nel quale inserisco il panel per la lista.
@@ -388,7 +475,7 @@ public class VFC_AggiungiOspiti extends View {
 		start.inizializza();
 		// Prendo una prenotazione
 		HashMap<String,PrenotazioneSubject> prenotazioni = Storico.getInstance().get_prenotazioni();
-		PrenotazioneSubject prenotazione = prenotazioni.get("1400100535949");
+		PrenotazioneSubject prenotazione = prenotazioni.get("1400256191901");
 		// Creo il frame
 		VFC_AggiungiOspiti frame = new VFC_AggiungiOspiti();
 		frame.creaFrame(prenotazione);
