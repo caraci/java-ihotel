@@ -109,7 +109,9 @@ public class VFC_AggiungiOspiti extends View {
 			// Creo panel per tab
 			JPanel panelCamera = creaPanelCamera(camera);
 			// Aggiungo tab al tabbedPane
-			_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), panelCamera);
+			
+			_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), new VFC_AggiungiOspiti_PanelCamera(camera));
+			//_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), panelCamera);
 			// Aggiungo il tabbedPane al panelMiddle
 			_panelMiddle.add(_panelMiddleTabbed);
 		}
