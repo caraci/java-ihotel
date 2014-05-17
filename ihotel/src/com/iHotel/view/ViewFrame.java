@@ -26,7 +26,7 @@ import com.iHotel.view.Access.ViewFactory;
  * @author Gabriele
  */
 @SuppressWarnings("serial")
-public abstract class View extends JFrame {
+public abstract class ViewFrame extends JFrame {
 	
 	/* ----------------------------- Attributi e costruttore --------------------- */
 	/* ContentPane */
@@ -48,7 +48,7 @@ public abstract class View extends JFrame {
 	/**
 	 * Costruttore.
 	 */
-	protected View(){
+	protected ViewFrame(){
 		// Richiedo la factory corretta.
 		_viewFactory=ViewFactory.getInstance().getStyleFactory();
 		// Setto il contentPane

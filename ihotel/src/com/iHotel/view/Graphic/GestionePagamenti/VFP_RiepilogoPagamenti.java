@@ -10,14 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
-import com.iHotel.view.View;
+import com.iHotel.view.ViewFrame;
 
 /**
  * @author Alessandro
  *
  */
 @SuppressWarnings("serial")
-public class VFP_RiepilogoPagamenti extends View{
+public class VFP_RiepilogoPagamenti extends ViewFrame{
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */

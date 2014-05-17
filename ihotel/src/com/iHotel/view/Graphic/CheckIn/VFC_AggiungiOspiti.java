@@ -26,7 +26,7 @@ import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.utility.UStartup;
-import com.iHotel.view.View;
+import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
 import com.iHotel.view.Event.CheckIn.ScegliDocumentoListener;
 import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
@@ -37,7 +37,7 @@ import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
  *
  */
 @SuppressWarnings("serial")
-public class VFC_AggiungiOspiti extends View {
+public class VFC_AggiungiOspiti extends ViewFrame {
 	
 	/* -------------------------------- Attributi e Costruttore ----------------------------------------- */
 	

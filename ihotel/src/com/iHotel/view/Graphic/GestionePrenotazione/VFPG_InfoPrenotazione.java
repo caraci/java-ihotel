@@ -20,7 +20,7 @@ import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
-import com.iHotel.view.View;
+import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.GestionePrenotazione.CheckInPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciPagamentoListener;
@@ -33,7 +33,7 @@ import com.iHotel.view.Utility.UtoString;
  * @author Alessandro
  */
 @SuppressWarnings("serial")
-public class VFPG_InfoPrenotazione extends View {
+public class VFPG_InfoPrenotazione extends ViewFrame {
 
 	/* ----------------------------------- Attributi e Costruttore ------------------------------------ */
 	/**

@@ -22,7 +22,7 @@ import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
-import com.iHotel.view.View;
+import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
 import com.iHotel.view.Utility.UtoString;
@@ -34,7 +34,7 @@ import com.iHotel.view.Utility.UtoString;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VFGP_InfoCamera extends View {
+public class VFGP_InfoCamera extends ViewFrame {
 
 	/* ----------------------------- Attributi e costruttore -------------------------------- */
 	/**

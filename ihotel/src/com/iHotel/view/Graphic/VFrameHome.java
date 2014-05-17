@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.iHotel.view.View;
+import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.CaricaGestionePrenotazioneListener;
 
@@ -16,7 +16,7 @@ import com.iHotel.view.Event.CaricaGestionePrenotazioneListener;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VFrameHome extends View {
+public class VFrameHome extends ViewFrame {
 	
 	/*JButton*/
 	private JButton _btnCreaPrenotazione,_btnModificaPrenotazione;
