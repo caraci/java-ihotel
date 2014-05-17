@@ -46,14 +46,14 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JPanel getPanel() {
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(200, 200, 200));
+		panel.setBackground(getColorGeneralPanel());
 		panel.setBorder(BorderFactory.createLineBorder(Color.black));
 		return panel;
 	}
 	@Override
 	public JPanel getPanel(boolean bordo) {
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(200, 200, 200));
+		panel.setBackground(getColorGeneralPanel());
 		// Controllo se si vuole il bordo o meno
 		if (bordo) {
 			panel.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -66,7 +66,7 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JPanel getContentPane() {
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
+		panel.setBackground(getColorContentPane());
 		return panel;
 	}
 	
@@ -79,7 +79,7 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JScrollPane getScrollPane() {
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBackground(new Color(200, 200, 200));
+		scrollPane.setBackground(getColorGeneralPanel());
 		scrollPane.setBorder(BorderFactory.createLineBorder(Color.white));
 		return scrollPane;
 	}
@@ -127,14 +127,14 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JTextField getTextField() {
 		JTextField text = new JTextField();
-		text.setBackground(new Color(255, 255, 255));
+		text.setBackground(getColorContentPane());
 		text.setForeground(new Color(0, 0, 0));
 		return text;
 	}
 	@Override
 	public JCheckBox getCheckBox() {
 		JCheckBox checkBox = new JCheckBox();
-		checkBox.setBackground(new Color(200, 200, 200));
+		checkBox.setBackground(getColorGeneralPanel());
 		checkBox.setForeground(new Color(0, 0, 0));
 		return checkBox;
 	}
@@ -143,5 +143,15 @@ public class LightStyleFactory implements StyleAbstractFactory {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
 		return panel;
+	}
+	@Override
+	public Color getColorContentPane() {
+		Color colorContentPane = new Color(255,255,255);
+		return colorContentPane;
+	}
+	@Override
+	public Color getColorGeneralPanel() {
+		Color colorPanel = new Color(200,200,200);
+		return colorPanel;
 	}
 }

@@ -9,8 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import com.iHotel.model.State.CameraContext;
-import com.iHotel.view.Graphic.CheckIn.VFC_AggiungiOspiti;
+import com.iHotel.view.Graphic.CheckIn.VFC_AggiungiOspiti_PanelCamera;
 
 /**
  * @author Eugenio
@@ -22,25 +21,14 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 	/**
 	 * Pannello contenente la lista degli ospiti.
 	 */
-	private JPanel _pnlMiddleRight_ListaOspiti;
-	/**
-	 * Frame per il quale si sta gestendo l'evento.
-	 */
-	private VFC_AggiungiOspiti _frameAggiungiOspiti;
-	/**
-	 * Camera alla quale si vule aggiungere l'ospite.
-	 */
-	private CameraContext _camera;
+	private VFC_AggiungiOspiti_PanelCamera _panelCamera;
 	/**
 	 * Costruttore.
 	 * 
-	 * @param camera Camera alla quale si vuole aggiungere l'ospite
 	 * @param pnlMiddleRight Pannello contenente la lista degli ospiti.
 	 */
-	public AggiungiOspiteAllaPrenotazioneListener(CameraContext camera, JPanel pnlMiddleRight) {
-		_pnlMiddleRight_ListaOspiti=pnlMiddleRight;
-		_camera=camera;
-		_frameAggiungiOspiti=VFC_AggiungiOspiti.getInstance();
+	public AggiungiOspiteAllaPrenotazioneListener(VFC_AggiungiOspiti_PanelCamera panelCamera) {
+		_panelCamera=panelCamera;
 	}
 	
 	/* -------------------------- Metodi di instanza ---------------------------- */
@@ -52,13 +40,14 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO - Aggiungo l'ospite alla prenotazione
 		
-		
+		// Prendo il pannello dove si va a mostrare la lista degli ospiti
+		JPanel pnlMiddleRight = _panelCamera.get_pnlMiddleRight();
 		// Prendo il layout del pannello
-		CardLayout cardLayout = (CardLayout) _pnlMiddleRight_ListaOspiti.getLayout();
+		CardLayout cardLayout = (CardLayout) pnlMiddleRight.getLayout();
 		// Aggiungo una nuova scheda al pannello.
-		_pnlMiddleRight_ListaOspiti.add(_frameAggiungiOspiti.creaPanelListaOspiti(_camera));
+		pnlMiddleRight.add(_panelCamera.creaPanelListaOspiti());
 		// Mostro la prossima scheda
-		cardLayout.next(_pnlMiddleRight_ListaOspiti);
+		cardLayout.next(pnlMiddleRight);
 		
 	}
 

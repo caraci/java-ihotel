@@ -59,7 +59,7 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JPanel getContentPane() {
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(200, 200, 200));
+		panel.setBackground(getColorContentPane());
 		return panel;
 	}
 	
@@ -80,7 +80,7 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 	public JLabel getLabel() {
 		JLabel label = new JLabel();
 		label.setBackground(new Color(30, 30, 30));
-		label.setForeground(new Color(255,255,255));
+		label.setForeground(getColorGeneralPanel());
 		return label;
 	}
 	@Override
@@ -103,7 +103,7 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 	public JButton getButton(){
 		JButton button = new JButton();
 		button.setBackground(new Color(50, 50, 50));
-		button.setForeground(new Color(255,255,255));
+		button.setForeground(getColorGeneralPanel());
 		return button;
 	}
 	@Override
@@ -121,7 +121,7 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JTextField getTextField() {
 		JTextField text = new JTextField();
-		text.setBackground(new Color(255, 255, 255));
+		text.setBackground(getColorGeneralPanel());
 		text.setForeground(new Color(0, 0, 0));
 		return text;
 	}
@@ -129,13 +129,23 @@ public class DarkStyleFactory implements StyleAbstractFactory {
 	public JCheckBox getCheckBox() {
 		JCheckBox checkBox = new JCheckBox();
 		checkBox.setBackground(new Color(0, 0, 0));
-		checkBox.setForeground(new Color(255, 255, 255));
+		checkBox.setForeground(getColorGeneralPanel());
 		return checkBox;
 	}
 	@Override
 	public JPanel getPanelMiddle() {
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(200, 200, 200));
+		panel.setBackground(getColorContentPane());
 		return panel;
+	}
+	@Override
+	public Color getColorContentPane() {
+		Color colorContentPane = new Color(200,200,200);
+		return colorContentPane;
+	}
+	@Override
+	public Color getColorGeneralPanel() {
+		Color colorPanel = new Color(255,255,255);
+		return colorPanel;
 	}
 }
