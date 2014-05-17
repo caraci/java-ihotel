@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.view.View;
-import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
 
 /**
  * @author Alessandro
