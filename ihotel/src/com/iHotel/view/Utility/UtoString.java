@@ -4,6 +4,7 @@
 package com.iHotel.view.Utility;
 
 import com.iHotel.model.Persona.Ospite;
+import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
@@ -95,6 +96,12 @@ public class UtoString {
 		// String
 		String string = servizioEsterno.get_codice() + " " + servizioEsterno.get_descrizione() + " " + giornoToString(servizioEsterno.get_giorno());
 		return string;
+	}
+	
+	public String totalePrenotazioneToString(PrenotazioneSubject prenotazione){
+		//chiedo alla prenotazione quanto è il suo totale e la sua valuta
+		String totale = "L'ammontare complessivo della prenotazione è: " + prenotazione.get_total().get_importo() + prenotazione.get_total().get_valuta();
+		return totale;
 	}
 
 }

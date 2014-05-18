@@ -3,6 +3,7 @@
  */
 package com.iHotel.view.Graphic.GestionePagamenti;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +23,7 @@ import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
+import com.iHotel.view.Utility.UtoString;
 
 /**
  * @author Alessandro
@@ -46,10 +48,10 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	private static VFP_RiepilogoPagamenti instance= null;
 	
 	/*JPanel*/
-	private JPanel _panelContanti, _panelBonifico, _panelCartaDiCredito;
+	private JPanel _panelMiddleTop, _panelMiddleBottom,_panelContanti, _panelBonifico, _panelCartaDiCredito;
 	
 	/*JLabel*/
-	private JLabel _lblTitoloContanti, _lblTitoloBonifico, _lblTitoloCarta;
+	private JLabel _lblTitoloContanti, _lblTitoloBonifico, _lblTitoloCarta, _lblTotaleEImportoVersatoPrenotazione;
 	
 	/*JButton*/
 	private JButton _btnAggiungiPagamentoInContanti,_btnAggiungiPagamentoConBonifico,_btnAggiungiPagamentoConCarta;
@@ -59,11 +61,14 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		_panelContanti = _viewFactory.getPanel();
 		_panelBonifico = _viewFactory.getPanel();
 		_panelCartaDiCredito = _viewFactory.getPanel();
+		_panelMiddleTop = _viewFactory.getPanel();
+		_panelMiddleBottom = _viewFactory.getPanel();
 		
 		/*JLabel*/
 		_lblTitoloContanti = _viewFactory.getLabel();
 		_lblTitoloBonifico = _viewFactory.getLabel();
 		_lblTitoloCarta = _viewFactory.getLabel();
+		_lblTotaleEImportoVersatoPrenotazione = _viewFactory.getLabel();
 		
 		/*JButton*/
 		_btnAggiungiPagamentoInContanti = _viewFactory.getButton();
@@ -96,17 +101,46 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	@Override
 	protected void creaPanelMiddle() {
 		
+		//SEtto il layout. Borderlayout perchè la pagina è divisa in 2 righe orizzontali, ma di dimensioni diverse.
+		_panelMiddle.setLayout(new BorderLayout());		
 		
-		_panelMiddle.setLayout(new GridLayout(1, 3, 5, 0));
-		/*invoco i 3 metodi privati che mi consentono di creare i pannelli con le informazioni sul prenotante*/
-		/*della prenotazione, sulla prenotazione e sulle camere*/
-		_panelMiddle.add(creaPanelMiddleLeft());
-		_panelMiddle.add(creaPanelMiddleCenter());
-		_panelMiddle.add(creaPanelMiddleRight());
+		//Creo i pannelli top e bottom
+		_panelMiddle.add(creaPanelMiddleTop(), BorderLayout.PAGE_START);
+		_panelMiddle.add(creaPanelMiddleBottom(), BorderLayout.CENTER);
 		
 		
 	}
-
+	/**
+	 * Metodo privato che serve a costruire la riga superiore del pannello di metà pagina
+	 * 
+	 * @return Il pannello con le informazioni sulla prenotazione
+	 */
+	private JPanel creaPanelMiddleTop(){
+		
+		/*Setto il testo della label*/
+		_lblTotaleEImportoVersatoPrenotazione.setText(UtoString.getInstance().totalePrenotazioneToString(_prenotazione));
+		/*Aggiungo la label al pannello*/
+		_panelMiddleTop.add(_lblTotaleEImportoVersatoPrenotazione);
+		/*Restituisco il pannello*/
+		return _panelMiddleTop;
+		
+	}
+	/**
+	 * Metodo che prepara il pannello contenente le infomazioni sugli acconti
+	 * 
+	 * @return Il pannello contenente le informazioni sugli acconti
+	 */
+	private JPanel creaPanelMiddleBottom(){
+		//Setto il layout del panel middleBottom
+		_panelMiddleBottom.setLayout(new GridLayout(1, 3, 5, 0));
+		
+		/*invoco i 3 metodi privati che mi consentono di creare i pannelli con le informazioni sugli acconti*/
+		_panelMiddleBottom.add(creaPanelMiddleLeft());
+		_panelMiddleBottom.add(creaPanelMiddleCenter());
+		_panelMiddleBottom.add(creaPanelMiddleRight());
+		
+		return _panelMiddleBottom;
+	}
 	@Override
 	protected void creaPanelBottom() {
 		// TODO Auto-generated method stub
@@ -254,6 +288,8 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	public void creaFrame(PrenotazioneSubject prenotazione){
 		//Titolo della finestra
 		setTitle("iHotel - Gestione Prenotazione - Informazioni sul pagamento");
+		//Setto l'attributo prenotazione con il riferimento passato come parametro
+		_prenotazione = prenotazione;
 		//Recupero i pagamenti della prenotazione
 		this.recuperaPagamenti();
 		
