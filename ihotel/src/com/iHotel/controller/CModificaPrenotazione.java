@@ -5,25 +5,22 @@ import java.util.ArrayList;
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
-import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
-import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.VFrameHome;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoCamera;
-import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
  * @author Alessandro
  *
  */
-public class CModificaPrenotazione {
+public class CModificaPrenotazione extends CGestionePrenotazione {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
 	/**
@@ -31,14 +28,9 @@ public class CModificaPrenotazione {
 	 */
 	private static CModificaPrenotazione instance = null;
 	/**
-	 * Attributo che mantiene la maniglia alla prenotazione che si sta modificando
-	 */
-	private PrenotazioneSubject _prenotazione;
-	/**
 	 * Attributo che mantiene la maniglia alla camera che si sta gestendo, all'interno della prenotazione corrente
 	 */
 	private CameraContext _camera;
-	private Albergo _albergo;
 
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -57,23 +49,7 @@ public class CModificaPrenotazione {
          return instance;
     }
 	/* ------------------------- Metodi di instanza ---------------------------------- */
-    
-	/**
-	 * Metodo per mostrare l'interfaccia per la gestione della prenotazione, relativa al codice fornito.
-	 * @param codicePrenotazione Codice della prenotazione da caricare.
-	 */
-	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) {
-		// Recupero la prenotazione dallo storico.
-		_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
-		// Recupero il prezzo dei servizi esterni della prenotazione.
-		Prezzo prezzo=_albergo.getPrezzoServiziEsterniPrenotazione(_prenotazione);
-		// Prendo l'interfaccia correlata.
-		VFPG_InfoPrenotazione infoPrenotazione = VFPG_InfoPrenotazione.getInstance();
-		// Creo l'interfaccia relativa alla prenotazione
-		infoPrenotazione.creaFrame(_prenotazione, prezzo);		
-		// Mostro l'interfaccia relativa alla gestione della prenotazione
-		ViewHandler.getInstance().showFrame(infoPrenotazione);
-	}
+  
 	/**
 	 * Metodo per mostrare l'interfaccia contenente le informazioni sulla camera, relativa al numero fornito. 
 	 * @param numeroCamera 

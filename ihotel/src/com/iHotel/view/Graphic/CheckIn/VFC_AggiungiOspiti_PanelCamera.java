@@ -420,4 +420,33 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	public void set_pnlTipoDocumento(JPanel _pnlTipoDocumento) {
 		this._pnlTipoDocumento = _pnlTipoDocumento;
 	}
+
+	/**
+	 * @return the _camera
+	 */
+	public CameraContext get_camera() {
+		return _camera;
+	}
+
+	/**
+	 * @param _camera the _camera to set
+	 */
+	public void set_camera(CameraContext _camera) {
+		this._camera = _camera;
+	}
+
+	/**
+	 * @return the _comboBoxTipologieDocumenti
+	 */
+	public JComboBox<String> get_comboBoxTipologieDocumenti() {
+		return _comboBoxTipologieDocumenti;
+	}
+
+	/**
+	 * @param _comboBoxTipologieDocumenti the _comboBoxTipologieDocumenti to set
+	 */
+	public void set_comboBoxTipologieDocumenti(
+			JComboBox<String> _comboBoxTipologieDocumenti) {
+		this._comboBoxTipologieDocumenti = _comboBoxTipologieDocumenti;
+	}
 }

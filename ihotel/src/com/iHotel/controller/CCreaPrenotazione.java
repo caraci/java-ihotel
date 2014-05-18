@@ -24,28 +24,21 @@ import java.util.Iterator;
  * @author Alessandro
  *
  */
-public class CCreaPrenotazione {
+public class CCreaPrenotazione extends CGestionePrenotazione {
 	
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
 	/**
 	 * Attributo privato - Pattern Singleton
 	 */
 	private static CCreaPrenotazione instance = null;
-	private Albergo _albergo;
-	private PrenotazioneSubject _prenotazione;
     
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private CCreaPrenotazione() {
-		// Carico l'albergo mediante pattern Singleton
-		_albergo = Albergo.getInstance();
-	}
+	private CCreaPrenotazione() {}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 * 
-	 * @return CGestisciPrenotazione Instanza unica di questa classe
 	 */
     public static CCreaPrenotazione getInstance() {
     	if(instance == null) {
