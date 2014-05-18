@@ -9,21 +9,23 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
 
+import com.iHotel.view.Graphic.CheckIn.VFC_AggiungiOspiti_PanelCamera;
+
 /**
  * @author Eugenio
  *
  */
 public class ScegliDocumentoListener implements ItemListener {
 	/**
-	 * Pannello contente l'insieme delle schede, ognuna delle quali contiene un tipo di documento.
+	 * Pannello contenente la lista degli ospiti.
 	 */
-	private JPanel _pnlInserisciDocumento;
+	private VFC_AggiungiOspiti_PanelCamera _panelCamera;
 	/**
 	 * Costruttore
 	 * @param pnlTipoDocumento Pannello contenente i diversi documenti.
 	 */
-	public ScegliDocumentoListener(JPanel pnlTipoDocumento) {
-		_pnlInserisciDocumento=pnlTipoDocumento;
+	public ScegliDocumentoListener(VFC_AggiungiOspiti_PanelCamera panelCamera) {
+		_panelCamera=panelCamera;
 	}
 
 	/* (non-Javadoc)
@@ -35,10 +37,12 @@ public class ScegliDocumentoListener implements ItemListener {
 		String tipoDocumento = (String) e.getItem();
 		// Prendo l'elemento selezionato
 		if (e.getStateChange() == ItemEvent.SELECTED) {
+			// Ricavo il pannello dove è presente il documento
+			JPanel pnlTipoDocumento=_panelCamera.get_pnlTipoDocumento();
 			// Recupero il gestore del layout
-			CardLayout cardLayout = (CardLayout) _pnlInserisciDocumento.getLayout();
+			CardLayout cardLayout = (CardLayout) pnlTipoDocumento.getLayout();
 			// Mostro la scheda corretta.
-			cardLayout.show(_pnlInserisciDocumento, tipoDocumento);
+			cardLayout.show(pnlTipoDocumento, tipoDocumento);
 	      }
 	}
 }
