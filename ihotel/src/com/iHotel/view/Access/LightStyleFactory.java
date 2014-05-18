@@ -12,6 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -153,5 +154,11 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	public Color getColorGeneralPanel() {
 		Color colorPanel = new Color(200,200,200);
 		return colorPanel;
+	}
+	@Override
+	public JSeparator getSeparator() {
+		JSeparator separator = new JSeparator();
+		separator.setBackground(new Color(20,20,20));
+		return separator;
 	}
 }

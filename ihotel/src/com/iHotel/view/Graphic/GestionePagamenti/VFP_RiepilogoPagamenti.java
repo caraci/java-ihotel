@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,6 +19,9 @@ import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.view.ViewFrame;
+import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
+import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
+import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
 
 /**
  * @author Alessandro
@@ -46,6 +50,9 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	
 	/*JLabel*/
 	private JLabel _lblTitoloContanti, _lblTitoloBonifico, _lblTitoloCarta;
+	
+	/*JButton*/
+	private JButton _btnAggiungiPagamentoInContanti,_btnAggiungiPagamentoConBonifico,_btnAggiungiPagamentoConCarta;
  
 	public VFP_RiepilogoPagamenti(){
 		/*JPanel*/
@@ -57,6 +64,11 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		_lblTitoloContanti = _viewFactory.getLabel();
 		_lblTitoloBonifico = _viewFactory.getLabel();
 		_lblTitoloCarta = _viewFactory.getLabel();
+		
+		/*JButton*/
+		_btnAggiungiPagamentoInContanti = _viewFactory.getButton();
+		_btnAggiungiPagamentoConBonifico = _viewFactory.getButton();
+		_btnAggiungiPagamentoConCarta = _viewFactory.getButton();
 	}
 	
 	/* -------------------------- Metodi di classe ----------------------------- */
@@ -119,10 +131,35 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 					.hasNext();) {
 				PagamentoInContanti pagamentoInContanti = (PagamentoInContanti) iterator.next();
 				JLabel label = _viewFactory.getLabel();
+				//Setto il testo della label
 				label.setText("Importo: "+pagamentoInContanti.get_importo().toString());
+				//Aggiungo la label al pannello insieme al separatore
 				_panelContanti.add(label);
+				_panelContanti.add(_viewFactory.getSeparator());
 			}
 		}
+
+		/*Esempio di più pagamenti attribuiti alla prenotazione*/
+		//WARN ASSOLUTAMENTE DA LEVARE DOPO
+					JLabel label1 = _viewFactory.getLabel();
+					label1.setText("Pagamento 1");
+					JLabel label2 = _viewFactory.getLabel();
+					label2.setText("Pagamento 2");
+					JLabel label3 = _viewFactory.getLabel();
+					label3.setText("Pagamento 3");
+					
+					_panelContanti.add(label1);
+					_panelContanti.add(_viewFactory.getSeparator());
+					_panelContanti.add(label2);
+					_panelContanti.add(_viewFactory.getSeparator());
+					_panelContanti.add(label3);
+		
+		/*Setto il testo del pulsante*/
+		_btnAggiungiPagamentoInContanti.setText("Aggiungi un pagamento in contanti");
+		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
+		_btnAggiungiPagamentoInContanti.addMouseListener(new InserisciPagamentoInContantiListener());
+		/*Aggiungo il pulsante per aggiungere un pagamento*/
+		_panelContanti.add(_btnAggiungiPagamentoInContanti);
 		
 		//Restituisco il pannello
 		return _panelContanti;
@@ -147,10 +184,21 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 					.hasNext();) {
 				PagamentoConBonifico pagamentoConBonifico = (PagamentoConBonifico) iterator.next();
 				JLabel label = _viewFactory.getLabel();
+				//Setto il testo della label
 				label.setText("Importo: "+pagamentoConBonifico.get_importo().toString());
+				//Aggiungo la label al pannello insieme ad un separatore
 				_panelContanti.add(label);
+				_panelContanti.add(_viewFactory.getSeparator());
 			}
 		}
+		
+		/*Setto il testo del pulsante*/
+		_btnAggiungiPagamentoConBonifico.setText("Aggiungi un pagamento Con Bonifico");
+		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
+		_btnAggiungiPagamentoConBonifico.addMouseListener(new InserisciPagamentoConBonificoListener());
+		/*Aggiungo il pulsante per aggiungere un pagamento*/
+		_panelBonifico.add(_btnAggiungiPagamentoConBonifico);
+		
 		
 		//restitiuisco il pannello con il bonifici
 		return _panelBonifico;
@@ -175,10 +223,20 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 					.hasNext();) {
 				PagamentoConCarta pagamentoConCarta = (PagamentoConCarta) iterator.next();
 				JLabel label = _viewFactory.getLabel();
+				//Setto il testo della label
 				label.setText("Importo: "+pagamentoConCarta.get_importo().toString());
+				//Aggiungo la label al pannello insieme ad un separatore
 				_panelContanti.add(label);
+				_panelContanti.add(_viewFactory.getSeparator());
 			}
 		}
+		
+		/*Setto il testo del pulsante*/
+		_btnAggiungiPagamentoConCarta.setText("Aggiungi un pagamento con carta");
+		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
+		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConCartaListener());
+		/*Aggiungo il pulsante per aggiungere un pagamento*/
+		_panelCartaDiCredito.add(_btnAggiungiPagamentoConCarta);
 		
 		//restitiuisco il pannello con il bonifici
 		return _panelCartaDiCredito;

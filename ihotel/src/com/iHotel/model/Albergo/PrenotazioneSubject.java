@@ -7,7 +7,6 @@ import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.Pagamento.Pagamento;
-import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
@@ -54,9 +53,6 @@ public class PrenotazioneSubject implements ISubject {
 		_osservatori = new ArrayList<IObserver>();
 		_total = new Prezzo();
 		_pagamenti= new HashMap<String,ArrayList<Pagamento>>();
-		ArrayList<Pagamento> paga = new ArrayList<Pagamento>();
-		paga.add(new PagamentoInContanti());
-		_pagamenti.put("contanti", paga);
 	}
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */

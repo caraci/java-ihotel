@@ -10,6 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
@@ -110,5 +111,10 @@ public interface StyleAbstractFactory {
 	 * @return Colore di sfondo del generico contenitore.
 	 */
 	public Color getColorGeneralPanel();
+	/**
+	 * Metodo per ottenere un JSeparator.
+	 * @return Jseparator.
+	 */
+	public JSeparator getSeparator();
 	
 }
