@@ -4,12 +4,19 @@
 package com.iHotel.view.Graphic.GestionePagamenti;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Pagamento.Pagamento;
+import com.iHotel.model.Pagamento.PagamentoConBonifico;
+import com.iHotel.model.Pagamento.PagamentoConCarta;
+import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.view.ViewFrame;
 
 /**
@@ -22,6 +29,12 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */
 	private PrenotazioneSubject _prenotazione;
+	
+	/**
+	 * HashMap contenente i pagamenti della prenotazione
+	 */
+	private HashMap<String, ArrayList<Pagamento>> _pagamentiDellaPrenotazione = new HashMap<String, ArrayList<Pagamento>>();
+	
 	
 	/**
 	 * Singleton
@@ -98,6 +111,19 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		_lblTitoloContanti.setText("Contanti:");
 		//Assegno il titolo al pannello
 		_panelContanti.add(_lblTitoloContanti);
+		
+		//Ora recupero i pagamenti in contanti
+		ArrayList<Pagamento> pagamentiInContanti =_pagamentiDellaPrenotazione.get("contanti");
+		if (pagamentiInContanti!=null){
+			for (Iterator<Pagamento> iterator = pagamentiInContanti.iterator(); iterator
+					.hasNext();) {
+				PagamentoInContanti pagamentoInContanti = (PagamentoInContanti) iterator.next();
+				JLabel label = _viewFactory.getLabel();
+				label.setText("Importo: "+pagamentoInContanti.get_importo().toString());
+				_panelContanti.add(label);
+			}
+		}
+		
 		//Restituisco il pannello
 		return _panelContanti;
 		
@@ -113,6 +139,19 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		_lblTitoloBonifico.setText("Bonifici:");
 		//Aggiongo la label con il titolo al pannello
 		_panelBonifico.add(_lblTitoloBonifico);
+		
+		//Ora recupero i pagamenti tramite bonifico bancario
+		ArrayList<Pagamento> pagamentiConBonifico =_pagamentiDellaPrenotazione.get("bonifico");
+		if (pagamentiConBonifico!=null){
+			for (Iterator<Pagamento> iterator = pagamentiConBonifico.iterator(); iterator
+					.hasNext();) {
+				PagamentoConBonifico pagamentoConBonifico = (PagamentoConBonifico) iterator.next();
+				JLabel label = _viewFactory.getLabel();
+				label.setText("Importo: "+pagamentoConBonifico.get_importo().toString());
+				_panelContanti.add(label);
+			}
+		}
+		
 		//restitiuisco il pannello con il bonifici
 		return _panelBonifico;
 	}
@@ -128,13 +167,38 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		_lblTitoloCarta.setText("Prelevamenti carte di credito:");
 		//Aggiongo la label con il titolo al pannello
 		_panelCartaDiCredito.add(_lblTitoloCarta);
+		
+		//Ora recupero i pagamenti tramite Carta di credito
+		ArrayList<Pagamento> pagamentiConCarta =_pagamentiDellaPrenotazione.get("carta");
+		if (pagamentiConCarta!=null){
+			for (Iterator<Pagamento> iterator = pagamentiConCarta.iterator(); iterator
+					.hasNext();) {
+				PagamentoConCarta pagamentoConCarta = (PagamentoConCarta) iterator.next();
+				JLabel label = _viewFactory.getLabel();
+				label.setText("Importo: "+pagamentoConCarta.get_importo().toString());
+				_panelContanti.add(label);
+			}
+		}
+		
 		//restitiuisco il pannello con il bonifici
 		return _panelCartaDiCredito;
 	}
-	
+	/**
+	 * Metodo privato che restituisce la mappa dei pagamenti della prenotazione
+	 */
+	private void recuperaPagamenti(){
+		/*Se la mappa della classe è vuota vado a chiedere alla prenotazione la mappa dei pagamenti e setto la mappa
+		della schermata attuale con quella recuperata. Se non è vuota vuol dire che l'avevo già caricata*/
+		if(this._pagamentiDellaPrenotazione==null){
+				this._pagamentiDellaPrenotazione=_prenotazione.get_pagamenti();
+		}
+	}
 	public void creaFrame(PrenotazioneSubject prenotazione){
 		//Titolo della finestra
 		setTitle("iHotel - Gestione Prenotazione - Informazioni sul pagamento");
+		//Recupero i pagamenti della prenotazione
+		this.recuperaPagamenti();
+		
 		//Creo il pannello centrale
 		
 		/* ATTENZIONE MANCANO I METODI PER CREARE PANNELLO SUPERIORE ED INFERIORE*********************************************/
