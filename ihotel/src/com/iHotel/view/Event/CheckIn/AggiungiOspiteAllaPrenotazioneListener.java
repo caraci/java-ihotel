@@ -61,6 +61,8 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 		pnlMiddleRight.add(_panelCamera.creaPanelListaOspiti());
 		// Mostro la prossima scheda
 		cardLayout.next(pnlMiddleRight);
+		// Rimuovo il pannello precedente.
+		pnlMiddleRight.remove(pnlMiddleRight.getComponent(0));
 	}
 	/**
 	 * Metodo per ottenere l'ospite inserito.

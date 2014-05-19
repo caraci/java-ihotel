@@ -7,6 +7,8 @@ import java.awt.CardLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.JPanel;
+
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
@@ -37,14 +39,19 @@ public class MostraDettagliServizioListener implements ItemListener {
 		String nomeServizioInterno = (String) e.getItem();
 		// Prendo l'elemento selezionato
 		if (e.getStateChange() == ItemEvent.SELECTED) {
+			// Pannello a cui è associato il card Layout
+			JPanel panelServizi = _aggiungiServiziInterni.get_pnlMiddleRight();
 			// Recupero il descrittore del servizio.
 			DescrizioneServizioInterno descrizioneServizioInterno=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaNome(nomeServizioInterno);
 			// Aggiungo una scheda al pannello.
-			_aggiungiServiziInterni.get_pnlMiddleRight().add(_aggiungiServiziInterni.creaPanelDescrittore(descrizioneServizioInterno));
+			panelServizi.add(_aggiungiServiziInterni.creaPanelDescrittore(descrizioneServizioInterno));
 			// Ricavo il gestore del layout.
-			CardLayout cardLayout = (CardLayout) _aggiungiServiziInterni.get_pnlMiddleRight().getLayout();
+			CardLayout cardLayout = (CardLayout) panelServizi.getLayout();
 			// Mostro la prossima scheda, ovvero quella riferita al nuovo servizio
-			cardLayout.next(_aggiungiServiziInterni.get_pnlMiddleRight());
+			cardLayout.next(panelServizi);
+			// Rimuovo il pannello precedente.
+			panelServizi.remove(panelServizi.getComponent(0));
+			
 	      }
 	}
 }
