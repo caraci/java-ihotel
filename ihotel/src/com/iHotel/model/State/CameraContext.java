@@ -28,9 +28,17 @@ public class CameraContext {
 		_statiCameraState = new LinkedList<CameraState>();
 	}
 	/* -------------------------- Metodi di istanza ----------------------- */
-	
+	/**
+	 * Metodo per aggiungere un ospite alla camera in un determinato periodo.
+	 * 
+	 * @param ospite Ospite da aggiungere.
+	 * @param periodo Periodo in cui aggiungere il servizio.
+	 */
 	public void aggiungiOspiteInPeriodo(Ospite ospite, Periodo periodo) {
-		
+		// Prendo il giusto statoCamera in base al periodo.
+		CameraState statoCamera = this.getStatoCameraInPeriodo(periodo);
+		// Aggiungo l'ospite allo stato camera.
+		statoCamera.aggiungiOspite(ospite);
 	}
 	/**
 	 * Metodo per aggiungere un servizio alla camera in un determinato periodo.
@@ -39,10 +47,9 @@ public class CameraContext {
 	 * @param periodo Periodo in cui aggiungere il servizio.
 	 */
 	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo){
-		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
-			CameraState statoCamera = (CameraState) iterator.next();
-			statoCamera.aggiungiServizioInPeriodo(servizio, periodo);
-		}
+		// Prendo il giusto statoCamera in base al periodo.
+		CameraState statoCamera = this.getStatoCameraInPeriodo(periodo);
+		statoCamera.aggiungiServizioInPeriodo(servizio, periodo);
 	}
 	/**
 	 * Metodo per ottenere il prezzo dei servizi interni della camera in un certo periodo.
@@ -108,15 +115,12 @@ public class CameraContext {
 	 * @return Lista dei servizi interni della camera nel periodo.
 	 */
 	public ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo){
-		ArrayList<ServizioInterno> serviziInterni=new ArrayList<ServizioInterno>() ;
-		// Ciclo sugli stati interni della camera.
-		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
-			CameraState statoCamera = iterator.next();
-			// Controllo che la richiesta fornisca un risultato.
-			if(statoCamera.getServiziInterniInPeriodo(periodo)!=null){
-				serviziInterni=statoCamera.getServiziInterniInPeriodo(periodo);
-			}
-		}
+		ArrayList<ServizioInterno> serviziInterni=new ArrayList<ServizioInterno>();
+		// Ricavo il giusto stato camera.
+		CameraState statoCamera = this.getStatoCameraInPeriodo(periodo);
+		// Ricavo la lista di servizi
+		serviziInterni=statoCamera.getServiziInterniInPeriodo(periodo);
+		
 		return serviziInterni;
 	}
 	/**
@@ -127,14 +131,11 @@ public class CameraContext {
 	 */
 	public ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo){
 		ArrayList<Ospite> ospiti=new ArrayList<Ospite>() ;
-		// Ciclo sugli stati interni della camera.
-		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
-			CameraState statoCamera = iterator.next();
-			// Controllo che la richiesta fornisca un risultato.
-			if(statoCamera.getOspitiInPeriodo(periodo)!=null){
-				ospiti=statoCamera.getOspitiInPeriodo(periodo);
-			}
-		}
+		// Ricavo il giusto stato camera.
+		CameraState statoCamera = this.getStatoCameraInPeriodo(periodo);
+		// Ricavo la lista di ospiti.
+		ospiti=statoCamera.getOspitiInPeriodo(periodo);
+		
 		return ospiti;
 	}
 	/**

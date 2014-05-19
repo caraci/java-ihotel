@@ -63,4 +63,8 @@ public class CameraStateOccupata extends CameraState {
 		}
 		return ospitiInPeriodo;
 	}
+	@Override
+	public void aggiungiOspite(Ospite ospite) {
+		_ospiti.add(ospite);
+	}
 }

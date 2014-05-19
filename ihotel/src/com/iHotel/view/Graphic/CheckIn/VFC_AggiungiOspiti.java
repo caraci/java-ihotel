@@ -67,8 +67,7 @@ public class VFC_AggiungiOspiti extends ViewFrame {
 	 */
 	@Override
 	public void removeInstance() {
-		// TODO Auto-generated method stub
-
+		instance = null;
 	}
 
 	/* (non-Javadoc)

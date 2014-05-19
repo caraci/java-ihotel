@@ -53,5 +53,9 @@ public class CameraStateLibera extends CameraState {
 	@Override
 	public ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo) {
 		return null;
+	}
+	@Override
+	public void aggiungiOspite(Ospite ospite) {
+		// TODO Auto-generated method stub
 	}	
 }

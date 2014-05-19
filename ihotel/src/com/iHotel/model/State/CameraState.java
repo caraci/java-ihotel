@@ -85,6 +85,12 @@ public abstract class CameraState {
 	 * @return Lista degli ospiti della camera.
 	 */
 	public abstract ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo);
+	/**
+	 * Metodo per aggiungere l'ospite alla camera.
+	 * 
+	 * @param ospite Ospite da aggiungere alla camera.
+	 */
+	public abstract void aggiungiOspite(Ospite ospite);
 	
 	/* -------------------------- Getter, Setter ----------------------------- */
 	/**
