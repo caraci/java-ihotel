@@ -24,7 +24,9 @@ public class Documento {
 	protected String _numeroDocumento;
 	protected Residenza _residenza;
 	
-	//Costruttore di default
+	/**
+	 * Costruttore
+	 */
 	public Documento(){}
 	
 	/**

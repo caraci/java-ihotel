@@ -4,6 +4,7 @@
 package com.iHotel.view.Graphic.CheckIn;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,6 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import net.sourceforge.jdatepicker.JDateComponentFactory;
+import net.sourceforge.jdatepicker.JDatePicker;
+
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.State.CameraContext;
@@ -26,6 +30,7 @@ import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
 import com.iHotel.view.Event.CheckIn.ScegliDocumentoListener;
+
 
 /**
  * @author Eugenio
@@ -39,7 +44,9 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	/* JLabel */
 	private JLabel _lblNome,_lblCognome,_lblIntestazioneMiddleLeft,_lblCittaNascita,_lblCittaResidenza,
 				   _lblIntestazioneCartaIdentita,_lblCartaIdentitaCodice,_lblCartaIdentitaEnte,_lblIntestazionePatente,
-				   _lblPatenteCodice,_lblPatenteEnte,_lblIntestazionePassaporto,_lblPassaportoCodice,_lblPassaportoEnte;
+				   _lblPatenteCodice,_lblPatenteEnte,_lblIntestazionePassaporto,_lblPassaportoCodice,_lblPassaportoEnte,
+				   _lblCartaIdentitaDataRilascio,_lblCartaIdentitaDataScadenza, _lblPatenteDataRilascio,_lblPatenteDataScadenza,
+				   _lblPassaportoDataRilascio,_lblPassaportoDataScadenza,_lblDataNascita;
 	/* JTextField */
 	private JTextField _txtCartaIdentitaCodice, _txtCartaIdentitaEnte, _txtNome, _txtCognome, _txtCittaNascita,
 					   _txtCittaResidenza,_txtPatenteEnte,_txtPatenteCodice,_txtPassaportoCodice,_txtPassaportoEnte;
@@ -53,6 +60,9 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	/* JButton */
 	private JButton _btnAggiungiOspite;
 	private StyleAbstractFactory _viewFactory;
+	/* JDatePicker */
+	private JDatePicker _dataRilascioCartaIdentita,_dataScadenzaCartaIdentita,_dataRilascioPatente,_dataScadenzaPatente,
+						_dataRilascioPassaporto,_dataScadenzaPassaporto,_dataNascita;
 	
 	/**
 	 * Costruttore.
@@ -88,10 +98,17 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		_lblCognome=_viewFactory.getLabel();
 		_lblCittaNascita=_viewFactory.getLabel();
 		_lblCittaResidenza=_viewFactory.getLabel();
+		_lblDataNascita=_viewFactory.getLabel();
 		_lblPatenteCodice=_viewFactory.getLabel();
 		_lblPatenteEnte=_viewFactory.getLabel();
 		_lblPassaportoCodice=_viewFactory.getLabel();
 		_lblPassaportoEnte=_viewFactory.getLabel();
+		_lblCartaIdentitaDataRilascio=_viewFactory.getLabel();
+		_lblCartaIdentitaDataScadenza=_viewFactory.getLabel();
+		_lblPatenteDataRilascio=_viewFactory.getLabel();
+		_lblPatenteDataScadenza=_viewFactory.getLabel();
+		_lblPassaportoDataRilascio=_viewFactory.getLabel();
+		_lblPassaportoDataScadenza=_viewFactory.getLabel();
 		
 		// JTextField
 		_txtNome=_viewFactory.getTextField();
@@ -108,6 +125,14 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		_comboBoxTipologieDocumenti=new JComboBox<String>();
 		// JButton
 		_btnAggiungiOspite=_viewFactory.getButtonAvanti();
+		// JDatePicker
+		_dataRilascioCartaIdentita = JDateComponentFactory.createJDatePicker();
+		_dataScadenzaCartaIdentita = JDateComponentFactory.createJDatePicker();
+		_dataRilascioPatente = JDateComponentFactory.createJDatePicker();
+		_dataScadenzaPatente = JDateComponentFactory.createJDatePicker();
+		_dataRilascioPassaporto = JDateComponentFactory.createJDatePicker();
+		_dataScadenzaPassaporto = JDateComponentFactory.createJDatePicker();
+		_dataNascita = JDateComponentFactory.createJDatePicker();
 		/* Creo il pannello */
 		this.creaPanelCamera();
 	}
@@ -166,7 +191,7 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	private JPanel creaPanelInformazioniOspiteGenerale() {
 		JPanel pnlInformazioniOspiteGenerale = _viewFactory.getPanel(false);
 		// Setto layout
-		pnlInformazioniOspiteGenerale.setLayout(new GridLayout(4, 2, 0, 0));
+		pnlInformazioniOspiteGenerale.setLayout(new GridLayout(5, 2, 5, 5));
 		
 		// Nome
 		_lblNome.setText("Nome:");
@@ -176,21 +201,25 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		_lblCittaNascita.setText("Città Nascita:");
 		// Città residenza
 		_lblCittaResidenza.setText("Città Nascita:");
-		
+		// Data di nascita
+		_lblDataNascita.setText("Data di nascita:");
 		// Aggiungo componenti al pannello
 		
 		// Riga 1
 		pnlInformazioniOspiteGenerale.add(_lblNome);
-		pnlInformazioniOspiteGenerale.add(_lblCognome);
+		pnlInformazioniOspiteGenerale.add(_txtNome);
 		// Riga 2
-		pnlInformazioniOspiteGenerale.add(_txtNome);		
+		pnlInformazioniOspiteGenerale.add(_lblCognome);		
 		pnlInformazioniOspiteGenerale.add(_txtCognome);
 		// Riga 3
 		pnlInformazioniOspiteGenerale.add(_lblCittaResidenza);
-		pnlInformazioniOspiteGenerale.add(_lblCittaNascita);
-		// Riga 4
 		pnlInformazioniOspiteGenerale.add(_txtCittaResidenza);
+		// Riga 4
+		pnlInformazioniOspiteGenerale.add(_lblCittaNascita);
 		pnlInformazioniOspiteGenerale.add(_txtCittaNascita);
+		// Riga 5
+		pnlInformazioniOspiteGenerale.add(_lblDataNascita);
+		pnlInformazioniOspiteGenerale.add((Component) _dataNascita);
 		
 		return pnlInformazioniOspiteGenerale;
 	}
@@ -202,7 +231,7 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	 */
 	private JPanel creaPanelDocumento() {
 		_pnlContieniDocumento.setLayout(new BoxLayout(_pnlContieniDocumento, BoxLayout.PAGE_AXIS));
-		// TODO - Aggiungo tipologie di documenti alla comboBox
+		// Aggiungo tipologie di documenti alla comboBox
 		_comboBoxTipologieDocumenti.addItem("CartaIdentita");
 		_comboBoxTipologieDocumenti.addItem("Patente");
 		_comboBoxTipologieDocumenti.addItem("Passaporto");
@@ -239,11 +268,15 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// Intestazione
 		_lblIntestazioneCartaIdentita.setText("Dati carta d'identità:");
 		// Setto layout.
-		_pnlCartaIdentitaDati.setLayout(new GridLayout(2, 2, 5, 5));
+		_pnlCartaIdentitaDati.setLayout(new GridLayout(4, 2, 5, 5));
 		// Codice.
 		_lblCartaIdentitaCodice.setText("Codice:");
 		// Ente.
 		_lblCartaIdentitaEnte.setText("Ente:");
+		// Data di rilascio
+		_lblCartaIdentitaDataRilascio.setText("Data rilascio:");
+		// Data di scadenza
+		_lblCartaIdentitaDataScadenza.setText("Data rilascio:");
 		
 		// Aggiungo campi al pannello pnlCartaIdentitaDati
 		// riga 1
@@ -252,6 +285,12 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// riga 2
 		_pnlCartaIdentitaDati.add(_txtCartaIdentitaCodice);
 		_pnlCartaIdentitaDati.add(_txtCartaIdentitaEnte);
+		// riga 3
+		_pnlCartaIdentitaDati.add(_lblCartaIdentitaDataRilascio);
+		_pnlCartaIdentitaDati.add(_lblCartaIdentitaDataScadenza);
+		// riga 4
+		_pnlCartaIdentitaDati.add((Component) _dataRilascioCartaIdentita);
+		_pnlCartaIdentitaDati.add((Component) _dataScadenzaCartaIdentita);
 		
 		// Aggiungo campi al pannello pnlCartaIdentita
 		_pnlCartaIdentita.add(_lblIntestazioneCartaIdentita);
@@ -271,11 +310,15 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// Intestazione
 		_lblIntestazionePatente.setText("Dati Patente:");
 		// Setto layout.
-		_pnlPatenteDati.setLayout(new GridLayout(2, 2, 5, 5));
+		_pnlPatenteDati.setLayout(new GridLayout(4, 2, 5, 5));
 		// Codice.
 		_lblPatenteCodice.setText("Codice:");
 		// Ente.
 		_lblPatenteEnte.setText("Ente:");
+		// Data di rilascio
+		_lblPatenteDataRilascio.setText("Data rilascio:");
+		// Data di scadenza
+		_lblPatenteDataScadenza.setText("Data rilascio:");
 		
 		// Aggiungo campi al pannello _pnlPatenteDati
 		// riga 1
@@ -284,6 +327,12 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// riga 2
 		_pnlPatenteDati.add(_txtPatenteCodice);
 		_pnlPatenteDati.add(_txtPatenteEnte);
+		// riga 3
+		_pnlPatenteDati.add(_lblPatenteDataRilascio);
+		_pnlPatenteDati.add(_lblPatenteDataScadenza);
+		// riga 4
+		_pnlPatenteDati.add((Component) _dataRilascioPatente);
+		_pnlPatenteDati.add((Component) _dataScadenzaPatente);
 		
 		// Aggiungo campi al pannello _pnlPatente
 		_pnlPatente.add(_lblIntestazionePatente);
@@ -303,11 +352,15 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// Intestazione
 		_lblIntestazionePassaporto.setText("Dati Passaporto:");
 		// Setto layout.
-		_pnlPassaportoDati.setLayout(new GridLayout(2, 2, 5, 5));
+		_pnlPassaportoDati.setLayout(new GridLayout(4, 2, 5, 5));
 		// Codice.
 		_lblPassaportoCodice.setText("Codice:");
 		// Ente.
 		_lblPassaportoEnte.setText("Ente:");
+		// Data di rilascio
+		_lblPassaportoDataRilascio.setText("Data rilascio:");
+		// Data di scadenza
+		_lblPassaportoDataScadenza.setText("Data rilascio:");
 		
 		// Aggiungo campi al pannello pnlPassaportoDati
 		// riga 1
@@ -316,6 +369,12 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// riga 2
 		_pnlPassaportoDati.add(_txtPassaportoCodice);
 		_pnlPassaportoDati.add(_txtPassaportoEnte);
+		// riga 3
+		_pnlPassaportoDati.add(_lblPassaportoDataRilascio);
+		_pnlPassaportoDati.add(_lblPassaportoDataScadenza);
+		// riga 4
+		_pnlPassaportoDati.add((Component) _dataRilascioPassaporto);
+		_pnlPassaportoDati.add((Component) _dataScadenzaPassaporto);
 		
 		// Aggiungo campi al pannello pnlPassaporto
 		_pnlPassaporto.add(_lblIntestazionePassaporto);
@@ -448,5 +507,271 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	public void set_comboBoxTipologieDocumenti(
 			JComboBox<String> _comboBoxTipologieDocumenti) {
 		this._comboBoxTipologieDocumenti = _comboBoxTipologieDocumenti;
+	}
+
+	/**
+	 * @return the _lblNome
+	 */
+	public JLabel get_lblNome() {
+		return _lblNome;
+	}
+
+	/**
+	 * @param _lblNome the _lblNome to set
+	 */
+	public void set_lblNome(JLabel _lblNome) {
+		this._lblNome = _lblNome;
+	}
+
+	/**
+	 * @return the _lblCognome
+	 */
+	public JLabel get_lblCognome() {
+		return _lblCognome;
+	}
+
+	/**
+	 * @param _lblCognome the _lblCognome to set
+	 */
+	public void set_lblCognome(JLabel _lblCognome) {
+		this._lblCognome = _lblCognome;
+	}
+
+	/**
+	 * @return the _txtNome
+	 */
+	public JTextField get_txtNome() {
+		return _txtNome;
+	}
+
+	/**
+	 * @param _txtNome the _txtNome to set
+	 */
+	public void set_txtNome(JTextField _txtNome) {
+		this._txtNome = _txtNome;
+	}
+
+	/**
+	 * @return the _txtCognome
+	 */
+	public JTextField get_txtCognome() {
+		return _txtCognome;
+	}
+
+	/**
+	 * @param _txtCognome the _txtCognome to set
+	 */
+	public void set_txtCognome(JTextField _txtCognome) {
+		this._txtCognome = _txtCognome;
+	}
+
+	/**
+	 * @return the _dataRilascioCartaIdentita
+	 */
+	public JDatePicker get_dataRilascioCartaIdentita() {
+		return _dataRilascioCartaIdentita;
+	}
+
+	/**
+	 * @param _dataRilascioCartaIdentita the _dataRilascioCartaIdentita to set
+	 */
+	public void set_dataRilascioCartaIdentita(JDatePicker _dataRilascioCartaIdentita) {
+		this._dataRilascioCartaIdentita = _dataRilascioCartaIdentita;
+	}
+
+	/**
+	 * @return the _dataScadenzaCartaIdentita
+	 */
+	public JDatePicker get_dataScadenzaCartaIdentita() {
+		return _dataScadenzaCartaIdentita;
+	}
+
+	/**
+	 * @param _dataScadenzaCartaIdentita the _dataScadenzaCartaIdentita to set
+	 */
+	public void set_dataScadenzaCartaIdentita(JDatePicker _dataScadenzaCartaIdentita) {
+		this._dataScadenzaCartaIdentita = _dataScadenzaCartaIdentita;
+	}
+
+	/**
+	 * @return the _dataRilascioPatente
+	 */
+	public JDatePicker get_dataRilascioPatente() {
+		return _dataRilascioPatente;
+	}
+
+	/**
+	 * @param _dataRilascioPatente the _dataRilascioPatente to set
+	 */
+	public void set_dataRilascioPatente(JDatePicker _dataRilascioPatente) {
+		this._dataRilascioPatente = _dataRilascioPatente;
+	}
+
+	/**
+	 * @return the _dataScadenzaPatente
+	 */
+	public JDatePicker get_dataScadenzaPatente() {
+		return _dataScadenzaPatente;
+	}
+
+	/**
+	 * @param _dataScadenzaPatente the _dataScadenzaPatente to set
+	 */
+	public void set_dataScadenzaPatente(JDatePicker _dataScadenzaPatente) {
+		this._dataScadenzaPatente = _dataScadenzaPatente;
+	}
+
+	/**
+	 * @return the _dataRilascioPassaporto
+	 */
+	public JDatePicker get_dataRilascioPassaporto() {
+		return _dataRilascioPassaporto;
+	}
+
+	/**
+	 * @param _dataRilascioPassaporto the _dataRilascioPassaporto to set
+	 */
+	public void set_dataRilascioPassaporto(JDatePicker _dataRilascioPassaporto) {
+		this._dataRilascioPassaporto = _dataRilascioPassaporto;
+	}
+
+	/**
+	 * @return the _dataScadenzaPassaporto
+	 */
+	public JDatePicker get_dataScadenzaPassaporto() {
+		return _dataScadenzaPassaporto;
+	}
+
+	/**
+	 * @param _dataScadenzaPassaporto the _dataScadenzaPassaporto to set
+	 */
+	public void set_dataScadenzaPassaporto(JDatePicker _dataScadenzaPassaporto) {
+		this._dataScadenzaPassaporto = _dataScadenzaPassaporto;
+	}
+
+	/**
+	 * @return the _dataNascita
+	 */
+	public JDatePicker get_dataNascita() {
+		return _dataNascita;
+	}
+
+	/**
+	 * @param _dataNascita the _dataNascita to set
+	 */
+	public void set_dataNascita(JDatePicker _dataNascita) {
+		this._dataNascita = _dataNascita;
+	}
+
+	/**
+	 * @return the _txtCartaIdentitaCodice
+	 */
+	public JTextField get_txtCartaIdentitaCodice() {
+		return _txtCartaIdentitaCodice;
+	}
+
+	/**
+	 * @param _txtCartaIdentitaCodice the _txtCartaIdentitaCodice to set
+	 */
+	public void set_txtCartaIdentitaCodice(JTextField _txtCartaIdentitaCodice) {
+		this._txtCartaIdentitaCodice = _txtCartaIdentitaCodice;
+	}
+
+	/**
+	 * @return the _txtCartaIdentitaEnte
+	 */
+	public JTextField get_txtCartaIdentitaEnte() {
+		return _txtCartaIdentitaEnte;
+	}
+
+	/**
+	 * @param _txtCartaIdentitaEnte the _txtCartaIdentitaEnte to set
+	 */
+	public void set_txtCartaIdentitaEnte(JTextField _txtCartaIdentitaEnte) {
+		this._txtCartaIdentitaEnte = _txtCartaIdentitaEnte;
+	}
+
+	/**
+	 * @return the _txtCittaNascita
+	 */
+	public JTextField get_txtCittaNascita() {
+		return _txtCittaNascita;
+	}
+
+	/**
+	 * @param _txtCittaNascita the _txtCittaNascita to set
+	 */
+	public void set_txtCittaNascita(JTextField _txtCittaNascita) {
+		this._txtCittaNascita = _txtCittaNascita;
+	}
+
+	/**
+	 * @return the _txtCittaResidenza
+	 */
+	public JTextField get_txtCittaResidenza() {
+		return _txtCittaResidenza;
+	}
+
+	/**
+	 * @param _txtCittaResidenza the _txtCittaResidenza to set
+	 */
+	public void set_txtCittaResidenza(JTextField _txtCittaResidenza) {
+		this._txtCittaResidenza = _txtCittaResidenza;
+	}
+
+	/**
+	 * @return the _txtPatenteEnte
+	 */
+	public JTextField get_txtPatenteEnte() {
+		return _txtPatenteEnte;
+	}
+
+	/**
+	 * @param _txtPatenteEnte the _txtPatenteEnte to set
+	 */
+	public void set_txtPatenteEnte(JTextField _txtPatenteEnte) {
+		this._txtPatenteEnte = _txtPatenteEnte;
+	}
+
+	/**
+	 * @return the _txtPatenteCodice
+	 */
+	public JTextField get_txtPatenteCodice() {
+		return _txtPatenteCodice;
+	}
+
+	/**
+	 * @param _txtPatenteCodice the _txtPatenteCodice to set
+	 */
+	public void set_txtPatenteCodice(JTextField _txtPatenteCodice) {
+		this._txtPatenteCodice = _txtPatenteCodice;
+	}
+
+	/**
+	 * @return the _txtPassaportoCodice
+	 */
+	public JTextField get_txtPassaportoCodice() {
+		return _txtPassaportoCodice;
+	}
+
+	/**
+	 * @param _txtPassaportoCodice the _txtPassaportoCodice to set
+	 */
+	public void set_txtPassaportoCodice(JTextField _txtPassaportoCodice) {
+		this._txtPassaportoCodice = _txtPassaportoCodice;
+	}
+
+	/**
+	 * @return the _txtPassaportoEnte
+	 */
+	public JTextField get_txtPassaportoEnte() {
+		return _txtPassaportoEnte;
+	}
+
+	/**
+	 * @param _txtPassaportoEnte the _txtPassaportoEnte to set
+	 */
+	public void set_txtPassaportoEnte(JTextField _txtPassaportoEnte) {
+		this._txtPassaportoEnte = _txtPassaportoEnte;
 	}
 }

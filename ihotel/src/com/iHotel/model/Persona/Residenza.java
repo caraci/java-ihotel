@@ -14,9 +14,7 @@ public class Residenza {
 	private Indirizzo _indirizzoResidenza;
 	
 	//Costruttore di default
-	public Residenza(){
-		
-	}
+	public Residenza(){}
 	/**
 	 * Costruttore con parametri
 	 * @param citta 	Città di residenza
