@@ -32,7 +32,10 @@ public class PagamentoConBonifico extends Pagamento {
 	 * @param mittente	E' la persona che ha emesso il bonifico
 	 */
 	public PagamentoConBonifico(Prezzo importo,Giorno data, String codice,Persona mittente){
-		
+		this.set_importo(importo);
+		this.set_data(data);
+		this.set_codiceBonifico(codice);
+		this.set_mittente(mittente);
 	}
 
 	/**

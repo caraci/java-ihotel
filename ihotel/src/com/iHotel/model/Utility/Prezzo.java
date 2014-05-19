@@ -12,9 +12,19 @@ public class Prezzo {
 	private double _importo;
 	private String _valuta;
 	
+	//Costruttore di default
 	public Prezzo() {
 		// Valori di default.
 		_importo = 0;
+		_valuta = "Euro";
+	}
+	
+	/**
+	 * Costruttore con parametro
+	 * @param importo E' l'importo del pagamento
+	 */
+	public Prezzo(double importo){
+		this.set_importo(importo);
 		_valuta = "Euro";
 	}
 	

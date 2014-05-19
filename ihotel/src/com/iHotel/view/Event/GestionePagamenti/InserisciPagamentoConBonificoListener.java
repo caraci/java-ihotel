@@ -6,10 +6,8 @@ package com.iHotel.view.Event.GestionePagamenti;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import com.iHotel.model.Pagamento.PagamentoConBonifico;
+import com.iHotel.view.Utility.UDialogManager;
 
 /**
  * Classe che ha il compito di gestire l'evento click sul bottone "Aggiungi pagamento con bonifico"
@@ -32,26 +30,8 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
-		JTextField importo = new JTextField();
-		JTextField data = new JTextField();
-		JTextField codice = new JTextField();
-		
-		final JComponent[] inputs = new JComponent[] {
-				new JLabel("Importo:"),
-				importo,
-				new JLabel("Data:"),
-				data,
-				new JLabel("Codice Bonifico: "),
-				codice
-				
-		};
-		JOptionPane.showMessageDialog(null, inputs, "Inserimento pagamento Con Bonifico", JOptionPane.PLAIN_MESSAGE);
-		System.out.println("Importo: " +
-							importo.getText() + ", " 
-							+"Data: "+
-							data.getText()
-							+"Codice bonifico: "+
-							codice.getText());
+		//Richiedo la dialog giusta
+		PagamentoConBonifico pagamento= UDialogManager.getInstance().getDialogDatiBonificoBancario();
 	}
 
 }
