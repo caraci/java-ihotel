@@ -463,10 +463,8 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 			lblOspite.setText(UtoString.getInstance().ospiteToString(ospite));
 			// Aggiungo elementi al panel
 			panelListaOspiti.add(lblOspite);
-			// Aggiungo separatore
-			//panelListaOspiti.add(_viewFactory.getSeparator());
 			// Aggiungo spaziatura
-			panelListaOspiti.add(Box.createVerticalStrut(10));
+			panelListaOspiti.add(Box.createVerticalStrut(5));
 		}
 		// Aggiungo il JPanel con la lista degli ospiti allo JScrollPane
 		scrollPaneCameraListaOspiti.setViewportView(panelListaOspiti);

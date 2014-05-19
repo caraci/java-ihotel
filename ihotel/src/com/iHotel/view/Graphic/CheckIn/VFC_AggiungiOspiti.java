@@ -109,12 +109,12 @@ public class VFC_AggiungiOspiti extends ViewFrame {
 	@Override
 	protected void creaPanelBottom() {
 		// Button completa prenotazione.
-		_btnTerminaCheckin.setText("Termina CheckIn");
+		_btnTerminaCheckin.setText("Termina \n CheckIn");
 		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
 		_btnTerminaCheckin.addMouseListener(new TerminaCheckInListener());
 		
 		// Button torna alla prenotazione.
-		_btnTornaPrenotazione.setText("Torna Prenotazione");
+		_btnTornaPrenotazione.setText("Torna \n Prenotazione");
 		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
 		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneDaCheckInListener());
 		
@@ -139,22 +139,6 @@ public class VFC_AggiungiOspiti extends ViewFrame {
 		creaPanelTop();
 		creaPanelMiddle();
 		creaPanelBottom();	
-	}
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// Inizializzo lo strato di dominio
-		UStartup start = new UStartup();
-		start.inizializza();
-		// Prendo una prenotazione
-		HashMap<String,PrenotazioneSubject> prenotazioni = Storico.getInstance().get_prenotazioni();
-		PrenotazioneSubject prenotazione = prenotazioni.get("1400256191901");
-		// Creo il frame
-		VFC_AggiungiOspiti frame = VFC_AggiungiOspiti.getInstance();
-		frame.creaFrame(prenotazione);
-		frame.setVisible(true);
-	
 	}
 	
 	/* ---------------------- Getter, Setter ----------------------------- */
