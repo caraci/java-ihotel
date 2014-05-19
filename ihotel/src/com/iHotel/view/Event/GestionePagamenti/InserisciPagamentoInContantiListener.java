@@ -3,13 +3,16 @@
  */
 package com.iHotel.view.Event.GestionePagamenti;
 
+import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
+
+import com.iHotel.controller.CGestionePagamenti;
+import com.iHotel.model.Pagamento.PagamentoInContanti;
+import com.iHotel.view.Graphic.GestionePagamenti.VFP_RiepilogoPagamenti;
+import com.iHotel.view.Utility.UDialogManager;
 
 /**
  * Classe che ha il compito di gestire l'evento click sul bottone "Aggiungi pagamento in contanti"
@@ -31,19 +34,25 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
-		JTextField importo = new JTextField();
-		JTextField data = new JTextField();
+		/*Visualizzo la dialog per l'inserimento delle informazioni sul pagamento. Viene restituito
+		 * un oggetto PagamentoInContanti*/
+		PagamentoInContanti pagamentoInContanti = UDialogManager.getInstance().getDialogDatiPagamentoInContanti();
+		/*Recupero il controllore corretto*/
+		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
+		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
+		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamentoInContanti);
 		
-		final JComponent[] inputs = new JComponent[] {
-				new JLabel("Importo:"),
-				importo,
-				new JLabel("Data:"),
-				data
-		};
-		JOptionPane.showMessageDialog(null, inputs, "Inserimento pagamento in contanti", JOptionPane.PLAIN_MESSAGE);
-		System.out.println("Importo: " +
-				importo.getText() + ", " +"Data: "+
-				data.getText());
+		/**/
+		VFP_RiepilogoPagamenti view = VFP_RiepilogoPagamenti.getInstance();
+		// Prendo il pannello dove si va a mostrare la lista dei bonifici
+		JPanel panelContanti = view.getPanelContanti();
+		// Prendo il layout del pannello
+		CardLayout cardLayout = (CardLayout) panelContanti.getLayout();
+		// Aggiungo una nuova scheda al pannello.
+		panelContanti.add(view.creaPanelMiddleLeft());
+		// Mostro la prossima scheda
+		cardLayout.next(panelContanti);
+		
 	}
 	
 

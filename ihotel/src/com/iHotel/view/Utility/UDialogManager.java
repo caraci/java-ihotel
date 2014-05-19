@@ -12,6 +12,7 @@ import net.sourceforge.jdatepicker.JDateComponentFactory;
 import net.sourceforge.jdatepicker.JDatePicker;
 
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
+import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.model.Persona.Persona;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Prezzo;
@@ -72,7 +73,10 @@ public class UDialogManager extends JOptionPane {
 	public void showDialogConfermaInserimentoServizio(){
 		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "Il servizio è stato aggiunto alla prenotazione.", "Conferma inserimento servizio", JOptionPane.INFORMATION_MESSAGE);
 	}
-	
+	/**
+	 * Metodo che visualizza una JDialog per l'inserimento delle informazioni del bonifico
+	 * @return Un oggetto PagamentoConBonifico con le informazion inserite dall'utente
+	 */
 	public PagamentoConBonifico getDialogDatiBonificoBancario(){
 		/*Etichette*/
 		
@@ -135,5 +139,46 @@ public class UDialogManager extends JOptionPane {
 		
 		/*Restituisco il pagamento*/
 		return pagamento;		
+	}
+	
+	public PagamentoInContanti getDialogDatiPagamentoInContanti(){
+		/*Etichette*/
+		
+		//label importo
+		JLabel lblImporto = _viewFactory.getLabel();
+		lblImporto.setText("Importo: ");
+		//Label data
+		JLabel lblData = _viewFactory.getLabel();
+		lblData.setText("Data: ");
+		
+		//Creo il jdatepicker per la data
+		JDatePicker data = JDateComponentFactory.createJDatePicker();
+		/*Text fields*/
+		JTextField importo = _viewFactory.getTextField();
+		
+		//Creo un array di componenti
+		final JComponent[] inputs = new JComponent[] {
+				//importo
+				lblImporto,
+				importo,
+				//data
+				lblData,
+				(JComponent) data
+		};
+		//Faccio il display della schermata
+		JOptionPane.showMessageDialog(null, inputs, "Inserimento pagamento in contanti", JOptionPane.PLAIN_MESSAGE);
+		
+		/*Creo un nuovo prezzo con l'importo ricevuto*/		
+		Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
+		
+		/*Creo un nuovo giorno con lla data in cui è stato ricevuto il bonifico*/		
+		Giorno dataIncasso = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
+		
+		
+		/*Creo l'oggetto PagamentoConBonifico che restituisco*/
+		PagamentoInContanti pagamento = new PagamentoInContanti(importoRicevuto, dataIncasso);
+		
+		/*Restituisco il pagamento*/
+		return pagamento;
 	}
 }
