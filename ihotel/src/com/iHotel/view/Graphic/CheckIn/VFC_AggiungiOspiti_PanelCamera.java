@@ -30,6 +30,7 @@ import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
 import com.iHotel.view.Event.CheckIn.ScegliDocumentoListener;
+import com.iHotel.view.Utility.UtoString;
 
 
 /**
@@ -200,7 +201,7 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// Città nascita
 		_lblCittaNascita.setText("Città Nascita:");
 		// Città residenza
-		_lblCittaResidenza.setText("Città Nascita:");
+		_lblCittaResidenza.setText("Città Residenza:");
 		// Data di nascita
 		_lblDataNascita.setText("Data di nascita:");
 		// Aggiungo componenti al pannello
@@ -439,12 +440,14 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		for (Iterator<Ospite> iterator = ospitiCamera.iterator(); iterator.hasNext();) {
 			Ospite ospite = (Ospite) iterator.next();
 			// Nome Cognome
-			JLabel lblNomeCognome = _viewFactory.getLabel();
-			lblNomeCognome.setText(ospite.get_nome() + " " + ospite.get_cognome());
+			JLabel lblOspite = _viewFactory.getLabel();
+			lblOspite.setText(UtoString.getInstance().ospiteToString(ospite));
 			// Aggiungo elementi al panel
-			panelListaOspiti.add(lblNomeCognome);
+			panelListaOspiti.add(lblOspite);
+			// Aggiungo separatore
+			//panelListaOspiti.add(_viewFactory.getSeparator());
 			// Aggiungo spaziatura
-			panelListaOspiti.add(Box.createVerticalGlue());
+			panelListaOspiti.add(Box.createVerticalStrut(10));
 		}
 		// Aggiungo il JPanel con la lista degli ospiti allo JScrollPane
 		scrollPaneCameraListaOspiti.setViewportView(panelListaOspiti);

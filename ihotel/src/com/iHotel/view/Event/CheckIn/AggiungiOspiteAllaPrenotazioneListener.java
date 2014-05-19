@@ -51,7 +51,6 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 		CCheckIn checkIn = CCheckIn.getInstance();
 		// Aggiungo l'ospite alla prenotazione.
 		checkIn.aggiungiOspite(_panelCamera.get_camera(), getOspiteInserito());
-		
 		// Prendo il pannello dove si va a mostrare la lista degli ospiti
 		JPanel pnlMiddleRight = _panelCamera.get_pnlMiddleRight();
 		// Prendo il layout del pannello
@@ -64,7 +63,7 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 	/**
 	 * Metodo per ottenere l'ospite inserito.
 	 * 
-	 * @return
+	 * @return Ospite da inserire.
 	 */
 	public Ospite getOspiteInserito() {
 		// Inizializzazione oggetto
@@ -131,12 +130,12 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 		cartaIdentita.set_dataDiRilascio(giornoRilascio);
 		cartaIdentita.set_dataDiScadenza(giornoScadenza);
 		
-		
 		return cartaIdentita;
 	}
 	/**
 	 * Metodo per ottenere le informazioni della patente.
-	 * @return
+	 * 
+	 * @return Patente dell'ospite.
 	 */
 	public Patente getPatente() {
 		Patente patente = new Patente();
@@ -172,7 +171,8 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 	}
 	/**
 	 * Metodo per ottenere le informazioni del passaporto.
-	 * @return
+	 * 
+	 * @return Passaporto dell'ospite.
 	 */
 	public Passaporto getPassaporto() {
 		Passaporto passaporto = new Passaporto();

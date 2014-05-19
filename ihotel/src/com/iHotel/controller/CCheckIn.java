@@ -4,10 +4,11 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Persona.Ospite;
+import com.iHotel.persistence.PCamera;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.CheckIn.VFC_AggiungiOspiti;
-import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoCamera;
 
 /**
  * @author Eugenio
@@ -46,16 +47,21 @@ public class CCheckIn extends CGestionePrenotazione {
 		ViewHandler.getInstance().showFrame(aggiungiOspiti);
 	}
 	/**
-	 * Metodo per aggiungere un ospite alla prenotazione.
+	 * Metodo per aggiungere un ospite alla camera.
 	 * 
-	 * @param camera
-	 * @param ospite
+	 * @param camera Camera alla quale si vuole aggiungere l'ospite.
+	 * @param ospite Ospite da aggiungere alla camera.
 	 */
 	public void aggiungiOspite(CameraContext camera, Ospite ospite) {
-		// Ricavo il periodo dal controllore 
+		// Periodo nel quale aggiungiamo l'ospite
+		Periodo periodo = _prenotazione.get_periodo();
+		// Aggiungo l'ospite alla camera
+		camera.aggiungiOspiteInPeriodo(ospite, periodo);
+		// Salvo nel db lo stato camera in seguito all'aggiornamento.
+    	PCamera.getInstance().store(camera.getStatoCameraInPeriodo(periodo));
 	}
 	/**
-	 * 
+	 * Metodo per terminare il checkIn per la camera.
 	 */
 	public void terminaCheckIn() {
 		
