@@ -41,4 +41,32 @@ public class CGestionePrenotazione {
 		ViewHandler.getInstance().showFrame(infoPrenotazione);
 	}
 
+	/**
+	 * @return the _prenotazione
+	 */
+	protected PrenotazioneSubject get_prenotazione() {
+		return _prenotazione;
+	}
+
+	/**
+	 * @param _prenotazione the _prenotazione to set
+	 */
+	protected void set_prenotazione(PrenotazioneSubject _prenotazione) {
+		this._prenotazione = _prenotazione;
+	}
+
+	/**
+	 * @return the _albergo
+	 */
+	protected Albergo get_albergo() {
+		return _albergo;
+	}
+
+	/**
+	 * @param _albergo the _albergo to set
+	 */
+	protected void set_albergo(Albergo _albergo) {
+		this._albergo = _albergo;
+	}
+
 }

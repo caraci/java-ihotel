@@ -28,6 +28,10 @@ public class CameraContext {
 		_statiCameraState = new LinkedList<CameraState>();
 	}
 	/* -------------------------- Metodi di istanza ----------------------- */
+	
+	public void aggiungiOspiteInPeriodo(Ospite ospite, Periodo periodo) {
+		
+	}
 	/**
 	 * Metodo per aggiungere un servizio alla camera in un determinato periodo.
 	 * 
