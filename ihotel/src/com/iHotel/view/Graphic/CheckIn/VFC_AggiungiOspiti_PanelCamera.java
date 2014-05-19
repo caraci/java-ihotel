@@ -3,6 +3,7 @@
  */
 package com.iHotel.view.Graphic.CheckIn;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
@@ -164,10 +165,13 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// Setto layout panel.
 		_panelCameraDatiOspite.setLayout(new BoxLayout(_panelCameraDatiOspite, BoxLayout.PAGE_AXIS));
 		// Intestazione del pannello
+		JPanel pnlIntestazione = _viewFactory.getPanel(false);
+		pnlIntestazione.setLayout(new BorderLayout(0, 0));
 		_lblIntestazioneMiddleLeft.setText("Aggiungi ospite:");
-	
+		// Aggiungo label al pnlIntestazione
+		pnlIntestazione.add(_lblIntestazioneMiddleLeft);
 		// Aggiungo intestazione e spaziatura al pannello
-		_panelCameraDatiOspite.add(_lblIntestazioneMiddleLeft);
+		_panelCameraDatiOspite.add(pnlIntestazione);
 		_panelCameraDatiOspite.add(Box.createVerticalStrut(15));
 		// Pannello info generali ospite
 		_panelCameraDatiOspite.add(creaPanelInformazioniOspiteGenerale());
@@ -267,6 +271,8 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// Setto layout
 		_pnlCartaIdentita.setLayout(new BoxLayout(_pnlCartaIdentita, BoxLayout.PAGE_AXIS));
 		// Intestazione
+		JPanel pnlIntestazione = _viewFactory.getPanel(false);
+		pnlIntestazione.setLayout(new BorderLayout(0, 0));
 		_lblIntestazioneCartaIdentita.setText("Dati carta d'identità:");
 		// Setto layout.
 		_pnlCartaIdentitaDati.setLayout(new GridLayout(4, 2, 5, 5));
@@ -293,8 +299,11 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		_pnlCartaIdentitaDati.add((Component) _dataRilascioCartaIdentita);
 		_pnlCartaIdentitaDati.add((Component) _dataScadenzaCartaIdentita);
 		
+		// Aggiungo intestazione al pnlIntestazione
+		pnlIntestazione.add(_lblIntestazioneCartaIdentita);
+		
 		// Aggiungo campi al pannello pnlCartaIdentita
-		_pnlCartaIdentita.add(_lblIntestazioneCartaIdentita);
+		_pnlCartaIdentita.add(pnlIntestazione);
 		_pnlCartaIdentita.add(Box.createVerticalStrut(15));
 		_pnlCartaIdentita.add(_pnlCartaIdentitaDati);
 		
@@ -309,6 +318,8 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// Setto layout
 		_pnlPatente.setLayout(new BoxLayout(_pnlPatente, BoxLayout.PAGE_AXIS));
 		// Intestazione
+		JPanel pnlIntestazione = _viewFactory.getPanel(false);
+		pnlIntestazione.setLayout(new BorderLayout(0, 0));
 		_lblIntestazionePatente.setText("Dati Patente:");
 		// Setto layout.
 		_pnlPatenteDati.setLayout(new GridLayout(4, 2, 5, 5));
@@ -335,8 +346,11 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		_pnlPatenteDati.add((Component) _dataRilascioPatente);
 		_pnlPatenteDati.add((Component) _dataScadenzaPatente);
 		
+		// Aggiungo label al _pnlIntestazione
+		pnlIntestazione.add(_lblIntestazionePatente);
+		
 		// Aggiungo campi al pannello _pnlPatente
-		_pnlPatente.add(_lblIntestazionePatente);
+		_pnlPatente.add(pnlIntestazione);
 		_pnlPatente.add(Box.createVerticalStrut(15));
 		_pnlPatente.add(_pnlPatenteDati);
 		
@@ -351,6 +365,8 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// Setto layout
 		_pnlPassaporto.setLayout(new BoxLayout(_pnlPassaporto, BoxLayout.PAGE_AXIS));
 		// Intestazione
+		JPanel pnlIntestazione = _viewFactory.getPanel(false);
+		pnlIntestazione.setLayout(new BorderLayout(0, 0));
 		_lblIntestazionePassaporto.setText("Dati Passaporto:");
 		// Setto layout.
 		_pnlPassaportoDati.setLayout(new GridLayout(4, 2, 5, 5));
@@ -377,8 +393,11 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		_pnlPassaportoDati.add((Component) _dataRilascioPassaporto);
 		_pnlPassaportoDati.add((Component) _dataScadenzaPassaporto);
 		
+		// Aggiungo label al _pnlIntestazione
+		pnlIntestazione.add(_lblIntestazionePassaporto);
+		
 		// Aggiungo campi al pannello pnlPassaporto
-		_pnlPassaporto.add(_lblIntestazionePassaporto);
+		_pnlPassaporto.add(pnlIntestazione);
 		_pnlPassaporto.add(Box.createVerticalStrut(15));
 		_pnlPassaporto.add(_pnlPassaportoDati);
 		

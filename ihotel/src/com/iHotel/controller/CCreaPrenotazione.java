@@ -35,7 +35,9 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private CCreaPrenotazione() {}
+	private CCreaPrenotazione() {
+		this.set_albergo(Albergo.getInstance());
+	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.

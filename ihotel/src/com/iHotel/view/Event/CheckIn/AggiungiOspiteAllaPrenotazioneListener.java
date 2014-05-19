@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 import net.sourceforge.jdatepicker.DateModel;
 
 import com.iHotel.controller.CCheckIn;
+import com.iHotel.model.Persona.Indirizzo;
 import com.iHotel.model.Persona.Ospite;
+import com.iHotel.model.Persona.Residenza;
 import com.iHotel.model.Persona.Documenti.CartaIdentita;
 import com.iHotel.model.Persona.Documenti.Documento;
 import com.iHotel.model.Persona.Documenti.Passaporto;
@@ -123,12 +125,17 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 		// Ente
 		String ente = _panelCamera.get_txtCartaIdentitaEnte().getText();
 		
+		// TODO - Creo residenza fittizzia
+		Indirizzo indirizzo = new Indirizzo("Via Roma", 1);
+		Residenza residenza = new Residenza("Rieti", indirizzo);
+		
 		// Setto gli attributi della carta di identità.
 		cartaIdentita.set_numeroDocumento(codice);
 		cartaIdentita.set_enteRilasciatario(ente);
 		cartaIdentita.set_dataDiNascita(giornoNascita);
 		cartaIdentita.set_dataDiRilascio(giornoRilascio);
 		cartaIdentita.set_dataDiScadenza(giornoScadenza);
+		cartaIdentita.set_residenza(residenza);
 		
 		return cartaIdentita;
 	}
@@ -160,12 +167,17 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 		// Ente
 		String ente = _panelCamera.get_txtPatenteEnte().getText();
 		
+		// TODO - Creo residenza fittizzia
+		Indirizzo indirizzo = new Indirizzo("Via Roma", 1);
+		Residenza residenza = new Residenza("Rieti", indirizzo);
+		
 		// Setto gli attributi della patente.
 		patente.set_numeroDocumento(codice);
 		patente.set_enteRilasciatario(ente);
 		patente.set_dataDiNascita(giornoNascita);
 		patente.set_dataDiRilascio(giornoRilascio);
 		patente.set_dataDiScadenza(giornoScadenza);
+		patente.set_residenza(residenza);
 				
 		return patente;
 	}
@@ -197,12 +209,17 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 		// Ente
 		String ente = _panelCamera.get_txtPassaportoEnte().getText();
 		
+		// TODO - Creo residenza fittizzia
+		Indirizzo indirizzo = new Indirizzo("Via Roma", 1);
+		Residenza residenza = new Residenza("Rieti", indirizzo);
+		
 		// Setto gli attributi della patente.
 		passaporto.set_numeroDocumento(codice);
 		passaporto.set_enteRilasciatario(ente);
 		passaporto.set_dataDiNascita(giornoNascita);
 		passaporto.set_dataDiRilascio(giornoRilascio);
 		passaporto.set_dataDiScadenza(giornoScadenza);
+		passaporto.set_residenza(residenza);
 		
 		return passaporto;
 	}
