@@ -5,6 +5,7 @@ package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Pagamento.Pagamento;
+import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.GestionePagamenti.VFP_RiepilogoPagamenti;
 
@@ -47,8 +48,15 @@ public class CGestionePagamenti {
     	ViewHandler.getInstance().showFrame(riepilogoPagamenti);
     }
     
-    public void inserisciPagamentoInPrenotazione(Pagamento pagamento, String tipo){
+    /**
+     * Metodo che consente di aggiungere un pagamento alla prenotazione
+     * @param pagamento E' il pagamento effettuato dal cliente
+     */
+    public void inserisciPagamentoInPrenotazione(Pagamento pagamento){
+    	/*Aggiungo il pagamento alla prenotazione*/
     	_prenotazione.add_pagamento(pagamento);
+    	/*Salvo il pagamento nel db*/
+    	PPrenotazione.getInstance().store(_prenotazione.get_pagamenti());
     }
 
 }

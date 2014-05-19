@@ -10,7 +10,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import com.iHotel.controller.CGestionePagamenti;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.view.Graphic.GestionePagamenti.VFP_RiepilogoPagamenti;
 import com.iHotel.view.Utility.UDialogManager;
@@ -23,11 +22,9 @@ import com.iHotel.view.Utility.UDialogManager;
  */
 public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 	
-	private PrenotazioneSubject _prenotazione;
 	//Costruttore
-	public InserisciPagamentoConBonificoListener(PrenotazioneSubject prenotazione){
-		this._prenotazione = prenotazione;
-		
+	public InserisciPagamentoConBonificoListener(){
+	
 	}
 	
 	/**
@@ -38,12 +35,15 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
-		//Richiedo la dialog giusta
+		/*Visualizzo la dialog per l'inserimento delle informazioni. Mi viene restituito l'oggetto Pagamento
+		costruito con le informazioni inserite dall'utente*/
 		PagamentoConBonifico pagamento= UDialogManager.getInstance().getDialogDatiBonificoBancario();
-		
+		/*Recupero il controllore corretto*/
 		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
-		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamento, "bonifico");		
+		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
+		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamento);		
 		
+		/**/
 		VFP_RiepilogoPagamenti view = VFP_RiepilogoPagamenti.getInstance();
 		// Prendo il pannello dove si va a mostrare la lista dei bonifici
 		JPanel panelBonifico = view.getPanelBonifico();

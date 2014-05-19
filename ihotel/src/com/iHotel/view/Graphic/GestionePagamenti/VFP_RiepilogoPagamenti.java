@@ -6,9 +6,7 @@ package com.iHotel.view.Graphic.GestionePagamenti;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.BoxLayout;
@@ -53,7 +51,7 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	private static VFP_RiepilogoPagamenti instance= null;
 	
 	/*JPanel*/
-	private JPanel _panelMiddleTop, _panelMiddleBottom,_panelContanti, _panelBonifico, _panelCartaDiCredito, _panelEsternoBonifico;
+	private JPanel _panelMiddleTop, _panelMiddleBottom,_panelContanti, _panelCartaDiCredito, _panelBonifico;
 	
 	/*JLabel*/
 	private JLabel _lblTitoloContanti, _lblTitoloBonifico, _lblTitoloCarta, _lblTotaleEImportoVersatoPrenotazione;
@@ -64,11 +62,10 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	public VFP_RiepilogoPagamenti(){
 		/*JPanel*/
 		_panelContanti = _viewFactory.getPanel();
-		_panelBonifico = _viewFactory.getPanel();
 		_panelCartaDiCredito = _viewFactory.getPanel();
 		_panelMiddleTop = _viewFactory.getPanel();
 		_panelMiddleBottom = _viewFactory.getPanel();
-		_panelEsternoBonifico = _viewFactory.getPanel();
+		_panelBonifico = _viewFactory.getPanel();
 		
 		/*JLabel*/
 		_lblTitoloContanti = _viewFactory.getLabel();
@@ -144,15 +141,15 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		_panelMiddleBottom.add(creaPanelMiddleLeft());
 		//_panelMiddleBottom.add(creaPanelMiddleCenter());
 		//JScrollPane panelBonifico = creaPanelMiddleCenter();
-		_panelEsternoBonifico.setLayout(new CardLayout());
+		_panelBonifico.setLayout(new CardLayout());
 		
 		//CardLayout cardLayout = (CardLayout) _panelEsternoBonifico.getLayout();
 		// Aggiungo le schede
-		_panelEsternoBonifico.add(creaPanelMiddleCenter());
+		_panelBonifico.add(creaPanelMiddleCenter());
 		
 		// Mostro la scheda relativa alla carta d'identita
 		//cardLayout.show(_panelEsternoBonifico);
-		_panelMiddleBottom.add(_panelEsternoBonifico);
+		_panelMiddleBottom.add(_panelBonifico);
 		_panelMiddleBottom.add(creaPanelMiddleRight());
 		return _panelMiddleBottom;
 	}
@@ -174,11 +171,11 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		_panelContanti.add(_lblTitoloContanti);
 		
 		//Ora recupero i pagamenti in contanti
-		ArrayList<Pagamento> pagamentiInContanti =_pagamentiDellaPrenotazione.get("contanti");
-		if (pagamentiInContanti!=null){
-			for (Iterator<Pagamento> iterator = pagamentiInContanti.iterator(); iterator
+		
+		if (_pagamentiInContanti!=null){
+			for (Iterator<PagamentoInContanti> iterator = _pagamentiInContanti.iterator(); iterator
 					.hasNext();) {
-				PagamentoInContanti pagamentoInContanti = (PagamentoInContanti) iterator.next();
+				PagamentoInContanti pagamentoInContanti = iterator.next();
 				JLabel label = _viewFactory.getLabel();
 				//Setto il testo della label
 				label.setText("Importo: "+pagamentoInContanti.get_importo().toString());
@@ -219,28 +216,46 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	 * @return 	_panelBonifico E' il pannello centrale con tutti bonifici effettuati
 	 */
 	public JScrollPane creaPanelMiddleCenter(){
+		//Svuoto l'array dei pagamenti
+		this._pagamentiConBonifico.clear();
+		//Invoco il metodo per recuperare i pagamenti
+		recuperaPagamenti();
+		//Creo un JScrollPane
 		JScrollPane scrollPaneBonifico = _viewFactory.getScrollPane();
-		//
+		//Creo un pannello
 		JPanel panelBonifico = _viewFactory.getPanel();
-		//Aggiungo il layout
+		//Aggiungo il layout al pannello
 		panelBonifico.setLayout(new BoxLayout(panelBonifico,BoxLayout.PAGE_AXIS));
-		//Aggiungo il titolo
-		JLabel lblTitoloBonifico = _viewFactory.getLabel();
-		lblTitoloBonifico.setText("Bonifici:");
 		//Aggiongo la label con il titolo al pannello
+		JLabel lblTitoloBonifico = _viewFactory.getLabel();
+		lblTitoloBonifico.setText("Bonifici:");		
 		panelBonifico.add(lblTitoloBonifico);
 		
-		//Ora recupero i pagamenti tramite bonifico bancario
-		ArrayList<Pagamento> pagamentiConBonifico =_pagamentiDellaPrenotazione.get("bonifico");
-		if (pagamentiConBonifico!=null){
-			for (Iterator<Pagamento> iterator = pagamentiConBonifico.iterator(); iterator
+		//Ora recupero i pagamenti tramite bonifico bancario		
+		if (_pagamentiConBonifico!=null){
+			for (Iterator<PagamentoConBonifico> iterator = _pagamentiConBonifico.iterator(); iterator
 					.hasNext();) {
-				PagamentoConBonifico pagamentoConBonifico = (PagamentoConBonifico) iterator.next();
-				JLabel label = _viewFactory.getLabel();
+				PagamentoConBonifico pagamentoConBonifico =  iterator.next();
+				//Creo una label per l'importo
+				JLabel labelImporto = _viewFactory.getLabel();
 				//Setto il testo della label
-				label.setText("Importo: "+pagamentoConBonifico.get_importo().toString());
+				labelImporto.setText("Importo: "+String.valueOf(pagamentoConBonifico.get_importo().get_importo())+ " "+ pagamentoConBonifico.get_importo().get_valuta());
 				//Aggiungo la label al pannello insieme ad un separatore
-				panelBonifico.add(label);
+				panelBonifico.add(labelImporto);
+				
+				//Creo una label per il mittente
+				JLabel labelMittente = _viewFactory.getLabel();
+				//Setto il testo
+				labelMittente.setText("Mittente: "+ pagamentoConBonifico.get_mittente().get_nome()+ " "+ pagamentoConBonifico.get_mittente().get_cognome());
+				//Aggiungo la label
+				panelBonifico.add(labelMittente);
+				
+				//Creo una label per la data
+				JLabel labelData = _viewFactory.getLabel();
+				//Setto il testo
+				labelData.setText("Data bonifico: "+ pagamentoConBonifico.get_data().get_giorno() + " - "+pagamentoConBonifico.get_data().get_mese()+ " - "+pagamentoConBonifico.get_data().get_anno());
+				//Aggiungo la label
+				panelBonifico.add(labelData);
 				panelBonifico.add(_viewFactory.getSeparator());
 			}
 		}
@@ -249,7 +264,7 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		JButton btnAggiungiPagamentoConBonifico = _viewFactory.getButton();
 		btnAggiungiPagamentoConBonifico.setText("Aggiungi un pagamento Con Bonifico");
 		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
-		btnAggiungiPagamentoConBonifico.addMouseListener(new InserisciPagamentoConBonificoListener(_prenotazione));
+		btnAggiungiPagamentoConBonifico.addMouseListener(new InserisciPagamentoConBonificoListener());
 		/*Aggiungo il pulsante per aggiungere un pagamento*/
 		panelBonifico.add(btnAggiungiPagamentoConBonifico);
 		
@@ -271,11 +286,11 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		_panelCartaDiCredito.add(_lblTitoloCarta);
 		
 		//Ora recupero i pagamenti tramite Carta di credito
-		ArrayList<Pagamento> pagamentiConCarta =_pagamentiDellaPrenotazione.get("carta");
-		if (pagamentiConCarta!=null){
-			for (Iterator<Pagamento> iterator = pagamentiConCarta.iterator(); iterator
+	
+		if (_pagamentiConCarta!=null){
+			for (Iterator<PagamentoConCarta> iterator = _pagamentiConCarta.iterator(); iterator
 					.hasNext();) {
-				PagamentoConCarta pagamentoConCarta = (PagamentoConCarta) iterator.next();
+				PagamentoConCarta pagamentoConCarta = iterator.next();
 				JLabel label = _viewFactory.getLabel();
 				//Setto il testo della label
 				label.setText("Importo: "+pagamentoConCarta.get_importo().toString());
@@ -303,24 +318,24 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		della schermata attuale con quella recuperata. Se non è vuota vuol dire che l'avevo già caricata*/
 			
 		ArrayList<Pagamento> pagamenti =_prenotazione.get_pagamenti();
-		for (Iterator<Pagamento> iterator = pagamenti.iterator(); iterator.hasNext();) {
-			Pagamento pagamento = (Pagamento) iterator.next();
-			String nomeClasse= pagamento.getClass().getName();
-			if(nomeClasse.equals("PagamentoInContanti")){
-				this._pagamentiInContanti.add((PagamentoInContanti)pagamento);
-			}
-			else if (nomeClasse.equals("PagamentoConBonifico")){			
+		if (pagamenti !=null){
+			for (Iterator<Pagamento> iterator = pagamenti.iterator(); iterator.hasNext();) {
+				Pagamento pagamento = (Pagamento) iterator.next();
+				String nomeClasse= pagamento.getClass().getSimpleName();
+				switch (nomeClasse) {
+				case "PagamentoInContanti":
+					this._pagamentiInContanti.add((PagamentoInContanti)pagamento);
+					break;
+				case "PagamentoConBonifico":
 					this._pagamentiConBonifico.add((PagamentoConBonifico)pagamento);
-				}
-			
-			else if(nomeClasse.equals("PagamentoConCarta")){
+					break;
+				case"PagamentoConCarta":
 					this._pagamentiConCarta.add((PagamentoConCarta)pagamento);
-				}
-			
-			
+				default:
+					break;
+				}		
+			}
 		}
-		
-		
 	}
 	public void creaFrame(PrenotazioneSubject prenotazione){
 		//Titolo della finestra
@@ -328,7 +343,7 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		//Setto l'attributo prenotazione con il riferimento passato come parametro
 		_prenotazione = prenotazione;
 		//Recupero i pagamenti della prenotazione
-		this.recuperaPagamenti();
+		//this.recuperaPagamenti();
 		
 		//Creo il pannello centrale
 		
@@ -337,7 +352,7 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	}
 	
 	public JPanel getPanelBonifico(){
-		return this._panelEsternoBonifico;
+		return this._panelBonifico;
 	}
 
 }
