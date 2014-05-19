@@ -4,6 +4,7 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.GestionePagamenti.VFP_RiepilogoPagamenti;
 
@@ -14,6 +15,7 @@ import com.iHotel.view.Graphic.GestionePagamenti.VFP_RiepilogoPagamenti;
 public class CGestionePagamenti {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
+	private PrenotazioneSubject _prenotazione;
 	/**
 	 * Attributo privato - Pattern Singleton
 	 */
@@ -35,12 +37,18 @@ public class CGestionePagamenti {
      * @param prenotazione Prenotazione di cui si stanno gestendo i pagamenti
      */
     public void gestisciPagamentiPrenotazione(PrenotazioneSubject prenotazione){
+    	//Setto l'attributo con la prenotazione
+    	this._prenotazione =prenotazione;
     	/*Recupero l'istanza della View per la gestione dei pagamenti*/
     	VFP_RiepilogoPagamenti riepilogoPagamenti = VFP_RiepilogoPagamenti.getInstance();
     	/*Invoco il metodo creaFrame per creare il frame*/
     	riepilogoPagamenti.creaFrame(prenotazione);
     	/*Recupero il gestore delle schermate e gli chiedo di mostrare la schermata giusta*/
     	ViewHandler.getInstance().showFrame(riepilogoPagamenti);
+    }
+    
+    public void inserisciPagamentoInPrenotazione(Pagamento pagamento, String tipo){
+    	_prenotazione.add_pagamento(pagamento);
     }
 
 }

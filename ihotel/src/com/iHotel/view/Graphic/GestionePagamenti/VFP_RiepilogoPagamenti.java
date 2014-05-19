@@ -42,7 +42,9 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	/**
 	 * HashMap contenente i pagamenti della prenotazione
 	 */
-	private HashMap<String, ArrayList<Pagamento>> _pagamentiDellaPrenotazione = new HashMap<String, ArrayList<Pagamento>>();
+	private ArrayList<PagamentoInContanti> _pagamentiInContanti = new ArrayList<PagamentoInContanti>();
+	private ArrayList<PagamentoConBonifico> _pagamentiConBonifico = new ArrayList<PagamentoConBonifico>();
+	private ArrayList<PagamentoConCarta> _pagamentiConCarta = new ArrayList<PagamentoConCarta>();
 	
 	
 	/**
@@ -150,9 +152,8 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		
 		// Mostro la scheda relativa alla carta d'identita
 		//cardLayout.show(_panelEsternoBonifico);
-		
+		_panelMiddleBottom.add(_panelEsternoBonifico);
 		_panelMiddleBottom.add(creaPanelMiddleRight());
-		
 		return _panelMiddleBottom;
 	}
 	@Override
@@ -217,10 +218,12 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	 * Metodo che crea il pannello centrale con tutti i bonifici effettuati
 	 * @return 	_panelBonifico E' il pannello centrale con tutti bonifici effettuati
 	 */
-	private JScrollPane creaPanelMiddleCenter(){
-		JScrollPane panelBonifico = _viewFactory.getScrollPane();
+	public JScrollPane creaPanelMiddleCenter(){
+		JScrollPane scrollPaneBonifico = _viewFactory.getScrollPane();
+		//
+		JPanel panelBonifico = _viewFactory.getPanel();
 		//Aggiungo il layout
-		panelBonifico.setLayout(new BoxLayout(_panelBonifico,BoxLayout.PAGE_AXIS));
+		panelBonifico.setLayout(new BoxLayout(panelBonifico,BoxLayout.PAGE_AXIS));
 		//Aggiungo il titolo
 		JLabel lblTitoloBonifico = _viewFactory.getLabel();
 		lblTitoloBonifico.setText("Bonifici:");
@@ -246,13 +249,13 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		JButton btnAggiungiPagamentoConBonifico = _viewFactory.getButton();
 		btnAggiungiPagamentoConBonifico.setText("Aggiungi un pagamento Con Bonifico");
 		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
-		btnAggiungiPagamentoConBonifico.addMouseListener(new InserisciPagamentoConBonificoListener());
+		btnAggiungiPagamentoConBonifico.addMouseListener(new InserisciPagamentoConBonificoListener(_prenotazione));
 		/*Aggiungo il pulsante per aggiungere un pagamento*/
 		panelBonifico.add(btnAggiungiPagamentoConBonifico);
 		
-		
+		scrollPaneBonifico.setViewportView(panelBonifico);
 		//restitiuisco il pannello con il bonifici
-		return panelBonifico;
+		return scrollPaneBonifico;
 	}
 	/**
 	 * Metodo che crea il pannello destro con le informazioni sui versamenti effettuati da carta di credito
@@ -298,9 +301,26 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	private void recuperaPagamenti(){
 		/*Se la mappa della classe è vuota vado a chiedere alla prenotazione la mappa dei pagamenti e setto la mappa
 		della schermata attuale con quella recuperata. Se non è vuota vuol dire che l'avevo già caricata*/
-		if(this._pagamentiDellaPrenotazione==null){
-				this._pagamentiDellaPrenotazione=_prenotazione.get_pagamenti();
+			
+		ArrayList<Pagamento> pagamenti =_prenotazione.get_pagamenti();
+		for (Iterator<Pagamento> iterator = pagamenti.iterator(); iterator.hasNext();) {
+			Pagamento pagamento = (Pagamento) iterator.next();
+			String nomeClasse= pagamento.getClass().getName();
+			if(nomeClasse.equals("PagamentoInContanti")){
+				this._pagamentiInContanti.add((PagamentoInContanti)pagamento);
+			}
+			else if (nomeClasse.equals("PagamentoConBonifico")){			
+					this._pagamentiConBonifico.add((PagamentoConBonifico)pagamento);
+				}
+			
+			else if(nomeClasse.equals("PagamentoConCarta")){
+					this._pagamentiConCarta.add((PagamentoConCarta)pagamento);
+				}
+			
+			
 		}
+		
+		
 	}
 	public void creaFrame(PrenotazioneSubject prenotazione){
 		//Titolo della finestra
@@ -314,6 +334,10 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 		
 		/* ATTENZIONE MANCANO I METODI PER CREARE PANNELLO SUPERIORE ED INFERIORE*********************************************/
 		creaPanelMiddle();
+	}
+	
+	public JPanel getPanelBonifico(){
+		return this._panelEsternoBonifico;
 	}
 
 }

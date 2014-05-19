@@ -35,7 +35,7 @@ public class PrenotazioneSubject implements ISubject {
 	/**
 	 * Vengono mantenute le informazioni sui pagamenti, la chiave stringa è l'identificativo del pagamento
 	 */
-	private HashMap<String,ArrayList<Pagamento>> _pagamenti;
+	private ArrayList<Pagamento> _pagamenti;
 	/**
 	 * Il periodo della prenotazione va dal giorno in cui l'ospite inizia il soggiorno, al giorno in cui l'ospite 
 	 * termina il soggiorono e lascia la struttura ricettiva.
@@ -52,7 +52,7 @@ public class PrenotazioneSubject implements ISubject {
 		_camerePrenotate = new ArrayList<CameraContext>();
 		_osservatori = new ArrayList<IObserver>();
 		_total = new Prezzo();
-		_pagamenti= new HashMap<String,ArrayList<Pagamento>>();
+		_pagamenti= new ArrayList<Pagamento>();
 	}
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
@@ -226,7 +226,7 @@ public class PrenotazioneSubject implements ISubject {
 	/**
 	 * @return the _pagamenti
 	 */
-	public HashMap<String,ArrayList<Pagamento>> get_pagamenti() {
+	public ArrayList<Pagamento> get_pagamenti() {
 		return _pagamenti;
 	}
 
@@ -235,8 +235,8 @@ public class PrenotazioneSubject implements ISubject {
 	 * @param tipoDiPagamento 	E' il tipo di pagamento effettuato, ad esempio contanti
 	 * @param pagamento			E' l'oggetto pagamento
 	 */
-	public void add_pagamento(String tipoDiPagamento,Pagamento pagamento) {
+	public void add_pagamento(Pagamento pagamento) {
 		//Aggiungo il pagamento nella mappa, correttamente rispetto alla posizione
-		this._pagamenti.get(tipoDiPagamento).add(pagamento);
+		this._pagamenti.add(pagamento);
 	}
 }
