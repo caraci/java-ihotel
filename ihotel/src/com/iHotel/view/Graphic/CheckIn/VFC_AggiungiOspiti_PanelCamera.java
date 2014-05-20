@@ -53,10 +53,8 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	private JTextField _txtCartaIdentitaCodice, _txtCartaIdentitaEnte, _txtNome, _txtCognome, _txtCittaNascita,
 					   _txtCittaResidenza,_txtPatenteEnte,_txtPatenteCodice,_txtPassaportoCodice,_txtPassaportoEnte;
 	/* JPanel */
-	private JPanel _pnlMiddleRight,_panelCameraDatiOspite,_pnlTipoDocumento,_pnlContieniDocumento,_pnlCartaIdentita,
+	private JPanel _pnlMiddleRight,_pnlMiddleLeft,_panelCameraDatiOspite,_pnlTipoDocumento,_pnlContieniDocumento,_pnlCartaIdentita,
 				   _pnlCartaIdentitaDati,_pnlBtnAggiungiOspite,_pnlPatente,_pnlPatenteDati,_pnlPassaporto,_pnlPassaportoDati;
-	/* JScrollPane */
-	private JScrollPane _scrollPnlMiddleLeft;
 	/* JComboBox */
 	private JComboBox<String> _comboBoxTipologieDocumenti;
 	/* JButton */
@@ -79,6 +77,7 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		_viewFactory=ViewFactory.getInstance().getStyleFactory();
 		// JPanel
 		_pnlMiddleRight=_viewFactory.getPanel(true);
+		_pnlMiddleLeft=_viewFactory.getPanel(true);
 		_panelCameraDatiOspite=_viewFactory.getPanel(false);
 		_pnlTipoDocumento=_viewFactory.getPanel(false);
 		_pnlContieniDocumento=_viewFactory.getPanel(false);
@@ -147,10 +146,10 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	private void creaPanelCamera() {
 		// Setto il layout 1 riga - 2 colonne - 5px tra righe - 0px tra colonne
 		this.setLayout(new GridLayout(1, 2, 5, 5));
-		_scrollPnlMiddleLeft = creaPanelMiddleLeft();
+		_pnlMiddleLeft = creaPanelMiddleLeft();
 		_pnlMiddleRight = creaPanelMiddleRight();
 		// Panel inserimento dati
-		this.add(_scrollPnlMiddleLeft);
+		this.add(_pnlMiddleLeft);
 		// Panel lista ospiti
 		this.add(_pnlMiddleRight);
 	}
@@ -160,7 +159,10 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	 * 
 	 * @return
 	 */
-	private JScrollPane creaPanelMiddleLeft() {
+	private JPanel creaPanelMiddleLeft() {
+		// Setto Layout pnlMiddleLeft
+		_pnlMiddleLeft.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
+		// Creo lo scollPane nel quale inserirò il necessario per inserire i dati del nuovo ospite.
 		JScrollPane scrollPaneCameraDatiOspite = _viewFactory.getScrollPane();
 		// Setto layout panel.
 		_panelCameraDatiOspite.setLayout(new BoxLayout(_panelCameraDatiOspite, BoxLayout.PAGE_AXIS));
@@ -179,14 +181,15 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		// pnlDocumento
 		_panelCameraDatiOspite.add(creaPanelDocumento());
 		_panelCameraDatiOspite.add(Box.createVerticalGlue());
-		// pnlBottone
-		_panelCameraDatiOspite.add(Box.createVerticalStrut(15));
-		_panelCameraDatiOspite.add(creaPanelBottoneInserisciOspite());
 	
 		// Aggiungo il JPanel con i dati dell'ospite allo JScrollPane
 		scrollPaneCameraDatiOspite.setViewportView(_panelCameraDatiOspite);
 		
-		return scrollPaneCameraDatiOspite;
+		// Aggiungo gli elementi al _pnlMiddleLeft
+		_pnlMiddleLeft.add(scrollPaneCameraDatiOspite);
+		_pnlMiddleLeft.add(creaPanelBottoneInserisciOspite());
+		
+		return _pnlMiddleLeft;
 	}
 	/**
 	 * Metodo per fornire il pannello contenente le informazioni generali dell'ospite.

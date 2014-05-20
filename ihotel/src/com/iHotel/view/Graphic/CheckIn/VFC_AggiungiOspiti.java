@@ -14,10 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
-import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.utility.UStartup;
 import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
 import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;

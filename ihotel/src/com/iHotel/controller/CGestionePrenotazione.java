@@ -6,6 +6,7 @@ package com.iHotel.controller;
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
@@ -31,8 +32,8 @@ public class CGestionePrenotazione {
 	public void recuperaPrenotazioneDaCodice(String codicePrenotazione) {
 		// Recupero la prenotazione dallo storico.
 		_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
-		// Recupero il prezzo dei servizi esterni della prenotazione.
-		Prezzo prezzo=_albergo.getPrezzoServiziEsterniPrenotazione(_prenotazione);
+		// Recupero il prezzo dei servizi esterni della prenotazione, attraverso serviceFactory.
+		Prezzo prezzo=ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(_prenotazione);
 		// Prendo l'interfaccia correlata.
 		VFPG_InfoPrenotazione infoPrenotazione = VFPG_InfoPrenotazione.getInstance();
 		// Creo l'interfaccia relativa alla prenotazione

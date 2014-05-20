@@ -1,13 +1,11 @@
 package com.iHotel.controller;
 
-import java.util.ArrayList;
 
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
@@ -59,11 +57,9 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 		_camera=_albergo.getCameraDaNumero(numeroCamera);
 		// Ricavo il periodo della prenotazione.
 		Periodo periodo = _prenotazione.get_periodo();
-		// Ricavo i servizi esterni della camera nel periodo della prenotazione.
-		ArrayList<ServizioEsterno> serviziEsterni = _albergo.getElencoServiziEsterniCameraInPeriodo(_camera,periodo);
 		// Preparo l'interfaccia da visualizzare
 		VFGP_InfoCamera infoCamera = VFGP_InfoCamera.getInstance();
-		infoCamera.creaFrame(_camera,_prenotazione, serviziEsterni);
+		infoCamera.creaFrame(_camera,periodo);
 		// Visualizzo la nuova interfaccia.
 		ViewHandler.getInstance().showFrame(infoCamera);
 	}

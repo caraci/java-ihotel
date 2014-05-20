@@ -4,7 +4,6 @@ import java.util.*;
 
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -30,23 +29,23 @@ public class TelecomAdapter implements ITelephoneAdapter {
 		return prezzoTotale;
 	}
 	@Override
-	public ArrayList<ServizioEsterno> getElencoServiziCameraInPeriodo(Camera camera, Periodo periodo) {
+	public ArrayList<ServizioTelefono> getElencoServiziTelefonoCameraInPeriodo(Camera camera, Periodo periodo) {
 		// TODO - Chiaramente ora si stanno fornendo dei servizi di default.
-		ServizioEsterno servizioEsterno = new ServizioEsterno();
-		servizioEsterno.set_codice("TELECOM001");
+		ServizioTelefono servizioTelefono = new ServizioTelefono();
+		servizioTelefono.set_codice("TELECOM001");
 		// Creo il giorno del servizio
     	Giorno giornoServizio = new Giorno(13,2,2014);
 		// Setto la data al servizio
-		servizioEsterno.set_giorno(giornoServizio);
+    	servizioTelefono.set_giorno(giornoServizio);
 		// Descrizione
-		servizioEsterno.set_descrizione("Urbana verso 06******23");
-		// Prezzo
+    	servizioTelefono.set_telefonoMittente("06/12***74");
+    	// Prezzo
 		Prezzo prezzo = new Prezzo();
 		prezzo.set_importo(3.5);
-		servizioEsterno.set_prezzo(prezzo);
+		servizioTelefono.set_prezzo(prezzo);
 		// Lista di servizi
-		ArrayList<ServizioEsterno> listaServiziEsterni = new ArrayList<ServizioEsterno>();
-		listaServiziEsterni.add(servizioEsterno);
+		ArrayList<ServizioTelefono> listaServiziEsterni = new ArrayList<ServizioTelefono>();
+		listaServiziEsterni.add(servizioTelefono);
 		
 		return listaServiziEsterni;
 	}

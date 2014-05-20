@@ -5,12 +5,7 @@ import java.util.*;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.IServiceSystem;
-import com.iHotel.model.ForeignSystem.ServiceFactory;
-import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.Utility.Periodo;
-import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.utility.UDefaultLoader;
 
 /**
@@ -26,10 +21,6 @@ public class Albergo {
  	private CatalogoServiziInterni _catalogoServiziInterni;
  	private Storico _storico;
 	private ArrayList<Camera> _camere;
-	/**
-	 * Mantiene le maniglie ai sistemi esterni cui l'albergo si poggia per la gestione dei servizi esterni e.g.: telefono e pay tv
-	 */
-	private ArrayList<IServiceSystem> _sistemiServiziEsterni;
 	
 	private String _nome;
 	private String _telefono;
@@ -54,8 +45,6 @@ public class Albergo {
         _telefono = informazioniAlbergo.get(1);
         _PIVA = informazioniAlbergo.get(2);
         _eMail=informazioniAlbergo.get(3);
-        // Ricavo dalla factory tutti i sistemi esterni addetti alla gestione dei servizi.
-        _sistemiServiziEsterni=ServiceFactory.getInstance().getSistemiServiziEsterni();
 	}
 	
 	/* ----------------------------- Metodi di classe -----------------------*/
@@ -70,39 +59,6 @@ public class Albergo {
          return instance;
     }
 	/* -------------------- Metodi di instanza ----------------------*/
-	/**
-	 * Metodo per ottenere tutti i servizi esterni di una camera in un periodo.
-	 * 
-	 * @param camera Camera da analizzare.
-	 * @param periodo Periodo di richiesta.
-	 * @return Lista di servizi relativi ad una camera
-	 */
-	public ArrayList<ServizioEsterno> getElencoServiziEsterniCameraInPeriodo(Camera camera, Periodo periodo){
-		ArrayList<ServizioEsterno> serviziEsterniCamera = new ArrayList<ServizioEsterno>();
-		// Ciclo sui sistemi di servizi esterni
-		for (Iterator<IServiceSystem> iterator = _sistemiServiziEsterni.iterator(); iterator.hasNext();) {
-			IServiceSystem sistemaServiziEsterno = (IServiceSystem) iterator.next();
-			// Aggiungo i servizi esterni dovuti allo specifico sistema esterno.
-			serviziEsterniCamera.addAll(sistemaServiziEsterno.getElencoServiziCameraInPeriodo(camera,periodo));
-		}
-		return serviziEsterniCamera;
-	}
-	/**
-	 * Metodo per ottenere il prezzo dei servizi esterni correlati ad una prenotazione.
-	 * 
-	 * @param prenotazione Prenotazione da analizzare.
-	 * @return Prezzo totale dei servizi esterni correlati ad una prenotazione.
-	 */
-	public Prezzo getPrezzoServiziEsterniPrenotazione(SoggiornoContextSubject prenotazione){
-		Prezzo prezzo = new Prezzo();
-		// Ciclo sui sistemi di servizi esterni
-		for (Iterator<IServiceSystem> iterator = _sistemiServiziEsterni.iterator(); iterator.hasNext();) {
-			IServiceSystem sistemaServiziEsterno = (IServiceSystem) iterator.next();
-			// Sommo il totale dei prezzi dovuti alla prenotazione
-			prezzo.somma(sistemaServiziEsterno.getPrezzoTotaleServiziPrenotazione(prenotazione));
-		}
-		return prezzo;
-	}
 	/**
 	 * Metodo per ricavare l'oggetto MCamera a partire dalla stringa contenente il suo numero.
 	 * 
@@ -198,20 +154,6 @@ public class Albergo {
 	public void set_camere(ArrayList<Camera> _camere) {
 		this._camere = _camere;
 	}
-	/**
-	 * @return the _sistemiServiziEsterni
-	 */
-	public ArrayList<IServiceSystem> get_sistemiServiziEsterni() {
-		return _sistemiServiziEsterni;
-	}
-
-	/**
-	 * @param _sistemiServiziEsterni the _sistemiServiziEsterni to set
-	 */
-	public void set_sistemiServiziEsterni(ArrayList<IServiceSystem> _sistemiServiziEsterni) {
-		this._sistemiServiziEsterni = _sistemiServiziEsterni;
-	}
-
 	/**
 	 * @return _nome
 	 */

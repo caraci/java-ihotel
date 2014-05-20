@@ -2,8 +2,10 @@ package com.iHotel.model.ForeignSystem;
 
 import java.util.ArrayList;
 
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.PayTv.*;
 import com.iHotel.model.ForeignSystem.Telephone.*;
+import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.utility.UDefaultLoader;
 
 /**
@@ -65,17 +67,21 @@ public class ServiceFactory {
          }
          return instance;
     }
-	/* ----------------------------- Metodi di instanza -------------------- */
+	/* -------------------------- Metodi di instanza ----------------------- */
 	/**
-	 * Metodo per ottenere la lista dei sistemi per la gestione dei servizi esterni.
-	 * @return Lista di sistemi per la gestione dei servizi esterni.
+	 * Metodo per ottenere il prezzo dei servizi esterni correlati ad una prenotazione.
+	 * 
+	 * @param prenotazione Prenotazione da analizzare.
+	 * @return Prezzo totale dei servizi esterni correlati ad una prenotazione.
 	 */
-	public ArrayList<IServiceSystem> getSistemiServiziEsterni() {
-		ArrayList<IServiceSystem> sistemiServiziEsterni = new ArrayList<IServiceSystem>();
-		// Aggiungo i sistemi esterni alla lista
-		sistemiServiziEsterni.add(_payTvAdapter);
-		sistemiServiziEsterni.add(_telephoneAdapter);
-		return sistemiServiziEsterni;
+	public Prezzo getPrezzoServiziEsterniPrenotazione(SoggiornoContextSubject prenotazione){
+		Prezzo prezzo = new Prezzo();
+		// Sommo il prezzo dei servizi della payTv.
+		prezzo.somma(_payTvAdapter.getPrezzoTotaleServiziPrenotazione(prenotazione));
+		// Sommo il prezzo dei servizi del Telefono.
+		prezzo.somma(_telephoneAdapter.getPrezzoTotaleServiziPrenotazione(prenotazione));
+		
+		return prezzo;
 	}
 	/* ------------------------- Getter, Setter ---------------------------- */
 	/**

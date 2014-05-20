@@ -8,7 +8,8 @@ import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.ServizioEsterno;
+import com.iHotel.model.ForeignSystem.PayTv.ServizioPayTv;
+import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 
@@ -88,16 +89,32 @@ public class UtoString {
 		return toString;
 	}
 	/**
-	 * Metodo per ottenere la stringa relativa ad un servizio esterno.
-	 * @param servizioEsterno Servizio in analisi.
-	 * @return Stringa contenente le informazioni di un servizio.
+	 * Metodo per ottenere la stringa relativa ad un servizio della payTv.
+	 * 
+	 * @param servizioPayTv Servizio in analisi.
+	 * @return Stringa contenente le informazioni del servizio.
 	 */
-	public String servizioEsternoInPrenotazioneToString(ServizioEsterno servizioEsterno) {
+	public String servizioPayTv(ServizioPayTv servizioPayTv) {
 		// String
-		String string = servizioEsterno.get_codice() + " " + servizioEsterno.get_descrizione() + " " + giornoToString(servizioEsterno.get_giorno());
+		String string = servizioPayTv.get_codice() + " " + servizioPayTv.get_evento() + " " + giornoToString(servizioPayTv.get_giorno());
 		return string;
 	}
-	
+	/**
+	 * Metodo per ottenere la stringa relativa ad un servizio del Telefono.
+	 * 
+	 * @param servizioTelefono Servizio in analisi.
+	 * @return Stringa contenente le informazioni del servizio.
+	 */
+	public String servizioTelefono(ServizioTelefono servizioTelefono) {
+		// String
+		String string = servizioTelefono.get_codice() + " " + servizioTelefono.get_telefonoMittente() + " " + giornoToString(servizioTelefono.get_giorno());
+		return string;
+	}
+	/**
+	 * 
+	 * @param prenotazione
+	 * @return
+	 */
 	public String totalePrenotazioneToString(SoggiornoContextSubject prenotazione){
 		//chiedo alla prenotazione quanto è il suo totale e la sua valuta
 		String totale = "L'ammontare complessivo della prenotazione è: " + prenotazione.get_total().get_importo() + prenotazione.get_total().get_valuta();

@@ -16,12 +16,15 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import com.iHotel.model.Persona.Ospite;
+import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Camera.Camera;
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.ServizioEsterno;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
+import com.iHotel.model.ForeignSystem.PayTv.ServizioPayTv;
+import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
@@ -42,20 +45,22 @@ public class VFGP_InfoCamera extends ViewFrame {
 	 */
 	private Camera _camera;
 	/**
-	 * Prenotazione alla quale appartiene la camera.
+	 * Periodo a cui si riferisce la gestione della camera.
 	 */
-	private SoggiornoContextSubject _prenotazione;
+	private Periodo _periodo;
 	/**
-	 * Lista dei servizi esterni della camera, per la prenotazione.
+	 * Factory con la responsabilità di conoscere i sistemi esterni con i quali è collegato l'albergo.
 	 */
-	private ArrayList<ServizioEsterno> _serviziEsterni;
+	private ServiceFactory _serviceFactory;
 
 	//JPanel
 	private JPanel _pnlMiddleLeft, _pnlMiddleCenter, _pnlMiddleRight;
-
+				   
+	// JScrollPane
+	private JScrollPane _scrollPaneMiddleRightPayTv,_scrollPaneMiddleRightTelefono;
+	
 	//Label
-	private JLabel _lblInfoCamera, _lblOspitiCamera,_lblServiziInterniRichiesti, _lblServiziEsterniRichiesti;
-	//private ArrayList<JLabel> _lblServizioInternoRichiesto;
+	private JLabel _lblInfoCamera, _lblOspitiCamera,_lblServiziInterniRichiesti;
 	
 	//Button
 	private JButton _btnAggiungiServizi, _btnTornaPrenotazione;
@@ -67,19 +72,22 @@ public class VFGP_InfoCamera extends ViewFrame {
 	 * Costruttore privato - Pattern Singleton
 	 */
 	private VFGP_InfoCamera() {
+		_serviceFactory=ServiceFactory.getInstance();
+		
 		/*Istanzio gli oggetti da mostrare nell'interfaccia*/
 		
 		/*Panel*/
 		_pnlMiddleLeft = _viewFactory.getPanel();
 		_pnlMiddleCenter =_viewFactory.getPanel();
 		_pnlMiddleRight=_viewFactory.getPanel();
-	
+		/*JScrollPane*/
+		_scrollPaneMiddleRightPayTv=_viewFactory.getScrollPane();
+		_scrollPaneMiddleRightTelefono=_viewFactory.getScrollPane();
 		
 		/*Label*/
 		_lblInfoCamera=_viewFactory.getLabelIntestazione_1();
 		_lblOspitiCamera= _viewFactory.getLabelIntestazione_2();
 		_lblServiziInterniRichiesti=_viewFactory.getLabelIntestazione_2();
-		_lblServiziEsterniRichiesti=_viewFactory.getLabelIntestazione_2();
 		
 		/*Button*/
 		_btnAggiungiServizi=_viewFactory.getButtonAvanti();
@@ -132,7 +140,7 @@ public class VFGP_InfoCamera extends ViewFrame {
 		_lblOspitiCamera.setText("Ospiti della camera:");
 		_pnlMiddleLeft.add(_lblOspitiCamera);
 		// Ciclo sugli ospiti della camera
-		for (Iterator<Ospite> iterator = _camera.getOspitiInPeriodo(_prenotazione.get_periodo()).iterator(); iterator.hasNext();) {
+		for (Iterator<Ospite> iterator = _camera.getOspitiInPeriodo(_periodo).iterator(); iterator.hasNext();) {
 			Ospite ospite = (Ospite) iterator.next();
 			// Creo una label per inserire nome e cognome dell'ospite
 			JLabel lblOspite = _viewFactory.getLabel();
@@ -155,7 +163,7 @@ public class VFGP_InfoCamera extends ViewFrame {
 		_pnlMiddleCenter.add(_lblServiziInterniRichiesti);
 		
 		/*Scorre l'array dei servizi interni collegati alla camera e li inserisce in un array di label*/
-		for (Iterator<ServizioInterno> iterator = _camera.getServiziInterniInPeriodo(_prenotazione.get_periodo()).iterator(); iterator.hasNext();) {
+		for (Iterator<ServizioInterno> iterator = _camera.getServiziInterniInPeriodo(_periodo).iterator(); iterator.hasNext();) {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
 			// Creo una label per inserire le informazioni del servizio
 			JLabel lblServizioInterno=_viewFactory.getLabel();
@@ -175,23 +183,111 @@ public class VFGP_InfoCamera extends ViewFrame {
 	 */
 	private JPanel creaPanelMiddleRight(){
 		// Setto il layout al panel.
-		_pnlMiddleRight.setLayout(new BoxLayout(_pnlMiddleRight, BoxLayout.PAGE_AXIS));
-		// Aggiungo la label al panel.
-		_lblServiziEsterniRichiesti.setText("Servizi esterni richiesti:");
-		_pnlMiddleRight.add(_lblServiziEsterniRichiesti);
-		// Ciclo sui servizi esterni
-		for (Iterator<ServizioEsterno> iterator = _serviziEsterni.iterator(); iterator.hasNext();) {
-			ServizioEsterno servizioEsterno = (ServizioEsterno) iterator.next();
-			// Creo una label per inserire le informazioni del servizio
-			JLabel lblServizioEsterno=_viewFactory.getLabel();
-			lblServizioEsterno.setText(UtoString.getInstance().servizioEsternoInPrenotazioneToString(servizioEsterno));
-			/*Aggiungo la label del servizio al panel*/
-			_pnlMiddleRight.add(lblServizioEsterno);
-			/*Aggiungo lo spazio*/
-			_pnlMiddleRight.add(Box.createRigidArea(new Dimension(0,15)));
-			
-		}
+		_pnlMiddleRight.setLayout(new GridLayout(2, 1, 5, 0));
+		// Aggiungo il pannello dei servizi della PayTv
+		_pnlMiddleRight.add(creaPanelMiddleRightPayTv());
+		// Aggiungo il pannelo dei servizi del Telefono
+		_pnlMiddleRight.add(creaPanelMiddleRightTelefono());
+		
 		return _pnlMiddleRight;
+	}
+	/**
+	 * Metodo per fornire il pannello contenente la lista dei servizi di payTv in camera.
+	 * 
+	 * @return Pannello contenente la lista dei servizi di payTv.
+	 */
+	private JScrollPane creaPanelMiddleRightPayTv() {
+		// Creo pannello nel quale inserisco i servizi della PayTv.
+		JPanel pnlServiziPayTv = _viewFactory.getPanel(false);
+		// Setto Layout
+		pnlServiziPayTv.setLayout(new BoxLayout(pnlServiziPayTv, BoxLayout.PAGE_AXIS));
+		
+		// Pannello Intestazione
+		JPanel pnlIntestazione = _viewFactory.getPanel(false);
+		pnlIntestazione.setLayout(new BorderLayout(0,0));
+		// Label intestazione
+		JLabel lblIntestazione = _viewFactory.getLabelIntestazione_2();
+		lblIntestazione.setText("Servizi PayTv:");
+		// Aggiungo lblIntestazione al pnlIntestazione
+		pnlIntestazione.add(lblIntestazione);
+		
+		// Pannello lista servizi
+		JPanel pnlListaServizi = _viewFactory.getPanel(false);
+		pnlListaServizi.setLayout(new BoxLayout(pnlListaServizi,BoxLayout.PAGE_AXIS));
+		
+		// Recupero la lista di servizi di PayTv
+		ArrayList<ServizioPayTv> serviziPayTv = _serviceFactory.get_payTvAdapter().getElencoServiziPayTvCameraInPeriodo(_camera, _periodo);
+		
+		// Ciclo sui servizi per aggiungerli al pnlListaServizi
+		for (Iterator<ServizioPayTv> iterator = serviziPayTv.iterator(); iterator.hasNext();) {
+			ServizioPayTv servizioPayTv = (ServizioPayTv) iterator.next();
+			// Creo la label per il servizio
+			JLabel lblServizioPayTv = _viewFactory.getLabel();
+			lblServizioPayTv.setText(UtoString.getInstance().servizioPayTv(servizioPayTv));
+			// Aggiungo lbl al pannello
+			pnlListaServizi.add(lblServizioPayTv);
+			// Aggiungo spaziatura
+			pnlListaServizi.add(Box.createVerticalStrut(3));
+		}
+		
+		// Aggiungo elementi al pnlServiziTelefono
+		pnlServiziPayTv.add(pnlIntestazione);
+		pnlServiziPayTv.add(Box.createVerticalStrut(10));
+		pnlServiziPayTv.add(pnlListaServizi);
+		
+		// Setto il viewport allo scrollPane
+		_scrollPaneMiddleRightPayTv.setViewportView(pnlServiziPayTv);
+		
+		return _scrollPaneMiddleRightPayTv;
+	}
+	/**
+	 * Metodo per fornire il pannello contenente la lista dei servizi di telefonia in camera.
+	 * 
+	 * @return Pannello contenente la lista dei servizi del telefono.
+	 */
+	private JScrollPane creaPanelMiddleRightTelefono() {
+		// Creo pannello nel quale inserisco i servizi del telefono.
+		JPanel pnlServiziTelefono = _viewFactory.getPanel(false);
+		// Setto Layout
+		pnlServiziTelefono.setLayout(new BoxLayout(pnlServiziTelefono, BoxLayout.PAGE_AXIS));
+		
+		// Pannello Intestazione
+		JPanel pnlIntestazione = _viewFactory.getPanel(false);
+		pnlIntestazione.setLayout(new BorderLayout(0,0));
+		// Label intestazione
+		JLabel lblIntestazione = _viewFactory.getLabelIntestazione_2();
+		lblIntestazione.setText("Servizi Telefono:");
+		// Aggiungo lblIntestazione al pnlIntestazione
+		pnlIntestazione.add(lblIntestazione);
+		
+		// Pannello lista servizi
+		JPanel pnlListaServizi = _viewFactory.getPanel(false);
+		pnlListaServizi.setLayout(new BoxLayout(pnlListaServizi,BoxLayout.PAGE_AXIS));
+		
+		// Recupero la lista di servizi di Telefonia
+		ArrayList<ServizioTelefono> serviziTelefono = _serviceFactory.get_telephoneAdapter().getElencoServiziTelefonoCameraInPeriodo(_camera, _periodo);
+		
+		// Ciclo sui servizi per aggiungerli al pnlListaServizi
+		for (Iterator<ServizioTelefono> iterator = serviziTelefono.iterator(); iterator.hasNext();) {
+			ServizioTelefono servizioTelefono = (ServizioTelefono) iterator.next();
+			// Creo la label per il servizio
+			JLabel lblServizioTelefono = _viewFactory.getLabel();
+			lblServizioTelefono.setText(UtoString.getInstance().servizioTelefono(servizioTelefono));
+			// Aggiungo lbl al pannello
+			pnlListaServizi.add(lblServizioTelefono);
+			// Aggiungo spaziatura
+			pnlListaServizi.add(Box.createVerticalStrut(3));
+		}
+		
+		// Aggiungo elementi al pnlServiziTelefono
+		pnlServiziTelefono.add(pnlIntestazione);
+		pnlServiziTelefono.add(Box.createVerticalStrut(10));
+		pnlServiziTelefono.add(pnlListaServizi);
+		
+		// Setto il viewport allo scrollPane
+		_scrollPaneMiddleRightTelefono.setViewportView(pnlServiziTelefono);
+		
+		return _scrollPaneMiddleRightTelefono;
 	}
 	@Override
 	protected void creaPanelBottom() {
@@ -214,16 +310,14 @@ public class VFGP_InfoCamera extends ViewFrame {
 	 * Metodo per creare il frame relativo alle informazioni della camera in merito alla prenotazione.
 	 * 
 	 * @param camera Camera di cui si vogliono mostrare le informazioni.
-	 * @param prenotazione Prenotazione a cui è legata la camera.
-	 * @param serviziEsterni Lista dei servizi esterni richiesti dalla camera per la prenotazione in analisi.
+	 * @param periodo Periodo al quale si riferisce la gestione della camera.
 	 */
-	public void creaFrame(Camera camera, SoggiornoContextSubject prenotazione, ArrayList<ServizioEsterno> serviziEsterni) {
+	public void creaFrame(Camera camera, Periodo periodo) {
 		/*Setto il titolo della finestra*/
 		setTitle("iHotel - Gestione Prenotazione - Informazioni sulla camera");
 		// Setto gli attributi dell'interfaccia
 		_camera=camera;
-		_prenotazione=prenotazione;
-		_serviziEsterni=serviziEsterni;
+		_periodo=periodo;
 		// Creo i pannelli
 		creaPanelTop();
 		creaPanelMiddle();

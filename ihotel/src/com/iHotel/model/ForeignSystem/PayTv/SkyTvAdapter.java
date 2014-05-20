@@ -5,7 +5,6 @@ import java.util.LinkedList;
 
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -30,23 +29,23 @@ public class SkyTvAdapter implements IPayTvAdapter {
 		return prezzoTotale;
 	}
 	@Override
-	public ArrayList<ServizioEsterno> getElencoServiziCameraInPeriodo(Camera camera, Periodo periodo) {
+	public ArrayList<ServizioPayTv> getElencoServiziPayTvCameraInPeriodo(Camera camera, Periodo periodo) {
 		// TODO - Chiaramente ora si stanno fornendo dei servizi di default.
-		ServizioEsterno servizioEsterno = new ServizioEsterno();
-		servizioEsterno.set_codice("SKY001");
+		ServizioPayTv servizioPayTv = new ServizioPayTv();
+		servizioPayTv.set_codice("SKY001");
 		// Creo il giorno del servizio
     	Giorno giornoServizio = new Giorno(13,2,2014);
 		// Setto la data al servizio
-		servizioEsterno.set_giorno(giornoServizio);
+    	servizioPayTv.set_giorno(giornoServizio);
 		// Descrizione
-		servizioEsterno.set_descrizione("C'era una volta in America - S. Leone");
+    	servizioPayTv.set_evento("C'era una volta in America - S. Leone");
 		// Prezzo
 		Prezzo prezzo = new Prezzo();
 		prezzo.set_importo(8);
-		servizioEsterno.set_prezzo(prezzo);
+		servizioPayTv.set_prezzo(prezzo);
 		// Lista di servizi
-		ArrayList<ServizioEsterno> listaServiziEsterni = new ArrayList<ServizioEsterno>();
-		listaServiziEsterni.add(servizioEsterno);
+		ArrayList<ServizioPayTv> listaServiziEsterni = new ArrayList<ServizioPayTv>();
+		listaServiziEsterni.add(servizioPayTv);
 		
 		return listaServiziEsterni;
 	}
