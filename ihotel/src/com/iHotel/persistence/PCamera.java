@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.db4o.query.Predicate;
-import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Albergo.Camera.Camera;
 
 /**
  * Classe addetta alla persistenza per la classe CameraContext.
@@ -39,17 +39,17 @@ public class PCamera extends PersistentManager {
 	 * 
 	 * @return L'insieme delle camere dell'albergo.
 	 */
-	public ArrayList<CameraContext> caricaCamere() {
+	public ArrayList<Camera> caricaCamere() {
 		@SuppressWarnings("serial")
-		List<CameraContext> camere = query(new Predicate<CameraContext>() {
-			public boolean match(CameraContext candidate) {
+		List<Camera> camere = query(new Predicate<Camera>() {
+			public boolean match(Camera candidate) {
 				return true;
 			}
 		});
 		// Creo la lista di camere
-		ArrayList<CameraContext> _camere = new ArrayList<CameraContext>();
-		for (Iterator<CameraContext> iterator = camere.iterator(); iterator.hasNext();) {
-			CameraContext camera = (CameraContext) iterator.next();
+		ArrayList<Camera> _camere = new ArrayList<Camera>();
+		for (Iterator<Camera> iterator = camere.iterator(); iterator.hasNext();) {
+			Camera camera = (Camera) iterator.next();
 			_camere.add(camera);
 		}
 		return _camere;

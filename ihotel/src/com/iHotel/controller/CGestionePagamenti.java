@@ -3,7 +3,7 @@
  */
 package com.iHotel.controller;
 
-import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.Access.ViewHandler;
@@ -16,7 +16,7 @@ import com.iHotel.view.Graphic.GestionePagamenti.VFP_RiepilogoPagamenti;
 public class CGestionePagamenti {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
-	private PrenotazioneSubject _prenotazione;
+	private SoggiornoContextSubject _prenotazione;
 	/**
 	 * Attributo privato - Pattern Singleton
 	 */
@@ -37,7 +37,7 @@ public class CGestionePagamenti {
      * Metodo che ha il compito di mostrare la schermata per la gestione dei pagamenti
      * @param prenotazione Prenotazione di cui si stanno gestendo i pagamenti
      */
-    public void gestisciPagamentiPrenotazione(PrenotazioneSubject prenotazione){
+    public void gestisciPagamentiPrenotazione(SoggiornoContextSubject prenotazione){
     	//Setto l'attributo con la prenotazione
     	this._prenotazione =prenotazione;
     	/*Recupero l'istanza della View per la gestione dei pagamenti*/

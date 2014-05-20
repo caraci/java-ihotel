@@ -1,4 +1,4 @@
-package com.iHotel.model.State;
+package com.iHotel.model.Albergo.Camera;
 
 import java.util.*;
 
@@ -12,20 +12,20 @@ import com.iHotel.model.Utility.Prezzo;
  * 
  * @author Eugenio
  */
-public class CameraContext {
+public class Camera {
 
 	/* --------------------------- Attributi e Costruttore ---------------------- */
 	/**
 	 * Stati della camera.
 	 */
-	private LinkedList<CameraState> _statiCameraState;
+	private LinkedList<StatoCamera> _statiCameraState;
 	private String _numero;
 	private String _tipologia;
 	/**
 	 * Costruttore.
 	 */
-	public CameraContext() {
-		_statiCameraState = new LinkedList<CameraState>();
+	public Camera() {
+		_statiCameraState = new LinkedList<StatoCamera>();
 	}
 	/* -------------------------- Metodi di istanza ----------------------- */
 	/**
@@ -36,7 +36,7 @@ public class CameraContext {
 	 */
 	public void aggiungiOspiteInPeriodo(Ospite ospite, Periodo periodo) {
 		// Prendo il giusto statoCamera in base al periodo.
-		CameraState statoCamera = this.getStatoCameraInPeriodo(periodo);
+		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
 		// Aggiungo l'ospite allo stato camera.
 		statoCamera.aggiungiOspite(ospite);
 	}
@@ -48,7 +48,7 @@ public class CameraContext {
 	 */
 	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo){
 		// Prendo il giusto statoCamera in base al periodo.
-		CameraState statoCamera = this.getStatoCameraInPeriodo(periodo);
+		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
 		statoCamera.aggiungiServizioInPeriodo(servizio, periodo);
 	}
 	/**
@@ -60,8 +60,8 @@ public class CameraContext {
 	public Prezzo getPrezzoServiziInPeriodo(Periodo periodo){
 		Prezzo prezzo = new Prezzo();
 		// Ciclo sugli stati della camera
-		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
-			CameraState cameraState = (CameraState) iterator.next();
+		for (Iterator<StatoCamera> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			StatoCamera cameraState = (StatoCamera) iterator.next();
 			// Controllo che non mi venga fornito un null
 			if(cameraState.getPrezzoTotaleServizi(periodo)!=null) {
 				prezzo=cameraState.getPrezzoTotaleServizi(periodo);
@@ -77,8 +77,8 @@ public class CameraContext {
 	 */
 	public boolean isLiberaInPeriodo(Periodo periodoRichiesta) {	
 		boolean esito=false;
-		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
-			CameraState statoCamera = iterator.next();				
+		for (Iterator<StatoCamera> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			StatoCamera statoCamera = iterator.next();				
 			if(statoCamera.isLiberaInPeriodo(periodoRichiesta)==true) {					
 				esito=true;	
 			}
@@ -92,10 +92,10 @@ public class CameraContext {
 	 */
 	public void occupaInPeriodoState(Periodo periodo) {
 		// Lista degli stati camera che vengono restituiti dallo stato della camera
-		List<CameraState> statiCameraDopoOccupazione;
+		List<StatoCamera> statiCameraDopoOccupazione;
 		// Ciclo su tutti gli stati della camera
 		for (int i = 0; i < _statiCameraState.size(); i++) {
-			CameraState cameraState = _statiCameraState.get(i);
+			StatoCamera cameraState = _statiCameraState.get(i);
 			// Controllo se mi viene restituita una lista di stati.
 			// Solo uno stato può restituire la lista.
 			// Assegno il risultato alla variabile statiCameraDopoOccupazione		
@@ -117,7 +117,7 @@ public class CameraContext {
 	public ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo){
 		ArrayList<ServizioInterno> serviziInterni=new ArrayList<ServizioInterno>();
 		// Ricavo il giusto stato camera.
-		CameraState statoCamera = this.getStatoCameraInPeriodo(periodo);
+		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
 		// Ricavo la lista di servizi
 		serviziInterni=statoCamera.getServiziInterniInPeriodo(periodo);
 		
@@ -132,7 +132,7 @@ public class CameraContext {
 	public ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo){
 		ArrayList<Ospite> ospiti=new ArrayList<Ospite>() ;
 		// Ricavo il giusto stato camera.
-		CameraState statoCamera = this.getStatoCameraInPeriodo(periodo);
+		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
 		// Ricavo la lista di ospiti.
 		ospiti=statoCamera.getOspitiInPeriodo(periodo);
 		
@@ -144,11 +144,11 @@ public class CameraContext {
 	 * @param periodo Periodo da analizzare.
 	 * @return Stato camera relativo al periodo.
 	 */
-	public CameraState getStatoCameraInPeriodo(Periodo periodo) {
-		CameraState statoCameraPeriodo = null;
+	public StatoCamera getStatoCameraInPeriodo(Periodo periodo) {
+		StatoCamera statoCameraPeriodo = null;
 		// Ciclo sugli stati interni della camera.
-		for (Iterator<CameraState> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
-			CameraState statoCamera = iterator.next();
+		for (Iterator<StatoCamera> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
+			StatoCamera statoCamera = iterator.next();
 			// Controllo se il periodo dello stato coincide con quello passato come parametro.
 			if(statoCamera.get_periodo().coincideCon(periodo)){
 				statoCameraPeriodo=statoCamera;
@@ -162,13 +162,13 @@ public class CameraContext {
 	/**
 	 * @return _statiCameraState 
 	 */
-	public LinkedList<CameraState> get_statiCamera() {
+	public LinkedList<StatoCamera> get_statiCamera() {
 		return _statiCameraState;
 	}
 	/**
 	 * @param _statiCameraState
 	 */
-	public void set_statiCamera(LinkedList<CameraState> _statiCameraState) {
+	public void set_statiCamera(LinkedList<StatoCamera> _statiCameraState) {
 		this._statiCameraState = _statiCameraState;
 	}
 	/**

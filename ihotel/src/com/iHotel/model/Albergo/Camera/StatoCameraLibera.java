@@ -1,4 +1,4 @@
-package com.iHotel.model.State;
+package com.iHotel.model.Albergo.Camera;
 
 import java.util.*;
 
@@ -14,12 +14,12 @@ import com.iHotel.model.Utility.Prezzo;
  * 
  * @author Eugenio
  */
-public class CameraStateLibera extends CameraState {
+public class StatoCameraLibera extends StatoCamera {
 
 	@Override
-	public LinkedList<CameraState> occupaInPeriodo(Periodo periodoRichiesta) {
+	public LinkedList<StatoCamera> occupaInPeriodo(Periodo periodoRichiesta) {
 		// Lista degli stati da restituire alla camera.
-		LinkedList<CameraState> nuoviStatiCamera=null;
+		LinkedList<StatoCamera> nuoviStatiCamera=null;
 		// Controllo che il periodo della richiesta è contenuto nel periodo dell'instanza.
 		if (_periodo.contiene(periodoRichiesta)) {
 			CreaStatiCameraStrategy creaStatiCameraStrategy = CreaStatiCameraStrategyFactory.getInstance().getStrategy(_periodo, periodoRichiesta);

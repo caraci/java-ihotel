@@ -5,11 +5,11 @@ import com.db4o.ObjectContainer;
 import com.db4o.ObjectSet;
 import com.db4o.config.EmbeddedConfiguration;
 import com.db4o.query.Predicate;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
-import com.iHotel.model.State.CameraContext;
-import com.iHotel.model.State.CameraState;
-import com.iHotel.model.State.CameraStateOccupata;
+import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Camera.StatoCamera;
+import com.iHotel.model.Albergo.Camera.StatoCameraOccupata;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 
 public class PersistentManager {
 	/* --------------- Attributi e costruttore ------------------- */
@@ -30,13 +30,13 @@ public class PersistentManager {
 		if (_db==null) {
 			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 			// Configurazioni per l'aggiornamento in cascata degli oggetti delle seguenti classi.
-			config.common().objectClass(PrenotazioneSubject.class).cascadeOnUpdate(true);
-			config.common().objectClass(CameraContext.class).cascadeOnUpdate(true);
-			config.common().objectClass(CameraState.class).cascadeOnUpdate(true);
-			config.common().objectClass(CameraStateOccupata.class).cascadeOnUpdate(true);
+			config.common().objectClass(SoggiornoContextSubject.class).cascadeOnUpdate(true);
+			config.common().objectClass(Camera.class).cascadeOnUpdate(true);
+			config.common().objectClass(StatoCamera.class).cascadeOnUpdate(true);
+			config.common().objectClass(StatoCameraOccupata.class).cascadeOnUpdate(true);
 			config.common().objectClass(ServizioInterno.class).cascadeOnUpdate(true);
 			// Configurazione per tirare su l'oggetto completo
-			config.common().objectClass(CameraContext.class).minimumActivationDepth(20);
+			config.common().objectClass(Camera.class).minimumActivationDepth(20);
 			// Posizione del file contenente la base dati.
 			_db=Db4oEmbedded.openFile(config, "dbihotel");
 		}

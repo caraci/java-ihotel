@@ -3,8 +3,8 @@
  */
 package com.iHotel.controller;
 
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.view.Access.ViewHandler;
@@ -52,7 +52,7 @@ public class CCheckIn extends CGestionePrenotazione {
 	 * @param camera Camera alla quale si vuole aggiungere l'ospite.
 	 * @param ospite Ospite da aggiungere alla camera.
 	 */
-	public void aggiungiOspite(CameraContext camera, Ospite ospite) {
+	public void aggiungiOspite(Camera camera, Ospite ospite) {
 		// Periodo nel quale aggiungiamo l'ospite
 		Periodo periodo = _prenotazione.get_periodo();
 		// Aggiungo l'ospite alla camera

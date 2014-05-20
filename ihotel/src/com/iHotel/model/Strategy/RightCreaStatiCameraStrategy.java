@@ -5,9 +5,9 @@ package com.iHotel.model.Strategy;
 
 import java.util.LinkedList;
 
-import com.iHotel.model.State.CameraStateLibera;
-import com.iHotel.model.State.CameraStateOccupata;
-import com.iHotel.model.State.CameraState;
+import com.iHotel.model.Albergo.Camera.StatoCamera;
+import com.iHotel.model.Albergo.Camera.StatoCameraLibera;
+import com.iHotel.model.Albergo.Camera.StatoCameraOccupata;
 import com.iHotel.model.Utility.Periodo;
 
 /**
@@ -19,12 +19,12 @@ import com.iHotel.model.Utility.Periodo;
 public class RightCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 
 	@Override
-	public LinkedList<CameraState> creaNuoviStati(CameraState cameraState, Periodo periodoRichiesta) {
+	public LinkedList<StatoCamera> creaNuoviStati(StatoCamera cameraState, Periodo periodoRichiesta) {
 		// Lista da restituire
-		LinkedList<CameraState> nuoviStati = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> nuoviStati = new LinkedList<StatoCamera>();
 		// Nuovi stati
 			// - Occupato 
-			CameraState cameraStateOccupato = new CameraStateOccupata();
+			StatoCamera cameraStateOccupato = new StatoCameraOccupata();
 			cameraStateOccupato.set_periodo(periodoRichiesta);
 			// - Libero
 			Periodo periodoLibero = new Periodo();
@@ -32,7 +32,7 @@ public class RightCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 			periodoLibero.setDataInizioPeriodoDaDataInizioPeriodo(cameraState.get_periodo());
 			periodoLibero.setDataFinePeriodoDaDataInizioPeriodo(periodoRichiesta);
 			// Setto il periodo allo stato
-			CameraState cameraStateLibero = new CameraStateLibera();
+			StatoCamera cameraStateLibero = new StatoCameraLibera();
 			cameraStateLibero.set_periodo(periodoLibero);
 			
 		// Aggiungo stati alla lista

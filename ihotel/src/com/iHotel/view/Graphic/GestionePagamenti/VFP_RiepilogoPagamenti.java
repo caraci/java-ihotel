@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
@@ -35,7 +35,7 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */
-	private PrenotazioneSubject _prenotazione;
+	private SoggiornoContextSubject _prenotazione;
 	
 	/**
 	 * HashMap contenente i pagamenti della prenotazione
@@ -342,7 +342,7 @@ public class VFP_RiepilogoPagamenti extends ViewFrame{
 			}
 		}
 	}
-	public void creaFrame(PrenotazioneSubject prenotazione){
+	public void creaFrame(SoggiornoContextSubject prenotazione){
 		//Titolo della finestra
 		setTitle("iHotel - Gestione Prenotazione - Informazioni sul pagamento");
 		//Setto l'attributo prenotazione con il riferimento passato come parametro

@@ -4,10 +4,10 @@
 package com.iHotel.view.Utility;
 
 import com.iHotel.model.Persona.Ospite;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
@@ -98,7 +98,7 @@ public class UtoString {
 		return string;
 	}
 	
-	public String totalePrenotazioneToString(PrenotazioneSubject prenotazione){
+	public String totalePrenotazioneToString(SoggiornoContextSubject prenotazione){
 		//chiedo alla prenotazione quanto è il suo totale e la sua valuta
 		String totale = "L'ammontare complessivo della prenotazione è: " + prenotazione.get_total().get_importo() + prenotazione.get_total().get_valuta();
 		return totale;

@@ -5,9 +5,9 @@ package com.iHotel.model.Strategy;
 
 import java.util.LinkedList;
 
-import com.iHotel.model.State.CameraStateLibera;
-import com.iHotel.model.State.CameraStateOccupata;
-import com.iHotel.model.State.CameraState;
+import com.iHotel.model.Albergo.Camera.StatoCamera;
+import com.iHotel.model.Albergo.Camera.StatoCameraLibera;
+import com.iHotel.model.Albergo.Camera.StatoCameraOccupata;
 import com.iHotel.model.Utility.Periodo;
 
 /**
@@ -19,9 +19,9 @@ import com.iHotel.model.Utility.Periodo;
 public class MiddleCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 
 	@Override
-	public LinkedList<CameraState> creaNuoviStati(CameraState cameraState, Periodo periodoRichiesta) {
+	public LinkedList<StatoCamera> creaNuoviStati(StatoCamera cameraState, Periodo periodoRichiesta) {
 		// Lista da restituire
-		LinkedList<CameraState> nuoviStati = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> nuoviStati = new LinkedList<StatoCamera>();
 		// Nuovi stati
 		
 			// - Libero Sinistra
@@ -30,11 +30,11 @@ public class MiddleCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 			periodoLiberoSx.setDataInizioPeriodoDaDataInizioPeriodo(cameraState.get_periodo());
 			periodoLiberoSx.setDataFinePeriodoDaDataInizioPeriodo(periodoRichiesta);
 			// Setto il periodo allo stato
-			CameraState cameraStateLiberoSx = new CameraStateLibera();
+			StatoCamera cameraStateLiberoSx = new StatoCameraLibera();
 			cameraStateLiberoSx.set_periodo(periodoLiberoSx);
 			
 			// - Occupato 
-			CameraState cameraStateOccupato = new CameraStateOccupata();
+			StatoCamera cameraStateOccupato = new StatoCameraOccupata();
 			cameraStateOccupato.set_periodo(periodoRichiesta);
 			
 			// - Libero Destra
@@ -43,7 +43,7 @@ public class MiddleCreaStatiCameraStrategy implements CreaStatiCameraStrategy {
 			periodoLiberoDx.setDataInizioPeriodoDaDataFinePeriodo(periodoRichiesta);
 			periodoLiberoDx.setDataFinePeriodoDaDataFinePeriodo(cameraState.get_periodo());
 			// Setto il periodo allo stato
-			CameraState cameraStateLiberoDx = new CameraStateLibera();
+			StatoCamera cameraStateLiberoDx = new StatoCameraLibera();
 			cameraStateLiberoDx.set_periodo(periodoLiberoDx);
 			
 		// Aggiungo stati alla lista

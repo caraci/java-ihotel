@@ -3,9 +3,9 @@ package com.iHotel.model.ForeignSystem.PayTv;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -23,14 +23,14 @@ public class SkyTvAdapter implements IPayTvAdapter {
 		return null;
 	}
 	@Override
-	public Prezzo getPrezzoTotaleServiziPrenotazione(PrenotazioneSubject prenotazione) {
+	public Prezzo getPrezzoTotaleServiziPrenotazione(SoggiornoContextSubject prenotazione) {
 		// TODO - Chiaramente ora si sta utilizzando un prezzo di default.
 		Prezzo prezzoTotale = new Prezzo();
 		prezzoTotale.set_importo(10);
 		return prezzoTotale;
 	}
 	@Override
-	public ArrayList<ServizioEsterno> getElencoServiziCameraInPeriodo(CameraContext camera, Periodo periodo) {
+	public ArrayList<ServizioEsterno> getElencoServiziCameraInPeriodo(Camera camera, Periodo periodo) {
 		// TODO - Chiaramente ora si stanno fornendo dei servizi di default.
 		ServizioEsterno servizioEsterno = new ServizioEsterno();
 		servizioEsterno.set_codice("SKY001");

@@ -23,9 +23,9 @@ import javax.swing.JTextField;
 import net.sourceforge.jdatepicker.JDateComponentFactory;
 import net.sourceforge.jdatepicker.JDatePicker;
 
-import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Persona.Ospite;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.ViewPanel;
 import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
@@ -41,8 +41,8 @@ import com.iHotel.view.Utility.UtoString;
 @SuppressWarnings("serial")
 public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 
-	private CameraContext _camera;
-	private PrenotazioneSubject _prenotazione;
+	private Camera _camera;
+	private SoggiornoContextSubject _prenotazione;
 	/* JLabel */
 	private JLabel _lblNome,_lblCognome,_lblIntestazioneMiddleLeft,_lblCittaNascita,_lblCittaResidenza,
 				   _lblIntestazioneCartaIdentita,_lblCartaIdentitaCodice,_lblCartaIdentitaEnte,_lblIntestazionePatente,
@@ -71,7 +71,7 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	 * 
 	 * @param camera Camera che si sta visualizzando.
 	 */
-	public VFC_AggiungiOspiti_PanelCamera(CameraContext camera, PrenotazioneSubject prenotazione) {
+	public VFC_AggiungiOspiti_PanelCamera(Camera camera, SoggiornoContextSubject prenotazione) {
 		super();
 		_camera=camera;
 		_prenotazione=prenotazione;
@@ -503,14 +503,14 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	/**
 	 * @return the _camera
 	 */
-	public CameraContext get_camera() {
+	public Camera get_camera() {
 		return _camera;
 	}
 
 	/**
 	 * @param _camera the _camera to set
 	 */
-	public void set_camera(CameraContext _camera) {
+	public void set_camera(Camera _camera) {
 		this._camera = _camera;
 	}
 

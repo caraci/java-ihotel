@@ -7,7 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import com.iHotel.controller.CGestionePagamenti;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 
 
 /**
@@ -21,13 +21,13 @@ public class GestisciPagamentoListener extends MouseAdapter {
 	/**
 	 * Il listener ha la maniglia alla prenotazione
 	 */
-	private PrenotazioneSubject _prenotazione;
+	private SoggiornoContextSubject _prenotazione;
 	
 	/**
 	 * Costruttore
 	 * @param prenotazione Prenotazione della quale si stanno gestendo i pagamenti
 	 */
-	public GestisciPagamentoListener(PrenotazioneSubject prenotazione){
+	public GestisciPagamentoListener(SoggiornoContextSubject prenotazione){
 		_prenotazione = prenotazione;
 	}
 	

@@ -1,14 +1,14 @@
-package com.iHotel.model.Albergo;
+package com.iHotel.model.Albergo.Soggiorno;
 
 import java.util.*;
 
+import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Persona.ClientePrenotante;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 /**
@@ -20,13 +20,13 @@ import com.iHotel.model.Utility.Prezzo;
  * 
  * @author Alessandro
  */
-public class PrenotazioneSubject implements ISubject {
+public class SoggiornoContextSubject implements ISubject {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
 	/**
 	 * Vengono mantenute le maniglie alle camere della prenotazione.
 	 */
-	private ArrayList<CameraContext> _camerePrenotate;
+	private ArrayList<Camera> _camerePrenotate;
 	/**
 	 * Vengono mantenute le maniglie agli osservatori di questa istanza - Pattern Observer
 	 */
@@ -48,8 +48,8 @@ public class PrenotazioneSubject implements ISubject {
 	/**
 	 * Costruttore.
 	 */
-	public PrenotazioneSubject() {
-		_camerePrenotate = new ArrayList<CameraContext>();
+	public SoggiornoContextSubject() {
+		_camerePrenotate = new ArrayList<Camera>();
 		_osservatori = new ArrayList<IObserver>();
 		_total = new Prezzo();
 		_pagamenti= new ArrayList<Pagamento>();
@@ -93,8 +93,8 @@ public class PrenotazioneSubject implements ISubject {
 	public Prezzo getPrezzoServiziInterni(){
 		Prezzo prezzo = new Prezzo();
 		// Ciclo su tutte le camere
-		for (Iterator<CameraContext> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
-			CameraContext camera = (CameraContext) iterator.next();
+		for (Iterator<Camera> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
+			Camera camera = (Camera) iterator.next();
 			prezzo.somma(camera.getPrezzoServiziInPeriodo(_periodo));
 		}
 		return prezzo;
@@ -106,7 +106,7 @@ public class PrenotazioneSubject implements ISubject {
 	public void calcolaTotale(){
 		DescrizioneCamera descrizione;
 		// Prendo l'ultima camera aggiunta.
-		CameraContext cameraPrenotata;
+		Camera cameraPrenotata;
 		cameraPrenotata=_camerePrenotate.get(_camerePrenotate.size()-1);
 		// Prendo la tipologia e carico la giusta descrizione.
 		String tipologia=cameraPrenotata.get_tipologia();
@@ -121,7 +121,7 @@ public class PrenotazioneSubject implements ISubject {
 	 * Metodo per aggiungere una camera alla prenotazione.
 	 * @param camera Camera da aggiungere alla prenotazione.
 	 */
-	public void addCamera(CameraContext camera) {
+	public void addCamera(Camera camera) {
 		_camerePrenotate.add(camera);
 	}
 	/**
@@ -151,8 +151,8 @@ public class PrenotazioneSubject implements ISubject {
 	 * Metodo per occupare le camere della prenotazione.
 	 */
 	public void occupaCamere() {
-		for (Iterator<CameraContext> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
-			CameraContext cameraPrenotata = (CameraContext) iterator.next();
+		for (Iterator<Camera> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
+			Camera cameraPrenotata = (Camera) iterator.next();
 			cameraPrenotata.occupaInPeriodoState(_periodo);
 		}
 	}
@@ -160,14 +160,14 @@ public class PrenotazioneSubject implements ISubject {
 	/**
 	 * @return _elementiPrenotazione
 	 */
-	public ArrayList<CameraContext> get_camerePrenotate() {
+	public ArrayList<Camera> get_camerePrenotate() {
 		return _camerePrenotate;
 	}
 
 	/**
 	 * @param _elementiPrenotazione
 	 */
-	public void set_camerePrenotate(ArrayList<CameraContext> _elementiPrenotazione) {
+	public void set_camerePrenotate(ArrayList<Camera> _elementiPrenotazione) {
 		this._camerePrenotate = _elementiPrenotazione;
 	}
 

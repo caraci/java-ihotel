@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.db4o.query.Predicate;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 
 /**
  * Classe addetta alla persistenza per la classe PrenotazioneSubject.
@@ -39,10 +39,10 @@ public class PPrenotazione extends PersistentManager {
 	 * 
 	 * @return L'insieme delle prenotazioni dell'albergo.
 	 */
-	public List<PrenotazioneSubject> caricaPrenotazioni() {
+	public List<SoggiornoContextSubject> caricaPrenotazioni() {
 		@SuppressWarnings("serial")
-		List<PrenotazioneSubject> prenotazioni = query(new Predicate<PrenotazioneSubject>() {
-			public boolean match(PrenotazioneSubject candidate) {
+		List<SoggiornoContextSubject> prenotazioni = query(new Predicate<SoggiornoContextSubject>() {
+			public boolean match(SoggiornoContextSubject candidate) {
 				return true;
 			}
 		});
@@ -53,18 +53,18 @@ public class PPrenotazione extends PersistentManager {
 	 * 
 	 * @return Mappa delle prenotazioni dove la chiave è il codice della prenotazione, e il valore è la prenotazione.
 	 */
-	public HashMap<String, PrenotazioneSubject> caricaMappaCodicePrenotazione() {
+	public HashMap<String, SoggiornoContextSubject> caricaMappaCodicePrenotazione() {
 		@SuppressWarnings("serial")
-		List<PrenotazioneSubject> listPrenotazioni = query(new Predicate<PrenotazioneSubject>() {
-			public boolean match(PrenotazioneSubject candidate) {
+		List<SoggiornoContextSubject> listPrenotazioni = query(new Predicate<SoggiornoContextSubject>() {
+			public boolean match(SoggiornoContextSubject candidate) {
 				return true;
 			}
 		});
 		// Creo la mappa.
-		HashMap<String,PrenotazioneSubject> mappaPrenotazioni = new HashMap<String,PrenotazioneSubject>();
+		HashMap<String,SoggiornoContextSubject> mappaPrenotazioni = new HashMap<String,SoggiornoContextSubject>();
 		// Ciclo sulle prenotazioni.
-		for (Iterator<PrenotazioneSubject> iterator = listPrenotazioni.iterator(); iterator.hasNext();) {
-			PrenotazioneSubject prenotazioneSubject = (PrenotazioneSubject) iterator.next();
+		for (Iterator<SoggiornoContextSubject> iterator = listPrenotazioni.iterator(); iterator.hasNext();) {
+			SoggiornoContextSubject prenotazioneSubject = (SoggiornoContextSubject) iterator.next();
 			mappaPrenotazioni.put(prenotazioneSubject.get_codice(), prenotazioneSubject);				
 		}
 		

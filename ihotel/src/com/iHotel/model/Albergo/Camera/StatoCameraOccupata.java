@@ -1,4 +1,4 @@
-package com.iHotel.model.State;
+package com.iHotel.model.Albergo.Camera;
 
 import java.util.*;
 
@@ -14,10 +14,10 @@ import com.iHotel.model.Utility.Prezzo;
  * 
  * @author Eugenio
  */
-public class CameraStateOccupata extends CameraState {
+public class StatoCameraOccupata extends StatoCamera {
 
 	@Override
-	public LinkedList<CameraState> occupaInPeriodo(Periodo periodo) {
+	public LinkedList<StatoCamera> occupaInPeriodo(Periodo periodo) {
 		return null;
 	}
 	@Override

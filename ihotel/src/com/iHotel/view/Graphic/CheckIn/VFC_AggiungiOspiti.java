@@ -14,9 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
-import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.utility.UStartup;
 import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
@@ -31,7 +31,7 @@ public class VFC_AggiungiOspiti extends ViewFrame {
 	
 	/* -------------------------------- Attributi e Costruttore ----------------------------------------- */
 	
-	private PrenotazioneSubject _prenotazione;
+	private SoggiornoContextSubject _prenotazione;
 	
 	private JTabbedPane _panelMiddleTabbed;
 	private JButton _btnTerminaCheckin, _btnTornaPrenotazione;
@@ -91,10 +91,10 @@ public class VFC_AggiungiOspiti extends ViewFrame {
 		// Setto il layout al panelMiddle
     	_panelMiddle.setLayout(new BoxLayout(_panelMiddle, BoxLayout.PAGE_AXIS));
     	// Creo il tabbedPane
-    	ArrayList<CameraContext> camerePrenotazione = _prenotazione.get_camerePrenotate();
+    	ArrayList<Camera> camerePrenotazione = _prenotazione.get_camerePrenotate();
     	// Ciclo sulle camere per aggiungere i tab.
-    	for (Iterator<CameraContext> iterator = camerePrenotazione.iterator(); iterator.hasNext();) {
-			CameraContext camera = (CameraContext) iterator.next();
+    	for (Iterator<Camera> iterator = camerePrenotazione.iterator(); iterator.hasNext();) {
+			Camera camera = (Camera) iterator.next();
 			// Aggiungo tab al tabbedPane
 			_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), new VFC_AggiungiOspiti_PanelCamera(camera,_prenotazione));
 			//_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), panelCamera);
@@ -131,7 +131,7 @@ public class VFC_AggiungiOspiti extends ViewFrame {
 	/**
 	 * Metodo per creare il frame.
 	 */
-	public void creaFrame(PrenotazioneSubject prenotazione) {
+	public void creaFrame(SoggiornoContextSubject prenotazione) {
 		setTitle("iHotel - Check in");
 		// Setto la prenotazione
 		_prenotazione=prenotazione;
@@ -146,14 +146,14 @@ public class VFC_AggiungiOspiti extends ViewFrame {
 	/**
 	 * @return the _prenotazione
 	 */
-	public PrenotazioneSubject get_prenotazione() {
+	public SoggiornoContextSubject get_prenotazione() {
 		return _prenotazione;
 	}
 
 	/**
 	 * @param _prenotazione the _prenotazione to set
 	 */
-	public void set_prenotazione(PrenotazioneSubject _prenotazione) {
+	public void set_prenotazione(SoggiornoContextSubject _prenotazione) {
 		this._prenotazione = _prenotazione;
 	}
 

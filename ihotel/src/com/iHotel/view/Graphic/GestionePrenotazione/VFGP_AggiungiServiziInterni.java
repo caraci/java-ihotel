@@ -21,9 +21,9 @@ import javax.swing.border.EmptyBorder;
 import net.sourceforge.jdatepicker.JDateComponentFactory;
 import net.sourceforge.jdatepicker.JDatePanel;
 
+import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.GestionePrenotazione.AggiungiServizioListener;
 import com.iHotel.view.Event.GestionePrenotazione.MostraDettagliServizioListener;
@@ -45,7 +45,7 @@ public class VFGP_AggiungiServiziInterni extends ViewFrame {
 	/**
 	 * Camera alla quale vogliamo aggiungere un servizio.
 	 */
-	private CameraContext _camera;
+	private Camera _camera;
 	// Singleton
 		private static VFGP_AggiungiServiziInterni instance=null;
 	// JPanel
@@ -212,7 +212,7 @@ public class VFGP_AggiungiServiziInterni extends ViewFrame {
 	 * @param descrizioniServizi Collezione contenente i descrittori dei servizi interni.
 	 * @param camera Camera sulla quale si vogliono aggiungere servizi.
 	 */
-	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi, CameraContext camera) {
+	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi, Camera camera) {
 		// Setto titolo del frame.
 		setTitle("iHotel - Gestione Prenotazione - Aggiungi servizi alla camera");
 		// Setto gli attributi dell'interfaccia attraverso ciò che ricevo per parametro.

@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import com.iHotel.model.Albergo.PrenotazioneSubject;
+import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.CreaPrenotazione.AggiungiCameraPrenotazioneListener;
 import com.iHotel.view.Event.CreaPrenotazione.EffettuaNuovaPrenotazioneListener;
@@ -38,7 +38,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
 	 * Mappa contenente l'insieme di tutte le camere disponibili a seguito della richiesta effettuata precedentemente.
 	 * La chiave della mappa rappresenta la tipologia della camera, il valore è la lista delle camere disponibili.
 	 */
-	private HashMap<String, ArrayList<CameraContext>> _camereDisponibili;
+	private HashMap<String, ArrayList<Camera>> _camereDisponibili;
 	/* Panel */
     private JPanel _panelFinale, _panelPrezzo, _panelOspite;
     /* JButton */
@@ -51,7 +51,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
     /**
      * Per il pattern Observer, memorizziamo il subject della finestra.
      */
-    private PrenotazioneSubject _prenotazioneSubject;
+    private SoggiornoContextSubject _prenotazioneSubject;
     /* ----------------- Pattern Singleton  ---------------- */
 	private static VFCP_SelezioneCamereDatiOspite_Observer instance = null;
    
@@ -135,7 +135,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
      * @param arrayListCamere Lista di camere disponibili.
      * @return Pannello con le camere disponibili.
      */
-    private JScrollPane creaColonnaTipologiaCamere(String tipologia, ArrayList<CameraContext> arrayListCamere) {
+    private JScrollPane creaColonnaTipologiaCamere(String tipologia, ArrayList<Camera> arrayListCamere) {
     	// Creo uno scollPane, all'interno del quale andrò ad inserire il JPanel contenente le camere
     	JScrollPane scrollPaneColonna = _viewFactory.getScrollPane();
     	// Creo una colonna per mostrare i risultati della tipologia di camere
@@ -148,8 +148,8 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
 		// Aggiungo spaziatura statica
 		panelColonna.add(Box.createRigidArea(new Dimension(0,20)));
 		// Ciclo sull'arrayList di String contenenti i numeri di camere ed aggiungo i numeri all'array di String creato sopra.
-		for (Iterator<CameraContext> iterator = arrayListCamere.iterator(); iterator.hasNext();) {
-			CameraContext cameraContext = (CameraContext) iterator.next();
+		for (Iterator<Camera> iterator = arrayListCamere.iterator(); iterator.hasNext();) {
+			Camera cameraContext = (Camera) iterator.next();
 			// Creo il bottone per aggiungere la camera
 			JButton btnNumeroCamera = _viewFactory.getButton();
 			btnNumeroCamera.setText("Aggiungi camera" + cameraContext.get_numero());
@@ -250,7 +250,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
     /**
      * Metodo per creare il frame.
      */
-    public void creaFrame(HashMap<String, ArrayList<CameraContext>> camereDisponibili) {
+    public void creaFrame(HashMap<String, ArrayList<Camera>> camereDisponibili) {
     	// Imposto il titolo.
     	setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
     	// Setto l'attributo relativo alle camere libere
@@ -264,7 +264,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
     }
     /* ------------- Getter, Setter ---------------------------- */
     public void set_prenotazioneSubject(ISubject subject) {
-    	this._prenotazioneSubject=(PrenotazioneSubject) subject;
+    	this._prenotazioneSubject=(SoggiornoContextSubject) subject;
     }
 	/**
 	 * @return the _txtNome

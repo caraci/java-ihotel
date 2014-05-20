@@ -1,11 +1,11 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.Albergo;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
+import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Observer.IObserver;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
@@ -55,7 +55,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
      */
 	public void creaNuovaPrenotazione() {
 		// Creo la nuova prenotazione
-		_prenotazione = new PrenotazioneSubject();
+		_prenotazione = new SoggiornoContextSubject();
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
 		tipologieCamere.addAll(CatalogoCamere.getInstance().getTipologieCamere());
@@ -70,7 +70,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	 * @param numeroCamera Stringa contenente il numero della camera che si vuole aggiungere.
 	 */
 	public void aggiungiCameraAllaPrenotazione(String numeroCamera) {
-		CameraContext camera = null;
+		Camera camera = null;
 		// Ricavo la MCamera a partire dalla stringa contenente il suo numero.
 		camera = _albergo.getCameraDaNumero(numeroCamera);
 		// Aggiungo la camera all'elemento prenotazione
@@ -96,13 +96,13 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		/* Setto il periodo alla prenotazione */
 		_prenotazione.set_periodo(periodo);
 		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
-		HashMap<String, ArrayList<CameraContext>> camereLibere = new HashMap<String, ArrayList<CameraContext>>();
+		HashMap<String, ArrayList<Camera>> camereLibere = new HashMap<String, ArrayList<Camera>>();
 		
 		// Ciclo sulle tipologie
 		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
 			String tipologia = iterator.next();
 			// Struttura dati nella quale si inseriranno le camere disponibili.
-			ArrayList<CameraContext> camereLibereTipologia = new ArrayList<CameraContext>();	
+			ArrayList<Camera> camereLibereTipologia = new ArrayList<Camera>();	
 			// Inserisco nella lista le camere disponibili.
 			camereLibereTipologia = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia);		
 			// Aggiungo le camere appartenenti ad una tipologia
@@ -133,7 +133,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		// Setto la prenotazione come completata
 		_prenotazione.set_completata(true);
 		// Setto il codice alla prenotazione
-		_prenotazione.set_codice(PrenotazioneSubject.generaCodice());
+		_prenotazione.set_codice(SoggiornoContextSubject.generaCodice());
 		// Aggiungo la prenotazione allo storico
 		Storico storico = Storico.getInstance();
 		storico.addPrenotazione(_prenotazione);
@@ -169,14 +169,14 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	 * 
 	 * @return _prenotazione
 	 */
-	public PrenotazioneSubject get_prenotazione() {
+	public SoggiornoContextSubject get_prenotazione() {
 		return this._prenotazione;
 	}
 	/**
 	 * 
 	 * @param _prenotazione
 	 */
-	public void set_prenotazione(PrenotazioneSubject _prenotazione) {
+	public void set_prenotazione(SoggiornoContextSubject _prenotazione) {
 		this._prenotazione = _prenotazione;
 	}
 

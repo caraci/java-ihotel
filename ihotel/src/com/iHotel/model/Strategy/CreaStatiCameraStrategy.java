@@ -3,8 +3,9 @@
  */
 package com.iHotel.model.Strategy;
 
-import com.iHotel.model.State.CameraState;
+import com.iHotel.model.Albergo.Camera.StatoCamera;
 import com.iHotel.model.Utility.Periodo;
+
 import java.util.LinkedList;
 
 /**
@@ -21,5 +22,5 @@ public interface CreaStatiCameraStrategy {
 	 * @param periodoRichiesta Periodo in cui si effettua l'occupazione.
 	 * @return Lista di stati camera coerenti con l'occupazione.
 	 */
-	public LinkedList<CameraState> creaNuoviStati(CameraState cameraState, Periodo periodoRichiesta);
+	public LinkedList<StatoCamera> creaNuoviStati(StatoCamera cameraState, Periodo periodoRichiesta);
 }

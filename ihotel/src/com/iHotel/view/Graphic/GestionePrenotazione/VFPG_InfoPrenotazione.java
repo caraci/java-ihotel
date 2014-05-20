@@ -16,8 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.iHotel.model.Persona.ClientePrenotante;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
-import com.iHotel.model.State.CameraContext;
+import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewFrame;
@@ -39,7 +39,7 @@ public class VFPG_InfoPrenotazione extends ViewFrame {
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */
-	private PrenotazioneSubject _prenotazione;
+	private SoggiornoContextSubject _prenotazione;
 	/**
 	 * Prezzo dei servizi esterni, richiesti dalle camere della prenotazione, nel periodo di quest'ultima.
 	 */
@@ -237,8 +237,8 @@ public class VFPG_InfoPrenotazione extends ViewFrame {
 		_panelCamerePrenotate.add(Box.createRigidArea(new Dimension(0,15)));
 		
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
-		for (Iterator<CameraContext> iterator = _prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
-			CameraContext cameraContext = (CameraContext) iterator.next();
+		for (Iterator<Camera> iterator = _prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
+			Camera cameraContext = (Camera) iterator.next();
 			/*Istanzio un button, gli assegno il numero della camera prenotata come testo e lo aggiungo al pannello delle camere
 			  prenotate*/
 			JButton button=_viewFactory.getButton();
@@ -260,7 +260,7 @@ public class VFPG_InfoPrenotazione extends ViewFrame {
 	 * @param prezzoServiziEsterni Il prezzo dei servizi esterni richiesti dalle camere appartenenti alla prenotazione
 	 * 	 	  passata come parametro.
 	 */
-	public void creaFrame(PrenotazioneSubject prenotazione, Prezzo prezzoServiziEsterni){	
+	public void creaFrame(SoggiornoContextSubject prenotazione, Prezzo prezzoServiziEsterni){	
 		/*Setto il titolo della finestra*/
 		setTitle("iHotel - Gestione Prenotazione - Informazioni sulla prenotazione");
 		// Setto gli attributi dell'interfaccia

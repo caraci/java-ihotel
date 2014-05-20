@@ -3,11 +3,11 @@ package com.iHotel.controller;
 import java.util.ArrayList;
 
 import com.iHotel.model.Albergo.Albergo;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
+import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
@@ -30,7 +30,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 	/**
 	 * Attributo che mantiene la maniglia alla camera che si sta gestendo, all'interno della prenotazione corrente
 	 */
-	private CameraContext _camera;
+	private Camera _camera;
 
 	/**
 	 * Costruttore privato - pattern Singleton
@@ -127,25 +127,25 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
     /**
 	 * @return the _prenotazione
 	 */
-	public PrenotazioneSubject get_prenotazione() {
+	public SoggiornoContextSubject get_prenotazione() {
 		return _prenotazione;
 	}
 	/**
 	 * @param _prenotazione the _prenotazione to set
 	 */
-	public void set_prenotazione(PrenotazioneSubject _prenotazione) {
+	public void set_prenotazione(SoggiornoContextSubject _prenotazione) {
 		this._prenotazione = _prenotazione;
 	}
 	/**
 	 * @return the _camera
 	 */
-	public CameraContext get_camera() {
+	public Camera get_camera() {
 		return _camera;
 	}
 	/**
 	 * @param _camera the _camera to set
 	 */
-	public void set_camera(CameraContext _camera) {
+	public void set_camera(Camera _camera) {
 		this._camera = _camera;
 	}
 }

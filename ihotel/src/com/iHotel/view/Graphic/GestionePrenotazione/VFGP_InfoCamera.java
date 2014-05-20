@@ -18,10 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.iHotel.model.Persona.Ospite;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.ServizioInterno;
+import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
@@ -40,11 +40,11 @@ public class VFGP_InfoCamera extends ViewFrame {
 	/**
 	 * Camera di cui si mostrano le informazioni.
 	 */
-	private CameraContext _camera;
+	private Camera _camera;
 	/**
 	 * Prenotazione alla quale appartiene la camera.
 	 */
-	private PrenotazioneSubject _prenotazione;
+	private SoggiornoContextSubject _prenotazione;
 	/**
 	 * Lista dei servizi esterni della camera, per la prenotazione.
 	 */
@@ -217,7 +217,7 @@ public class VFGP_InfoCamera extends ViewFrame {
 	 * @param prenotazione Prenotazione a cui è legata la camera.
 	 * @param serviziEsterni Lista dei servizi esterni richiesti dalla camera per la prenotazione in analisi.
 	 */
-	public void creaFrame(CameraContext camera, PrenotazioneSubject prenotazione, ArrayList<ServizioEsterno> serviziEsterni) {
+	public void creaFrame(Camera camera, SoggiornoContextSubject prenotazione, ArrayList<ServizioEsterno> serviziEsterni) {
 		/*Setto il titolo della finestra*/
 		setTitle("iHotel - Gestione Prenotazione - Informazioni sulla camera");
 		// Setto gli attributi dell'interfaccia

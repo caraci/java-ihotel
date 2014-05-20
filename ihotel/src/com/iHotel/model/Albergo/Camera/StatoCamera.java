@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.State;
+package com.iHotel.model.Albergo.Camera;
 
 import java.util.*;
 
@@ -16,7 +16,7 @@ import com.iHotel.model.Utility.Prezzo;
  * 
  * @author Eugenio
  */
-public abstract class CameraState {
+public abstract class StatoCamera {
 	/* -------------------------- Attributi ---------------------------------- */
 	/**
 	 * Periodo dello stato camera.
@@ -37,7 +37,7 @@ public abstract class CameraState {
 	/**
 	 * Costruttore
 	 */
-	protected CameraState() {
+	protected StatoCamera() {
 		_serviziInterni=new ArrayList<ServizioInterno>();
 		_ospiti=new ArrayList<Ospite>();
 		_prezzoServizi=new Prezzo();
@@ -49,7 +49,7 @@ public abstract class CameraState {
 	 * @param periodo Periodo in cui occupare la camera.
 	 * @return Lista di stati della camera in seguito all'occupazione.
 	 */
-	public abstract LinkedList<CameraState> occupaInPeriodo(Periodo periodo);
+	public abstract LinkedList<StatoCamera> occupaInPeriodo(Periodo periodo);
 	/**
 	 * Metodo per controllare se la camera è libera in un periodo.
 	 * 

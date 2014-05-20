@@ -4,8 +4,8 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.Albergo;
-import com.iHotel.model.Albergo.PrenotazioneSubject;
 import com.iHotel.model.Albergo.Storico;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
@@ -18,7 +18,7 @@ public class CGestionePrenotazione {
 	/**
 	 * Prenotazione che si sta gestendo.
 	 */
-	protected PrenotazioneSubject _prenotazione;
+	protected SoggiornoContextSubject _prenotazione;
 	/**
 	 * Albergo che si sta analizzando.
 	 */
@@ -44,14 +44,14 @@ public class CGestionePrenotazione {
 	/**
 	 * @return the _prenotazione
 	 */
-	protected PrenotazioneSubject get_prenotazione() {
+	protected SoggiornoContextSubject get_prenotazione() {
 		return _prenotazione;
 	}
 
 	/**
 	 * @param _prenotazione the _prenotazione to set
 	 */
-	protected void set_prenotazione(PrenotazioneSubject _prenotazione) {
+	protected void set_prenotazione(SoggiornoContextSubject _prenotazione) {
 		this._prenotazione = _prenotazione;
 	}
 

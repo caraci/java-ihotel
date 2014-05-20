@@ -1,6 +1,8 @@
 package com.iHotel.model.Albergo;
 
 import java.util.*;
+
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 /**
  * Questa classe rappresenta lo storico delle prenotazioni dell'albergo.
  * 
@@ -17,7 +19,7 @@ public class Storico {
 	 * Questa mappa ha come chiave i codici delle prenotazioni, perchè in questo modo, l'accesso alla prenotazione 
 	 * viene fatto in maniera efficiente ricercandola per codice.
 	 */
-	private HashMap<String,PrenotazioneSubject> _prenotazioni;
+	private HashMap<String,SoggiornoContextSubject> _prenotazioni;
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
@@ -40,7 +42,7 @@ public class Storico {
 	 * @param codice Codice della prenotazione
 	 * @return Prenotazione ricercata
 	 */
-	public PrenotazioneSubject recuperaPrenotazioneDaCodice(String codice) {
+	public SoggiornoContextSubject recuperaPrenotazioneDaCodice(String codice) {
 		return _prenotazioni.get(codice);
 	}
 
@@ -49,7 +51,7 @@ public class Storico {
 	 * 
 	 * @param prenotazione Prenotazione da aggiungere.
 	 */
-	public void addPrenotazione(PrenotazioneSubject prenotazione) {
+	public void addPrenotazione(SoggiornoContextSubject prenotazione) {
 		_prenotazioni.put(prenotazione.get_codice(), prenotazione);
 	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */
@@ -57,14 +59,14 @@ public class Storico {
 	/**
 	 * @return _prenotazioni
 	 */
-	public HashMap<String,PrenotazioneSubject> get_prenotazioni() {
+	public HashMap<String,SoggiornoContextSubject> get_prenotazioni() {
 		return _prenotazioni;
 	}
 
 	/**
 	 * @param _prenotazioni
 	 */
-	public void set_prenotazioni(HashMap<String,PrenotazioneSubject> _prenotazioni) {
+	public void set_prenotazioni(HashMap<String,SoggiornoContextSubject> _prenotazioni) {
 		this._prenotazioni = _prenotazioni;
 	}
 

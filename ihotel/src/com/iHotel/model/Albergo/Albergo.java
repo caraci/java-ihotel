@@ -2,12 +2,13 @@ package com.iHotel.model.Albergo;
 
 import java.util.*;
 
+import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.IServiceSystem;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.ForeignSystem.ServizioEsterno;
-import com.iHotel.model.State.CameraContext;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.utility.UDefaultLoader;
@@ -24,7 +25,7 @@ public class Albergo {
  	private CatalogoCamere _catalogoCamere;
  	private CatalogoServiziInterni _catalogoServiziInterni;
  	private Storico _storico;
-	private ArrayList<CameraContext> _camere;
+	private ArrayList<Camera> _camere;
 	/**
 	 * Mantiene le maniglie ai sistemi esterni cui l'albergo si poggia per la gestione dei servizi esterni e.g.: telefono e pay tv
 	 */
@@ -76,7 +77,7 @@ public class Albergo {
 	 * @param periodo Periodo di richiesta.
 	 * @return Lista di servizi relativi ad una camera
 	 */
-	public ArrayList<ServizioEsterno> getElencoServiziEsterniCameraInPeriodo(CameraContext camera, Periodo periodo){
+	public ArrayList<ServizioEsterno> getElencoServiziEsterniCameraInPeriodo(Camera camera, Periodo periodo){
 		ArrayList<ServizioEsterno> serviziEsterniCamera = new ArrayList<ServizioEsterno>();
 		// Ciclo sui sistemi di servizi esterni
 		for (Iterator<IServiceSystem> iterator = _sistemiServiziEsterni.iterator(); iterator.hasNext();) {
@@ -92,7 +93,7 @@ public class Albergo {
 	 * @param prenotazione Prenotazione da analizzare.
 	 * @return Prezzo totale dei servizi esterni correlati ad una prenotazione.
 	 */
-	public Prezzo getPrezzoServiziEsterniPrenotazione(PrenotazioneSubject prenotazione){
+	public Prezzo getPrezzoServiziEsterniPrenotazione(SoggiornoContextSubject prenotazione){
 		Prezzo prezzo = new Prezzo();
 		// Ciclo sui sistemi di servizi esterni
 		for (Iterator<IServiceSystem> iterator = _sistemiServiziEsterni.iterator(); iterator.hasNext();) {
@@ -108,10 +109,10 @@ public class Albergo {
 	 * @param numeroCamera Stringa contenente il numero della camera da ricavare.
 	 * @return cameraRicercata Camera che ha il numero passato come parametro.
 	 */
-	public CameraContext getCameraDaNumero(String numeroCamera) {
-		CameraContext cameraRicercata = null;
-		for (Iterator<CameraContext> iterator = _camere.iterator(); iterator.hasNext();) {
-			CameraContext camera = (CameraContext) iterator.next();
+	public Camera getCameraDaNumero(String numeroCamera) {
+		Camera cameraRicercata = null;
+		for (Iterator<Camera> iterator = _camere.iterator(); iterator.hasNext();) {
+			Camera camera = (Camera) iterator.next();
 			if (camera.get_numero().equals(numeroCamera)) {
 				cameraRicercata = camera;
 			}
@@ -125,10 +126,10 @@ public class Albergo {
 	 * @param tipologia Tipologia delle camere da ricercare.
 	 * @return Lista contenente le camere libere della tipologia indicata, nel periodo indicato.
 	 */
-	public ArrayList<CameraContext> cercaCamereLibereInPeriodoDaTipologia(Periodo periodo, String tipologia){
-		ArrayList<CameraContext> lista_camere = new ArrayList<CameraContext>();
-		for (Iterator<CameraContext> iterator = _camere.iterator(); iterator.hasNext();) {
-			CameraContext camera = iterator.next();
+	public ArrayList<Camera> cercaCamereLibereInPeriodoDaTipologia(Periodo periodo, String tipologia){
+		ArrayList<Camera> lista_camere = new ArrayList<Camera>();
+		for (Iterator<Camera> iterator = _camere.iterator(); iterator.hasNext();) {
+			Camera camera = iterator.next();
 			// Controllo se la tipologia della camera è uguale a quella per cui stiamo cercando informazioni
 			if (camera.get_tipologia().equals(tipologia)){
 				// Controllo se la camera è libera nel periodo richiesto.
@@ -187,14 +188,14 @@ public class Albergo {
 	/**
 	 * @return _camere
 	 */
-	public ArrayList<CameraContext> get_camere() {
+	public ArrayList<Camera> get_camere() {
 		return _camere;
 	}
 
 	/**
 	 * @param _camere
 	 */
-	public void set_camere(ArrayList<CameraContext> _camere) {
+	public void set_camere(ArrayList<Camera> _camere) {
 		this._camere = _camere;
 	}
 	/**

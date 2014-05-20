@@ -9,15 +9,15 @@ import java.util.LinkedList;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.iHotel.model.Albergo.Albergo;
+import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Camera.StatoCamera;
+import com.iHotel.model.Albergo.Camera.StatoCameraLibera;
+import com.iHotel.model.Albergo.Camera.StatoCameraOccupata;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.PrezzoCamera;
 import com.iHotel.model.Albergo.Cataloghi.PrezzoServizioInterno;
-import com.iHotel.model.State.CameraContext;
-import com.iHotel.model.State.CameraStateLibera;
-import com.iHotel.model.State.CameraStateOccupata;
-import com.iHotel.model.State.CameraState;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -44,7 +44,7 @@ public class MainPopolamentoDB {
 		db.store(prezzo);
 	}
 	
-	public static void aggiungiCamera(ObjectContainer db, CameraContext camera){
+	public static void aggiungiCamera(ObjectContainer db, Camera camera){
 		db.store(camera);
 	}
 	
@@ -128,49 +128,49 @@ public class MainPopolamentoDB {
 		//Camere singole
 				
 		// Camera 101
-		CameraContext camera_101 = new CameraContext();
+		Camera camera_101 = new Camera();
 		camera_101.set_numero("101");
 		camera_101.set_tipologia("Singola");
 		
 		// Camera 102
-		CameraContext camera_102 = new CameraContext();
+		Camera camera_102 = new Camera();
 		camera_102.set_numero("102");
 		camera_102.set_tipologia("Singola");
 		
 		// Camera 103
-		CameraContext camera_103 = new CameraContext();
+		Camera camera_103 = new Camera();
 		camera_103.set_numero("103");
 		camera_103.set_tipologia("Singola");
 		
 		//Camere doppie
 		// Camera 201
-		CameraContext camera_201 = new CameraContext();
+		Camera camera_201 = new Camera();
 		camera_201.set_numero("201");
 		camera_201.set_tipologia("Doppia");
 		
 		// Camera 202
-		CameraContext camera_202 = new CameraContext();
+		Camera camera_202 = new Camera();
 		camera_202.set_numero("202");
 		camera_202.set_tipologia("Doppia");
 		
 		// Camera 203
-		CameraContext camera_203 = new CameraContext();
+		Camera camera_203 = new Camera();
 		camera_203.set_numero("203");
 		camera_203.set_tipologia("Doppia");
 		
 		// Camere triple
 		// Camera 301
-		CameraContext camera_301 = new CameraContext();
+		Camera camera_301 = new Camera();
 		camera_301.set_numero("301");
 		camera_301.set_tipologia("Tripla");
 		
 		// Camera 302
-		CameraContext camera_302 = new CameraContext();
+		Camera camera_302 = new Camera();
 		camera_302.set_numero("302");
 		camera_302.set_tipologia("Tripla");
 		
 		// Camera 303
-		CameraContext camera_303 = new CameraContext();
+		Camera camera_303 = new Camera();
 		camera_303.set_numero("303");
 		camera_303.set_tipologia("Tripla");
 		
@@ -178,33 +178,33 @@ public class MainPopolamentoDB {
 		/* --------------------------- stati camere SINGOLE ------------------------------- */
 		
 		// StatoCamera_101_Periodo_1
-		CameraState statoCamera_101_Periodo1 = new CameraStateLibera();
+		StatoCamera statoCamera_101_Periodo1 = new StatoCameraLibera();
 		statoCamera_101_Periodo1.set_periodo(periodo_1);
 		// StatoCamera_102_Periodo_1
-		CameraState statoCamera_102_Periodo1 = new CameraStateLibera();
+		StatoCamera statoCamera_102_Periodo1 = new StatoCameraLibera();
 		statoCamera_102_Periodo1.set_periodo(periodo_1);
 		// StatoCamera_103_Periodo_1
-		CameraState statoCamera_103_Periodo1 = new CameraStateLibera();
+		StatoCamera statoCamera_103_Periodo1 = new StatoCameraLibera();
 		statoCamera_103_Periodo1.set_periodo(periodo_1);
 		
 		// StatoCamera_101_Periodo_4
-		CameraState statoCamera_101_Periodo4 = new CameraStateOccupata();
+		StatoCamera statoCamera_101_Periodo4 = new StatoCameraOccupata();
 		statoCamera_101_Periodo4.set_periodo(periodo_4);
 		// StatoCamera_102_Periodo_4
-		CameraState statoCamera_102_Periodo4 = new CameraStateOccupata();
+		StatoCamera statoCamera_102_Periodo4 = new StatoCameraOccupata();
 		statoCamera_102_Periodo4.set_periodo(periodo_4);
 		// StatoCamera_103_Periodo_4
-		CameraState statoCamera_103_Periodo4 = new CameraStateOccupata();
+		StatoCamera statoCamera_103_Periodo4 = new StatoCameraOccupata();
 		statoCamera_103_Periodo4.set_periodo(periodo_4);
 		
 		// StatoCamera_101_Periodo_6
-		CameraState statoCamera_101_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_101_Periodo6 = new StatoCameraLibera();
 		statoCamera_101_Periodo6.set_periodo(periodo_6);
 		// StatoCamera_102_Periodo_6
-		CameraState statoCamera_102_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_102_Periodo6 = new StatoCameraLibera();
 		statoCamera_102_Periodo6.set_periodo(periodo_6);
 		// StatoCamera_103_Periodo_6
-		CameraState statoCamera_103_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_103_Periodo6 = new StatoCameraLibera();
 		statoCamera_103_Periodo6.set_periodo(periodo_6);
 		
 		/* --------------------------- stati camere DOPPIE ------------------------------- */
@@ -212,121 +212,121 @@ public class MainPopolamentoDB {
 		//Stati camere doppie periodo 5
 		
 		// StatoCamera_201_Periodo_5
-		CameraState statoCamera_201_Periodo5 = new CameraStateLibera();
+		StatoCamera statoCamera_201_Periodo5 = new StatoCameraLibera();
 		statoCamera_201_Periodo5.set_periodo(periodo_5);
 		// StatoCamera_202_Periodo_5
-		CameraState statoCamera_202_Periodo5 = new CameraStateLibera();
+		StatoCamera statoCamera_202_Periodo5 = new StatoCameraLibera();
 		statoCamera_202_Periodo5.set_periodo(periodo_5);
 		// StatoCamera_203_Periodo_5
-		CameraState statoCamera_203_Periodo5 = new CameraStateLibera();
+		StatoCamera statoCamera_203_Periodo5 = new StatoCameraLibera();
 		statoCamera_203_Periodo5.set_periodo(periodo_5);
 		
 		// StatoCamera_201_Periodo_6
-		CameraState statoCamera_201_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_201_Periodo6 = new StatoCameraLibera();
 		statoCamera_201_Periodo6.set_periodo(periodo_6);
 		// StatoCamera_202_Periodo_6
-		CameraState statoCamera_202_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_202_Periodo6 = new StatoCameraLibera();
 		statoCamera_202_Periodo6.set_periodo(periodo_6);
 		// StatoCamera_203_Periodo_6
-		CameraState statoCamera_203_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_203_Periodo6 = new StatoCameraLibera();
 		statoCamera_203_Periodo6.set_periodo(periodo_6);
 		
 		/* --------------------------- stati camere TRIPLE ------------------------------- */
 		
 		// StatoCamera_301_Periodo_1
-		CameraState statoCamera_301_Periodo1 = new CameraStateLibera();
+		StatoCamera statoCamera_301_Periodo1 = new StatoCameraLibera();
 		statoCamera_301_Periodo1.set_periodo(periodo_1);
 		// StatoCamera_302_Periodo_1
-		CameraState statoCamera_302_Periodo1 = new CameraStateLibera();
+		StatoCamera statoCamera_302_Periodo1 = new StatoCameraLibera();
 		statoCamera_302_Periodo1.set_periodo(periodo_1);
 		// StatoCamera_303_Periodo_1
-		CameraState statoCamera_303_Periodo1 = new CameraStateLibera();
+		StatoCamera statoCamera_303_Periodo1 = new StatoCameraLibera();
 		statoCamera_303_Periodo1.set_periodo(periodo_1);
 		
 		
 		// StatoCamera_301_Periodo_2
-		CameraState statoCamera_301_Periodo2 = new CameraStateOccupata();
+		StatoCamera statoCamera_301_Periodo2 = new StatoCameraOccupata();
 		statoCamera_301_Periodo2.set_periodo(periodo_2);
 		// StatoCamera_302_Periodo_2
-		CameraState statoCamera_302_Periodo2 = new CameraStateOccupata();
+		StatoCamera statoCamera_302_Periodo2 = new StatoCameraOccupata();
 		statoCamera_302_Periodo2.set_periodo(periodo_2);
 		// StatoCamera_303_Periodo_2
-		CameraState statoCamera_303_Periodo2 = new CameraStateOccupata();
+		StatoCamera statoCamera_303_Periodo2 = new StatoCameraOccupata();
 		statoCamera_303_Periodo2.set_periodo(periodo_2);
 		
 		// StatoCamera_301_Periodo_3
-		CameraState statoCamera_301_Periodo3 = new CameraStateLibera();
+		StatoCamera statoCamera_301_Periodo3 = new StatoCameraLibera();
 		statoCamera_301_Periodo3.set_periodo(periodo_3);
 		// StatoCamera_302_Periodo_3
-		CameraState statoCamera_302_Periodo3 = new CameraStateLibera();
+		StatoCamera statoCamera_302_Periodo3 = new StatoCameraLibera();
 		statoCamera_302_Periodo3.set_periodo(periodo_3);
 		// StatoCamera_303_Periodo_3
-		CameraState statoCamera_303_Periodo3 = new CameraStateLibera();
+		StatoCamera statoCamera_303_Periodo3 = new StatoCameraLibera();
 		statoCamera_303_Periodo3.set_periodo(periodo_3);
 		
 		// StatoCamera_301_Periodo_6
-		CameraState statoCamera_301_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_301_Periodo6 = new StatoCameraLibera();
 		statoCamera_301_Periodo6.set_periodo(periodo_6);
 		// StatoCamera_302_Periodo_6
-		CameraState statoCamera_302_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_302_Periodo6 = new StatoCameraLibera();
 		statoCamera_302_Periodo6.set_periodo(periodo_6);
 		// StatoCamera_303_Periodo_3
-		CameraState statoCamera_303_Periodo6 = new CameraStateLibera();
+		StatoCamera statoCamera_303_Periodo6 = new StatoCameraLibera();
 		statoCamera_303_Periodo6.set_periodo(periodo_6);
 
 		//Creo le map di stati di camere
 		//map di stati camere singole
 		// Stati occupazione Camera 101
-		LinkedList<CameraState> statiCamera_101 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_101 = new LinkedList<StatoCamera>();
 		statiCamera_101.add(statoCamera_101_Periodo1);
 		statiCamera_101.add(statoCamera_101_Periodo4);
 		statiCamera_101.add(statoCamera_101_Periodo6);
 		
 		// Stati occupazione Camera 102
-		LinkedList<CameraState> statiCamera_102 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_102 = new LinkedList<StatoCamera>();
 		statiCamera_102.add(statoCamera_102_Periodo1);
 		statiCamera_102.add(statoCamera_102_Periodo4);
 		statiCamera_102.add(statoCamera_102_Periodo6);
 		
 		// Stati occupazione Camera 103
-		LinkedList<CameraState> statiCamera_103 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_103 = new LinkedList<StatoCamera>();
 		statiCamera_103.add(statoCamera_103_Periodo1);
 		statiCamera_103.add(statoCamera_103_Periodo4);
 		statiCamera_103.add(statoCamera_103_Periodo6);
 		
 		//map di stati camere doppie
 		// Stati occupazione Camera 201
-		LinkedList<CameraState> statiCamera_201 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_201 = new LinkedList<StatoCamera>();
 		statiCamera_201.add(statoCamera_201_Periodo5);
 		statiCamera_201.add(statoCamera_201_Periodo6);
 		
 		// Stati occupazione Camera 202
-		LinkedList<CameraState> statiCamera_202 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_202 = new LinkedList<StatoCamera>();
 		statiCamera_202.add(statoCamera_202_Periodo5);
 		statiCamera_202.add(statoCamera_202_Periodo6);
 		
 		// Stati occupazione Camera 203
-		LinkedList<CameraState> statiCamera_203 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_203 = new LinkedList<StatoCamera>();
 		statiCamera_203.add(statoCamera_203_Periodo5);
 		statiCamera_203.add(statoCamera_203_Periodo6);
 		
 		//map di stati camere triple
 		// Stati occupazione Camera 201
-		LinkedList<CameraState> statiCamera_301 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_301 = new LinkedList<StatoCamera>();
 		statiCamera_301.add(statoCamera_301_Periodo1);
 		statiCamera_301.add(statoCamera_301_Periodo2);
 		statiCamera_301.add(statoCamera_301_Periodo3);
 		statiCamera_301.add(statoCamera_301_Periodo6);
 		
 		// Stati occupazione Camera 201
-		LinkedList<CameraState> statiCamera_302 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_302 = new LinkedList<StatoCamera>();
 		statiCamera_302.add(statoCamera_302_Periodo1);
 		statiCamera_302.add(statoCamera_302_Periodo2);
 		statiCamera_302.add(statoCamera_302_Periodo3);
 		statiCamera_302.add(statoCamera_302_Periodo6);
 		
 		// Stati occupazione Camera 201
-		LinkedList<CameraState> statiCamera_303 = new LinkedList<CameraState>();
+		LinkedList<StatoCamera> statiCamera_303 = new LinkedList<StatoCamera>();
 		statiCamera_303.add(statoCamera_303_Periodo1);
 		statiCamera_303.add(statoCamera_303_Periodo2);
 		statiCamera_303.add(statoCamera_303_Periodo3);
