@@ -38,12 +38,13 @@ public class MostraDettagliServizioListener implements ItemListener {
 		// Stringa contenente il nome del servizio interno
 		String nomeServizioInterno = (String) e.getItem();
 		// Prendo l'elemento selezionato
-		if (e.getStateChange() == ItemEvent.SELECTED) {
+		/*if (e.getStateChange() == ItemEvent.SELECTED) {
 			// Pannello a cui è associato il card Layout
 			JPanel panelServizi = _aggiungiServiziInterni.get_pnlMiddleRight();
-			// Recupero il descrittore del servizio.
-			DescrizioneServizioInterno descrizioneServizioInterno=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaNome(nomeServizioInterno);
-			// Aggiungo una scheda al pannello.
+			*/// Recupero il descrittore del servizio.
+			//DescrizioneServizioInterno descrizioneServizioInterno=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaNome(nomeServizioInterno);
+			//return descrizioneServizioInterno;
+			/*// Aggiungo una scheda al pannello.
 			panelServizi.add(_aggiungiServiziInterni.creaPanelDescrittore(descrizioneServizioInterno));
 			// Ricavo il gestore del layout.
 			CardLayout cardLayout = (CardLayout) panelServizi.getLayout();
@@ -52,6 +53,6 @@ public class MostraDettagliServizioListener implements ItemListener {
 			// Rimuovo il pannello precedente.
 			panelServizi.remove(panelServizi.getComponent(0));
 			
-	      }
+	      }*/
 	}
 }

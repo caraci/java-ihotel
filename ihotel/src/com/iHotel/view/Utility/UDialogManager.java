@@ -3,6 +3,10 @@
  */
 package com.iHotel.view.Utility;
 
+import java.util.HashMap;
+import java.util.Iterator;
+
+import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -11,6 +15,9 @@ import javax.swing.JTextField;
 import net.sourceforge.jdatepicker.JDateComponentFactory;
 import net.sourceforge.jdatepicker.JDatePicker;
 
+import com.iHotel.model.Albergo.Albergo;
+import com.iHotel.model.Albergo.ServizioInterno;
+import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.model.Persona.Persona;
@@ -141,6 +148,11 @@ public class UDialogManager extends JOptionPane {
 		return pagamento;		
 	}
 	
+	/**
+	 * Metodo che visualizza una dialog per l'inserimento del pagamento in contanti e restituisce un pagamento in contati.
+	 * 
+	 * @return Il pagamento in contanti creato con le informazioni inserite dall'utente.
+	 */
 	public PagamentoInContanti getDialogDatiPagamentoInContanti(){
 		/*Etichette*/
 		
@@ -181,4 +193,45 @@ public class UDialogManager extends JOptionPane {
 		/*Restituisco il pagamento*/
 		return pagamento;
 	}
+	
+	/**
+	 * Metodo che visualizza la dialog con i campi per l'inserimento di un servizio interno e restituisce un oggetto Servizio interno.
+	 *  
+	 * @return Il servizio interno con le informazioni inserite dall'utente.
+	 */
+	public ServizioInterno getDialogAggiungiServizioInterno(){
+		
+		HashMap<String,DescrizioneServizioInterno> descrizioniServizi = Albergo.getInstance().get_catalogoServizi().get_descrizioneServizi();
+		
+		JComboBox<String> comboBoxServizi= new JComboBox<>();
+		
+		for (Iterator<String> iterator = descrizioniServizi.keySet().iterator(); iterator.hasNext();) {
+			String codiceServizio = (String) iterator.next();
+			// Aggiungo la stringa del nome del servizio alla comboBox
+			comboBoxServizi.addItem(descrizioniServizi.get(codiceServizio).get_nome());
+		}
+		JLabel lblServizio = _viewFactory.getLabel();
+		lblServizio.setText("Scegli il servizio: ");
+		JLabel lblData = _viewFactory.getLabel();
+		lblData.setText("Data: ");
+		
+		//Creo il jdatepicker per la data
+		JDatePicker data = JDateComponentFactory.createJDatePicker();
+		
+		//Creo un array di componenti
+				final JComponent[] inputs = new JComponent[] {
+						//importo
+						lblServizio,
+						comboBoxServizi,
+						//data
+						lblData,
+						(JComponent) data
+				};
+				
+		//Faccio il display della schermata
+		JOptionPane.showMessageDialog(null, inputs, "Inserimento servizi nella prenotaziones", JOptionPane.PLAIN_MESSAGE);
+		
+		return null;
+	}
+	
 }
