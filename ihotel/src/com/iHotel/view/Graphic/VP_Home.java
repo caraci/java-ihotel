@@ -4,9 +4,8 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewPanel;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.CaricaGestionePrenotazioneListener;
 
@@ -16,42 +15,29 @@ import com.iHotel.view.Event.CaricaGestionePrenotazioneListener;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VFrameHome extends ViewFrame {
+public class VP_Home extends ViewPanel {
+	
+	/* ---------------------- Attributi, Costruttore --------------------- */
 	
 	/*JButton*/
 	private JButton _btnCreaPrenotazione,_btnModificaPrenotazione;
 	/*JLabel*/
 	private JLabel _lblInstructions;
-
-	/* Singleton */
-	private static VFrameHome instance = null;
 	
 	/**
      * Costruttore privato - pattern Singleton
      */
-	private VFrameHome() {
+	public VP_Home() {
 		super();
-		
 		/*Button*/
 		_btnCreaPrenotazione = _viewFactory.getButton();
 		_btnModificaPrenotazione = _viewFactory.getButton();
-		
 		/*Label*/
 		_lblInstructions= _viewFactory.getLabelIntestazione_1();
 	}
-	/**
-	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 */
-    public static VFrameHome getInstance() {
-    	if(instance == null) {
-            instance = new VFrameHome();
-         }
-         return instance;
-    }
-    @Override
-	public void removeInstance() {
-    	instance = null;
-	}
+	
+	/* --------------------- Metodi di istanza ---------------------- */
+	
     @Override
     protected void creaPanelTop(){
     	_lblInstructions.setText("Scegli l'operazione che vuoi fare.");
@@ -63,8 +49,7 @@ public class VFrameHome extends ViewFrame {
     	_panelMiddle.setLayout(new GridLayout(2, 1, 0, 10));
     	/*Setto il testo dei pulsanti*/
     	_btnCreaPrenotazione.setText("Crea nuova prenotazione");   	   	
-		_btnModificaPrenotazione.setText("Gestisci prenotazione");
-		
+		_btnModificaPrenotazione.setText("Gestisci prenotazione");	
 		/*Aggiungo i pulsanti al pannello*/
 		_panelMiddle.add(_btnCreaPrenotazione);
 		_panelMiddle.add(_btnModificaPrenotazione);
@@ -76,56 +61,17 @@ public class VFrameHome extends ViewFrame {
     }
     @Override
 	public void creaPanelBottom() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 	/**
-	 * Create the frame.
+	 * Create the Panel.
 	 */
-	public void creaFrame() {
-		setTitle("iHotel - Home");		
-		
-		/*Setto il testo alla label*/
+	public void creaPanel() {		
 		creaPanelTop();
 		creaPanelMiddle();
+		creaPanelBottom();
 	}
 	/* ------------------------ Getter, Setter -------------------------------- */
-	/**
-	 * @return the _contentPane
-	 */
-	public JPanel get_contentPane() {
-		return _contentPane;
-	}
-	/**
-	 * @param _contentPane the _contentPane to set
-	 */
-	public void set_contentPane(JPanel _contentPane) {
-		this._contentPane = _contentPane;
-	}
-	/**
-	 * @return the _panelTop
-	 */
-	public JPanel get_panelTop() {
-		return _panelTop;
-	}
-	/**
-	 * @param _panelTop the _panelTop to set
-	 */
-	public void set_panelTop(JPanel _panelTop) {
-		this._panelTop = _panelTop;
-	}
-	/**
-	 * @return the _panelBottom
-	 */
-	public JPanel get_panelBottom() {
-		return _panelBottom;
-	}
-	/**
-	 * @param _panelBottom the _panelBottom to set
-	 */
-	public void set_panelBottom(JPanel _panelBottom) {
-		this._panelBottom = _panelBottom;
-	}
 	/**
 	 * @return the _btnCreaPrenotazione
 	 */

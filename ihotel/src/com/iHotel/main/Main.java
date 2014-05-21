@@ -1,8 +1,7 @@
 package com.iHotel.main;
 
 import com.iHotel.utility.UStartup;
-import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.Graphic.VFrameHome;
+import com.iHotel.view.ViewFrame;
 
 public class Main {
 	/**
@@ -13,10 +12,9 @@ public class Main {
 		// Inizializzo lo strato di dominio.
 		UStartup startup = new UStartup();
 		startup.inizializza();
-		// Apro il frame iniziale.
-		VFrameHome frameHome = VFrameHome.getInstance();
-		frameHome.creaFrame();
-		//Passo l'interfaccia all'oggetto che la visualizzerà 
-		ViewHandler.getInstance().showFrame(frameHome);
+		// Creo il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Mostro il frame
+		viewFrame.setVisible(true);
 	}
 }

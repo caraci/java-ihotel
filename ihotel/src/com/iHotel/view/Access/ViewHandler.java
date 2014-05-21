@@ -3,7 +3,7 @@
  */
 package com.iHotel.view.Access;
 
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewFrameOLD;
 
 /**
  * Classe addetta alla gestione delle diverse finestre dell'applicazione. In particolare ha la responsabilità di far sì
@@ -17,7 +17,7 @@ public class ViewHandler {
 	/**
 	 * Finestra attualmente visualizzata.
 	 */
-	private ViewFrame _currentInterface = null;
+	private ViewFrameOLD _currentInterface = null;
 	// Singleton
 	private static ViewHandler instance = null;
 	
@@ -43,7 +43,7 @@ public class ViewHandler {
 	 * 
 	 * @param view Finestra da visualizzare.
 	 */
-	public void showFrame(ViewFrame view){
+	public void showFrame(ViewFrameOLD view){
 		if (_currentInterface!=null){
 			_currentInterface.setVisible(false);
 			// Rimuovo l'interfaccia dall'attributo statico della classe.
@@ -53,7 +53,7 @@ public class ViewHandler {
 		_currentInterface.setVisible(true);
 	}
 	
-	public ViewFrame getCurrentInterface(){
+	public ViewFrameOLD getCurrentInterface(){
 		return _currentInterface;
 	}
 

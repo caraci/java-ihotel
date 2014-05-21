@@ -9,12 +9,11 @@ import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
-import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.Graphic.VFrameHome;
-import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
-import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
+import com.iHotel.view.ViewFrame;
+import com.iHotel.view.Graphic.VP_Home;
+import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -51,7 +50,6 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
     /* --------------------------------- Metodi di instanza -------------------------------------- */
     /**
      * Metodo per creare una nuova prenotazione
-     * @throws IOException 
      */
 	public void creaNuovaPrenotazione() {
 		// Creo la nuova prenotazione
@@ -59,14 +57,18 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
 		tipologieCamere.addAll(CatalogoCamere.getInstance().getTipologieCamere());
-		// Mostro VFrameCreaPrenotazioneStep1
-		VFCP_SelezionePeriodoTipologie frameCreaPrenotazione1 = VFCP_SelezionePeriodoTipologie.getInstance();
-		frameCreaPrenotazione1.creaFrame(tipologieCamere);
-		ViewHandler.getInstance().showFrame(frameCreaPrenotazione1);
-		
+		// Recupero il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Creo il pannello successivo
+		VPCP_SelezionePeriodoTipologie selezionePeriodoTipologie = new VPCP_SelezionePeriodoTipologie();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(selezionePeriodoTipologie);
+		// Creo il frame
+		selezionePeriodoTipologie.creaPanel(tipologieCamere);	
 	}
 	/**
 	 * Metodo per aggiungere una camera alla prenotazione.
+	 * 
 	 * @param numeroCamera Stringa contenente il numero della camera che si vuole aggiungere.
 	 */
 	public void aggiungiCameraAllaPrenotazione(String numeroCamera) {
@@ -107,15 +109,19 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 			camereLibereTipologia = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia);		
 			// Aggiungo le camere appartenenti ad una tipologia
 			camereLibere.put(tipologia, camereLibereTipologia);
-		}	
-		VFCP_SelezioneCamereDatiOspite_Observer frameCreaPrenotazioneStep_2 = VFCP_SelezioneCamereDatiOspite_Observer.getInstance();
+		}		
+		// Recupero il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Creo il pannello successivo
+		VPCP_SelezioneCamereDatiOspite_Observer selezioneCamereDatiOspite = new VPCP_SelezioneCamereDatiOspite_Observer();
 		// Per il pattern Observer aggiungo l'observer alla prenotazione.
-		_prenotazione.Attach((IObserver) frameCreaPrenotazioneStep_2);
+		_prenotazione.Attach((IObserver) selezioneCamereDatiOspite);
 		// Per il pattern Observer aggiungo il subject all'observer.
-		frameCreaPrenotazioneStep_2.set_prenotazioneSubject(_prenotazione);
-		// Mostro finestra Step 2
-		frameCreaPrenotazioneStep_2.creaFrame(camereLibere);			
-		ViewHandler.getInstance().showFrame(frameCreaPrenotazioneStep_2);
+		selezioneCamereDatiOspite.set_prenotazioneSubject(_prenotazione);
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(selezioneCamereDatiOspite);
+		// Creo il frame
+		selezioneCamereDatiOspite.creaPanel(camereLibere);	
 	}
 	/**
 	 * Metodo per concludere una prenotazione.
@@ -137,19 +143,20 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		// Aggiungo la prenotazione allo storico
 		Storico storico = Storico.getInstance();
 		storico.addPrenotazione(_prenotazione);
-		// Rimuovo l'observer dal subject
-		VFCP_SelezioneCamereDatiOspite_Observer frameCreaPrenotazioneStep_2 = VFCP_SelezioneCamereDatiOspite_Observer.getInstance();
-		_prenotazione.Detach((IObserver) frameCreaPrenotazioneStep_2);
 		// Salvataggio degli oggetti da Ram -> Persistenza.
 		try {
 			PPrenotazione.getInstance().store(_prenotazione);
 		} catch(Exception e) {
 			// TODO
 		}
-		// Torno alla schermata iniziale.
-		VFrameHome frameHome = VFrameHome.getInstance();
-		frameHome.creaFrame();
-		ViewHandler.getInstance().showFrame(frameHome);
+		// Recupero il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Creo il pannello successivo
+		VP_Home panelHome = new VP_Home();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(panelHome);
+		// Creo il frame
+		panelHome.creaPanel();
 	}
 	/* -------------------------- Getter, Setter -------------------- */
 	/**

@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import javax.swing.*;
 
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewPanel;
 import com.iHotel.view.Event.CreaPrenotazione.RicercaCamereLibereListener;
 
 import net.sourceforge.jdatepicker.*;
@@ -20,7 +20,7 @@ import net.sourceforge.jdatepicker.*;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VFCP_SelezionePeriodoTipologie extends ViewFrame {
+public class VPCP_SelezionePeriodoTipologie extends ViewPanel {
 
 	/**
 	 * Tipologie di camere presenti nell'albergo.
@@ -37,14 +37,11 @@ public class VFCP_SelezionePeriodoTipologie extends ViewFrame {
     private JLabel _lblTitolo, _lblTipologie, _lblDataDiInizio, _lblDataDiFine;
     /* CheckBoxes */
     private ArrayList<JCheckBox> _checkBoxesTipologie;
-    
-    /* Singleton */
-	private static VFCP_SelezionePeriodoTipologie instance = null;
 	
     /**
      * Costruttore privato - pattern Singleton
      */
-	private VFCP_SelezionePeriodoTipologie() {
+	public VPCP_SelezionePeriodoTipologie() {
 		super();
 		// JPanel
 		_panelTopLeft = _viewFactory.getPanel();
@@ -59,22 +56,10 @@ public class VFCP_SelezionePeriodoTipologie extends ViewFrame {
 		_btnAvanti=_viewFactory.getButtonAvanti();
 		// CheckBox
 		_checkBoxesTipologie = new ArrayList<JCheckBox>();
+		// Creo il frame
+		//creaPanel(tipologieCamere);
 	}
-	/* ----------------------------- Metodi di classe ---------------------------- */ 
-	/**
-	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 */
-    public static VFCP_SelezionePeriodoTipologie getInstance() {
-    	if(instance == null) {
-            instance = new VFCP_SelezionePeriodoTipologie();
-         }
-         return instance;
-    }
     /* ------------------------- Metodi di instanza ------------------------------- */
-    @Override
-    public void removeInstance() {
-    	instance = null;
-	}
     @Override
     protected void creaPanelTop() {
     	// Layout PanelTop
@@ -175,8 +160,7 @@ public class VFCP_SelezionePeriodoTipologie extends ViewFrame {
 	/**
 	 * Metodo per creare il frame.
 	 */
-	public void creaFrame(ArrayList<String> tipologieCamere) {
-		setTitle("iHotel - Crea nuova prenotazione - Step 1 di 2");
+	public void creaPanel(ArrayList<String> tipologieCamere) {
 		// Setto l'attributo contenente le tipologie di camere
 		_tipologieCamere=tipologieCamere;
 

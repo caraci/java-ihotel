@@ -19,7 +19,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewPanel;
 import com.iHotel.view.Event.CreaPrenotazione.AggiungiCameraPrenotazioneListener;
 import com.iHotel.view.Event.CreaPrenotazione.EffettuaNuovaPrenotazioneListener;
 
@@ -32,7 +32,7 @@ import java.awt.GridLayout;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implements IObserver {
+public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanel implements IObserver {
 
 	/**
 	 * Mappa contenente l'insieme di tutte le camere disponibili a seguito della richiesta effettuata precedentemente.
@@ -52,13 +52,11 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
      * Per il pattern Observer, memorizziamo il subject della finestra.
      */
     private SoggiornoContextSubject _prenotazioneSubject;
-    /* ----------------- Pattern Singleton  ---------------- */
-	private static VFCP_SelezioneCamereDatiOspite_Observer instance = null;
    
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private VFCP_SelezioneCamereDatiOspite_Observer() {
+	public VPCP_SelezioneCamereDatiOspite_Observer() {
 		super();
 		// JLabel
 		_lblNome=_viewFactory.getLabel();
@@ -80,15 +78,6 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
 		// JButton
 		_btnCompletaPrenotazione=_viewFactory.getButtonAvanti();
 	}
-	/**
-	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 */
-    public static VFCP_SelezioneCamereDatiOspite_Observer getInstance() {
-    	if(instance == null) {
-            instance = new VFCP_SelezioneCamereDatiOspite_Observer();
-         }
-         return instance;
-    }
     /* ----------------- /Pattern Singleton  ---------------- */
     /* ------------- Pattern Observer ----------- */
     @Override
@@ -98,10 +87,6 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
 		_lblPrezzoTotale.setText(total + _prenotazioneSubject.get_total().get_valuta());
 	}
     /* ------------- /Pattern Observer --------- */
-    @Override
-    public void removeInstance() {
-    	instance = null;
-	}
     @Override
     protected void creaPanelTop() {
     	// Layout PanelTop
@@ -250,9 +235,7 @@ public class VFCP_SelezioneCamereDatiOspite_Observer extends ViewFrame implement
     /**
      * Metodo per creare il frame.
      */
-    public void creaFrame(HashMap<String, ArrayList<Camera>> camereDisponibili) {
-    	// Imposto il titolo.
-    	setTitle("iHotel - Crea nuova prenotazione - Step 2 di 2");
+    public void creaPanel(HashMap<String, ArrayList<Camera>> camereDisponibili) {
     	// Setto l'attributo relativo alle camere libere
     	_camereDisponibili=camereDisponibili;
     	// Creo il pannello in alto

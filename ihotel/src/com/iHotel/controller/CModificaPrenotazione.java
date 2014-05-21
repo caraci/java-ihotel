@@ -10,7 +10,7 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.Graphic.VFrameHome;
+import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoCamera;
 /**
@@ -113,8 +113,8 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
      */
     public void terminaGestionePrenotazione(){
     	// Creo l'interfaccia iniziale.
-    	VFrameHome frameHome=VFrameHome.getInstance();
-    	frameHome.creaFrame();
+    	VP_Home frameHome=VP_Home.getInstance();
+    	frameHome.creaPanel();
     	// Mostro l'interfaccia iniziale.
     	ViewHandler.getInstance().showFrame(frameHome);
     }

@@ -24,7 +24,7 @@ import net.sourceforge.jdatepicker.JDatePanel;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewFrameOLD;
 import com.iHotel.view.Event.GestionePrenotazione.AggiungiServizioListener;
 import com.iHotel.view.Event.GestionePrenotazione.MostraDettagliServizioListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaCameraListener;
@@ -36,7 +36,7 @@ import com.iHotel.view.Event.GestionePrenotazione.TornaAllaCameraListener;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VFGP_AggiungiServiziInterni extends ViewFrame {
+public class VFGP_AggiungiServiziInterni extends ViewFrameOLD {
 	/* ----------------------------- Attributi e Costruttore ----------------- */
 	/**
 	 * Mappa contenente l'insieme dei servizi interni dell'albergo.

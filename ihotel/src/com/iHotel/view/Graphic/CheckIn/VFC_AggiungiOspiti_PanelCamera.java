@@ -109,8 +109,7 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 		_lblPatenteDataRilascio=_viewFactory.getLabel();
 		_lblPatenteDataScadenza=_viewFactory.getLabel();
 		_lblPassaportoDataRilascio=_viewFactory.getLabel();
-		_lblPassaportoDataScadenza=_viewFactory.getLabel();
-		
+		_lblPassaportoDataScadenza=_viewFactory.getLabel();	
 		// JTextField
 		_txtNome=_viewFactory.getTextField();
 		_txtCognome=_viewFactory.getTextField();
@@ -796,5 +795,23 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	 */
 	public void set_txtPassaportoEnte(JTextField _txtPassaportoEnte) {
 		this._txtPassaportoEnte = _txtPassaportoEnte;
+	}
+
+	@Override
+	protected void creaPanelTop() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void creaPanelMiddle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void creaPanelBottom() {
+		// TODO Auto-generated method stub
+		
 	}
 }

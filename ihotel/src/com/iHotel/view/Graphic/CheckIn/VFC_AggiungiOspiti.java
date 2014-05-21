@@ -16,7 +16,7 @@ import javax.swing.JTabbedPane;
 
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewFrameOLD;
 import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
 import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
 
@@ -25,7 +25,7 @@ import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
  *
  */
 @SuppressWarnings("serial")
-public class VFC_AggiungiOspiti extends ViewFrame {
+public class VFC_AggiungiOspiti extends ViewFrameOLD {
 	
 	/* -------------------------------- Attributi e Costruttore ----------------------------------------- */
 	

@@ -20,7 +20,7 @@ import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewFrameOLD;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
@@ -31,7 +31,7 @@ import com.iHotel.view.Utility.UtoString;
  *
  */
 @SuppressWarnings("serial")
-public class VFP_RiepilogoPagamenti extends ViewFrame{
+public class VFP_RiepilogoPagamenti extends ViewFrameOLD{
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */

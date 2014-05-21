@@ -7,9 +7,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JPanel;
+
 import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.model.Utility.Giorno;
-import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
+import com.iHotel.view.ViewFrame;
+import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
 
 /**
  * Classe addetta alla gestione dell'evento per ricercare le camere libere per l'inserimento di una nuova prenotazione.
@@ -18,13 +21,18 @@ import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezionePeriodoTipologie;
  */
 public class RicercaCamereLibereListener extends MouseAdapter {
 	/* -------------------- Attributi e Costruttore ----------------------- */
-	private VFCP_SelezionePeriodoTipologie _selezionePeriodoTipologie;
+	private VPCP_SelezionePeriodoTipologie _selezionePeriodoTipologie;
 	/**
 	 * Costruttore.
 	 */
 	public RicercaCamereLibereListener() {
 		super();
-		_selezionePeriodoTipologie=VFCP_SelezionePeriodoTipologie.getInstance();
+		// Recupero il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Recupero il contentPane del frame.
+		JPanel contentPane = (JPanel) viewFrame.getContentPane();
+		// Recupero il panel corretto
+		_selezionePeriodoTipologie= (VPCP_SelezionePeriodoTipologie) contentPane.getComponent(0);
 	}
 	/* ------------------------ Metodi di instanza ------------------------ */
 	

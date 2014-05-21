@@ -6,8 +6,11 @@ package com.iHotel.view.Event.CreaPrenotazione;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JPanel;
+
 import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.view.Graphic.CreaPrenotazione.VFCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.ViewFrame;
+import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
@@ -18,13 +21,18 @@ import com.iHotel.view.Utility.UDialogManager;
 public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 
 	/* ---------------------- Attributi e Costruttore ---------------------- */
-	private VFCP_SelezioneCamereDatiOspite_Observer _selezioneCamereDatiOspite;
+	private VPCP_SelezioneCamereDatiOspite_Observer _selezioneCamereDatiOspite;
 	/**
 	 * Costruttore.
 	 */
 	public EffettuaNuovaPrenotazioneListener() {
 		super();
-		_selezioneCamereDatiOspite=VFCP_SelezioneCamereDatiOspite_Observer.getInstance();
+		// Recupero il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Recupero il contentPane del frame.
+		JPanel contentPane = (JPanel) viewFrame.getContentPane();
+		// Recupero il panel corretto
+		_selezioneCamereDatiOspite= (VPCP_SelezioneCamereDatiOspite_Observer) contentPane.getComponent(0);
 	}
 	
 	/* ---------------------- Metodi di instanza ------------------------ */

@@ -6,10 +6,13 @@ package com.iHotel.view;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -17,12 +20,17 @@ import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 
 /**
- * @author Eugenio
- *
+ * Classe a capo della gerarchia di tutte le finestre, dell'applicazione. Definisce una struttra di base per le finestre, e 
+ * dei metodi di base da implementare.
+ * 
+ * @author Gabriele
  */
 @SuppressWarnings("serial")
-public abstract class ViewPanel extends JPanel {
+public abstract class ViewFrameOLD extends JFrame {
 	
+	/* ----------------------------- Attributi e costruttore --------------------- */
+	/* ContentPane */
+	protected JPanel _contentPane;
 	/**
 	 * Pannello superiore della pagina.
 	 */
@@ -35,56 +43,63 @@ public abstract class ViewPanel extends JPanel {
 	 * Pannello inferiore della pagina.
 	 */
 	protected JPanel _panelBottom;
-	/**
-	 * Factory dei componenti grafici.
-	 */
+	/* Factory */
 	protected StyleAbstractFactory _viewFactory;
 	/**
-	 * Costruttore
+	 * Costruttore.
 	 */
-	protected ViewPanel() {
-		super();
-		// Prendo la factory dei componenti dell'interfaccia
+	protected ViewFrameOLD(){
+		// Richiedo la factory corretta.
 		_viewFactory=ViewFactory.getInstance().getStyleFactory();
-		// Setto il colore di sfondo del pannello.
-		setBackground(_viewFactory.getColorContentPane());
-		// Setto il bordo al pannello
-		setBorder(new EmptyBorder(5, 5, 5, 5));
-		// Setto layout al panel
-		setLayout(new BorderLayout());
+		// Setto il contentPane
+		_contentPane=_viewFactory.getContentPane();
+		_contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		// Aggiungo il contentPane al Frame
+		setContentPane(_contentPane);
+		// Non permetto il resize della finestra
+		setResizable(false);
+		// Operazione di default in chiusura.
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// Ricavo le dimensioni dello schermo.
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		// Prendo l'80% della larghezza dello schermo.
+		int widthDesktop = (int) screenSize.getWidth();
+		int widthFrame = (int) ((int) widthDesktop*0.8);
+		// Prendo l'80% dell'altezza dello schermo.
+		int heightDesktop = (int) screenSize.getHeight();
+		int heightFrame = (int) ((int) heightDesktop*0.8);
+		// Posizione iniziale
+		int x_position = (int) ((int) widthDesktop*0.1);
+		int y_position = (int) ((int) heightDesktop*0.1);
+		// Imposto la posizione e la dimensione della finestra (x,y,width,height)
+		setBounds(x_position, y_position, widthFrame, heightFrame);
 		
-		// Creo i pannelli
+		//ora preparo il layout interno al contentPane
+		
+		//prendo i pannelli
 		_panelTop=_viewFactory.getPanel();
 		_panelMiddle=_viewFactory.getPanelMiddle();
 		_panelBottom=_viewFactory.getPanel();
 		
-		// Setto le dimensioni dei pannelli in base alla dimensione della schermata.
+		//Aggiungo i pannelli al contentPane
+		_contentPane.add(_panelTop,BorderLayout.PAGE_START);
+		_contentPane.add(_panelMiddle,BorderLayout.CENTER);
+		_contentPane.add(_panelBottom,BorderLayout.PAGE_END);
+		
+		//Setto le dimensioni dei pannelli in base alla dimensione della schermata.
 		/*	il panelTop è alto il 10% della pagina,
 		 * 	il panelMiddle è alto l'70%, 
 		 * 	il panelBottom è alto il 10%
 		 */
-		// Altezza, Larghezza - Pannello
-		int pnlWidth = getWidth();
-		int pnlHeight = getHeight();
-		
-		// Dimensioni pannelli top, middle, bottom.
-		Dimension dimTop = new Dimension((int)(0.95*pnlWidth),(int)((0.09)*(pnlHeight)));
-		Dimension dimMiddle = new Dimension((int)(0.95*pnlWidth),(int)((0.7)*(pnlHeight)));
-		Dimension dimBottom = new Dimension((int)(0.95*pnlWidth),(int)((0.09)*(pnlHeight)));
-		
-		// Setto le dimensioni preferite dei pannelli
-		_panelTop.setPreferredSize(dimTop);
-		_panelMiddle.setPreferredSize(dimMiddle);
-		_panelBottom.setPreferredSize(dimBottom);
-		
-		// Aggiungo i pannelli al contentPane
-		add(_panelTop, BorderLayout.PAGE_START);
-		add(_panelMiddle, BorderLayout.CENTER);
-		add(_panelBottom, BorderLayout.PAGE_END);
+		_panelTop.setPreferredSize(new Dimension((int)(0.95*getWidth()),(int)((0.09)*(getHeight()))));
+		_panelMiddle.setPreferredSize(new Dimension((int)(0.95*getWidth()),(int)((0.7)*(getHeight()))));
+		_panelBottom.setPreferredSize(new Dimension((int)(0.95*getWidth()), (int)((0.09)*(getHeight()))));	
 	}
-	
-	/* -------------------------------- Metodi di istanza ----------------------------------- */
-
+	/* ----------------------------- Metodi di instanza ---------------------------- */
+	/**
+	 * Metodo per rimuovere l'instanza, dall'attributo statico.
+	 */
+	public abstract void removeInstance();
 	/**
 	 * Metodo per creare il panelTop.
 	 */
@@ -126,58 +141,9 @@ public abstract class ViewPanel extends JPanel {
 			JButton bottone = Bottoni.get(indicePannello);
 			// Aggiungo il bottone al giusto pannello
 			panelHolder[indicePannello].add(bottone);	
-			// Adatto il bottone al panel padre.		
+			// Adatto il bottone al panel padre.
+			
 		}
 	}
 
-	/* -------------------------------- Getter, Setter ------------------------------------- */
-
-	/**
-	 * @return the _panelTop
-	 */
-	protected JPanel get_panelTop() {
-		return _panelTop;
-	}
-	/**
-	 * @param _panelTop the _panelTop to set
-	 */
-	protected void set_panelTop(JPanel _panelTop) {
-		this._panelTop = _panelTop;
-	}
-	/**
-	 * @return the _panelMiddle
-	 */
-	protected JPanel get_panelMiddle() {
-		return _panelMiddle;
-	}
-	/**
-	 * @param _panelMiddle the _panelMiddle to set
-	 */
-	protected void set_panelMiddle(JPanel _panelMiddle) {
-		this._panelMiddle = _panelMiddle;
-	}
-	/**
-	 * @return the _panelBottom
-	 */
-	protected JPanel get_panelBottom() {
-		return _panelBottom;
-	}
-	/**
-	 * @param _panelBottom the _panelBottom to set
-	 */
-	protected void set_panelBottom(JPanel _panelBottom) {
-		this._panelBottom = _panelBottom;
-	}
-	/**
-	 * @return the _viewFactory
-	 */
-	protected StyleAbstractFactory get_viewFactory() {
-		return _viewFactory;
-	}
-	/**
-	 * @param _viewFactory the _viewFactory to set
-	 */
-	protected void set_viewFactory(StyleAbstractFactory _viewFactory) {
-		this._viewFactory = _viewFactory;
-	}
 }
