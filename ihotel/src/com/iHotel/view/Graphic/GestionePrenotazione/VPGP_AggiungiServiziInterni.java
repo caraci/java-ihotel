@@ -24,7 +24,7 @@ import net.sourceforge.jdatepicker.JDatePanel;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
-import com.iHotel.view.ViewFrameOLD;
+import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePrenotazione.AggiungiServizioListener;
 import com.iHotel.view.Event.GestionePrenotazione.MostraDettagliServizioListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaCameraListener;
@@ -36,7 +36,7 @@ import com.iHotel.view.Event.GestionePrenotazione.TornaAllaCameraListener;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VFGP_AggiungiServiziInterni extends ViewFrameOLD {
+public class VPGP_AggiungiServiziInterni extends ViewPanelContentPane {
 	/* ----------------------------- Attributi e Costruttore ----------------- */
 	/**
 	 * Mappa contenente l'insieme dei servizi interni dell'albergo.
@@ -46,8 +46,6 @@ public class VFGP_AggiungiServiziInterni extends ViewFrameOLD {
 	 * Camera alla quale vogliamo aggiungere un servizio.
 	 */
 	private Camera _camera;
-	// Singleton
-		private static VFGP_AggiungiServiziInterni instance=null;
 	// JPanel
 		private JPanel _pnlMiddleLeft;
 		private JPanel _pnlMiddleRight;
@@ -60,7 +58,7 @@ public class VFGP_AggiungiServiziInterni extends ViewFrameOLD {
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
-	private VFGP_AggiungiServiziInterni() {
+	public VPGP_AggiungiServiziInterni() {
 		// TODO - Usare pattern Singleton
 		_comboBoxServizi=new JComboBox<>();
 		// JPanel
@@ -73,21 +71,7 @@ public class VFGP_AggiungiServiziInterni extends ViewFrameOLD {
 		_btnAggiungiServizio=_viewFactory.getButton();
 		_btnTornaAllaCamera=_viewFactory.getButton();
 	}
-	/* ------------------------------- Metodi di classe -------------------------- */
-	/**
-	 * Metodo per ottenere l'unica instanza di questa classe - Pattern singleton
-	 */
-	public static VFGP_AggiungiServiziInterni getInstance() {
-    	if(instance == null) {
-            instance = new VFGP_AggiungiServiziInterni();
-         }
-         return instance;
-    }
 	/* ------------------------------ Metodi di instanza ------------------------ */
-	@Override
-    public void removeInstance() {
-    	instance = null;
-	}
 	@Override
 	protected void creaPanelTop() {
 		// Setto il layout al panel
@@ -212,9 +196,7 @@ public class VFGP_AggiungiServiziInterni extends ViewFrameOLD {
 	 * @param descrizioniServizi Collezione contenente i descrittori dei servizi interni.
 	 * @param camera Camera sulla quale si vogliono aggiungere servizi.
 	 */
-	public void creaFrame(HashMap<String,DescrizioneServizioInterno> descrizioniServizi, Camera camera) {
-		// Setto titolo del frame.
-		setTitle("iHotel - Gestione Prenotazione - Aggiungi servizi alla camera");
+	public void creaPanel(HashMap<String,DescrizioneServizioInterno> descrizioniServizi, Camera camera) {
 		// Setto gli attributi dell'interfaccia attraverso ciò che ricevo per parametro.
 		_camera = camera;
 		_descrizioniServizi=descrizioniServizi;

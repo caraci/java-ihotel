@@ -3,15 +3,13 @@
  */
 package com.iHotel.view.Event.GestionePrenotazione;
 
-import java.awt.CardLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
 
-import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
-import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
-import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
+import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_AggiungiServiziInterni;
 
 /**
  * Classe addetta alla gestione dell'evento per mostrare le informazioni in merito ad un servizio interno dell'albergo.
@@ -21,12 +19,17 @@ import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 public class MostraDettagliServizioListener implements ItemListener {
 
 	/* ---------------------- Attributi e Costruttore --------------------- */
-	private VFGP_AggiungiServiziInterni _aggiungiServiziInterni;
+	private VPGP_AggiungiServiziInterni _aggiungiServiziInterni;
 	/**
 	 * Costruttore.
 	 */
 	public MostraDettagliServizioListener() {
-		_aggiungiServiziInterni=VFGP_AggiungiServiziInterni.getInstance();
+		// Recupero il frame dell'applicazione
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
+		// Recupero il contentPane del frame.
+		JPanel contentPane = (JPanel) viewFrame.getContentPane();
+		// Recupero il panel corretto
+		_aggiungiServiziInterni= (VPGP_AggiungiServiziInterni) contentPane.getComponent(0);
 	}
 	
 	/**

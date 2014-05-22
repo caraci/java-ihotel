@@ -28,7 +28,7 @@ import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
-import com.iHotel.view.Utility.UtoString;
+import com.iHotel.view.Utility.UtoListPanel;
 
 /**
  * Classe addetta alla realizzazione della finestra relativa al mostrare le informazioni di una camera
@@ -123,11 +123,8 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		// Ciclo sugli ospiti della camera
 		for (Iterator<Ospite> iterator = _camera.getOspitiInPeriodo(_periodo).iterator(); iterator.hasNext();) {
 			Ospite ospite = (Ospite) iterator.next();
-			// Creo una label per inserire nome e cognome dell'ospite
-			JLabel lblOspite = _viewFactory.getLabel();
-			lblOspite.setText(UtoString.getInstance().ospiteToString(ospite));
 			// Aggiungo la label al pannello
-			_pnlMiddleLeft.add(lblOspite);
+			_pnlMiddleLeft.add(UtoListPanel.getInstance().ospiteToPanel(ospite));
 		}
 		return _pnlMiddleLeft;
 	}
@@ -148,7 +145,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
 			// Creo una label per inserire le informazioni del servizio
 			JLabel lblServizioInterno=_viewFactory.getLabel();
-			lblServizioInterno.setText(UtoString.getInstance().servizioInternoInPrenotazioneToString(servizioInterno));
+			lblServizioInterno.setText(UtoListPanel.getInstance().servizioInternoInPrenotazioneToString(servizioInterno));
 			/*Aggiungo la label del servizio al panel*/
 			_pnlMiddleCenter.add(lblServizioInterno);
 			/*Aggiungo lo spazio*/
@@ -202,11 +199,8 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		// Ciclo sui servizi per aggiungerli al pnlListaServizi
 		for (Iterator<ServizioPayTv> iterator = serviziPayTv.iterator(); iterator.hasNext();) {
 			ServizioPayTv servizioPayTv = (ServizioPayTv) iterator.next();
-			// Creo la label per il servizio
-			JLabel lblServizioPayTv = _viewFactory.getLabel();
-			lblServizioPayTv.setText(UtoString.getInstance().servizioPayTv(servizioPayTv));
 			// Aggiungo lbl al pannello
-			pnlListaServizi.add(lblServizioPayTv);
+			pnlListaServizi.add(UtoListPanel.getInstance().servizioPayTvToPanel(servizioPayTv));
 			// Aggiungo spaziatura
 			pnlListaServizi.add(Box.createVerticalStrut(3));
 		}
@@ -251,11 +245,8 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		// Ciclo sui servizi per aggiungerli al pnlListaServizi
 		for (Iterator<ServizioTelefono> iterator = serviziTelefono.iterator(); iterator.hasNext();) {
 			ServizioTelefono servizioTelefono = (ServizioTelefono) iterator.next();
-			// Creo la label per il servizio
-			JLabel lblServizioTelefono = _viewFactory.getLabel();
-			lblServizioTelefono.setText(UtoString.getInstance().servizioTelefono(servizioTelefono));
 			// Aggiungo lbl al pannello
-			pnlListaServizi.add(lblServizioTelefono);
+			pnlListaServizi.add(UtoListPanel.getInstance().servizioTelefono(servizioTelefono));
 			// Aggiungo spaziatura
 			pnlListaServizi.add(Box.createVerticalStrut(3));
 		}

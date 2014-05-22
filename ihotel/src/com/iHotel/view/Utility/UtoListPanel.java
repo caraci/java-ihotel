@@ -3,6 +3,10 @@
  */
 package com.iHotel.view.Utility;
 
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
@@ -12,39 +16,61 @@ import com.iHotel.model.ForeignSystem.PayTv.ServizioPayTv;
 import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.view.Access.StyleAbstractFactory;
+import com.iHotel.view.Access.ViewFactory;
 
 /**
  * Classe addetta alla creazione delle stringhe relative a gli oggetti dello strato di dominio.
  * @author Eugenio
  */
-public class UtoString {
+public class UtoListPanel {
 	/* ------------------------------ Attributi e costruttore ----------------------------------- */
-	// Singleton
-	private static UtoString instance=null;
+	/**
+	 * Istanza unica di questa classe - Pattern Singleton
+	 */
+	private static UtoListPanel instance=null;
+	/**
+	 * Fornitore degli elementi grafici.
+	 */
+	private StyleAbstractFactory _viewFactory;
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
-	private UtoString() {}
+	private UtoListPanel() {
+		_viewFactory=ViewFactory.getInstance().getStyleFactory();
+	}
 	/* --------------------------------- Metodi statici -------------------------------------- */ 
 	/**
 	 * Metodo per ottenere l'unica instanza di questa classe.
 	 */
-	public static UtoString getInstance() {
+	public static UtoListPanel getInstance() {
 		if(instance == null) {
-            instance = new UtoString();
+            instance = new UtoListPanel();
          }
          return instance;
 	}
 	/* --------------------------------- Metodi di instanza -------------------------------------- */
 	/**
 	 * Metodo per ottenere la stringa relativa alle informazioni di un ospite.
+	 * 
 	 * @param ospite Ospite in analisi.
-	 * @return Stringa contenente le informazioni dell'ospite.
+	 * @return Pannello contenente le informazioni dell'ospite.
 	 */
-	public String ospiteToString(Ospite ospite) {
-		// Stringa
-		String string = ospite.get_nome() + ospite.get_cognome();
-		return string;
+	public JPanel ospiteToPanel(Ospite ospite) {
+		JPanel pnlLista = _viewFactory.getPanel(false);
+		// Setto layou pnlLista
+		pnlLista.setLayout(new BoxLayout(pnlLista, BoxLayout.PAGE_AXIS));
+		// Elementi pnl
+		JLabel lblNome = _viewFactory.getLabel();
+		lblNome.setText(ospite.get_nome());
+		
+		JLabel lblCognome = _viewFactory.getLabel();
+		lblCognome.setText(ospite.get_cognome());
+		// Aggiungo elementi al pnlLista
+		pnlLista.add(lblNome);
+		pnlLista.add(lblCognome);
+		
+		return pnlLista;
 	}
 	/**
 	 * Metodo per ottenere la stringa relativa ad un periodo.
@@ -92,23 +118,45 @@ public class UtoString {
 	 * Metodo per ottenere la stringa relativa ad un servizio della payTv.
 	 * 
 	 * @param servizioPayTv Servizio in analisi.
-	 * @return Stringa contenente le informazioni del servizio.
+	 * @return Pannello contenente le informazioni del servizio.
 	 */
-	public String servizioPayTv(ServizioPayTv servizioPayTv) {
-		// String
-		String string = servizioPayTv.get_codice() + " " + servizioPayTv.get_evento() + " " + giornoToString(servizioPayTv.get_giorno());
-		return string;
+	public JPanel servizioPayTvToPanel(ServizioPayTv servizioPayTv) {
+		JPanel pnlLista = _viewFactory.getPanel(false);
+		// Setto layou pnlLista
+		pnlLista.setLayout(new BoxLayout(pnlLista, BoxLayout.PAGE_AXIS));
+		// Elementi pnl
+		JLabel lblCodice = _viewFactory.getLabel();
+		lblCodice.setText(servizioPayTv.get_codice());
+		
+		JLabel lblEvento = _viewFactory.getLabel();
+		lblEvento.setText(servizioPayTv.get_evento());
+		// Aggiungo elementi al pnlLista
+		pnlLista.add(lblCodice);
+		pnlLista.add(lblEvento);
+		
+		return pnlLista;
 	}
 	/**
 	 * Metodo per ottenere la stringa relativa ad un servizio del Telefono.
 	 * 
 	 * @param servizioTelefono Servizio in analisi.
-	 * @return Stringa contenente le informazioni del servizio.
+	 * @return Pannello contenente le informazioni del servizio.
 	 */
-	public String servizioTelefono(ServizioTelefono servizioTelefono) {
-		// String
-		String string = servizioTelefono.get_codice() + " " + servizioTelefono.get_telefonoMittente() + " " + giornoToString(servizioTelefono.get_giorno());
-		return string;
+	public JPanel servizioTelefono(ServizioTelefono servizioTelefono) {
+		JPanel pnlLista = _viewFactory.getPanel(false);
+		// Setto layou pnlLista
+		pnlLista.setLayout(new BoxLayout(pnlLista, BoxLayout.PAGE_AXIS));
+		// Elementi pnl
+		JLabel lblCodice = _viewFactory.getLabel();
+		lblCodice.setText(servizioTelefono.get_codice());
+		
+		JLabel lblEvento = _viewFactory.getLabel();
+		lblEvento.setText(servizioTelefono.get_telefonoMittente());
+		// Aggiungo elementi al pnlLista
+		pnlLista.add(lblCodice);
+		pnlLista.add(lblEvento);
+		
+		return pnlLista;
 	}
 	/**
 	 * 

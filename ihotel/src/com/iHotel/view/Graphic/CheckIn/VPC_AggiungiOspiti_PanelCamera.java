@@ -31,7 +31,7 @@ import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
 import com.iHotel.view.Event.CheckIn.ScegliDocumentoListener;
-import com.iHotel.view.Utility.UtoString;
+import com.iHotel.view.Utility.UtoListPanel;
 
 
 /**
@@ -460,11 +460,8 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 		// Ciclo sugli ospiti della camera.
 		for (Iterator<Ospite> iterator = ospitiCamera.iterator(); iterator.hasNext();) {
 			Ospite ospite = (Ospite) iterator.next();
-			// Nome Cognome
-			JLabel lblOspite = _viewFactory.getLabel();
-			lblOspite.setText(UtoString.getInstance().ospiteToString(ospite));
 			// Aggiungo elementi al panel
-			panelListaOspiti.add(lblOspite);
+			panelListaOspiti.add(UtoListPanel.getInstance().ospiteToPanel(ospite));
 			// Aggiungo spaziatura
 			panelListaOspiti.add(Box.createVerticalStrut(5));
 		}

@@ -24,7 +24,7 @@ import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
-import com.iHotel.view.Utility.UtoString;
+import com.iHotel.view.Utility.UtoListPanel;
 
 /**
  * @author Alessandro
@@ -103,7 +103,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	private JPanel creaPanelMiddleTop(){
 		
 		/*Setto il testo della label*/
-		_lblTotaleEImportoVersatoPrenotazione.setText(UtoString.getInstance().totalePrenotazioneToString(_prenotazione));
+		_lblTotaleEImportoVersatoPrenotazione.setText(UtoListPanel.getInstance().totalePrenotazioneToString(_prenotazione));
 		/*Aggiungo la label al pannello*/
 		_panelMiddleTop.add(_lblTotaleEImportoVersatoPrenotazione);
 		/*Restituisco il pannello*/

@@ -67,6 +67,10 @@ public abstract class ViewPanelContentPane extends View {
 		_panelMiddle.setMinimumSize(dimMiddle);
 		_panelBottom.setMinimumSize(dimBottom);
 		
+		_panelTop.setMaximumSize(dimTop);
+		_panelMiddle.setMaximumSize(dimMiddle);
+		_panelBottom.setMaximumSize(dimBottom);
+		
 		// Aggiungo i pannelli al contentPane
 		add(_panelTop,BorderLayout.PAGE_START);
 		add(_panelMiddle,BorderLayout.CENTER);

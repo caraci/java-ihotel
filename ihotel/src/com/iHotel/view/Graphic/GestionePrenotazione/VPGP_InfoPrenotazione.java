@@ -25,7 +25,7 @@ import com.iHotel.view.Event.GestionePrenotazione.CheckInPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciPagamentoListener;
 import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
-import com.iHotel.view.Utility.UtoString;
+import com.iHotel.view.Utility.UtoListPanel;
 
 /**
  * Classe addetta alla realizzazione della finestra per mostrare le informazioni di una prenotazione.
@@ -186,7 +186,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		
 		/*Setto il periodo della prenotazione nell'etichetta*/
 		
-		_lblPeriodo.setText(UtoString.getInstance().periodoToString(periodo));
+		_lblPeriodo.setText(UtoListPanel.getInstance().periodoToString(periodo));
 		
 		/*Setto il prezzo delle camere*/
 		_lblPrezzoCamere.setText("Il totale delle camere è di: "+prezzoCamere.get_importo()+" "+prezzoCamere.get_valuta());

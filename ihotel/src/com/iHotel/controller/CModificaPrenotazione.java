@@ -11,7 +11,7 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.VP_Home;
-import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
+import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_AggiungiServiziInterni;
 import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_InfoCamera;
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
@@ -71,9 +71,9 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
      * Metodo per mostrare l'interfaccia per aggiungere nuovi servizi alla camera della prenotazione.
      */
 	public void aggiungiServiziCamera(){
-		VFGP_AggiungiServiziInterni aggiungiServiziInterni = VFGP_AggiungiServiziInterni.getInstance();
+		//VPGP_AggiungiServiziInterni aggiungiServiziInterni = VPGP_AggiungiServiziInterni.getInstance();
 		// Creo l'interfaccia fornendo l'insieme di descrittori dei servizi interni
-		aggiungiServiziInterni.creaFrame(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
+		//aggiungiServiziInterni.creaPanel(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
 		// Mostro vfgpAggiungiServiziInterni
 		//ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
 	}
