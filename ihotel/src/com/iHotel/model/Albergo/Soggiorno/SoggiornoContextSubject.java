@@ -43,7 +43,7 @@ public class SoggiornoContextSubject implements ISubject {
 	private Periodo _periodo;
 	private boolean _completata;
 	private ClientePrenotante _prenotante;
-	private Prezzo _total;
+	private Prezzo _importoTotalCamere;
 	private String _codice;
 	/**
 	 * Costruttore.
@@ -51,7 +51,7 @@ public class SoggiornoContextSubject implements ISubject {
 	public SoggiornoContextSubject() {
 		_camerePrenotate = new ArrayList<Camera>();
 		_osservatori = new ArrayList<IObserver>();
-		_total = new Prezzo();
+		_importoTotalCamere = new Prezzo();
 		_pagamenti= new ArrayList<Pagamento>();
 	}
 	
@@ -112,11 +112,24 @@ public class SoggiornoContextSubject implements ISubject {
 		String tipologia=cameraPrenotata.get_tipologia();
 		descrizione=CatalogoCamere.getInstance().getDescrizioneDaTipologia(tipologia);
 		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
-		_total.somma(descrizione.calcolaPrezzoInPeriodo(_periodo));
+		_importoTotalCamere.somma(descrizione.calcolaPrezzoInPeriodo(_periodo));
 		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
 		// di stato della prenotazione.
 		this.Notify();
 	}
+	
+	/**
+	 * Metodo per calcolare l'importo già pagato
+	 */
+	public Prezzo calcolaTotalePagamenti(){
+		Prezzo pagamenti= new Prezzo();
+		for (Iterator<Pagamento> iterator = _pagamenti.iterator(); iterator.hasNext();) {
+			Pagamento pagamento = (Pagamento) iterator.next();
+			pagamenti.somma(pagamento.get_importo());
+		}
+		return pagamenti;
+	}
+	
 	/**
 	 * Metodo per aggiungere una camera alla prenotazione.
 	 * @param camera Camera da aggiungere alla prenotazione.
@@ -200,13 +213,13 @@ public class SoggiornoContextSubject implements ISubject {
 	 * @return _total 
 	 */
 	public Prezzo get_total() {
-		return this._total;
+		return this._importoTotalCamere;
 	}
 	/**
 	 * @param _total the total to set
 	 */
 	public void set_total(Prezzo _total) {
-		this._total = _total;
+		this._importoTotalCamere = _total;
 	}
 
 	/**
