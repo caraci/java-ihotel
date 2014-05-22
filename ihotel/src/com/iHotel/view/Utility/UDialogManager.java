@@ -24,9 +24,9 @@ import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.model.Persona.Persona;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
-import com.iHotel.view.Access.ViewHandler;
 
 /**
  * Classe addetta alla gestione delle finestre di dialogo.
@@ -62,7 +62,7 @@ public class UDialogManager extends JOptionPane {
 	 */
 	public String getDialogInserimentoCodice(){
 		/*Si passa l'interfaccia corrente al JOptionPane, in questo modo questa viene "bloccata" finchè la dialog rimane visualizzata*/
-		return JOptionPane.showInputDialog(ViewHandler.getInstance().getCurrentInterface(),"Inserisci il codice della prenotazione", "Inserimento codice per recuperare la prenotazione", JOptionPane.QUESTION_MESSAGE);	
+		return JOptionPane.showInputDialog(ViewFrameApplication.getInstance(),"Inserisci il codice della prenotazione", "Inserimento codice per recuperare la prenotazione", JOptionPane.QUESTION_MESSAGE);	
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class UDialogManager extends JOptionPane {
 	 * @param codicePrenotazione è il codice della prenotazione inserita.
 	 */
 	public void showDialogConfermaPrenotazione(String codicePrenotazione){
-		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "La prenotazione è stata creata. Il suo codice è " + codicePrenotazione, "Conferma creazione prenotazione", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), "La prenotazione è stata creata. Il suo codice è " + codicePrenotazione, "Conferma creazione prenotazione", JOptionPane.INFORMATION_MESSAGE);
 
 	}
 	
@@ -79,7 +79,7 @@ public class UDialogManager extends JOptionPane {
 	 * Metodo che mostra la dialog che conferma l'inserimento di un servizio.
 	 */
 	public void showDialogConfermaInserimentoServizio(){
-		JOptionPane.showMessageDialog(ViewHandler.getInstance().getCurrentInterface(), "Il servizio è stato aggiunto alla prenotazione.", "Conferma inserimento servizio", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), "Il servizio è stato aggiunto alla prenotazione.", "Conferma inserimento servizio", JOptionPane.INFORMATION_MESSAGE);
 	}
 	/**
 	 * Metodo che visualizza una JDialog per l'inserimento delle informazioni del bonifico
@@ -131,7 +131,7 @@ public class UDialogManager extends JOptionPane {
 				(JComponent) data
 		};
 		//Faccio il display della schermata
-		JOptionPane.showMessageDialog(null, inputs, "Inserimento pagamento Con Bonifico", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento pagamento Con Bonifico", JOptionPane.PLAIN_MESSAGE);
 		
 		/*Creo un nuovo prezzo con l'importo ricevuto*/		
 		Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
@@ -179,7 +179,7 @@ public class UDialogManager extends JOptionPane {
 				(JComponent) data
 		};
 		//Faccio il display della schermata
-		JOptionPane.showMessageDialog(null, inputs, "Inserimento pagamento in contanti", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento pagamento in contanti", JOptionPane.PLAIN_MESSAGE);
 		
 		/*Creo un nuovo prezzo con l'importo ricevuto*/		
 		Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
@@ -243,7 +243,7 @@ public class UDialogManager extends JOptionPane {
 				};
 				
 		//Faccio il display della schermata
-		JOptionPane.showMessageDialog(null, inputs, "Inserimento servizi nella prenotaziones", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento servizi nella prenotaziones", JOptionPane.PLAIN_MESSAGE);
 		
 		return null;
 	}
