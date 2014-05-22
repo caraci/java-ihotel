@@ -8,6 +8,7 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -36,12 +37,19 @@ public class ViewFrameApplication extends JFrame {
 	 */
 	private static ViewFrameApplication _instance = null;
 	/**
+	 * 
+	 */
+	private String _pathToIcon="./ihotel/configs/ihotel_Icon.jpg"; 
+	/**
 	 * Costruttore
 	 */
 	private ViewFrameApplication() {
 		super();
 		// Richiedo la factory corretta.
 		StyleAbstractFactory viewFactory=ViewFactory.getInstance().getStyleFactory();
+		// Setto l'icona
+		ImageIcon img = new ImageIcon(_pathToIcon);
+		setIconImage(img.getImage());
 		// Creo il contentPane
 		_contentPane=viewFactory.getContentPane();
 		// Setto il bordo al contentPane

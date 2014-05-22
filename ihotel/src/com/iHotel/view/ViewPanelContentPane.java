@@ -3,11 +3,10 @@
  */
 package com.iHotel.view;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 /**
  * @author Eugenio
@@ -33,15 +32,13 @@ public abstract class ViewPanelContentPane extends View {
 	 */
 	protected ViewPanelContentPane() {
 		super();
-		// Setto il bordo al pannello
-		setBorder(new EmptyBorder(5, 5, 5, 5));
 		// Setto layout al panel
-		setLayout(new BorderLayout());
+		setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		
 		// Creo i pannelli
-		_panelTop=_viewFactory.getPanel();
+		_panelTop=_viewFactory.getPanel(false);
 		_panelMiddle=_viewFactory.getPanelMiddle();
-		_panelBottom=_viewFactory.getPanel();
+		_panelBottom=_viewFactory.getPanel(false);
 		
 		// Setto le dimensioni dei pannelli in base alla dimensione della schermata.
 		
@@ -53,20 +50,27 @@ public abstract class ViewPanelContentPane extends View {
 		int pnlWidth = getWidth();
 		int pnlHeight = getHeight();
 		
+		// Larghezza pannelli
+		int pnlWidth_component = (int) 0.95*pnlWidth;
+		
+		// Altezze a 10% e 70%
+		int pnlHeight_component_10 = (int) 0.09*pnlHeight;
+		int pnlHeight_component_70 = (int) 0.7*pnlHeight;
+		
 		// Dimensioni pannelli top, middle, bottom.
-		Dimension dimTop = new Dimension((int)(0.95*pnlWidth),(int)((0.09)*(pnlHeight)));
-		Dimension dimMiddle = new Dimension((int)(0.95*pnlWidth),(int)((0.7)*(pnlHeight)));
-		Dimension dimBottom = new Dimension((int)(0.95*pnlWidth),(int)((0.09)*(pnlHeight)));
+		Dimension dimTop = new Dimension(pnlWidth_component,pnlHeight_component_10);
+		Dimension dimMiddle = new Dimension(pnlWidth_component,pnlHeight_component_70);
+		Dimension dimBottom = new Dimension(pnlWidth_component,pnlHeight_component_10);
 		
 		// Setto le dimensioni preferite dei pannelli
-		_panelTop.setPreferredSize(dimTop);
-		_panelMiddle.setPreferredSize(dimMiddle);
-		_panelBottom.setPreferredSize(dimBottom);
+		_panelTop.setMinimumSize(dimTop);
+		_panelMiddle.setMinimumSize(dimMiddle);
+		_panelBottom.setMinimumSize(dimBottom);
 		
 		// Aggiungo i pannelli al contentPane
-		add(_panelTop, BorderLayout.PAGE_START);
-		add(_panelMiddle, BorderLayout.CENTER);
-		add(_panelBottom, BorderLayout.PAGE_END);
+		add(_panelTop);
+		add(_panelMiddle);
+		add(_panelBottom);
 	}
 	
 	/* -------------------------------- Metodi di istanza ----------------------------------- */
