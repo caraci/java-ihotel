@@ -26,7 +26,7 @@ import net.sourceforge.jdatepicker.JDatePicker;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Persona.Ospite;
-import com.iHotel.view.ViewPanel;
+import com.iHotel.view.View;
 import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
@@ -39,7 +39,7 @@ import com.iHotel.view.Utility.UtoString;
  *
  */
 @SuppressWarnings("serial")
-public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
+public class VPC_AggiungiOspiti_PanelCamera extends View {
 
 	private Camera _camera;
 	private SoggiornoContextSubject _prenotazione;
@@ -69,7 +69,7 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	 * 
 	 * @param camera Camera che si sta visualizzando.
 	 */
-	public VFC_AggiungiOspiti_PanelCamera(Camera camera, SoggiornoContextSubject prenotazione) {
+	public VPC_AggiungiOspiti_PanelCamera(Camera camera, SoggiornoContextSubject prenotazione) {
 		super();
 		_camera=camera;
 		_prenotazione=prenotazione;
@@ -795,23 +795,5 @@ public class VFC_AggiungiOspiti_PanelCamera extends ViewPanel {
 	 */
 	public void set_txtPassaportoEnte(JTextField _txtPassaportoEnte) {
 		this._txtPassaportoEnte = _txtPassaportoEnte;
-	}
-
-	@Override
-	protected void creaPanelTop() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void creaPanelMiddle() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void creaPanelBottom() {
-		// TODO Auto-generated method stub
-		
 	}
 }

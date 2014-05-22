@@ -9,7 +9,7 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
 
-import com.iHotel.view.Graphic.CheckIn.VFC_AggiungiOspiti_PanelCamera;
+import com.iHotel.view.Graphic.CheckIn.VPC_AggiungiOspiti_PanelCamera;
 
 /**
  * @author Eugenio
@@ -19,12 +19,12 @@ public class ScegliDocumentoListener implements ItemListener {
 	/**
 	 * Pannello contenente la lista degli ospiti.
 	 */
-	private VFC_AggiungiOspiti_PanelCamera _panelCamera;
+	private VPC_AggiungiOspiti_PanelCamera _panelCamera;
 	/**
 	 * Costruttore
 	 * @param pnlTipoDocumento Pannello contenente i diversi documenti.
 	 */
-	public ScegliDocumentoListener(VFC_AggiungiOspiti_PanelCamera panelCamera) {
+	public ScegliDocumentoListener(VPC_AggiungiOspiti_PanelCamera panelCamera) {
 		_panelCamera=panelCamera;
 	}
 

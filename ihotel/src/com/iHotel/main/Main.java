@@ -1,7 +1,7 @@
 package com.iHotel.main;
 
 import com.iHotel.utility.UStartup;
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewFrameApplication;
 
 public class Main {
 	/**
@@ -13,7 +13,7 @@ public class Main {
 		UStartup startup = new UStartup();
 		startup.inizializza();
 		// Creo il frame dell'applicazione
-		ViewFrame viewFrame = ViewFrame.getInstance();
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Mostro il frame
 		viewFrame.setVisible(true);
 	}

@@ -11,20 +11,31 @@ import javax.swing.JPanel;
 
 import com.iHotel.controller.CGestionePagamenti;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
-import com.iHotel.view.Graphic.GestionePagamenti.VFP_RiepilogoPagamenti;
+import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
  * Classe che ha il compito di gestire l'evento click sul bottone "Aggiungi pagamento con bonifico"
- * nella classe VFG_gestionePagamento
+ * nella classe VPP_gestionePagamento.
+ * 
  * @author Alessandro
  *
  */
 public class InserisciPagamentoConBonificoListener extends MouseAdapter {
+	/**
+	 * Pannello contenente i pagamenti.
+	 */
+	private VPP_RiepilogoPagamenti _riepilogoPagamenti;
 	
 	//Costruttore
-	public InserisciPagamentoConBonificoListener(){
-	
+	public InserisciPagamentoConBonificoListener() {
+		// Recupero il frame dell'applicazione
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
+		// Recupero il contentPane del frame.
+		JPanel contentPane = (JPanel) viewFrame.getContentPane();
+		// Recupero il panel corretto
+		_riepilogoPagamenti= (VPP_RiepilogoPagamenti) contentPane.getComponent(0);
 	}
 	
 	/**
@@ -43,14 +54,13 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
 		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamento);		
 		
-		/**/
-		VFP_RiepilogoPagamenti view = VFP_RiepilogoPagamenti.getInstance();
+		
 		// Prendo il pannello dove si va a mostrare la lista dei bonifici
-		JPanel panelBonifico = view.getPanelBonifico();
+		JPanel panelBonifico = _riepilogoPagamenti.getPanelBonifico();
 		// Prendo il layout del pannello
 		CardLayout cardLayout = (CardLayout) panelBonifico.getLayout();
 		// Aggiungo una nuova scheda al pannello.
-		panelBonifico.add(view.creaPanelMiddleCenter());
+		panelBonifico.add(_riepilogoPagamenti.creaPanelMiddleCenter());
 		// Mostro la prossima scheda
 		cardLayout.next(panelBonifico);
 	}

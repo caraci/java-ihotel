@@ -19,7 +19,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
-import com.iHotel.view.ViewPanel;
+import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.CreaPrenotazione.AggiungiCameraPrenotazioneListener;
 import com.iHotel.view.Event.CreaPrenotazione.EffettuaNuovaPrenotazioneListener;
 
@@ -32,7 +32,7 @@ import java.awt.GridLayout;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanel implements IObserver {
+public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPane implements IObserver {
 
 	/**
 	 * Mappa contenente l'insieme di tutte le camere disponibili a seguito della richiesta effettuata precedentemente.

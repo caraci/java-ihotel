@@ -5,7 +5,7 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-import com.iHotel.view.ViewPanel;
+import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.CaricaGestionePrenotazioneListener;
 
@@ -15,7 +15,7 @@ import com.iHotel.view.Event.CaricaGestionePrenotazioneListener;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VP_Home extends ViewPanel {
+public class VP_Home extends ViewPanelContentPane {
 	
 	/* ---------------------- Attributi, Costruttore --------------------- */
 	

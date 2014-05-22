@@ -7,8 +7,8 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.persistence.PCamera;
-import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.Graphic.CheckIn.VFC_AggiungiOspiti;
+import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Graphic.CheckIn.VPC_AggiungiOspiti;
 
 /**
  * @author Eugenio
@@ -20,7 +20,7 @@ public class CCheckIn extends CGestionePrenotazione {
 	 */
 	private static CCheckIn instance=null;
 	/**
-	 * 
+	 * Costruttore privato - Pattern Singleton
 	 */
 	private CCheckIn() {}
 	/* ------------------------- Metodi statici --------------------------- */
@@ -40,11 +40,15 @@ public class CCheckIn extends CGestionePrenotazione {
 	public void iniziaCheckIn() {
 		// Chiedo a CModificaPrenotazione la prenotazione che si sta gestendo
 		set_prenotazione(CModificaPrenotazione.getInstance().get_prenotazione());
-		// Preparo l'interfaccia da visualizzare
-		VFC_AggiungiOspiti aggiungiOspiti = VFC_AggiungiOspiti.getInstance();
-		aggiungiOspiti.creaFrame(_prenotazione);
-		// Visualizzo la nuova interfaccia.
-		ViewHandler.getInstance().showFrame(aggiungiOspiti);
+		
+		// Recupero il frame dell'applicazione
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
+		// Creo il pannello successivo
+		VPC_AggiungiOspiti aggiungiOspiti = new VPC_AggiungiOspiti();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(aggiungiOspiti);
+		// Creo il frame
+		aggiungiOspiti.creaPanel(_prenotazione);
 	}
 	/**
 	 * Metodo per aggiungere un ospite alla camera.

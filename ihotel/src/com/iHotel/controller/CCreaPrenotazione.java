@@ -9,7 +9,7 @@ import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
 import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
@@ -58,7 +58,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
 		tipologieCamere.addAll(CatalogoCamere.getInstance().getTipologieCamere());
 		// Recupero il frame dell'applicazione
-		ViewFrame viewFrame = ViewFrame.getInstance();
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
 		VPCP_SelezionePeriodoTipologie selezionePeriodoTipologie = new VPCP_SelezionePeriodoTipologie();
 		// Assegno la prossima schermata al frame.
@@ -111,7 +111,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 			camereLibere.put(tipologia, camereLibereTipologia);
 		}		
 		// Recupero il frame dell'applicazione
-		ViewFrame viewFrame = ViewFrame.getInstance();
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
 		VPCP_SelezioneCamereDatiOspite_Observer selezioneCamereDatiOspite = new VPCP_SelezioneCamereDatiOspite_Observer();
 		// Per il pattern Observer aggiungo l'observer alla prenotazione.
@@ -150,7 +150,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 			// TODO
 		}
 		// Recupero il frame dell'applicazione
-		ViewFrame viewFrame = ViewFrame.getInstance();
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
 		VP_Home panelHome = new VP_Home();
 		// Assegno la prossima schermata al frame.

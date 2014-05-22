@@ -9,8 +9,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
-import com.iHotel.view.ViewFrame;
-import com.iHotel.view.Access.ViewHandler;
+import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
 import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_InfoCamera;
@@ -60,7 +59,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 		Periodo periodo = _prenotazione.get_periodo();
 		
 		// Recupero il frame dell'applicazione
-		ViewFrame viewFrame = ViewFrame.getInstance();
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
 		VPGP_InfoCamera infoCamera = new VPGP_InfoCamera();
 		// Assegno la prossima schermata al frame.
@@ -76,7 +75,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 		// Creo l'interfaccia fornendo l'insieme di descrittori dei servizi interni
 		aggiungiServiziInterni.creaFrame(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
 		// Mostro vfgpAggiungiServiziInterni
-		ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
+		//ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
 	}
     /**
      * Metodo per aggiungere un servizio alla camera selezionata, relativa alla prenotazione che si sta
@@ -118,7 +117,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
      */
     public void terminaGestionePrenotazione(){
     	// Recupero il frame dell'applicazione
-		ViewFrame viewFrame = ViewFrame.getInstance();
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
 		VP_Home panelHome = new VP_Home();
 		// Assegno la prossima schermata al frame.

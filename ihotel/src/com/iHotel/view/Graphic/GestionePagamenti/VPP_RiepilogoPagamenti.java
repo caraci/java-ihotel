@@ -20,7 +20,7 @@ import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
-import com.iHotel.view.ViewFrameOLD;
+import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
@@ -31,24 +31,25 @@ import com.iHotel.view.Utility.UtoString;
  *
  */
 @SuppressWarnings("serial")
-public class VFP_RiepilogoPagamenti extends ViewFrameOLD{
+public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
+	
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */
-	private SoggiornoContextSubject _prenotazione;
-	
+	private SoggiornoContextSubject _prenotazione;	
 	/**
-	 * HashMap contenente i pagamenti della prenotazione
-	 */
+	* Lista contenente i pagamenti in contanti della prenotazione.
+	*/
 	private ArrayList<PagamentoInContanti> _pagamentiInContanti = new ArrayList<PagamentoInContanti>();
+	/**
+	* Lista contenente i pagamenti mediante bonifici della prenotazione.
+	*/
 	private ArrayList<PagamentoConBonifico> _pagamentiConBonifico = new ArrayList<PagamentoConBonifico>();
+	/**
+	* Lista contenente i pagamenti mediante carta della prenotazione.
+	*/
 	private ArrayList<PagamentoConCarta> _pagamentiConCarta = new ArrayList<PagamentoConCarta>();
 	
-	
-	/**
-	 * Singleton
-	 */
-	private static VFP_RiepilogoPagamenti instance= null;
 	
 	/*JPanel*/
 	private JPanel _panelMiddleTop, _panelMiddleBottom,_panelContanti, _panelCartaDiCredito, _panelBonifico;
@@ -59,7 +60,7 @@ public class VFP_RiepilogoPagamenti extends ViewFrameOLD{
 	/*JButton*/
 	private JButton _btnAggiungiPagamentoConCarta;
  
-	public VFP_RiepilogoPagamenti(){
+	public VPP_RiepilogoPagamenti() {
 		/*JPanel*/
 		_panelContanti = _viewFactory.getPanel();
 		_panelCartaDiCredito = _viewFactory.getPanel();
@@ -75,26 +76,11 @@ public class VFP_RiepilogoPagamenti extends ViewFrameOLD{
 		_btnAggiungiPagamentoConCarta = _viewFactory.getButton();
 	}
 	
-	/* -------------------------- Metodi di classe ----------------------------- */
-	/**
-	 * Metodo che consente di avere l'unica instanza di questa classe - Pattern Singleton.
-	 */
-	public static VFP_RiepilogoPagamenti getInstance(){
-		if (instance == null){
-			instance = new VFP_RiepilogoPagamenti();
-		}
-		return instance;
-	}
-	@Override
-	public void removeInstance() {
-		// TODO Auto-generated method stub
-		
-	}
+	/* -------------------------- Metodi di istanza ----------------------------- */
 
 	@Override
 	protected void creaPanelTop() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -342,9 +328,7 @@ public class VFP_RiepilogoPagamenti extends ViewFrameOLD{
 			}
 		}
 	}
-	public void creaFrame(SoggiornoContextSubject prenotazione){
-		//Titolo della finestra
-		setTitle("iHotel - Gestione Prenotazione - Informazioni sul pagamento");
+	public void creaPanel(SoggiornoContextSubject prenotazione){
 		//Setto l'attributo prenotazione con il riferimento passato come parametro
 		_prenotazione = prenotazione;
 		//Recupero i pagamenti della prenotazione

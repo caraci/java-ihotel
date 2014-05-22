@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 import javax.swing.*;
 
-import com.iHotel.view.ViewPanel;
+import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.CreaPrenotazione.RicercaCamereLibereListener;
 
 import net.sourceforge.jdatepicker.*;
@@ -20,7 +20,7 @@ import net.sourceforge.jdatepicker.*;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VPCP_SelezionePeriodoTipologie extends ViewPanel {
+public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
 
 	/**
 	 * Tipologie di camere presenti nell'albergo.

@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.model.Utility.Giorno;
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
 
 /**
@@ -28,7 +28,7 @@ public class RicercaCamereLibereListener extends MouseAdapter {
 	public RicercaCamereLibereListener() {
 		super();
 		// Recupero il frame dell'applicazione
-		ViewFrame viewFrame = ViewFrame.getInstance();
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Recupero il contentPane del frame.
 		JPanel contentPane = (JPanel) viewFrame.getContentPane();
 		// Recupero il panel corretto

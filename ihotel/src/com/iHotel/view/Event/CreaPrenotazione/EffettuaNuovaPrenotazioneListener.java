@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import com.iHotel.controller.CCreaPrenotazione;
-import com.iHotel.view.ViewFrame;
+import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
 import com.iHotel.view.Utility.UDialogManager;
 
@@ -28,7 +28,7 @@ public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 	public EffettuaNuovaPrenotazioneListener() {
 		super();
 		// Recupero il frame dell'applicazione
-		ViewFrame viewFrame = ViewFrame.getInstance();
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Recupero il contentPane del frame.
 		JPanel contentPane = (JPanel) viewFrame.getContentPane();
 		// Recupero il panel corretto

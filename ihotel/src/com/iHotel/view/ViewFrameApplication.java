@@ -21,7 +21,7 @@ import com.iHotel.view.Graphic.VP_Home;
  *
  */
 @SuppressWarnings("serial")
-public class ViewFrame extends JFrame {
+public class ViewFrameApplication extends JFrame {
 
 	/**
 	 * ContentPane della finestra.
@@ -34,11 +34,11 @@ public class ViewFrame extends JFrame {
 	/**
 	 * Istanza unica della classe - Pattern singleton
 	 */
-	private static ViewFrame _instance = null;
+	private static ViewFrameApplication _instance = null;
 	/**
 	 * Costruttore
 	 */
-	private ViewFrame() {
+	private ViewFrameApplication() {
 		super();
 		// Richiedo la factory corretta.
 		StyleAbstractFactory viewFactory=ViewFactory.getInstance().getStyleFactory();
@@ -76,9 +76,9 @@ public class ViewFrame extends JFrame {
 	/**
 	 * Metodo per ottenere l'unica istanza di questa classe - Pattern Singleton
 	 */
-	public static ViewFrame getInstance() {
+	public static ViewFrameApplication getInstance() {
 		if(_instance == null) {
-            _instance = new ViewFrame();
+            _instance = new ViewFrameApplication();
          }
          return _instance;
 	}
@@ -86,7 +86,7 @@ public class ViewFrame extends JFrame {
 	/**
 	 * Metodo per passare ad una nuova schermata per la finestra.
 	 */
-	public void cambiaSchermata(ViewPanel panel) {
+	public void cambiaSchermata(ViewPanelContentPane panel) {
 		// Aggiungo panel al contentPane.
 		_contentPane.add(panel);
 		// Cambio schermata.

@@ -20,7 +20,7 @@ import com.iHotel.model.Persona.Documenti.Documento;
 import com.iHotel.model.Persona.Documenti.Passaporto;
 import com.iHotel.model.Persona.Documenti.Patente;
 import com.iHotel.model.Utility.Giorno;
-import com.iHotel.view.Graphic.CheckIn.VFC_AggiungiOspiti_PanelCamera;
+import com.iHotel.view.Graphic.CheckIn.VPC_AggiungiOspiti_PanelCamera;
 
 /**
  * @author Eugenio
@@ -32,13 +32,13 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 	/**
 	 * Pannello contenente la lista degli ospiti.
 	 */
-	private VFC_AggiungiOspiti_PanelCamera _panelCamera;
+	private VPC_AggiungiOspiti_PanelCamera _panelCamera;
 	/**
 	 * Costruttore.
 	 * 
 	 * @param pnlMiddleRight Pannello contenente la lista degli ospiti.
 	 */
-	public AggiungiOspiteAllaPrenotazioneListener(VFC_AggiungiOspiti_PanelCamera panelCamera) {
+	public AggiungiOspiteAllaPrenotazioneListener(VPC_AggiungiOspiti_PanelCamera panelCamera) {
 		_panelCamera=panelCamera;
 	}
 	

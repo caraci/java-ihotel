@@ -16,7 +16,7 @@ import javax.swing.JTabbedPane;
 
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.view.ViewFrameOLD;
+import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
 import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
 
@@ -25,23 +25,22 @@ import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
  *
  */
 @SuppressWarnings("serial")
-public class VFC_AggiungiOspiti extends ViewFrameOLD {
+public class VPC_AggiungiOspiti extends ViewPanelContentPane {
 	
 	/* -------------------------------- Attributi e Costruttore ----------------------------------------- */
-	
+	/**
+	 * Prenotazione per il quale si sta effettuando il check in.
+	 */
 	private SoggiornoContextSubject _prenotazione;
 	
 	private JTabbedPane _panelMiddleTabbed;
 	private JButton _btnTerminaCheckin, _btnTornaPrenotazione;
 	private JLabel _lblTitolo;
+	
 	/**
-	 * Unica instanza della classe - Pattern Singleton
+	 * Costruttore.
 	 */
-	private static VFC_AggiungiOspiti instance=null;
-	/**
-	 * Costruttore privato - Pattern singleton.
-	 */
-	private VFC_AggiungiOspiti() {
+	public VPC_AggiungiOspiti() {
 		_panelMiddleTabbed=_viewFactory.getTabbedPane();
 		// Bottoni
 		_btnTerminaCheckin=_viewFactory.getButtonAvanti();
@@ -49,24 +48,7 @@ public class VFC_AggiungiOspiti extends ViewFrameOLD {
 		// Label
 		_lblTitolo=_viewFactory.getLabelIntestazione_1();
 	}
-	/* ------------------------------------------ Metodi di classe ----------------------------------------- */
-	/**
-	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
-	 */
-	public static VFC_AggiungiOspiti getInstance() {
-		if(instance == null) {
-            instance = new VFC_AggiungiOspiti();
-         }
-         return instance;
-	}
 	/* -------------------------------------------- Metodi di instanza ------------------------------------- */
-	/* (non-Javadoc)
-	 * @see com.iHotel.view.View#removeInstance()
-	 */
-	@Override
-	public void removeInstance() {
-		instance = null;
-	}
 
 	/* (non-Javadoc)
 	 * @see com.iHotel.view.View#creaPanelTop()
@@ -94,7 +76,7 @@ public class VFC_AggiungiOspiti extends ViewFrameOLD {
     	for (Iterator<Camera> iterator = camerePrenotazione.iterator(); iterator.hasNext();) {
 			Camera camera = (Camera) iterator.next();
 			// Aggiungo tab al tabbedPane
-			_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), new VFC_AggiungiOspiti_PanelCamera(camera,_prenotazione));
+			_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), new VPC_AggiungiOspiti_PanelCamera(camera,_prenotazione));
 			//_panelMiddleTabbed.addTab("Camera " + camera.get_numero(), panelCamera);
 			// Aggiungo il tabbedPane al panelMiddle
 			_panelMiddle.add(_panelMiddleTabbed);
@@ -129,8 +111,7 @@ public class VFC_AggiungiOspiti extends ViewFrameOLD {
 	/**
 	 * Metodo per creare il frame.
 	 */
-	public void creaFrame(SoggiornoContextSubject prenotazione) {
-		setTitle("iHotel - Check in");
+	public void creaPanel(SoggiornoContextSubject prenotazione) {
 		// Setto la prenotazione
 		_prenotazione=prenotazione;
 

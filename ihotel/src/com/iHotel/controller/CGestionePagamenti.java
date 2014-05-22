@@ -6,8 +6,8 @@ package com.iHotel.controller;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.persistence.PPrenotazione;
-import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.Graphic.GestionePagamenti.VFP_RiepilogoPagamenti;
+import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
 
 /**
  * @author Alessandro
@@ -38,14 +38,17 @@ public class CGestionePagamenti {
      * @param prenotazione Prenotazione di cui si stanno gestendo i pagamenti
      */
     public void gestisciPagamentiPrenotazione(SoggiornoContextSubject prenotazione){
-    	//Setto l'attributo con la prenotazione
+    	//Setto l'attributo della prenotazione
     	this._prenotazione =prenotazione;
-    	/*Recupero l'istanza della View per la gestione dei pagamenti*/
-    	VFP_RiepilogoPagamenti riepilogoPagamenti = VFP_RiepilogoPagamenti.getInstance();
-    	/*Invoco il metodo creaFrame per creare il frame*/
-    	riepilogoPagamenti.creaFrame(prenotazione);
-    	/*Recupero il gestore delle schermate e gli chiedo di mostrare la schermata giusta*/
-    	ViewHandler.getInstance().showFrame(riepilogoPagamenti);
+    	
+    	// Recupero il frame dell'applicazione
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
+		// Creo il pannello successivo
+		VPP_RiepilogoPagamenti riepilogoPagamenti = new VPP_RiepilogoPagamenti();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(riepilogoPagamenti);
+		// Creo il frame
+		riepilogoPagamenti.creaPanel(_prenotazione);
     }
     
     /**
