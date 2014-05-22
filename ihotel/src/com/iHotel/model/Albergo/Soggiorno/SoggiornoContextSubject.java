@@ -5,6 +5,7 @@ import java.util.*;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.Pagamento.Pagamento;
@@ -129,6 +130,23 @@ public class SoggiornoContextSubject implements ISubject {
 		}
 		return pagamenti;
 	}
+	
+	/**
+	 * Metodo per calcolare il rimanente importo da pagare
+	 */
+	public Prezzo calcolaTotaleDaPagare(){
+		Prezzo importoDaPagare = new Prezzo();
+		Prezzo totaleServiziEsterni = new Prezzo();
+		
+		totaleServiziEsterni = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(this);
+		importoDaPagare.somma(_importoTotalCamere);
+		importoDaPagare.somma(totaleServiziEsterni);
+		importoDaPagare.somma(this.getPrezzoServiziInterni());
+		importoDaPagare.sottrai(this.calcolaTotalePagamenti());
+		
+		return importoDaPagare;
+	}
+	
 	
 	/**
 	 * Metodo per aggiungere una camera alla prenotazione.

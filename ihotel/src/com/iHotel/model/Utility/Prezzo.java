@@ -40,6 +40,17 @@ public class Prezzo {
 		this.set_importo(importo);
 		return this;
 	}
+	/**
+	 * Metodo per sottrarre due prezzi.
+	 * 
+	 * @param prezzo Prezzo da sottrarre.
+	 * @return Prezzo in seguito alla sottrazione.
+	 */
+	public Prezzo sottrai(Prezzo prezzo){
+		double importo = this.get_importo() - prezzo.get_importo();
+		this.set_importo(importo);
+		return this;
+	}
 	
 	/* ----------------- Getter, Setter --------------------- */
 	/**

@@ -5,6 +5,7 @@ package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.Pagamento;
+import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
@@ -60,6 +61,17 @@ public class CGestionePagamenti {
     	_prenotazione.add_pagamento(pagamento);
     	/*Salvo il pagamento nel db*/
     	PPrenotazione.getInstance().store(_prenotazione.get_pagamenti());
+    }
+    
+    public void pagaConCarta(){
+    	//dalla prenotazione recupero il rimanente importo da pagare
+    	Prezzo totaleDaPagare = new Prezzo();
+    	totaleDaPagare = _prenotazione.calcolaTotaleDaPagare();
+    	//manca la parte sul servizio esterno
+    	Pagamento pagamento = new Pagamento();
+    	pagamento.set_importo(totaleDaPagare);
+    	
+    	
     }
 
 }
