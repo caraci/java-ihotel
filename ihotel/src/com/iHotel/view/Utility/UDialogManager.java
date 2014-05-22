@@ -3,6 +3,7 @@
  */
 package com.iHotel.view.Utility;
 
+import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -208,6 +209,7 @@ public class UDialogManager extends JOptionPane {
 		JComboBox<String> comboBoxServizi= new JComboBox<>();
 		/*TextArea per aggiungere note*/
 		JTextArea note = _viewFactory.getTextArea();
+		note.setMinimumSize(new Dimension(30, 0));
 		
 		/*Ciclo suilla mappa dei servizi e li aggiungo alla combobox*/
 		for (Iterator<String> iterator = descrizioniServizi.keySet().iterator(); iterator.hasNext();) {
@@ -225,7 +227,9 @@ public class UDialogManager extends JOptionPane {
 		/*Note*/
 		JLabel lblNote = _viewFactory.getLabel();
 		lblNote.setText("Note al servizio: ");
-		
+		/*Orario del servizio*/
+		JLabel lblOrario = _viewFactory.getLabel();
+		lblOrario.setText("Orario: ");
 		//Creo il jdatepicker per la data
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
 		
@@ -239,7 +243,10 @@ public class UDialogManager extends JOptionPane {
 						(JComponent) data,
 						//note
 						lblNote,
-						note
+						note,
+						//Ora
+						lblOrario,						
+						UMostraOrario.getInstance().creaOrarioDefault()
 				};
 				
 		//Faccio il display della schermata

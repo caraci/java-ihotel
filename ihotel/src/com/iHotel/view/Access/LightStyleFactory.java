@@ -165,7 +165,7 @@ public class LightStyleFactory implements StyleAbstractFactory {
 	@Override
 	public JTextArea getTextArea() {
 		JTextArea textArea = new JTextArea();
-		textArea.setBackground(getColorGeneralPanel());
+		textArea.setBackground(getColorContentPane());
 		textArea.setForeground(new Color(0, 0, 0));
 		return textArea;
 	}
