@@ -9,10 +9,11 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
+import com.iHotel.view.ViewFrame;
 import com.iHotel.view.Access.ViewHandler;
 import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_AggiungiServiziInterni;
-import com.iHotel.view.Graphic.GestionePrenotazione.VFGP_InfoCamera;
+import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_InfoCamera;
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
  * @author Alessandro
@@ -57,11 +58,15 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 		_camera=_albergo.getCameraDaNumero(numeroCamera);
 		// Ricavo il periodo della prenotazione.
 		Periodo periodo = _prenotazione.get_periodo();
-		// Preparo l'interfaccia da visualizzare
-		VFGP_InfoCamera infoCamera = VFGP_InfoCamera.getInstance();
-		infoCamera.creaFrame(_camera,periodo);
-		// Visualizzo la nuova interfaccia.
-		ViewHandler.getInstance().showFrame(infoCamera);
+		
+		// Recupero il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Creo il pannello successivo
+		VPGP_InfoCamera infoCamera = new VPGP_InfoCamera();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(infoCamera);
+		// Creo il frame
+		infoCamera.creaPanel(_camera, periodo);
 	}
 	/**
      * Metodo per mostrare l'interfaccia per aggiungere nuovi servizi alla camera della prenotazione.
@@ -112,11 +117,14 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
      * Metodo che conclude la gestione della prenotazione
      */
     public void terminaGestionePrenotazione(){
-    	// Creo l'interfaccia iniziale.
-    	VP_Home frameHome=VP_Home.getInstance();
-    	frameHome.creaPanel();
-    	// Mostro l'interfaccia iniziale.
-    	ViewHandler.getInstance().showFrame(frameHome);
+    	// Recupero il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Creo il pannello successivo
+		VP_Home panelHome = new VP_Home();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(panelHome);
+		// Creo il frame
+		panelHome.creaPanel();
     }
 	/* ----------------------- Getter, Setter -------------------------- */
 

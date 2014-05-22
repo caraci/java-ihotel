@@ -25,7 +25,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.ForeignSystem.PayTv.ServizioPayTv;
 import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
-import com.iHotel.view.ViewFrameOLD;
+import com.iHotel.view.ViewPanel;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
 import com.iHotel.view.Utility.UtoString;
@@ -37,7 +37,7 @@ import com.iHotel.view.Utility.UtoString;
  * @author Eugenio
  */
 @SuppressWarnings("serial")
-public class VFGP_InfoCamera extends ViewFrameOLD {
+public class VPGP_InfoCamera extends ViewPanel {
 
 	/* ----------------------------- Attributi e costruttore -------------------------------- */
 	/**
@@ -64,14 +64,11 @@ public class VFGP_InfoCamera extends ViewFrameOLD {
 	
 	//Button
 	private JButton _btnAggiungiServizi, _btnTornaPrenotazione;
-		
-	//Singleton
-	private static VFGP_InfoCamera instance=null;
 
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
-	private VFGP_InfoCamera() {
+	public VPGP_InfoCamera() {
 		_serviceFactory=ServiceFactory.getInstance();
 		
 		/*Istanzio gli oggetti da mostrare nell'interfaccia*/
@@ -93,23 +90,7 @@ public class VFGP_InfoCamera extends ViewFrameOLD {
 		_btnAggiungiServizi=_viewFactory.getButtonAvanti();
 		_btnTornaPrenotazione=_viewFactory.getButton();	
 	}
-	
-	/* ------------------------- Metodi di classe ---------------------------- */
-	
-	/**
-	 * Metodo per ottenere l'unica instanza di questa classe - Pattern Singleton
-	 */
-	public static VFGP_InfoCamera getInstance() {
-    	if(instance == null) {
-            instance = new VFGP_InfoCamera();
-         }
-         return instance;
-    }
 	/* -------------------------- Metodi di instanza -------------------------- */
-	@Override
-    public void removeInstance() {
-    	instance = null;
-	}
 	@Override
 	protected void creaPanelTop() {
 		// Setto il layout al panel
@@ -312,9 +293,7 @@ public class VFGP_InfoCamera extends ViewFrameOLD {
 	 * @param camera Camera di cui si vogliono mostrare le informazioni.
 	 * @param periodo Periodo al quale si riferisce la gestione della camera.
 	 */
-	public void creaFrame(Camera camera, Periodo periodo) {
-		/*Setto il titolo della finestra*/
-		setTitle("iHotel - Gestione Prenotazione - Informazioni sulla camera");
+	public void creaPanel(Camera camera, Periodo periodo) {
 		// Setto gli attributi dell'interfaccia
 		_camera=camera;
 		_periodo=periodo;
