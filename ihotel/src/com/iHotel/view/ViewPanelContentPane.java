@@ -3,9 +3,9 @@
  */
 package com.iHotel.view;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 /**
@@ -33,12 +33,12 @@ public abstract class ViewPanelContentPane extends View {
 	protected ViewPanelContentPane() {
 		super();
 		// Setto layout al panel
-		setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
-		
+		//setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
+		setLayout(new BorderLayout());
 		// Creo i pannelli
-		_panelTop=_viewFactory.getPanel(false);
+		_panelTop=_viewFactory.getPanel(true);
 		_panelMiddle=_viewFactory.getPanelMiddle();
-		_panelBottom=_viewFactory.getPanel(false);
+		_panelBottom=_viewFactory.getPanel(true);
 		
 		// Setto le dimensioni dei pannelli in base alla dimensione della schermata.
 		
@@ -54,7 +54,7 @@ public abstract class ViewPanelContentPane extends View {
 		int pnlWidth_component = (int) 0.95*pnlWidth;
 		
 		// Altezze a 10% e 70%
-		int pnlHeight_component_10 = (int) 0.09*pnlHeight;
+		int pnlHeight_component_10 = (int) 0.1*pnlHeight;
 		int pnlHeight_component_70 = (int) 0.7*pnlHeight;
 		
 		// Dimensioni pannelli top, middle, bottom.
@@ -68,9 +68,9 @@ public abstract class ViewPanelContentPane extends View {
 		_panelBottom.setMinimumSize(dimBottom);
 		
 		// Aggiungo i pannelli al contentPane
-		add(_panelTop);
-		add(_panelMiddle);
-		add(_panelBottom);
+		add(_panelTop,BorderLayout.PAGE_START);
+		add(_panelMiddle,BorderLayout.CENTER);
+		add(_panelBottom,BorderLayout.PAGE_END);
 	}
 	
 	/* -------------------------------- Metodi di istanza ----------------------------------- */
