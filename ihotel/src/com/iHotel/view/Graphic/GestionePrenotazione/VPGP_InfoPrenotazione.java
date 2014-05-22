@@ -20,7 +20,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
-import com.iHotel.view.ViewFrameOLD;
+import com.iHotel.view.ViewPanel;
 import com.iHotel.view.Event.GestionePrenotazione.CheckInPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciPagamentoListener;
@@ -33,7 +33,7 @@ import com.iHotel.view.Utility.UtoString;
  * @author Alessandro
  */
 @SuppressWarnings("serial")
-public class VFPG_InfoPrenotazione extends ViewFrameOLD {
+public class VPGP_InfoPrenotazione extends ViewPanel {
 
 	/* ----------------------------------- Attributi e Costruttore ------------------------------------ */
 	/**
@@ -44,8 +44,6 @@ public class VFPG_InfoPrenotazione extends ViewFrameOLD {
 	 * Prezzo dei servizi esterni, richiesti dalle camere della prenotazione, nel periodo di quest'ultima.
 	 */
 	private Prezzo _prezzoServiziEsterni;
-	//Singleton
-	private static VFPG_InfoPrenotazione instance;
 	
 	/*Panel*/
 	private JPanel _panelInfoPrenotante,_panelInfoPrenotazione,_panelCamerePrenotate;
@@ -61,7 +59,7 @@ public class VFPG_InfoPrenotazione extends ViewFrameOLD {
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
-	private VFPG_InfoPrenotazione(){
+	public VPGP_InfoPrenotazione(){
 		// JPanel		
 		_panelInfoPrenotante = _viewFactory.getPanel();
 		_panelInfoPrenotazione = _viewFactory.getPanel();
@@ -84,21 +82,7 @@ public class VFPG_InfoPrenotazione extends ViewFrameOLD {
 		_btnGestionePagamenti = _viewFactory.getButton();
 		_btnCamere = new ArrayList<JButton>();
 	}
-	/* -------------------------- Metodi di classe ----------------------------- */
-	/**
-	 * Metodo che consente di avere l'unica instanza di questa classe - Pattern Singleton.
-	 */
-	public static VFPG_InfoPrenotazione getInstance(){
-		if (instance == null){
-			instance = new VFPG_InfoPrenotazione();
-		}
-		return instance;
-	}
 	/* --------------------- Metodi di instanza ------------------------- */
-	@Override
-    public void removeInstance() {
-    	instance = null;
-	}
 	@Override
 	protected void creaPanelTop(){				
 		//setto la label con il codice della prenotazione
@@ -260,9 +244,7 @@ public class VFPG_InfoPrenotazione extends ViewFrameOLD {
 	 * @param prezzoServiziEsterni Il prezzo dei servizi esterni richiesti dalle camere appartenenti alla prenotazione
 	 * 	 	  passata come parametro.
 	 */
-	public void creaFrame(SoggiornoContextSubject prenotazione, Prezzo prezzoServiziEsterni){	
-		/*Setto il titolo della finestra*/
-		setTitle("iHotel - Gestione Prenotazione - Informazioni sulla prenotazione");
+	public void creaPanel(SoggiornoContextSubject prenotazione, Prezzo prezzoServiziEsterni){	
 		// Setto gli attributi dell'interfaccia
 		_prenotazione=prenotazione;
 		_prezzoServiziEsterni=prezzoServiziEsterni;

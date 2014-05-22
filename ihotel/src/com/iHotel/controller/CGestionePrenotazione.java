@@ -8,8 +8,8 @@ import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Utility.Prezzo;
-import com.iHotel.view.Access.ViewHandler;
-import com.iHotel.view.Graphic.GestionePrenotazione.VFPG_InfoPrenotazione;
+import com.iHotel.view.ViewFrame;
+import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_InfoPrenotazione;
 
 /**
  * @author Eugenio
@@ -34,12 +34,15 @@ public class CGestionePrenotazione {
 		_prenotazione=Storico.getInstance().recuperaPrenotazioneDaCodice(codicePrenotazione);
 		// Recupero il prezzo dei servizi esterni della prenotazione, attraverso serviceFactory.
 		Prezzo prezzo=ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(_prenotazione);
-		// Prendo l'interfaccia correlata.
-		VFPG_InfoPrenotazione infoPrenotazione = VFPG_InfoPrenotazione.getInstance();
-		// Creo l'interfaccia relativa alla prenotazione
-		infoPrenotazione.creaFrame(_prenotazione, prezzo);		
-		// Mostro l'interfaccia relativa alla gestione della prenotazione
-		ViewHandler.getInstance().showFrame(infoPrenotazione);
+		
+		// Recupero il frame dell'applicazione
+		ViewFrame viewFrame = ViewFrame.getInstance();
+		// Creo il pannello successivo
+		VPGP_InfoPrenotazione infoPrenotazione = new VPGP_InfoPrenotazione();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(infoPrenotazione);
+		// Creo il frame
+		infoPrenotazione.creaPanel(_prenotazione, prezzo);
 	}
 
 	/**
