@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -160,5 +161,12 @@ public class LightStyleFactory implements StyleAbstractFactory {
 		JSeparator separator = new JSeparator();
 		separator.setBackground(new Color(20,20,20));
 		return separator;
+	}
+	@Override
+	public JTextArea getTextArea() {
+		JTextArea textArea = new JTextArea();
+		textArea.setBackground(getColorGeneralPanel());
+		textArea.setForeground(new Color(0, 0, 0));
+		return textArea;
 	}
 }

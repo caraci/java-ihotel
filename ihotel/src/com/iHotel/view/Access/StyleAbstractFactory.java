@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -116,5 +117,10 @@ public interface StyleAbstractFactory {
 	 * @return Jseparator.
 	 */
 	public JSeparator getSeparator();
+	/**
+	 * Metodo che restituisce una JTextArea.
+	 * @return JTextArea
+	 */
+	public JTextArea getTextArea();
 	
 }

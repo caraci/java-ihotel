@@ -4,6 +4,7 @@
 package com.iHotel.model.Albergo;
 
 import com.iHotel.model.Utility.Giorno;
+import com.iHotel.model.Utility.Ora;
 
 /**
  * Questa classe serve a modellare un servizio interno all'albergo, per cui la struttura ricettiva
@@ -14,9 +15,10 @@ import com.iHotel.model.Utility.Giorno;
 public class ServizioInterno {
 	
 	/*----------------------- Attributi e costruttore -----------------------*/
-	private String _codice;
-	
-	private Giorno _giorno;
+	private String _codice;	
+	private Giorno _giorno;	
+	private String _note;
+	private Ora _ora;
 	/**
 	 * Costruttore.
 	 */
@@ -49,6 +51,20 @@ public class ServizioInterno {
 	 */
 	public void set_giorno(Giorno _giorno) {
 		this._giorno = _giorno;
+	}
+
+	/**
+	 * @return the _note
+	 */
+	public String get_note() {
+		return _note;
+	}
+
+	/**
+	 * @param _note the _note to set
+	 */
+	public void set_note(String _note) {
+		this._note = _note;
 	}
 
 }

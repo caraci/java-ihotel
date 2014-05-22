@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import net.sourceforge.jdatepicker.JDateComponentFactory;
@@ -201,19 +202,29 @@ public class UDialogManager extends JOptionPane {
 	 */
 	public ServizioInterno getDialogAggiungiServizioInterno(){
 		
+		/*Recupero i descrittori dei servizi offerti dall'albergo*/
 		HashMap<String,DescrizioneServizioInterno> descrizioniServizi = Albergo.getInstance().get_catalogoServizi().get_descrizioneServizi();
-		
+		/*Combobox per mostrare la lista dei servizi*/
 		JComboBox<String> comboBoxServizi= new JComboBox<>();
+		/*TextArea per aggiungere note*/
+		JTextArea note = _viewFactory.getTextArea();
 		
+		/*Ciclo suilla mappa dei servizi e li aggiungo alla combobox*/
 		for (Iterator<String> iterator = descrizioniServizi.keySet().iterator(); iterator.hasNext();) {
 			String codiceServizio = (String) iterator.next();
 			// Aggiungo la stringa del nome del servizio alla comboBox
 			comboBoxServizi.addItem(descrizioniServizi.get(codiceServizio).get_nome());
 		}
+		
+		/*Label*/
 		JLabel lblServizio = _viewFactory.getLabel();
 		lblServizio.setText("Scegli il servizio: ");
+		/*Data*/
 		JLabel lblData = _viewFactory.getLabel();
 		lblData.setText("Data: ");
+		/*Note*/
+		JLabel lblNote = _viewFactory.getLabel();
+		lblNote.setText("Note al servizio: ");
 		
 		//Creo il jdatepicker per la data
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
@@ -225,7 +236,10 @@ public class UDialogManager extends JOptionPane {
 						comboBoxServizi,
 						//data
 						lblData,
-						(JComponent) data
+						(JComponent) data,
+						//note
+						lblNote,
+						note
 				};
 				
 		//Faccio il display della schermata
