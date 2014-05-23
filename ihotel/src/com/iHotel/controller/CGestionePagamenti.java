@@ -5,6 +5,7 @@ package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.Pagamento;
+import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
@@ -68,8 +69,7 @@ public class CGestionePagamenti {
     	Prezzo totaleDaPagare = new Prezzo();
     	totaleDaPagare = _prenotazione.calcolaTotaleDaPagare();
     	//manca la parte sul servizio esterno
-    	Pagamento pagamento = new Pagamento();
-    	pagamento.set_importo(totaleDaPagare);
+    	
     	
     	
     }
