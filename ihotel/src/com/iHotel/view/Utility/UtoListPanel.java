@@ -74,32 +74,43 @@ public class UtoListPanel {
 	}
 	/**
 	 * Metodo per ottenere la stringa relativa ad un periodo.
+	 * 
 	 * @param periodo Periodo in analisi.
-	 * @return Stringa contenente le informazioni del periodo.
+	 * @return Pannello contenente le informazioni del periodo.
 	 */
-	public String periodoToString(Periodo periodo) {
-		Giorno dataInizio = periodo.get_dataInizio();
-		Giorno dataFine = periodo.get_dataFine();
-		// Mesi
-		int meseInizio = dataInizio.get_mese() + 1;
-		int meseFine = dataFine.get_mese() + 1;
-		// Stringa 
-		String toString="Periodo: "+ "Inizio: " + dataInizio.get_giorno() + "-" + meseInizio + "-" + dataInizio.get_anno() +" "+
-				   					 "Fine: " + dataFine.get_giorno() + "-" + meseFine + "-" + dataFine.get_anno();
-		return toString;
+	public JPanel periodoToPanel(Periodo periodo) {
+		JPanel pnlLista = _viewFactory.getPanel(false);
+		// Setto layou pnlLista
+		pnlLista.setLayout(new BoxLayout(pnlLista, BoxLayout.PAGE_AXIS));
+		// Elementi pnl
+		JLabel lblPeriodo = _viewFactory.getLabel();
+		lblPeriodo.setText("Periodo:");
+		// Aggiungo elementi al pnlLista
+		pnlLista.add(lblPeriodo);
+		pnlLista.add(giornoToPanel(periodo.get_dataInizio()));
+		pnlLista.add(giornoToPanel(periodo.get_dataFine()));
 		
+		return pnlLista;
 	}
 	/**
 	 * Metodo per ottenere la stringa relativa ad una data.
+	 * 
 	 * @param giorno Giorno in analisi.
 	 * @return Stringa contenente le informazioni della data.
 	 */
-	public String giornoToString(Giorno giorno) {
-		// Mese
+	public JPanel giornoToPanel(Giorno giorno) {
+		// Aggiungo un 1 al valore del mese perchè viene salvato contanto da 0 a 11.
 		int mese = giorno.get_mese() + 1;
-		// Stringa
-		String toString="Data: " + giorno.get_giorno() + "-" + mese + "-" + giorno.get_anno();
-		return toString;
+		// Creo pannello
+		JPanel pnlLista = _viewFactory.getPanel(false);
+		// Setto layou pnlLista
+		pnlLista.setLayout(new BoxLayout(pnlLista, BoxLayout.PAGE_AXIS));
+		// Elementi pnl
+		JLabel lblGiorno = _viewFactory.getLabel();
+		lblGiorno.setText(giorno.get_giorno() + "/" + mese + "/" + giorno.get_anno());
+		// Aggiungo elementi al pnlLista
+		pnlLista.add(lblGiorno);
+		return pnlLista;
 	}
 	/**
 	 * Metodo per ottenere la stringa relativa ad un servizio interno.
@@ -110,7 +121,7 @@ public class UtoListPanel {
 		// Chiedo al catalogo il descrittore del servizio
 		DescrizioneServizioInterno descrizioneServizio=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(servizioInterno.get_codice());
 		// Stringa
-		String toString = descrizioneServizio.get_codice() + " " + descrizioneServizio.get_nome() + " " + giornoToString(servizioInterno.get_giorno());
+		String toString = descrizioneServizio.get_codice() + " " + descrizioneServizio.get_nome() + " " + giornoToPanel(servizioInterno.get_giorno());
 		
 		return toString;
 	}

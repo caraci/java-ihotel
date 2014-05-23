@@ -67,4 +67,18 @@ public class ServizioInterno {
 		this._note = _note;
 	}
 
+	/**
+	 * @return the _ora
+	 */
+	public Ora get_ora() {
+		return _ora;
+	}
+
+	/**
+	 * @param _ora the _ora to set
+	 */
+	public void set_ora(Ora _ora) {
+		this._ora = _ora;
+	}
+
 }

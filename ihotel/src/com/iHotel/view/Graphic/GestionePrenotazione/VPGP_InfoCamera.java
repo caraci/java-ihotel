@@ -54,7 +54,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	private ServiceFactory _serviceFactory;
 
 	//JPanel
-	private JPanel _pnlMiddleLeft, _pnlMiddleCenter, _pnlMiddleRight;
+	private JPanel _pnlMiddleLeft, _pnlMiddleCenter, _pnlMiddleRight,_pnlServiziPayTv,_pnlServiziTelefono;
 				   
 	// JScrollPane
 	private JScrollPane _scrollPaneMiddleRightPayTv,_scrollPaneMiddleRightTelefono;
@@ -77,6 +77,8 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		_pnlMiddleLeft = _viewFactory.getPanel();
 		_pnlMiddleCenter =_viewFactory.getPanel();
 		_pnlMiddleRight=_viewFactory.getPanel();
+		_pnlServiziPayTv=_viewFactory.getPanel(false);
+		_pnlServiziTelefono=_viewFactory.getPanel(false);
 		/*JScrollPane*/
 		_scrollPaneMiddleRightPayTv=_viewFactory.getScrollPane();
 		_scrollPaneMiddleRightTelefono=_viewFactory.getScrollPane();
@@ -175,19 +177,12 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	 * @return Pannello contenente la lista dei servizi di payTv.
 	 */
 	private JScrollPane creaPanelMiddleRightPayTv() {
-		// Creo pannello nel quale inserisco i servizi della PayTv.
-		JPanel pnlServiziPayTv = _viewFactory.getPanel(false);
 		// Setto Layout
-		pnlServiziPayTv.setLayout(new BoxLayout(pnlServiziPayTv, BoxLayout.PAGE_AXIS));
-		
-		// Pannello Intestazione
-		JPanel pnlIntestazione = _viewFactory.getPanel(false);
-		pnlIntestazione.setLayout(new BorderLayout(0,0));
+		_pnlServiziPayTv.setLayout(new BoxLayout(_pnlServiziPayTv, BoxLayout.PAGE_AXIS));	
+
 		// Label intestazione
 		JLabel lblIntestazione = _viewFactory.getLabelIntestazione_2();
 		lblIntestazione.setText("Servizi PayTv:");
-		// Aggiungo lblIntestazione al pnlIntestazione
-		pnlIntestazione.add(lblIntestazione);
 		
 		// Pannello lista servizi
 		JPanel pnlListaServizi = _viewFactory.getPanel(false);
@@ -206,12 +201,12 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		}
 		
 		// Aggiungo elementi al pnlServiziTelefono
-		pnlServiziPayTv.add(pnlIntestazione);
-		pnlServiziPayTv.add(Box.createVerticalStrut(10));
-		pnlServiziPayTv.add(pnlListaServizi);
+		_pnlServiziPayTv.add(lblIntestazione);
+		_pnlServiziPayTv.add(Box.createVerticalStrut(10));
+		_pnlServiziPayTv.add(pnlListaServizi);
 		
 		// Setto il viewport allo scrollPane
-		_scrollPaneMiddleRightPayTv.setViewportView(pnlServiziPayTv);
+		_scrollPaneMiddleRightPayTv.setViewportView(_pnlServiziPayTv);
 		
 		return _scrollPaneMiddleRightPayTv;
 	}
@@ -221,19 +216,12 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	 * @return Pannello contenente la lista dei servizi del telefono.
 	 */
 	private JScrollPane creaPanelMiddleRightTelefono() {
-		// Creo pannello nel quale inserisco i servizi del telefono.
-		JPanel pnlServiziTelefono = _viewFactory.getPanel(false);
 		// Setto Layout
-		pnlServiziTelefono.setLayout(new BoxLayout(pnlServiziTelefono, BoxLayout.PAGE_AXIS));
+		_pnlServiziTelefono.setLayout(new BoxLayout(_pnlServiziTelefono, BoxLayout.PAGE_AXIS));
 		
-		// Pannello Intestazione
-		JPanel pnlIntestazione = _viewFactory.getPanel(false);
-		pnlIntestazione.setLayout(new BorderLayout(0,0));
 		// Label intestazione
 		JLabel lblIntestazione = _viewFactory.getLabelIntestazione_2();
 		lblIntestazione.setText("Servizi Telefono:");
-		// Aggiungo lblIntestazione al pnlIntestazione
-		pnlIntestazione.add(lblIntestazione);
 		
 		// Pannello lista servizi
 		JPanel pnlListaServizi = _viewFactory.getPanel(false);
@@ -252,12 +240,12 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		}
 		
 		// Aggiungo elementi al pnlServiziTelefono
-		pnlServiziTelefono.add(pnlIntestazione);
-		pnlServiziTelefono.add(Box.createVerticalStrut(10));
-		pnlServiziTelefono.add(pnlListaServizi);
+		_pnlServiziTelefono.add(lblIntestazione);
+		_pnlServiziTelefono.add(Box.createVerticalStrut(10));
+		_pnlServiziTelefono.add(pnlListaServizi);
 		
 		// Setto il viewport allo scrollPane
-		_scrollPaneMiddleRightTelefono.setViewportView(pnlServiziTelefono);
+		_scrollPaneMiddleRightTelefono.setViewportView(_pnlServiziTelefono);
 		
 		return _scrollPaneMiddleRightTelefono;
 	}

@@ -49,7 +49,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 	private JPanel _panelInfoPrenotante,_panelInfoPrenotazione,_panelCamerePrenotate;
 	
 	/*Label*/
-	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, _lblTitoloPrenotazione,_lblPeriodo,_lblPrezzoCamere,_lblPrezzoServizi, _lblRiepilogoPrenotazione, _lblScegliCamera;
+	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, _lblTitoloPrenotazione,_lblPrezzoCamere,_lblPrezzoServizi, _lblRiepilogoPrenotazione, _lblScegliCamera;
 
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
@@ -71,7 +71,6 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		_lblCognomePrenotante= _viewFactory.getLabel();
 		_lblNomePrenotante= _viewFactory.getLabel();
 		_lblTitoloPrenotazione= _viewFactory.getLabelIntestazione_1();
-		_lblPeriodo= _viewFactory.getLabel();
 		_lblPrezzoCamere= _viewFactory.getLabel();
 		_lblPrezzoServizi= _viewFactory.getLabel();
 		_lblScegliCamera= _viewFactory.getLabelIntestazione_2();
@@ -184,10 +183,6 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		/*Setto il testo da riportare nell'intestazione del blocco del riepilogo informazioni sulla prenotazione*/
 		_lblRiepilogoPrenotazione.setText("Riepilogo prenotazione:");
 		
-		/*Setto il periodo della prenotazione nell'etichetta*/
-		
-		_lblPeriodo.setText(UtoListPanel.getInstance().periodoToString(periodo));
-		
 		/*Setto il prezzo delle camere*/
 		_lblPrezzoCamere.setText("Il totale delle camere è di: "+prezzoCamere.get_importo()+" "+prezzoCamere.get_valuta());
 		
@@ -197,7 +192,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		/*Aggiugo le label e gli spazi vuoti al blocco centrale*/
 		_panelInfoPrenotazione.add(_lblRiepilogoPrenotazione);
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,15)));
-		_panelInfoPrenotazione.add(_lblPeriodo);
+		_panelInfoPrenotazione.add(UtoListPanel.getInstance().periodoToPanel(periodo));
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,15)));
 		_panelInfoPrenotazione.add(_lblPrezzoCamere);
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,15)));
