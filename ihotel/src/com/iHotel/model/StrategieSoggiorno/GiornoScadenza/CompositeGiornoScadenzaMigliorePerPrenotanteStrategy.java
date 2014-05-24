@@ -3,6 +3,8 @@
  */
 package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
 
+import com.iHotel.model.Utility.Giorno;
+
 /**
  * @author Eugenio
  *
@@ -10,11 +12,11 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
 public class CompositeGiornoScadenzaMigliorePerPrenotanteStrategy extends
 		CompositeOttieniGiornoScadenzaStrategy {
 
-	/**
-	 * 
-	 */
-	public CompositeGiornoScadenzaMigliorePerPrenotanteStrategy() {
-		// TODO Auto-generated constructor stub
+
+	@Override
+	public Giorno getGiornoScadenza() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

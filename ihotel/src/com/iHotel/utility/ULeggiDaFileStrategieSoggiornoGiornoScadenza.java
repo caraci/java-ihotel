@@ -14,14 +14,17 @@ import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaOccupa
 import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaPrenotanteGiornoScadenza;
 
 /**
+ * Classe per andare a leggere i vincoli legati alle differenti strategie, per decidere
+ * il giorno di scadenza, entro il quale il prenotante deve fornire o la sua carta di credito,
+ * o deve effettuare un bonifico a garanzia della richiesta di soggiorno effettuata.
+ * 
  * @author Eugenio
- *
  */
-public class ULeggiDaFileStrategieSoggiorno extends ULeggiDaFile {
+public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileStrategie {
 	/**
 	 * Percorso per la cartella contenente i file che descrivono la strategia.
 	 */
-	public static String _pathToConfigsStrategieSoggiorno = _pathToConfigs + "strategie/GiornoScadenza/";
+	public static String _pathToConfigsStrategieSoggiorno = _pathToConfigsStrategie + "GiornoScadenza/";
 
 	/**
 	 * Metodo per ottenere la lista dei vincoli che servono per ottenere il giorno di scadenza di invio della garanzia di una

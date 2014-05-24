@@ -1,0 +1,8 @@
+# Inserire nel seguito per ogni riga entro quando richiedere
+# la garanzia, seguendo questo formato.
+#
+# NUMERO_PRENOTAZIONI_MIN-NUMERO_PRENOTAZIONI_MAX-QUANTI_GIORNI_PRIMA_RICHIEDERE
+0-5-40
+6-10-35
+11-50-30
+End

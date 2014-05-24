@@ -1,0 +1,8 @@
+# Inserire nel seguito per ogni riga entro quando richiedere
+# la garanzia, seguendo questo formato.
+#
+# NUMERO_NOTTI_MIN-NUMERO_NOTTI_MAX-QUANTI_GIORNI_PRIMA_RICHIEDERE
+1-7-30
+8-15-40
+16-21-50
+End
