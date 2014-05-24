@@ -23,7 +23,7 @@ public class UStartup {
 	 * 
 	 * @return Catalogo delle camere.
 	 */
-	public CatalogoCamere getCatalogoCamere() {
+	private static CatalogoCamere getCatalogoCamere() {
 		// Recupero il catalogo delle camere attraverso pattern Singleton
 		CatalogoCamere catalogoCamere = CatalogoCamere.getInstance();
 		// Setto gli attributi del catalogoCamere
@@ -36,7 +36,7 @@ public class UStartup {
 	 * 
 	 * @return Catalogo dei servizi interni.
 	 */
-	public CatalogoServiziInterni getCatalogoServiziInterni() {
+	private static CatalogoServiziInterni getCatalogoServiziInterni() {
 		// Recupero il catalogo dei servizi attraverso pattern Singleton
 		CatalogoServiziInterni catalogoServiziInterni = CatalogoServiziInterni.getInstance();
 		// Setto gli attributi del CatalogoServiziInterni
@@ -49,7 +49,7 @@ public class UStartup {
 	 * 
 	 * @return Storico delle prenotazioni dell'albergo.
 	 */
-	public Storico getStorico() {
+	private static Storico getStorico() {
 		// Recupero lo storico attraverso pattern Singleton
 		Storico storico = Storico.getInstance();
 		// Setto gli attributi dello storico.
@@ -60,7 +60,7 @@ public class UStartup {
 	/**
 	 * Metodo per inizializzare lo strato di dominio.
 	 */
-	public void inizializza() {
+	public static void inizializza() {
 		try {
 			// Mediante pattern singleton carico Albergo.
 			Albergo albergo = Albergo.getInstance();

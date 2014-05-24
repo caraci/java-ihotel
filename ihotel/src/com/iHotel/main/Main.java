@@ -10,8 +10,7 @@ public class Main {
 	 */
 	public static void main(String[] args) throws java.io.IOException {	
 		// Inizializzo lo strato di dominio.
-		UStartup startup = new UStartup();
-		startup.inizializza();
+		UStartup.inizializza();
 		// Creo il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Mostro il frame
