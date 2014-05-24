@@ -6,7 +6,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Utility.Periodo;
-import com.iHotel.utility.UDefaultLoader;
+import com.iHotel.utility.ULeggiDaFile;
 
 /**
  * Questa classe rappresenta il concetto di "Albergo" del mondo reale.
@@ -38,9 +38,8 @@ public class Albergo {
 		 * Si prendono nome, telefono, partita IVA e email dal defaultLoader, togliendo dalla classe  
 		 * MAlbergo la responsabilità di recuperare i dati di default.
 		 */
-		UDefaultLoader defaultLoader = UDefaultLoader.getInstance();
         ArrayList<String> informazioniAlbergo;
-        informazioniAlbergo=defaultLoader.getInformazioniAlbergo();
+        informazioniAlbergo=ULeggiDaFile.getInformazioniAlbergo();
         _nome = informazioniAlbergo.get(0);
         _telefono = informazioniAlbergo.get(1);
         _PIVA = informazioniAlbergo.get(2);

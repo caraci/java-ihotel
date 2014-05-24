@@ -3,7 +3,7 @@
  */
 package com.iHotel.view.Access;
 
-import com.iHotel.utility.UDefaultLoader;
+import com.iHotel.utility.ULeggiDaFile;
 
 /**
  * Classe addetta al reperimento della giusta factory per la creazione di oggetti grafici.
@@ -32,7 +32,7 @@ public class ViewFactory {
 	 */
 	public StyleAbstractFactory getStyleFactory() {
 		// Leggo da file esterno quale Factory utilizzare
-        String stile = UDefaultLoader.getInstance().getStileInterfaccia();
+        String stile = ULeggiDaFile.getStileInterfaccia();
         // Factory da restituire
         StyleAbstractFactory styleAbstractFactory;
         switch (stile) {

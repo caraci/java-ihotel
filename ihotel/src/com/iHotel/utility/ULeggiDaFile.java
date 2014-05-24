@@ -11,29 +11,12 @@ import java.util.*;
  * 
  * @author Eugenio
  */
-public class UDefaultLoader {	
+public class ULeggiDaFile {	
 	/* -------------------------- Attributi e costruttore ----------------------- */
 	/**
 	 * Stringa contenente il percorso verso la cartella configs.
 	 */
-	private String _pathToConfigs;
-	private static UDefaultLoader instance = null;
-	/**
-	 * Costruttore privato - Pattern singleton
-	 */
-	private UDefaultLoader(){
-		_pathToConfigs = "./ihotel/configs/";
-	}
-	/**
-	 * Metodo per ottenere l'instanza unica di questa classe - Pattern singleton
-	 */
-	/* ----------------------- Metodi di classe -------------------------------- */
-	public static UDefaultLoader getInstance(){
-		if (instance == null){
-			instance = new UDefaultLoader();
-		}
-		return instance;
-	}
+	protected static String _pathToConfigs = "./ihotel/configs/";
 	/* ------------------------- Metodi di instanza ------------------------------ */
 	/**
 	 * Metodo per andare a leggere in un file di configurazione i valori relativi a nome, telefono, PIVA e eMail della
@@ -41,7 +24,7 @@ public class UDefaultLoader {
 	 * 
 	 * @return Collezione contenente nome, telefono, PIVA e eMail dell'albergo.
 	 */
-	public ArrayList<String> getInformazioniAlbergo(){
+	public static ArrayList<String> getInformazioniAlbergo(){
 		// Variabili nelle quali andremo a memorizzare gli attributi dell'albergo.
 		String nome, telefono, PIVA, eMail;
 		// Ricavo il path assoluto.
@@ -73,7 +56,7 @@ public class UDefaultLoader {
 	 * 
 	 * @return Stringa contenente lo stile da utilizzare.
 	 */
-	public String getStileInterfaccia(){
+	public static String getStileInterfaccia(){
 		// Variabile nelle quali andremo a memorizzare lo stile dell'interfaccia.
 		String stile;
 		// Ricavo il path assoluto.
@@ -92,7 +75,7 @@ public class UDefaultLoader {
 	 * 
 	 * @return Lista contenente i sistemi esterni da utilizzare
 	 */
-	public ArrayList<String> getSistemiServiziEsterni() {
+	public static ArrayList<String> getSistemiServiziEsterni() {
 		// Variabili nelle quali andremo a memorizzare gli attributi dell'albergo.
 			String payTvSystem, telephoneSystem;
 			// Ricavo il path assoluto.
@@ -113,18 +96,4 @@ public class UDefaultLoader {
 			
 			return sistemiEsterni;
 	}
-	/* --------------------------------- Getter, Setter ---------------------------------- */
-	/**
-	 * @return _pathToConfigs
-	 */
-	public String get_PathToConfigs() {
-		return _pathToConfigs;
-	}
-	/**
-	 * @param _pathToConfigs
-	 */
-	public void set_PathToConfigs(String _pathToConfigs) {
-		this._pathToConfigs = _pathToConfigs;
-	}
-
 }

@@ -6,7 +6,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.PayTv.*;
 import com.iHotel.model.ForeignSystem.Telephone.*;
 import com.iHotel.model.Utility.Prezzo;
-import com.iHotel.utility.UDefaultLoader;
+import com.iHotel.utility.ULeggiDaFile;
 
 /**
  * Questa classe ha il compito di fornire le maniglie ai sistemi esterni reali cui l'albergo è collegato. 
@@ -37,7 +37,7 @@ public class ServiceFactory {
 	 */
 	private ServiceFactory() {
 		// Ricavo da file di configurazione i sistemi esterni dei servizi da utilizzare.
-		ArrayList<String> sistemiServiziEsterni = UDefaultLoader.getInstance().getSistemiServiziEsterni();
+		ArrayList<String> sistemiServiziEsterni = ULeggiDaFile.getSistemiServiziEsterni();
 		// Sistema payTv
 		switch (sistemiServiziEsterni.get(0)) {
 		case "Sky":
