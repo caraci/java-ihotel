@@ -54,7 +54,7 @@ public class RicercaCamereLibereListener extends MouseAdapter {
 		}
 		// Data inizio
 		int annoInizio 	 = _selezionePeriodoTipologie.get_datePanelInizio().getModel().getYear();
-		int meseInizio 	 = _selezionePeriodoTipologie.get_datePanelInizio().getModel().getMonth();
+		int meseInizio 	 = _selezionePeriodoTipologie.get_datePanelInizio().getModel().getMonth();		
 		int giornoInizio = _selezionePeriodoTipologie.get_datePanelInizio().getModel().getDay();
 		// Data fine
 		int annoFine 	 = _selezionePeriodoTipologie.get_datePanelFine().getModel().getYear();

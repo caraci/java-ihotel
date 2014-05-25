@@ -39,9 +39,8 @@ public class Giorno {
 	 * @return
 	 */
 	public MyDate toMyDate() {
-		int mese = get_mese() - 1;
 		MyDate date = new MyDate();
-		date.set(get_anno(), mese, get_giorno());
+		date.set(get_anno(), get_mese(), get_giorno());
 		return date;
 	}
 	/**
@@ -62,17 +61,20 @@ public class Giorno {
 	 * 
 	 * @param numeroGiorniDaAggiungere Numero intero o positivo di giorni da aggiungere.
 	 */
-	public Giorno addToGiorno(int numeroGiorniDaAggiungere) {
+	public Giorno addToGiorno(int numeroGiorniDaAggiungere) {			
 		// Modifico la data di inizio
 		MyDate nuovoGiornoDate = this.toMyDate();
-		nuovoGiornoDate.add(Calendar.DATE, numeroGiorniDaAggiungere);
+		nuovoGiornoDate.add(Calendar.DAY_OF_MONTH, numeroGiorniDaAggiungere);
 		// Assegno 
 		Giorno nuovoGiorno = new Giorno();
-		nuovoGiorno = nuovoGiornoDate.toGiorno();
+		nuovoGiorno = nuovoGiornoDate.toGiorno();		
 		// Fornisco
 		return nuovoGiorno;
 	}
 
+	public String toString() {
+		return _giorno + "-" + _mese + "-" + _anno; 
+	}
 	/* -------------------------- Getter, Setter ----------------------------------- */
 	/**
 	 * @return the _giorno

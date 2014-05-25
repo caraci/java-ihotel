@@ -2,7 +2,7 @@
 # la garanzia, seguendo questo formato.
 #
 # NUMERO_NOTTI_MIN-NUMERO_NOTTI_MAX-QUANTI_GIORNI_PRIMA_RICHIEDERE
-1-7-30
-8-15-40
-16-21-50
+1-10-40
+11-20-60
+21-30-80
 End

@@ -33,6 +33,10 @@ public class ViewFrameApplication extends JFrame {
 	 */
 	private CardLayout _layoutContentPane;
 	/**
+	 * Panello in uso
+	 */
+	private JPanel _pnlAttuale;
+	/**
 	 * Istanza unica della classe - Pattern singleton
 	 */
 	private static ViewFrameApplication _instance = null;
@@ -80,6 +84,8 @@ public class ViewFrameApplication extends JFrame {
 		VP_Home panelHome = new VP_Home();
 		panelHome.creaPanel();
 		_contentPane.add(panelHome);
+		// Setto il pannello visualizzato a _pnlAttuale
+		_pnlAttuale = (JPanel) _contentPane.getComponent(0);
 	}
 	/**
 	 * Metodo per ottenere l'unica istanza di questa classe - Pattern Singleton
@@ -99,8 +105,22 @@ public class ViewFrameApplication extends JFrame {
 		_contentPane.add(panel);
 		// Cambio schermata.
 		_layoutContentPane.next(_contentPane);
+		// Setto il pannello visualizzato a _pnlAttuale
+		_pnlAttuale = (JPanel) _contentPane.getComponent(1);
 		// Elimino la schermata precedente.
 		_contentPane.remove(0);
+	}
+	/**
+	 * @return the _pnlAttuale
+	 */
+	public JPanel get_pnlAttuale() {
+		return _pnlAttuale;
+	}
+	/**
+	 * @param _pnlAttuale the _pnlAttuale to set
+	 */
+	public void set_pnlAttuale(JPanel _pnlAttuale) {
+		this._pnlAttuale = _pnlAttuale;
 	}
 
 }

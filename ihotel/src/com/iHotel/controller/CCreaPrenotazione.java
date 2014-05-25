@@ -6,6 +6,8 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Observer.IObserver;
+import com.iHotel.model.StrategieSoggiorno.StrategieSoggiornoFactory;
+import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.ComponentOttieniGiornoScadenzaStrategy;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
@@ -132,14 +134,20 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
+		// Factory delle strategie
+		StrategieSoggiornoFactory strategieFactory = StrategieSoggiornoFactory.getInstance();
+		// Rimuovo l'osservatore dalla prenotazione.
+		_prenotazione.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
 		// Aggiungo l'ospite alla prenotazione
 		_prenotazione.addPrenotante(nome, cognome, eMail, telefono);
 		// Occupo le camere scelte dall'utente
 		_prenotazione.occupaCamere();
-		// Setto la prenotazione come completata
-		_prenotazione.set_completata(true);
 		// Setto il codice alla prenotazione
 		_prenotazione.set_codice(SoggiornoContextSubject.generaCodice());
+		// Strategia per il calcolo del giorno di scadenza
+		ComponentOttieniGiornoScadenzaStrategy strategiaGiornoScadenza = strategieFactory.getStrategyCalcoloGiornoScadenza(_prenotazione);
+		// Setto il giorno di scadenza per l'invio della garanzia.
+		_prenotazione.set_giornoScadenzaInvioGaranzia(strategiaGiornoScadenza.getGiornoScadenza(_prenotazione));
 		// Aggiungo la prenotazione allo storico
 		Storico storico = Storico.getInstance();
 		storico.addPrenotazione(_prenotazione);

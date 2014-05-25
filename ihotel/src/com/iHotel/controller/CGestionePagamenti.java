@@ -11,7 +11,6 @@ import com.iHotel.model.ForeignSystem.PagamentoCarta.IPagamentoCartaAdapter;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Persona.Documenti.CartaDiCredito;
-import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;

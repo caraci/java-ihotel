@@ -10,6 +10,7 @@ import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Persona.ClientePrenotante;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 /**
@@ -25,27 +26,39 @@ public class SoggiornoContextSubject implements ISubject {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
 	/**
-	 * Vengono mantenute le maniglie alle camere della prenotazione.
+	 * Lista delle camere prenotate per questo soggiorno.
 	 */
 	private ArrayList<Camera> _camerePrenotate;
 	/**
-	 * Vengono mantenute le maniglie agli osservatori di questa istanza - Pattern Observer
+	 * Lista degli osservatori di questo oggetto - Pattern Observer
 	 */
 	private ArrayList<IObserver> _osservatori;
 	
 	/**
-	 * Vengono mantenute le informazioni sui pagamenti, la chiave stringa è l'identificativo del pagamento
+	 * Lista dei pagamenti effettuati a favore del soggiorno.
 	 */
 	private ArrayList<Pagamento> _pagamenti;
 	/**
 	 * Il periodo della prenotazione va dal giorno in cui l'ospite inizia il soggiorno, al giorno in cui l'ospite 
-	 * termina il soggiorono e lascia la struttura ricettiva.
+	 * termina il soggiorno e lascia la struttura ricettiva.
 	 */
 	private Periodo _periodo;
-	private boolean _completata;
+	/**
+	 * Cliente prenotante del soggiorno.
+	 */
 	private ClientePrenotante _prenotante;
+	/**
+	 * Importo totale per le camere riservate da questo soggiorno.
+	 */
 	private Prezzo _importoTotalCamere;
+	/**
+	 * Codice identificativo del soggiorno.
+	 */
 	private String _codice;
+	/**
+	 * Giorno limite entro il quale deve essere fornito, o una carta di credito o un bonifico a favore della richiesta di soggiorno.
+	 */
+	private Giorno _giornoScadenzaInvioGaranzia;
 	/**
 	 * Costruttore.
 	 */
@@ -187,6 +200,15 @@ public class SoggiornoContextSubject implements ISubject {
 			cameraPrenotata.occupaInPeriodoState(_periodo);
 		}
 	}
+	/**
+	 * Metodo per aggiungere un pagamento alla prenotazione.
+	 * 
+	 * @param pagamento Pagamento effettuato a favore del soggiorno.
+	 */
+	public void add_pagamento(Pagamento pagamento) {
+		//Aggiungo il pagamento alla lista di pagamenti.
+		this._pagamenti.add(pagamento);
+	}
 	/* -------------------------------- Getter, Setter ------------------------------------------ */
 	/**
 	 * @return _elementiPrenotazione
@@ -216,18 +238,6 @@ public class SoggiornoContextSubject implements ISubject {
 		this._periodo = _periodo;
 	}
 	/**
-	 * @return _completata 
-	 */
-	public boolean get_completata() {
-		return this._completata;
-	}
-	/**
-	 * @param _completata 
-	 */
-	public void set_completata(boolean _completata) {
-		this._completata = _completata;
-	}
-	/**
 	 * @return _total 
 	 */
 	public Prezzo get_total() {
@@ -255,6 +265,20 @@ public class SoggiornoContextSubject implements ISubject {
 	}
 
 	/**
+	 * @return the _giornoScadenzaInvioGaranzia
+	 */
+	public Giorno get_giornoScadenzaInvioGaranzia() {
+		return _giornoScadenzaInvioGaranzia;
+	}
+	
+	/**
+	 * @param _giornoScadenzaInvioGaranzia the _giornoScadenzaInvioGaranzia to set
+	 */
+	public void set_giornoScadenzaInvioGaranzia(Giorno _giornoScadenzaInvioGaranzia) {
+		this._giornoScadenzaInvioGaranzia = _giornoScadenzaInvioGaranzia;
+	}
+
+	/**
 	 * @return the _pagamenti
 	 */
 	public ArrayList<Pagamento> get_pagamenti() {
@@ -262,12 +286,9 @@ public class SoggiornoContextSubject implements ISubject {
 	}
 
 	/**
-	 * Metodo per aggiungere un pagamento alla prenotazione
-	 * @param tipoDiPagamento 	E' il tipo di pagamento effettuato, ad esempio contanti
-	 * @param pagamento			E' l'oggetto pagamento
+	 * @param _pagamenti the _pagamenti to set
 	 */
-	public void add_pagamento(Pagamento pagamento) {
-		//Aggiungo il pagamento nella mappa, correttamente rispetto alla posizione
-		this._pagamenti.add(pagamento);
+	public void set_pagamenti(ArrayList<Pagamento> _pagamenti) {
+		this._pagamenti = _pagamenti;
 	}
 }
