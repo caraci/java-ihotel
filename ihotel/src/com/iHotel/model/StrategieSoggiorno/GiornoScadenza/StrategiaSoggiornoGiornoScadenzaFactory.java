@@ -1,23 +1,11 @@
 /**
  * 
  */
-package com.iHotel.model.StrategieSoggiorno;
+package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.ComponentOttieniGiornoScadenzaStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.CompositeGiornoScadenzaMigliorePerHotelStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.CompositeGiornoScadenzaMigliorePerPrenotanteStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.CompositeOttieniGiornoScadenzaStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.LeafOttieniGiornoScadenzaDurataSoggiornoStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.LeafOttieniGiornoScadenzaOccupazioneCamereStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.LeafOttieniGiornoScadenzaPrenotanteStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaDurataSoggiornoGiornoScadenza;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaOccupazioneCamereGiornoScadenza;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaPrenotanteGiornoScadenza;
 import com.iHotel.utility.ULeggiDaFileStrategie;
 import com.iHotel.utility.ULeggiDaFileStrategieSoggiornoGiornoScadenza;
 
@@ -25,23 +13,23 @@ import com.iHotel.utility.ULeggiDaFileStrategieSoggiornoGiornoScadenza;
  * @author Eugenio
  *
  */
-public class StrategieSoggiornoFactory {
+public class StrategiaSoggiornoGiornoScadenzaFactory {
 	/**
 	 * Istanza unica della classe - Pattern Singleton
 	 */
-	public static StrategieSoggiornoFactory _instance = null;
+	public static StrategiaSoggiornoGiornoScadenzaFactory _instance = null;
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
-	private StrategieSoggiornoFactory() {}
+	private StrategiaSoggiornoGiornoScadenzaFactory() {}
 	/* ---------------------- Metodi di classe --------------------- */
 	/**
 	 * Metodo per fornire l'istanza unica di questa classe - Pattern Singleton
 	 * @return
 	 */
-	public static StrategieSoggiornoFactory getInstance() {
+	public static StrategiaSoggiornoGiornoScadenzaFactory getInstance() {
 		if (_instance == null) {
-			_instance = new StrategieSoggiornoFactory();
+			_instance = new StrategiaSoggiornoGiornoScadenzaFactory();
 		}
 		return _instance;
 	}
@@ -50,22 +38,18 @@ public class StrategieSoggiornoFactory {
 	 * Metodo per ottenere la strategia, per il calcolo del giorno di scadenza per l'invio della garanzia
 	 * alla richiesta di soggiorno, da parte del prenotante.
 	 * 
-	 * @param soggiorno Soggiorno in analisi.
 	 * @return Strategia per calcolare il giorno.
 	 */
-	public ComponentOttieniGiornoScadenzaStrategy getStrategyCalcoloGiornoScadenza(SoggiornoContextSubject soggiorno) {
+	public ComponentOttieniGiornoScadenzaStrategy getStrategyCalcoloGiornoScadenza() {
 		// Scelgo la strategia di risoluzione indicata dall'albergo in una sorgente esterna.
-		ComponentOttieniGiornoScadenzaStrategy componentStrategy = getPoliticaRisoluzioneTraStrategie(ULeggiDaFileStrategie.getPoliticaSceltaStrategie());
+		ComponentOttieniGiornoScadenzaStrategy componentStrategy = getPoliticaRisoluzioneTraStrategie(ULeggiDaFileStrategie.getPoliticaSceltaStrategieGiornoScadenza());
 		// Carico le strategie da utilizzare.
-		HashMap<String,Boolean> strategieDaUtilizzare = ULeggiDaFileStrategie.getStrategieDaUtilizzareGiornoScadenza();
+		ArrayList<String> strategieDaUtilizzare = ULeggiDaFileStrategie.getStrategieDaUtilizzareGiornoScadenza();
 		// Ciclo sulle strategie per decidere quali utilizzare
-		for (Iterator<String> iterator = strategieDaUtilizzare.keySet().iterator(); iterator.hasNext();) {
+		for (Iterator<String> iterator = strategieDaUtilizzare.iterator(); iterator.hasNext();) {
 			String nomeStrategia = (String) iterator.next();
-			// Controllo se va istanziata o meno
-			if(strategieDaUtilizzare.get(nomeStrategia)) {
-				// Ricavo la strategia corretta in base al nome fornito e l'aggiungo alla composizione.
-				componentStrategy.addStrategy(getLeafStrategyFromName(nomeStrategia));
-			}
+			// Ricavo la strategia corretta in base al nome fornito e l'aggiungo alla composizione.
+			componentStrategy.addStrategy(getLeafStrategyFromName(nomeStrategia));
 		}
 		
 		return componentStrategy;
@@ -159,8 +143,7 @@ public class StrategieSoggiornoFactory {
 			break;
 		}
 		
-		return strategyResolution;
-		
+		return strategyResolution;	
 	}
 	
 }

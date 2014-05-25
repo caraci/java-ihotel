@@ -1,0 +1,8 @@
+# Inserire nel seguito per ogni riga entro quando richiedere
+# la garanzia, seguendo questo formato.
+#
+# NUMERO_PRENOTAZIONI_MIN-NUMERO_PRENOTAZIONI_MAX-PERCENTUALE_SUL_TOTALE
+0-5-20
+6-10-15
+11-50-10
+End

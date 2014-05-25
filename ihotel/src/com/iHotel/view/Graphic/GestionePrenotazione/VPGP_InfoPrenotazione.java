@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewPanelContentPane;
@@ -49,7 +50,9 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 	private JPanel _panelInfoPrenotante,_panelInfoPrenotazione,_panelCamerePrenotate;
 	
 	/*Label*/
-	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, _lblTitoloPrenotazione,_lblPrezzoCamere,_lblPrezzoServizi, _lblRiepilogoPrenotazione, _lblScegliCamera;
+	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, 
+				   _lblTitoloPrenotazione,_lblPrezzoCamere,_lblPrezzoServizi, 
+				   _lblRiepilogoPrenotazione, _lblScegliCamera, _lblGiornoScadenzaGaranzia;
 
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
@@ -73,6 +76,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		_lblTitoloPrenotazione= _viewFactory.getLabelIntestazione_1();
 		_lblPrezzoCamere= _viewFactory.getLabel();
 		_lblPrezzoServizi= _viewFactory.getLabel();
+		_lblGiornoScadenzaGaranzia=_viewFactory.getLabel();
 		_lblScegliCamera= _viewFactory.getLabelIntestazione_2();
 		
 		/*Button*/
@@ -172,6 +176,9 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		/*Recupero il periodo*/
 		Periodo periodo = _prenotazione.get_periodo();
 		
+		/*Recupero il giorno di scadenza per l'invio della garanzia*/
+		Giorno giornoScadenzaGaranzia =  _prenotazione.get_giornoScadenzaInvioGaranzia();
+		
 		/*Recupero il prezzo delle camere*/
 		Prezzo prezzoCamere = _prenotazione.get_total();
 		
@@ -184,19 +191,24 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		_lblRiepilogoPrenotazione.setText("Riepilogo prenotazione:");
 		
 		/*Setto il prezzo delle camere*/
-		_lblPrezzoCamere.setText("Il totale delle camere è di: "+prezzoCamere.get_importo()+" "+prezzoCamere.get_valuta());
+		_lblPrezzoCamere.setText("Totale camere: "+prezzoCamere.get_importo()+" "+prezzoCamere.get_valuta());
 		
 		/*Setto il prezzo dei servizi*/
-		_lblPrezzoServizi.setText("Il totale per i servizi di cui si è usufruito è: "+totaleServizi.get_importo()+ " "+totaleServizi.get_valuta());
+		_lblPrezzoServizi.setText("Totale servizi: "+totaleServizi.get_importo()+ " "+totaleServizi.get_valuta());
+		
+		/*Setto il giorno di scadenza per l'invio della garanzia */
+		_lblGiornoScadenzaGaranzia.setText("Richiedi garanzia entro: " + giornoScadenzaGaranzia.toString());
 		
 		/*Aggiugo le label e gli spazi vuoti al blocco centrale*/
 		_panelInfoPrenotazione.add(_lblRiepilogoPrenotazione);
-		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,15)));
+		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
 		_panelInfoPrenotazione.add(UtoListPanel.getInstance().periodoToPanel(periodo));
-		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,15)));
+		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
 		_panelInfoPrenotazione.add(_lblPrezzoCamere);
-		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,15)));
+		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
 		_panelInfoPrenotazione.add(_lblPrezzoServizi);
+		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
+		_panelInfoPrenotazione.add(_lblGiornoScadenzaGaranzia);
 		
 		return _panelInfoPrenotazione;
 	}

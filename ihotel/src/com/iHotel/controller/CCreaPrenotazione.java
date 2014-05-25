@@ -6,8 +6,10 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Observer.IObserver;
-import com.iHotel.model.StrategieSoggiorno.StrategieSoggiornoFactory;
+import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.ComponentOttieniAmmontareCaparraStrategy;
+import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.StrategiaSoggiornoAmmontareCaparraFactory;
 import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.ComponentOttieniGiornoScadenzaStrategy;
+import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.StrategiaSoggiornoGiornoScadenzaFactory;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
@@ -134,8 +136,9 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
-		// Factory delle strategie
-		StrategieSoggiornoFactory strategieFactory = StrategieSoggiornoFactory.getInstance();
+		// Factory delle strategie.
+		StrategiaSoggiornoGiornoScadenzaFactory strategiaGiornoScadenzaFactory = StrategiaSoggiornoGiornoScadenzaFactory.getInstance();
+		StrategiaSoggiornoAmmontareCaparraFactory strategiaAmmontareCaparraFactory = StrategiaSoggiornoAmmontareCaparraFactory.getInstance();
 		// Rimuovo l'osservatore dalla prenotazione.
 		_prenotazione.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
 		// Aggiungo l'ospite alla prenotazione
@@ -145,9 +148,13 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		// Setto il codice alla prenotazione
 		_prenotazione.set_codice(SoggiornoContextSubject.generaCodice());
 		// Strategia per il calcolo del giorno di scadenza
-		ComponentOttieniGiornoScadenzaStrategy strategiaGiornoScadenza = strategieFactory.getStrategyCalcoloGiornoScadenza(_prenotazione);
+		ComponentOttieniGiornoScadenzaStrategy strategiaGiornoScadenza = strategiaGiornoScadenzaFactory.getStrategyCalcoloGiornoScadenza();
 		// Setto il giorno di scadenza per l'invio della garanzia.
 		_prenotazione.set_giornoScadenzaInvioGaranzia(strategiaGiornoScadenza.getGiornoScadenza(_prenotazione));
+		// Strategia per il calcolo dell'ammontare della caparra
+		ComponentOttieniAmmontareCaparraStrategy strategiaAmmontareCaparra = strategiaAmmontareCaparraFactory.getStrategyCalcoloGiornoScadenza();
+		// Setto l'ammontare della caparra
+		_prenotazione.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_prenotazione));
 		// Aggiungo la prenotazione allo storico
 		Storico storico = Storico.getInstance();
 		storico.addPrenotazione(_prenotazione);

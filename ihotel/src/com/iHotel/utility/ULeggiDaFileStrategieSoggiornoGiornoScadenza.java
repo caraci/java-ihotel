@@ -24,7 +24,7 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 	/**
 	 * Percorso per la cartella contenente i file che descrivono la strategia.
 	 */
-	public static String _pathToConfigsStrategieSoggiorno = _pathToConfigsStrategie + "GiornoScadenza/";
+	public static String _pathToConfigsStrategieGiornoScadenza = _pathToConfigsStrategie + "GiornoScadenza/";
 
 	/**
 	 * Metodo per ottenere la lista dei vincoli che servono per ottenere il giorno di scadenza di invio della garanzia di una
@@ -38,11 +38,11 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieSoggiorno + "StrategiaOspite.txt"))) {  
+		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieGiornoScadenza + "StrategiaOspite.txt"))) {  
 			// Linea di lettura da file
 			String line;
-			int numeroPrenotazioniMax;
 			// Elementi vincolo
+			int numeroPrenotazioniMax;
 			int quantiGiorniPrimaRichiedere;
 			int numeroPrenotazioniMin;
 			// Scorro il file.
@@ -81,7 +81,7 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieSoggiorno + "StrategiaOccupazioneCamere.txt"))) {  
+		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieGiornoScadenza + "StrategiaOccupazioneCamere.txt"))) {  
 			// Linea di lettura da file
 			String line;	
 			// Elementi vincolo
@@ -125,7 +125,7 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
-		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieSoggiorno + "StrategiaDurataSoggiorno.txt"))) {  
+		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieGiornoScadenza + "StrategiaDurataSoggiorno.txt"))) {  
 			// Linea di lettura da file
 			String line;
 			// Elementi vincolo

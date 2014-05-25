@@ -17,8 +17,8 @@ public class VincoloStrategiaDurataSoggiornoGiornoScadenza {
 	
 	/**
 	 * 
-	 * @param numeroNottiMin
-	 * @param numeroNottiMax
+	 * @param numeroNottiMin Numero notti minimo per questo vincolo.
+	 * @param numeroNottiMax Numero notti massimo per questo vincolo.
 	 * @param quantiGiorniPrimaRichiedere
 	 */
 	public VincoloStrategiaDurataSoggiornoGiornoScadenza(int numeroNottiMin,

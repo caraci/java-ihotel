@@ -60,6 +60,10 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	private Giorno _giornoScadenzaInvioGaranzia;
 	/**
+	 * Ammontare della caparra da versare per garantire la prenotazione
+	 */
+	private Prezzo _ammontareCaparra;
+	/**
 	 * Costruttore.
 	 */
 	public SoggiornoContextSubject() {
@@ -67,6 +71,7 @@ public class SoggiornoContextSubject implements ISubject {
 		_osservatori = new ArrayList<IObserver>();
 		_importoTotalCamere = new Prezzo();
 		_pagamenti= new ArrayList<Pagamento>();
+		_ammontareCaparra = new Prezzo();
 	}
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
@@ -290,5 +295,19 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	public void set_pagamenti(ArrayList<Pagamento> _pagamenti) {
 		this._pagamenti = _pagamenti;
+	}
+
+	/**
+	 * @return the _ammontareCaparra
+	 */
+	public Prezzo get_ammontareCaparra() {
+		return _ammontareCaparra;
+	}
+
+	/**
+	 * @param _ammontareCaparra the _ammontareCaparra to set
+	 */
+	public void set_ammontareCaparra(Prezzo _ammontareCaparra) {
+		this._ammontareCaparra = _ammontareCaparra;
 	}
 }
