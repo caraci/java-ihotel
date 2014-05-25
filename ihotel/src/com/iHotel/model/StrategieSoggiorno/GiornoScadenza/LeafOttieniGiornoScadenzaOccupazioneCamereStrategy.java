@@ -5,6 +5,7 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
 
 import java.util.ArrayList;
 
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 
 /**
@@ -26,11 +27,12 @@ public class LeafOttieniGiornoScadenzaOccupazioneCamereStrategy extends
 	public LeafOttieniGiornoScadenzaOccupazioneCamereStrategy(ArrayList<VincoloStrategiaOccupazioneCamereGiornoScadenza> vincoliOccupazioneCamere) {
 		_vincoliOccupazioneCamere=vincoliOccupazioneCamere;
 	}
-
+	
 	@Override
-	public Giorno getGiornoScadenza() {
+	public Giorno getGiornoScadenza(SoggiornoContextSubject soggiorno) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

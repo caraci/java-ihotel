@@ -11,63 +11,64 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
  */
 public class VincoloStrategiaDurataSoggiornoGiornoScadenza {
 
-	private String _numeroNottiMin;
-	private String _numeroNottiMax;
-	private String _quantiGiorniPrimaRichiedere;
+	private int _numeroNottiMin;
+	private int _numeroNottiMax;
+	private int _quantiGiorniPrimaRichiedere;
 	
 	/**
 	 * 
 	 * @param numeroNottiMin
 	 * @param numeroNottiMax
-	 * @param quantiGiorniPrimaRichiere
+	 * @param quantiGiorniPrimaRichiedere
 	 */
-	public VincoloStrategiaDurataSoggiornoGiornoScadenza(String numeroNottiMin,
-												   String numeroNottiMax,
-												   String quantiGiorniPrimaRichiere) {
-		_numeroNottiMin=numeroNottiMin;
-		_numeroNottiMax=numeroNottiMax;
-		_quantiGiorniPrimaRichiedere=quantiGiorniPrimaRichiere;
+	public VincoloStrategiaDurataSoggiornoGiornoScadenza(int numeroNottiMin,
+												   int numeroNottiMax,
+												   int quantiGiorniPrimaRichiedere) {
+		set_numeroNottiMin(numeroNottiMin);
+		set_numeroNottiMax(numeroNottiMax);
+		set_quantiGiorniPrimaRichiedere(quantiGiorniPrimaRichiedere);
 	}
 
 	/**
 	 * @return the _numeroNottiMin
 	 */
-	public String get_numeroNottiMin() {
+	public int get_numeroNottiMin() {
 		return _numeroNottiMin;
 	}
 
 	/**
 	 * @param _numeroNottiMin the _numeroNottiMin to set
 	 */
-	public void set_numeroNottiMin(String _numeroNottiMin) {
+	public void set_numeroNottiMin(int _numeroNottiMin) {
 		this._numeroNottiMin = _numeroNottiMin;
 	}
 
 	/**
 	 * @return the _numeroNottiMax
 	 */
-	public String get_numeroNottiMax() {
+	public int get_numeroNottiMax() {
 		return _numeroNottiMax;
 	}
 
 	/**
 	 * @param _numeroNottiMax the _numeroNottiMax to set
 	 */
-	public void set_numeroNottiMax(String _numeroNottiMax) {
+	public void set_numeroNottiMax(int _numeroNottiMax) {
 		this._numeroNottiMax = _numeroNottiMax;
 	}
 
 	/**
 	 * @return the _quantiGiorniPrimaRichiedere
 	 */
-	public String get_quantiGiorniPrimaRichiedere() {
+	public int get_quantiGiorniPrimaRichiedere() {
 		return _quantiGiorniPrimaRichiedere;
 	}
 
 	/**
 	 * @param _quantiGiorniPrimaRichiedere the _quantiGiorniPrimaRichiedere to set
 	 */
-	public void set_quantiGiorniPrimaRichiedere(String _quantiGiorniPrimaRichiedere) {
+	public void set_quantiGiorniPrimaRichiedere(int _quantiGiorniPrimaRichiedere) {
 		this._quantiGiorniPrimaRichiedere = _quantiGiorniPrimaRichiedere;
 	}
+	
 }

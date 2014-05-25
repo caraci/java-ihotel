@@ -14,10 +14,11 @@ public class ClientePrenotante extends Cliente{
 	private String _codiceCartaDiCredito;
 	private String _email;
 	private String _telefono;
+	private int _numeroPrenotazioni;
 	
 	//Costruttore di default
 	public ClientePrenotante(){
-		
+		set_numeroPrenotazioni(0);
 	}
 	
 	/**
@@ -73,6 +74,20 @@ public class ClientePrenotante extends Cliente{
 	 */
 	public void set_telefono(String _telefono) {
 		this._telefono = _telefono;
+	}
+
+	/**
+	 * @return the _numeroPrenotazioni
+	 */
+	public int get_numeroPrenotazioni() {
+		return _numeroPrenotazioni;
+	}
+
+	/**
+	 * @param _numeroPrenotazioni the _numeroPrenotazioni to set
+	 */
+	public void set_numeroPrenotazioni(int _numeroPrenotazioni) {
+		this._numeroPrenotazioni = _numeroPrenotazioni;
 	}
 	
 

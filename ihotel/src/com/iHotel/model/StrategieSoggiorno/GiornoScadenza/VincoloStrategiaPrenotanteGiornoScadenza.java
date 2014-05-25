@@ -11,9 +11,9 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
  */
 public class VincoloStrategiaPrenotanteGiornoScadenza {
 
-	private String _numeroPrenotazioniMin;
-	private String _numeroPrenotazioniMax;
-	private String _quantiGiorniPrimaRichiedere;
+	private int _numeroPrenotazioniMin;
+	private int _numeroPrenotazioniMax;
+	private int _quantiGiorniPrimaRichiedere;
 	/**
 	 * Costruttore per il vincolo della strategia dell'ospite.
 	 * 
@@ -22,9 +22,9 @@ public class VincoloStrategiaPrenotanteGiornoScadenza {
 	 * @param quantiGiorniPrimaRichiedere Numero di notti prima dell'inizio del soggiorno entro il quale
 	 * richiedere l'invio della garanzia.
 	 */
-	public VincoloStrategiaPrenotanteGiornoScadenza( String numeroPrenotazioniMin, 
-									String numeroPrenotazioniMax, 
-									String quantiGiorniPrimaRichiedere) 
+	public VincoloStrategiaPrenotanteGiornoScadenza( int numeroPrenotazioniMin, 
+									int numeroPrenotazioniMax, 
+									int quantiGiorniPrimaRichiedere) 
 	{
 		_numeroPrenotazioniMin=numeroPrenotazioniMin;
 		_numeroPrenotazioniMax=numeroPrenotazioniMax;
@@ -33,38 +33,19 @@ public class VincoloStrategiaPrenotanteGiornoScadenza {
 	/**
 	 * @return the _numeroPrenotazioniMin
 	 */
-	public String get_numeroPrenotazioniMin() {
+	public int get_numeroPrenotazioniMin() {
 		return _numeroPrenotazioniMin;
-	}
-	/**
-	 * @param _numeroPrenotazioniMin the _numeroPrenotazioniMin to set
-	 */
-	public void set_numeroPrenotazioniMin(String _numeroPrenotazioniMin) {
-		this._numeroPrenotazioniMin = _numeroPrenotazioniMin;
 	}
 	/**
 	 * @return the _numeroPrenotazioniMax
 	 */
-	public String get_numeroPrenotazioniMax() {
+	public int get_numeroPrenotazioniMax() {
 		return _numeroPrenotazioniMax;
-	}
-	/**
-	 * @param _numeroPrenotazioniMax the _numeroPrenotazioniMax to set
-	 */
-	public void set_numeroPrenotazioniMax(String _numeroPrenotazioniMax) {
-		this._numeroPrenotazioniMax = _numeroPrenotazioniMax;
 	}
 	/**
 	 * @return the _quantiGiorniPrimaRichiedere
 	 */
-	public String get_quantiGiorniPrimaRichiedere() {
+	public int get_quantiGiorniPrimaRichiedere() {
 		return _quantiGiorniPrimaRichiedere;
 	}
-	/**
-	 * @param _quantiGiorniPrimaRichiedere the _quantiGiorniPrimaRichiedere to set
-	 */
-	public void set_quantiGiorniPrimaRichiedere(String _quantiGiorniPrimaRichiedere) {
-		this._quantiGiorniPrimaRichiedere = _quantiGiorniPrimaRichiedere;
-	}
-
 }

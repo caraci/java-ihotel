@@ -41,8 +41,10 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieSoggiorno + "StrategiaOspite.txt"))) {  
 			// Linea di lettura da file
 			String line;
+			int numeroPrenotazioniMax;
 			// Elementi vincolo
-			String numeroPrenotazioniMax, numeroPrenotazioniMin, quantiGiorniPrimaRichiedere;
+			int quantiGiorniPrimaRichiedere;
+			int numeroPrenotazioniMin;
 			// Scorro il file.
 			while(!(line=fileReader.readLine()).contains("End")) {
 				// Controllo se la linea non contiene il simbolo '#'
@@ -50,9 +52,9 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 					// Divido la linea in stringhe.
 					String[] vincoliLinea = line.split("-");
 					// Assegno i valori
-					numeroPrenotazioniMin=vincoliLinea[0];
-					numeroPrenotazioniMax=vincoliLinea[1];
-					quantiGiorniPrimaRichiedere=vincoliLinea[2];
+					numeroPrenotazioniMin=Integer.parseInt(vincoliLinea[0]);
+					numeroPrenotazioniMax=Integer.parseInt(vincoliLinea[1]);
+					quantiGiorniPrimaRichiedere=Integer.parseInt(vincoliLinea[2]);
 					// Creo il vincolo.
 					VincoloStrategiaPrenotanteGiornoScadenza vincolo = new VincoloStrategiaPrenotanteGiornoScadenza(numeroPrenotazioniMin, 
 																											numeroPrenotazioniMax, 
@@ -81,9 +83,11 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
 		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieSoggiorno + "StrategiaOccupazioneCamere.txt"))) {  
 			// Linea di lettura da file
-			String line;
+			String line;	
 			// Elementi vincolo
-			String numeroCamereLibereMax, numeroCamereLibereMin, quantiGiorniPrimaRichiedere;
+			int numeroCamereLibereMax;
+			int quantiGiorniPrimaRichiedere;
+			int numeroCamereLibereMin;
 			// Scorro il file.
 			while(!(line=fileReader.readLine()).contains("End")) {
 				// Controllo se la linea non contiene il simbolo '#'
@@ -91,9 +95,9 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 					// Divido la linea in stringhe.
 					String[] vincoliLinea = line.split("-");
 					// Assegno i valori
-					numeroCamereLibereMin=vincoliLinea[0];
-					numeroCamereLibereMax=vincoliLinea[1];
-					quantiGiorniPrimaRichiedere=vincoliLinea[2];
+					numeroCamereLibereMin=Integer.parseInt(vincoliLinea[0]);
+					numeroCamereLibereMax=Integer.parseInt(vincoliLinea[1]);
+					quantiGiorniPrimaRichiedere=Integer.parseInt(vincoliLinea[2]);
 					// Creo il vincolo.
 					VincoloStrategiaOccupazioneCamereGiornoScadenza vincolo = new VincoloStrategiaOccupazioneCamereGiornoScadenza(numeroCamereLibereMin, 
 																																  numeroCamereLibereMax, 
@@ -125,7 +129,9 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 			// Linea di lettura da file
 			String line;
 			// Elementi vincolo
-			String numeroNottiMax, numeroNottiMin, quantiGiorniPrimaRichiedere;
+			int numeroNottiMax;
+			int quantiGiorniPrimaRichiedere;
+			int numeroNottiMin;
 			// Scorro il file.
 			while(!(line=fileReader.readLine()).contains("End")) {
 				// Controllo se la linea non contiene il simbolo '#'
@@ -133,9 +139,9 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 					// Divido la linea in stringhe.
 					String[] vincoliLinea = line.split("-");
 					// Assegno i valori
-					numeroNottiMin=vincoliLinea[0];
-					numeroNottiMax=vincoliLinea[1];
-					quantiGiorniPrimaRichiedere=vincoliLinea[2];
+					numeroNottiMin=Integer.parseInt(vincoliLinea[0]);
+					numeroNottiMax=Integer.parseInt(vincoliLinea[1]);
+					quantiGiorniPrimaRichiedere=Integer.parseInt(vincoliLinea[2]);
 					// Creo il vincolo.
 					VincoloStrategiaDurataSoggiornoGiornoScadenza vincolo = new VincoloStrategiaDurataSoggiornoGiornoScadenza(numeroNottiMin, 
 																												  numeroNottiMax, 

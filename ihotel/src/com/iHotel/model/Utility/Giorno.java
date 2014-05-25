@@ -3,6 +3,8 @@
  */
 package com.iHotel.model.Utility;
 
+import java.util.Calendar;
+
 /**
  * @author Eugenio
  *
@@ -27,7 +29,7 @@ public class Giorno {
 		set_anno(anno);
 	}
 	/**
-	 * 
+	 * Costruttore
 	 */
 	public Giorno() {}
 	/* ----------------------------- Metodi di instanza -------------------------- */
@@ -41,6 +43,34 @@ public class Giorno {
 		MyDate date = new MyDate();
 		date.set(get_anno(), mese, get_giorno());
 		return date;
+	}
+	/**
+	 * Metodo per confrontare due giorni per vedere se uno è maggiore di un altro.
+	 * 
+	 * @param giornoDaComparare Giorno da comparare
+	 * @return 1 se la data dell'istanza è maggiore di quella della richiesta. 0 se le date sono uguali. -1 altrimenti.
+	 */
+	public int compara(Giorno giornoDaComparare) {
+		MyDate dataIstanza = this.toMyDate();
+		MyDate dataRichiesta = giornoDaComparare.toMyDate();
+		// Effettuo il confronto.
+		int esito = dataIstanza.compareTo(dataRichiesta);
+		return esito;
+	}
+	/**
+	 * Metodo per aggiungere un certo quantitativo di giorno, positivo o negativo, al giorno dell'istanza.
+	 * 
+	 * @param numeroGiorniDaAggiungere Numero intero o positivo di giorni da aggiungere.
+	 */
+	public Giorno addToGiorno(int numeroGiorniDaAggiungere) {
+		// Modifico la data di inizio
+		MyDate nuovoGiornoDate = this.toMyDate();
+		nuovoGiornoDate.add(Calendar.DATE, numeroGiorniDaAggiungere);
+		// Assegno 
+		Giorno nuovoGiorno = new Giorno();
+		nuovoGiorno = nuovoGiornoDate.toGiorno();
+		// Fornisco
+		return nuovoGiorno;
 	}
 
 	/* -------------------------- Getter, Setter ----------------------------------- */

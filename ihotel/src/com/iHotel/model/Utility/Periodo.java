@@ -1,5 +1,7 @@
 package com.iHotel.model.Utility;
 
+import java.util.Calendar;
+
 
 /**
  * Classe addetta alla gestione del periodo.
@@ -287,6 +289,24 @@ public class Periodo {
 	 */
 	public void setDataFineDaData(MyDate data) {
 		set_dataFine(data.toGiorno());
+	}
+	/**
+	 * Metodo per ottenere le notti totali del periodo.
+	 * 
+	 * @return Numero di notti totali nel periodo.
+	 */
+	public int getNottiPeriodo() {
+		// Periodo dell'instanza
+		MyDate dataInizioPeriodo = _dataInizio.toMyDate();
+		MyDate dataFinePeriodo = _dataFine.toMyDate();
+		// Inizializzo il contatore
+		int numeroNotti = 0;
+		while(dataInizioPeriodo.compareTo(dataFinePeriodo)<0) {
+			dataInizioPeriodo.add(Calendar.DAY_OF_MONTH,1);
+			numeroNotti++;
+		}
+		return numeroNotti;
+		
 	}
 	
 	/* ------------------------ Getter, Setter ----------------------------- */

@@ -5,6 +5,7 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
 
 import java.util.ArrayList;
 
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 
 /**
@@ -28,9 +29,10 @@ public abstract class CompositeOttieniGiornoScadenzaStrategy extends
 	public void addStrategy(ComponentOttieniGiornoScadenzaStrategy strategy) {
 		_strategie.add(strategy);
 	}
-
 	@Override
-	public abstract Giorno getGiornoScadenza();
+	public abstract Giorno getGiornoScadenza(SoggiornoContextSubject soggiorno);
+	
+	/* ---------------------- Getter, Setter ------------------------ */
 
 	/**
 	 * @return the _strategie
