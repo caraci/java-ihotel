@@ -9,7 +9,7 @@ import com.iHotel.model.Utility.Giorno;
  * @author Eugenio
  *
  */
-public class CompositeOttieniGiornoScadenzaMigliorePerHotelStrategy extends
+public class CompositeGiornoScadenzaMigliorePerHotelStrategy extends
 		CompositeOttieniGiornoScadenzaStrategy {
 
 

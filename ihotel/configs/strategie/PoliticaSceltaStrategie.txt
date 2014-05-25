@@ -1,0 +1,7 @@
+# Scegli se utilizzare una politica che è più preferibile per l'hotel o una che
+# è più preferibile per il prenotante.
+#
+# Metti il simbolo '#' alla strategia che NON vuoi utilizzare.
+#Prenotante
+Hotel
+End

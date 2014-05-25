@@ -3,6 +3,8 @@
  */
 package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
 
+import java.util.ArrayList;
+
 import com.iHotel.model.Utility.Giorno;
 
 /**
@@ -13,10 +15,16 @@ public class LeafOttieniGiornoScadenzaOccupazioneCamereStrategy extends
 		ComponentOttieniGiornoScadenzaStrategy {
 
 	/**
-	 * 
+	 * Lista contenente i vincoli per questa strategia.
 	 */
-	public LeafOttieniGiornoScadenzaOccupazioneCamereStrategy() {
-		// TODO Auto-generated constructor stub
+	private ArrayList<VincoloStrategiaOccupazioneCamereGiornoScadenza> _vincoliOccupazioneCamere;
+	/**
+	 * Costruttore.
+	 * 
+	 * @param vincoliOccupazioneCamere Lista contenente i vincoli per questa strategia
+	 */
+	public LeafOttieniGiornoScadenzaOccupazioneCamereStrategy(ArrayList<VincoloStrategiaOccupazioneCamereGiornoScadenza> vincoliOccupazioneCamere) {
+		_vincoliOccupazioneCamere=vincoliOccupazioneCamere;
 	}
 
 	@Override

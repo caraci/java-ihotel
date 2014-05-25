@@ -2,5 +2,5 @@
 # Leva il simbolo '#' da quelle strategie che vogliono essere utilizzate.
 GiornoScadenzaOspite
 GiornoScadenzaOccupazioneCamere
-GiornoScadenzaDurataSoggiorno
+#GiornoScadenzaDurataSoggiorno
 End

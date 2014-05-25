@@ -9,7 +9,7 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
  * 
  * @author Eugenio
  */
-public class VincoloStrategiaDurataSoggiornoStrategy {
+public class VincoloStrategiaDurataSoggiornoGiornoScadenza {
 
 	private String _numeroNottiMin;
 	private String _numeroNottiMax;
@@ -21,7 +21,7 @@ public class VincoloStrategiaDurataSoggiornoStrategy {
 	 * @param numeroNottiMax
 	 * @param quantiGiorniPrimaRichiere
 	 */
-	public VincoloStrategiaDurataSoggiornoStrategy(String numeroNottiMin,
+	public VincoloStrategiaDurataSoggiornoGiornoScadenza(String numeroNottiMin,
 												   String numeroNottiMax,
 												   String quantiGiorniPrimaRichiere) {
 		_numeroNottiMin=numeroNottiMin;

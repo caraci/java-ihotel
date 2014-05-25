@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaDurataSoggiornoStrategy;
+import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaDurataSoggiornoGiornoScadenza;
 import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaOccupazioneCamereGiornoScadenza;
 import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaPrenotanteGiornoScadenza;
 
@@ -115,9 +115,9 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 	 * 
 	 * @return Lista di vincoli.
 	 */
-	public static ArrayList<VincoloStrategiaDurataSoggiornoStrategy> getVincoliStrategiaDurataSoggiorno(){
+	public static ArrayList<VincoloStrategiaDurataSoggiornoGiornoScadenza> getVincoliStrategiaDurataSoggiorno(){
 		// Lista nella quale si introdurrano i vincoli per l'albergo.
-		ArrayList<VincoloStrategiaDurataSoggiornoStrategy> vincoliStrategiaDurataSoggiorno = new ArrayList<VincoloStrategiaDurataSoggiornoStrategy>();	
+		ArrayList<VincoloStrategiaDurataSoggiornoGiornoScadenza> vincoliStrategiaDurataSoggiorno = new ArrayList<VincoloStrategiaDurataSoggiornoGiornoScadenza>();	
 		// Ricavo il path assoluto.
 		String filePath = new File("").getAbsolutePath();
 		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
@@ -137,7 +137,7 @@ public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileSt
 					numeroNottiMax=vincoliLinea[1];
 					quantiGiorniPrimaRichiedere=vincoliLinea[2];
 					// Creo il vincolo.
-					VincoloStrategiaDurataSoggiornoStrategy vincolo = new VincoloStrategiaDurataSoggiornoStrategy(numeroNottiMin, 
+					VincoloStrategiaDurataSoggiornoGiornoScadenza vincolo = new VincoloStrategiaDurataSoggiornoGiornoScadenza(numeroNottiMin, 
 																												  numeroNottiMax, 
 																												  quantiGiorniPrimaRichiedere);
 					// Aggiungo il vincolo alla lista
