@@ -1,2 +1,5 @@
 Sky
 Telecom
+Lettore1
+SistemaAutorizzazione1
+CartaVisa

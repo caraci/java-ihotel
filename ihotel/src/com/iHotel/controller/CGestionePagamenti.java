@@ -4,8 +4,13 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
+import com.iHotel.model.ForeignSystem.CreditAuthorizationService.ICreditAuthorizationServiceAdapter;
+import com.iHotel.model.ForeignSystem.LettoreCarte.ILettoreCarteAdapter;
+import com.iHotel.model.ForeignSystem.PagamentoCarta.IPagamentoCartaAdapter;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
+import com.iHotel.model.Persona.Documenti.CartaDiCredito;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
@@ -65,11 +70,23 @@ public class CGestionePagamenti {
     }
     
     public void pagaConCarta(){
-    	//dalla prenotazione recupero il rimanente importo da pagare
-    	Prezzo totaleDaPagare = new Prezzo();
-    	totaleDaPagare = _prenotazione.calcolaTotaleDaPagare();
-    	//manca la parte sul servizio esterno
-    	
+    	//recupero la ServiceFactory
+    	ServiceFactory serviceFactory= ServiceFactory.getInstance();
+    	//tramite la serviceFactory recupero il lettore di carte 
+    	ILettoreCarteAdapter lettoreCarta= serviceFactory.get_lettoreAdapter();
+    	//leggo la carta
+    	CartaDiCredito cartaDiCredito = lettoreCarta.leggiCarta();
+    	//recupero il sistema di autorizzazione al pagamento
+    	ICreditAuthorizationServiceAdapter creditAuth = serviceFactory.get_creditAuthAdapter();
+    	//se il sistema autorizza il pagamento
+    	if(creditAuth.richiestaDiApprovazione(_prenotazione, cartaDiCredito)){
+    		//recupero il sistema per effettuare il pagamento
+    		IPagamentoCartaAdapter pagaConCarta = serviceFactory.get_pagamentoCartaAdapter();
+    		//effetuo il pagamento
+    		PagamentoConCarta pagamentoEffettuato=pagaConCarta.eseguiPagamento(_prenotazione, cartaDiCredito);
+    		//aggiungo il pagamento alla prenotazione
+        	_prenotazione.add_pagamento(pagamentoEffettuato);
+    	}
     	
     	
     }

@@ -3,6 +3,12 @@ package com.iHotel.model.ForeignSystem;
 import java.util.ArrayList;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.ForeignSystem.CreditAuthorizationService.CreditAuthorizationService1Adapter;
+import com.iHotel.model.ForeignSystem.CreditAuthorizationService.ICreditAuthorizationServiceAdapter;
+import com.iHotel.model.ForeignSystem.LettoreCarte.ILettoreCarteAdapter;
+import com.iHotel.model.ForeignSystem.LettoreCarte.LettoreCarta1Adapter;
+import com.iHotel.model.ForeignSystem.PagamentoCarta.IPagamentoCartaAdapter;
+import com.iHotel.model.ForeignSystem.PagamentoCarta.PagamentoVisaCartaAdapter;
 import com.iHotel.model.ForeignSystem.PayTv.*;
 import com.iHotel.model.ForeignSystem.Telephone.*;
 import com.iHotel.model.Utility.Prezzo;
@@ -29,6 +35,18 @@ public class ServiceFactory {
 	 */
 	private ITelephoneAdapter _telephoneAdapter;
 	/**
+	 * Maniglia all'adattatore del sistema relativo al lettore di carte.
+	 */
+	private ILettoreCarteAdapter _lettoreAdapter;
+	/**
+	 * Maniglia all'adattatore del sistema relativo all'autorizzazione al pagamento con carta.
+	 */
+	private ICreditAuthorizationServiceAdapter _creditAuthAdapter;
+	/**
+	 * Maniglia all'adattatore del sistema relativo al pagamento con carta.
+	 */
+	private IPagamentoCartaAdapter _pagamentoCartaAdapter;
+	/**
 	 *  Attributo privato - Pattern Singleton
 	 */
 	private static ServiceFactory instance = null;
@@ -54,6 +72,31 @@ public class ServiceFactory {
 		default:
 			break;
 		}
+		// Sistema Lettore Carta
+		switch (sistemiServiziEsterni.get(2)) {
+		case "Lettore1":
+			_lettoreAdapter = new LettoreCarta1Adapter();
+			break;
+		default:
+			break;
+		}
+		// Sistema Autorizzazione pagamento con carta
+		switch (sistemiServiziEsterni.get(3)) {
+		case "SistemaAutorizzazione1":
+			_creditAuthAdapter = new CreditAuthorizationService1Adapter();
+			break;
+		default:
+			break;
+		}
+		// Sistema di pagamento con carta
+		switch (sistemiServiziEsterni.get(4)) {
+		case "CartaVisa":
+			_pagamentoCartaAdapter = new PagamentoVisaCartaAdapter();
+			break;
+		default:
+			break;
+		}
+		
 	}
 	
 	/* ----------------------------- Metodi di classe -----------------------*/
@@ -96,5 +139,30 @@ public class ServiceFactory {
 	public ITelephoneAdapter get_telephoneAdapter() {
 		return _telephoneAdapter;
 	}
+
+	/**
+	 * @return the _lettoreAdapter
+	 */
+	public ILettoreCarteAdapter get_lettoreAdapter() {
+		return _lettoreAdapter;
+	}
+
+	/**
+	 * @return the _creditAuthAdapter
+	 */
+	public ICreditAuthorizationServiceAdapter get_creditAuthAdapter() {
+		return _creditAuthAdapter;
+	}
+
+	/**
+	 * @return the _pagamentoCartaAdapter
+	 */
+	public IPagamentoCartaAdapter get_pagamentoCartaAdapter() {
+		return _pagamentoCartaAdapter;
+	}
+
+
+
+
 
 }
