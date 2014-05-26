@@ -17,12 +17,65 @@ import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.VincoloStrategiaPren
  *
  */
 public class ULeggiDaFileStrategieSoggiornoAmmontareCaparra extends
-		ULeggiDaFileStrategie {
+		ULeggiDaFile {
 
 	/**
 	 * Percorso per la cartella contenente i file che descrivono la strategia.
 	 */
-	public static String _pathToConfigsStrategieAmmontareCaparra = _pathToConfigsStrategie + "AmmontareCaparra/";
+	public static String _pathToConfigsStrategieAmmontareCaparra = _pathToConfigs + "strategie/AmmontareCaparra/";
+	
+	/**
+	 * Metodo per ottenere la strategia di risoluzione scelta dall'albergo per decidere l'ammontare della caparra
+	 * 
+	 * @return
+	 */
+	public static String getPoliticaSceltaStrategieAmmontareCaparra() {
+		// Stringa dove memorizzo la politica da utilizzare.
+		String strategiaDaUsare=null;
+		// Ricavo il path assoluto.
+		String filePath = new File("").getAbsolutePath();
+		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
+		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieAmmontareCaparra + "PoliticaSceltaStrategieAmmontareCaparra.txt"))) {  
+			// Linea di lettura da file
+			String line;
+			// Scorro il file.
+			while(!(line=fileReader.readLine()).contains("End")) {
+				// Controllo se la linea non contiene il simbolo '#'
+				if(!line.contains("#")) {
+					// Rimuovo dalla mappa il valore letto
+					strategiaDaUsare=line.trim();
+				}
+			}		
+		} catch (IOException e) {}
+		
+		return strategiaDaUsare;	
+	}
+	/**
+	 * Metodo per ottenere la lista delle strategie da utilizzare per il calcolo dell'ammontare della caparra per la richiesta di soggiorno.
+	 * 
+	 * @return Lista contenente l'insieme delle strategie per il calcolo dell'ammontare della caparra per la richiesta di soggiorno.
+	 */
+	public static ArrayList<String> getStrategieDaUtilizzareAmmontareCaparra() {
+		// Struttura dati dove inserisco le strategie da utilizzare
+		ArrayList<String> strategieDaUtilizzare = new ArrayList<String>();
+		// Ricavo il path assoluto.
+		String filePath = new File("").getAbsolutePath();
+		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
+		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieAmmontareCaparra + "StrategieDaUtilizzareAmmontareCaparra.txt"))) {  
+			// Linea di lettura da file
+			String line;
+			// Scorro il file.
+			while(!(line=fileReader.readLine()).contains("End")) {
+				// Controllo se la linea non contiene il simbolo '#'
+				if(!line.contains("#")) {
+					// Re-inserisco nella mappa il valore letto ma con valore true
+					strategieDaUtilizzare.add(line.trim());
+				}
+			}		
+		} catch (IOException e) {}
+		
+		return strategieDaUtilizzare;
+	}
 	
 	/**
 	 * Metodo per ottenere la lista dei vincoli che servono per ottenere l'ammontare della caparra per una

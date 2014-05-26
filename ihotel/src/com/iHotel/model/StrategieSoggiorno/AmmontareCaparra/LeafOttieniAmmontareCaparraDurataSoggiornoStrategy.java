@@ -54,8 +54,8 @@ public class LeafOttieniAmmontareCaparraDurataSoggiornoStrategy extends
 		// Importo delle camere per la prenotazione
 		Prezzo importoTotaleCamerePrenotazione = soggiorno.get_importoTotaleCamere();
 		// Creo il prezzo contenente l'ammontare della caparra in base alla percentuale.
-		Prezzo ammontareCaparra = importoTotaleCamerePrenotazione.applicaScontoPercentuale(percentualeDaRichiedere);
-		
+		Prezzo ammontareCaparra = importoTotaleCamerePrenotazione.getImportoPercentuale(percentualeDaRichiedere);
+				
 		return ammontareCaparra;
 	}
 

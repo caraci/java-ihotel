@@ -1,0 +1,5 @@
+# Nel seguito verranno mostrate le strategie che possono essere utilizzate.
+# Leva il simbolo '#' da quelle strategie che vogliono essere utilizzate.
+AmmontareCaparraOspite
+AmmontareCaparraDurataSoggiorno
+End

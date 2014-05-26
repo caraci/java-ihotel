@@ -6,7 +6,6 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.iHotel.utility.ULeggiDaFileStrategie;
 import com.iHotel.utility.ULeggiDaFileStrategieSoggiornoGiornoScadenza;
 
 /**
@@ -42,9 +41,9 @@ public class StrategiaSoggiornoGiornoScadenzaFactory {
 	 */
 	public ComponentOttieniGiornoScadenzaStrategy getStrategyCalcoloGiornoScadenza() {
 		// Scelgo la strategia di risoluzione indicata dall'albergo in una sorgente esterna.
-		ComponentOttieniGiornoScadenzaStrategy componentStrategy = getPoliticaRisoluzioneTraStrategie(ULeggiDaFileStrategie.getPoliticaSceltaStrategieGiornoScadenza());
+		ComponentOttieniGiornoScadenzaStrategy componentStrategy = getPoliticaRisoluzioneTraStrategie(ULeggiDaFileStrategieSoggiornoGiornoScadenza.getPoliticaSceltaStrategieGiornoScadenza());
 		// Carico le strategie da utilizzare.
-		ArrayList<String> strategieDaUtilizzare = ULeggiDaFileStrategie.getStrategieDaUtilizzareGiornoScadenza();
+		ArrayList<String> strategieDaUtilizzare = ULeggiDaFileStrategieSoggiornoGiornoScadenza.getStrategieDaUtilizzareGiornoScadenza();
 		// Ciclo sulle strategie per decidere quali utilizzare
 		for (Iterator<String> iterator = strategieDaUtilizzare.iterator(); iterator.hasNext();) {
 			String nomeStrategia = (String) iterator.next();

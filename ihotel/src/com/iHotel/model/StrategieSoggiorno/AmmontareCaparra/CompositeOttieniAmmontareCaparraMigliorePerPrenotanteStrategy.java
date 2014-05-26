@@ -25,7 +25,7 @@ public class CompositeOttieniAmmontareCaparraMigliorePerPrenotanteStrategy exten
 			// Controllo se è presente un prezzo iniziale
 			if (ammontareCaparraMigliorePerPrenotante != null) {
 				// Ricavo l'ammontare della caparra fornito dalla strategia in analisi
-				Prezzo ammontareCaparraStrategia = strategiaLeaf.getAmmontareCaparra(soggiorno);
+				Prezzo ammontareCaparraStrategia = strategiaLeaf.getAmmontareCaparra(soggiorno);				
 				// Controllo se il prezzo scelto finora è maggiore di quello proposto da questa strategia
 				if(ammontareCaparraMigliorePerPrenotante.isMaggioreDi(ammontareCaparraStrategia)) {
 					// Setto il nuovo importo migliore per la caparra.
@@ -34,7 +34,7 @@ public class CompositeOttieniAmmontareCaparraMigliorePerPrenotanteStrategy exten
 			} else {
 				// Si entra in questo ramo solo la prima volta per inserire un primo prezzo.
 				ammontareCaparraMigliorePerPrenotante=strategiaLeaf.getAmmontareCaparra(soggiorno);
-			}
+			}		
 		}
 		return ammontareCaparraMigliorePerPrenotante;
 	}

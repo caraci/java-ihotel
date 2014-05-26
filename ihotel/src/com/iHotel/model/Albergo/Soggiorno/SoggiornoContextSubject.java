@@ -64,6 +64,10 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	private Prezzo _ammontareCaparra;
 	/**
+	 * Stato in cui si trova il soggiorno - Pattern State
+	 */
+	private SoggiornoState _statoSoggiorno;
+	/**
 	 * Costruttore.
 	 */
 	public SoggiornoContextSubject() {
@@ -72,6 +76,7 @@ public class SoggiornoContextSubject implements ISubject {
 		_importoTotaleCamere = new Prezzo();
 		_pagamenti= new ArrayList<Pagamento>();
 		_ammontareCaparra = new Prezzo();
+		_statoSoggiorno = new SoggiornoPrenotato();
 	}
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
@@ -309,5 +314,19 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	public void set_ammontareCaparra(Prezzo _ammontareCaparra) {
 		this._ammontareCaparra = _ammontareCaparra;
+	}
+
+	/**
+	 * @return the _statoSoggiorno
+	 */
+	public SoggiornoState get_statoSoggiorno() {
+		return _statoSoggiorno;
+	}
+
+	/**
+	 * @param _statoSoggiorno the _statoSoggiorno to set
+	 */
+	public void set_statoSoggiorno(SoggiornoState _statoSoggiorno) {
+		this._statoSoggiorno = _statoSoggiorno;
 	}
 }

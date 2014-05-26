@@ -20,12 +20,65 @@ import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaPrenot
  * 
  * @author Eugenio
  */
-public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFileStrategie {
+public class ULeggiDaFileStrategieSoggiornoGiornoScadenza extends ULeggiDaFile {
 	/**
 	 * Percorso per la cartella contenente i file che descrivono la strategia.
 	 */
-	public static String _pathToConfigsStrategieGiornoScadenza = _pathToConfigsStrategie + "GiornoScadenza/";
+	public static String _pathToConfigsStrategieGiornoScadenza = _pathToConfigs + "strategie/GiornoScadenza/";
 
+	/**
+	 * Metodo per ottenere la lista contenente l'insieme delle strategie utilizzate per il calcolo del giorno di scadenza di invio della garanzia da parte
+	 * del prenotante a seguito di una richiesta di soggiorno.
+	 * 
+	 * @return Lista contenente l'insieme delle strategie per il calcolo del giorno di scadenza di invio della garanzia per la richiesta di soggiorno.
+	 */
+	public static ArrayList<String> getStrategieDaUtilizzareGiornoScadenza(){
+		// Struttura dati dove inserisco le strategie da utilizzare
+		ArrayList<String> strategieDaUtilizzare = new ArrayList<String>();
+		// Ricavo il path assoluto.
+		String filePath = new File("").getAbsolutePath();
+		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
+		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieGiornoScadenza + "StrategieDaUtilizzareGiornoScadenza.txt"))) {  
+			// Linea di lettura da file
+			String line;
+			// Scorro il file.
+			while(!(line=fileReader.readLine()).contains("End")) {
+				// Controllo se la linea non contiene il simbolo '#'
+				if(!line.contains("#")) {
+					// Re-inserisco nella mappa il valore letto ma con valore true
+					strategieDaUtilizzare.add(line.trim());
+				}
+			}		
+		} catch (IOException e) {}
+		
+		return strategieDaUtilizzare;	
+	}
+	/**
+	 * Metodo per ottenere la strategia di risoluzione scelta dall'albergo per decidere il giorno di scadenza di invio della garanzia.
+	 * 
+	 * @return Stringa contenente la strategia di risoluzione scelta.
+	 */
+	public static String getPoliticaSceltaStrategieGiornoScadenza(){
+		// Stringa dove memorizzo la politica da utilizzare.
+		String strategiaDaUsare=null;
+		// Ricavo il path assoluto.
+		String filePath = new File("").getAbsolutePath();
+		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
+		try (BufferedReader fileReader = new BufferedReader(new FileReader(filePath + _pathToConfigsStrategieGiornoScadenza + "PoliticaSceltaStrategieGiornoScadenza.txt"))) {  
+			// Linea di lettura da file
+			String line;
+			// Scorro il file.
+			while(!(line=fileReader.readLine()).contains("End")) {
+				// Controllo se la linea non contiene il simbolo '#'
+				if(!line.contains("#")) {
+					// Rimuovo dalla mappa il valore letto
+					strategiaDaUsare=line.trim();
+				}
+			}		
+		} catch (IOException e) {}
+		return strategiaDaUsare;	
+	}
+	
 	/**
 	 * Metodo per ottenere la lista dei vincoli che servono per ottenere il giorno di scadenza di invio della garanzia di una
 	 * richiesta di soggiorno, considerando il prenotante.

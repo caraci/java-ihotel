@@ -59,10 +59,12 @@ public class Prezzo {
 	 * @param percentualeSconto Percentuale di sconto da applicare
 	 * @return Oggetto prezzo con importo scontato.
 	 */
-	public Prezzo applicaScontoPercentuale(int percentualeSconto) {
+	public Prezzo getImportoPercentuale(int percentualeSconto) {
 		Prezzo prezzoScontato = new Prezzo();
+		// Percentuale da scontare
+		double percentuale = (double) percentualeSconto*0.01;
 		// Calcolo l'importo scontato
-		double importoScontato = this.get_importo() - this.get_importo()*(percentualeSconto/100);
+		double importoScontato = this.get_importo()*percentuale;		
 		// Setto l'importo al prezzo scontato
 		prezzoScontato.set_importo(importoScontato);
 		

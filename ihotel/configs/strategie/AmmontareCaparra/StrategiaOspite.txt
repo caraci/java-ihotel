@@ -2,7 +2,7 @@
 # la garanzia, seguendo questo formato.
 #
 # NUMERO_PRENOTAZIONI_MIN-NUMERO_PRENOTAZIONI_MAX-PERCENTUALE_SUL_TOTALE
-0-5-20
-6-10-15
+0-5-30
+6-10-20
 11-50-10
 End

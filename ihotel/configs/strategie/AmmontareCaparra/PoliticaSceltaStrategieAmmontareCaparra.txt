@@ -2,6 +2,6 @@
 # è più preferibile per il prenotante.
 #
 # Metti il simbolo '#' alla strategia che NON vuoi utilizzare.
-Prenotante
-#Hotel
+#Prenotante
+Hotel
 End

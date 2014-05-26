@@ -27,4 +27,19 @@ public abstract class CompositeOttieniAmmontareCaparraStrategy extends
 	public void addStrategy(ComponentOttieniAmmontareCaparraStrategy strategy) {
 		_strategie.add(strategy);
 	}
+
+	/**
+	 * @return the _strategie
+	 */
+	public ArrayList<ComponentOttieniAmmontareCaparraStrategy> get_strategie() {
+		return _strategie;
+	}
+
+	/**
+	 * @param _strategie the _strategie to set
+	 */
+	public void set_strategie(
+			ArrayList<ComponentOttieniAmmontareCaparraStrategy> _strategie) {
+		this._strategie = _strategie;
+	}
 }

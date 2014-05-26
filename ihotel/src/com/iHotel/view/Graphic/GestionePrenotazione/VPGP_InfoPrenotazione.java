@@ -52,7 +52,8 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 	/*Label*/
 	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, 
 				   _lblTitoloPrenotazione,_lblPrezzoCamere,_lblPrezzoServizi, 
-				   _lblRiepilogoPrenotazione, _lblScegliCamera, _lblGiornoScadenzaGaranzia;
+				   _lblRiepilogoPrenotazione, _lblScegliCamera, _lblGiornoScadenzaGaranzia,
+				   _lblAmmontareCaparra;
 
 	/*Button*/
 	private JButton _btnTerminaModifichePrenotazione;
@@ -77,6 +78,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		_lblPrezzoCamere= _viewFactory.getLabel();
 		_lblPrezzoServizi= _viewFactory.getLabel();
 		_lblGiornoScadenzaGaranzia=_viewFactory.getLabel();
+		_lblAmmontareCaparra=_viewFactory.getLabel();
 		_lblScegliCamera= _viewFactory.getLabelIntestazione_2();
 		
 		/*Button*/
@@ -179,6 +181,9 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		/*Recupero il giorno di scadenza per l'invio della garanzia*/
 		Giorno giornoScadenzaGaranzia =  _prenotazione.get_giornoScadenzaInvioGaranzia();
 		
+		/*Recupero l'ammontare della caparra*/
+		Prezzo ammontareCaparra = _prenotazione.get_ammontareCaparra();
+		
 		/*Recupero il prezzo delle camere*/
 		Prezzo prezzoCamere = _prenotazione.get_importoTotaleCamere();
 		
@@ -199,6 +204,9 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		/*Setto il giorno di scadenza per l'invio della garanzia */
 		_lblGiornoScadenzaGaranzia.setText("Richiedi garanzia entro: " + giornoScadenzaGaranzia.toString());
 		
+		/*Setto l'ammontare della caparra */
+		_lblAmmontareCaparra.setText("Ammontare caparra: " + ammontareCaparra.get_importo() + " " + ammontareCaparra.get_valuta());
+		
 		/*Aggiugo le label e gli spazi vuoti al blocco centrale*/
 		_panelInfoPrenotazione.add(_lblRiepilogoPrenotazione);
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
@@ -209,6 +217,8 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		_panelInfoPrenotazione.add(_lblPrezzoServizi);
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
 		_panelInfoPrenotazione.add(_lblGiornoScadenzaGaranzia);
+		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
+		_panelInfoPrenotazione.add(_lblAmmontareCaparra);
 		
 		return _panelInfoPrenotazione;
 	}
@@ -223,7 +233,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		_panelCamerePrenotate.setLayout(new BoxLayout(_panelCamerePrenotate, BoxLayout.PAGE_AXIS));
 		
 		/*Setto il testo alla label che indica il titolo della sezione*/
-		_lblScegliCamera.setText("Lista di camere prenotate. Clicca su una per visualizzarne i dettagli");
+		_lblScegliCamera.setText("Lista di camere prenotate:");
 		_panelCamerePrenotate.add(_lblScegliCamera);
 		_panelCamerePrenotate.add(Box.createRigidArea(new Dimension(0,15)));
 		

@@ -5,7 +5,6 @@ import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.view.ViewFrameApplication;

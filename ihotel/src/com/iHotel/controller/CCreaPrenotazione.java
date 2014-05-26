@@ -94,11 +94,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	public void cercaCamereLibere(Giorno dataInizio, Giorno dataFine, ArrayList<String> Tipologie) {
 		
 		/* Setto il periodo ricevuto dall'interfaccia */
-		Periodo periodo = new Periodo();
-		/* Setto la data di inizio */
-		periodo.set_dataInizio(dataInizio);
-		/* Setto la data di fine*/
-		periodo.set_dataFine(dataFine);
+		Periodo periodo = new Periodo(dataInizio,dataFine);
 		/* Setto il periodo alla prenotazione */
 		_prenotazione.set_periodo(periodo);
 		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
