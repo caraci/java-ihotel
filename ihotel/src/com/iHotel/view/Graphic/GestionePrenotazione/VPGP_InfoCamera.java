@@ -5,6 +5,7 @@ package com.iHotel.view.Graphic.GestionePrenotazione;
 
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	private ServiceFactory _serviceFactory;
 
 	//JPanel
-	private JPanel _pnlMiddleLeft, _pnlMiddleCenter, _pnlMiddleRight,_pnlServiziPayTv,_pnlServiziTelefono;
+	private JPanel _pnlMiddleLeft, _pnlMiddleRight,_pnlServiziPayTv,_pnlServiziTelefono, _pnlServiziInterni;
 				   
 	// JScrollPane
 	private JScrollPane _scrollPaneMiddleRightPayTv,_scrollPaneMiddleRightTelefono;
@@ -75,10 +76,10 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		
 		/*Panel*/
 		_pnlMiddleLeft = _viewFactory.getPanel();
-		_pnlMiddleCenter =_viewFactory.getPanel();
 		_pnlMiddleRight=_viewFactory.getPanel();
 		_pnlServiziPayTv=_viewFactory.getPanel(false);
 		_pnlServiziTelefono=_viewFactory.getPanel(false);
+		_pnlServiziInterni = _viewFactory.getPanel();
 		/*JScrollPane*/
 		_scrollPaneMiddleRightPayTv=_viewFactory.getScrollPane();
 		_scrollPaneMiddleRightTelefono=_viewFactory.getScrollPane();
@@ -108,7 +109,12 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		_panelMiddle.setLayout(new GridLayout(1, 3, 10, 10));
 		// Creo i pannelli destro e sinistro e li aggiungo al pnlMiddle.
 		_panelMiddle.add(creaPanelMiddleLeft());
-		_panelMiddle.add(creaPanelMiddleCenter());				
+		//Pannello contenente i servizi interni
+		_pnlServiziInterni.setLayout(new CardLayout());
+		/*Costruisco il pannello dei servizi*/
+		_pnlServiziInterni.add(creaPanelMiddleCenter());
+		
+		_panelMiddle.add(_pnlServiziInterni);
 		_panelMiddle.add(creaPanelMiddleRight());		
 	}
 	/**
@@ -135,26 +141,32 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	 * 
 	 * @return Pannello centrale.
 	 */
-	private JPanel creaPanelMiddleCenter(){
+	public JScrollPane creaPanelMiddleCenter(){
+		
+		/*Creo un JScrollPane*/
+		JScrollPane scrollPaneServiziInterni = _viewFactory.getScrollPane();
+		/*Creo un JPanel*/
+		JPanel panelServiziInterni = _viewFactory.getPanel();
+		
 		// Setto il layout al panel.
-		_pnlMiddleCenter.setLayout(new BoxLayout(_pnlMiddleCenter, BoxLayout.PAGE_AXIS));
+		panelServiziInterni.setLayout(new BoxLayout(panelServiziInterni, BoxLayout.PAGE_AXIS));
 		// Aggiungo la label al panel.
 		_lblServiziInterniRichiesti.setText("Servizi interni richiesti:");
-		_pnlMiddleCenter.add(_lblServiziInterniRichiesti);
+		panelServiziInterni.add(_lblServiziInterniRichiesti);
 		
 		/*Scorre l'array dei servizi interni collegati alla camera e li inserisce in un array di label*/
 		for (Iterator<ServizioInterno> iterator = _camera.getServiziInterniInPeriodo(_periodo).iterator(); iterator.hasNext();) {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
-			// Creo una label per inserire le informazioni del servizio
-			JLabel lblServizioInterno=_viewFactory.getLabel();
-			lblServizioInterno.setText(UtoListPanel.getInstance().servizioInternoInPrenotazioneToString(servizioInterno));
-			/*Aggiungo la label del servizio al panel*/
-			_pnlMiddleCenter.add(lblServizioInterno);
+			// Aggiungo al pannello un pannello contenente le informazioni del servizio			
+			panelServiziInterni.add(UtoListPanel.getInstance().servizioInternoInPrenotazioneToPanel(servizioInterno));
 			/*Aggiungo lo spazio*/
-			_pnlMiddleCenter.add(Box.createRigidArea(new Dimension(0,15)));
+			panelServiziInterni.add(Box.createRigidArea(new Dimension(0,15)));
 		}
 		
-		return _pnlMiddleCenter;
+		/*Aggiungo il pannello allo scrollPane*/
+		scrollPaneServiziInterni.setViewportView(panelServiziInterni);;
+		/*Restituisco lo scrollPane*/
+		return scrollPaneServiziInterni;
 	}
 	/**
 	 * Metodo per creare il pannello contenente la lista dei servizi esterni richiesti.
@@ -310,6 +322,14 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	 */
 	public void set_btnTornaPrenotazione(JButton _btnTornaPrenotazione) {
 		this._btnTornaPrenotazione = _btnTornaPrenotazione;
+	}
+	/**
+	 * Metodo che restituisce il pannello dei servizi interni
+	 * 
+	 * @return Pannello dei servizi interni
+	 */
+	public JPanel getPanelServiziInterni(){
+		return this._pnlServiziInterni;
 	}
 
 

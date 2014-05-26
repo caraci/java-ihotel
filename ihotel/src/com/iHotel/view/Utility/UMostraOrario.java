@@ -27,23 +27,33 @@ public class UMostraOrario {
 	/** Pattern Singleton*/
 	private static UMostraOrario instance;
 	
+	/*Jlabel*/
 	private JPanel _panelOrario;
 	private JLabel _lblOre, _lblMinuti;
+	
+	/*JComboBox*/
 	private JComboBox<String> _ore;
 	private JComboBox<String> _minuti;
 	
-	
+	/**
+	 * Costruttore privato - Pattern Singleton
+	 */
 	private UMostraOrario(){
 		_viewFactory = ViewFactory.getInstance().getStyleFactory();
+		
+		/*JPanel*/
 		_panelOrario = _viewFactory.getPanel();
+		/*JLabel*/
 		_lblOre = _viewFactory.getLabel();
 		_lblMinuti = _viewFactory.getLabel();
+		/*JComboBox*/
 		_ore = new JComboBox<String>();
 		_minuti = new JComboBox<String>();
 	}
 	
 	/**
 	 * Pattern Singleton
+	 * 
 	 * @return istanza singola di UMostraOrario
 	 */
 	public static UMostraOrario getInstance(){
@@ -53,8 +63,15 @@ public class UMostraOrario {
 		return instance;
 	}
 	
+	/**
+	 * Metodo che crea il pannello contenente le combobox di ora e minuti
+	 * 
+	 * @return il pannello contenente le etichette e le combobox
+	 */
 	public JPanel creaOrarioDefault(){
-		_panelOrario.setLayout(new GridLayout(1, 4,5,5));
+		/*Setto il layout a 1 riga e 4 colonne*/
+		_panelOrario.setLayout(new GridLayout(1, 4, 5, 5));
+		/*Setto il colore*/
 		_panelOrario.setBackground(_viewFactory.getColorContentPane());
 		//Creo la combobox per i minuti
 		for(int i = 0; i<60;i++){
@@ -68,15 +85,37 @@ public class UMostraOrario {
 		_lblMinuti.setText("Minuti: ");
 		_lblOre.setText("Ore: ");
 		
+		/*Aggiungo gli elementi al pannello, con la posizione corretta*/
 		_panelOrario.add(_lblOre, 0);
 		_panelOrario.add(_ore,1);
 		_panelOrario.add(_lblMinuti,2);
 		_panelOrario.add(_minuti,3);
 		
-		return _panelOrario;
-		
-		
-		
+		/*Restituisco il pannello*/
+		return _panelOrario;	
 	}
-
+	/**
+	 * Metodo che restituisce l'ora selezionata nella combobox delle ore
+	 * 
+	 * @return Ora selezionata
+	 */
+	public int getOraSelezionata(){
+		//Recupero il valore selezionato dalla combobox
+		String ora = (String) _ore.getSelectedItem();
+		//Restituisco il valore
+		return Integer.parseInt(ora);
+	}
+	
+	/**
+	 * Metodo che restituisce i minuti selezionati nella combobox dei minuti
+	 * 
+	 * @return minuto selezionato
+	 */
+	public int getMinutoSelezionato(){
+		//Recupero il valore selezionato dalla combobox
+		String minuti = (String) _minuti.getSelectedItem();
+		//Restituisco il valore
+		return Integer.parseInt(minuti);
+	}
 }
+

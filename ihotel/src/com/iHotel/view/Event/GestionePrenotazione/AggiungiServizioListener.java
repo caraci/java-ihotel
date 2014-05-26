@@ -53,7 +53,7 @@ public class AggiungiServizioListener extends MouseAdapter {
 		// Controllo che la data sia inclusa nel periodo della prenotazione
 		if (CModificaPrenotazione.getInstance().get_prenotazione().get_periodo().contieneData(dataServizio)) {
 			// Invoco il metodo al controllore
-			modificaPrenotazione.aggiungiServizio(dataServizio, _codiceServizio);
+			//modificaPrenotazione.aggiungiServizio(dataServizio, _codiceServizio);
 			// Mostro la dialog per confermare l'inserimento del servizio nella prenotazione.		
 			UDialogManager.getInstance().showDialogConfermaInserimentoServizio();
 		} else {

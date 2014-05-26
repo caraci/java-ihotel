@@ -15,6 +15,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.PayTv.ServizioPayTv;
 import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.model.Utility.Giorno;
+import com.iHotel.model.Utility.Ora;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
@@ -113,17 +114,68 @@ public class UtoListPanel {
 		return pnlLista;
 	}
 	/**
-	 * Metodo per ottenere la stringa relativa ad un servizio interno.
-	 * @param servizioInterno Servizio in analisi.
-	 * @return Stringa contenente le informazioni di un servizio.
+	 * Metodo che restituisce un pannello contenente l'orario
+	 * 
+	 * @param 	orario 	E' l'orario che si vuole visualizzare in un pannello
+	 * @return			Pannello contenente l'orario che si voleva mostrare
 	 */
-	public String servizioInternoInPrenotazioneToString(ServizioInterno servizioInterno) {
+	public JPanel oraToPanel(Ora orario){
+		/*Creo un pannello con l'ora*/
+		JPanel panelOra = _viewFactory.getPanel(false);
+		/*Setto il layout*/
+		panelOra.setLayout(new BoxLayout(panelOra, BoxLayout.PAGE_AXIS));
+		/*Elementi del pannello*/
+		JLabel lblOrario = _viewFactory.getLabel();
+		lblOrario.setText(orario.getOre() + " : "+ orario.getMinuti());
+		panelOra.add(lblOrario);
+		return panelOra;
+	}
+	/**
+	 * Metodo per ottenere la stringa relativa ad un servizio interno.
+	 * 
+	 * @param servizioInterno 	Servizio in analisi.
+	 * @return 					Pannello contenente tutte le informazioni del servizio.
+	 */
+	public JPanel servizioInternoInPrenotazioneToPanel(ServizioInterno servizioInterno) {
 		// Chiedo al catalogo il descrittore del servizio
 		DescrizioneServizioInterno descrizioneServizio=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(servizioInterno.get_codice());
-		// Stringa
-		String toString = descrizioneServizio.get_codice() + " " + descrizioneServizio.get_nome() + " " + giornoToPanel(servizioInterno.get_giorno());
+		/*Creo un pannello*/
+		JPanel panelServizioInterno =_viewFactory.getPanel(false);
+		/*Setto il layout*/
+		panelServizioInterno.setLayout(new BoxLayout(panelServizioInterno, BoxLayout.PAGE_AXIS));
 		
-		return toString;
+		/*Elementi del pannello*/
+		//lbl con il codice
+		JLabel lblCodiceServizio = _viewFactory.getLabel();
+		lblCodiceServizio.setText(descrizioneServizio.get_codice());
+		//lbl con nome del servizio
+		JLabel lblNomeServizio = _viewFactory.getLabel();
+		lblNomeServizio.setText(descrizioneServizio.get_nome());
+		//lbl con note
+		JLabel lblNote = _viewFactory.getLabel();
+		lblNote.setText("Note al servizio: " + servizioInterno.get_note());
+		//lbl data
+		JLabel lblData = _viewFactory.getLabel();
+		lblData.setText("Data del servizio: ");
+		//lbl orario
+		JLabel lblOrario = _viewFactory.getLabel();
+		lblOrario.setText("Orario del servizio: ");
+		//pannello con data
+		JPanel panelData =giornoToPanel(servizioInterno.get_giorno());
+		//pannello con orario
+		JPanel panelOrario = oraToPanel(servizioInterno.get_ora());	
+		
+		/*Aggiungo gli elementi al pannello*/
+		panelServizioInterno.add(lblCodiceServizio);
+		panelServizioInterno.add(lblNomeServizio);
+		panelServizioInterno.add(lblData);
+		panelServizioInterno.add(panelData);
+		panelServizioInterno.add(lblOrario);
+		panelServizioInterno.add(panelOrario);
+		panelServizioInterno.add(lblNote);
+		
+		/*Restituisco il pannello*/
+		return panelServizioInterno;
 	}
 	/**
 	 * Metodo per ottenere la stringa relativa ad un servizio della payTv.

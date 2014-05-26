@@ -66,36 +66,19 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 		infoCamera.creaPanel(_camera, periodo);
 	}
 	/**
-     * Metodo per mostrare l'interfaccia per aggiungere nuovi servizi alla camera della prenotazione.
+     * Metodo che aggiunge un servizio interno alla camera selezionata.
+     *    
+     * @param servizio E' il servizio interno creato.
      */
-	public void aggiungiServiziCamera(){
-		//VPGP_AggiungiServiziInterni aggiungiServiziInterni = VPGP_AggiungiServiziInterni.getInstance();
-		// Creo l'interfaccia fornendo l'insieme di descrittori dei servizi interni
-		//aggiungiServiziInterni.creaPanel(CatalogoServiziInterni.getInstance().get_descrizioneServizi(), _camera);
-		// Mostro vfgpAggiungiServiziInterni
-		//ViewHandler.getInstance().showFrame(aggiungiServiziInterni);
-	}
-    /**
-     * Metodo per aggiungere un servizio alla camera selezionata, relativa alla prenotazione che si sta
-     * modificando.
-     * 
-     * @param dataServizio Data per il quale si richiede il servizio interno.
-     * @param codiceServizio Codice del servizio da mostrare
-     */
-    public void aggiungiServizio(Giorno dataServizio, String codiceServizio){
-    	// Creo il nuovo oggetto di tipo ServizioInterno
-    	ServizioInterno servizioInterno = new ServizioInterno();
-    	servizioInterno.set_codice(codiceServizio);
-    	// Aggiungo la data al servizio.
-    	servizioInterno.set_giorno(dataServizio);
-    	// Ricavo il periodo della prenotazione
+    public void aggiungiServizio(ServizioInterno servizio){
+    	//Recuper il periodo della prenotazione
     	Periodo periodo = _prenotazione.get_periodo();
-    	// Aggiungo il servizio interno alla Camera che si sta gestendo, fornendo periodo e servizio.
-    	_camera.aggiungiServizioInPeriodo(servizioInterno, periodo);
+    	//Aggiungo il servizio alla camera, nel periodo della prenotazione
+    	_camera.aggiungiServizioInPeriodo(servizio, periodo);
     	
     	// Salvo nel db lo stato camera in seguito all'aggiornamento.
     	PCamera.getInstance().store(_camera.getStatoCameraInPeriodo(periodo));
-    }	
+    }
 	/**
      * Metodo che termina l'aggiunta dei servizi e restituisce la schermata precedente
      */

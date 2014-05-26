@@ -20,9 +20,23 @@ public class ServizioInterno {
 	private String _note;
 	private Ora _ora;
 	/**
-	 * Costruttore.
+	 * Costruttore di default
 	 */
 	public ServizioInterno(){}
+	
+	/**
+	 * Costruttore con parametri
+	 * @param codice 	E' il codice del servizio
+	 * @param giorno	E' il giorno in cui è stato richiesto il servizio
+	 * @param note		Sono le informazioni aggiuntive utili per fornire il servizio
+	 * @param ora		E' l'ora cui bisogna fornire il servizio
+	 */
+	public ServizioInterno(String codice, Giorno giorno, String note, Ora ora){
+		set_codice(codice);
+		set_giorno(giorno);
+		set_note(note);
+		set_ora(ora);
+	}
 	
 	/*----------------------- Setter e getter -----------------------*/
 	/**

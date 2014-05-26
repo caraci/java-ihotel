@@ -3,7 +3,6 @@
  */
 package com.iHotel.view.Utility;
 
-import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -11,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -19,11 +19,13 @@ import net.sourceforge.jdatepicker.JDatePicker;
 
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.ServizioInterno;
+import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.model.Persona.Persona;
 import com.iHotel.model.Utility.Giorno;
+import com.iHotel.model.Utility.Ora;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Access.StyleAbstractFactory;
@@ -209,7 +211,8 @@ public class UDialogManager extends JOptionPane {
 		JComboBox<String> comboBoxServizi= new JComboBox<>();
 		/*TextArea per aggiungere note*/
 		JTextArea note = _viewFactory.getTextArea();
-		note.setMinimumSize(new Dimension(30, 0));
+		/*Setto il numero di righe della textarea*/
+		note.setRows(5);
 		
 		/*Ciclo suilla mappa dei servizi e li aggiungo alla combobox*/
 		for (Iterator<String> iterator = descrizioniServizi.keySet().iterator(); iterator.hasNext();) {
@@ -232,27 +235,44 @@ public class UDialogManager extends JOptionPane {
 		lblOrario.setText("Orario: ");
 		//Creo il jdatepicker per la data
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
+		//Creo l'orario
+		JPanel pnlOrario = UMostraOrario.getInstance().creaOrarioDefault();
 		
 		//Creo un array di componenti
-				final JComponent[] inputs = new JComponent[] {
-						//importo
-						lblServizio,
-						comboBoxServizi,
-						//data
-						lblData,
-						(JComponent) data,
-						//note
-						lblNote,
-						note,
-						//Ora
-						lblOrario,						
-						UMostraOrario.getInstance().creaOrarioDefault()
-				};
-				
+			final JComponent[] inputs = new JComponent[] {
+					//importo
+					lblServizio,
+					comboBoxServizi,
+					//data
+					lblData,
+					(JComponent) data,
+					//note
+					lblNote,
+					note,
+					//Ora
+					lblOrario,	
+					//mi faccio restituire l'orario dalla
+					pnlOrario
+			};
+		
 		//Faccio il display della schermata
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento servizi nella prenotaziones", JOptionPane.PLAIN_MESSAGE);
 		
-		return null;
+		/*Costruisco tutto ciò che mi serve per istanziare un servizio*/
+		DescrizioneServizioInterno descrizioneServizio=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaNome(comboBoxServizi.getSelectedItem().toString());
+		/*Codice del servizio*/
+		String codice = descrizioneServizio.get_codice();
+		/*Data in cui eseguire il servizio*/
+		Giorno dataRichiesta = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
+		/*Ora per cui è stato richiesto il servizio*/
+		Ora orario = new Ora(UMostraOrario.getInstance().getOraSelezionata(),UMostraOrario.getInstance().getMinutoSelezionato());
+		/*Testo delle note*/
+		String testoNote = note.getText();
+		/*Costruisco il servizio interno con le informazioni inserite*/
+		ServizioInterno servizioInterno = new ServizioInterno(codice,dataRichiesta,testoNote,orario);
+		
+		/*Restituisco il servizio interno costruito*/
+		return servizioInterno;
 	}
 	
 }
