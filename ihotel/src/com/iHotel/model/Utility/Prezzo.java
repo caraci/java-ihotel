@@ -51,6 +51,38 @@ public class Prezzo {
 		this.set_importo(importo);
 		return this;
 	}
+	/**
+	 * Metodo per ottenere un nuovo oggetto di tipo prezzo contenente un importo pari
+	 * a quello dell'oggetto su cui si invoca il metodo, scontato della quantità fornita
+	 * come parametro.
+	 * 
+	 * @param percentualeSconto Percentuale di sconto da applicare
+	 * @return Oggetto prezzo con importo scontato.
+	 */
+	public Prezzo applicaScontoPercentuale(int percentualeSconto) {
+		Prezzo prezzoScontato = new Prezzo();
+		// Calcolo l'importo scontato
+		double importoScontato = this.get_importo() - this.get_importo()*(percentualeSconto/100);
+		// Setto l'importo al prezzo scontato
+		prezzoScontato.set_importo(importoScontato);
+		
+		return prezzoScontato;
+	}
+	/**
+	 * Metodo per vedere se l'importo di un prezzo è superiore rispetto a quello di un altro.
+	 * 
+	 * @param prezzoDaConfrontare Prezzo da confrontare
+	 * @return True se l'importo dell'istanza è superiore rispetto a quello fornito per parametro. False altrimenti.
+	 */
+	public boolean isMaggioreDi(Prezzo prezzoDaConfrontare) {
+		boolean esito = false;
+		// Controllo se l'importo dell'istanza è maggiore di quello fornito.
+		if (this.get_importo()>prezzoDaConfrontare.get_importo()) {
+			esito=true;
+		}
+		
+		return esito;
+	}
 	
 	/* ----------------- Getter, Setter --------------------- */
 	/**

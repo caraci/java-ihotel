@@ -3,6 +3,8 @@
  */
 package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
 
+import java.util.Iterator;
+
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 
@@ -15,37 +17,24 @@ public class CompositeGiornoScadenzaMigliorePerPrenotanteStrategy extends Compos
 	@Override
 	public Giorno getGiornoScadenza(SoggiornoContextSubject soggiorno) {
 		
-				System.out.println("Giorno inizio soggiorno: " + soggiorno.get_periodo().get_dataInizio().toString());
-		
 		// Giorno di scadenza relativo alla prima strategia.
-		Giorno giornoScadenzaPiuVicinoDaInizioSoggiorno = _strategie.get(0).getGiornoScadenza(soggiorno);
-		
-				System.out.println("0: " + giornoScadenzaPiuVicinoDaInizioSoggiorno.toString());
-				System.out.println("Scelto: " + giornoScadenzaPiuVicinoDaInizioSoggiorno.toString());
-		
-		
-		// Ciclo sulle restanti strategie.
-		for (int i = 1; i < _strategie.size(); i++) {
-			ComponentOttieniGiornoScadenzaStrategy strategia = _strategie.get(i);
-			// Prendo il giorno relativo a questa strategia
-			Giorno giornoScadenzaStrategia = strategia.getGiornoScadenza(soggiorno);
-			
-			
-				System.out.println(i + ": " + giornoScadenzaStrategia.toString());
-			
-			
-			/*
-			 *  Controllo se il giornoScadenzaStrategia è più vicino all'inizio del soggiorno rispetto
-			 *  al giorno attualmente scelto.
-			 */
-			if (giornoScadenzaStrategia.compara(giornoScadenzaPiuVicinoDaInizioSoggiorno) > 0) {
-				// Assegno il nuovo valore per il giorno di scadenza
-				giornoScadenzaPiuVicinoDaInizioSoggiorno=giornoScadenzaStrategia;
-				
-				
-				
-						System.out.println("Scelto: " + giornoScadenzaStrategia.toString());
-			}
+		Giorno giornoScadenzaPiuVicinoDaInizioSoggiorno = null;
+		// Ciclo sulle strategie di cui si compone la strategia composita
+		for (Iterator<ComponentOttieniGiornoScadenzaStrategy> iterator = _strategie.iterator(); iterator.hasNext();) {
+			ComponentOttieniGiornoScadenzaStrategy strategiaLeaf = (ComponentOttieniGiornoScadenzaStrategy) iterator.next();
+			// Controllo se è presente un giorno di scadenza iniziale
+			if (giornoScadenzaPiuVicinoDaInizioSoggiorno != null) {
+				// Ricavo il giorno di scadenza fornito dalla strategia in analisi
+				Giorno giornoScadenzaStrategia = strategiaLeaf.getGiornoScadenza(soggiorno);
+				// Controllo se il giornoScadenzaStrategia è più vicino all'inizio del soggiorno rispetto al giorno attualmente scelto.
+				if (giornoScadenzaStrategia.compara(giornoScadenzaPiuVicinoDaInizioSoggiorno) > 0) {
+					// Assegno il nuovo valore per il giorno di scadenza.
+					giornoScadenzaPiuVicinoDaInizioSoggiorno=giornoScadenzaStrategia;
+				}
+			} else {
+				// Si entra in questo ramo solo la prima volta per inserire un primo giorno di scadenza.
+				giornoScadenzaPiuVicinoDaInizioSoggiorno=strategiaLeaf.getGiornoScadenza(soggiorno);
+			}	
 		}
 		return giornoScadenzaPiuVicinoDaInizioSoggiorno;
 	}

@@ -228,7 +228,7 @@ public class UtoListPanel {
 	 */
 	public String totalePrenotazioneToString(SoggiornoContextSubject prenotazione){
 		//chiedo alla prenotazione quanto è il suo totale e la sua valuta
-		String totale = "L'ammontare complessivo della prenotazione è: " + prenotazione.get_total().get_importo() + prenotazione.get_total().get_valuta();
+		String totale = "L'ammontare complessivo della prenotazione è: " + prenotazione.get_importoTotaleCamere().get_importo() + prenotazione.get_importoTotaleCamere().get_valuta();
 		return totale;
 	}
 

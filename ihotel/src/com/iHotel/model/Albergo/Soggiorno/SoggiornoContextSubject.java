@@ -50,7 +50,7 @@ public class SoggiornoContextSubject implements ISubject {
 	/**
 	 * Importo totale per le camere riservate da questo soggiorno.
 	 */
-	private Prezzo _importoTotalCamere;
+	private Prezzo _importoTotaleCamere;
 	/**
 	 * Codice identificativo del soggiorno.
 	 */
@@ -69,7 +69,7 @@ public class SoggiornoContextSubject implements ISubject {
 	public SoggiornoContextSubject() {
 		_camerePrenotate = new ArrayList<Camera>();
 		_osservatori = new ArrayList<IObserver>();
-		_importoTotalCamere = new Prezzo();
+		_importoTotaleCamere = new Prezzo();
 		_pagamenti= new ArrayList<Pagamento>();
 		_ammontareCaparra = new Prezzo();
 	}
@@ -131,7 +131,7 @@ public class SoggiornoContextSubject implements ISubject {
 		String tipologia=cameraPrenotata.get_tipologia();
 		descrizione=CatalogoCamere.getInstance().getDescrizioneDaTipologia(tipologia);
 		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
-		_importoTotalCamere.somma(descrizione.calcolaPrezzoInPeriodo(_periodo));
+		_importoTotaleCamere.somma(descrizione.calcolaPrezzoInPeriodo(_periodo));
 		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
 		// di stato della prenotazione.
 		this.Notify();
@@ -157,7 +157,7 @@ public class SoggiornoContextSubject implements ISubject {
 		Prezzo totaleServiziEsterni = new Prezzo();
 		
 		totaleServiziEsterni = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(this);
-		importoDaPagare.somma(_importoTotalCamere);
+		importoDaPagare.somma(_importoTotaleCamere);
 		importoDaPagare.somma(totaleServiziEsterni);
 		importoDaPagare.somma(this.getPrezzoServiziInterni());
 		importoDaPagare.sottrai(this.calcolaTotalePagamenti());
@@ -245,14 +245,14 @@ public class SoggiornoContextSubject implements ISubject {
 	/**
 	 * @return _total 
 	 */
-	public Prezzo get_total() {
-		return this._importoTotalCamere;
+	public Prezzo get_importoTotaleCamere() {
+		return this._importoTotaleCamere;
 	}
 	/**
 	 * @param _total the total to set
 	 */
-	public void set_total(Prezzo _total) {
-		this._importoTotalCamere = _total;
+	public void set_importoTotaleCamere(Prezzo _total) {
+		this._importoTotaleCamere = _total;
 	}
 
 	/**

@@ -180,7 +180,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		Giorno giornoScadenzaGaranzia =  _prenotazione.get_giornoScadenzaInvioGaranzia();
 		
 		/*Recupero il prezzo delle camere*/
-		Prezzo prezzoCamere = _prenotazione.get_total();
+		Prezzo prezzoCamere = _prenotazione.get_importoTotaleCamere();
 		
 		/*Sommo il prezzo dei servizi interni con quelli esterni*/
 		Prezzo totaleServizi = new Prezzo();

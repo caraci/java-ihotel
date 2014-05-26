@@ -82,9 +82,9 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
     /* ------------- Pattern Observer ----------- */
     @Override
 	public void Update() {
-		String total=String.valueOf(_prenotazioneSubject.get_total().get_importo());	
+		String total=String.valueOf(_prenotazioneSubject.get_importoTotaleCamere().get_importo());	
 		// Setto il prezzo della Label con il totale della prenotazione
-		_lblPrezzoTotale.setText(total + _prenotazioneSubject.get_total().get_valuta());
+		_lblPrezzoTotale.setText(total + _prenotazioneSubject.get_importoTotaleCamere().get_valuta());
 	}
     /* ------------- /Pattern Observer --------- */
     @Override
