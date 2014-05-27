@@ -3,17 +3,11 @@ package com.iHotel.model.Albergo.Soggiorno;
 import java.util.*;
 
 import com.iHotel.model.Albergo.Camera.Camera;
-import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
-import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Persona.ClientePrenotante;
-import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.ComponentOttieniAmmontareCaparraStrategy;
-import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.StrategiaSoggiornoAmmontareCaparraFactory;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.ComponentOttieniGiornoScadenzaStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.StrategiaSoggiornoGiornoScadenzaFactory;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -70,7 +64,7 @@ public class SoggiornoContextSubject implements ISubject {
 	/**
 	 * Stato in cui si trova il soggiorno - Pattern State
 	 */
-	private SoggiornoState _statoSoggiorno;
+	private SoggiornoState _soggiornoState;
 	/**
 	 *  Importo rimanente da pagare per il soggiorno
 	 */
@@ -89,7 +83,7 @@ public class SoggiornoContextSubject implements ISubject {
 		_importoTotaleCamere = new Prezzo();
 		_pagamenti= new ArrayList<Pagamento>();
 		_ammontareCaparra = new Prezzo();
-		_statoSoggiorno = new SoggiornoPrenotato();
+		_soggiornoState = new SoggiornoPrenotato(this);
 		_importoRimanenteDaPagare = new Prezzo();
 		_importoTotalePagamenti = new Prezzo();
 	}
@@ -127,6 +121,7 @@ public class SoggiornoContextSubject implements ISubject {
 	/* ------------ /Pattern Observer -------- */
 	/**
 	 * Metodo per ottenere il prezzo dei servizi interni di una prenotazione.
+	 * 
 	 * @return Prezzo dei servizi interni di una prenotazione.
 	 */
 	public Prezzo getPrezzoServiziInterni(){
@@ -142,35 +137,15 @@ public class SoggiornoContextSubject implements ISubject {
 	 * Metodo per calcolare il totale di una prenotazione
 	 */
 	public void calcolaImportoTotaleCamere(){
-		DescrizioneCamera descrizione;
-		// Prendo l'ultima camera aggiunta.
-		Camera cameraPrenotata;
-		cameraPrenotata=_camerePrenotate.get(_camerePrenotate.size()-1);
-		// Prendo la tipologia e carico la giusta descrizione.
-		String tipologia=cameraPrenotata.get_tipologia();
-		descrizione=CatalogoCamere.getInstance().getDescrizioneDaTipologia(tipologia);
-		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
-		_importoTotaleCamere.somma(descrizione.calcolaPrezzoInPeriodo(_periodo));
-		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
-		// di stato della prenotazione.
-		this.Notify();
+		// Passo la richiesta allo stato attuale
+		_soggiornoState.calcolaImportoTotaleCamere();
 	}
 	/**
 	 * Metodo per calcolare il rimanente importo da pagare
 	 */
 	public void calcolaTotaleDaPagare(){
-		Prezzo importoDaPagare = new Prezzo();
-		Prezzo totaleServiziEsterni = new Prezzo();
-		
-		totaleServiziEsterni = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(this);
-		// Aggiungo tutti i costi della prenotazione
-		importoDaPagare.somma(_importoTotaleCamere);
-		importoDaPagare.somma(totaleServiziEsterni);
-		importoDaPagare.somma(this.getPrezzoServiziInterni());
-		// Sottraggo i pagamenti pervenuti
-		importoDaPagare.sottrai(this.get_importoTotalePagamenti());
-		
-		_importoRimanenteDaPagare=importoDaPagare;
+		// Passo la richiesta allo stato attuale
+		_soggiornoState.calcolaTotaleDaPagare();
 	}
 	/**
 	 * Metodo per aggiungere una camera alla prenotazione.
@@ -178,7 +153,8 @@ public class SoggiornoContextSubject implements ISubject {
 	 * @param camera Camera da aggiungere alla prenotazione.
 	 */
 	public void addCamera(Camera camera) {
-		_camerePrenotate.add(camera);
+		// Passo la richiesta allo stato attuale
+		_soggiornoState.addCamera(camera);
 	}
 	/**
 	 * Metodo per aggiungere l'ospite prenotante.
@@ -189,20 +165,15 @@ public class SoggiornoContextSubject implements ISubject {
 	 * @param telefono Telefono del prenotante.
 	 */
 	public void addPrenotante(String nome, String cognome, String eMail, String telefono) {
-		_prenotante = new ClientePrenotante();
-		_prenotante.set_nome(nome);		
-		_prenotante.set_cognome(cognome);
-		_prenotante.set_email(eMail);
-		_prenotante.set_telefono(telefono);
+		// Passo la richiesta allo stato attuale
+		_soggiornoState.addPrenotante(nome, cognome, eMail, telefono);
 	}
 	/**
 	 * Metodo per occupare le camere della prenotazione.
 	 */
 	public void occupaCamere() {
-		for (Iterator<Camera> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
-			Camera cameraPrenotata = (Camera) iterator.next();
-			cameraPrenotata.occupaInPeriodoState(_periodo);
-		}
+		// Passo la richiesta allo stato attuale
+		_soggiornoState.occupaCamere();
 	}
 	/**
 	 * Metodo per aggiungere un pagamento alla prenotazione.
@@ -224,23 +195,8 @@ public class SoggiornoContextSubject implements ISubject {
 	 * @param telefono Telefono del prenotante.
 	 */
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
-		// Factory delle strategie.
-		StrategiaSoggiornoGiornoScadenzaFactory strategiaGiornoScadenzaFactory = StrategiaSoggiornoGiornoScadenzaFactory.getInstance();
-		StrategiaSoggiornoAmmontareCaparraFactory strategiaAmmontareCaparraFactory = StrategiaSoggiornoAmmontareCaparraFactory.getInstance();
-		// Aggiungo l'ospite alla prenotazione
-		this.addPrenotante(nome, cognome, eMail, telefono);
-		// Occupo le camere scelte dall'utente
-		this.occupaCamere();
-		// Setto il codice alla prenotazione
-		this.set_codice(SoggiornoContextSubject.generaCodice());
-		// Strategia per il calcolo del giorno di scadenza
-		ComponentOttieniGiornoScadenzaStrategy strategiaGiornoScadenza = strategiaGiornoScadenzaFactory.getStrategyCalcoloGiornoScadenza();
-		// Setto il giorno di scadenza per l'invio della garanzia.
-		this.set_giornoScadenzaInvioGaranzia(strategiaGiornoScadenza.getGiornoScadenza(this));
-		// Strategia per il calcolo dell'ammontare della caparra
-		ComponentOttieniAmmontareCaparraStrategy strategiaAmmontareCaparra = strategiaAmmontareCaparraFactory.getStrategyAmmontareCaparra();
-		// Setto l'ammontare della caparra
-		this.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(this));
+		// Passo la richiesta allo stato attuale
+		_soggiornoState.concludiPrenotazione(nome, cognome, eMail, telefono);
 	}
 	
 	/* -------------------------------- Getter, Setter ------------------------------------------ */
@@ -277,6 +233,13 @@ public class SoggiornoContextSubject implements ISubject {
 	public ClientePrenotante get_prenotante(){
 		return this._prenotante;
 	}
+	/**
+	 * @param _prenotante the _prenotante to set
+	 */
+	public void set_prenotante(ClientePrenotante _prenotante) {
+		this._prenotante = _prenotante;
+	}
+
 	/**
 	 * @return _total 
 	 */
@@ -349,15 +312,15 @@ public class SoggiornoContextSubject implements ISubject {
 	/**
 	 * @return the _statoSoggiorno
 	 */
-	public SoggiornoState get_statoSoggiorno() {
-		return _statoSoggiorno;
+	public SoggiornoState get_soggiornoState() {
+		return _soggiornoState;
 	}
 
 	/**
 	 * @param _statoSoggiorno the _statoSoggiorno to set
 	 */
-	public void set_statoSoggiorno(SoggiornoState _statoSoggiorno) {
-		this._statoSoggiorno = _statoSoggiorno;
+	public void set_soggiornoState(SoggiornoState _statoSoggiorno) {
+		this._soggiornoState = _statoSoggiorno;
 	}
 
 	public Prezzo get_importoRimanenteDaPagare() {

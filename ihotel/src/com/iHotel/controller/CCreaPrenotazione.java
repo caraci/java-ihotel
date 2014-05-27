@@ -75,8 +75,6 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		Camera camera = _albergo.getCameraDaNumero(numeroCamera);
 		// Aggiungo la camera all'elemento prenotazione
 		_prenotazione.addCamera(camera);
-		// Calcolo il nuovo totale
-		_prenotazione.calcolaImportoTotaleCamere();
 	}
 	/**
 	 * Metodo per ricercare le camere libere nell'albergo, appartenenti a tipologie differenti.
