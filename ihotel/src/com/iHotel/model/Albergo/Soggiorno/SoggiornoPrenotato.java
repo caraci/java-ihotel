@@ -7,16 +7,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.iHotel.model.Albergo.Camera.Camera;
-import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
-import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
-import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.ComponentOttieniAmmontareCaparraStrategy;
 import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.StrategiaSoggiornoAmmontareCaparraFactory;
 import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.ComponentOttieniGiornoScadenzaStrategy;
 import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.StrategiaSoggiornoGiornoScadenzaFactory;
 import com.iHotel.model.Utility.Periodo;
-import com.iHotel.model.Utility.Prezzo;
 
 /**
  * @author Gabriele
@@ -27,36 +23,6 @@ public class SoggiornoPrenotato extends SoggiornoState {
 	public SoggiornoPrenotato(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public Prezzo getPrezzoServiziInterni() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void calcolaImportoTotaleCamere() {
-		DescrizioneCamera descrizione;
-		// Prendo l'ultima camera aggiunta.
-		Camera cameraPrenotata;
-		// Lista delle camere prenotate.
-		ArrayList<Camera> camerePrenotate = _soggiornoSubject.get_camerePrenotate();
-		// Prendo l'ultima camera aggiunta al soggiorno.
-		cameraPrenotata=camerePrenotate.get(camerePrenotate.size()-1);
-		// Prendo la tipologia e carico la giusta descrizione.
-		String tipologia=cameraPrenotata.get_tipologia();
-		descrizione=CatalogoCamere.getInstance().getDescrizioneDaTipologia(tipologia);
-		// Periodo del soggiorno.
-		Periodo periodoSoggiorno = _soggiornoSubject.get_periodo();
-		// Importo totale per le camere del soggiorno
-		Prezzo importoTotaleCamere = _soggiornoSubject.get_importoTotaleCamere();
-		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
-		importoTotaleCamere.somma(descrizione.calcolaPrezzoInPeriodo(periodoSoggiorno));
-		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
-		// di stato della prenotazione.
-		_soggiornoSubject.Notify();
-		
 	}
 
 	@Override
@@ -96,12 +62,6 @@ public class SoggiornoPrenotato extends SoggiornoState {
 			// Occupo la camera nel periodo
 			cameraPrenotata.occupaInPeriodoState(periodoSoggiorno);
 		}
-	}
-
-	@Override
-	public void addPagamento(Pagamento pagamento) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

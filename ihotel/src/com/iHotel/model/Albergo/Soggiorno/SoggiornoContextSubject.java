@@ -3,7 +3,6 @@ package com.iHotel.model.Albergo.Soggiorno;
 import java.util.*;
 
 import com.iHotel.model.Albergo.Camera.Camera;
-import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.Pagamento.Pagamento;
@@ -125,13 +124,7 @@ public class SoggiornoContextSubject implements ISubject {
 	 * @return Prezzo dei servizi interni di una prenotazione.
 	 */
 	public Prezzo getPrezzoServiziInterni(){
-		Prezzo prezzo = new Prezzo();
-		// Ciclo su tutte le camere
-		for (Iterator<Camera> iterator = _camerePrenotate.iterator(); iterator.hasNext();) {
-			Camera camera = (Camera) iterator.next();
-			prezzo.somma(camera.getPrezzoServiziInPeriodo(_periodo));
-		}
-		return prezzo;
+		return _soggiornoState.getPrezzoServiziInterni();
 	}
 	/**
 	 * Metodo per calcolare il totale di una prenotazione
@@ -181,10 +174,8 @@ public class SoggiornoContextSubject implements ISubject {
 	 * @param pagamento Pagamento effettuato a favore del soggiorno.
 	 */
 	public void addPagamento(Pagamento pagamento) {
-		//Aggiungo il pagamento alla lista di pagamenti.
-		this._pagamenti.add(pagamento);
-		//Sommo l'importo del pagamento al totale dei pagamenti
-		this._importoTotalePagamenti.somma(pagamento.get_importo());
+		// Passo la richiesta allo stato attuale
+		_soggiornoState.addPagamento(pagamento);
 	}
 	/**
 	 * Metodo per concludere la richiesta di soggiorno.

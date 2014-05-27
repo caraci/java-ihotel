@@ -19,17 +19,6 @@ public class Soggiorno extends SoggiornoState {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public Prezzo getPrezzoServiziInterni() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void calcolaImportoTotaleCamere() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void calcolaTotaleDaPagare() {
