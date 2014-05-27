@@ -6,7 +6,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.CreditAuthorizationService.CreditAuthorizationService1Adapter;
 import com.iHotel.model.ForeignSystem.CreditAuthorizationService.ICreditAuthorizationServiceAdapter;
 import com.iHotel.model.ForeignSystem.LettoreCarte.ILettoreCarteAdapter;
-import com.iHotel.model.ForeignSystem.LettoreCarte.LettoreCarta1Adapter;
+import com.iHotel.model.ForeignSystem.LettoreCarte.LettoreCarteIngenicoAdapter;
 import com.iHotel.model.ForeignSystem.PagamentoCarta.IPagamentoCartaAdapter;
 import com.iHotel.model.ForeignSystem.PagamentoCarta.PagamentoVisaCartaAdapter;
 import com.iHotel.model.ForeignSystem.PayTv.*;
@@ -75,7 +75,7 @@ public class ServiceFactory {
 		// Sistema Lettore Carta
 		switch (sistemiServiziEsterni.get(2)) {
 		case "Lettore1":
-			_lettoreAdapter = new LettoreCarta1Adapter();
+			_lettoreAdapter = new LettoreCarteIngenicoAdapter();
 			break;
 		default:
 			break;

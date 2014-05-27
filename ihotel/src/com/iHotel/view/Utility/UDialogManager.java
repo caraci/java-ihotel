@@ -275,4 +275,22 @@ public class UDialogManager extends JOptionPane {
 		return servizioInterno;
 	}
 	
+	public Prezzo getDialogInserimentoImportoPagamentoConCarta(Prezzo importoDaVisualizzare){
+		
+		JLabel lblImporto = _viewFactory.getLabel();
+		lblImporto.setText("Importo da pagare:");
+		JTextField txtImporto = _viewFactory.getTextField();
+		txtImporto.setText(String.valueOf(importoDaVisualizzare.get_importo()));
+		
+		//Creo un array di componenti
+		final JComponent[] inputs = new JComponent[] {
+				lblImporto,
+				txtImporto
+		};
+		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento importo pagamento con carta", JOptionPane.PLAIN_MESSAGE);
+		
+		importoDaVisualizzare.set_importo( Double.valueOf(txtImporto.getText()));
+		
+		return importoDaVisualizzare;
+	}
 }

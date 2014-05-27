@@ -290,7 +290,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 		/*Setto il testo del pulsante*/
 		_btnAggiungiPagamentoConCarta.setText("Aggiungi un pagamento con carta");
 		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
-		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConCartaListener());
+		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConCartaListener(_prenotazione));
 		/*Aggiungo il pulsante per aggiungere un pagamento*/
 		_panelCartaDiCredito.add(_btnAggiungiPagamentoConCarta);
 		
