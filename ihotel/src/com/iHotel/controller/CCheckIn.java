@@ -72,6 +72,8 @@ public class CCheckIn extends CGestionePrenotazione {
 		_prenotazione.effettuaCheckIn();
 		// Salvo nel db il soggiorno in seguito al cambio di stato
 		PPrenotazione.getInstance().store(_prenotazione);
+		// Torno alla gestione della prenotazione
+		CModificaPrenotazione.getInstance().recuperaPrenotazioneDaCodice(_prenotazione.get_codice());
 	}
 	/**
 	 * Metodo per tornare alla gestione della prenotazione.

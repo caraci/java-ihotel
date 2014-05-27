@@ -17,7 +17,7 @@ import javax.swing.JTabbedPane;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.view.ViewPanelContentPane;
-import com.iHotel.view.Event.CheckIn.TerminaCheckInListener;
+import com.iHotel.view.Event.CheckIn.EffettuaCheckInListener;
 import com.iHotel.view.Event.CheckIn.TornaAllaPrenotazioneDaCheckInListener;
 
 /**
@@ -91,7 +91,7 @@ public class VPC_AggiungiOspiti extends ViewPanelContentPane {
 		// Button completa prenotazione.
 		_btnTerminaCheckin.setText("Termina \n CheckIn");
 		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
-		_btnTerminaCheckin.addMouseListener(new TerminaCheckInListener());
+		_btnTerminaCheckin.addMouseListener(new EffettuaCheckInListener());
 		
 		// Button torna alla prenotazione.
 		_btnTornaPrenotazione.setText("Torna \n Prenotazione");
