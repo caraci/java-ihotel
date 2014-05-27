@@ -15,7 +15,6 @@ import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
-import com.iHotel.view.Utility.UDialogManager;
 
 /**
  * @author Alessandro
