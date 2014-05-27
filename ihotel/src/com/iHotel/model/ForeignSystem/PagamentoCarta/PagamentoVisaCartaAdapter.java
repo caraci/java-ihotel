@@ -15,10 +15,8 @@ import com.iHotel.model.Utility.Prezzo;
 public class PagamentoVisaCartaAdapter implements IPagamentoCartaAdapter {
 
 	@Override
-	public PagamentoConCarta eseguiPagamento(SoggiornoContextSubject soggiorno, CartaDiCredito carta) {
-		Prezzo totaleDaPagare=soggiorno.calcolaTotaleDaPagare();
-		
-		
+	public PagamentoConCarta eseguiPagamento(Prezzo prezzo, CartaDiCredito carta) {
+				
 		return null;
 	}
 

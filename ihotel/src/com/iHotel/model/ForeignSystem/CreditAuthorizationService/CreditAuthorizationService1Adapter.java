@@ -16,7 +16,7 @@ public class CreditAuthorizationService1Adapter implements
 	@Override
 	public boolean richiestaDiApprovazione(
 			SoggiornoContextSubject soggiorno, CartaDiCredito carta) {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 

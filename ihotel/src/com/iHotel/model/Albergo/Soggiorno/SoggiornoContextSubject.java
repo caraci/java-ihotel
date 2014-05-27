@@ -68,6 +68,15 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	private SoggiornoState _statoSoggiorno;
 	/**
+	 *  Importo rimanente da pagare per il soggiorno
+	 */
+	private Prezzo _importoRimanenteDaPagare;
+	/**
+	 * 	Importo totale pagamenti ricevuti per il soggiorno
+	 */
+	private Prezzo _importoTotalePagamenti;
+	
+	/**
 	 * Costruttore.
 	 */
 	public SoggiornoContextSubject() {
@@ -77,6 +86,8 @@ public class SoggiornoContextSubject implements ISubject {
 		_pagamenti= new ArrayList<Pagamento>();
 		_ammontareCaparra = new Prezzo();
 		_statoSoggiorno = new SoggiornoPrenotato();
+		_importoRimanenteDaPagare = new Prezzo();
+		_importoTotalePagamenti = new Prezzo();
 	}
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
@@ -142,22 +153,11 @@ public class SoggiornoContextSubject implements ISubject {
 		this.Notify();
 	}
 	
-	/**
-	 * Metodo per calcolare l'importo già pagato
-	 */
-	public Prezzo calcolaTotalePagamenti(){
-		Prezzo pagamenti= new Prezzo();
-		for (Iterator<Pagamento> iterator = _pagamenti.iterator(); iterator.hasNext();) {
-			Pagamento pagamento = (Pagamento) iterator.next();
-			pagamenti.somma(pagamento.get_importo());
-		}
-		return pagamenti;
-	}
 	
 	/**
 	 * Metodo per calcolare il rimanente importo da pagare
 	 */
-	public Prezzo calcolaTotaleDaPagare(){
+	public void calcolaTotaleDaPagare(){
 		Prezzo importoDaPagare = new Prezzo();
 		Prezzo totaleServiziEsterni = new Prezzo();
 		
@@ -165,9 +165,9 @@ public class SoggiornoContextSubject implements ISubject {
 		importoDaPagare.somma(_importoTotaleCamere);
 		importoDaPagare.somma(totaleServiziEsterni);
 		importoDaPagare.somma(this.getPrezzoServiziInterni());
-		importoDaPagare.sottrai(this.calcolaTotalePagamenti());
+		importoDaPagare.sottrai(this.get_importoTotalePagamenti());
 		
-		return importoDaPagare;
+		_importoRimanenteDaPagare=importoDaPagare;
 	}
 	
 	
@@ -218,6 +218,8 @@ public class SoggiornoContextSubject implements ISubject {
 	public void add_pagamento(Pagamento pagamento) {
 		//Aggiungo il pagamento alla lista di pagamenti.
 		this._pagamenti.add(pagamento);
+		//Sommo l'importo del pagamento al totale dei pagamenti
+		this._importoTotalePagamenti.somma(pagamento.get_importo());
 	}
 	/* -------------------------------- Getter, Setter ------------------------------------------ */
 	/**
@@ -328,5 +330,27 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	public void set_statoSoggiorno(SoggiornoState _statoSoggiorno) {
 		this._statoSoggiorno = _statoSoggiorno;
+	}
+
+	public Prezzo get_importoRimanenteDaPagare() {
+		return _importoRimanenteDaPagare;
+	}
+
+	public void set_importoRimanenteDaPagare(Prezzo _importoRimanenteDaPagare) {
+		this._importoRimanenteDaPagare = _importoRimanenteDaPagare;
+	}
+
+	/**
+	 * @return the _importoTotalePagamenti
+	 */
+	public Prezzo get_importoTotalePagamenti() {
+		return _importoTotalePagamenti;
+	}
+
+	/**
+	 * @param _importoTotalePagamenti the _importoTotalePagamenti to set
+	 */
+	public void set_importoTotalePagamenti(Prezzo _importoTotalePagamenti) {
+		this._importoTotalePagamenti = _importoTotalePagamenti;
 	}
 }
