@@ -63,7 +63,7 @@ public class CGestionePagamenti {
      */
     public void inserisciPagamentoInPrenotazione(Pagamento pagamento){
     	/*Aggiungo il pagamento alla prenotazione*/
-    	_prenotazione.add_pagamento(pagamento);
+    	_prenotazione.addPagamento(pagamento);
     	/*Salvo il pagamento nel db*/
     	PPrenotazione.getInstance().store(_prenotazione.get_pagamenti());
     }
@@ -84,7 +84,7 @@ public class CGestionePagamenti {
     		//effetuo il pagamento
     		PagamentoConCarta pagamentoEffettuato=pagaConCarta.eseguiPagamento(_prenotazione, cartaDiCredito);
     		//aggiungo il pagamento alla prenotazione
-        	_prenotazione.add_pagamento(pagamentoEffettuato);
+        	_prenotazione.addPagamento(pagamentoEffettuato);
     	}
     	
     	

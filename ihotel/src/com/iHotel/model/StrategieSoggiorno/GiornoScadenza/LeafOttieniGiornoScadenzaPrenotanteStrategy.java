@@ -33,7 +33,7 @@ public class LeafOttieniGiornoScadenzaPrenotanteStrategy extends
 	@Override
 	public Giorno getGiornoScadenza(SoggiornoContextSubject soggiorno) {
 		// Prendo il prenotante del soggiorno
-		ClientePrenotante prenotante = soggiorno.getPrenotante();
+		ClientePrenotante prenotante = soggiorno.get_prenotante();
 		// Prendo il numero di prenotazioni effettuate dal cliente prenotante
 		int numeroPrenotazioniClientePrenotante = prenotante.get_numeroPrenotazioni();
 		// Istanzio variabili

@@ -6,10 +6,6 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Observer.IObserver;
-import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.ComponentOttieniAmmontareCaparraStrategy;
-import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.StrategiaSoggiornoAmmontareCaparraFactory;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.ComponentOttieniGiornoScadenzaStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.StrategiaSoggiornoGiornoScadenzaFactory;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
@@ -20,7 +16,6 @@ import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Crea Prenotazione"
@@ -76,13 +71,12 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	 * @param numeroCamera Stringa contenente il numero della camera che si vuole aggiungere.
 	 */
 	public void aggiungiCameraAllaPrenotazione(String numeroCamera) {
-		Camera camera = null;
-		// Ricavo la MCamera a partire dalla stringa contenente il suo numero.
-		camera = _albergo.getCameraDaNumero(numeroCamera);
+		// Ricavo la Camera a partire dalla stringa contenente il suo numero.
+		Camera camera = _albergo.getCameraDaNumero(numeroCamera);
 		// Aggiungo la camera all'elemento prenotazione
 		_prenotazione.addCamera(camera);
 		// Calcolo il nuovo totale
-		_prenotazione.calcolaTotale();
+		_prenotazione.calcolaImportoTotaleCamere();
 	}
 	/**
 	 * Metodo per ricercare le camere libere nell'albergo, appartenenti a tipologie differenti.
@@ -98,18 +92,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		/* Setto il periodo alla prenotazione */
 		_prenotazione.set_periodo(periodo);
 		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
-		HashMap<String, ArrayList<Camera>> camereLibere = new HashMap<String, ArrayList<Camera>>();
-		
-		// Ciclo sulle tipologie
-		for (Iterator<String> iterator = Tipologie.iterator(); iterator.hasNext();) {
-			String tipologia = iterator.next();
-			// Struttura dati nella quale si inseriranno le camere disponibili.
-			ArrayList<Camera> camereLibereTipologia = new ArrayList<Camera>();	
-			// Inserisco nella lista le camere disponibili.
-			camereLibereTipologia = _albergo.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia);		
-			// Aggiungo le camere appartenenti ad una tipologia
-			camereLibere.put(tipologia, camereLibereTipologia);
-		}		
+		HashMap<String, ArrayList<Camera>> camereLibere = _albergo.cercaCamereLibereInPeriodoDaTipologie(periodo, Tipologie);		
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
@@ -132,25 +115,10 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	 * @param telefono Telefono dell'ospite.
 	 */
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
-		// Factory delle strategie.
-		StrategiaSoggiornoGiornoScadenzaFactory strategiaGiornoScadenzaFactory = StrategiaSoggiornoGiornoScadenzaFactory.getInstance();
-		StrategiaSoggiornoAmmontareCaparraFactory strategiaAmmontareCaparraFactory = StrategiaSoggiornoAmmontareCaparraFactory.getInstance();
 		// Rimuovo l'osservatore dalla prenotazione.
 		_prenotazione.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
-		// Aggiungo l'ospite alla prenotazione
-		_prenotazione.addPrenotante(nome, cognome, eMail, telefono);
-		// Occupo le camere scelte dall'utente
-		_prenotazione.occupaCamere();
-		// Setto il codice alla prenotazione
-		_prenotazione.set_codice(SoggiornoContextSubject.generaCodice());
-		// Strategia per il calcolo del giorno di scadenza
-		ComponentOttieniGiornoScadenzaStrategy strategiaGiornoScadenza = strategiaGiornoScadenzaFactory.getStrategyCalcoloGiornoScadenza();
-		// Setto il giorno di scadenza per l'invio della garanzia.
-		_prenotazione.set_giornoScadenzaInvioGaranzia(strategiaGiornoScadenza.getGiornoScadenza(_prenotazione));
-		// Strategia per il calcolo dell'ammontare della caparra
-		ComponentOttieniAmmontareCaparraStrategy strategiaAmmontareCaparra = strategiaAmmontareCaparraFactory.getStrategyCalcoloGiornoScadenza();
-		// Setto l'ammontare della caparra
-		_prenotazione.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_prenotazione));
+		// Concludo la richiesta di soggiorno
+		_prenotazione.concludiPrenotazione(nome, cognome, eMail, telefono);
 		// Aggiungo la prenotazione allo storico
 		Storico storico = Storico.getInstance();
 		storico.addPrenotazione(_prenotazione);

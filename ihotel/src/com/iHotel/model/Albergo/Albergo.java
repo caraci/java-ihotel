@@ -77,7 +77,7 @@ public class Albergo {
 	/**
 	 * Restituisce una lista di camere libere di una tipologia e in un periodo.
 	 * 
-	 * @param periodo Periodo per cui si vogliono ricercare le camere libere.
+	 * @param periodo Periodo in analisi.
 	 * @param tipologia Tipologia delle camere da ricercare.
 	 * @return Lista contenente le camere libere della tipologia indicata, nel periodo indicato.
 	 */
@@ -94,6 +94,29 @@ public class Albergo {
 			}
 		}
 		return lista_camere;
+	}
+	/**
+	 * Restituisce una mappa contenente l'insieme di tutte le camere di diverse tipologie, libere in
+	 * un certo periodo.
+	 * 
+	 * @param periodo Periodo in analisi.
+	 * @param tipologie Lista delle tipologie di camere che si vogliono ricercare.
+	 * @return Mappa contenente come chiave la tipologia, e come valore la lista di camere libere di quella tipologia.
+	 */
+	public HashMap<String, ArrayList<Camera>> cercaCamereLibereInPeriodoDaTipologie(Periodo periodo, ArrayList<String> tipologie) {
+		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
+		HashMap<String, ArrayList<Camera>> camereLibere = new HashMap<String, ArrayList<Camera>>();
+		// Ciclo sulle tipologie
+		for (Iterator<String> iterator = tipologie.iterator(); iterator.hasNext();) {
+			String tipologia = iterator.next();
+			// Struttura dati nella quale si inseriranno le camere disponibili.
+			ArrayList<Camera> camereLibereTipologia = new ArrayList<Camera>();	
+			// Inserisco nella lista le camere disponibili.
+			camereLibereTipologia = this.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia);		
+			// Aggiungo le camere appartenenti ad una tipologia
+			camereLibere.put(tipologia, camereLibereTipologia);
+		}
+		return camereLibere;
 	}
 
 	/*---------------------- Getter e Setter --------------------*/

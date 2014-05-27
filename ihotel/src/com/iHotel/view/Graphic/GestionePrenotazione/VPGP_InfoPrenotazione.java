@@ -143,7 +143,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante, BoxLayout.PAGE_AXIS));
 				
 		/*Recupero il prenotante della prenotazione */
-		ClientePrenotante prenotante = _prenotazione.getPrenotante();
+		ClientePrenotante prenotante = _prenotazione.get_prenotante();
 		
 		/*Setto il testo dell'intestazione*/
 		_lblTitoloPrenotante.setText("Titolare della prenotazione: ");
