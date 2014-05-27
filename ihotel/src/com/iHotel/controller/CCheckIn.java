@@ -7,6 +7,7 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.persistence.PCamera;
+import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.CheckIn.VPC_AggiungiOspiti;
 
@@ -37,10 +38,9 @@ public class CCheckIn extends CGestionePrenotazione {
 	/**
 	 * Metodo per caricare la finestra per effettuare il checkIn.
 	 */
-	public void iniziaCheckIn() {
+	public void aggiungiOspitiAllaPrenotazione() {
 		// Chiedo a CModificaPrenotazione la prenotazione che si sta gestendo
 		set_prenotazione(CModificaPrenotazione.getInstance().get_prenotazione());
-		
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
@@ -67,8 +67,11 @@ public class CCheckIn extends CGestionePrenotazione {
 	/**
 	 * Metodo per terminare il checkIn per la camera.
 	 */
-	public void terminaCheckIn() {
-		
+	public void effettuaCheckIn() {
+		// Effettuo il check in per il soggiorno
+		_prenotazione.effettuaCheckIn();
+		// Salvo nel db il soggiorno in seguito al cambio di stato
+		PPrenotazione.getInstance().store(_prenotazione);
 	}
 	/**
 	 * Metodo per tornare alla gestione della prenotazione.

@@ -86,4 +86,13 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		
 	}
 
+	@Override
+	public SoggiornoState effettuaCheckIn() {
+		// TODO - invio le informazioni degli ospiti al sistema esterno della polizia di stato
+		
+		// Creo lo stato successivo
+		SoggiornoState statoSuccessivo = new Soggiorno(_soggiornoSubject);
+		return statoSuccessivo;
+	}
+
 }

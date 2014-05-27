@@ -43,8 +43,7 @@ public class Soggiorno extends SoggiornoState {
 	}
 
 	@Override
-	public void addPrenotante(String nome, String cognome, String eMail,
-			String telefono) {
+	public void addPrenotante(String nome, String cognome, String eMail, String telefono) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -66,6 +65,13 @@ public class Soggiorno extends SoggiornoState {
 			String telefono) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+	@Override
+	public SoggiornoState effettuaCheckIn() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

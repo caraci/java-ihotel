@@ -48,4 +48,10 @@ public class SoggiornoCancellato extends SoggiornoState {
 		
 	}
 
+	@Override
+	public SoggiornoState effettuaCheckIn() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

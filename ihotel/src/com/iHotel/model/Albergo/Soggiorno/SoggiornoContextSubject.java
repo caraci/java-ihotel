@@ -124,7 +124,10 @@ public class SoggiornoContextSubject implements ISubject {
 	 * @return Prezzo dei servizi interni di una prenotazione.
 	 */
 	public Prezzo getPrezzoServiziInterni(){
-		return _soggiornoState.getPrezzoServiziInterni();
+		// Passo la richiesta allo stato attuale
+		Prezzo prezzoServiziInterni = _soggiornoState.getPrezzoServiziInterni();
+		
+		return prezzoServiziInterni;
 	}
 	/**
 	 * Metodo per calcolare il totale di una prenotazione
@@ -188,6 +191,15 @@ public class SoggiornoContextSubject implements ISubject {
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
 		// Passo la richiesta allo stato attuale
 		_soggiornoState.concludiPrenotazione(nome, cognome, eMail, telefono);
+	}
+	/**
+	 * Metodo per effettuare il check in della prenotazione.
+	 */
+	public void effettuaCheckIn() {
+		// Passo la richiesta allo stato attuale
+		SoggiornoState statoSuccessivo = _soggiornoState.effettuaCheckIn();
+		// Setto il nuovo stato del soggiorno
+		this.set_soggiornoState(statoSuccessivo);
 	}
 	
 	/* -------------------------------- Getter, Setter ------------------------------------------ */

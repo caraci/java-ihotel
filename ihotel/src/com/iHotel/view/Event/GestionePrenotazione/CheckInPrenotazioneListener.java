@@ -20,6 +20,6 @@ public class CheckInPrenotazioneListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per gestire una camera di una prenotazione.
 		CCheckIn checkIn = CCheckIn.getInstance();
-		checkIn.iniziaCheckIn();
+		checkIn.aggiungiOspitiAllaPrenotazione();
 	}
 }
