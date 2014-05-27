@@ -11,9 +11,11 @@ import com.iHotel.model.ForeignSystem.PagamentoCarta.IPagamentoCartaAdapter;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Persona.Documenti.CartaDiCredito;
+import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
+import com.iHotel.view.Utility.UDialogManager;
 
 /**
  * @author Alessandro
@@ -68,7 +70,8 @@ public class CGestionePagamenti {
     	PPrenotazione.getInstance().store(_prenotazione.get_pagamenti());
     }
     
-    public void pagaConCarta(){
+    public void pagaConCarta(Prezzo importoDaPagareConCarta){
+    	
     	//recupero la ServiceFactory
     	ServiceFactory serviceFactory= ServiceFactory.getInstance();
     	//tramite la serviceFactory recupero il lettore di carte 
@@ -78,15 +81,15 @@ public class CGestionePagamenti {
     	//recupero il sistema di autorizzazione al pagamento
     	ICreditAuthorizationServiceAdapter creditAuth = serviceFactory.get_creditAuthAdapter();
     	//se il sistema autorizza il pagamento
-    	if(creditAuth.richiestaDiApprovazione(_prenotazione, cartaDiCredito)){
+    	if(creditAuth.richiestaDiApprovazione(importoDaPagareConCarta, cartaDiCredito)){
     		//recupero il sistema per effettuare il pagamento
     		IPagamentoCartaAdapter pagaConCarta = serviceFactory.get_pagamentoCartaAdapter();
     		//effetuo il pagamento
-    		PagamentoConCarta pagamentoEffettuato=pagaConCarta.eseguiPagamento(_prenotazione, cartaDiCredito);
+    		PagamentoConCarta pagamentoEffettuato=pagaConCarta.eseguiPagamento(importoDaPagareConCarta, cartaDiCredito);
     		//aggiungo il pagamento alla prenotazione
         	_prenotazione.addPagamento(pagamentoEffettuato);
     	}
-    	
+    	PPrenotazione.getInstance().store(_prenotazione.get_pagamenti());
     	
     }
 

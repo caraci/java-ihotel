@@ -11,6 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import com.iHotel.controller.CGestionePagamenti;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.view.Utility.UDialogManager;
+
 /**
  * Classe che ha il compito di gestire il click sul pulsante "Aggiungi pagamento con carta"
  * 
@@ -18,9 +23,10 @@ import javax.swing.JTextField;
  *
  */
 public class InserisciPagamentoConCartaListener extends MouseAdapter {
-	
+	SoggiornoContextSubject _prenotazione;
 	//Costruttore
-	public InserisciPagamentoConCartaListener(){
+	public InserisciPagamentoConCartaListener(SoggiornoContextSubject prenotazione){
+		_prenotazione=prenotazione;
 		
 	}
 	
@@ -32,26 +38,10 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
-		JTextField importo = new JTextField();
-		JTextField data = new JTextField();
-		JTextField carta = new JTextField();
-		
-		final JComponent[] inputs = new JComponent[] {
-				new JLabel("Importo:"),
-				importo,
-				new JLabel("Data:"),
-				data,
-				new JLabel("Numero carta: "),
-				carta
-				
-		};
-		JOptionPane.showMessageDialog(null, inputs, "Inserimento pagamento Con Bonifico", JOptionPane.PLAIN_MESSAGE);
-		System.out.println("Importo: " +
-							importo.getText() + ", " 
-							+"Data: "+
-							data.getText()
-							+"Codice carta: "+
-							carta.getText());
+		Prezzo importoRimanenteDaPagare = _prenotazione.get_importoRimanenteDaPagare();
+		System.out.print(importoRimanenteDaPagare.get_importo());
+    	Prezzo importoDaPagareConCarta = UDialogManager.getInstance().getDialogInserimentoImportoPagamentoConCarta(importoRimanenteDaPagare);
+    	CGestionePagamenti.getInstance().pagaConCarta(importoDaPagareConCarta);
 	}
 
 }
