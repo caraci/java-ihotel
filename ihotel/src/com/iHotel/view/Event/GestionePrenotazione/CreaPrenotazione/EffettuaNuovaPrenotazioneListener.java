@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Event.CreaPrenotazione;
+package com.iHotel.view.Event.GestionePrenotazione.CreaPrenotazione;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**

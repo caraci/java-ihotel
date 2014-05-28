@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.CheckIn;
+package com.iHotel.view.Graphic.GestionePrenotazione.CheckIn;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
@@ -29,8 +29,8 @@ import com.iHotel.model.Persona.Ospite;
 import com.iHotel.view.View;
 import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
-import com.iHotel.view.Event.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
-import com.iHotel.view.Event.CheckIn.ScegliDocumentoListener;
+import com.iHotel.view.Event.GestionePrenotazione.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestionePrenotazione.CheckIn.ScegliDocumentoListener;
 import com.iHotel.view.Utility.UtoListPanel;
 
 

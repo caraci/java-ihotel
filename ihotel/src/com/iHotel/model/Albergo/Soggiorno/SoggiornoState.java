@@ -91,6 +91,7 @@ public abstract class SoggiornoState {
 	public abstract void occupaCamere();
 	public abstract void concludiPrenotazione(String nome, String cognome, String eMail, String telefono);
 	public abstract SoggiornoState effettuaCheckIn();
+	public abstract SoggiornoState effettuaCheckOut();
 	
 	
 	/* ----------------- Getter, Setter ------------------- */

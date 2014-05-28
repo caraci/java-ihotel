@@ -24,7 +24,6 @@ public class TornaAllaPrenotazioneListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per tornare alla gestione della prenotazione.
-		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
-		modificaPrenotazione.terminaGestioneCamera();
+		CModificaPrenotazione.getInstance().terminaGestioneCamera();
 	}
 }

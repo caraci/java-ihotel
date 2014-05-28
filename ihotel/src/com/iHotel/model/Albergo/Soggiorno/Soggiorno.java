@@ -70,6 +70,14 @@ public class Soggiorno extends SoggiornoState {
 
 	@Override
 	public SoggiornoState effettuaCheckIn() {
+		// Creo lo stato successivo
+		SoggiornoState statoSuccessivo = new SoggiornoTerminato(_soggiornoSubject);
+		return statoSuccessivo;
+	}
+
+
+	@Override
+	public SoggiornoState effettuaCheckOut() {
 		// TODO Auto-generated method stub
 		return null;
 	}

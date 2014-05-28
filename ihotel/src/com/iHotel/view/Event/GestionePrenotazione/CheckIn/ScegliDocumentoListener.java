@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Event.CheckIn;
+package com.iHotel.view.Event.GestionePrenotazione.CheckIn;
 
 import java.awt.CardLayout;
 import java.awt.event.ItemEvent;
@@ -9,7 +9,7 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
 
-import com.iHotel.view.Graphic.CheckIn.VPC_AggiungiOspiti_PanelCamera;
+import com.iHotel.view.Graphic.GestionePrenotazione.CheckIn.VPC_AggiungiOspiti_PanelCamera;
 
 /**
  * @author Eugenio

@@ -95,4 +95,10 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		return statoSuccessivo;
 	}
 
+	@Override
+	public SoggiornoState effettuaCheckOut() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

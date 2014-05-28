@@ -193,13 +193,23 @@ public class SoggiornoContextSubject implements ISubject {
 		_soggiornoState.concludiPrenotazione(nome, cognome, eMail, telefono);
 	}
 	/**
-	 * Metodo per effettuare il check in della prenotazione.
+	 * Metodo per effettuare il check in del soggiorno.
 	 */
 	public void effettuaCheckIn() {
 		// Passo la richiesta allo stato attuale
 		SoggiornoState statoSuccessivo = _soggiornoState.effettuaCheckIn();
 		// Setto il nuovo stato del soggiorno
 		this.set_soggiornoState(statoSuccessivo);
+	}
+	/**
+	 * Metodo per effettuare il check out della del soggiorno.
+	 */
+	public void effettuaCheckOut() {
+		// Passo la richiesta allo stato attuale
+		SoggiornoState statoSuccessivo = _soggiornoState.effettuaCheckOut();
+		// Setto il nuovo stato del soggiorno
+		this.set_soggiornoState(statoSuccessivo);
+		
 	}
 	
 	/* -------------------------------- Getter, Setter ------------------------------------------ */

@@ -5,11 +5,14 @@ import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
+import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestionePrenotazione.CheckIn.VPC_AggiungiOspiti;
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
  * @author Alessandro
@@ -105,6 +108,64 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 		// Creo il frame
 		panelHome.creaPanel();
     }
+    
+	/**
+	 * Metodo per caricare la finestra per effettuare il checkIn.
+	 */
+	public void aggiungiOspitiAllaPrenotazione() {
+		// Recupero il frame dell'applicazione
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
+		// Creo il pannello successivo
+		VPC_AggiungiOspiti aggiungiOspiti = new VPC_AggiungiOspiti();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(aggiungiOspiti);
+		// Creo il frame
+		aggiungiOspiti.creaPanel(_prenotazione);
+	}
+	/**
+	 * Metodo per aggiungere un ospite alla camera.
+	 * 
+	 * @param camera Camera alla quale si vuole aggiungere l'ospite.
+	 * @param ospite Ospite da aggiungere alla camera.
+	 */
+	public void aggiungiOspite(Camera camera, Ospite ospite) {
+		// Periodo nel quale aggiungiamo l'ospite
+		Periodo periodo = _prenotazione.get_periodo();
+		// Aggiungo l'ospite alla camera
+		camera.aggiungiOspiteInPeriodo(ospite, periodo);
+		// Salvo nel db lo stato camera in seguito all'aggiornamento.
+    	PCamera.getInstance().store(camera.getStatoCameraInPeriodo(periodo));
+	}
+	/**
+	 * Metodo per terminare il checkIn per la camera.
+	 */
+	public void effettuaCheckIn() {
+		// Effettuo il check in per il soggiorno
+		_prenotazione.effettuaCheckIn();
+		// Salvo nel db il soggiorno in seguito al cambio di stato
+		PPrenotazione.getInstance().store(_prenotazione);
+		// Torno alla gestione della prenotazione
+		this.recuperaPrenotazioneDaCodice(_prenotazione.get_codice());
+	}
+	/**
+	 * Metodo per terminare il checkIn per la camera.
+	 */
+	public void effettuaCheckOut() {
+		// Effettuo il check in per il soggiorno
+		_prenotazione.effettuaCheckOut();
+		// Salvo nel db il soggiorno in seguito al cambio di stato
+		PPrenotazione.getInstance().store(_prenotazione);
+		// Torno alla gestione della prenotazione
+		this.recuperaPrenotazioneDaCodice(_prenotazione.get_codice());
+	}
+	/**
+	 * Metodo per tornare alla gestione della prenotazione.
+	 */
+	public void tornaAllaPrenotazione() {
+		// Fornisco la prenotazione de gestire a CModificaPrenotazione
+		this.recuperaPrenotazioneDaCodice(_prenotazione.get_codice());
+	}
+    
 	/* ----------------------- Getter, Setter -------------------------- */
 
     /**

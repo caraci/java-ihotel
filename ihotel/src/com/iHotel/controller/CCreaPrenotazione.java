@@ -11,8 +11,8 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.VP_Home;
-import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
-import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
+import com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
 
 import java.util.ArrayList;
 import java.util.HashMap;

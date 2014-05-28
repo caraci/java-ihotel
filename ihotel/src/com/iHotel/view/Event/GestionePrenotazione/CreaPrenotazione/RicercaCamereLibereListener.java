@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Event.CreaPrenotazione;
+package com.iHotel.view.Event.GestionePrenotazione.CreaPrenotazione;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import com.iHotel.controller.CCreaPrenotazione;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
+import com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
 
 /**
  * Classe addetta alla gestione dell'evento per ricercare le camere libere per l'inserimento di una nuova prenotazione.

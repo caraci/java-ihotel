@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
  * @author Eugenio
  *
  */
-public class CheckOutPrenotazioneListener extends MouseAdapter {
+public class EffettuaCheckOutListener extends MouseAdapter {
 
 	/* ---------------- Metodi di instanza -------------------- */
 	/**

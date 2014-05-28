@@ -56,4 +56,11 @@ public class SoggiornoTerminato extends SoggiornoState {
 		return null;
 	}
 
+
+	@Override
+	public SoggiornoState effettuaCheckOut() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

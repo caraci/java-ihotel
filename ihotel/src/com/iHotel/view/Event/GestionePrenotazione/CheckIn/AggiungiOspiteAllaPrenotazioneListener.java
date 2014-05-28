@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Event.CheckIn;
+package com.iHotel.view.Event.GestionePrenotazione.CheckIn;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import net.sourceforge.jdatepicker.DateModel;
 
-import com.iHotel.controller.CCheckIn;
+import com.iHotel.controller.CModificaPrenotazione;
 import com.iHotel.model.Persona.Indirizzo;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Persona.Residenza;
@@ -20,7 +20,7 @@ import com.iHotel.model.Persona.Documenti.Documento;
 import com.iHotel.model.Persona.Documenti.Passaporto;
 import com.iHotel.model.Persona.Documenti.Patente;
 import com.iHotel.model.Utility.Giorno;
-import com.iHotel.view.Graphic.CheckIn.VPC_AggiungiOspiti_PanelCamera;
+import com.iHotel.view.Graphic.GestionePrenotazione.CheckIn.VPC_AggiungiOspiti_PanelCamera;
 
 /**
  * @author Eugenio
@@ -49,10 +49,10 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// Carico il gestore del checkIn.
-		CCheckIn checkIn = CCheckIn.getInstance();
+		// Carico il gestore per la modifica della prenotazione..
+		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
 		// Aggiungo l'ospite alla prenotazione.
-		checkIn.aggiungiOspite(_panelCamera.get_camera(), getOspiteInserito());
+		modificaPrenotazione.aggiungiOspite(_panelCamera.get_camera(), getOspiteInserito());
 		// Prendo il pannello dove si va a mostrare la lista degli ospiti
 		JPanel pnlMiddleRight = _panelCamera.get_pnlMiddleRight();
 		// Prendo il layout del pannello
