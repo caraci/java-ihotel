@@ -233,7 +233,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 				//Creo una label per la data
 				JLabel labelData = _viewFactory.getLabel();
 				//Setto il testo
-				labelData.setText("Data bonifico: "+ pagamentoInContanti.get_data().get_giorno() + " - "+pagamentoInContanti.get_data().get_mese()+ " - "+pagamentoInContanti.get_data().get_anno());
+				labelData.setText("Data pagamento in contanti: "+ pagamentoInContanti.get_data().get_giorno() + " - "+pagamentoInContanti.get_data().get_mese()+ " - "+pagamentoInContanti.get_data().get_anno());
 				//Aggiungo la label
 				panelContanti.add(labelData);
 				
