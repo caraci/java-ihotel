@@ -3,6 +3,7 @@
  */
 package com.iHotel.view.Event.GestionePagamenti;
 
+import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -22,12 +23,27 @@ import com.iHotel.view.Utility.UDialogManager;
  *
  */
 public class InserisciPagamentoConCartaListener extends MouseAdapter {
+	/**
+	 * Pannello contenente i pagamenti
+	 */
+	private VPP_RiepilogoPagamenti _riepilogoPagamenti;
 	private SoggiornoContextSubject _prenotazione;
 
 	
-	//Costruttore
+	/**
+	 * Costruttore con parametri
+	 * @param prenotazione E' il soggiorno di cui si vogliono conoscere/aggiungere i pagamenti
+	 */
 	public InserisciPagamentoConCartaListener(SoggiornoContextSubject prenotazione){
+		// Recupero il frame dell'applicazione
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
+		// Recupero il contentPane del frame.
+		JPanel contentPane = (JPanel) viewFrame.getContentPane();
+		// Recupero il panel corretto
+		_riepilogoPagamenti= (VPP_RiepilogoPagamenti) contentPane.getComponent(0);
+		//Aggiungo la prenotazione come attributo
 		_prenotazione=prenotazione;
+		
 	}
 	
 	/**
@@ -38,9 +54,26 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
+		
 		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaTotaleDaPagare();
-    	Prezzo importoDaPagareConCarta = UDialogManager.getInstance().getDialogInserimentoImportoPagamentoConCarta(importoRimanenteDaPagare);
-    	CGestionePagamenti.getInstance().pagaConCarta(importoDaPagareConCarta);
+		/*Visualizzo la dialog per l'inserimento delle informazioni sul pagamento. Viene restituito
+		 * un oggetto PagamentoCon*/
+		
+		Prezzo importoDaPagareConCarta = UDialogManager.getInstance().getDialogInserimentoImportoPagamentoConCarta(importoRimanenteDaPagare);
+		/*Recupero il controllore corretto*/
+		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
+		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
+		gestorePagamenti.pagaConCarta(importoDaPagareConCarta);
+				
+		// Prendo il pannello dove si va a mostrare la lista dei bonifici
+		JPanel panelCarta = _riepilogoPagamenti.getPanelCarta();
+		// Prendo il layout del pannello
+		CardLayout cardLayout = (CardLayout) panelCarta.getLayout();
+		// Aggiungo una nuova scheda al pannello.
+		panelCarta.add(_riepilogoPagamenti.creaPanelEsternoCarta());
+		// Mostro la prossima scheda
+		cardLayout.next(panelCarta);
+		
 	}
 
 }

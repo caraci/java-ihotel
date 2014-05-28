@@ -8,7 +8,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import com.iHotel.controller.CGestionePagamenti;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
@@ -32,7 +31,10 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 	private VPP_RiepilogoPagamenti _riepilogoPagamenti;
 	private SoggiornoContextSubject _prenotazione;
 
-	//Costruttore
+	/**
+	 * Costruttore con parametri
+	 * @param prenotazione E' il soggiorno da mettere come attributo
+	 */
 	public InserisciPagamentoInContantiListener(SoggiornoContextSubject prenotazione){
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
@@ -40,7 +42,7 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 		JPanel contentPane = (JPanel) viewFrame.getContentPane();
 		// Recupero il panel corretto
 		_riepilogoPagamenti= (VPP_RiepilogoPagamenti) contentPane.getComponent(0);
-		//
+		//Aggiungo la prenotazione come attributo
 		_prenotazione=prenotazione;
 
 	}
