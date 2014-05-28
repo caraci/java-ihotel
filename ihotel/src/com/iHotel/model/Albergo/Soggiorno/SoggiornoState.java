@@ -84,7 +84,7 @@ public abstract class SoggiornoState {
 		//Aggiungo il pagamento alla lista di pagamenti.
 		_soggiornoSubject.get_pagamenti().add(pagamento);
 		//Sommo l'importo del pagamento al totale dei pagamenti
-		_soggiornoSubject.get_importoTotalePagamenti().somma(pagamento.get_importo());
+		_soggiornoSubject.set_importoTotalePagamenti(_soggiornoSubject.get_importoTotalePagamenti().somma(pagamento.get_importo()));
 		//ricalcolo il rimanente da pagare
 		_soggiornoSubject.calcolaTotaleDaPagare();
 	}

@@ -8,6 +8,7 @@ import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.ForeignSystem.CreditAuthorizationService.ICreditAuthorizationServiceAdapter;
 import com.iHotel.model.ForeignSystem.LettoreCarte.ILettoreCarteAdapter;
 import com.iHotel.model.ForeignSystem.PagamentoCarta.IPagamentoCartaAdapter;
+import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Persona.Documenti.CartaDiCredito;
@@ -52,6 +53,8 @@ public class CGestionePagamenti {
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
 		VPP_RiepilogoPagamenti riepilogoPagamenti = new VPP_RiepilogoPagamenti();
+		// Per il pattern Observer aggiungo l'observer alla prenotazione.
+		_soggiorno.Attach((IObserver) riepilogoPagamenti);
 		// Assegno la prossima schermata al frame.
 		viewFrame.cambiaSchermata(riepilogoPagamenti);
 		// Creo il frame
