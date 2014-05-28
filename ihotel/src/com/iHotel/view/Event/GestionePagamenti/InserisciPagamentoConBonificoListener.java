@@ -40,7 +40,7 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 		JPanel contentPane = (JPanel) viewFrame.getContentPane();
 		// Recupero il panel corretto
 		_riepilogoPagamenti= (VPP_RiepilogoPagamenti) contentPane.getComponent(0);
-		//
+		//Assegno la prenotazione
 		_prenotazione=prenotazione;
 
 	}
@@ -69,7 +69,7 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 		// Prendo il layout del pannello
 		CardLayout cardLayout = (CardLayout) panelBonifico.getLayout();
 		// Aggiungo una nuova scheda al pannello.
-		panelBonifico.add(_riepilogoPagamenti.creaJScrollPanePagamentiConBonifici());
+		panelBonifico.add(_riepilogoPagamenti.creaPanelEsternoBonifici());
 		// Mostro la prossima scheda
 		cardLayout.next(panelBonifico);
 	}
