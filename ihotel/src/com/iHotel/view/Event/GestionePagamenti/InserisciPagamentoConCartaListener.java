@@ -6,9 +6,13 @@ package com.iHotel.view.Event.GestionePagamenti;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JPanel;
+
 import com.iHotel.controller.CGestionePagamenti;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
@@ -18,11 +22,12 @@ import com.iHotel.view.Utility.UDialogManager;
  *
  */
 public class InserisciPagamentoConCartaListener extends MouseAdapter {
-	SoggiornoContextSubject _prenotazione;
+	private SoggiornoContextSubject _prenotazione;
+
+	
 	//Costruttore
 	public InserisciPagamentoConCartaListener(SoggiornoContextSubject prenotazione){
 		_prenotazione=prenotazione;
-		
 	}
 	
 	/**

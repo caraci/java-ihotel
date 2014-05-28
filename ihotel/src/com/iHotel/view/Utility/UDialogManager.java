@@ -88,7 +88,7 @@ public class UDialogManager extends JOptionPane {
 	 * Metodo che visualizza una JDialog per l'inserimento delle informazioni del bonifico
 	 * @return Un oggetto PagamentoConBonifico con le informazion inserite dall'utente
 	 */
-	public PagamentoConBonifico getDialogDatiBonificoBancario(){
+	public PagamentoConBonifico getDialogDatiBonificoBancario(Prezzo importoDaVisualizzare){
 		/*Etichette*/
 		
 		//label importo
@@ -111,6 +111,7 @@ public class UDialogManager extends JOptionPane {
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
 		/*Text fields*/
 		JTextField importo = _viewFactory.getTextField();
+		importo.setText(String.valueOf(importoDaVisualizzare.get_importo()));
 		JTextField codice =  _viewFactory.getTextField();
 		JTextField nomeMittente =  _viewFactory.getTextField();
 		JTextField cognomeMittente =  _viewFactory.getTextField();
@@ -157,7 +158,7 @@ public class UDialogManager extends JOptionPane {
 	 * 
 	 * @return Il pagamento in contanti creato con le informazioni inserite dall'utente.
 	 */
-	public PagamentoInContanti getDialogDatiPagamentoInContanti(){
+	public PagamentoInContanti getDialogDatiPagamentoInContanti(Prezzo importoDaVisualizzare){
 		/*Etichette*/
 		
 		//label importo
@@ -171,7 +172,8 @@ public class UDialogManager extends JOptionPane {
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
 		/*Text fields*/
 		JTextField importo = _viewFactory.getTextField();
-		
+		importo.setText(String.valueOf(importoDaVisualizzare.get_importo()));
+
 		//Creo un array di componenti
 		final JComponent[] inputs = new JComponent[] {
 				//importo

@@ -10,7 +10,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 import com.iHotel.controller.CGestionePagamenti;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
+import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
 import com.iHotel.view.Utility.UDialogManager;
@@ -27,15 +29,20 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 	 * Pannello contenente i pagamenti.
 	 */
 	private VPP_RiepilogoPagamenti _riepilogoPagamenti;
+	private SoggiornoContextSubject _prenotazione;
+
 	
 	//Costruttore
-	public InserisciPagamentoConBonificoListener() {
+	public InserisciPagamentoConBonificoListener(SoggiornoContextSubject prenotazione) {
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Recupero il contentPane del frame.
 		JPanel contentPane = (JPanel) viewFrame.getContentPane();
 		// Recupero il panel corretto
 		_riepilogoPagamenti= (VPP_RiepilogoPagamenti) contentPane.getComponent(0);
+		//
+		_prenotazione=prenotazione;
+
 	}
 	
 	/**
@@ -46,14 +53,16 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
+		
+		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaTotaleDaPagare();
+
 		/*Visualizzo la dialog per l'inserimento delle informazioni. Mi viene restituito l'oggetto Pagamento
 		costruito con le informazioni inserite dall'utente*/
-		PagamentoConBonifico pagamento= UDialogManager.getInstance().getDialogDatiBonificoBancario();
+		PagamentoConBonifico pagamento= UDialogManager.getInstance().getDialogDatiBonificoBancario(importoRimanenteDaPagare);
 		/*Recupero il controllore corretto*/
 		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
 		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamento);		
-		
 		
 		// Prendo il pannello dove si va a mostrare la lista dei bonifici
 		JPanel panelBonifico = _riepilogoPagamenti.getPanelBonifico();

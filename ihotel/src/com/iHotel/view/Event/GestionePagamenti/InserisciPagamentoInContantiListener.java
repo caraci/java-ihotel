@@ -11,7 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.iHotel.controller.CGestionePagamenti;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
+import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
 import com.iHotel.view.Utility.UDialogManager;
@@ -28,15 +30,19 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 	 * Pannello contenente i pagamenti.
 	 */
 	private VPP_RiepilogoPagamenti _riepilogoPagamenti;
-	
+	private SoggiornoContextSubject _prenotazione;
+
 	//Costruttore
-	public InserisciPagamentoInContantiListener(){
+	public InserisciPagamentoInContantiListener(SoggiornoContextSubject prenotazione){
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Recupero il contentPane del frame.
 		JPanel contentPane = (JPanel) viewFrame.getContentPane();
 		// Recupero il panel corretto
 		_riepilogoPagamenti= (VPP_RiepilogoPagamenti) contentPane.getComponent(0);
+		//
+		_prenotazione=prenotazione;
+
 	}
 	/**
 	 * Metodo che va ad assegnare una form di inseriemnto alla dialog. Con questa form verranno 
@@ -46,9 +52,11 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
+		
+		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaTotaleDaPagare();
 		/*Visualizzo la dialog per l'inserimento delle informazioni sul pagamento. Viene restituito
 		 * un oggetto PagamentoInContanti*/
-		PagamentoInContanti pagamentoInContanti = UDialogManager.getInstance().getDialogDatiPagamentoInContanti();
+		PagamentoInContanti pagamentoInContanti = UDialogManager.getInstance().getDialogDatiPagamentoInContanti(importoRimanenteDaPagare);
 		/*Recupero il controllore corretto*/
 		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
