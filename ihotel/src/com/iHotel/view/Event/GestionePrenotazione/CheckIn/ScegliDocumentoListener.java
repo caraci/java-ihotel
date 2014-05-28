@@ -9,7 +9,7 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JPanel;
 
-import com.iHotel.view.Graphic.GestionePrenotazione.CheckIn.VPC_AggiungiOspiti_PanelCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti_PanelCamera;
 
 /**
  * @author Eugenio

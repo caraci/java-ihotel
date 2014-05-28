@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.GestionePrenotazione.CheckIn;
+package com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;

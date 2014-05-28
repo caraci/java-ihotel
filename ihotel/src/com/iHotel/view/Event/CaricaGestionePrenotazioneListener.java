@@ -6,7 +6,7 @@ package com.iHotel.view.Event;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.controller.CModificaSoggiorno;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
@@ -27,7 +27,7 @@ public class CaricaGestionePrenotazioneListener extends MouseAdapter {
 		 la prenotazione dal codice*/
 		if(codice != null){
 			//Recupero il controllore
-			CModificaPrenotazione gestorePrenotazione = CModificaPrenotazione.getInstance();
+			CModificaSoggiorno gestorePrenotazione = CModificaSoggiorno.getInstance();
 			//Recupero la prenotazione dal codice
 			gestorePrenotazione.recuperaPrenotazioneDaCodice(codice);
 		}

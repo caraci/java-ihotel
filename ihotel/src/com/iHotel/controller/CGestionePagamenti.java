@@ -23,7 +23,7 @@ import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
 public class CGestionePagamenti {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
-	private SoggiornoContextSubject _prenotazione;
+	private SoggiornoContextSubject _soggiorno;
 	/**
 	 * Attributo privato - Pattern Singleton
 	 */
@@ -46,7 +46,7 @@ public class CGestionePagamenti {
      */
     public void gestisciPagamentiPrenotazione(SoggiornoContextSubject prenotazione){
     	//Setto l'attributo della prenotazione
-    	this._prenotazione =prenotazione;
+    	this._soggiorno =prenotazione;
     	
     	// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
@@ -55,7 +55,7 @@ public class CGestionePagamenti {
 		// Assegno la prossima schermata al frame.
 		viewFrame.cambiaSchermata(riepilogoPagamenti);
 		// Creo il frame
-		riepilogoPagamenti.creaPanel(_prenotazione);
+		riepilogoPagamenti.creaPanel(_soggiorno);
     }
     
     /**
@@ -64,9 +64,9 @@ public class CGestionePagamenti {
      */
     public void inserisciPagamentoInPrenotazione(Pagamento pagamento){
     	/*Aggiungo il pagamento alla prenotazione*/
-    	_prenotazione.addPagamento(pagamento);
+    	_soggiorno.addPagamento(pagamento);
     	/*Salvo il pagamento nel db*/
-    	PPrenotazione.getInstance().store(_prenotazione.get_pagamenti());
+    	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
     }
     
     public void pagaConCarta(Prezzo importoDaPagareConCarta){
@@ -86,9 +86,9 @@ public class CGestionePagamenti {
     		//effetuo il pagamento
     		PagamentoConCarta pagamentoEffettuato=pagaConCarta.eseguiPagamento(importoDaPagareConCarta, cartaDiCredito);
     		//aggiungo il pagamento alla prenotazione
-        	_prenotazione.addPagamento(pagamentoEffettuato);
+        	_soggiorno.addPagamento(pagamentoEffettuato);
     	}
-    	PPrenotazione.getInstance().store(_prenotazione.get_pagamenti());
+    	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
     	
     }
 

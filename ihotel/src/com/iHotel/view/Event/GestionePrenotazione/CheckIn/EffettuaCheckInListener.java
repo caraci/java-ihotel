@@ -6,7 +6,7 @@ package com.iHotel.view.Event.GestionePrenotazione.CheckIn;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.controller.CModificaSoggiorno;
 
 /**
  * @author Eugenio
@@ -21,7 +21,7 @@ public class EffettuaCheckInListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Attraverso il gestore per la modifica della prenotazione, effettuo il checkin.
-		CModificaPrenotazione.getInstance().effettuaCheckIn();;
+		CModificaSoggiorno.getInstance().effettuaCheckIn();;
 	}
 
 }

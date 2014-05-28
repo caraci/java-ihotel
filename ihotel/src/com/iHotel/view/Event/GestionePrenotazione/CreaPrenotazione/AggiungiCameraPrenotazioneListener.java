@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
-import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.controller.CCreaRichiestaSoggiorno;
 
 /**
  * Classe addetta alla gestione dell'evento per aggiungere una camera alla prenotazione.
@@ -44,7 +44,7 @@ public class AggiungiCameraPrenotazioneListener extends MouseAdapter {
 		btn.removeMouseListener(this);
 		btn.setEnabled(false);
 		// Recupero il controllore e invoco il metodo.
-		CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
+		CCreaRichiestaSoggiorno gestisciPrenotazione = CCreaRichiestaSoggiorno.getInstance();
 		// Aggiungo la camera alla prenotazione e carico il totale.
 		gestisciPrenotazione.aggiungiCameraAllaPrenotazione(_numeroCamera);
 	}

@@ -8,9 +8,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.controller.CCreaRichiestaSoggiorno;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno.VPCP_SelezioneCamereDatiOspite_Observer;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
@@ -43,7 +43,7 @@ public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo.
-		CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
+		CCreaRichiestaSoggiorno gestisciPrenotazione = CCreaRichiestaSoggiorno.getInstance();
 		// Invoco il metodo passando come parametro la stringa contenente il numero di camera.
 		gestisciPrenotazione.concludiPrenotazione(_selezioneCamereDatiOspite.get_txtNome().getText(), 
 												  _selezioneCamereDatiOspite.get_txtCognome().getText(), 
@@ -51,7 +51,7 @@ public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 												  _selezioneCamereDatiOspite.get_txtTelefono().getText());
 		
 		// Recupero il codice della prenotazione appena inserita
-		String codicePrenotazione = CCreaPrenotazione.getInstance().get_prenotazione().get_codice();
+		String codicePrenotazione = CCreaRichiestaSoggiorno.getInstance().get_soggiorno().get_codice();
 		// Mostro la dialog per confermare l'inserimento della prenotazione.
 		UDialogManager.getInstance().showDialogConfermaPrenotazione(codicePrenotazione);
 		

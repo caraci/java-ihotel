@@ -11,8 +11,8 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.VP_Home;
-import com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione.VPCP_SelezioneCamereDatiOspite_Observer;
-import com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
+import com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno.VPCP_SelezioneCamereDatiOspite_Observer;
+import com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno.VPCP_SelezionePeriodoTipologie;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,27 +22,27 @@ import java.util.HashMap;
  * @author Alessandro
  *
  */
-public class CCreaPrenotazione extends CGestionePrenotazione {
+public class CCreaRichiestaSoggiorno extends CGestioneSoggiorno {
 	
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
 	/**
 	 * Attributo privato - Pattern Singleton
 	 */
-	private static CCreaPrenotazione instance = null;
+	private static CCreaRichiestaSoggiorno instance = null;
     
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private CCreaPrenotazione() {
+	private CCreaRichiestaSoggiorno() {
 		this.set_albergo(Albergo.getInstance());
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
 	 */
-    public static CCreaPrenotazione getInstance() {
+    public static CCreaRichiestaSoggiorno getInstance() {
     	if(instance == null) {
-            instance = new CCreaPrenotazione();
+            instance = new CCreaRichiestaSoggiorno();
          }
          return instance;
     }
@@ -52,7 +52,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
      */
 	public void creaNuovaPrenotazione() {
 		// Creo la nuova prenotazione
-		_prenotazione = new SoggiornoContextSubject();
+		_soggiorno = new SoggiornoContextSubject();
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
 		tipologieCamere.addAll(CatalogoCamere.getInstance().getTipologieCamere());
@@ -74,7 +74,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		// Ricavo la Camera a partire dalla stringa contenente il suo numero.
 		Camera camera = _albergo.getCameraDaNumero(numeroCamera);
 		// Aggiungo la camera all'elemento prenotazione
-		_prenotazione.addCamera(camera);
+		_soggiorno.addCamera(camera);
 	}
 	/**
 	 * Metodo per ricercare le camere libere nell'albergo, appartenenti a tipologie differenti.
@@ -88,7 +88,7 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		/* Setto il periodo ricevuto dall'interfaccia */
 		Periodo periodo = new Periodo(dataInizio,dataFine);
 		/* Setto il periodo alla prenotazione */
-		_prenotazione.set_periodo(periodo);
+		_soggiorno.set_periodo(periodo);
 		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
 		HashMap<String, ArrayList<Camera>> camereLibere = _albergo.cercaCamereLibereInPeriodoDaTipologie(periodo, Tipologie);		
 		// Recupero il frame dell'applicazione
@@ -96,9 +96,9 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 		// Creo il pannello successivo
 		VPCP_SelezioneCamereDatiOspite_Observer selezioneCamereDatiOspite = new VPCP_SelezioneCamereDatiOspite_Observer();
 		// Per il pattern Observer aggiungo l'observer alla prenotazione.
-		_prenotazione.Attach((IObserver) selezioneCamereDatiOspite);
+		_soggiorno.Attach((IObserver) selezioneCamereDatiOspite);
 		// Per il pattern Observer aggiungo il subject all'observer.
-		selezioneCamereDatiOspite.set_prenotazioneSubject(_prenotazione);
+		selezioneCamereDatiOspite.set_prenotazioneSubject(_soggiorno);
 		// Assegno la prossima schermata al frame.
 		viewFrame.cambiaSchermata(selezioneCamereDatiOspite);
 		// Creo il frame
@@ -114,15 +114,15 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	 */
 	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
 		// Rimuovo l'osservatore dalla prenotazione.
-		_prenotazione.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
+		_soggiorno.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
 		// Concludo la richiesta di soggiorno
-		_prenotazione.concludiPrenotazione(nome, cognome, eMail, telefono);
+		_soggiorno.concludiPrenotazione(nome, cognome, eMail, telefono);
 		// Aggiungo la prenotazione allo storico
 		Storico storico = Storico.getInstance();
-		storico.addPrenotazione(_prenotazione);
+		storico.addPrenotazione(_soggiorno);
 		// Salvataggio degli oggetti da Ram -> Persistenza.
 		try {
-			PPrenotazione.getInstance().store(_prenotazione);
+			PPrenotazione.getInstance().store(_soggiorno);
 		} catch(Exception e) {
 			// TODO
 		}
@@ -153,15 +153,15 @@ public class CCreaPrenotazione extends CGestionePrenotazione {
 	 * 
 	 * @return _prenotazione
 	 */
-	public SoggiornoContextSubject get_prenotazione() {
-		return this._prenotazione;
+	public SoggiornoContextSubject get_soggiorno() {
+		return this._soggiorno;
 	}
 	/**
 	 * 
 	 * @param _prenotazione
 	 */
-	public void set_prenotazione(SoggiornoContextSubject _prenotazione) {
-		this._prenotazione = _prenotazione;
+	public void set_soggiorno(SoggiornoContextSubject _prenotazione) {
+		this._soggiorno = _prenotazione;
 	}
 
 }

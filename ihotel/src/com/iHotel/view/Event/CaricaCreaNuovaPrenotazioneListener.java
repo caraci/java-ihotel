@@ -6,7 +6,7 @@ package com.iHotel.view.Event;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.controller.CCreaRichiestaSoggiorno;
 
 /**
  * Classe addetta alla gestione dell'evento per caricare la finestra per creare una nuova prenotazione.
@@ -22,7 +22,7 @@ public class CaricaCreaNuovaPrenotazioneListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo relativo alla creazione di una nuova prenotazione.
-		CCreaPrenotazione creatorePrenotazione = CCreaPrenotazione.getInstance();
+		CCreaRichiestaSoggiorno creatorePrenotazione = CCreaRichiestaSoggiorno.getInstance();
 		creatorePrenotazione.creaNuovaPrenotazione();
 	}
 

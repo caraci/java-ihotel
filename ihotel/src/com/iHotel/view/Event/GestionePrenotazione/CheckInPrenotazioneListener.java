@@ -6,7 +6,7 @@ package com.iHotel.view.Event.GestionePrenotazione;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.controller.CModificaSoggiorno;
 
 /**
  * @author Alessandro
@@ -19,6 +19,6 @@ public class CheckInPrenotazioneListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per aggiungere gli ospiti ad un soggiorno.
-		CModificaPrenotazione.getInstance().aggiungiOspitiAllaPrenotazione();
+		CModificaSoggiorno.getInstance().aggiungiOspitiAllaPrenotazione();
 	}
 }

@@ -9,7 +9,7 @@ import java.awt.event.ItemListener;
 import javax.swing.JPanel;
 
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_AggiungiServiziInterni;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_AggiungiServiziInterni;
 
 /**
  * Classe addetta alla gestione dell'evento per mostrare le informazioni in merito ad un servizio interno dell'albergo.

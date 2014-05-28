@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.GestionePrenotazione;
+package com.iHotel.view.Graphic.GestioneSoggiorno;
 
 import java.util.HashMap;
 
@@ -15,7 +15,7 @@ import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
  *
  */
 @SuppressWarnings("serial")
-public class VPGP_InfoSoggiorno_InCorso extends VPGP_InfoPrenotazione {
+public class VPGP_InfoSoggiorno_InCorso extends VPGP_InfoSoggiorno {
 	
 	private JButton _btnCheckOut;
 	/**

@@ -6,7 +6,7 @@ package com.iHotel.view.Event.GestionePrenotazione;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.controller.CModificaSoggiorno;
 
 /**
  * Classe addetta alla gestione dell'evento per caricare la finestra per la gestione di una camera relativa
@@ -37,7 +37,7 @@ public class GestisciCameraPrenotazioneListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per gestire una camera di una prenotazione.
-		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
+		CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
 		modificaPrenotazione.gestioneCamera(_numeroCamera);
 	}
 

@@ -9,10 +9,10 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
-import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.controller.CModificaSoggiorno;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
@@ -48,7 +48,7 @@ public class CaricaAggiungiServiziListener extends MouseAdapter {
 		//costruito con le informazioni inserite dall'utente
 		ServizioInterno servizio = UDialogManager.getInstance().getDialogAggiungiServizioInterno();
 		// Recupero il controllore e invoco il metodo per tornare alla gestione della prenotazione.
-		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
+		CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
 		//Invoco il metodo per l'aggiunta del servizio
 		modificaPrenotazione.aggiungiServizio(servizio);
 		//Creo il pannello dei servizi interni

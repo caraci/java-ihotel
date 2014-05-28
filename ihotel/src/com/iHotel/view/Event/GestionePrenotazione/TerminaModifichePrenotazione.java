@@ -6,7 +6,7 @@ package com.iHotel.view.Event.GestionePrenotazione;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.controller.CModificaSoggiorno;
 
 /**
  * Classe addetta alla gestione dell'evento per terminare le modifiche di una prenotazione.
@@ -22,7 +22,7 @@ public class TerminaModifichePrenotazione extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per tornare alla schermata principale.
-		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
+		CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
 		modificaPrenotazione.terminaGestionePrenotazione();
 	}
 

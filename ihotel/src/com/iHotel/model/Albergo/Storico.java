@@ -16,10 +16,10 @@ public class Storico {
 	 */
 	private static Storico instance = null;
 	/**
-	 * Questa mappa ha come chiave i codici delle prenotazioni, perchè in questo modo, l'accesso alla prenotazione 
-	 * viene fatto in maniera efficiente ricercandola per codice.
+	 * Questa mappa ha come chiave i codici dei soggiorni, perchè in questo modo, l'accesso alla soggiorno 
+	 * viene eseguito in maniera efficiente ricercandola per codice.
 	 */
-	private HashMap<String,SoggiornoContextSubject> _prenotazioni;
+	private HashMap<String,SoggiornoContextSubject> _soggiorni;
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
@@ -37,13 +37,13 @@ public class Storico {
     }
 	/* ------------------------------ Metodi di instanza ----------------------------------- */
 	/**
-	 * Metodo per ottenere una prenotazione a partire dal suo codice.
+	 * Metodo per ottenere un soggiorno a partire dal suo codice.
 	 * 
-	 * @param codice Codice della prenotazione
-	 * @return Prenotazione ricercata
+	 * @param codice Codice della soggiorno
+	 * @return Soggiorno ricercata
 	 */
-	public SoggiornoContextSubject recuperaPrenotazioneDaCodice(String codice) {
-		return _prenotazioni.get(codice);
+	public SoggiornoContextSubject recuperaSoggiornoDaCodice(String codice) {
+		return _soggiorni.get(codice);
 	}
 
 	/**
@@ -52,22 +52,22 @@ public class Storico {
 	 * @param prenotazione Prenotazione da aggiungere.
 	 */
 	public void addPrenotazione(SoggiornoContextSubject prenotazione) {
-		_prenotazioni.put(prenotazione.get_codice(), prenotazione);
+		_soggiorni.put(prenotazione.get_codice(), prenotazione);
 	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */
 	
 	/**
 	 * @return _prenotazioni
 	 */
-	public HashMap<String,SoggiornoContextSubject> get_prenotazioni() {
-		return _prenotazioni;
+	public HashMap<String,SoggiornoContextSubject> get_soggiorni() {
+		return _soggiorni;
 	}
 
 	/**
 	 * @param _prenotazioni
 	 */
-	public void set_prenotazioni(HashMap<String,SoggiornoContextSubject> _prenotazioni) {
-		this._prenotazioni = _prenotazioni;
+	public void set_soggiorni(HashMap<String,SoggiornoContextSubject> _prenotazioni) {
+		this._soggiorni = _prenotazioni;
 	}
 
 }

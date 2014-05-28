@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import net.sourceforge.jdatepicker.DateModel;
 
-import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.controller.CModificaSoggiorno;
 import com.iHotel.model.Persona.Indirizzo;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Persona.Residenza;
@@ -20,7 +20,7 @@ import com.iHotel.model.Persona.Documenti.Documento;
 import com.iHotel.model.Persona.Documenti.Passaporto;
 import com.iHotel.model.Persona.Documenti.Patente;
 import com.iHotel.model.Utility.Giorno;
-import com.iHotel.view.Graphic.GestionePrenotazione.CheckIn.VPC_AggiungiOspiti_PanelCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti_PanelCamera;
 
 /**
  * @author Eugenio
@@ -50,7 +50,7 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// Carico il gestore per la modifica della prenotazione..
-		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
+		CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
 		// Aggiungo l'ospite alla prenotazione.
 		modificaPrenotazione.aggiungiOspite(_panelCamera.get_camera(), getOspiteInserito());
 		// Prendo il pannello dove si va a mostrare la lista degli ospiti

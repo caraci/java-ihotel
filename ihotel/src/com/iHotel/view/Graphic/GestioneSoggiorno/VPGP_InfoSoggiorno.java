@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.GestionePrenotazione;
+package com.iHotel.view.Graphic.GestioneSoggiorno;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -34,7 +34,7 @@ import com.iHotel.view.Utility.UtoListPanel;
  * @author Alessandro
  */
 @SuppressWarnings("serial")
-public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
+public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 
 	/* ----------------------------------- Attributi e Costruttore ------------------------------------ */
 	/**
@@ -63,7 +63,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
-	protected VPGP_InfoPrenotazione(){
+	protected VPGP_InfoSoggiorno(){
 		// JPanel		
 		_panelInfoPrenotante = _viewFactory.getPanel();
 		_panelInfoPrenotazione = _viewFactory.getPanel();

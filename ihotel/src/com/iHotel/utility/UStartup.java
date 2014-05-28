@@ -53,7 +53,7 @@ public class UStartup {
 		// Recupero lo storico attraverso pattern Singleton
 		Storico storico = Storico.getInstance();
 		// Setto gli attributi dello storico.
-		storico.set_prenotazioni(PPrenotazione.getInstance().caricaMappaCodicePrenotazione());
+		storico.set_soggiorni(PPrenotazione.getInstance().caricaMappaCodicePrenotazione());
 		
 		return storico;
 	}

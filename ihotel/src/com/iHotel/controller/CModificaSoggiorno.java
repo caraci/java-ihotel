@@ -11,20 +11,20 @@ import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.VP_Home;
-import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_InfoCamera;
-import com.iHotel.view.Graphic.GestionePrenotazione.CheckIn.VPC_AggiungiOspiti;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti;
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
  * @author Alessandro
  *
  */
-public class CModificaPrenotazione extends CGestionePrenotazione {
+public class CModificaSoggiorno extends CGestioneSoggiorno {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
 	/**
 	 * Attributo privato - Pattern Singleton
 	 */
-	private static CModificaPrenotazione instance = null;
+	private static CModificaSoggiorno instance = null;
 	/**
 	 * Attributo che mantiene la maniglia alla camera che si sta gestendo, all'interno della prenotazione corrente
 	 */
@@ -33,16 +33,16 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private CModificaPrenotazione() {
+	private CModificaSoggiorno() {
 		_albergo=Albergo.getInstance();
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
 	 */
-    public static CModificaPrenotazione getInstance() {
+    public static CModificaSoggiorno getInstance() {
     	if(instance == null) {
-            instance = new CModificaPrenotazione();
+            instance = new CModificaSoggiorno();
          }
          return instance;
     }
@@ -56,7 +56,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 		// Ricavo la camera da visualizzare e la salvo come attributo del controllore.
 		_camera=_albergo.getCameraDaNumero(numeroCamera);
 		// Ricavo il periodo della prenotazione.
-		Periodo periodo = _prenotazione.get_periodo();
+		Periodo periodo = _soggiorno.get_periodo();
 		
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
@@ -74,7 +74,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
      */
     public void aggiungiServizio(ServizioInterno servizio){
     	//Recuper il periodo della prenotazione
-    	Periodo periodo = _prenotazione.get_periodo();
+    	Periodo periodo = _soggiorno.get_periodo();
     	//Aggiungo il servizio alla camera, nel periodo della prenotazione
     	_camera.aggiungiServizioInPeriodo(servizio, periodo);
     	
@@ -93,7 +93,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
      */
     public void terminaGestioneCamera(){
     	// Mostro l'interfaccia relativa alla camera, utilizzando il metodo del controllore.
-    	recuperaPrenotazioneDaCodice(_prenotazione.get_codice());
+    	recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
     }
     /**
      * Metodo che conclude la gestione della prenotazione
@@ -120,7 +120,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 		// Assegno la prossima schermata al frame.
 		viewFrame.cambiaSchermata(aggiungiOspiti);
 		// Creo il frame
-		aggiungiOspiti.creaPanel(_prenotazione);
+		aggiungiOspiti.creaPanel(_soggiorno);
 	}
 	/**
 	 * Metodo per aggiungere un ospite alla camera.
@@ -130,7 +130,7 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 	 */
 	public void aggiungiOspite(Camera camera, Ospite ospite) {
 		// Periodo nel quale aggiungiamo l'ospite
-		Periodo periodo = _prenotazione.get_periodo();
+		Periodo periodo = _soggiorno.get_periodo();
 		// Aggiungo l'ospite alla camera
 		camera.aggiungiOspiteInPeriodo(ospite, periodo);
 		// Salvo nel db lo stato camera in seguito all'aggiornamento.
@@ -141,29 +141,29 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
 	 */
 	public void effettuaCheckIn() {
 		// Effettuo il check in per il soggiorno
-		_prenotazione.effettuaCheckIn();
+		_soggiorno.effettuaCheckIn();
 		// Salvo nel db il soggiorno in seguito al cambio di stato
-		PPrenotazione.getInstance().store(_prenotazione);
+		PPrenotazione.getInstance().store(_soggiorno);
 		// Torno alla gestione della prenotazione
-		this.recuperaPrenotazioneDaCodice(_prenotazione.get_codice());
+		this.recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
 	}
 	/**
 	 * Metodo per terminare il checkIn per la camera.
 	 */
 	public void effettuaCheckOut() {
 		// Effettuo il check in per il soggiorno
-		_prenotazione.effettuaCheckOut();
+		_soggiorno.effettuaCheckOut();
 		// Salvo nel db il soggiorno in seguito al cambio di stato
-		PPrenotazione.getInstance().store(_prenotazione);
+		PPrenotazione.getInstance().store(_soggiorno);
 		// Torno alla gestione della prenotazione
-		this.recuperaPrenotazioneDaCodice(_prenotazione.get_codice());
+		this.recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
 	}
 	/**
 	 * Metodo per tornare alla gestione della prenotazione.
 	 */
 	public void tornaAllaPrenotazione() {
 		// Fornisco la prenotazione de gestire a CModificaPrenotazione
-		this.recuperaPrenotazioneDaCodice(_prenotazione.get_codice());
+		this.recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
 	}
     
 	/* ----------------------- Getter, Setter -------------------------- */
@@ -171,14 +171,14 @@ public class CModificaPrenotazione extends CGestionePrenotazione {
     /**
 	 * @return the _prenotazione
 	 */
-	public SoggiornoContextSubject get_prenotazione() {
-		return _prenotazione;
+	public SoggiornoContextSubject get_soggiorno() {
+		return _soggiorno;
 	}
 	/**
 	 * @param _prenotazione the _prenotazione to set
 	 */
-	public void set_prenotazione(SoggiornoContextSubject _prenotazione) {
-		this._prenotazione = _prenotazione;
+	public void set_soggiorno(SoggiornoContextSubject _prenotazione) {
+		this._soggiorno = _prenotazione;
 	}
 	/**
 	 * @return the _camera

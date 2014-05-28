@@ -9,10 +9,10 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import com.iHotel.controller.CCreaPrenotazione;
+import com.iHotel.controller.CCreaRichiestaSoggiorno;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione.VPCP_SelezionePeriodoTipologie;
+import com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno.VPCP_SelezionePeriodoTipologie;
 
 /**
  * Classe addetta alla gestione dell'evento per ricercare le camere libere per l'inserimento di una nuova prenotazione.
@@ -68,7 +68,7 @@ public class RicercaCamereLibereListener extends MouseAdapter {
 		// Controllo che la data di fine sia maggiore della data di inizio 
 		if (dataFine.toMyDate().compareTo(dataInizio.toMyDate())==1) {
 			// Recupero il controllore e invoco il metodo per cercare le camere libere.
-			CCreaPrenotazione gestisciPrenotazione = CCreaPrenotazione.getInstance();
+			CCreaRichiestaSoggiorno gestisciPrenotazione = CCreaRichiestaSoggiorno.getInstance();
 			gestisciPrenotazione.cercaCamereLibere(dataInizio, dataFine, tipologieSelezionate);
 		} else {
 			// TODO - Decidere come gestire un inserimento di data errato.

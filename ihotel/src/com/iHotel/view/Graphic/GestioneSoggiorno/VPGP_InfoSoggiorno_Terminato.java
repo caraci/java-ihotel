@@ -1,14 +1,14 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.GestionePrenotazione;
+package com.iHotel.view.Graphic.GestioneSoggiorno;
 
 /**
  * @author Eugenio
  *
  */
 @SuppressWarnings("serial")
-public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoPrenotazione {
+public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
 
 	/**
 	 * Costruttore

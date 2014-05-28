@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 
 import net.sourceforge.jdatepicker.JDatePanel;
 
-import com.iHotel.controller.CModificaPrenotazione;
+import com.iHotel.controller.CModificaSoggiorno;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.view.Utility.UDialogManager;
 
@@ -43,7 +43,7 @@ public class AggiungiServizioListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore.
-		CModificaPrenotazione modificaPrenotazione = CModificaPrenotazione.getInstance();
+		CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
 		// Recupero la data del servizio
 		int anno 	 = _datePanelServizio.getModel().getYear();
 		int mese 	 = _datePanelServizio.getModel().getMonth();
@@ -51,7 +51,7 @@ public class AggiungiServizioListener extends MouseAdapter {
 		// Data Servizio
 		Giorno dataServizio = new Giorno(giorno, mese, anno);
 		// Controllo che la data sia inclusa nel periodo della prenotazione
-		if (CModificaPrenotazione.getInstance().get_prenotazione().get_periodo().contieneData(dataServizio)) {
+		if (CModificaSoggiorno.getInstance().get_soggiorno().get_periodo().contieneData(dataServizio)) {
 			// Invoco il metodo al controllore
 			//modificaPrenotazione.aggiungiServizio(dataServizio, _codiceServizio);
 			// Mostro la dialog per confermare l'inserimento del servizio nella prenotazione.		

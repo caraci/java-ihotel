@@ -1,4 +1,4 @@
-package com.iHotel.view.Graphic.GestionePrenotazione.CreaPrenotazione;
+package com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
