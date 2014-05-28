@@ -17,6 +17,7 @@ import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Ora;
 import com.iHotel.model.Utility.Periodo;
+import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 
@@ -226,10 +227,23 @@ public class UtoListPanel {
 	 * @param prenotazione
 	 * @return
 	 */
-	public String totalePrenotazioneToString(SoggiornoContextSubject prenotazione){
+	public JPanel totalePrenotazioneToString(SoggiornoContextSubject prenotazione){
+		Prezzo importoTotalePrenotazione = prenotazione.get_importoTotaleCamere().somma(prenotazione.getPrezzoServiziInterni());
 		//chiedo alla prenotazione quanto è il suo totale e la sua valuta
-		String totale = "L'ammontare complessivo della prenotazione è: " + prenotazione.get_importoTotaleCamere().get_importo() + prenotazione.get_importoTotaleCamere().get_valuta();
-		return totale;
+		String totalePrenotazione = String.valueOf(importoTotalePrenotazione.get_importo());
+		String totalePagato = String.valueOf(prenotazione.get_importoTotalePagamenti().get_importo());
+		
+		JPanel pnlPagamenti  = _viewFactory.getPanel();
+		JLabel lblImportoTotale = _viewFactory.getLabel();
+		JLabel lblImportoVersato = _viewFactory.getLabel();
+		
+		lblImportoTotale.setText("Il totale della prenotazione è: " + totalePrenotazione);
+		lblImportoVersato.setText("L'importo già versato è: "+totalePagato);
+		
+		pnlPagamenti.add(lblImportoTotale);
+		pnlPagamenti.add(lblImportoVersato);
+		
+		return pnlPagamenti;
 	}
 
 }

@@ -8,6 +8,7 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import javax.swing.BoxLayout;
@@ -17,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
@@ -32,7 +34,7 @@ import com.iHotel.view.Utility.UtoListPanel;
  *
  */
 @SuppressWarnings("serial")
-public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
+public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObserver {
 	
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
@@ -59,7 +61,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	private JLabel  _lblTotaleEImportoVersatoPrenotazione;
 	
 	/*JButton*/
-	private JButton _btnAggiungiPagamentoConCarta, _btnAggiungiPagamentoInContanti, _btnAggiungiPagamentoConBonifico;
+	private JButton _btnAggiungiPagamentoConCarta, _btnAggiungiPagamentoInContanti, _btnAggiungiPagamentoConBonifico, _btnTornaPrenotazione;
  
 
 	public VPP_RiepilogoPagamenti() {
@@ -77,6 +79,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 		_btnAggiungiPagamentoConCarta = _viewFactory.getButton();
 		_btnAggiungiPagamentoConBonifico = _viewFactory.getButton();
 		_btnAggiungiPagamentoInContanti = _viewFactory.getButton();
+		_btnTornaPrenotazione = _viewFactory.getButton();
 
 	}
 	
@@ -106,10 +109,8 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	 */
 	private JPanel creaPanelMiddleTop(){
 		
-		/*Setto il testo della label*/
-		_lblTotaleEImportoVersatoPrenotazione.setText(UtoListPanel.getInstance().totalePrenotazioneToString(_prenotazione));
-		/*Aggiungo la label al pannello*/
-		_panelMiddleTop.add(_lblTotaleEImportoVersatoPrenotazione);
+		
+		_panelMiddleTop.add(UtoListPanel.getInstance().totalePrenotazioneToString(_prenotazione));
 		/*Restituisco il pannello*/
 		return _panelMiddleTop;
 		
@@ -146,20 +147,16 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 		return _panelMiddleBottom;
 	}
 	@Override
-	protected void creaPanelBottom() {
-				
-		/*
+	protected void creaPanelBottom() {		
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		
 		// Aggiungo il bottone alla struttura.
 		Bottoni.put(0, _btnTornaPrenotazione);
-		Bottoni.put(5,_btnTerminaCheckin);
-		Bottoni.put(,_btnTerminaCheckin);
-		*/
-		
+				
 		// Creo la pulsantiera.
-		Integer numeroColonne = 7;
-		//creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
+		Integer numeroColonne = 6;
+		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
 		
 	}
 	/**
@@ -350,6 +347,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 		_prenotazione = prenotazione;
 		//Creo il pannello centrale
 		creaPanelMiddle();
+		creaPanelBottom();
 		/* ATTENZIONE MANCANO I METODI PER CREARE PANNELLO SUPERIORE ED INFERIORE*********************************************/
 		
 	}	
@@ -443,6 +441,17 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	 */
 	public JPanel getPanelCarta(){
 		return _panelCartaDiCredito;
+	}
+
+	@Override
+	public void Update() {
+		/*Setto il testo della label*/
+		
+		/*Aggiungo la label al pannello*/
+		_panelMiddleTop.add(UtoListPanel.getInstance().totalePrenotazioneToString(_prenotazione));
+		/*Restituisco il pannello*/
+		
+		
 	}
 	
 }
