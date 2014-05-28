@@ -170,7 +170,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 		_btnAggiungiPagamentoConCarta.setPreferredSize(new Dimension(30,30));
 		
 		_btnAggiungiPagamentoInContanti.addMouseListener(new InserisciPagamentoInContantiListener());
-		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConBonificoListener());
+		_btnAggiungiPagamentoConBonifico.addMouseListener(new InserisciPagamentoConBonificoListener());
 		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConCartaListener(_prenotazione));
 		/*Setto il testo dei bottoni*/
 		_btnAggiungiPagamentoInContanti.setText("Aggiungi Pagamento in contanti");
