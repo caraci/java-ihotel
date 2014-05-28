@@ -5,6 +5,7 @@ package com.iHotel.view.Graphic.GestionePagamenti;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,6 +62,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	/*JButton*/
 	private JButton _btnAggiungiPagamentoConCarta, _btnAggiungiPagamentoInContanti, _btnAggiungiPagamentoConBonifico;
  
+
 	public VPP_RiepilogoPagamenti() {
 		/*JPanel*/
 		_panelContanti = _viewFactory.getPanel();
@@ -80,6 +82,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 		_btnAggiungiPagamentoConCarta = _viewFactory.getButton();
 		_btnAggiungiPagamentoConBonifico = _viewFactory.getButton();
 		_btnAggiungiPagamentoInContanti = _viewFactory.getButton();
+
 	}
 	
 	/* -------------------------- Metodi di istanza ----------------------------- */
@@ -129,35 +132,57 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 		
 		_panelContanti.setLayout(new CardLayout());
 		_panelBonifico.setLayout(new CardLayout());
+		_panelCartaDiCredito.setLayout(new CardLayout());
 		
-		_panelContanti.add(creaPanelPagamentoInContanti());
+		
 		// Aggiungo le schede
-		_panelBonifico.add(creaPanelMiddleCenter());
+		// Creo un pannello ausiliario per i pagamenti in contanti, in cui inserisco lo scrollpane ed 
+		//il punsalte per aggiungere pagamenti
+		_panelContanti.add(creaPanelEsternoContanti());
 		
-		// Mostro la scheda relativa alla carta d'identita
-		//cardLayout.show(_panelEsternoBonifico);
+		
+		// Creo un pannello ausiliario per i pagamenti in contanti, in cui inserisco lo scrollpane ed 
+		//il punsalte per aggiungere pagamenti
+		
+		/*Aggiungo il pannello ausiliario al pannello dei pagamenti in contanti*/
+		_panelBonifico.add(creaPanelEsternoBonifici());
+				
+		
+		// Creo un pannello ausiliario per i pagamenti con carta, in cui inserisco lo scrollpane ed 
+		//il punsalte per aggiungere pagamenti
+		JPanel auxCarta = _viewFactory.getPanel();
+		auxCarta.setLayout(new BoxLayout(auxCarta,BoxLayout.Y_AXIS));
+		auxCarta.add(creaJScrollPanePagamentiCarta());
+		auxCarta.add(_btnAggiungiPagamentoConCarta);
+		/*Aggiungo il pannello ausiliario al pannello dei pagamenti in contanti*/
+		_panelCartaDiCredito.add(auxCarta);
+		
+		
+		
+		/*aggiungo i pannelli al pannello centrale*/
 		_panelMiddleBottom.add(_panelContanti);
 		_panelMiddleBottom.add(_panelBonifico);
-		_panelMiddleBottom.add(creaPanelMiddleRight());
+		_panelMiddleBottom.add(_panelCartaDiCredito);
+		
+		/*Setto la dimensione dei bottoni*/
+		_btnAggiungiPagamentoInContanti.setPreferredSize(new Dimension(30,30));
+		_btnAggiungiPagamentoConBonifico.setPreferredSize(new Dimension(30,30));
+		_btnAggiungiPagamentoConCarta.setPreferredSize(new Dimension(30,30));
+		
+		_btnAggiungiPagamentoInContanti.addMouseListener(new InserisciPagamentoInContantiListener());
+		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConBonificoListener());
+		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConCartaListener(_prenotazione));
+		/*Setto il testo dei bottoni*/
+		_btnAggiungiPagamentoInContanti.setText("Aggiungi Pagamento in contanti");
+		_btnAggiungiPagamentoConBonifico.setText("Aggiungi pagamento con bonifico");
+		_btnAggiungiPagamentoConCarta.setText("Aggiungi pagamento con carta");
+		
+		//_panelMiddleBottom.add(_panelBottonePagaContanti);
 		return _panelMiddleBottom;
 	}
 	@Override
 	protected void creaPanelBottom() {
-		// Button aggiungi pagamento in contanti
-		_btnAggiungiPagamentoInContanti.setText("Aggiungi pagamento in contanti");
-		// Assegniamo l'eventListener al JButton _btnAggiungiPagamentoInContanti.
-		_btnAggiungiPagamentoInContanti.addMouseListener(new InserisciPagamentoInContantiListener());
-		
-		// Button aggiungi pagamento con carta
-		_btnAggiungiPagamentoConCarta.setText("Aggiungi pagamento con carta");
-		// Assegniamo l'eventListener al JButton _btnAggiungiPagamentoConCarta.
-		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConCartaListener(_prenotazione));
-		
-		// Button aggiungi pagamento con bonifico
-		_btnAggiungiPagamentoConBonifico.setText("Aggiungi pagamento in contanti");
-		// Assegniamo l'eventListener al JButton _btnAggiungiPagamentoConBonifico.
-		_btnAggiungiPagamentoConBonifico.addMouseListener(new InserisciPagamentoConBonificoListener());
-		
+				
 		/*
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
@@ -174,9 +199,11 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	}
 	/**
 	 * Metodo che crea il pannello laterale a sinistra
-	 * @return _panelContanti E' il pannello laterale dei pagamenti in contanti
+	 * 
+	 * @return Lo scroll pane contenente i pagamenti in contanti
 	 */
-	public JScrollPane creaPanelMiddleLeft(){
+	public JScrollPane creaJScrollPanePagamentiContanti(){
+		
 		//Recupero i pagamenti
 		recuperaPagamenti();
 		//Creo un JScrollPane
@@ -184,13 +211,12 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 		//Creo un pannello
 		JPanel panelContanti = _viewFactory.getPanel();
 		//Assegno il layout
-		panelContanti.setLayout(new BoxLayout(panelContanti, BoxLayout.PAGE_AXIS));
+		panelContanti.setLayout(new BoxLayout(panelContanti, BoxLayout.Y_AXIS));
 		//Assegno il titolo
 		JLabel lblTitoloContanti = _viewFactory.getLabel();
 		lblTitoloContanti.setText("Contanti:");
 		//Assegno il titolo al pannello
 		panelContanti.add(lblTitoloContanti);
-		panelContanti.add(_viewFactory.getSeparator());
 		
 		//Ora recupero i pagamenti in contanti		
 		if (_pagamentiInContanti!=null){
@@ -210,20 +236,11 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 				labelData.setText("Data bonifico: "+ pagamentoInContanti.get_data().get_giorno() + " - "+pagamentoInContanti.get_data().get_mese()+ " - "+pagamentoInContanti.get_data().get_anno());
 				//Aggiungo la label
 				panelContanti.add(labelData);
-				panelContanti.add(_viewFactory.getSeparator());
+				
 			}
-		}
-
+		}	
 		
-		
-		/*Setto il testo del pulsante*/
-		/*JButton btnAggiungiPagamentoInContanti = _viewFactory.getButton();
-		btnAggiungiPagamentoInContanti.setText("Aggiungi un pagamento in contanti");
-		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
-		/*btnAggiungiPagamentoInContanti.addMouseListener(new InserisciPagamentoInContantiListener());
-		/*Aggiungo il pulsante per aggiungere un pagamento*/
-		/*panelContanti.add(btnAggiungiPagamentoInContanti);	
-		*/
+		/*Setto la viewport dello scrollpane*/
 		scrollPaneContanti.setViewportView(panelContanti);
 		
 		//Restituisco il pannello
@@ -234,7 +251,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	 * Metodo che crea il pannello centrale con tutti i bonifici effettuati
 	 * @return 	_panelBonifico E' il pannello centrale con tutti bonifici effettuati
 	 */
-	public JScrollPane creaPanelMiddleCenter(){
+	public JScrollPane creaJScrollPanePagamentiConBonifici(){
 		
 		//Invoco il metodo per recuperare i pagamenti
 		recuperaPagamenti();
@@ -279,13 +296,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 			}
 		}
 		
-		/*Setto il testo del pulsante*/
-		JButton btnAggiungiPagamentoConBonifico = _viewFactory.getButton();
-		btnAggiungiPagamentoConBonifico.setText("Aggiungi un pagamento Con Bonifico");
-		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
-		btnAggiungiPagamentoConBonifico.addMouseListener(new InserisciPagamentoConBonificoListener());
-		/*Aggiungo il pulsante per aggiungere un pagamento*/
-		panelBonifico.add(btnAggiungiPagamentoConBonifico);
+		/*Setto la viewport dello scrollpane*/
 		
 		scrollPaneBonifico.setViewportView(panelBonifico);
 		//restitiuisco il pannello con il bonifici
@@ -296,38 +307,41 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	 * @return 	_panelCartaDiCredito E' il pannello contenente le informazioni  con i versamenti effettuati 
 	 * 			da carta di credito
 	 */
-	private JPanel creaPanelMiddleRight(){
-		//Aggiungo il layout
-		_panelCartaDiCredito.setLayout(new BoxLayout(_panelCartaDiCredito,BoxLayout.PAGE_AXIS));
-		//Aggiungo il titolo
-		_lblTitoloCarta.setText("Prelevamenti carte di credito:");
+	public JScrollPane creaJScrollPanePagamentiCarta(){
+		//Invoco il metodo per recuperare i pagamenti
+		recuperaPagamenti();
+		//Creo un JScrollPane
+		JScrollPane scrollPaneCarta = _viewFactory.getScrollPane();
+		//Creo un pannello
+		JPanel panelCarta = _viewFactory.getPanel();
+		//Aggiungo il layout al pannello
+		panelCarta.setLayout(new BoxLayout(panelCarta,BoxLayout.PAGE_AXIS));
 		//Aggiongo la label con il titolo al pannello
-		_panelCartaDiCredito.add(_lblTitoloCarta);
+		JLabel lblTitoloCarta= _viewFactory.getLabel();
+		lblTitoloCarta.setText("Prelevamenti con carta:");		
+		panelCarta.add(lblTitoloCarta);
+		panelCarta.add(_viewFactory.getSeparator());
 		
-		//Ora recupero i pagamenti tramite Carta di credito
-	
+		//Ora recupero i pagamenti tramite bonifico bancario		
 		if (_pagamentiConCarta!=null){
 			for (Iterator<PagamentoConCarta> iterator = _pagamentiConCarta.iterator(); iterator
 					.hasNext();) {
-				PagamentoConCarta pagamentoConCarta = iterator.next();
-				JLabel label = _viewFactory.getLabel();
+				PagamentoConCarta pagamentoConCarta =  iterator.next();
+				//Creo una label per l'importo
+				JLabel labelImporto = _viewFactory.getLabel();
 				//Setto il testo della label
-				label.setText("Importo: "+pagamentoConCarta.get_importo().toString());
+				labelImporto.setText("Importo: "+String.valueOf(pagamentoConCarta.get_importo().get_importo())+ " "+ pagamentoConCarta.get_importo().get_valuta());
 				//Aggiungo la label al pannello insieme ad un separatore
-				_panelContanti.add(label);
-				_panelContanti.add(_viewFactory.getSeparator());
+				panelCarta.add(labelImporto);
+								
 			}
 		}
 		
-		/*Setto il testo del pulsante*/
-		_btnAggiungiPagamentoConCarta.setText("Aggiungi un pagamento con carta");
-		/*Aggiungo il listener all'evento click sul pulsante aggiungi pagamento in contanti*/
-		_btnAggiungiPagamentoConCarta.addMouseListener(new InserisciPagamentoConCartaListener(_prenotazione));
-		/*Aggiungo il pulsante per aggiungere un pagamento*/
-		_panelCartaDiCredito.add(_btnAggiungiPagamentoConCarta);
+		/*Setto la viewport dello scrollpane*/
 		
+		scrollPaneCarta.setViewportView(panelCarta);
 		//restitiuisco il pannello con il bonifici
-		return _panelCartaDiCredito;
+		return scrollPaneCarta;
 	}
 	/**
 	 * Metodo privato che restituisce la mappa dei pagamenti della prenotazione
@@ -378,37 +392,26 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane {
 	
 	public JPanel getPanelContanti(){
 		return this._panelContanti;
-	}
+	}	
 	
 	/**
-	 * crea il pannello per il bottone aggiunta pagamento in contanti
+	 * 
 	 * @return
 	 */
-	private JPanel creaPanelBottoneInserisciPagamentoInContanti() {	
-		_btnAggiungiPagamentoInContanti.setText("Aggiungi Pagamento in contanti");
-		// Aggiungo l'eventListener al btnAggiungiOspite
-		_btnAggiungiPagamentoInContanti.addMouseListener(new InserisciPagamentoInContantiListener());
-		// Struttura dati dove si salvano i bottoni con la relativa posizione.
-		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
-		// Aggiungo il bottone alla struttura.
-		Bottoni.put(1, _btnAggiungiPagamentoInContanti);
-		// Creo la pulsantiera.
-		Integer numeroColonne = 2;
-		creaPanelPulsanti(_panelBottonePagaContanti, numeroColonne, Bottoni);
-		
-		return _panelBottonePagaContanti;
+	public JPanel creaPanelEsternoContanti(){
+		JPanel auxContanti = _viewFactory.getPanel();
+		auxContanti.setLayout(new BoxLayout(auxContanti,BoxLayout.Y_AXIS));
+		auxContanti.add(creaJScrollPanePagamentiContanti());
+		auxContanti.add(_btnAggiungiPagamentoInContanti);
+		/*Aggiungo il pannello ausiliario al pannello dei pagamenti in contanti*/
+		return auxContanti;
 	}
 	
-	private JPanel creaPanelPagamentoInContanti(){
-		JPanel pnlContanti = _viewFactory.getPanel();
-		
-		pnlContanti.setLayout(new BoxLayout(pnlContanti, BoxLayout.PAGE_AXIS));
-		
-		pnlContanti.add(creaPanelMiddleLeft());
-		pnlContanti.add(creaPanelBottoneInserisciPagamentoInContanti());
-		return pnlContanti;
+	public JPanel creaPanelEsternoBonifici(){
+		JPanel auxBonifici = _viewFactory.getPanel();
+		auxBonifici.setLayout(new BoxLayout(auxBonifici,BoxLayout.Y_AXIS));
+		auxBonifici.add(creaJScrollPanePagamentiConBonifici());
+		auxBonifici.add(_btnAggiungiPagamentoConBonifico);
+		return auxBonifici;
 	}
-	
-	
-
 }

@@ -60,7 +60,7 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 		// Prendo il layout del pannello
 		CardLayout cardLayout = (CardLayout) panelBonifico.getLayout();
 		// Aggiungo una nuova scheda al pannello.
-		panelBonifico.add(_riepilogoPagamenti.creaPanelMiddleCenter());
+		panelBonifico.add(_riepilogoPagamenti.creaJScrollPanePagamentiConBonifici());
 		// Mostro la prossima scheda
 		cardLayout.next(panelBonifico);
 	}

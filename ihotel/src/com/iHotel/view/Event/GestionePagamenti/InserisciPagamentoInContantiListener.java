@@ -8,6 +8,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import com.iHotel.controller.CGestionePagamenti;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
@@ -58,7 +59,7 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 		// Prendo il layout del pannello
 		CardLayout cardLayout = (CardLayout) panelContanti.getLayout();
 		// Aggiungo una nuova scheda al pannello.
-		panelContanti.add(_riepilogoPagamenti.creaPanelMiddleLeft());
+		panelContanti.add(_riepilogoPagamenti.creaPanelEsternoContanti());
 		// Mostro la prossima scheda
 		cardLayout.next(panelContanti);
 		
