@@ -85,8 +85,10 @@ public abstract class SoggiornoState {
 		_soggiornoSubject.get_pagamenti().add(pagamento);
 		//Sommo l'importo del pagamento al totale dei pagamenti
 		_soggiornoSubject.set_importoTotalePagamenti(_soggiornoSubject.get_importoTotalePagamenti().somma(pagamento.get_importo()));
+		_soggiornoSubject.Notify();
 		//ricalcolo il rimanente da pagare
 		_soggiornoSubject.calcolaTotaleDaPagare();
+		
 	}
 	/**
 	 * Metodo che restituisce il totale da pagare per il soggiorno.

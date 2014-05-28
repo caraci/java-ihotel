@@ -70,6 +70,7 @@ public class CGestionePagamenti {
     	_soggiorno.addPagamento(pagamento);
     	/*Salvo il pagamento nel db*/
     	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
+    	PPrenotazione.getInstance().store(_soggiorno.get_importoTotalePagamenti());
     }
     
     public void pagaConCarta(Prezzo importoDaPagareConCarta){
