@@ -9,6 +9,7 @@ import java.util.Iterator;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -85,7 +86,20 @@ public abstract class SoggiornoState {
 		//Sommo l'importo del pagamento al totale dei pagamenti
 		_soggiornoSubject.get_importoTotalePagamenti().somma(pagamento.get_importo());
 	}
-	public abstract void calcolaTotaleDaPagare();
+	public void calcolaTotaleDaPagare(){
+		Prezzo importoDaPagare = new Prezzo();
+		Prezzo totaleServiziEsterni = new Prezzo();
+		
+		totaleServiziEsterni = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(_soggiornoSubject);
+		// Aggiungo tutti i costi della prenotazione
+		importoDaPagare.somma(_soggiornoSubject.get_importoTotaleCamere());
+		importoDaPagare.somma(_soggiornoSubject.getPrezzoServiziInterni());
+		importoDaPagare.somma(totaleServiziEsterni);
+		// Sottraggo i pagamenti pervenuti
+		importoDaPagare.sottrai(_soggiornoSubject.get_importoTotalePagamenti());
+		// Setto il nuovo totale da pagare.
+		_soggiornoSubject.set_importoRimanenteDaPagare(importoDaPagare);	
+	}
 	public abstract void addCamera(Camera camera);
 	public abstract void addPrenotante(String nome, String cognome, String eMail, String telefono);
 	public abstract void occupaCamere();

@@ -16,13 +16,6 @@ public class SoggiornoTerminato extends SoggiornoState {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	@Override
-	public void calcolaTotaleDaPagare() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void addCamera(Camera camera) {
 		// TODO Auto-generated method stub

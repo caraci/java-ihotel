@@ -21,22 +21,6 @@ public class Soggiorno extends SoggiornoState {
 
 
 	@Override
-	public void calcolaTotaleDaPagare() {
-		Prezzo importoDaPagare = new Prezzo();
-		Prezzo totaleServiziEsterni = new Prezzo();
-		
-		totaleServiziEsterni = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(_soggiornoSubject);
-		// Aggiungo tutti i costi della prenotazione
-		importoDaPagare.somma(_soggiornoSubject.get_importoTotaleCamere());
-		importoDaPagare.somma(_soggiornoSubject.getPrezzoServiziInterni());
-		importoDaPagare.somma(totaleServiziEsterni);
-		// Sottraggo i pagamenti pervenuti
-		importoDaPagare.sottrai(_soggiornoSubject.get_importoTotalePagamenti());
-		// Setto il nuovo totale da pagare.
-		_soggiornoSubject.set_importoRimanenteDaPagare(importoDaPagare);		
-	}
-
-	@Override
 	public void addCamera(Camera camera) {
 		// TODO Auto-generated method stub
 		

@@ -25,11 +25,6 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void calcolaTotaleDaPagare() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void addCamera(Camera camera) {
@@ -83,6 +78,8 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		ComponentOttieniAmmontareCaparraStrategy strategiaAmmontareCaparra = strategiaAmmontareCaparraFactory.getStrategyAmmontareCaparra();
 		// Setto l'ammontare della caparra
 		_soggiornoSubject.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_soggiornoSubject));
+		//setto l'importo rimanente da pagare
+		_soggiornoSubject.calcolaTotaleDaPagare();
 		
 	}
 
