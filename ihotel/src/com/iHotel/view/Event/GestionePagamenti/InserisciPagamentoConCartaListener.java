@@ -38,9 +38,7 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
-		Prezzo importoRimanenteDaPagare = _prenotazione.get_importoTotaleCamere();
-		/*Prezzo importoRimanenteDaPagare = _prenotazione.get_importoRimanenteDaPagare();*/
-		System.out.print(importoRimanenteDaPagare.get_importo());
+		Prezzo importoRimanenteDaPagare = _prenotazione.get_importoRimanenteDaPagare();
     	Prezzo importoDaPagareConCarta = UDialogManager.getInstance().getDialogInserimentoImportoPagamentoConCarta(importoRimanenteDaPagare);
     	CGestionePagamenti.getInstance().pagaConCarta(importoDaPagareConCarta);
 	}

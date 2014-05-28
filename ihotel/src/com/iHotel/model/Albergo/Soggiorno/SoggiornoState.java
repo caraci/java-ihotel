@@ -85,6 +85,8 @@ public abstract class SoggiornoState {
 		_soggiornoSubject.get_pagamenti().add(pagamento);
 		//Sommo l'importo del pagamento al totale dei pagamenti
 		_soggiornoSubject.get_importoTotalePagamenti().somma(pagamento.get_importo());
+		//ricalcolo il rimanente da pagare
+		_soggiornoSubject.calcolaTotaleDaPagare();
 	}
 	public void calcolaTotaleDaPagare(){
 		Prezzo importoDaPagare = new Prezzo();
