@@ -40,30 +40,30 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */
-	private SoggiornoContextSubject _prenotazione;
+	protected SoggiornoContextSubject _prenotazione;
 	/**
 	 * Prezzo dei servizi esterni, richiesti dalle camere della prenotazione, nel periodo di quest'ultima.
 	 */
-	private Prezzo _prezzoServiziEsterni;
+	protected Prezzo _prezzoServiziEsterni;
 	
 	/*Panel*/
-	private JPanel _panelInfoPrenotante,_panelInfoPrenotazione,_panelCamerePrenotate;
+	protected JPanel _panelInfoPrenotante,_panelInfoPrenotazione,_panelCamerePrenotate;
 	
 	/*Label*/
-	private JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, 
+	protected JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, 
 				   _lblTitoloPrenotazione,_lblPrezzoCamere,_lblPrezzoServizi, 
 				   _lblRiepilogoPrenotazione, _lblScegliCamera, _lblGiornoScadenzaGaranzia,
 				   _lblAmmontareCaparra;
 
 	/*Button*/
-	private JButton _btnTerminaModifichePrenotazione;
-	private JButton _btnCheckIn;
-	private JButton _btnGestionePagamenti;
-	private ArrayList<JButton> _btnCamere;
+	protected JButton _btnTerminaModifichePrenotazione;
+	protected JButton _btnCheckIn;
+	protected JButton _btnGestionePagamenti;
+	protected ArrayList<JButton> _btnCamere;
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
-	public VPGP_InfoPrenotazione(){
+	protected VPGP_InfoPrenotazione(){
 		// JPanel		
 		_panelInfoPrenotante = _viewFactory.getPanel();
 		_panelInfoPrenotazione = _viewFactory.getPanel();
@@ -137,7 +137,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 	 * 
 	 * @return Pannello che contiene le informazioni sul cliente prenotante.
 	 */
-	private JPanel creaPanelMiddleLeft(){
+	protected JPanel creaPanelMiddleLeft(){
 				
 		/*Setto il layout*/
 		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante, BoxLayout.PAGE_AXIS));
@@ -170,7 +170,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 	 * 
 	 * @return Pannello contenente le informazioni di riepilogo sulla prenotazione
 	 */
-	private JPanel creaPanelMiddleCenter(){
+	protected JPanel creaPanelMiddleCenter(){
 		
 		/*Setto il layout*/
 		_panelInfoPrenotazione.setLayout(new BoxLayout(_panelInfoPrenotazione, BoxLayout.PAGE_AXIS));
@@ -227,7 +227,7 @@ public class VPGP_InfoPrenotazione extends ViewPanelContentPane {
 	 * 
 	 * @return Pannello che contiene le camere prenotate.
 	 */
-	private JPanel creaPanelMiddleRight(){		
+	protected JPanel creaPanelMiddleRight(){		
 		
 		/*Setto il layout*/
 		_panelCamerePrenotate.setLayout(new BoxLayout(_panelCamerePrenotate, BoxLayout.PAGE_AXIS));

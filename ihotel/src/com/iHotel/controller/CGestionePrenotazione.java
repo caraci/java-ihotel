@@ -9,6 +9,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Access.ViewPanelFactory;
 import com.iHotel.view.Graphic.GestionePrenotazione.VPGP_InfoPrenotazione;
 
 /**
@@ -38,7 +39,7 @@ public class CGestionePrenotazione {
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
-		VPGP_InfoPrenotazione infoPrenotazione = new VPGP_InfoPrenotazione();
+		VPGP_InfoPrenotazione infoPrenotazione = ViewPanelFactory.getPanelInfoSoggiorno(_prenotazione);
 		// Assegno la prossima schermata al frame.
 		viewFrame.cambiaSchermata(infoPrenotazione);
 		// Creo il frame
