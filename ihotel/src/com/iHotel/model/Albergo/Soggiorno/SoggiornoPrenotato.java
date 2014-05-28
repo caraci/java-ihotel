@@ -29,7 +29,7 @@ public class SoggiornoPrenotato extends SoggiornoState {
 	@Override
 	public void addCamera(Camera camera) {
 		_soggiornoSubject.get_camerePrenotate().add(camera);
-		// Calcolo il nuovo totale della prenotazione
+		// Calcolo il nuovo totale delle camere della prenotazione
 		_soggiornoSubject.calcolaImportoTotaleCamere();
 	}
 
@@ -77,10 +77,7 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		// Strategia per il calcolo dell'ammontare della caparra
 		ComponentOttieniAmmontareCaparraStrategy strategiaAmmontareCaparra = strategiaAmmontareCaparraFactory.getStrategyAmmontareCaparra();
 		// Setto l'ammontare della caparra
-		_soggiornoSubject.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_soggiornoSubject));
-		//setto l'importo rimanente da pagare
-		_soggiornoSubject.calcolaTotaleDaPagare();
-		
+		_soggiornoSubject.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_soggiornoSubject));		
 	}
 
 	@Override

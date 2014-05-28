@@ -6,11 +6,6 @@ package com.iHotel.view.Event.GestionePagamenti;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-
 import com.iHotel.controller.CGestionePagamenti;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Prezzo;
@@ -38,7 +33,7 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
-		Prezzo importoRimanenteDaPagare = _prenotazione.get_importoRimanenteDaPagare();
+		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaTotaleDaPagare();
     	Prezzo importoDaPagareConCarta = UDialogManager.getInstance().getDialogInserimentoImportoPagamentoConCarta(importoRimanenteDaPagare);
     	CGestionePagamenti.getInstance().pagaConCarta(importoDaPagareConCarta);
 	}

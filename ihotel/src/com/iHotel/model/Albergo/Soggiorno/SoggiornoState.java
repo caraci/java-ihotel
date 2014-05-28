@@ -88,7 +88,12 @@ public abstract class SoggiornoState {
 		//ricalcolo il rimanente da pagare
 		_soggiornoSubject.calcolaTotaleDaPagare();
 	}
-	public void calcolaTotaleDaPagare(){
+	/**
+	 * Metodo che restituisce il totale da pagare per il soggiorno.
+	 * 
+	 * @return Importo da pagare per il soggiorno.
+	 */
+	public Prezzo calcolaTotaleDaPagare(){
 		Prezzo importoDaPagare = new Prezzo();
 		Prezzo totaleServiziEsterni = new Prezzo();
 		
@@ -98,9 +103,9 @@ public abstract class SoggiornoState {
 		importoDaPagare.somma(_soggiornoSubject.getPrezzoServiziInterni());
 		importoDaPagare.somma(totaleServiziEsterni);
 		// Sottraggo i pagamenti pervenuti
-		importoDaPagare.sottrai(_soggiornoSubject.get_importoTotalePagamenti());
-		// Setto il nuovo totale da pagare.
-		_soggiornoSubject.set_importoRimanenteDaPagare(importoDaPagare);	
+		importoDaPagare.sottrai(_soggiornoSubject.get_importoTotalePagamenti());	
+		
+		return importoDaPagare;
 	}
 	public abstract void addCamera(Camera camera);
 	public abstract void addPrenotante(String nome, String cognome, String eMail, String telefono);

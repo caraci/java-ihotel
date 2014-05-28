@@ -65,10 +65,6 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	private SoggiornoState _soggiornoState;
 	/**
-	 *  Importo rimanente da pagare per il soggiorno
-	 */
-	private Prezzo _importoRimanenteDaPagare;
-	/**
 	 * 	Importo totale pagamenti ricevuti per il soggiorno
 	 */
 	private Prezzo _importoTotalePagamenti;
@@ -83,7 +79,6 @@ public class SoggiornoContextSubject implements ISubject {
 		_pagamenti= new ArrayList<Pagamento>();
 		_ammontareCaparra = new Prezzo();
 		_soggiornoState = new SoggiornoPrenotato(this);
-		_importoRimanenteDaPagare = new Prezzo();
 		_importoTotalePagamenti = new Prezzo();
 	}
 	
@@ -139,9 +134,9 @@ public class SoggiornoContextSubject implements ISubject {
 	/**
 	 * Metodo per calcolare il rimanente importo da pagare
 	 */
-	public void calcolaTotaleDaPagare(){
+	public Prezzo calcolaTotaleDaPagare(){
 		// Passo la richiesta allo stato attuale
-		_soggiornoState.calcolaTotaleDaPagare();
+		return _soggiornoState.calcolaTotaleDaPagare();
 	}
 	/**
 	 * Metodo per aggiungere una camera alla prenotazione.
@@ -334,14 +329,6 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	public void set_soggiornoState(SoggiornoState _statoSoggiorno) {
 		this._soggiornoState = _statoSoggiorno;
-	}
-
-	public Prezzo get_importoRimanenteDaPagare() {
-		return _importoRimanenteDaPagare;
-	}
-
-	public void set_importoRimanenteDaPagare(Prezzo _importoRimanenteDaPagare) {
-		this._importoRimanenteDaPagare = _importoRimanenteDaPagare;
 	}
 
 	/**

@@ -4,9 +4,7 @@
 package com.iHotel.model.Albergo.Soggiorno;
 
 import com.iHotel.model.Albergo.Camera.Camera;
-import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Pagamento.Pagamento;
-import com.iHotel.model.Utility.Prezzo;
 
 /**
  * @author Gabriele
