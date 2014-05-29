@@ -27,6 +27,7 @@ import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
+import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
 import com.iHotel.view.Utility.UtoPanel;
 
 /**
@@ -152,6 +153,8 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
 		//Setto il testo del bottone
 		_btnTornaPrenotazione.setText("Torna alla prenotazione");
+		/*Aggiungo il listener al click sul pulsante*/
+		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneListener());
 		// Aggiungo il bottone alla struttura.
 		Bottoni.put(0, _btnTornaPrenotazione);
 				
