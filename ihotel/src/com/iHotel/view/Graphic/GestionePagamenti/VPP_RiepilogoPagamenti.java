@@ -150,7 +150,8 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	protected void creaPanelBottom() {		
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
-		
+		//Setto il testo del bottone
+		_btnTornaPrenotazione.setText("Torna alla prenotazione");
 		// Aggiungo il bottone alla struttura.
 		Bottoni.put(0, _btnTornaPrenotazione);
 				
