@@ -46,7 +46,7 @@ public class CaricaAggiungiServiziListener extends MouseAdapter {
 		
 		//Invoco la creazione della dialog per l'inserimento del servizio. Mi viene restituito il servizio
 		//costruito con le informazioni inserite dall'utente
-		ServizioInterno servizio = UDialogManager.getInstance().getDialogAggiungiServizioInterno();
+		ServizioInterno servizio = UDialogManager.getDialogAggiungiServizioInterno();
 		// Recupero il controllore e invoco il metodo per tornare alla gestione della prenotazione.
 		CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
 		//Invoco il metodo per l'aggiunta del servizio

@@ -59,7 +59,7 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 		/*Visualizzo la dialog per l'inserimento delle informazioni sul pagamento. Viene restituito
 		 * un oggetto PagamentoCon*/
 		
-		Prezzo importoDaPagareConCarta = UDialogManager.getInstance().getDialogInserimentoImportoPagamentoConCarta(importoRimanenteDaPagare);
+		Prezzo importoDaPagareConCarta = UDialogManager.getDialogInserimentoImportoPagamentoConCarta(importoRimanenteDaPagare);
 		/*Recupero il controllore corretto*/
 		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/

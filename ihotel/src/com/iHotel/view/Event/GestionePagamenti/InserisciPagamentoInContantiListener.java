@@ -58,7 +58,7 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaTotaleDaPagare();
 		/*Visualizzo la dialog per l'inserimento delle informazioni sul pagamento. Viene restituito
 		 * un oggetto PagamentoInContanti*/
-		PagamentoInContanti pagamentoInContanti = UDialogManager.getInstance().getDialogDatiPagamentoInContanti(importoRimanenteDaPagare);
+		PagamentoInContanti pagamentoInContanti = UDialogManager.getDialogDatiPagamentoInContanti(importoRimanenteDaPagare);
 		/*Recupero il controllore corretto*/
 		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/

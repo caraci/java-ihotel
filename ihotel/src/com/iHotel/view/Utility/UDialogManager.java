@@ -28,7 +28,6 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Ora;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 
 /**
@@ -38,32 +37,13 @@ import com.iHotel.view.Access.ViewFactory;
 @SuppressWarnings("serial")
 public class UDialogManager extends JOptionPane {
 	
-	private StyleAbstractFactory _viewFactory = ViewFactory.getInstance().getStyleFactory();
-	
-	//Singleton
-	private static UDialogManager instance = null;
-
-	/**
-	 * Costruttore privato
-	 */
-	private UDialogManager(){}
-	
-	/**
-	 * Metodo per ottenere l'unica istanza di questa classe - Pattern Singleton
-	 */
-	public static UDialogManager getInstance(){
-		if (instance == null){
-			instance = new UDialogManager();
-		}		
-		return instance;
-	}
 	
 	/**
 	 * Metodo che restituisce la dialog per l'inserimento del codice.
 	 *  
 	 * @return Stringa inserita dall'utente, che è il codice della prenotazione.
 	 */
-	public String getDialogInserimentoCodice(){
+	public static String getDialogInserimentoCodice(){
 		/*Si passa l'interfaccia corrente al JOptionPane, in questo modo questa viene "bloccata" finchè la dialog rimane visualizzata*/
 		return JOptionPane.showInputDialog(ViewFrameApplication.getInstance(),"Inserisci il codice della prenotazione", "Inserimento codice per recuperare la prenotazione", JOptionPane.QUESTION_MESSAGE);	
 	}
@@ -73,7 +53,7 @@ public class UDialogManager extends JOptionPane {
 	 * 
 	 * @param codicePrenotazione è il codice della prenotazione inserita.
 	 */
-	public void showDialogConfermaPrenotazione(String codicePrenotazione){
+	public static void showDialogConfermaPrenotazione(String codicePrenotazione){
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), "La prenotazione è stata creata. Il suo codice è " + codicePrenotazione, "Conferma creazione prenotazione", JOptionPane.INFORMATION_MESSAGE);
 
 	}
@@ -81,40 +61,40 @@ public class UDialogManager extends JOptionPane {
 	/**
 	 * Metodo che mostra la dialog che conferma l'inserimento di un servizio.
 	 */
-	public void showDialogConfermaInserimentoServizio(){
+	public static void showDialogConfermaInserimentoServizio(){
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), "Il servizio è stato aggiunto alla prenotazione.", "Conferma inserimento servizio", JOptionPane.INFORMATION_MESSAGE);
 	}
 	/**
 	 * Metodo che visualizza una JDialog per l'inserimento delle informazioni del bonifico
 	 * @return Un oggetto PagamentoConBonifico con le informazion inserite dall'utente
 	 */
-	public PagamentoConBonifico getDialogDatiBonificoBancario(Prezzo importoDaVisualizzare){
+	public static PagamentoConBonifico getDialogDatiBonificoBancario(Prezzo importoDaVisualizzare){
 		/*Etichette*/
 		
 		//label importo
-		JLabel lblImporto = _viewFactory.getLabel();
+		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImporto.setText("Importo: ");
 		//Label data
-		JLabel lblData = _viewFactory.getLabel();
+		JLabel lblData = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblData.setText("Data: ");
 		//Label nome mittente
-		JLabel lblNomeMittente = _viewFactory.getLabel();
+		JLabel lblNomeMittente = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblNomeMittente.setText("Nome mittente: ");
 		//Label cognome mittente
-		JLabel lblCognomeMittente = _viewFactory.getLabel();
+		JLabel lblCognomeMittente = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblCognomeMittente.setText("Cognome mittente: ");
 		//Label codice bonifico
-		JLabel lblCodiceBonifico= _viewFactory.getLabel();
+		JLabel lblCodiceBonifico= ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblCodiceBonifico.setText("Codice bonifico: ");
 		
 		//Creo il jdatepicker per la data
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
 		/*Text fields*/
-		JTextField importo = _viewFactory.getTextField();
+		JTextField importo = ViewFactory.getInstance().getStyleFactory().getTextField();
 		importo.setText(String.valueOf(importoDaVisualizzare.get_importo()));
-		JTextField codice =  _viewFactory.getTextField();
-		JTextField nomeMittente =  _viewFactory.getTextField();
-		JTextField cognomeMittente =  _viewFactory.getTextField();
+		JTextField codice =  ViewFactory.getInstance().getStyleFactory().getTextField();
+		JTextField nomeMittente =  ViewFactory.getInstance().getStyleFactory().getTextField();
+		JTextField cognomeMittente =  ViewFactory.getInstance().getStyleFactory().getTextField();
 		
 		//Creo un array di componenti
 		final JComponent[] inputs = new JComponent[] {
@@ -158,20 +138,20 @@ public class UDialogManager extends JOptionPane {
 	 * 
 	 * @return Il pagamento in contanti creato con le informazioni inserite dall'utente.
 	 */
-	public PagamentoInContanti getDialogDatiPagamentoInContanti(Prezzo importoDaVisualizzare){
+	public static PagamentoInContanti getDialogDatiPagamentoInContanti(Prezzo importoDaVisualizzare){
 		/*Etichette*/
 		
 		//label importo
-		JLabel lblImporto = _viewFactory.getLabel();
+		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImporto.setText("Importo: ");
 		//Label data
-		JLabel lblData = _viewFactory.getLabel();
+		JLabel lblData = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblData.setText("Data: ");
 		
 		//Creo il jdatepicker per la data
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
 		/*Text fields*/
-		JTextField importo = _viewFactory.getTextField();
+		JTextField importo = ViewFactory.getInstance().getStyleFactory().getTextField();
 		importo.setText(String.valueOf(importoDaVisualizzare.get_importo()));
 
 		//Creo un array di componenti
@@ -205,14 +185,14 @@ public class UDialogManager extends JOptionPane {
 	 *  
 	 * @return Il servizio interno con le informazioni inserite dall'utente.
 	 */
-	public ServizioInterno getDialogAggiungiServizioInterno(){
+	public static ServizioInterno getDialogAggiungiServizioInterno(){
 		
 		/*Recupero i descrittori dei servizi offerti dall'albergo*/
 		HashMap<String,DescrizioneServizioInterno> descrizioniServizi = Albergo.getInstance().get_catalogoServizi().get_descrizioneServizi();
 		/*Combobox per mostrare la lista dei servizi*/
 		JComboBox<String> comboBoxServizi= new JComboBox<>();
 		/*TextArea per aggiungere note*/
-		JTextArea note = _viewFactory.getTextArea();
+		JTextArea note = ViewFactory.getInstance().getStyleFactory().getTextArea();
 		/*Setto il numero di righe della textarea*/
 		note.setRows(5);
 		
@@ -224,16 +204,16 @@ public class UDialogManager extends JOptionPane {
 		}
 		
 		/*Label*/
-		JLabel lblServizio = _viewFactory.getLabel();
+		JLabel lblServizio = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblServizio.setText("Scegli il servizio: ");
 		/*Data*/
-		JLabel lblData = _viewFactory.getLabel();
+		JLabel lblData = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblData.setText("Data: ");
 		/*Note*/
-		JLabel lblNote = _viewFactory.getLabel();
+		JLabel lblNote = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblNote.setText("Note al servizio: ");
 		/*Orario del servizio*/
-		JLabel lblOrario = _viewFactory.getLabel();
+		JLabel lblOrario = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblOrario.setText("Orario: ");
 		//Creo il jdatepicker per la data
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
@@ -277,11 +257,11 @@ public class UDialogManager extends JOptionPane {
 		return servizioInterno;
 	}
 	
-	public Prezzo getDialogInserimentoImportoPagamentoConCarta(Prezzo importoDaVisualizzare){
+	public static Prezzo getDialogInserimentoImportoPagamentoConCarta(Prezzo importoDaVisualizzare){
 		
-		JLabel lblImporto = _viewFactory.getLabel();
+		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImporto.setText("Importo da pagare:");
-		JTextField txtImporto = _viewFactory.getTextField();
+		JTextField txtImporto = ViewFactory.getInstance().getStyleFactory().getTextField();
 		txtImporto.setText(String.valueOf(importoDaVisualizzare.get_importo()));
 		
 		//Creo un array di componenti

@@ -58,7 +58,7 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 
 		/*Visualizzo la dialog per l'inserimento delle informazioni. Mi viene restituito l'oggetto Pagamento
 		costruito con le informazioni inserite dall'utente*/
-		PagamentoConBonifico pagamento= UDialogManager.getInstance().getDialogDatiBonificoBancario(importoRimanenteDaPagare);
+		PagamentoConBonifico pagamento= UDialogManager.getDialogDatiBonificoBancario(importoRimanenteDaPagare);
 		/*Recupero il controllore corretto*/
 		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
