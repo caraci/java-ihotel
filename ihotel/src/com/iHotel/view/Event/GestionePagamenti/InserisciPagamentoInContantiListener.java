@@ -65,11 +65,11 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamentoInContanti);
 		
 		// Prendo il pannello dove si va a mostrare la lista dei bonifici
-		JPanel panelContanti = _riepilogoPagamenti.getPanelContanti();
+		JPanel panelContanti = _riepilogoPagamenti.getPanelListaPagamentiInContanti();
 		// Prendo il layout del pannello
 		CardLayout cardLayout = (CardLayout) panelContanti.getLayout();
 		// Aggiungo una nuova scheda al pannello.
-		panelContanti.add(_riepilogoPagamenti.creaPanelEsternoContanti());
+		panelContanti.add(_riepilogoPagamenti.creaJScrollPanePagamentiContanti());
 		// Mostro la prossima scheda
 		cardLayout.next(panelContanti);
 		

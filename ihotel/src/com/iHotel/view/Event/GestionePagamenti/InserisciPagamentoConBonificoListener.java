@@ -65,11 +65,11 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamento);		
 		
 		// Prendo il pannello dove si va a mostrare la lista dei bonifici
-		JPanel panelBonifico = _riepilogoPagamenti.getPanelBonifico();
+		JPanel panelBonifico = _riepilogoPagamenti.getPanelListaPagamentiConBonifico();
 		// Prendo il layout del pannello
 		CardLayout cardLayout = (CardLayout) panelBonifico.getLayout();
 		// Aggiungo una nuova scheda al pannello.
-		panelBonifico.add(_riepilogoPagamenti.creaPanelEsternoBonifici());
+		panelBonifico.add(_riepilogoPagamenti.creaJScrollPanePagamentiConBonifici());
 		// Mostro la prossima scheda
 		cardLayout.next(panelBonifico);
 	}

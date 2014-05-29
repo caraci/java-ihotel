@@ -66,11 +66,11 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 		gestorePagamenti.pagaConCarta(importoDaPagareConCarta);
 				
 		// Prendo il pannello dove si va a mostrare la lista dei bonifici
-		JPanel panelCarta = _riepilogoPagamenti.getPanelCarta();
+		JPanel panelCarta = _riepilogoPagamenti.getPanelListaPagamentiConCarta();
 		// Prendo il layout del pannello
 		CardLayout cardLayout = (CardLayout) panelCarta.getLayout();
 		// Aggiungo una nuova scheda al pannello.
-		panelCarta.add(_riepilogoPagamenti.creaPanelEsternoCarta());
+		panelCarta.add(_riepilogoPagamenti.creaJScrollPanePagamentiCarta());
 		// Mostro la prossima scheda
 		cardLayout.next(panelCarta);
 		
