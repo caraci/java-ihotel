@@ -84,7 +84,7 @@ public class CGestionePagamenti {
     	//recupero il sistema di autorizzazione al pagamento
     	ICreditAuthorizationServiceAdapter creditAuth = serviceFactory.get_creditAuthAdapter();
     	//se il sistema autorizza il pagamento
-    	if(creditAuth.richiestaDiApprovazione(importoDaPagareConCarta, cartaDiCredito)){
+    	if(creditAuth.richiestaDiAutorizzazione(importoDaPagareConCarta, cartaDiCredito)){
     		//recupero il sistema per effettuare il pagamento
     		IPagamentoCartaAdapter pagaConCarta = serviceFactory.get_pagamentoCartaAdapter();
     		//effetuo il pagamento

@@ -3,7 +3,7 @@ package com.iHotel.model.ForeignSystem;
 import java.util.ArrayList;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.CreditAuthorizationService.CreditAuthorizationService1Adapter;
+import com.iHotel.model.ForeignSystem.CreditAuthorizationService.CreditAuthorizationCarispaqAdapter;
 import com.iHotel.model.ForeignSystem.CreditAuthorizationService.ICreditAuthorizationServiceAdapter;
 import com.iHotel.model.ForeignSystem.LettoreCarte.ILettoreCarteAdapter;
 import com.iHotel.model.ForeignSystem.LettoreCarte.LettoreCarteIngenicoAdapter;
@@ -83,7 +83,7 @@ public class ServiceFactory {
 		// Sistema Autorizzazione pagamento con carta
 		switch (sistemiServiziEsterni.get(3)) {
 		case "SistemaAutorizzazione1":
-			_creditAuthAdapter = new CreditAuthorizationService1Adapter();
+			_creditAuthAdapter = new CreditAuthorizationCarispaqAdapter();
 			break;
 		default:
 			break;
