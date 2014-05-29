@@ -49,6 +49,8 @@ public class ViewFrameApplication extends JFrame {
 	 */
 	private ViewFrameApplication() {
 		super();
+		// Setto il titolo
+		setTitle("iHotel");
 		// Richiedo la factory corretta.
 		StyleAbstractFactory viewFactory=ViewFactory.getInstance().getStyleFactory();
 		// Setto l'icona
