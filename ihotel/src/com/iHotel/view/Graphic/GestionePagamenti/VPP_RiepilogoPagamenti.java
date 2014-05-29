@@ -110,7 +110,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	private JPanel creaPanelMiddleTop(){
 		
 		
-		_panelMiddleTop.add(UtoPanel.getInstance().totalePrenotazioneToString(_prenotazione));
+		_panelMiddleTop.add(UtoPanel.totalePrenotazioneToString(_prenotazione));
 		/*Restituisco il pannello*/
 		return _panelMiddleTop;
 		
@@ -448,7 +448,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		/*Setto il testo della label*/
 		
 		/*Aggiungo la label al pannello*/
-		_panelMiddleTop.add(UtoPanel.getInstance().totalePrenotazioneToString(_prenotazione));
+		_panelMiddleTop.add(UtoPanel.totalePrenotazioneToString(_prenotazione));
 		/*Restituisco il pannello*/
 		
 		

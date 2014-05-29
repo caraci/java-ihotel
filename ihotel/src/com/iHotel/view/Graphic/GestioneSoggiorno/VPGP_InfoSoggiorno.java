@@ -211,7 +211,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		/*Aggiugo le label e gli spazi vuoti al blocco centrale*/
 		_panelInfoPrenotazione.add(_lblRiepilogoPrenotazione);
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
-		_panelInfoPrenotazione.add(UtoPanel.getInstance().periodoToPanel(periodo));
+		_panelInfoPrenotazione.add(UtoPanel.periodoToPanel(periodo));
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
 		_panelInfoPrenotazione.add(_lblPrezzoCamere);
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));

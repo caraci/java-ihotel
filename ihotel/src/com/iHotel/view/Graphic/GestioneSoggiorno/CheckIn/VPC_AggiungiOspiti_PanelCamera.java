@@ -461,7 +461,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 		for (Iterator<Ospite> iterator = ospitiCamera.iterator(); iterator.hasNext();) {
 			Ospite ospite = (Ospite) iterator.next();
 			// Aggiungo elementi al panel
-			panelListaOspiti.add(UtoPanel.getInstance().ospiteToPanel(ospite));
+			panelListaOspiti.add(UtoPanel.ospiteToPanel(ospite));
 			// Aggiungo spaziatura
 			panelListaOspiti.add(Box.createVerticalStrut(5));
 		}
