@@ -333,6 +333,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 					break;
 				case"PagamentoConCarta":
 					this._pagamentiConCarta.add((PagamentoConCarta)pagamento);
+					break;
 				default:
 					break;
 				}		

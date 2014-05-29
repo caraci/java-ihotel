@@ -69,7 +69,8 @@ public class CGestionePagamenti {
     	/*Aggiungo il pagamento alla prenotazione*/
     	_soggiorno.addPagamento(pagamento);
     	/*Salvo il pagamento nel db*/
-    	PPrenotazione.getInstance().store(_soggiorno);
+    	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
+    	PPrenotazione.getInstance().store(_soggiorno.get_importoTotalePagamenti());
     }
     
     public void pagaConCarta(Prezzo importoDaPagareConCarta){
@@ -92,6 +93,7 @@ public class CGestionePagamenti {
         	_soggiorno.addPagamento(pagamentoEffettuato);
     	}
     	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
+    	PPrenotazione.getInstance().store(_soggiorno.get_importoTotalePagamenti());
     	
     }
 
