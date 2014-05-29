@@ -53,7 +53,7 @@ public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 		// Recupero il codice della prenotazione appena inserita
 		String codicePrenotazione = CCreaRichiestaSoggiorno.getInstance().get_soggiorno().get_codice();
 		// Mostro la dialog per confermare l'inserimento della prenotazione.
-		UDialogManager.getInstance().showDialogConfermaPrenotazione(codicePrenotazione);
+		UDialogManager.showDialogConfermaPrenotazione(codicePrenotazione);
 		
 	}
 

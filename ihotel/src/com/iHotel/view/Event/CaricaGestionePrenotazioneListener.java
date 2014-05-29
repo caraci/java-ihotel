@@ -22,7 +22,7 @@ public class CaricaGestionePrenotazioneListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {		
 		//Creo la Input dialog
-		String codice = UDialogManager.getInstance().getDialogInserimentoCodice();
+		String codice = UDialogManager.getDialogInserimentoCodice();
 		/*controllo se il codice inserito è non nullo. In questo caso faccio partire la procedura per recuperare
 		 la prenotazione dal codice*/
 		if(codice != null){
