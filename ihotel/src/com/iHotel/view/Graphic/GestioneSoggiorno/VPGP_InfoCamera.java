@@ -29,7 +29,7 @@ import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
-import com.iHotel.view.Utility.UtoListPanel;
+import com.iHotel.view.Utility.UtoPanel;
 
 /**
  * Classe addetta alla realizzazione della finestra relativa al mostrare le informazioni di una camera
@@ -132,7 +132,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		for (Iterator<Ospite> iterator = _camera.getOspitiInPeriodo(_periodo).iterator(); iterator.hasNext();) {
 			Ospite ospite = (Ospite) iterator.next();
 			// Aggiungo la label al pannello
-			_pnlMiddleLeft.add(UtoListPanel.getInstance().ospiteToPanel(ospite));
+			_pnlMiddleLeft.add(UtoPanel.getInstance().ospiteToPanel(ospite));
 		}
 		return _pnlMiddleLeft;
 	}
@@ -158,7 +158,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		for (Iterator<ServizioInterno> iterator = _camera.getServiziInterniInPeriodo(_periodo).iterator(); iterator.hasNext();) {
 			ServizioInterno servizioInterno = (ServizioInterno) iterator.next();
 			// Aggiungo al pannello un pannello contenente le informazioni del servizio			
-			panelServiziInterni.add(UtoListPanel.getInstance().servizioInternoInPrenotazioneToPanel(servizioInterno));
+			panelServiziInterni.add(UtoPanel.getInstance().servizioInternoInPrenotazioneToPanel(servizioInterno));
 			/*Aggiungo lo spazio*/
 			panelServiziInterni.add(Box.createRigidArea(new Dimension(0,15)));
 		}
@@ -207,7 +207,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		for (Iterator<ServizioPayTv> iterator = serviziPayTv.iterator(); iterator.hasNext();) {
 			ServizioPayTv servizioPayTv = (ServizioPayTv) iterator.next();
 			// Aggiungo lbl al pannello
-			pnlListaServizi.add(UtoListPanel.getInstance().servizioPayTvToPanel(servizioPayTv));
+			pnlListaServizi.add(UtoPanel.getInstance().servizioPayTvToPanel(servizioPayTv));
 			// Aggiungo spaziatura
 			pnlListaServizi.add(Box.createVerticalStrut(3));
 		}
@@ -246,7 +246,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		for (Iterator<ServizioTelefono> iterator = serviziTelefono.iterator(); iterator.hasNext();) {
 			ServizioTelefono servizioTelefono = (ServizioTelefono) iterator.next();
 			// Aggiungo lbl al pannello
-			pnlListaServizi.add(UtoListPanel.getInstance().servizioTelefono(servizioTelefono));
+			pnlListaServizi.add(UtoPanel.getInstance().servizioTelefono(servizioTelefono));
 			// Aggiungo spaziatura
 			pnlListaServizi.add(Box.createVerticalStrut(3));
 		}

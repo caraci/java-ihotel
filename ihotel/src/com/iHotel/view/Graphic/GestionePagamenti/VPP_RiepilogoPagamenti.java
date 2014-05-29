@@ -27,7 +27,7 @@ import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
-import com.iHotel.view.Utility.UtoListPanel;
+import com.iHotel.view.Utility.UtoPanel;
 
 /**
  * @author Alessandro
@@ -110,7 +110,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	private JPanel creaPanelMiddleTop(){
 		
 		
-		_panelMiddleTop.add(UtoListPanel.getInstance().totalePrenotazioneToString(_prenotazione));
+		_panelMiddleTop.add(UtoPanel.getInstance().totalePrenotazioneToString(_prenotazione));
 		/*Restituisco il pannello*/
 		return _panelMiddleTop;
 		
@@ -448,7 +448,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		/*Setto il testo della label*/
 		
 		/*Aggiungo la label al pannello*/
-		_panelMiddleTop.add(UtoListPanel.getInstance().totalePrenotazioneToString(_prenotazione));
+		_panelMiddleTop.add(UtoPanel.getInstance().totalePrenotazioneToString(_prenotazione));
 		/*Restituisco il pannello*/
 		
 		

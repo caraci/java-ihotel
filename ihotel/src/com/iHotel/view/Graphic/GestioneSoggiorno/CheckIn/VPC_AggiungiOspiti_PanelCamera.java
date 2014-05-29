@@ -31,7 +31,7 @@ import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 import com.iHotel.view.Event.GestionePrenotazione.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.CheckIn.ScegliDocumentoListener;
-import com.iHotel.view.Utility.UtoListPanel;
+import com.iHotel.view.Utility.UtoPanel;
 
 
 /**
@@ -461,7 +461,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 		for (Iterator<Ospite> iterator = ospitiCamera.iterator(); iterator.hasNext();) {
 			Ospite ospite = (Ospite) iterator.next();
 			// Aggiungo elementi al panel
-			panelListaOspiti.add(UtoListPanel.getInstance().ospiteToPanel(ospite));
+			panelListaOspiti.add(UtoPanel.getInstance().ospiteToPanel(ospite));
 			// Aggiungo spaziatura
 			panelListaOspiti.add(Box.createVerticalStrut(5));
 		}

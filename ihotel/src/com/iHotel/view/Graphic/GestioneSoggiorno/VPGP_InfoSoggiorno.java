@@ -27,7 +27,7 @@ import com.iHotel.view.Event.GestionePrenotazione.CheckInPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciPagamentoListener;
 import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
-import com.iHotel.view.Utility.UtoListPanel;
+import com.iHotel.view.Utility.UtoPanel;
 
 /**
  * Classe addetta alla realizzazione della finestra per mostrare le informazioni di una prenotazione.
@@ -211,7 +211,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		/*Aggiugo le label e gli spazi vuoti al blocco centrale*/
 		_panelInfoPrenotazione.add(_lblRiepilogoPrenotazione);
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
-		_panelInfoPrenotazione.add(UtoListPanel.getInstance().periodoToPanel(periodo));
+		_panelInfoPrenotazione.add(UtoPanel.getInstance().periodoToPanel(periodo));
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));
 		_panelInfoPrenotazione.add(_lblPrezzoCamere);
 		_panelInfoPrenotazione.add(Box.createRigidArea(new Dimension(0,10)));

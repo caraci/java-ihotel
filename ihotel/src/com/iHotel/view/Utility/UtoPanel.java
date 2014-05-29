@@ -26,12 +26,12 @@ import com.iHotel.view.Access.ViewFactory;
  * Classe addetta alla creazione delle stringhe relative a gli oggetti dello strato di dominio.
  * @author Eugenio
  */
-public class UtoListPanel {
+public class UtoPanel {
 	/* ------------------------------ Attributi e costruttore ----------------------------------- */
 	/**
 	 * Istanza unica di questa classe - Pattern Singleton
 	 */
-	private static UtoListPanel instance=null;
+	private static UtoPanel instance=null;
 	/**
 	 * Fornitore degli elementi grafici.
 	 */
@@ -39,16 +39,16 @@ public class UtoListPanel {
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
-	private UtoListPanel() {
+	private UtoPanel() {
 		_viewFactory=ViewFactory.getInstance().getStyleFactory();
 	}
 	/* --------------------------------- Metodi statici -------------------------------------- */ 
 	/**
 	 * Metodo per ottenere l'unica instanza di questa classe.
 	 */
-	public static UtoListPanel getInstance() {
+	public static UtoPanel getInstance() {
 		if(instance == null) {
-            instance = new UtoListPanel();
+            instance = new UtoPanel();
          }
          return instance;
 	}
