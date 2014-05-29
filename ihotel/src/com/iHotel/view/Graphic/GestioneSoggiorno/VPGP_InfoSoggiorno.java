@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
@@ -261,10 +262,11 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 	 * @param prezzoServiziEsterni Il prezzo dei servizi esterni richiesti dalle camere appartenenti alla prenotazione
 	 * 	 	  passata come parametro.
 	 */
-	public void creaPanel(SoggiornoContextSubject prenotazione, Prezzo prezzoServiziEsterni){	
+	public void creaPanel(SoggiornoContextSubject prenotazione){	
 		// Setto gli attributi dell'interfaccia
 		_prenotazione=prenotazione;
-		_prezzoServiziEsterni=prezzoServiziEsterni;
+		// Recupero il prezzo dei servizi esterni della prenotazione, attraverso serviceFactory.
+		_prezzoServiziEsterni=ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(prenotazione);
 		// Creo i pannelli
 		creaPanelTop();
 		creaPanelMiddle();

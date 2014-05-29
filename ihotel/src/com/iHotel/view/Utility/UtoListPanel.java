@@ -12,6 +12,7 @@ import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.ForeignSystem.PayTv.ServizioPayTv;
 import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.model.Utility.Giorno;
@@ -229,8 +230,10 @@ public class UtoListPanel {
 	 */
 	public JPanel totalePrenotazioneToString(SoggiornoContextSubject prenotazione){
 		Prezzo importoTotalePrenotazione = prenotazione.get_importoTotaleCamere().somma(prenotazione.getPrezzoServiziInterni());
+		Prezzo importoTotalePrenotazioneConServizi = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(prenotazione);
+		importoTotalePrenotazioneConServizi.somma(importoTotalePrenotazione);
 		//chiedo alla prenotazione quanto è il suo totale e la sua valuta
-		String totalePrenotazione = String.valueOf(importoTotalePrenotazione.get_importo());
+		String totalePrenotazione = String.valueOf(importoTotalePrenotazioneConServizi.get_importo());
 		String totalePagato = String.valueOf(prenotazione.get_importoTotalePagamenti().get_importo());
 		
 		JPanel pnlPagamenti  = _viewFactory.getPanel();

@@ -33,10 +33,7 @@ public class CGestioneSoggiorno {
 	 */
 	public void recuperaPrenotazioneDaCodice(String codiceSoggiorno) {
 		// Recupero la prenotazione dallo storico.
-		_soggiorno=Storico.getInstance().recuperaSoggiornoDaCodice(codiceSoggiorno);
-		// Recupero il prezzo dei servizi esterni della prenotazione, attraverso serviceFactory.
-		Prezzo prezzo=ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(_soggiorno);
-		
+		_soggiorno=Storico.getInstance().recuperaSoggiornoDaCodice(codiceSoggiorno);		
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
@@ -44,7 +41,7 @@ public class CGestioneSoggiorno {
 		// Assegno la prossima schermata al frame.
 		viewFrame.cambiaSchermata(infoPrenotazione);
 		// Creo il frame
-		infoPrenotazione.creaPanel(_soggiorno, prezzo);
+		infoPrenotazione.creaPanel(_soggiorno);
 	}
 
 	/**
