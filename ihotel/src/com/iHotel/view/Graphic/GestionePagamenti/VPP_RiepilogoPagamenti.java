@@ -440,9 +440,9 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 
 	@Override
 	public void Update() {
-		//_lblTotaleImportoSoggiorno.setText("L'importo totale della prenotazione è: " );//+ String.valueOf(_prenotazione.calcolaCostoTotaleSoggiorno().get_importo()));
-		//_lblTotaleImportoVersato.setText("L'importo totale dei versamenti effettuati è: "+ String.valueOf(_prenotazione.get_importoTotalePagamenti().get_importo()));
-		//_lblTotaleImportoRimanente.setText("Importo rimanente da pagare è: "+ String.valueOf(_prenotazione.calcolaImportoRimanenteDaPagare().get_importo()));
+		_lblTotaleImportoSoggiorno.setText("L'importo totale della prenotazione è: "+ String.valueOf(_prenotazione.calcolaCostoTotaleSoggiorno().get_importo()));
+		_lblTotaleImportoVersato.setText("L'importo totale dei versamenti effettuati è: "+ String.valueOf(_prenotazione.get_importoTotalePagamenti().get_importo()));
+		_lblTotaleImportoRimanente.setText("Importo rimanente da pagare è: "+ String.valueOf(_prenotazione.calcolaImportoRimanenteDaPagare().get_importo()));
 				
 	}
 	
