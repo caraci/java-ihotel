@@ -67,7 +67,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	 */
 	private JPanel _panelMiddleTop, _panelMiddleBottom;
 	/*JLabel*/
-	public JLabel  _lblTotaleImportoVersato, _lblTotaleImportoSoggiorno, _lblTotaleImportoRimanente;
+	public JLabel  _lblTotaleImportoVersato, _lblTotaleImportoSoggiorno, _lblTotaleImportoRimanente, _lblTitoloPrenotazione;
 	
 	/*JButton*/
 	private JButton _btnTornaPrenotazione;
@@ -88,6 +88,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		_lblTotaleImportoVersato = _viewFactory.getLabel();
 		_lblTotaleImportoSoggiorno = _viewFactory.getLabel();
 		_lblTotaleImportoRimanente = _viewFactory.getLabel();
+		_lblTitoloPrenotazione = _viewFactory.getLabel();
 		
 		/*JButton*/
 		_btnTornaPrenotazione = _viewFactory.getButton();
@@ -98,7 +99,10 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 
 	@Override
 	protected void creaPanelTop() {
-		// TODO Auto-generated method stub
+		//setto la label con il codice della prenotazione
+		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ _prenotazione.get_codice());
+		//aggiungo la label al panelTop
+		_panelTop.add(_lblTitoloPrenotazione);
 	}
 
 	@Override
@@ -350,6 +354,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		//Setto l'attributo prenotazione con il riferimento passato come parametro
 		_prenotazione = prenotazione;
 		//Creo il pannello centrale
+		creaPanelTop();
 		creaPanelMiddle();
 		creaPanelBottom();
 		/* ATTENZIONE MANCANO I METODI PER CREARE PANNELLO SUPERIORE ED INFERIORE*********************************************/
