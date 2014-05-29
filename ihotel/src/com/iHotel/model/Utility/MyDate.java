@@ -34,4 +34,11 @@ public class MyDate extends GregorianCalendar {
 		giorno.set_anno(this.get(Calendar.YEAR));
 		return giorno;
 	}
+	/**
+	 * Metodo per settare i propri attributi alla data odierna.
+	 */
+	public void setDataOdierna() {
+		// Setto la data ad oggi
+		this.setTimeInMillis(java.lang.System.currentTimeMillis());
+	}
 }

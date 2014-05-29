@@ -44,6 +44,22 @@ public class Giorno {
 		return date;
 	}
 	/**
+	 * Metodo per ottenere il giorno odierno.
+	 * 
+	 * @return Giorno odierno.
+	 */
+	public static Giorno getGiornoOdierno() {
+		Giorno giornoOdierno = new Giorno();
+		// Creo un oggetto myDate
+		MyDate dataOdierna = new MyDate();
+		// Setto la dataOdierna alla data
+		dataOdierna.setDataOdierna();
+		// Converto dataOdierna in giornoOdierno
+		giornoOdierno = dataOdierna.toGiorno();
+		
+		return giornoOdierno;
+	}
+	/**
 	 * Metodo per confrontare due giorni per vedere se uno è maggiore di un altro.
 	 * 
 	 * @param giornoDaComparare Giorno da comparare

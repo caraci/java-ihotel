@@ -3,6 +3,7 @@ package com.iHotel.model.Albergo;
 import java.util.*;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Utility.Giorno;
 /**
  * Questa classe rappresenta lo storico delle prenotazioni dell'albergo.
  * 
@@ -53,6 +54,31 @@ public class Storico {
 	 */
 	public void addPrenotazione(SoggiornoContextSubject prenotazione) {
 		_soggiorni.put(prenotazione.get_codice(), prenotazione);
+	}
+	/**
+	 * Metodo per recuperare tutti i soggiorni futuri ad oggi.
+	 * 
+	 * @return Lista dei soggiorni futuri a partire da oggi.
+	 */
+	public ArrayList<SoggiornoContextSubject> recuperaSoggiorniFuturi() {
+		// Lista nella quale inseriamo i soggiorni validi
+		ArrayList<SoggiornoContextSubject> soggiorniFuturi = new ArrayList<SoggiornoContextSubject>();
+		// Recupero il giorno attuale
+		Giorno giornoOdierno = Giorno.getGiornoOdierno();
+		// Ciclo sulle prenotazioni e prendo quelle che iniziano da oggi in poi.
+		for (Iterator<String> iterator = _soggiorni.keySet().iterator(); iterator.hasNext();) {
+			String codiceSoggiorno = (String) iterator.next();
+			// Recupero il soggiorno dal suo codice
+			SoggiornoContextSubject soggiorno = _soggiorni.get(codiceSoggiorno);
+			// Recupero il giorno di inizio del soggiorno
+			Giorno giornoInizioSoggiorno = soggiorno.get_periodo().get_dataInizio();
+			// Controllo che la data di inizio del soggiorno sia superiore a quella di oggi.
+			if (giornoInizioSoggiorno.compara(giornoOdierno) > 0) {
+				soggiorniFuturi.add(soggiorno);
+			}
+		}
+		
+		return soggiorniFuturi;
 	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */
 	
