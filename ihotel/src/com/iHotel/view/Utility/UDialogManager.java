@@ -151,7 +151,6 @@ public class UDialogManager extends JOptionPane {
 	 */
 	public static PagamentoInContanti getDialogDatiPagamentoInContanti(Prezzo importoDaVisualizzare){
 		/*Etichette*/
-		
 		//label importo
 		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImporto.setText("Importo: ");
@@ -163,8 +162,8 @@ public class UDialogManager extends JOptionPane {
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
 		/*Text fields*/
 		JTextField importo = ViewFactory.getInstance().getStyleFactory().getTextField();
-		importo.setText(String.valueOf(importoDaVisualizzare.get_importo()));
-
+		//importo.setText(String.valueOf(importoDaVisualizzare.get_importo()));
+		
 		//Creo un array di componenti
 		final JComponent[] inputs = new JComponent[] {
 				//importo
@@ -311,5 +310,6 @@ public class UDialogManager extends JOptionPane {
 		uiManager.put("OptionPane.background",coloreBackground);
 		//Setto il colore del pannello
 		uiManager.put("Panel.background",colorePannello);
+		
 	}
 }
