@@ -55,7 +55,7 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e){
 		
-		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaTotaleDaPagare();
+		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaImportoRimanenteDaPagare();
 		/*Visualizzo la dialog per l'inserimento delle informazioni sul pagamento. Viene restituito
 		 * un oggetto PagamentoCon*/
 		

@@ -52,7 +52,7 @@ public abstract class SoggiornoState {
 		return prezzoServiziInterni;
 	}
 	/**
-	 * Metodo per calcolare il totale di una prenotazione
+	 * Metodo per calcolare il totale delle camere una prenotazione
 	 */
 	public void calcolaImportoTotaleCamere() {
 		DescrizioneCamera descrizione;
@@ -85,29 +85,59 @@ public abstract class SoggiornoState {
 		_soggiornoSubject.get_pagamenti().add(pagamento);
 		//Sommo l'importo del pagamento al totale dei pagamenti
 		_soggiornoSubject.set_importoTotalePagamenti(_soggiornoSubject.get_importoTotalePagamenti().somma(pagamento.get_importo()));
+		//Notifico il cambiamento all'interfaccia
 		_soggiornoSubject.Notify();
 		//ricalcolo il rimanente da pagare
-		_soggiornoSubject.calcolaTotaleDaPagare();
+		_soggiornoSubject.calcolaImportoRimanenteDaPagare();
 		
 	}
 	/**
-	 * Metodo che restituisce il totale da pagare per il soggiorno.
+	 * Metodo che restituisce l'importo che rimane da pagare per il soggiorno passato come parametro.
+	 * L'importo è calcolato come la somma dell'importo delle camere, dei servizi interni, dei servizi esterni
+	 * al netto dei versamenti giò effettuati.
 	 * 
-	 * @return Importo da pagare per il soggiorno.
+	 * @return Importo rimanente da pagare per il soggiorno.
 	 */
-	public Prezzo calcolaTotaleDaPagare(){
-		Prezzo importoDaPagare = new Prezzo();
+	public Prezzo calcolaImportoRimanenteDaPagare(){
+		/*Importo che rimane da pagare*/
+		Prezzo importoRimanenteDaPagare = new Prezzo();
+		/*Importo dovuto per i servizi esterni*/
 		Prezzo totaleServiziEsterni = new Prezzo();
-		
+		/*Chiedo alla factory di calcolare il prezzo dei servizi esterni per la prenotazione corrente*/
 		totaleServiziEsterni = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(_soggiornoSubject);
-		// Aggiungo tutti i costi della prenotazione
-		importoDaPagare.somma(_soggiornoSubject.get_importoTotaleCamere());
-		importoDaPagare.somma(_soggiornoSubject.getPrezzoServiziInterni());
-		importoDaPagare.somma(totaleServiziEsterni);
-		// Sottraggo i pagamenti pervenuti
-		importoDaPagare.sottrai(_soggiornoSubject.get_importoTotalePagamenti());	
+		/* Aggiungo il totale delle camere, il totale dei servizi interni, e il totale dei servizi
+		  esterni all'importo totale  */
+		importoRimanenteDaPagare.somma(_soggiornoSubject.get_importoTotaleCamere());
+		importoRimanenteDaPagare.somma(_soggiornoSubject.getPrezzoServiziInterni());
+		importoRimanenteDaPagare.somma(totaleServiziEsterni);
 		
-		return importoDaPagare;
+		/* Sottraggo i pagamenti effettuati*/
+		importoRimanenteDaPagare.sottrai(_soggiornoSubject.get_importoTotalePagamenti());	
+		
+		/*Restituisco l'importo che rimane da pagare*/
+		return importoRimanenteDaPagare;
+	}
+	
+	/**
+	 * Metodo che calcola il costo totale del soggiorno comprensivo di totale camere, totale servizi
+	 * interni e totale servizi esterni
+	 * 
+	 * @return Il costo totale della prenotazione
+	 */
+	public Prezzo calcolaCostoTotaleSoggiorno(){
+		/*Creo un prezzo che sarà l'importo totale del soggiorno*/
+		Prezzo costoSoggiorno = new Prezzo();		
+		/*Importo dei servizi esterni*/
+		Prezzo costoServiziEsterni = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(_soggiornoSubject);
+		/*Sommo il costo delle camere*/
+		costoSoggiorno.somma(_soggiornoSubject.get_importoTotaleCamere());
+		/*Sommo il costo dei servizi interni*/
+		costoSoggiorno.somma(_soggiornoSubject.getPrezzoServiziInterni());
+		/*Sommo il costo dei servizi esterni*/
+		costoSoggiorno.somma(costoServiziEsterni);
+		
+		/*Restituisco il prezzo totale della prenotazione*/
+		return costoSoggiorno;
 	}
 	public abstract void addCamera(Camera camera);
 	public abstract void addPrenotante(String nome, String cognome, String eMail, String telefono);

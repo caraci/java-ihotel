@@ -125,18 +125,19 @@ public class SoggiornoContextSubject implements ISubject {
 		return prezzoServiziInterni;
 	}
 	/**
-	 * Metodo per calcolare il totale di una prenotazione
+	 * Metodo per calcolare il totale delle camere di una prenotazione
 	 */
 	public void calcolaImportoTotaleCamere(){
 		// Passo la richiesta allo stato attuale
 		_soggiornoState.calcolaImportoTotaleCamere();
 	}
 	/**
-	 * Metodo per calcolare il rimanente importo da pagare
+	 * Metodo che calcola la differenza tra l'importo totale della prenotazione (comprensivo di prezzo di
+	 * camere, servizi interni ed esterni) e l'importo già versato (con uno o più versamenti)
 	 */
-	public Prezzo calcolaTotaleDaPagare(){
+	public Prezzo calcolaImportoRimanenteDaPagare(){
 		// Passo la richiesta allo stato attuale
-		return _soggiornoState.calcolaTotaleDaPagare();
+		return _soggiornoState.calcolaImportoRimanenteDaPagare();
 	}
 	/**
 	 * Metodo per aggiungere una camera alla prenotazione.
@@ -205,6 +206,17 @@ public class SoggiornoContextSubject implements ISubject {
 		// Setto il nuovo stato del soggiorno
 		this.set_soggiornoState(statoSuccessivo);
 		
+	}
+	
+	/**
+	 * Metodo che calcola il costo totale del soggiorno comprensivo di totale camere, totale servizi
+	 * interni e totale servizi esterni
+	 * 
+	 * @return Il costo totale della prenotazione
+	 */
+	public Prezzo calcolaCostoTotaleSoggiorno(){
+		//Delego allo state attuale
+		return _soggiornoState.calcolaCostoTotaleSoggiorno();
 	}
 	
 	/* -------------------------------- Getter, Setter ------------------------------------------ */

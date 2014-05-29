@@ -28,9 +28,10 @@ import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoList
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
-import com.iHotel.view.Utility.UtoPanel;
 
 /**
+ * Classe che ha il compito di visualizzare tutti i pagamenti effettuati per un soggiorno
+ * 
  * @author Alessandro
  *
  */
@@ -59,7 +60,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	private JPanel _panelMiddleTop, _panelMiddleBottom,_panelContanti, _panelCartaDiCredito, _panelBonifico;
 	
 	/*JLabel*/
-	private JLabel  _lblTotaleEImportoVersatoPrenotazione;
+	public JLabel  _lblTotaleImportoVersato, _lblTotaleImportoSoggiorno, _lblTotaleImportoRimanente;
 	
 	/*JButton*/
 	private JButton _btnAggiungiPagamentoConCarta, _btnAggiungiPagamentoInContanti, _btnAggiungiPagamentoConBonifico, _btnTornaPrenotazione;
@@ -74,7 +75,9 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		_panelBonifico = _viewFactory.getPanel();
 			
 		/*JLabel*/
-		_lblTotaleEImportoVersatoPrenotazione = _viewFactory.getLabel();
+		_lblTotaleImportoVersato = _viewFactory.getLabel();
+		_lblTotaleImportoSoggiorno = _viewFactory.getLabel();
+		_lblTotaleImportoRimanente = _viewFactory.getLabel();
 		
 		/*JButton*/
 		_btnAggiungiPagamentoConCarta = _viewFactory.getButton();
@@ -109,9 +112,17 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	 * @return Il pannello con le informazioni sulla prenotazione
 	 */
 	private JPanel creaPanelMiddleTop(){
+		/*Setto il layout*/
+		_panelMiddleTop.setLayout(new GridLayout(1,3,5,5));
 		
-		
-		_panelMiddleTop.add(UtoPanel.totalePrenotazioneToString(_prenotazione));
+		/*Setto il testo delle label*/
+		_lblTotaleImportoSoggiorno.setText("L'importo totale della prenotazione è: " + String.valueOf(_prenotazione.calcolaCostoTotaleSoggiorno().get_importo()));
+		_lblTotaleImportoVersato.setText("L'importo totale dei versamenti effettuati è: "+ String.valueOf(_prenotazione.get_importoTotalePagamenti().get_importo()));
+		_lblTotaleImportoRimanente.setText("Importo rimanente da pagare è: "+ String.valueOf(_prenotazione.calcolaImportoRimanenteDaPagare().get_importo()));
+		/*Aggiungo le label al pannello*/
+		_panelMiddleTop.add(_lblTotaleImportoSoggiorno);
+		_panelMiddleTop.add(_lblTotaleImportoVersato);
+		_panelMiddleTop.add(_lblTotaleImportoRimanente);
 		/*Restituisco il pannello*/
 		return _panelMiddleTop;
 		
@@ -257,8 +268,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 				//Setto il testo
 				labelData.setText("Data bonifico: "+ pagamentoConBonifico.get_data().get_giorno() + " - "+pagamentoConBonifico.get_data().get_mese()+ " - "+pagamentoConBonifico.get_data().get_anno());
 				//Aggiungo la label
-				panelBonifico.add(labelData);
-				
+				panelBonifico.add(labelData);				
 			}
 		}
 		
@@ -449,13 +459,10 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 
 	@Override
 	public void Update() {
-		/*Setto il testo della label*/
-		
-		/*Aggiungo la label al pannello*/
-		_panelMiddleTop.add(UtoPanel.totalePrenotazioneToString(_prenotazione));
-		/*Restituisco il pannello*/
-		
-		
+		//_lblTotaleImportoSoggiorno.setText("L'importo totale della prenotazione è: " );//+ String.valueOf(_prenotazione.calcolaCostoTotaleSoggiorno().get_importo()));
+		//_lblTotaleImportoVersato.setText("L'importo totale dei versamenti effettuati è: "+ String.valueOf(_prenotazione.get_importoTotalePagamenti().get_importo()));
+		//_lblTotaleImportoRimanente.setText("Importo rimanente da pagare è: "+ String.valueOf(_prenotazione.calcolaImportoRimanenteDaPagare().get_importo()));
+				
 	}
 	
 }

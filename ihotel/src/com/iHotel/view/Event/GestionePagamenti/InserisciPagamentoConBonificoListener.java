@@ -54,7 +54,7 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e){
 		
-		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaTotaleDaPagare();
+		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaImportoRimanenteDaPagare();
 
 		/*Visualizzo la dialog per l'inserimento delle informazioni. Mi viene restituito l'oggetto Pagamento
 		costruito con le informazioni inserite dall'utente*/
