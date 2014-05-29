@@ -100,17 +100,8 @@ public abstract class SoggiornoState {
 	 */
 	public Prezzo calcolaImportoRimanenteDaPagare(){
 		/*Importo che rimane da pagare*/
-		Prezzo importoRimanenteDaPagare = new Prezzo();
-		/*Importo dovuto per i servizi esterni*/
-		Prezzo totaleServiziEsterni = new Prezzo();
-		/*Chiedo alla factory di calcolare il prezzo dei servizi esterni per la prenotazione corrente*/
-		totaleServiziEsterni = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(_soggiornoSubject);
-		/* Aggiungo il totale delle camere, il totale dei servizi interni, e il totale dei servizi
-		  esterni all'importo totale  */
-		importoRimanenteDaPagare.somma(_soggiornoSubject.get_importoTotaleCamere());
-		importoRimanenteDaPagare.somma(_soggiornoSubject.getPrezzoServiziInterni());
-		importoRimanenteDaPagare.somma(totaleServiziEsterni);
-		
+		Prezzo importoRimanenteDaPagare = calcolaCostoTotaleSoggiorno();
+				
 		/* Sottraggo i pagamenti effettuati*/
 		importoRimanenteDaPagare.sottrai(_soggiornoSubject.get_importoTotalePagamenti());	
 		
