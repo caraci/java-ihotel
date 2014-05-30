@@ -77,6 +77,9 @@ public class Storico {
 				soggiorniFuturi.add(soggiorno);
 			}
 		}
+		// Ordino la lista
+		Collections.sort(soggiorniFuturi);
+		
 		return soggiorniFuturi;
 	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */

@@ -19,7 +19,7 @@ import com.iHotel.model.Utility.Prezzo;
  * 
  * @author Alessandro
  */
-public class SoggiornoContextSubject implements ISubject {
+public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoContextSubject> {
 
 	/* ---------------------- Atrributi e costruttore --------------------------------*/
 	/**
@@ -357,5 +357,14 @@ public class SoggiornoContextSubject implements ISubject {
 	 */
 	public void set_importoTotalePagamenti(Prezzo _importoTotalePagamenti) {
 		this._importoTotalePagamenti = _importoTotalePagamenti;
+	}
+
+	@Override
+	public int compareTo(SoggiornoContextSubject s) {
+		// TODO Auto-generated method stub
+		Giorno g1=this.get_periodo().get_dataInizio();
+		Giorno g2=s.get_periodo().get_dataInizio();
+		int esito = g1.compara(g2);
+		return esito;
 	}
 }

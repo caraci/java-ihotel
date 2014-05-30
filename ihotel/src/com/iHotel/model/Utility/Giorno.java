@@ -87,7 +87,10 @@ public class Giorno {
 		// Fornisco
 		return nuovoGiorno;
 	}
-
+	/**
+	 * @deprecated
+	 * toString.
+	 */
 	public String toString() {
 		return _giorno + "-" + _mese + "-" + _anno; 
 	}
@@ -133,7 +136,5 @@ public class Giorno {
 	public void set_anno(int _anno) {
 		this._anno = _anno;
 	}
-	
-	
 
 }
