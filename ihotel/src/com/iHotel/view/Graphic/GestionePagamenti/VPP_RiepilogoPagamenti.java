@@ -89,7 +89,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		_lblTotaleImportoVersato = _viewFactory.getLabel();
 		_lblTotaleImportoSoggiorno = _viewFactory.getLabel();
 		_lblTotaleImportoRimanente = _viewFactory.getLabel();
-		_lblTitoloPrenotazione = _viewFactory.getLabel();
+		_lblTitoloPrenotazione = _viewFactory.getLabelIntestazione_1();
 		
 		/*JButton*/
 		_btnTornaPrenotazione = _viewFactory.getButton();
