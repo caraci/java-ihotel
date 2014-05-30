@@ -189,7 +189,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		//Assegno il layout
 		panelContanti.setLayout(new BoxLayout(panelContanti, BoxLayout.Y_AXIS));
 		//Assegno il titolo
-		JLabel lblTitoloContanti = _viewFactory.getLabel();
+		JLabel lblTitoloContanti = _viewFactory.getLabelIntestazione_2();
 		lblTitoloContanti.setText("Contanti:");
 		//Assegno il titolo al pannello
 		panelContanti.add(lblTitoloContanti);
@@ -226,7 +226,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		//Aggiungo il layout al pannello
 		panelBonifico.setLayout(new BoxLayout(panelBonifico,BoxLayout.PAGE_AXIS));
 		//Aggiongo la label con il titolo al pannello
-		JLabel lblTitoloBonifico = _viewFactory.getLabel();
+		JLabel lblTitoloBonifico = _viewFactory.getLabelIntestazione_2();
 		lblTitoloBonifico.setText("Bonifici:");		
 		panelBonifico.add(lblTitoloBonifico);
 		
@@ -261,7 +261,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		//Aggiungo il layout al pannello
 		panelCarta.setLayout(new BoxLayout(panelCarta,BoxLayout.PAGE_AXIS));
 		//Aggiongo la label con il titolo al pannello
-		JLabel lblTitoloCarta= _viewFactory.getLabel();
+		JLabel lblTitoloCarta= _viewFactory.getLabelIntestazione_2();
 		lblTitoloCarta.setText("Prelevamenti con carta:");		
 		panelCarta.add(lblTitoloCarta);
 		
