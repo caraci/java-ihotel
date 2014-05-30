@@ -165,9 +165,7 @@ public class CModificaSoggiorno {
 		// Effettuo il check in per il soggiorno
 		_soggiorno.effettuaCheckOut();
 		// Salvo nel db il soggiorno in seguito al cambio di stato
-		PPrenotazione.getInstance().store(_soggiorno);
-		// Torno alla gestione della prenotazione
-		this.recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
+		PPrenotazione.getInstance().store(_soggiorno);		
 	}
 	/**
 	 * Metodo per tornare alla gestione della prenotazione.
