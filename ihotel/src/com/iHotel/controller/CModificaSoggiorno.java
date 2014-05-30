@@ -10,6 +10,8 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Access.ViewFactory;
+import com.iHotel.view.Access.ViewPanelFactory;
 import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti;
@@ -61,7 +63,7 @@ public class CModificaSoggiorno extends CGestioneSoggiorno {
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
-		VPGP_InfoCamera infoCamera = new VPGP_InfoCamera();
+		VPGP_InfoCamera infoCamera = ViewPanelFactory.getPanelInfoCamera(_soggiorno);
 		// Assegno la prossima schermata al frame.
 		viewFrame.cambiaSchermata(infoCamera);
 		// Creo il frame

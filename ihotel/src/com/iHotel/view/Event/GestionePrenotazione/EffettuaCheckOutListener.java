@@ -1,10 +1,12 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.GestioneSoggiorno;
+package com.iHotel.view.Event.GestionePrenotazione;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import com.iHotel.controller.CModificaSoggiorno;
 
 /**
  * @author Eugenio
@@ -18,8 +20,7 @@ public class EffettuaCheckOutListener extends MouseAdapter {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// Attraverso il controllore CCheckOut effettuo il checkout.
-
-		// TODO - implementare
+		// Attraverso il controllore CCheckOut effettuo il checkout.ù
+		CModificaSoggiorno.getInstance().effettuaCheckOut();
 	}
 }

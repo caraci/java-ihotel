@@ -44,27 +44,27 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	/**
 	 * Camera di cui si mostrano le informazioni.
 	 */
-	private Camera _camera;
+	protected Camera _camera;
 	/**
 	 * Periodo a cui si riferisce la gestione della camera.
 	 */
-	private Periodo _periodo;
+	protected Periodo _periodo;
 	/**
 	 * Factory con la responsabilità di conoscere i sistemi esterni con i quali è collegato l'albergo.
 	 */
-	private ServiceFactory _serviceFactory;
+	protected ServiceFactory _serviceFactory;
 
 	//JPanel
-	private JPanel _pnlMiddleLeft, _pnlMiddleRight,_pnlServiziPayTv,_pnlServiziTelefono, _pnlServiziInterni;
+	protected JPanel _pnlMiddleLeft, _pnlMiddleRight,_pnlServiziPayTv,_pnlServiziTelefono, _pnlServiziInterni;
 				   
 	// JScrollPane
-	private JScrollPane _scrollPaneMiddleRightPayTv,_scrollPaneMiddleRightTelefono;
+	protected JScrollPane _scrollPaneMiddleRightPayTv,_scrollPaneMiddleRightTelefono;
 	
 	//Label
-	private JLabel _lblInfoCamera, _lblOspitiCamera,_lblServiziInterniRichiesti;
+	protected JLabel _lblInfoCamera, _lblOspitiCamera,_lblServiziInterniRichiesti;
 	
 	//Button
-	private JButton _btnAggiungiServizi, _btnTornaPrenotazione;
+	protected JButton _btnAggiungiServizi, _btnTornaPrenotazione;
 
 	/**
 	 * Costruttore privato - Pattern Singleton
@@ -122,7 +122,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	 * 
 	 * @return Pannello centrale sinistro.
 	 */
-	private JPanel creaPanelMiddleLeft(){
+	protected JPanel creaPanelMiddleLeft(){
 		// Setto il layout al panel.
 		_pnlMiddleLeft.setLayout(new BoxLayout(_pnlMiddleLeft, BoxLayout.PAGE_AXIS));
 		// Aggiungo la label al panel.
@@ -173,7 +173,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	 * 
 	 * @return Pannello centrale destro.
 	 */
-	private JPanel creaPanelMiddleRight(){
+	protected JPanel creaPanelMiddleRight(){
 		// Setto il layout al panel.
 		_pnlMiddleRight.setLayout(new GridLayout(2, 1, 5, 0));
 		// Aggiungo il pannello dei servizi della PayTv
@@ -188,7 +188,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	 * 
 	 * @return Pannello contenente la lista dei servizi di payTv.
 	 */
-	private JScrollPane creaPanelMiddleRightPayTv() {
+	protected JScrollPane creaPanelMiddleRightPayTv() {
 		// Setto Layout
 		_pnlServiziPayTv.setLayout(new BoxLayout(_pnlServiziPayTv, BoxLayout.PAGE_AXIS));	
 
@@ -227,7 +227,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	 * 
 	 * @return Pannello contenente la lista dei servizi del telefono.
 	 */
-	private JScrollPane creaPanelMiddleRightTelefono() {
+	protected JScrollPane creaPanelMiddleRightTelefono() {
 		// Setto Layout
 		_pnlServiziTelefono.setLayout(new BoxLayout(_pnlServiziTelefono, BoxLayout.PAGE_AXIS));
 		
