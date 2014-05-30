@@ -227,6 +227,7 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 		_btnCompletaPrenotazione.addMouseListener(new EffettuaNuovaPrenotazioneListener());
 		// Button torna indietro per selezionare periodo e tipologie
 		_btnTornaASelezionaPeriodoTipologia.setText("Indietro");
+		//BISOGNA ASSEGNARE L'EVENTO
 		
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
