@@ -22,7 +22,17 @@ import java.util.HashMap;
  * @author Alessandro
  *
  */
-public class CCreaRichiestaSoggiorno extends CModificaSoggiorno {
+public class CCreaRichiestaSoggiorno {
+	
+	/**
+	 * Soggiorno che si sta creando.
+	 */
+	private SoggiornoContextSubject _soggiorno;
+	
+	/**
+	 * Albergo che si sta analizzando.
+	 */
+	private Albergo _albergo;
 	
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
 	/**
@@ -34,7 +44,7 @@ public class CCreaRichiestaSoggiorno extends CModificaSoggiorno {
 	 * Costruttore privato - pattern Singleton
 	 */
 	private CCreaRichiestaSoggiorno() {
-		this.set_albergo(Albergo.getInstance());
+		_albergo=Albergo.getInstance();
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
 	/**

@@ -36,17 +36,17 @@ public class CModificaSoggiorno {
 	/**
 	 * Prenotazione che si sta gestendo.
 	 */
-	protected SoggiornoContextSubject _soggiorno;
+	private SoggiornoContextSubject _soggiorno;
 	
 	/**
 	 * Albergo che si sta analizzando.
 	 */
-	protected Albergo _albergo;
+	private Albergo _albergo;
 	
 	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	protected CModificaSoggiorno() {
+	private CModificaSoggiorno() {
 		_albergo=Albergo.getInstance();
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
