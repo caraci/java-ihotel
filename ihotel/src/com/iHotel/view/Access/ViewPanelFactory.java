@@ -5,6 +5,9 @@ package com.iHotel.view.Access;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoCancellato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoInCorso;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoPrenotato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoTerminato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno_Cancellato;
@@ -68,10 +71,15 @@ public class ViewPanelFactory {
 			panelInfoCamera = new VPGP_InfoCamera_SoggiornoTerminato();
 			break;
 		case "SoggiornoCancellato" :
-			panelInfoCamera = new VPGP_InfoCamera_SoggiornoTerminato();
+			panelInfoCamera = new VPGP_InfoCamera_SoggiornoCancellato();
+			break;
+		case "SoggiornoPrenotato":
+			panelInfoCamera = new VPGP_InfoCamera_SoggiornoPrenotato();
+			break;
+		case "Soggiorno":
+			panelInfoCamera = new VPGP_InfoCamera_SoggiornoInCorso();
 			break;
 		default:
-			panelInfoCamera = new VPGP_InfoCamera();
 			break;
 		}
 		return panelInfoCamera;
