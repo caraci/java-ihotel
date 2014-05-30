@@ -351,4 +351,11 @@ public class UDialogManager extends JOptionPane {
 		UIManager.put("Panel.background",colorePannello);
 		
 	}
+	
+	/**
+	 * Metodo che restituisce la dialog che conferma l'avvenuto checkin
+	 */
+	public static void getDialogAvvenutoCheckIn(){
+		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), "CheckIn terminato correttamente. Sono state generate le schedine di pubblica sicurezza per gli ospiti!");
+	}
 }

@@ -91,8 +91,7 @@ public class VPC_AggiungiOspiti extends ViewPanelContentPane {
 		// Button completa prenotazione.
 		_btnTerminaCheckin.setText("Termina \n CheckIn");
 		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
-		_btnTerminaCheckin.addMouseListener(new EffettuaCheckInListener());
-		
+		_btnTerminaCheckin.addMouseListener(new EffettuaCheckInListener(_prenotazione));
 		// Button torna alla prenotazione.
 		_btnTornaPrenotazione.setText("Torna \n Prenotazione");
 		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
