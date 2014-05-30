@@ -22,7 +22,7 @@ import java.util.HashMap;
  * @author Alessandro
  *
  */
-public class CCreaRichiestaSoggiorno extends CGestioneSoggiorno {
+public class CCreaRichiestaSoggiorno extends CModificaSoggiorno {
 	
 	/* -------------------------------- Attributi e costruttore -------------------------------*/
 	/**

@@ -3,6 +3,7 @@ package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.ServizioInterno;
+import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Persona.Ospite;
@@ -10,17 +11,17 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PCamera;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Access.ViewFactory;
 import com.iHotel.view.Access.ViewPanelFactory;
 import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti;
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
  * @author Alessandro
  *
  */
-public class CModificaSoggiorno extends CGestioneSoggiorno {
+public class CModificaSoggiorno {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
 	/**
@@ -33,9 +34,19 @@ public class CModificaSoggiorno extends CGestioneSoggiorno {
 	private Camera _camera;
 
 	/**
+	 * Prenotazione che si sta gestendo.
+	 */
+	protected SoggiornoContextSubject _soggiorno;
+	
+	/**
+	 * Albergo che si sta analizzando.
+	 */
+	protected Albergo _albergo;
+	
+	/**
 	 * Costruttore privato - pattern Singleton
 	 */
-	private CModificaSoggiorno() {
+	protected CModificaSoggiorno() {
 		_albergo=Albergo.getInstance();
 	}
 	/* ------------------------------- Metodi di classe --------------------------------------- */
@@ -167,6 +178,23 @@ public class CModificaSoggiorno extends CGestioneSoggiorno {
 		// Fornisco la prenotazione de gestire a CModificaPrenotazione
 		this.recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
 	}
+	/**
+	 * Metodo per mostrare l'interfaccia per la gestione del soggiorno, relativo al codice fornito.
+	 * 
+	 * @param codiceSoggiorno Codice della soggiorno da caricare.
+	 */
+	public void recuperaPrenotazioneDaCodice(String codiceSoggiorno) {
+		// Recupero la prenotazione dallo storico.
+		_soggiorno=Storico.getInstance().recuperaSoggiornoDaCodice(codiceSoggiorno);		
+		// Recupero il frame dell'applicazione
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
+		// Creo il pannello successivo
+		VPGP_InfoSoggiorno infoPrenotazione = ViewPanelFactory.getPanelInfoSoggiorno(_soggiorno);
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(infoPrenotazione);
+		// Creo il frame
+		infoPrenotazione.creaPanel(_soggiorno);
+	}
     
 	/* ----------------------- Getter, Setter -------------------------- */
 
@@ -193,5 +221,18 @@ public class CModificaSoggiorno extends CGestioneSoggiorno {
 	 */
 	public void set_camera(Camera _camera) {
 		this._camera = _camera;
+	}
+	/**
+	 * @return the _albergo
+	 */
+	protected Albergo get_albergo() {
+		return _albergo;
+	}
+
+	/**
+	 * @param _albergo the _albergo to set
+	 */
+	protected void set_albergo(Albergo _albergo) {
+		this._albergo = _albergo;
 	}
 }
