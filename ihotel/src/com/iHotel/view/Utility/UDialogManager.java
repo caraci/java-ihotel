@@ -39,8 +39,6 @@ import com.iHotel.view.Access.ViewFactory;
 @SuppressWarnings("serial")
 public class UDialogManager extends JOptionPane {
 	
-	private static UIManager uiManager;
-	
 	/**
 	 * Metodo che restituisce la dialog per l'inserimento del codice.
 	 *  
@@ -175,7 +173,6 @@ public class UDialogManager extends JOptionPane {
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
 		/*Text fields*/
 		JTextField importo = ViewFactory.getInstance().getStyleFactory().getTextField();
-		//importo.setText(String.valueOf(importoDaVisualizzare.get_importo()));
 		
 		//Creo un array di componenti
 		final JComponent[] inputs = new JComponent[] {
@@ -191,7 +188,7 @@ public class UDialogManager extends JOptionPane {
 		
 		//Faccio il display della schermata
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento pagamento in contanti", JOptionPane.PLAIN_MESSAGE);
-		
+			
 		/*Creo un nuovo prezzo con l'importo ricevuto*/		
 		Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
 		
@@ -331,9 +328,9 @@ public class UDialogManager extends JOptionPane {
 	 */
 	private static void setColor(Color colorePannello, Color coloreBackground){
 		//Setto il colore background
-		uiManager.put("OptionPane.background",coloreBackground);
+		UIManager.put("OptionPane.background",coloreBackground);
 		//Setto il colore del pannello
-		uiManager.put("Panel.background",colorePannello);
+		UIManager.put("Panel.background",colorePannello);
 		
 	}
 }
