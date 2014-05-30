@@ -1,6 +1,7 @@
 package com.iHotel.main;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
@@ -16,7 +17,7 @@ public class MainProva {
 	public static void main(String[] args) throws java.io.IOException {	
 		UStartup.inizializza();
 		
-		ArrayList<SoggiornoContextSubject> soggiornifuturi = Storico.getInstance().recuperaSoggiorniFuturi();
+		List<SoggiornoContextSubject> soggiornifuturi = Storico.getInstance().recuperaSoggiorniFuturi();
 		
 		System.out.println(soggiornifuturi.size());
 		

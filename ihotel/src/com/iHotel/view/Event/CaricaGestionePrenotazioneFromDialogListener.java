@@ -14,7 +14,7 @@ import com.iHotel.view.Utility.UDialogManager;
  * 
  * @author Eugenio
  */
-public class CaricaGestionePrenotazioneListener extends MouseAdapter {
+public class CaricaGestionePrenotazioneFromDialogListener extends MouseAdapter {
 
 	/**
 	 * Con questo metodo si va a gestire l'evento relativo al click sul bottone per la gestione di una prenotazione.
