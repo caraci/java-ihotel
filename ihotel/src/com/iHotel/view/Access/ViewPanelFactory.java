@@ -4,16 +4,16 @@
 package com.iHotel.view.Access;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoCancellato;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoInCorso;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoPrenotato;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoTerminato;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno_Cancellato;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno_InCorso;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno_Prenotato;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno_Terminato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera_SoggiornoCancellato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera_SoggiornoInCorso;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera_SoggiornoPrenotato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera_SoggiornoTerminato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Cancellato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_InCorso;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Prenotato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato;
 
 /**
  * @author Eugenio

@@ -1,7 +1,6 @@
  package com.iHotel.view.Graphic;
 
 import java.awt.GridLayout;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 

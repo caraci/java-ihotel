@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.GestioneSoggiorno;
+package com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno;
 
 /**
  * @author Eugenio

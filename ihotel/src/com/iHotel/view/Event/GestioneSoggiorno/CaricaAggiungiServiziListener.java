@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import com.iHotel.controller.CModificaSoggiorno;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**

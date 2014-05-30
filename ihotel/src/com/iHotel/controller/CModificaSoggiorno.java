@@ -13,9 +13,9 @@ import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Access.ViewPanelFactory;
 import com.iHotel.view.Graphic.VP_Home;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
-import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno;
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
  * @author Alessandro

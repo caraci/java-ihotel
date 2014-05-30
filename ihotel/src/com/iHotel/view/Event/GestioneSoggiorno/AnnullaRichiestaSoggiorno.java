@@ -7,7 +7,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import com.iHotel.controller.CCreaRichiestaSoggiorno;
-import com.iHotel.controller.CModificaSoggiorno;
 
 /**
  * @author Gabriele

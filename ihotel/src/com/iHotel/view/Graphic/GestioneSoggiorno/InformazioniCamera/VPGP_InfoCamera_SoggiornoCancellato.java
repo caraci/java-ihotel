@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.GestioneSoggiorno;
+package com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera;
 
 /**
  * Classe che ha il compito di visualizzare le informazioni della camera in un soggiorno cancellato

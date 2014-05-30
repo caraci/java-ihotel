@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Graphic.GestioneSoggiorno;
+package com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera;
 
 /**
  * Classe che ha il compito di mostrare la schermata delle informazioni della camera, quando il soggiorno
