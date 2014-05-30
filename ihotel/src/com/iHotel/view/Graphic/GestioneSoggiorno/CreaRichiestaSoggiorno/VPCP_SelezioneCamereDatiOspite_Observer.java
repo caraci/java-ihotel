@@ -20,6 +20,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.view.ViewPanelContentPane;
+import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.CreaPrenotazione.AggiungiCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.CreaPrenotazione.EffettuaNuovaPrenotazioneListener;
 
@@ -227,7 +228,8 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 		_btnCompletaPrenotazione.addMouseListener(new EffettuaNuovaPrenotazioneListener());
 		// Button torna indietro per selezionare periodo e tipologie
 		_btnTornaASelezionaPeriodoTipologia.setText("Indietro");
-		//BISOGNA ASSEGNARE L'EVENTO
+		// Assegniamo l'eventListener al JButton btnTornaASelezionaPeriodoTipologia.
+		_btnTornaASelezionaPeriodoTipologia.addMouseListener(new CaricaCreaNuovaPrenotazioneListener());
 		
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
