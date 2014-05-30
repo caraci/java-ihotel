@@ -28,6 +28,10 @@ public class VPGP_InfoSoggiorno_InCorso extends VPGP_InfoSoggiorno {
 		_btnCheckOut = _viewFactory.getButton();
 	}
 	@Override
+	protected void setLblStatoSoggiorno(){
+		_lblStatoSoggiorno.setText("Soggiorno in corso");
+	}
+	@Override
 	protected void creaPanelBottom(){
 		/*Setto il testo del bottone checkin*/
 		_btnCheckOut.setText("CheckOut");
@@ -54,5 +58,6 @@ public class VPGP_InfoSoggiorno_InCorso extends VPGP_InfoSoggiorno {
 		Integer numeroColonne = 7;
 		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);		
 	}
+	
 
 }

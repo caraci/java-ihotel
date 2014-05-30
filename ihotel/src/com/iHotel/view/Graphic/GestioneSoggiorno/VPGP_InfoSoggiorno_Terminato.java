@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 import javax.swing.JButton;
 
-import com.iHotel.view.Event.GestionePrenotazione.CheckInPrenotazioneListener;
 import com.iHotel.view.Event.GestionePrenotazione.GestisciPagamentoListener;
 import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
 
@@ -24,6 +23,12 @@ public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
 	public VPGP_InfoSoggiorno_Terminato() {
 		super();
 	}
+	
+	@Override
+	protected void setLblStatoSoggiorno(){
+		_lblStatoSoggiorno.setText("Soggiorno Terminato");
+	}
+	
 	@Override
 	protected void creaPanelBottom(){		
 		/*Setto il testo del bottone Gestione pagamenti*/

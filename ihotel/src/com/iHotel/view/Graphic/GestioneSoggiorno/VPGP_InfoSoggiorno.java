@@ -54,7 +54,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 	protected JLabel _lblTitoloPrenotante, _lblCognomePrenotante,_lblNomePrenotante, 
 				   _lblTitoloPrenotazione,_lblPrezzoCamere,_lblPrezzoServizi, 
 				   _lblRiepilogoPrenotazione, _lblScegliCamera, _lblGiornoScadenzaGaranzia,
-				   _lblAmmontareCaparra;
+				   _lblAmmontareCaparra, _lblStatoSoggiorno;
 
 	/*Button*/
 	protected JButton _btnTerminaModifichePrenotazione;
@@ -81,6 +81,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		_lblGiornoScadenzaGaranzia=_viewFactory.getLabel();
 		_lblAmmontareCaparra=_viewFactory.getLabel();
 		_lblScegliCamera= _viewFactory.getLabelIntestazione_2();
+		_lblStatoSoggiorno= _viewFactory.getLabelIntestazione_1();
 		
 		/*Button*/
 		_btnTerminaModifichePrenotazione = _viewFactory.getButton();
@@ -91,10 +92,16 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 	/* --------------------- Metodi di instanza ------------------------- */
 	@Override
 	protected void creaPanelTop(){				
+		/*Setto il layout*/
+		_panelTop.setLayout(new GridLayout(1,2,5,5));
 		//setto la label con il codice della prenotazione
 		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ _prenotazione.get_codice());
-		//aggiungo la label al panelTop
-		_panelTop.add(_lblTitoloPrenotazione);		
+		//Setto la label con lo stato del soggiorno
+		setLblStatoSoggiorno();
+		//aggiungo le label al panelTop
+		_panelTop.add(_lblTitoloPrenotazione);
+		_panelTop.add(_lblStatoSoggiorno);
+		
 	}
 	@Override
 	protected void creaPanelMiddle(){		
@@ -105,6 +112,12 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		_panelMiddle.add(creaPanelMiddleLeft());
 		_panelMiddle.add(creaPanelMiddleCenter());
 		_panelMiddle.add(creaPanelMiddleRight());	
+	}
+	/**
+	 * Metodo che setta la label contenente lo stato del soggiorno
+	 */
+	protected void setLblStatoSoggiorno(){
+		_lblStatoSoggiorno.setText("Soggiorno prenotato");
 	}
 	@Override
 	protected void creaPanelBottom(){
