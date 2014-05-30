@@ -232,35 +232,15 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		
 		
 		//Ora recupero i pagamenti tramite bonifico bancario		
-		if (_pagamentiConBonifico!=null){
+		if (_pagamentiInContanti!=null){
 			for (Iterator<PagamentoConBonifico> iterator = _pagamentiConBonifico.iterator(); iterator
 					.hasNext();) {
-				PagamentoConBonifico pagamentoConBonifico =  iterator.next();
-				//Creo una label per l'importo
-				JLabel labelImporto = _viewFactory.getLabel();
-				//Setto il testo della label
-				labelImporto.setText("Importo: "+String.valueOf(pagamentoConBonifico.get_importo().get_importo())+ " "+ pagamentoConBonifico.get_importo().get_valuta());
-				//Aggiungo la label al pannello insieme ad un separatore
-				panelBonifico.add(labelImporto);
-				
-				//Creo una label per il mittente
-				JLabel labelMittente = _viewFactory.getLabel();
-				//Setto il testo
-				labelMittente.setText("Mittente: "+ pagamentoConBonifico.get_mittente().get_nome()+ " "+ pagamentoConBonifico.get_mittente().get_cognome());
-				//Aggiungo la label
-				panelBonifico.add(labelMittente);
-				
-				//Creo una label per la data
-				JLabel labelData = _viewFactory.getLabel();
-				//Setto il testo
-				labelData.setText("Data bonifico: "+ pagamentoConBonifico.get_data().get_giorno() + " - "+pagamentoConBonifico.get_data().get_mese()+ " - "+pagamentoConBonifico.get_data().get_anno());
-				//Aggiungo la label
-				panelBonifico.add(labelData);				
+				PagamentoConBonifico pagamentoConBonifico = iterator.next();				
+				panelBonifico.add(UtoPanel.getPAnelPagamentoConBonfico(pagamentoConBonifico));					
 			}
 		}
 		
 		/*Setto la viewport dello scrollpane*/
-		
 		scrollPaneBonifico.setViewportView(panelBonifico);
 		//restitiuisco il pannello con il bonifici
 		return scrollPaneBonifico;
@@ -290,15 +270,10 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		if (_pagamentiConCarta!=null){
 			for (Iterator<PagamentoConCarta> iterator = _pagamentiConCarta.iterator(); iterator
 					.hasNext();) {
-				PagamentoConCarta pagamentoConCarta =  iterator.next();
-				//Creo una label per l'importo
-				JLabel labelImporto = _viewFactory.getLabel();
-				//Setto il testo della label
-				labelImporto.setText("Importo: "+String.valueOf(pagamentoConCarta.get_importo().get_importo())+ " "+ pagamentoConCarta.get_importo().get_valuta());
-				//Aggiungo la label al pannello insieme ad un separatore
-				panelCarta.add(labelImporto);								
+				PagamentoConCarta pagamentoConCarta = iterator.next();				
+				panelCarta.add(UtoPanel.getPanelPagamentoConCarta(pagamentoConCarta));					
 			}
-		}		
+		}
 		/*Setto la viewport dello scrollpane*/		
 		scrollPaneCarta.setViewportView(panelCarta);
 		//restitiuisco il pannello con il bonifici
