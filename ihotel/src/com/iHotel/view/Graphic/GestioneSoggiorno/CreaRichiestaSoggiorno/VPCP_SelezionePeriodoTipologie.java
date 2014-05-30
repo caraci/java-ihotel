@@ -31,6 +31,7 @@ public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
     private JPanel _panelBottomLeft;
     /* JButton */
     private JButton _btnAvanti;
+    private JButton _btnIndietro;
     /* JDatePanel */
     private JDatePanel _datePanelFine, _datePanelInizio;
     /* JLabel */
@@ -54,6 +55,7 @@ public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
 		_lblTitolo=_viewFactory.getLabelIntestazione_1();
 		// JButton
 		_btnAvanti=_viewFactory.getButtonAvanti();
+		_btnIndietro=_viewFactory.getButtonAvanti();
 		// CheckBox
 		_checkBoxesTipologie = new ArrayList<JCheckBox>();
 		// Creo il frame
@@ -145,13 +147,19 @@ public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
 	}
 	@Override
 	protected void creaPanelBottom() {
-		// Testo JButton avanti.
+		// setto il testo del JButton btnAvanti
 		_btnAvanti.setText("Avanti");
 		// Assegniamo l'eventListener al JButton btnAvanti
 		_btnAvanti.addMouseListener(new RicercaCamereLibereListener());
+		
+		//setto il testo del JButton btnIndietro
+		_btnIndietro.setText("Indietro");
+		//BISOGNA ASSEGNARE L'EVENTO
+		
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
 		// Aggiungo il bottone alla struttura.
+		Bottoni.put(0, _btnIndietro);
 		Bottoni.put(5,_btnAvanti);
 		// Creo la pulsantiera.
 		Integer numeroColonne = 6;

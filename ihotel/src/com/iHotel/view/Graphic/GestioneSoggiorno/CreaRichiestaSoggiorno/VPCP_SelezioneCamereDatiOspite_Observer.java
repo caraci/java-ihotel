@@ -42,7 +42,7 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 	/* Panel */
     private JPanel _panelFinale, _panelPrezzo, _panelOspite;
     /* JButton */
-    private JButton _btnCompletaPrenotazione;
+    private JButton _btnCompletaPrenotazione, _btnTornaASelezionaPeriodoTipologia;
     /* JLabel */
     private JLabel _lblNome, _lblCognome, _lbleMail, _lblTelefono, _lblPrezzoTotale, _lblPrezzoScritto, _lblTitolo;
     /* JTextField */
@@ -77,6 +77,7 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 		_panelFinale=_viewFactory.getPanel();
 		// JButton
 		_btnCompletaPrenotazione=_viewFactory.getButtonAvanti();
+		_btnTornaASelezionaPeriodoTipologia= _viewFactory.getButtonAvanti();
 	}
     /* ----------------- /Pattern Singleton  ---------------- */
     /* ------------- Pattern Observer ----------- */
@@ -224,9 +225,14 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 		_btnCompletaPrenotazione.setText("Completa Prenotazione");
 		// Assegniamo l'eventListener al JButton btnCompletaPrenotazione.
 		_btnCompletaPrenotazione.addMouseListener(new EffettuaNuovaPrenotazioneListener());
+		// Button torna indietro per selezionare periodo e tipologie
+		_btnTornaASelezionaPeriodoTipologia.setText("Indietro");
+		
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
+		
 		// Aggiungo il bottone alla struttura.
+		Bottoni.put(0, _btnTornaASelezionaPeriodoTipologia);
 		Bottoni.put(5,_btnCompletaPrenotazione);
 		// Creo la pulsantiera.
 		Integer numeroColonne = 6;
