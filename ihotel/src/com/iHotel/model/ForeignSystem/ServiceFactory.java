@@ -10,6 +10,8 @@ import com.iHotel.model.ForeignSystem.LettoreCarte.LettoreCarteIngenicoAdapter;
 import com.iHotel.model.ForeignSystem.PagamentoCarta.IPagamentoCartaAdapter;
 import com.iHotel.model.ForeignSystem.PagamentoCarta.PagamentoVisaCartaAdapter;
 import com.iHotel.model.ForeignSystem.PayTv.*;
+import com.iHotel.model.ForeignSystem.SchedePS.ISchedePSAdapter;
+import com.iHotel.model.ForeignSystem.SchedePS.SchedePSPoliziaStatoAdapter;
 import com.iHotel.model.ForeignSystem.Telephone.*;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.utility.ULeggiDaFile;
@@ -47,6 +49,10 @@ public class ServiceFactory {
 	 */
 	private IPagamentoCartaAdapter _pagamentoCartaAdapter;
 	/**
+	 * Maniglia al sistema di gestione delle schedine di pubblica sicurezza
+	 */
+	private ISchedePSAdapter _schedePSAdapter;
+	/**
 	 *  Attributo privato - Pattern Singleton
 	 */
 	private static ServiceFactory instance = null;
@@ -74,7 +80,7 @@ public class ServiceFactory {
 		}
 		// Sistema Lettore Carta
 		switch (sistemiServiziEsterni.get(2)) {
-		case "Lettore1":
+		case "Ingenico":
 			_lettoreAdapter = new LettoreCarteIngenicoAdapter();
 			break;
 		default:
@@ -82,7 +88,7 @@ public class ServiceFactory {
 		}
 		// Sistema Autorizzazione pagamento con carta
 		switch (sistemiServiziEsterni.get(3)) {
-		case "SistemaAutorizzazione1":
+		case "Carispaq":
 			_creditAuthAdapter = new CreditAuthorizationCarispaqAdapter();
 			break;
 		default:
@@ -93,6 +99,15 @@ public class ServiceFactory {
 		case "CartaVisa":
 			_pagamentoCartaAdapter = new PagamentoVisaCartaAdapter();
 			break;
+		default:
+			break;
+		}
+		//Sistema schede pubblica sicurezza 
+		switch (sistemiServiziEsterni.get(5)) {
+		case "PoliziaDiStato":
+			set_schedePSAdapter(new SchedePSPoliziaStatoAdapter());
+			break;
+
 		default:
 			break;
 		}
@@ -159,6 +174,20 @@ public class ServiceFactory {
 	 */
 	public IPagamentoCartaAdapter get_pagamentoCartaAdapter() {
 		return _pagamentoCartaAdapter;
+	}
+
+	/**
+	 * @return the _schedePSAdapter
+	 */
+	public ISchedePSAdapter get_schedePSAdapter() {
+		return _schedePSAdapter;
+	}
+
+	/**
+	 * @param _schedePSAdapter the _schedePSAdapter to set
+	 */
+	public void set_schedePSAdapter(ISchedePSAdapter _schedePSAdapter) {
+		this._schedePSAdapter = _schedePSAdapter;
 	}
 
 

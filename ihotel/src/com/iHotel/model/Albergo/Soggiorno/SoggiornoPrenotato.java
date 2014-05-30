@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.ComponentOttieniAmmontareCaparraStrategy;
 import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.StrategiaSoggiornoAmmontareCaparraFactory;
@@ -83,7 +84,7 @@ public class SoggiornoPrenotato extends SoggiornoState {
 	@Override
 	public SoggiornoState effettuaCheckIn() {
 		// TODO - invio le informazioni degli ospiti al sistema esterno della polizia di stato
-		
+		ServiceFactory.getInstance().get_schedePSAdapter().generaSchedePubblicaSicurezza(_soggiornoSubject);
 		// Creo lo stato successivo
 		SoggiornoState statoSuccessivo = new Soggiorno(_soggiornoSubject);
 		return statoSuccessivo;

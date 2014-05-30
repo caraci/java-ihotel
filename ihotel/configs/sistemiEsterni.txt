@@ -1,5 +1,6 @@
 Sky
 Telecom
-Lettore1
-SistemaAutorizzazione1
+Ingenico
+Carispaq
 CartaVisa
+PoliziaDiStato

@@ -77,7 +77,7 @@ public class ULeggiDaFile {
 	 */
 	public static ArrayList<String> getSistemiServiziEsterni() {
 		// Variabili nelle quali andremo a memorizzare gli attributi dell'albergo.
-			String payTvSystem, telephoneSystem, lettoreCarteSystem, autorizzazionePagamentoSystem, pagamentoCartaSystem ;
+			String payTvSystem, telephoneSystem, lettoreCarteSystem, autorizzazionePagamentoSystem, pagamentoCartaSystem,sistemaSchedePS ;
 			// Ricavo il path assoluto.
 			String filePath = new File("").getAbsolutePath();
 			// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
@@ -88,12 +88,14 @@ public class ULeggiDaFile {
 				lettoreCarteSystem = sistemiEsterniReader.readLine();
 				autorizzazionePagamentoSystem = sistemiEsterniReader.readLine();
 				pagamentoCartaSystem = sistemiEsterniReader.readLine();
+				sistemaSchedePS = sistemiEsterniReader.readLine();
 			} catch (IOException e) {
 				payTvSystem = "Sky";
 				telephoneSystem = "Telecom";
-				lettoreCarteSystem = "Lettore1";
-				autorizzazionePagamentoSystem = "SistemaAutorizzazione1";
+				lettoreCarteSystem = "Ingenico";
+				autorizzazionePagamentoSystem = "Carispaq";
 				pagamentoCartaSystem = "CartaVisa";
+				sistemaSchedePS = "PoliziaDiStato";
 	        } 
 			ArrayList<String> sistemiEsterni = new ArrayList<String>();
 			// Aggiungi gli attributi all'ArrayList di stringhe.
@@ -102,7 +104,7 @@ public class ULeggiDaFile {
 			sistemiEsterni.add(lettoreCarteSystem);
 			sistemiEsterni.add(autorizzazionePagamentoSystem);
 			sistemiEsterni.add(pagamentoCartaSystem);
-			
+			sistemiEsterni.add(sistemaSchedePS);
 			return sistemiEsterni;
 	}
 }
