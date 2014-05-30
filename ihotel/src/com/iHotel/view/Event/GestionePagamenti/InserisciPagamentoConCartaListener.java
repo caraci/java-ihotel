@@ -56,23 +56,27 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent e){
 		
 		Prezzo importoRimanenteDaPagare = _prenotazione.calcolaImportoRimanenteDaPagare();
+		
 		/*Visualizzo la dialog per l'inserimento delle informazioni sul pagamento. Viene restituito
 		 * un oggetto PagamentoCon*/
-		
 		Prezzo importoDaPagareConCarta = UDialogManager.getDialogInserimentoImportoPagamentoConCarta(importoRimanenteDaPagare);
-		/*Recupero il controllore corretto*/
-		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
-		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
-		gestorePagamenti.pagaConCarta(importoDaPagareConCarta);
-				
-		// Prendo il pannello dove si va a mostrare la lista dei bonifici
-		JPanel panelCarta = _riepilogoPagamenti.getPanelListaPagamentiConCarta();
-		// Prendo il layout del pannello
-		CardLayout cardLayout = (CardLayout) panelCarta.getLayout();
-		// Aggiungo una nuova scheda al pannello.
-		panelCarta.add(_riepilogoPagamenti.creaJScrollPanePagamentiCarta());
-		// Mostro la prossima scheda
-		cardLayout.next(panelCarta);
+		
+		//Controllo se l'importo è nullo
+		if(importoDaPagareConCarta!=null){
+			/*Recupero il controllore corretto*/
+			CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
+			/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
+			gestorePagamenti.pagaConCarta(importoDaPagareConCarta);
+					
+			// Prendo il pannello dove si va a mostrare la lista dei bonifici
+			JPanel panelCarta = _riepilogoPagamenti.getPanelListaPagamentiConCarta();
+			// Prendo il layout del pannello
+			CardLayout cardLayout = (CardLayout) panelCarta.getLayout();
+			// Aggiungo una nuova scheda al pannello.
+			panelCarta.add(_riepilogoPagamenti.creaJScrollPanePagamentiCarta());
+			// Mostro la prossima scheda
+			cardLayout.next(panelCarta);
+		}
 		
 	}
 

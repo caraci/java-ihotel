@@ -59,20 +59,22 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 		/*Visualizzo la dialog per l'inserimento delle informazioni sul pagamento. Viene restituito
 		 * un oggetto PagamentoInContanti*/
 		PagamentoInContanti pagamentoInContanti = UDialogManager.getDialogDatiPagamentoInContanti(importoRimanenteDaPagare);
-		/*Recupero il controllore corretto*/
-		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
-		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
-		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamentoInContanti);
-		
-		// Prendo il pannello dove si va a mostrare la lista dei bonifici
-		JPanel panelContanti = _riepilogoPagamenti.getPanelListaPagamentiInContanti();
-		// Prendo il layout del pannello
-		CardLayout cardLayout = (CardLayout) panelContanti.getLayout();
-		// Aggiungo una nuova scheda al pannello.
-		panelContanti.add(_riepilogoPagamenti.creaJScrollPanePagamentiContanti());
-		// Mostro la prossima scheda
-		cardLayout.next(panelContanti);
-		
+		//Controllo se il pagamento restituito non è vuoto
+		if(pagamentoInContanti.get_importo()!=null){
+			/*Recupero il controllore corretto*/
+			CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
+			/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
+			gestorePagamenti.inserisciPagamentoInPrenotazione(pagamentoInContanti);
+			
+			// Prendo il pannello dove si va a mostrare la lista dei bonifici
+			JPanel panelContanti = _riepilogoPagamenti.getPanelListaPagamentiInContanti();
+			// Prendo il layout del pannello
+			CardLayout cardLayout = (CardLayout) panelContanti.getLayout();
+			// Aggiungo una nuova scheda al pannello.
+			panelContanti.add(_riepilogoPagamenti.creaJScrollPanePagamentiContanti());
+			// Mostro la prossima scheda
+			cardLayout.next(panelContanti);
+		}
 	}
 	
 

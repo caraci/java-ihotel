@@ -59,19 +59,21 @@ public class InserisciPagamentoConBonificoListener extends MouseAdapter {
 		/*Visualizzo la dialog per l'inserimento delle informazioni. Mi viene restituito l'oggetto Pagamento
 		costruito con le informazioni inserite dall'utente*/
 		PagamentoConBonifico pagamento= UDialogManager.getDialogDatiBonificoBancario(importoRimanenteDaPagare);
-		/*Recupero il controllore corretto*/
-		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
-		/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
-		gestorePagamenti.inserisciPagamentoInPrenotazione(pagamento);		
-		
-		// Prendo il pannello dove si va a mostrare la lista dei bonifici
-		JPanel panelBonifico = _riepilogoPagamenti.getPanelListaPagamentiConBonifico();
-		// Prendo il layout del pannello
-		CardLayout cardLayout = (CardLayout) panelBonifico.getLayout();
-		// Aggiungo una nuova scheda al pannello.
-		panelBonifico.add(_riepilogoPagamenti.creaJScrollPanePagamentiConBonifici());
-		// Mostro la prossima scheda
-		cardLayout.next(panelBonifico);
+		if(pagamento.get_importo()!=null){
+			/*Recupero il controllore corretto*/
+			CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
+			/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
+			gestorePagamenti.inserisciPagamentoInPrenotazione(pagamento);		
+			
+			// Prendo il pannello dove si va a mostrare la lista dei bonifici
+			JPanel panelBonifico = _riepilogoPagamenti.getPanelListaPagamentiConBonifico();
+			// Prendo il layout del pannello
+			CardLayout cardLayout = (CardLayout) panelBonifico.getLayout();
+			// Aggiungo una nuova scheda al pannello.
+			panelBonifico.add(_riepilogoPagamenti.creaJScrollPanePagamentiConBonifici());
+			// Mostro la prossima scheda
+			cardLayout.next(panelBonifico);
+		}
 	}
 
 }

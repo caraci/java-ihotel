@@ -130,27 +130,33 @@ public class UDialogManager extends JOptionPane {
 		/*Setto il colore della dialog*/
 		setColor(ViewFactory.getInstance().getStyleFactory().getColorContentPane(), ViewFactory.getInstance().getStyleFactory().getColorContentPane());
 		
+		//Creo un pagamento con bonifico
+		PagamentoConBonifico pagamento = new PagamentoConBonifico();
 		//Faccio il display della schermata
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento pagamento Con Bonifico", JOptionPane.PLAIN_MESSAGE);
 		
-		/*Creo un nuovo prezzo con l'importo ricevuto*/		
-		Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
-		
-		/*Controllo se l'importo inserito è maggiore dell'importo massimo*/
-		if(importoRicevuto.get_importo()>importoDaVisualizzare.get_importo()){
-			/*Setto l'importo massimo al valore dell'importo massimo da pagare*/
-			importoRicevuto.set_importo(importoDaVisualizzare.get_importo());
+		if(!importo.getText().equals("")){
+			/*Creo un nuovo prezzo con l'importo ricevuto*/		
+			Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
+			
+			/*Controllo se l'importo inserito è maggiore dell'importo massimo*/
+			if(importoRicevuto.get_importo()>importoDaVisualizzare.get_importo()){
+				/*Setto l'importo massimo al valore dell'importo massimo da pagare*/
+				importoRicevuto.set_importo(importoDaVisualizzare.get_importo());
+			}
+			
+			/*Creo un nuovo giorno con lla data in cui è stato ricevuto il bonifico*/		
+			Giorno dataBonifico = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
+			
+			/*Creo una persona che è il mittente del bonifico*/
+			Persona mittente = new Persona(nomeMittente.getText(), cognomeMittente.getText());
+			
+			/*Creo l'oggetto PagamentoConBonifico che restituisco*/
+			pagamento.set_importo(importoRicevuto);
+			pagamento.set_data(dataBonifico);
+			pagamento.set_codiceBonifico(codice.getText());
+			pagamento.set_mittente(mittente);
 		}
-		
-		/*Creo un nuovo giorno con lla data in cui è stato ricevuto il bonifico*/		
-		Giorno dataBonifico = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
-		
-		/*Creo una persona che è il mittente del bonifico*/
-		Persona mittente = new Persona(nomeMittente.getText(), cognomeMittente.getText());
-		
-		/*Creo l'oggetto PagamentoConBonifico che restituisco*/
-		PagamentoConBonifico pagamento = new PagamentoConBonifico(importoRicevuto, dataBonifico, codice.getText(), mittente);
-		
 		/*Restituisco il pagamento*/
 		return pagamento;		
 	}
@@ -162,6 +168,9 @@ public class UDialogManager extends JOptionPane {
 	 */
 	public static PagamentoInContanti getDialogDatiPagamentoInContanti(Prezzo importoDaVisualizzare){
 		/*Etichette*/
+		/*Label che contiente l'importo massimo da pagare*/
+		JLabel lblImportoMassimo = ViewFactory.getInstance().getStyleFactory().getLabel();
+		lblImportoMassimo.setText("L'importo massimo da addebitare per il soggiorno è: "+String.valueOf(importoDaVisualizzare.get_importo()));
 		//label importo
 		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImporto.setText("Importo: ");
@@ -172,10 +181,11 @@ public class UDialogManager extends JOptionPane {
 		//Creo il jdatepicker per la data
 		JDatePicker data = JDateComponentFactory.createJDatePicker();
 		/*Text fields*/
-		JTextField importo = ViewFactory.getInstance().getStyleFactory().getTextField();
+		JTextField importo = ViewFactory.getInstance().getStyleFactory().getTextField();		
 		
 		//Creo un array di componenti
 		final JComponent[] inputs = new JComponent[] {
+				lblImportoMassimo,
 				//importo
 				lblImporto,
 				importo,
@@ -186,24 +196,29 @@ public class UDialogManager extends JOptionPane {
 		/*Setto il colore della dialog*/
 		setColor(ViewFactory.getInstance().getStyleFactory().getColorContentPane(), ViewFactory.getInstance().getStyleFactory().getColorContentPane());
 		
+		//
+		PagamentoInContanti pagamento = new PagamentoInContanti();
 		//Faccio il display della schermata
-		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento pagamento in contanti", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs,"Inserimento pagamento in contanti", JOptionPane.PLAIN_MESSAGE);
+		
+		if(!importo.getText().trim().equals("")){
+			/*Creo un nuovo prezzo con l'importo ricevuto*/		
+			Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
 			
-		/*Creo un nuovo prezzo con l'importo ricevuto*/		
-		Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
-		
-		/*Controllo se l'importo inserito è maggiore dell'importo massimo*/
-		if(importoRicevuto.get_importo()>importoDaVisualizzare.get_importo()){
-			/*Setto l'importo massimo al valore dell'importo massimo da pagare*/
-			importoRicevuto.set_importo(importoDaVisualizzare.get_importo());
+			/*Controllo se l'importo inserito è maggiore dell'importo massimo*/
+			if(importoRicevuto.get_importo()>importoDaVisualizzare.get_importo()){
+				/*Setto l'importo massimo al valore dell'importo massimo da pagare*/
+				importoRicevuto.set_importo(importoDaVisualizzare.get_importo());
+			}
+			
+			/*Creo un nuovo giorno con lla data in cui è stato ricevuto il bonifico*/		
+			Giorno dataIncasso = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
+			
+			
+			/*Creo l'oggetto PagamentoConBonifico che restituisco*/
+			pagamento.set_importo(importoRicevuto);
+			pagamento.set_data(dataIncasso);
 		}
-		
-		/*Creo un nuovo giorno con lla data in cui è stato ricevuto il bonifico*/		
-		Giorno dataIncasso = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
-		
-		
-		/*Creo l'oggetto PagamentoConBonifico che restituisco*/
-		PagamentoInContanti pagamento = new PagamentoInContanti(importoRicevuto, dataIncasso);
 		
 		/*Restituisco il pagamento*/
 		return pagamento;
@@ -295,6 +310,7 @@ public class UDialogManager extends JOptionPane {
 	 */
 	public static Prezzo getDialogInserimentoImportoPagamentoConCarta(Prezzo importoDaVisualizzare){
 		/*Label*/
+		/*Label che contiente l'importo massimo da pagare*/
 		JLabel lblImportoMassimo = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImportoMassimo.setText("L'importo massimo da addebitare per il soggiorno è: "+String.valueOf(importoDaVisualizzare.get_importo()));
 		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
@@ -313,10 +329,12 @@ public class UDialogManager extends JOptionPane {
 		/*Creo la dialog*/
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento importo pagamento con carta", JOptionPane.PLAIN_MESSAGE);
 		/*Controllo se il pagamento ha un importo maggiore di quello che è rimasto da pagare*/
-		if(Double.valueOf(txtImporto.getText())<importoDaVisualizzare.get_importo()){
-			/*Setto l'importo del pagamento da effettuare con quello inserito dall'utente*/
-			importoDaVisualizzare.set_importo(Double.valueOf(txtImporto.getText()));
-		}		
+		if(!txtImporto.getText().equals("")){
+			if(Double.valueOf(txtImporto.getText())<importoDaVisualizzare.get_importo()){
+				/*Setto l'importo del pagamento da effettuare con quello inserito dall'utente*/
+				importoDaVisualizzare.set_importo(Double.valueOf(txtImporto.getText()));
+			}
+		}
 		/*Restituisco l'importo da addebitare*/
 		return importoDaVisualizzare;
 	}
