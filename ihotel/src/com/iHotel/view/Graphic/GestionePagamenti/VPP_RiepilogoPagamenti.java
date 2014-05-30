@@ -27,7 +27,7 @@ import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
-import com.iHotel.view.Event.GestioneSoggiorno.TornaAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAllaPrenotazioneListener;
 import com.iHotel.view.Utility.UtoPanel;
 
 /**

@@ -23,10 +23,10 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewPanelContentPane;
-import com.iHotel.view.Event.GestioneSoggiorno.CheckInPrenotazioneListener;
-import com.iHotel.view.Event.GestioneSoggiorno.GestisciCameraPrenotazioneListener;
-import com.iHotel.view.Event.GestioneSoggiorno.GestisciPagamentoListener;
-import com.iHotel.view.Event.GestioneSoggiorno.TerminaModifichePrenotazione;
+import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.CheckInPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.GestisciCameraPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.GestisciPagamentoListener;
+import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.TerminaModifichePrenotazione;
 import com.iHotel.view.Utility.UtoPanel;
 
 /**

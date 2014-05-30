@@ -21,8 +21,8 @@ import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Observer.ISubject;
 import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
-import com.iHotel.view.Event.GestioneSoggiorno.CreaPrenotazione.AggiungiCameraPrenotazioneListener;
-import com.iHotel.view.Event.GestioneSoggiorno.CreaPrenotazione.EffettuaNuovaPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.CreaRichiestaSoggiorno.AggiungiCameraPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.CreaRichiestaSoggiorno.EffettuaNuovaPrenotazioneListener;
 
 import java.awt.GridLayout;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Event.GestioneSoggiorno;
+package com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera;
 
 import java.awt.CardLayout;
 import java.awt.event.MouseAdapter;
@@ -21,14 +21,14 @@ import com.iHotel.view.Utility.UDialogManager;
  * 
  * @author Eugenio
  */
-public class CaricaAggiungiServiziListener extends MouseAdapter {
+public class AggiungiServiziListener extends MouseAdapter {
 	
 	private VPGP_InfoCamera _infoCamera;
 	
 	/**
 	 * Costruttore
 	 */
-	public CaricaAggiungiServiziListener(){
+	public AggiungiServiziListener(){
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Recupero il contentPane del frame.
