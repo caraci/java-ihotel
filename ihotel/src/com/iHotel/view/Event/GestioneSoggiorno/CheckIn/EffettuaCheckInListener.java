@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Event.GestionePrenotazione.CheckIn;
+package com.iHotel.view.Event.GestioneSoggiorno.CheckIn;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

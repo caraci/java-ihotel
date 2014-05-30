@@ -7,9 +7,9 @@ import java.util.HashMap;
 
 import javax.swing.JButton;
 
-import com.iHotel.view.Event.GestionePrenotazione.EffettuaCheckOutListener;
-import com.iHotel.view.Event.GestionePrenotazione.GestisciPagamentoListener;
-import com.iHotel.view.Event.GestionePrenotazione.TerminaModifichePrenotazione;
+import com.iHotel.view.Event.GestioneSoggiorno.EffettuaCheckOutListener;
+import com.iHotel.view.Event.GestioneSoggiorno.GestisciPagamentoListener;
+import com.iHotel.view.Event.GestioneSoggiorno.TerminaModifichePrenotazione;
 
 /**
  * @author Eugenio

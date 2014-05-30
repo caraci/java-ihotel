@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.view.Event.GestionePrenotazione.CheckIn;
+package com.iHotel.view.Event.GestioneSoggiorno.CheckIn;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

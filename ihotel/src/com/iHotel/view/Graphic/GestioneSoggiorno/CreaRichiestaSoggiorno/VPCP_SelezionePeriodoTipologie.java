@@ -9,8 +9,8 @@ import java.util.HashMap;
 import javax.swing.*;
 
 import com.iHotel.view.ViewPanelContentPane;
-import com.iHotel.view.Event.GestionePrenotazione.AnnullaRichiestaSoggiorno;
-import com.iHotel.view.Event.GestionePrenotazione.CreaPrenotazione.RicercaCamereLibereListener;
+import com.iHotel.view.Event.GestioneSoggiorno.AnnullaRichiestaSoggiorno;
+import com.iHotel.view.Event.GestioneSoggiorno.CreaPrenotazione.RicercaCamereLibereListener;
 
 import net.sourceforge.jdatepicker.*;
 

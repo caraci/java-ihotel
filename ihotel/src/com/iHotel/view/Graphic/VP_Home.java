@@ -17,7 +17,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.CaricaGestionePrenotazioneFromDialogListener;
-import com.iHotel.view.Event.GestionePrenotazione.CaricaGestionePrenotazioneFromList;
+import com.iHotel.view.Event.GestioneSoggiorno.CaricaGestionePrenotazioneFromList;
 import com.iHotel.view.Utility.UtoPanel;
 
 /**

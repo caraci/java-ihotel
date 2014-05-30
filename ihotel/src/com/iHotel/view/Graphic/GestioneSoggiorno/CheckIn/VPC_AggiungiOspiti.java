@@ -17,8 +17,8 @@ import javax.swing.JTabbedPane;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.view.ViewPanelContentPane;
-import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
-import com.iHotel.view.Event.GestionePrenotazione.CheckIn.EffettuaCheckInListener;
+import com.iHotel.view.Event.GestioneSoggiorno.TornaAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.CheckIn.EffettuaCheckInListener;
 
 /**
  * @author Eugenio

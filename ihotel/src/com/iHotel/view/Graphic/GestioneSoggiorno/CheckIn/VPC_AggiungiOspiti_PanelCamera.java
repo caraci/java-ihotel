@@ -29,8 +29,8 @@ import com.iHotel.model.Persona.Ospite;
 import com.iHotel.view.View;
 import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
-import com.iHotel.view.Event.GestionePrenotazione.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
-import com.iHotel.view.Event.GestionePrenotazione.CheckIn.ScegliDocumentoListener;
+import com.iHotel.view.Event.GestioneSoggiorno.CheckIn.AggiungiOspiteAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.CheckIn.ScegliDocumentoListener;
 import com.iHotel.view.Utility.UtoPanel;
 
 

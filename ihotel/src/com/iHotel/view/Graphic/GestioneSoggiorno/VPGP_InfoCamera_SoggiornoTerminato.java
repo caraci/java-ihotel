@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 import javax.swing.JButton;
 
-import com.iHotel.view.Event.GestionePrenotazione.CaricaAggiungiServiziListener;
-import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.CaricaAggiungiServiziListener;
+import com.iHotel.view.Event.GestioneSoggiorno.TornaAllaPrenotazioneListener;
 
 /**
  * Classe che crea la schermata di un soggiorno terminato
