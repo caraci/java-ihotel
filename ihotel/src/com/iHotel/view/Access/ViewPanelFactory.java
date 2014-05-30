@@ -4,6 +4,8 @@
 package com.iHotel.view.Access;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera;
+import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoCamera_SoggiornoTerminato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno_Cancellato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno_InCorso;
@@ -28,8 +30,6 @@ public class ViewPanelFactory {
 		// Pannello da restituire
 		VPGP_InfoSoggiorno panelInfoSoggiorno = null;
 		
-		System.out.println(nomeStato);
-		
 		// Scelgo il pannello da fornire in base allo stato della prenotazione
 		switch (nomeStato) {
 		case "SoggiornoPrenotato" :
@@ -48,5 +48,32 @@ public class ViewPanelFactory {
 			break;
 		}
 		return panelInfoSoggiorno;
+	}
+	
+	/**
+	 * Metodo che restituisce la schermata della infoCamera in base allo stato del soggiorno
+	 * 
+	 * @param soggiorno cui appartiene la camera
+	 * @return Pannello contenente le informazioni sulla camera
+	 */
+	public static VPGP_InfoCamera getPanelInfoCamera(SoggiornoContextSubject soggiorno){
+		// Prendo il nome dello stato attuale del soggiorno
+		String nomeStato = soggiorno.get_soggiornoState().getClass().getSimpleName();
+		// Pannello da restituire
+		VPGP_InfoCamera panelInfoCamera = null;
+		
+		// Scelgo il pannello da fornire in base allo stato della prenotazione
+		switch (nomeStato) {
+		case "SoggiornoTerminato" :
+			panelInfoCamera = new VPGP_InfoCamera_SoggiornoTerminato();
+			break;
+		case "SoggiornoCancellato" :
+			panelInfoCamera = new VPGP_InfoCamera_SoggiornoTerminato();
+			break;
+		default:
+			panelInfoCamera = new VPGP_InfoCamera();
+			break;
+		}
+		return panelInfoCamera;
 	}
 }

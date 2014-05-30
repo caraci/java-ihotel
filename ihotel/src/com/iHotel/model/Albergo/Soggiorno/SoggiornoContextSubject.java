@@ -201,10 +201,12 @@ public class SoggiornoContextSubject implements ISubject {
 	 * Metodo per effettuare il check out della del soggiorno.
 	 */
 	public void effettuaCheckOut() {
+		System.out.print(_soggiornoState.getClass().getSimpleName());
 		// Passo la richiesta allo stato attuale
 		SoggiornoState statoSuccessivo = _soggiornoState.effettuaCheckOut();
 		// Setto il nuovo stato del soggiorno
 		this.set_soggiornoState(statoSuccessivo);
+		System.out.print(_soggiornoState.getClass().getSimpleName());
 		
 	}
 	

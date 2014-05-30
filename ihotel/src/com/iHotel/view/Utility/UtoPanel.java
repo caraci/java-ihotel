@@ -7,6 +7,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.iHotel.model.Pagamento.PagamentoConBonifico;
+import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
@@ -223,8 +225,81 @@ public class UtoPanel {
 		labelData.setText("Data pagamento in contanti: "+ pagamentoInContanti.get_data().get_giorno() + " - "+pagamentoInContanti.get_data().get_mese()+ " - "+pagamentoInContanti.get_data().get_anno());
 		//Aggiungo la label
 		panelContanti.add(labelData);
+		
 		/*Restituisco il pannello*/
 		return panelContanti;
 	}
-
+	
+	/**
+	 * Metodo che restituisce un pannello contenente un pagamento con bonifico
+	 * 
+	 * @param pagmentoConBonifico che si vuole visualizzare
+	 * @return Pannello con le informazioni sul pagamento in contanti
+	 */
+	public static JPanel getPAnelPagamentoConBonfico (PagamentoConBonifico pagmentoConBonifico){
+		//Creo un pannello
+		JPanel panelBonifico = ViewFactory.getInstance().getStyleFactory().getPanel(false);
+		//Assegno il layout
+		panelBonifico.setLayout(new BoxLayout(panelBonifico, BoxLayout.Y_AXIS));
+		
+		//Creo una label per l'importo
+		JLabel labelImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
+		//Setto il testo della label
+		labelImporto.setText("Importo: "+String.valueOf(pagmentoConBonifico.get_importo().get_importo())+ " "+ pagmentoConBonifico.get_importo().get_valuta());		
+		//aggiungo la label al pannello
+		panelBonifico.add(labelImporto);
+		
+		//Creo una label per il mittente del bonifico
+		JLabel labelMittente = ViewFactory.getInstance().getStyleFactory().getLabel();
+		//Setto il testo della label
+		labelMittente.setText("Mittente: "+ pagmentoConBonifico.get_mittente().get_cognome()+ " "+ pagmentoConBonifico.get_mittente().get_nome());
+		//aggiungo la label al pannello
+		panelBonifico.add(labelMittente);
+		
+		//Creo una label per la data
+		JLabel labelData =ViewFactory.getInstance().getStyleFactory().getLabel();
+		//Setto il testo
+		labelData.setText("Data pagamento con bonifico: "+ pagmentoConBonifico.get_data().get_giorno() + " - "+pagmentoConBonifico.get_data().get_mese()+ " - "+pagmentoConBonifico.get_data().get_anno());
+		//Aggiungo la label
+		panelBonifico.add(labelData);
+		
+		//restituisco il pannello
+		return panelBonifico;
+	}
+	
+	/**
+	 * Metodo che restituisce un pannello contenente un pagamento in contanti
+	 * 
+	 * @param pagamentoInContanti che si vuole visualizzare
+	 * @return Pannello con le informazioni sul pagamento in contanti
+	 */
+	public static JPanel getPanelPagamentoConCarta(PagamentoConCarta pagamentoConCarta){
+		/*Creo un pannello*/
+		JPanel panelCarta = ViewFactory.getInstance().getStyleFactory().getPanel(false);
+		/*Assegno il layout*/
+		panelCarta.setLayout(new BoxLayout(panelCarta, BoxLayout.Y_AXIS));
+		//Creo una label per l'importo
+		JLabel labelImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
+		//Setto il testo della label
+		labelImporto.setText("Importo: "+String.valueOf(pagamentoConCarta.get_importo().get_importo())+ " "+ pagamentoConCarta.get_importo().get_valuta());
+		//Aggiungo la label al pannello 
+		panelCarta.add(labelImporto);
+		
+		//Creo una label per il titolare della carta
+		JLabel labelTitolare = ViewFactory.getInstance().getStyleFactory().getLabel();
+		//Setto il testo della label
+		labelTitolare.setText("Mittente: "+ pagamentoConCarta.get_cartaDiCredito().get_titolare().get_cognome()+ " "+ pagamentoConCarta.get_cartaDiCredito().get_titolare().get_nome());
+		//aggiungo la label al pannello
+		panelCarta.add(labelTitolare);
+		
+		//Creo una label per la data
+		JLabel labelData =ViewFactory.getInstance().getStyleFactory().getLabel();
+		//Setto il testo
+		labelData.setText("Data pagamento con carta: "+ pagamentoConCarta.get_data().get_giorno() + " - "+pagamentoConCarta.get_data().get_mese()+ " - "+pagamentoConCarta.get_data().get_anno());
+		//Aggiungo la label
+		panelCarta.add(labelData);
+		
+		/*Restituisco il pannello*/
+		return panelCarta;
+	}
 }
