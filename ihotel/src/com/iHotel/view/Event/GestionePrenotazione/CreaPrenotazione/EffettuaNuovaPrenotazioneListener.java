@@ -45,7 +45,7 @@ public class EffettuaNuovaPrenotazioneListener extends MouseAdapter {
 		// Recupero il controllore e invoco il metodo.
 		CCreaRichiestaSoggiorno gestisciPrenotazione = CCreaRichiestaSoggiorno.getInstance();
 		// Invoco il metodo passando come parametro la stringa contenente il numero di camera.
-		gestisciPrenotazione.concludiPrenotazione(_selezioneCamereDatiOspite.get_txtNome().getText(), 
+		gestisciPrenotazione.concludiRichiestaSoggiorno(_selezioneCamereDatiOspite.get_txtNome().getText(), 
 												  _selezioneCamereDatiOspite.get_txtCognome().getText(), 
 												  _selezioneCamereDatiOspite.get_txteMail().getText(), 
 												  _selezioneCamereDatiOspite.get_txtTelefono().getText());

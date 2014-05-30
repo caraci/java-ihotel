@@ -5,7 +5,7 @@ import java.util.*;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 /**
- * Questa classe rappresenta lo storico delle prenotazioni dell'albergo.
+ * Questa classe rappresenta lo storico dei soggiorni dell'albergo.
  * 
  * @author Alessandro
  */
@@ -48,12 +48,12 @@ public class Storico {
 	}
 
 	/**
-	 * Metodo per aggiungere una prenotazione allo storico.
+	 * Metodo per aggiungere un soggiorno allo storico.
 	 * 
-	 * @param prenotazione Prenotazione da aggiungere.
+	 * @param soggiorno Soggiorno da aggiungere.
 	 */
-	public void addPrenotazione(SoggiornoContextSubject prenotazione) {
-		_soggiorni.put(prenotazione.get_codice(), prenotazione);
+	public void addSoggiorno(SoggiornoContextSubject soggiorno) {
+		_soggiorni.put(soggiorno.get_codice(), soggiorno);
 	}
 	/**
 	 * Metodo per recuperare tutti i soggiorni futuri ad oggi.
@@ -85,17 +85,17 @@ public class Storico {
 	/* --------------------------------- Getter, Setter ---------------------------------- */
 	
 	/**
-	 * @return _prenotazioni
+	 * @return _soggiorni
 	 */
 	public HashMap<String,SoggiornoContextSubject> get_soggiorni() {
 		return _soggiorni;
 	}
 
 	/**
-	 * @param _prenotazioni
+	 * @param _soggiorni
 	 */
-	public void set_soggiorni(HashMap<String,SoggiornoContextSubject> _prenotazioni) {
-		this._soggiorni = _prenotazioni;
+	public void set_soggiorni(HashMap<String,SoggiornoContextSubject> _soggiorni) {
+		this._soggiorni = _soggiorni;
 	}
 
 }

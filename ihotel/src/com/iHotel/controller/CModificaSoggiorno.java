@@ -225,14 +225,14 @@ public class CModificaSoggiorno {
 	/**
 	 * @return the _albergo
 	 */
-	protected Albergo get_albergo() {
+	public Albergo get_albergo() {
 		return _albergo;
 	}
 
 	/**
 	 * @param _albergo the _albergo to set
 	 */
-	protected void set_albergo(Albergo _albergo) {
+	public void set_albergo(Albergo _albergo) {
 		this._albergo = _albergo;
 	}
 }

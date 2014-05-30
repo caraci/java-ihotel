@@ -46,7 +46,7 @@ public class AggiungiCameraPrenotazioneListener extends MouseAdapter {
 		// Recupero il controllore e invoco il metodo.
 		CCreaRichiestaSoggiorno gestisciPrenotazione = CCreaRichiestaSoggiorno.getInstance();
 		// Aggiungo la camera alla prenotazione e carico il totale.
-		gestisciPrenotazione.aggiungiCameraAllaPrenotazione(_numeroCamera);
+		gestisciPrenotazione.aggiungiCameraAllaRichiestaDiSoggiorno(_numeroCamera);
 	}
 
 }

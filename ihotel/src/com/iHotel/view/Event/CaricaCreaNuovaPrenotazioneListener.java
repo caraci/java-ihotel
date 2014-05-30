@@ -23,7 +23,7 @@ public class CaricaCreaNuovaPrenotazioneListener extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo relativo alla creazione di una nuova prenotazione.
 		CCreaRichiestaSoggiorno creatorePrenotazione = CCreaRichiestaSoggiorno.getInstance();
-		creatorePrenotazione.creaNuovaPrenotazione();
+		creatorePrenotazione.creaNuovaRichiestaSoggiorno();
 	}
 
 }

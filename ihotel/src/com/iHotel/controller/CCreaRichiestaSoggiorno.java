@@ -58,10 +58,10 @@ public class CCreaRichiestaSoggiorno {
     }
     /* --------------------------------- Metodi di instanza -------------------------------------- */
     /**
-     * Metodo per creare una nuova prenotazione
+     * Metodo per creare una nuova richiesta di soggiorno
      */
-	public void creaNuovaPrenotazione() {
-		// Creo la nuova prenotazione
+	public void creaNuovaRichiestaSoggiorno() {
+		// Creo il nuovo soggiorno
 		_soggiorno = new SoggiornoContextSubject();
 		// Creo l'arrayList nel quale si vanno ad inserire le tipologie di camere note.
 		ArrayList<String> tipologieCamere = new ArrayList<String>();
@@ -76,11 +76,11 @@ public class CCreaRichiestaSoggiorno {
 		selezionePeriodoTipologie.creaPanel(tipologieCamere);	
 	}
 	/**
-	 * Metodo per aggiungere una camera alla prenotazione.
+	 * Metodo per aggiungere una camera al soggiorno
 	 * 
 	 * @param numeroCamera Stringa contenente il numero della camera che si vuole aggiungere.
 	 */
-	public void aggiungiCameraAllaPrenotazione(String numeroCamera) {
+	public void aggiungiCameraAllaRichiestaDiSoggiorno(String numeroCamera) {
 		// Ricavo la Camera a partire dalla stringa contenente il suo numero.
 		Camera camera = _albergo.getCameraDaNumero(numeroCamera);
 		// Aggiungo la camera all'elemento prenotazione
@@ -115,21 +115,21 @@ public class CCreaRichiestaSoggiorno {
 		selezioneCamereDatiOspite.creaPanel(camereLibere);	
 	}
 	/**
-	 * Metodo per concludere una prenotazione.
+	 * Metodo per concludere una richiesta di soggiorno.
 	 * 
 	 * @param nome Nome dell'ospite.
 	 * @param cognome Cognome dell'ospite.
 	 * @param eMail e-Mail dell'ospite.
 	 * @param telefono Telefono dell'ospite.
 	 */
-	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
-		// Rimuovo l'osservatore dalla prenotazione.
+	public void concludiRichiestaSoggiorno(String nome, String cognome, String eMail, String telefono) {
+		// Rimuovo l'osservatore dal soggiorno.
 		_soggiorno.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
 		// Concludo la richiesta di soggiorno
 		_soggiorno.concludiPrenotazione(nome, cognome, eMail, telefono);
-		// Aggiungo la prenotazione allo storico
+		// Aggiungo il soggiorno allo storico
 		Storico storico = Storico.getInstance();
-		storico.addPrenotazione(_soggiorno);
+		storico.addSoggiorno(_soggiorno);
 		// Salvataggio degli oggetti da Ram -> Persistenza.
 		try {
 			PPrenotazione.getInstance().store(_soggiorno);
