@@ -60,7 +60,7 @@ public class Storico {
 	 * 
 	 * @return Lista dei soggiorni futuri a partire da oggi.
 	 */
-	public List<SoggiornoContextSubject> recuperaSoggiorniFuturi() {
+	public ArrayList<SoggiornoContextSubject> recuperaSoggiorniFuturi() {
 		// Lista nella quale inseriamo i soggiorni validi
 		ArrayList<SoggiornoContextSubject> soggiorniFuturi = new ArrayList<SoggiornoContextSubject>();
 		// Recupero il giorno attuale
@@ -77,49 +77,7 @@ public class Storico {
 				soggiorniFuturi.add(soggiorno);
 			}
 		}
-		// Ordino la lista
-		//List<SoggiornoContextSubject> soggiorniFuturiOrdinati = this.ordinaInOrdineCronologico(soggiorniFuturi);
-		
 		return soggiorniFuturi;
-	}
-	/**
-	 * Metodo per ordinare i soggiorni di una lista in ordine cronologico da quello con giorno di inizio più vicino al giorno attuale, fino
-	 * a quello più lontano.
-	 * 
-	 * @param listaSoggiorniDaOrdinare Lista di soggiorni da ordinare.
-	 * @return Lista di soggiorni ordinati.
-	 */
-	private List<SoggiornoContextSubject> ordinaInOrdineCronologico(ArrayList<SoggiornoContextSubject> listaSoggiorniDaOrdinare) {
-		// Lista nella quale inserisco i soggiorni ordinati
-		LinkedList<SoggiornoContextSubject> listaSoggiorniOrdinata = new LinkedList<SoggiornoContextSubject>();
-		// Ciclo sulla lista dei soggiorni da ordinare.
-		for (Iterator<SoggiornoContextSubject> iterator = listaSoggiorniDaOrdinare.iterator(); iterator.hasNext();) {
-			// Generico elemento della lista da ordinare
-			SoggiornoContextSubject soggiornoDaOrdinare = (SoggiornoContextSubject) iterator.next();
-			// Controllo se la lista ordinata ha almeno un elemento
-			if (listaSoggiorniOrdinata.size()!=0) {
-				// Ciclo sulla lista ordinata.
-				for (int i = 0; i < listaSoggiorniOrdinata.size(); i++) {
-					// Generico elemento della lista ordinata
-					SoggiornoContextSubject soggiornoOrdinato = listaSoggiorniOrdinata.get(i);
-					// Giorno del soggiorno della lista ordinata in posizione i-esima.
-					Giorno giornoInizioSoggiornoOrdinato = soggiornoOrdinato.get_periodo().get_dataInizio();
-					// Recupero il giorno iniziale del soggiorno da inserire nella lista ordinata.
-					Giorno giornoInizioSoggiornoDaOrdinare = soggiornoDaOrdinare.get_periodo().get_dataInizio();
-					// Controllo se il giorno di inizio del soggiorno da ordinare è precedente a quello ordinato.
-					if (giornoInizioSoggiornoOrdinato.compara(giornoInizioSoggiornoDaOrdinare) > 0) {
-						// Recupero l'indice dell'elemento del soggiorno nella lista ordinata in analisi
-						listaSoggiorniOrdinata.add(i, soggiornoDaOrdinare);
-					}
-				}
-			} else {
-				// Primo elemento aggiunto alla lista.
-				listaSoggiorniOrdinata.add(soggiornoDaOrdinare);
-			}
-			
-		}
-		
-		return listaSoggiorniOrdinata;
 	}
 	/* --------------------------------- Getter, Setter ---------------------------------- */
 	
