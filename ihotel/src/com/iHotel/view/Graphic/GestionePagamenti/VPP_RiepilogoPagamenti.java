@@ -28,6 +28,7 @@ import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoList
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
 import com.iHotel.view.Event.GestionePrenotazione.TornaAllaPrenotazioneListener;
+import com.iHotel.view.Utility.UtoPanel;
 
 /**
  * Classe che ha il compito di visualizzare tutti i pagamenti effettuati per un soggiorno
@@ -197,21 +198,8 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		if (_pagamentiInContanti!=null){
 			for (Iterator<PagamentoInContanti> iterator = _pagamentiInContanti.iterator(); iterator
 					.hasNext();) {
-				PagamentoInContanti pagamentoInContanti = iterator.next();
-				//Creo una label per l'importo
-				JLabel labelImporto = _viewFactory.getLabel();
-				//Setto il testo della label
-				labelImporto.setText("Importo: "+String.valueOf(pagamentoInContanti.get_importo().get_importo())+ " "+ pagamentoInContanti.get_importo().get_valuta());
-				//Aggiungo la label al pannello insieme ad un separatore
-				panelContanti.add(labelImporto);
-				
-				//Creo una label per la data
-				JLabel labelData = _viewFactory.getLabel();
-				//Setto il testo
-				labelData.setText("Data pagamento in contanti: "+ pagamentoInContanti.get_data().get_giorno() + " - "+pagamentoInContanti.get_data().get_mese()+ " - "+pagamentoInContanti.get_data().get_anno());
-				//Aggiungo la label
-				panelContanti.add(labelData);
-				
+				PagamentoInContanti pagamentoInContanti = iterator.next();				
+				panelContanti.add(UtoPanel.getPanelPagamentoInContanti(pagamentoInContanti));					
 			}
 		}	
 		

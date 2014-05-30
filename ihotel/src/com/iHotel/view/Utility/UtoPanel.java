@@ -7,18 +7,16 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.ForeignSystem.PayTv.ServizioPayTv;
 import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Ora;
 import com.iHotel.model.Utility.Periodo;
-import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.Access.ViewFactory;
 
 /**
@@ -200,30 +198,33 @@ public class UtoPanel {
 		
 		return pnlLista;
 	}
+	
 	/**
+	 * Metodo che restituisce un pannello contenente un pagamento in contanti
 	 * 
-	 * @param prenotazione
-	 * @return
+	 * @param pagamentoInContanti che si vuole visualizzare
+	 * @return Pannello con le informazioni sul pagamento in contanti
 	 */
-	public static JPanel totalePrenotazioneToString(SoggiornoContextSubject prenotazione){
-		Prezzo importoTotalePrenotazione = prenotazione.get_importoTotaleCamere().somma(prenotazione.getPrezzoServiziInterni());
-		Prezzo importoTotalePrenotazioneConServizi = ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(prenotazione);
-		importoTotalePrenotazioneConServizi.somma(importoTotalePrenotazione);
-		//chiedo alla prenotazione quanto è il suo totale e la sua valuta
-		String totalePrenotazione = String.valueOf(importoTotalePrenotazioneConServizi.get_importo());
-		String totalePagato = String.valueOf(prenotazione.get_importoTotalePagamenti().get_importo());
+	public static JPanel getPanelPagamentoInContanti(PagamentoInContanti pagamentoInContanti){
+		/*Creo un pannello*/
+		JPanel panelContanti = ViewFactory.getInstance().getStyleFactory().getPanel(false);
+		/*Assegno il layout*/
+		panelContanti.setLayout(new BoxLayout(panelContanti, BoxLayout.Y_AXIS));
+		//Creo una label per l'importo
+		JLabel labelImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
+		//Setto il testo della label
+		labelImporto.setText("Importo: "+String.valueOf(pagamentoInContanti.get_importo().get_importo())+ " "+ pagamentoInContanti.get_importo().get_valuta());
+		//Aggiungo la label al pannello insieme ad un separatore
+		panelContanti.add(labelImporto);
 		
-		JPanel pnlPagamenti  = ViewFactory.getInstance().getStyleFactory().getPanel();
-		JLabel lblImportoTotale = ViewFactory.getInstance().getStyleFactory().getLabel();
-		JLabel lblImportoVersato = ViewFactory.getInstance().getStyleFactory().getLabel();
-		
-		lblImportoTotale.setText("Il totale della prenotazione è: " + totalePrenotazione);
-		lblImportoVersato.setText("L'importo già versato è: "+totalePagato);
-		
-		pnlPagamenti.add(lblImportoTotale);
-		pnlPagamenti.add(lblImportoVersato);
-		
-		return pnlPagamenti;
+		//Creo una label per la data
+		JLabel labelData =ViewFactory.getInstance().getStyleFactory().getLabel();
+		//Setto il testo
+		labelData.setText("Data pagamento in contanti: "+ pagamentoInContanti.get_data().get_giorno() + " - "+pagamentoInContanti.get_data().get_mese()+ " - "+pagamentoInContanti.get_data().get_anno());
+		//Aggiungo la label
+		panelContanti.add(labelData);
+		/*Restituisco il pannello*/
+		return panelContanti;
 	}
 
 }

@@ -6,8 +6,6 @@ package com.iHotel.controller;
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.ForeignSystem.ServiceFactory;
-import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Access.ViewPanelFactory;
 import com.iHotel.view.Graphic.GestioneSoggiorno.VPGP_InfoSoggiorno;
