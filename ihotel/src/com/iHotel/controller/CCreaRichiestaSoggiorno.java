@@ -135,6 +135,21 @@ public class CCreaRichiestaSoggiorno extends CModificaSoggiorno {
 		// Creo il frame
 		panelHome.creaPanel();
 	}
+	
+	/**
+	 * Metodo che permette di annullare la creazione di una prenotazione
+	 */
+	public void annullaRichiestaSoggiorno(){
+		// Recupero il frame dell'applicazione
+		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
+		// Creo il pannello successivo
+		VP_Home panelHome = new VP_Home();
+		// Assegno la prossima schermata al frame.
+		viewFrame.cambiaSchermata(panelHome);
+		// Creo il frame
+		panelHome.creaPanel();
+	}
+	
 	/* -------------------------- Getter, Setter -------------------- */
 	/**
 	 * @return _albergo

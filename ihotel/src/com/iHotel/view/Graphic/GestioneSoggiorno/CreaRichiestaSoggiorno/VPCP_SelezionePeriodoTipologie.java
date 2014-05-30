@@ -9,6 +9,7 @@ import java.util.HashMap;
 import javax.swing.*;
 
 import com.iHotel.view.ViewPanelContentPane;
+import com.iHotel.view.Event.GestionePrenotazione.AnnullaRichiestaSoggiorno;
 import com.iHotel.view.Event.GestionePrenotazione.CreaPrenotazione.RicercaCamereLibereListener;
 
 import net.sourceforge.jdatepicker.*;
@@ -154,7 +155,8 @@ public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
 		
 		//setto il testo del JButton btnIndietro
 		_btnIndietro.setText("Indietro");
-		//BISOGNA ASSEGNARE L'EVENTO
+		// Assegno l'eventListener al JButton btnIndietro
+		_btnIndietro.addMouseListener(new AnnullaRichiestaSoggiorno());
 		
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
