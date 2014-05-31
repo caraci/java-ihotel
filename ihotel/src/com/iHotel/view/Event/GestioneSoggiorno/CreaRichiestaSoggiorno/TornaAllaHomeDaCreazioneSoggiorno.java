@@ -12,7 +12,7 @@ import com.iHotel.controller.CCreaRichiestaSoggiorno;
  * @author Gabriele
  *
  */
-public class AnnullaRichiestaSoggiorno extends MouseAdapter {
+public class TornaAllaHomeDaCreazioneSoggiorno extends MouseAdapter {
 	/* --------------------- Metodi di instanza ------------------ */
 	/**
 	 * Con questo metodo si va a gestire l'evento relativo al click, per annullare la richiesta di soggiorno.
