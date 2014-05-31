@@ -1,6 +1,5 @@
 package com.iHotel.main;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.iHotel.model.Albergo.Storico;

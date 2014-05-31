@@ -88,8 +88,7 @@ public class Giorno {
 		return nuovoGiorno;
 	}
 	/**
-	 * @deprecated
-	 * toString.
+	 * Stringa contenente le informazioni del giorno.
 	 */
 	public String toString() {
 		return _giorno + "-" + _mese + "-" + _anno; 
