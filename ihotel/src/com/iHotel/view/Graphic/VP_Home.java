@@ -13,11 +13,11 @@ import javax.swing.JTabbedPane;
 
 import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Utility.Periodo;
 import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.CaricaGestionePrenotazioneFromDialogListener;
 import com.iHotel.view.Event.CaricaGestionePrenotazioneFromList;
-import com.iHotel.view.Utility.UtoPanel;
 
 /**
  * Classe addetta alla realizzazione della finestra iniziale dell'applicazione.
@@ -121,21 +121,10 @@ public class VP_Home extends ViewPanelContentPane {
     public JScrollPane getScrollPaneListaProssimi() {
     	// ScrollPane nel quale inserisco il pannello contenente la lista
     	JScrollPane scrollPaneListaSoggiorni = _viewFactory.getScrollPane();
-    	// Pannello contenente la lista
-    	JPanel panelListaSoggiorni = _viewFactory.getPanel(false);
-    	// Setto layout
-    	panelListaSoggiorni.setLayout(new BoxLayout(panelListaSoggiorni, BoxLayout.PAGE_AXIS));
     	// Chiedo allo storico la lista dei soggiorni futuri
     	List<SoggiornoContextSubject> soggiorniFuturi = _storico.recuperaSoggiorniFuturi();
-    	// Ciclo sui soggiorni forniti
-    	for (Iterator<SoggiornoContextSubject> iterator = soggiorniFuturi.iterator(); iterator.hasNext();) {
-			SoggiornoContextSubject soggiornoContextSubject = (SoggiornoContextSubject) iterator.next();
-			// Aggiungo il pannello contenente il generico elemento della lista al panelListaSoggiorni
-			panelListaSoggiorni.add(getPanelElementoListaSoggiorno(soggiornoContextSubject));
-		}
- 
-    	// Aggiungo il pannello allo scrollPane
-    	scrollPaneListaSoggiorni.setViewportView(panelListaSoggiorni);
+    	// Aggiungo il pannello contenente la lista dei soggiorni allo scrollPane
+    	scrollPaneListaSoggiorni.setViewportView(creaPanelListaSoggiorni(soggiorniFuturi));
     	
     	return scrollPaneListaSoggiorni;
     }
@@ -144,31 +133,45 @@ public class VP_Home extends ViewPanelContentPane {
 		// TODO Auto-generated method stub	
 	}
     /**
+     * Metodo per creare un pannello contenente la lista dei soggiorni forniti come parametro.
      * 
-     * @param soggiorno
-     * @return
+     * @param soggiorni Lista di soggiorni da visualizzare
+     * @return Pannello contenente la lista dei soggiorni richiesti.
      */
-    private JPanel getPanelElementoListaSoggiorno(SoggiornoContextSubject soggiorno) {
-    	JPanel panelElementoLista = _viewFactory.getPanel(false);
-    	// Setto layout
-    	panelElementoLista.setLayout(new GridLayout(1, 3, 0, 10));
-    	// Label codice
-    	JLabel lblCodice = _viewFactory.getLabel();
-    	lblCodice.setText(soggiorno.get_codice());
-    	// Panel periodo
-    	JPanel pnlPeriodo = UtoPanel.periodoToPanel(soggiorno.get_periodo());
-    	// Button carica
-    	JButton btnCaricaPrenotazione = _viewFactory.getButtonAvanti();
-    	btnCaricaPrenotazione.setText("Vedi");
-    	// Assegno il gestore dell'evento al bottone, passando il codice del soggiorno.
-    	btnCaricaPrenotazione.addMouseListener(new CaricaGestionePrenotazioneFromList(soggiorno.get_codice()));
+    private JPanel creaPanelListaSoggiorni(List<SoggiornoContextSubject> soggiorni) {
+    	// Pannello contenente la lista
+    	JPanel panelLista = _viewFactory.getPanel(false);
+    	// Setto layou lista
+    	panelLista.setLayout(new BoxLayout(panelLista, BoxLayout.PAGE_AXIS));
+    	// Ciclo sui soggiorni forniti
+    	for (Iterator<SoggiornoContextSubject> iterator = soggiorni.iterator(); iterator.hasNext();) {
+			SoggiornoContextSubject soggiorno = (SoggiornoContextSubject) iterator.next();
+			// Periodo soggiorno
+			Periodo periodoSoggiorno = soggiorno.get_periodo();
+			// panelSoggiorno
+			JPanel pnlSoggiorno = _viewFactory.getPanel(false);
+			// Setto layout
+			pnlSoggiorno.setLayout(new GridLayout(1, 3, 0, 0));
+			// Label codice
+	    	JLabel lblCodice = _viewFactory.getLabel();
+	    	lblCodice.setText(soggiorno.get_codice());
+	    	// Panel periodo
+	    	JLabel lblPeriodo = _viewFactory.getLabel();
+	    	lblPeriodo.setText("Da: " + periodoSoggiorno.get_dataInizio().toString() + " A: " + periodoSoggiorno.get_dataFine().toString());
+	    	// Button carica
+	    	JButton btnCaricaPrenotazione = _viewFactory.getButtonAvanti();
+	    	btnCaricaPrenotazione.setText("Vedi");
+	    	// Assegno il gestore dell'evento al bottone, passando il codice del soggiorno.
+	    	btnCaricaPrenotazione.addMouseListener(new CaricaGestionePrenotazioneFromList(soggiorno.get_codice()));
+	    	// Aggiungo elementi al pnlSoggiorno
+	    	pnlSoggiorno.add(lblCodice);
+	    	pnlSoggiorno.add(lblPeriodo);
+	    	pnlSoggiorno.add(btnCaricaPrenotazione);
+	    	// Aggiungo pnlSoggiorno a panelLista
+	    	panelLista.add(pnlSoggiorno);
+		}
     	
-    	// Aggiungo elementi al pannello
-    	panelElementoLista.add(lblCodice);
-    	panelElementoLista.add(pnlPeriodo);
-    	panelElementoLista.add(btnCaricaPrenotazione);
-    	
-    	return panelElementoLista;
+    	return panelLista;
     }
 	/**
 	 * Create the Panel.
