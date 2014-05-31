@@ -14,7 +14,7 @@ import com.iHotel.controller.CModificaSoggiorno;
  * 
  * @author Eugenio
  */
-public class TornaAllaPrenotazioneListener extends MouseAdapter {
+public class TornaAlSoggiornoDaInfoCameraListener extends MouseAdapter {
 	
 	/* ---------------- Metodi di instanza -------------------- */
 	/**

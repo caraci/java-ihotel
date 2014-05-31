@@ -27,7 +27,7 @@ import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
-import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestionePagamenti.TornaAlSoggiornoDaGestionePagamentiListener;
 import com.iHotel.view.Utility.UtoPanel;
 
 /**
@@ -164,7 +164,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		//Setto il testo del bottone
 		_btnTornaPrenotazione.setText("Torna alla prenotazione");
 		/*Aggiungo il listener al click sul pulsante*/
-		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneListener());
+		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaGestionePagamentiListener(_prenotazione));
 		// Aggiungo il bottone alla struttura.
 		Bottoni.put(0, _btnTornaPrenotazione);
 				

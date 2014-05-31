@@ -18,7 +18,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestioneSoggiorno.CheckIn.EffettuaCheckInListener;
-import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAlSoggiornoDaInfoCameraListener;
 
 /**
  * @author Eugenio
@@ -95,7 +95,7 @@ public class VPC_AggiungiOspiti extends ViewPanelContentPane {
 		// Button torna alla prenotazione.
 		_btnTornaPrenotazione.setText("Torna \n Prenotazione");
 		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
-		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneListener());
+		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaInfoCameraListener());
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
 		// Aggiungo il bottone alla struttura.

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import javax.swing.JButton;
 
 import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.AggiungiServiziListener;
-import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAlSoggiornoDaInfoCameraListener;
 
 /**
  * Classe che crea la schermata di un soggiorno terminato
@@ -30,7 +30,7 @@ public class VPGP_InfoCamera_SoggiornoTerminato extends VPGP_InfoCamera {
 		_btnTornaPrenotazione.setText("Torna alla prenotazione");
 		/*Aggiungo il listener al click sul bottone*/
 		_btnAggiungiServizi.addMouseListener(new AggiungiServiziListener());
-		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneListener());
+		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaInfoCameraListener());
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
 		// Aggiungo i bottoni alla struttura.

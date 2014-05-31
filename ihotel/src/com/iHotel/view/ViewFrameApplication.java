@@ -43,7 +43,7 @@ public class ViewFrameApplication extends JFrame {
 	/**
 	 * 
 	 */
-	private String _pathToIcon="./ihotel/configs/ihotel_Icon.jpg"; 
+	private String _pathToIcon="../../ihotel/configs/ihotel_Icon.jpg"; 
 	/**
 	 * Costruttore
 	 */

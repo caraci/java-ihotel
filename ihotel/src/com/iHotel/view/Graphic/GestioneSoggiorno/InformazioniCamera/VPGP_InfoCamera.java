@@ -28,7 +28,7 @@ import com.iHotel.model.ForeignSystem.PayTv.ServizioPayTv;
 import com.iHotel.model.ForeignSystem.Telephone.ServizioTelefono;
 import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.AggiungiServiziListener;
-import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAllaPrenotazioneListener;
+import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAlSoggiornoDaInfoCameraListener;
 import com.iHotel.view.Utility.UtoPanel;
 
 /**
@@ -268,7 +268,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 		_btnTornaPrenotazione.setText("Torna alla prenotazione");
 		/*Aggiungo il listener al click sul bottone*/
 		_btnAggiungiServizi.addMouseListener(new AggiungiServiziListener());
-		_btnTornaPrenotazione.addMouseListener(new TornaAllaPrenotazioneListener());
+		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaInfoCameraListener());
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
 		// Aggiungo i bottoni alla struttura.
