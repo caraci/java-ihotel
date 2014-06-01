@@ -64,6 +64,9 @@ public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
 	}
     /* ------------------------- Metodi di instanza ------------------------------- */
     @Override
+    /**
+     * Metodo che crea il il panelTop
+     */
     protected void creaPanelTop() {
     	// Layout PanelTop
     	_panelTop.setLayout(new BorderLayout(0, 0));
@@ -73,6 +76,9 @@ public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
 		_panelTop.add(_lblTitolo, BorderLayout.CENTER);
     }
     @Override
+    /**
+     * Metodo che crea il panelMiddle
+     */
     protected void creaPanelMiddle() {
     	// Setto il layout al panelMiddle
     	_panelMiddle.setLayout(new GridLayout(2, 1, 10, 10));
@@ -147,6 +153,9 @@ public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
 		return _panelBottomLeft;
 	}
 	@Override
+	/**
+	 * Metodo che crea il panelBottom
+	 */
 	protected void creaPanelBottom() {
 		// setto il testo del JButton btnAvanti
 		_btnAvanti.setText("Avanti");

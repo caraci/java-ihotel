@@ -11,6 +11,7 @@ import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.GestisciPag
 import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.TerminaModifichePrenotazione;
 
 /**
+ * Classe addetta alla realizzazione della finestra per mostrare le informazioni di un soggiorno terminato
  * @author Eugenio
  *
  */
@@ -25,11 +26,17 @@ public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
 	}
 	
 	@Override
+	/**
+	 * Metodo che setta la label contenente lo stato del soggiorno
+	 */
 	protected void setLblStatoSoggiorno(){
 		_lblStatoSoggiorno.setText("Soggiorno Terminato");
 	}
 	
 	@Override
+	/**
+	 * Metodo che crea il panelBottom
+	 */
 	protected void creaPanelBottom(){		
 		/*Setto il testo del bottone Gestione pagamenti*/
 		_btnGestionePagamenti.setText("Gestisci pagamenti");

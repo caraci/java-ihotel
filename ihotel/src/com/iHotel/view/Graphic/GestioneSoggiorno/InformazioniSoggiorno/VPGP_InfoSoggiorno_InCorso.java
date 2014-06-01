@@ -12,6 +12,8 @@ import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.GestisciPag
 import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.TerminaModifichePrenotazione;
 
 /**
+ * Classe addetta alla realizzazione della finestra per mostrare le informazioni di una prenotazione in corso
+ * 
  * @author Eugenio
  *
  */
@@ -28,10 +30,16 @@ public class VPGP_InfoSoggiorno_InCorso extends VPGP_InfoSoggiorno {
 		_btnCheckOut = _viewFactory.getButton();
 	}
 	@Override
+	/**
+	 * Metodo che setta la label contenente lo stato del soggiorno
+	 */
 	protected void setLblStatoSoggiorno(){
 		_lblStatoSoggiorno.setText("Soggiorno in corso");
 	}
 	@Override
+	/**
+	 * Metodo che crea il panel bottom
+	 */
 	protected void creaPanelBottom(){
 		/*Setto il testo del bottone checkin*/
 		_btnCheckOut.setText("CheckOut");

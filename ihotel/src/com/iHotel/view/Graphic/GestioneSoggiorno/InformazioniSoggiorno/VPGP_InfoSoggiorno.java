@@ -91,6 +91,9 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 	}
 	/* --------------------- Metodi di instanza ------------------------- */
 	@Override
+	/**
+	 * Metodo che crea il panelTop
+	 */
 	protected void creaPanelTop(){				
 		/*Setto il layout*/
 		_panelTop.setLayout(new GridLayout(1,2,5,5));
@@ -104,6 +107,9 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		
 	}
 	@Override
+	/**
+	 * Metodo che crea il panelMiddele
+	 */
 	protected void creaPanelMiddle(){		
 		//
 		_panelMiddle.setLayout(new GridLayout(1, 3, 5, 0));
@@ -120,6 +126,9 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		_lblStatoSoggiorno.setText("Soggiorno prenotato");
 	}
 	@Override
+	/**
+	 * Metodo che crea il panelBottom
+	 */
 	protected void creaPanelBottom(){
 		/*Setto il testo del bottone checkin*/
 		_btnCheckIn.setText("CheckIn");

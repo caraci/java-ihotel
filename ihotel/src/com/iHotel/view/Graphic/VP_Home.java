@@ -61,12 +61,17 @@ public class VP_Home extends ViewPanelContentPane {
 	}
 	
 	/* --------------------- Metodi di istanza ---------------------- */
-	
+	/**
+	 * Metodo per creare il pannello superiore della finestra
+	 */
     @Override
     protected void creaPanelTop(){
     	_lblInstructions.setText("Scegli l'operazione che vuoi fare.");
     	_panelTop.add(_lblInstructions);
     }
+    /**
+     * Metodo per creare il pannello centrale della finestra
+     */
     @Override
     protected void creaPanelMiddle(){
     	/*Setto il layout*/
