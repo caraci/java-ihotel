@@ -18,11 +18,13 @@ public class CatalogoCamere {
 	 */
 	private HashMap<String,DescrizioneCamera> _descrizioniCamere;
 	
-	// Attributo privato - Pattern Singleton
+	/**
+	 * Istanza unica di questa classe - Pattern Singleton
+	 */
 	private static CatalogoCamere instance = null;
 	
 	/**
-	 * Costruttore privato - pattern singleton
+	 * Costruttore privato - Pattern Singleton
 	 */
 	private CatalogoCamere() {
 		_descrizioniCamere=new HashMap<String,DescrizioneCamera>();
@@ -30,7 +32,7 @@ public class CatalogoCamere {
 	/* ---------------------------- Metodi di classe ----------------------------- */	
 	
 	/**
-	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
+	 * Metodo per ottenere l'istanza di questa classe - Pattern Singleton.
 	 */
 	public static CatalogoCamere getInstance() {
     	if(instance == null) {
@@ -43,7 +45,7 @@ public class CatalogoCamere {
 	/**
 	 * Metodo per ottenere le tipologie di camere presenti nel catalogo.
 	 * 
-	 * @return Tipologie di camere presenti nel catalogo
+	 * @return Tipologie di camere presenti nel catalogo.
 	 */
 	public Set<String> getTipologieCamere() {
 		return _descrizioniCamere.keySet();

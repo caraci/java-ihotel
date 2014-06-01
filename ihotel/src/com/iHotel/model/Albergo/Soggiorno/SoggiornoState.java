@@ -33,9 +33,9 @@ public abstract class SoggiornoState {
 	}
 	/* ------------------------- Metodi di istanza ----------------------------- */
 	/**
-	 * Metodo per ottenere il prezzo dei servizi interni di una prenotazione.
+	 * Metodo per ottenere il prezzo dei servizi interni di un soggiorno.
 	 * 
-	 * @return Prezzo dei servizi interni di una prenotazione.
+	 * @return Prezzo dei servizi interni di un soggiorno.
 	 */
 	public Prezzo getPrezzoServiziInterni() {
 		// Lista delle camere prenotate
@@ -52,31 +52,28 @@ public abstract class SoggiornoState {
 		return prezzoServiziInterni;
 	}
 	/**
-	 * Metodo per calcolare il totale delle camere una prenotazione
+	 * Metodo per calcolare il totale delle camere di un soggiorno.
 	 */
 	public void calcolaImportoTotaleCamere() {
-		DescrizioneCamera descrizione;
-		// Prendo l'ultima camera aggiunta.
-		Camera cameraPrenotata;
 		// Lista delle camere prenotate.
 		ArrayList<Camera> camerePrenotate = _soggiornoSubject.get_camerePrenotate();
 		// Prendo l'ultima camera aggiunta al soggiorno.
-		cameraPrenotata=camerePrenotate.get(camerePrenotate.size()-1);
+		Camera cameraPrenotata=camerePrenotate.get(camerePrenotate.size()-1);
 		// Prendo la tipologia e carico la giusta descrizione.
 		String tipologia=cameraPrenotata.get_tipologia();
-		descrizione=CatalogoCamere.getInstance().getDescrizioneDaTipologia(tipologia);
+		DescrizioneCamera descrizione=CatalogoCamere.getInstance().getDescrizioneDaTipologia(tipologia);
 		// Periodo del soggiorno.
 		Periodo periodoSoggiorno = _soggiornoSubject.get_periodo();
-		// Importo totale per le camere del soggiorno
+		// Importo totale per le camere del soggiorno prima dell'aggiunta.
 		Prezzo importoTotaleCamere = _soggiornoSubject.get_importoTotaleCamere();
 		// Richiedo il prezzo totale nel periodo per la camera e lo sommo al totale.
 		importoTotaleCamere.somma(descrizione.calcolaPrezzoInPeriodo(periodoSoggiorno));
 		// Una volta calcolato il nuovo totale, mediante il pattern Observer, notifico a tutti gli osservatori il cambio
-		// di stato della prenotazione.
+		// di stato del soggiorno.
 		_soggiornoSubject.Notify();
 	}
 	/**
-	 * Metodo per aggiungere un pagamento alla prenotazione.
+	 * Metodo per aggiungere un pagamento al soggiorno.
 	 * 
 	 * @param pagamento Pagamento effettuato a favore del soggiorno.
 	 */
@@ -100,11 +97,9 @@ public abstract class SoggiornoState {
 	 */
 	public Prezzo calcolaImportoRimanenteDaPagare(){
 		/*Importo che rimane da pagare*/
-		Prezzo importoRimanenteDaPagare = calcolaCostoTotaleSoggiorno();
-				
+		Prezzo importoRimanenteDaPagare = calcolaCostoTotaleSoggiorno();			
 		/* Sottraggo i pagamenti effettuati*/
 		importoRimanenteDaPagare.sottrai(_soggiornoSubject.get_importoTotalePagamenti());	
-		
 		/*Restituisco l'importo che rimane da pagare*/
 		return importoRimanenteDaPagare;
 	}
@@ -130,11 +125,43 @@ public abstract class SoggiornoState {
 		/*Restituisco il prezzo totale della prenotazione*/
 		return costoSoggiorno;
 	}
+	/**
+	 * Metodo per aggiungere una camera al soggiorno.
+	 * 
+	 * @param camera Camera da aggiungere.
+	 */
 	public abstract void addCamera(Camera camera);
+	/**
+	 * Metodo per aggiungere il cliente prenotante al soggiorno.
+	 * 
+	 * @param nome Nome del cliente prenotante.
+	 * @param cognome Cognome del cliente prenotante.
+	 * @param eMail eMail del cliente prenotante.
+	 * @param telefono Telefono del cliente prenotante.
+	 */
 	public abstract void addPrenotante(String nome, String cognome, String eMail, String telefono);
+	/**
+	 * Metodo per occupare le camere riservate dal soggiorno.
+	 */
 	public abstract void occupaCamere();
+	/**
+	 * Metodo per completare la richiesta di soggiorno.
+	 * 
+	 * @param nome Nome del cliente prenotante.
+	 * @param cognome Cognome del cliente prenotante.
+	 * @param eMail eMail del cliente prenotante.
+	 * @param telefono Telefono del cliente prenotante.
+	 */
 	public abstract void concludiPrenotazione(String nome, String cognome, String eMail, String telefono);
+	/**
+	 * Metodo per effettuare il check in dei clienti del soggiorno.
+	 * @return Stato successivo del soggiorno.
+	 */
 	public abstract SoggiornoState effettuaCheckIn();
+	/**
+	 * Metodo per effettuare il check out dei clienti del soggiorno.
+	 * @return Stato successivo del soggiorno.
+	 */
 	public abstract SoggiornoState effettuaCheckOut();
 	
 	

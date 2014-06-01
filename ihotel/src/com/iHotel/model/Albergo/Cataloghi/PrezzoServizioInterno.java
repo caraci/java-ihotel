@@ -12,8 +12,13 @@ import com.iHotel.model.Utility.*;
 public class PrezzoServizioInterno {
 
 	/* -------------------------- Attributi ----------------------------------- */
-	//Periodo di validità del prezzo
+	/**
+	 * Periodo in cui vale il prezzo.
+	 */
 	private Periodo _periodo;
+	/**
+	 * Prezzo per la camera.
+	 */
 	private Prezzo _prezzo;
 	/* -------------------------- Metodi di instanza ----------------------------------- */
 	

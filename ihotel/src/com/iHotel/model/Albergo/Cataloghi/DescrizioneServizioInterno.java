@@ -18,11 +18,25 @@ import com.iHotel.model.Utility.Prezzo;
 public class DescrizioneServizioInterno {
 	
 	/*-------------------------- Attributi --------------------------*/
+	/**
+	 * Codice del servizio interno.
+	 */
 	private String _codice;
+	/**
+	 * Nome del servizio interno.
+	 */
 	private String _nome;
+	/**
+	 * Breve descrizione del servizio interno.
+	 */
 	private String _descrizione;
+	/**
+	 * Lista dei prezzi associati a questo descrittore.
+	 */
 	private LinkedList<PrezzoServizioInterno> _prezziServizio;
-	
+	/**
+	 * Costruttore
+	 */
 	public DescrizioneServizioInterno() {
 		_prezziServizio=new LinkedList<PrezzoServizioInterno>();
 	}

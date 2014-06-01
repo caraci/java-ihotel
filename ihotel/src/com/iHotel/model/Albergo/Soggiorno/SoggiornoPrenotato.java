@@ -16,8 +16,9 @@ import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.StrategiaSoggiornoGior
 import com.iHotel.model.Utility.Periodo;
 
 /**
+ * Questa classe rappresenta lo stato del soggiorno in seguito alla sua prenotazione.
+ * 
  * @author Gabriele
- *
  */
 public class SoggiornoPrenotato extends SoggiornoState {
 
@@ -25,7 +26,6 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		super(soggiornoSubject);
 		// TODO Auto-generated constructor stub
 	}
-
 
 	@Override
 	public void addCamera(Camera camera) {
@@ -56,7 +56,7 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		for (Iterator<Camera> iterator = camerePrenotante.iterator(); iterator.hasNext();) {
 			Camera cameraPrenotata = (Camera) iterator.next();
 			// Occupo la camera nel periodo
-			cameraPrenotata.occupaInPeriodoState(periodoSoggiorno);
+			cameraPrenotata.occupaInPeriodo(periodoSoggiorno);
 		}
 	}
 

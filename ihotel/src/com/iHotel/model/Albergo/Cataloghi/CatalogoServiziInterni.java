@@ -15,17 +15,19 @@ public class CatalogoServiziInterni {
 	 * del servizo interno. 
 	 **/
 	private HashMap<String,DescrizioneServizioInterno> _descrizioneServizi;
-	// Singleton
+	/**
+	 * Istanza unica di questa classe - Pattern Singleton
+	 */
 	private static CatalogoServiziInterni instance = null;
 	
 	/**
-	 * Costruttore privato - pattern Singleton
+	 * Costruttore privato - Pattern Singleton
 	 */
 	private CatalogoServiziInterni() {}
 	/* ------------------------- Metodi di classe ---------------------------- */
 	
 	/**
-	 * Metodo per ottenere l'instanza di questa classe - Pattern Singleton.
+	 * Metodo per ottenere l'istanza di questa classe - Pattern Singleton.
 	 */
 	public static CatalogoServiziInterni getInstance() {
     	if(instance == null) {
@@ -64,26 +66,7 @@ public class CatalogoServiziInterni {
 		}
 		return descrizioneServizioInterno;
 	}
-	
-	/**
-	 * Metodo per fornire il codice del servizio dal suo nome.
-	 * 
-	 * @param nomeServizio Nome del servizio.
-	 * @return Codice del servizio richiesto.
-	 */
-	public String getCodiceServizioDaNome(String nomeServizio) {
-		String codiceServizioRicercato = null;
-		// Ciclo sui descrittori
-		for (Iterator<String> iterator = _descrizioneServizi.keySet().iterator(); iterator.hasNext();) {
-			String codiceServizio = (String) iterator.next();
-			// Controllo se la stringa ricevuta come parametro è uguale al nome del descrittore.
-			if(_descrizioneServizi.get(codiceServizio).get_nome().equals(nomeServizio)) {
-				codiceServizioRicercato=codiceServizio;
-			}
-		}
-		return codiceServizioRicercato;
-	}
- 	
+	 	
 	/*--------------------------- Getter, Setter ---------------------------*/
 	/**
 	 * @return the _descrizioneServizi

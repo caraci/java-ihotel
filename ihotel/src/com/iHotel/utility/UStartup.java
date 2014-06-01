@@ -23,7 +23,7 @@ public class UStartup {
 	 * 
 	 * @return Catalogo delle camere.
 	 */
-	private static CatalogoCamere getCatalogoCamere() {
+	private static CatalogoCamere inizializzaCatalogoCamere() {
 		// Recupero il catalogo delle camere attraverso pattern Singleton
 		CatalogoCamere catalogoCamere = CatalogoCamere.getInstance();
 		// Setto gli attributi del catalogoCamere
@@ -36,7 +36,7 @@ public class UStartup {
 	 * 
 	 * @return Catalogo dei servizi interni.
 	 */
-	private static CatalogoServiziInterni getCatalogoServiziInterni() {
+	private static CatalogoServiziInterni inizializzaCatalogoServiziInterni() {
 		// Recupero il catalogo dei servizi attraverso pattern Singleton
 		CatalogoServiziInterni catalogoServiziInterni = CatalogoServiziInterni.getInstance();
 		// Setto gli attributi del CatalogoServiziInterni
@@ -49,7 +49,7 @@ public class UStartup {
 	 * 
 	 * @return Storico delle prenotazioni dell'albergo.
 	 */
-	private static Storico getStorico() {
+	private static Storico inizializzaStorico() {
 		// Recupero lo storico attraverso pattern Singleton
 		Storico storico = Storico.getInstance();
 		// Setto gli attributi dello storico.
@@ -66,17 +66,14 @@ public class UStartup {
 			Albergo albergo = Albergo.getInstance();
 			// Setto gli attributi dell'albergo
 			albergo.set_camere(PCamera.getInstance().caricaCamere());
-			albergo.set_catalogoServizi(getCatalogoServiziInterni());
-			albergo.set_catalogoCamere(getCatalogoCamere());	
-			albergo.set_storico(getStorico());
+			inizializzaCatalogoServiziInterni();
+			inizializzaCatalogoCamere();	
+			inizializzaStorico();
 		} catch (Exception e) {
 			// Mediante pattern singleton carico Albergo.
 			Albergo albergo = Albergo.getInstance();
 			// Setto tutti gli attributi a null.
 			albergo.set_camere(null);
-			albergo.set_catalogoServizi(null);
-			albergo.set_catalogoCamere(null);	
-			albergo.set_storico(null);
 		}
 	}
 }

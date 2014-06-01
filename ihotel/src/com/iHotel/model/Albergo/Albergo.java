@@ -3,30 +3,40 @@ package com.iHotel.model.Albergo;
 import java.util.*;
 
 import com.iHotel.model.Albergo.Camera.Camera;
-import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
-import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.utility.ULeggiDaFile;
 
 /**
  * Questa classe rappresenta il concetto di "Albergo" del mondo reale.
+ * 
  * @author Alessandro
- *
  */
 public class Albergo {
     
 	/* -------------------- Attributi e costruttore --------------------------*/
-	
- 	private CatalogoCamere _catalogoCamere;
- 	private CatalogoServiziInterni _catalogoServiziInterni;
- 	private Storico _storico;
+	/**
+	 * Lista delle camere dell'albergo.
+	 */
 	private ArrayList<Camera> _camere;
-	
+	/**
+	 * Nome dell'albergo.
+	 */
 	private String _nome;
+	/**
+	 * Telefono dell'albergo.
+	 */
 	private String _telefono;
+	/**
+	 * Partita IVA dell'albergo.
+	 */
 	private String _PIVA;
+	/**
+	 * eMail dell'albergo.
+	 */
 	private String _eMail;
-	// Attributo privato - Pattern Singleto 
+	/**
+	 * Istanza unica di questa classe - Pattern Singleton.
+	 */
 	private static Albergo instance = null;
 	
 	
@@ -48,8 +58,7 @@ public class Albergo {
 	
 	/* ----------------------------- Metodi di classe -----------------------*/
 	/**
-	 * Metodo per ottenere l'unica instanza di questa classe - Pattern Singleton
-	 * @return instance
+	 * Metodo per ottenere l'unica instanza di questa classe - Pattern Singleton.
 	 */
 	public static Albergo getInstance() {
     	if(instance == null) {
@@ -59,7 +68,7 @@ public class Albergo {
     }
 	/* -------------------- Metodi di instanza ----------------------*/
 	/**
-	 * Metodo per ricavare l'oggetto MCamera a partire dalla stringa contenente il suo numero.
+	 * Metodo per ricavare la camera a partire dalla stringa contenente il suo numero.
 	 * 
 	 * @param numeroCamera Stringa contenente il numero della camera da ricavare.
 	 * @return cameraRicercata Camera che ha il numero passato come parametro.
@@ -120,48 +129,6 @@ public class Albergo {
 	}
 
 	/*---------------------- Getter e Setter --------------------*/
-	/**
-	 * @return _catalogoCamere
-	 */
-	public CatalogoCamere get_catalogoCamere() {
-		return _catalogoCamere;
-	}
-
-	/**
-	 * @param _catalogoCamere 
-	 */
-	public void set_catalogoCamere(CatalogoCamere _catalogoCamere) {
-		this._catalogoCamere = _catalogoCamere;
-	}
-
-
-	/**
-	 * @return the _catalogoServizi
-	 */
-	public CatalogoServiziInterni get_catalogoServizi() {
-		return _catalogoServiziInterni;
-	}
-
-	/**
-	 * @param _catalogoServizi the _catalogoServizi to set
-	 */
-	public void set_catalogoServizi(CatalogoServiziInterni _catalogoServizi) {
-		this._catalogoServiziInterni = _catalogoServizi;
-	}
-
-	/**
-	 * @return the _storico
-	 */
-	public Storico get_storico() {
-		return _storico;
-	}
-
-	/**
-	 * @param _storico the _storico to set
-	 */
-	public void set_storico(Storico _storico) {
-		this._storico = _storico;
-	}
 
 	/**
 	 * @return _camere

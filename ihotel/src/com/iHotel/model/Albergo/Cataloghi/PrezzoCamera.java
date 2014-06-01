@@ -13,16 +13,21 @@ import com.iHotel.model.Utility.Prezzo;
 public class PrezzoCamera {
 
 	/* -------------------------- Attributi ------------------------------- */
-	//Periodo di validità del prezzo
+	/**
+	 * Periodo in cui vale il prezzo.
+	 */
 	private Periodo _periodo;
+	/**
+	 * Prezzo per la camera.
+	 */
 	private Prezzo _prezzo;
 	
 	/* ---------------------- Metodi di instanza --------------------------- */ 
 	/**
-	 * Metodo per farsi restituire un PrezzoCamera, se il periodo passato come parametro, ha almeno un giorno in comune 
+	 * Metodo per farsi restituire l'oggetto su cui si invoca il metodo, se il periodo passato come parametro, ha almeno un giorno in comune 
 	 * con quello relativo all'oggetto su cui si invoca il metodo.
 	 * 
-	 * @param periodo Periodo per il quale si vuole ottenere l' MPrezzoCamera corretto.
+	 * @param periodo Periodo per il quale si vuole ottenere  il PrezzoCamera corretto.
 	 * @return Prezzo relativo al periodo richiesto.
 	 */
 	public PrezzoCamera getPrezzoInPeriodo(Periodo periodo){

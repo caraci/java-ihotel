@@ -19,7 +19,13 @@ public class Camera {
 	 * Stati della camera.
 	 */
 	private LinkedList<StatoCamera> _statiCameraState;
+	/**
+	 * Numero della camera.
+	 */
 	private String _numero;
+	/**
+	 * Tipologia della camera.
+	 */
 	private String _tipologia;
 	/**
 	 * Costruttore.
@@ -32,7 +38,7 @@ public class Camera {
 	 * Metodo per aggiungere un ospite alla camera in un determinato periodo.
 	 * 
 	 * @param ospite Ospite da aggiungere.
-	 * @param periodo Periodo in cui aggiungere il servizio.
+	 * @param periodo Periodo in cui aggiungere l'ospite.
 	 */
 	public void aggiungiOspiteInPeriodo(Ospite ospite, Periodo periodo) {
 		// Prendo il giusto statoCamera in base al periodo.
@@ -41,7 +47,7 @@ public class Camera {
 		statoCamera.aggiungiOspite(ospite);
 	}
 	/**
-	 * Metodo per aggiungere un servizio alla camera in un determinato periodo.
+	 * Metodo per aggiungere un servizio interno alla camera in un determinato periodo.
 	 * 
 	 * @param servizio Servizio da aggiungere.
 	 * @param periodo Periodo in cui aggiungere il servizio.
@@ -67,6 +73,7 @@ public class Camera {
 				prezzo=cameraState.getPrezzoTotaleServizi(periodo);
 			}
 		}
+		
 		return prezzo;
 	}
 	/**
@@ -90,7 +97,7 @@ public class Camera {
 	 *  
 	 * @param periodo Periodo in cui si vuole occupare la camera.
 	 */
-	public void occupaInPeriodoState(Periodo periodo) {
+	public void occupaInPeriodo(Periodo periodo) {
 		// Lista degli stati camera che vengono restituiti dallo stato della camera
 		List<StatoCamera> statiCameraDopoOccupazione;
 		// Ciclo su tutti gli stati della camera

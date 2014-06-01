@@ -6,8 +6,9 @@ package com.iHotel.model.Albergo.Soggiorno;
 import com.iHotel.model.Albergo.Camera.Camera;
 
 /**
+ * Questa classe rappresenta lo stato del soggiorno in seguito al checkOut.
+ * 
  * @author Gabriele
- *
  */
 public class SoggiornoTerminato extends SoggiornoState {
 

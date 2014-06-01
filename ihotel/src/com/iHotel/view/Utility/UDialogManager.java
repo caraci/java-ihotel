@@ -19,7 +19,6 @@ import javax.swing.UIManager;
 import net.sourceforge.jdatepicker.JDateComponentFactory;
 import net.sourceforge.jdatepicker.JDatePicker;
 
-import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.ServizioInterno;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
@@ -232,7 +231,7 @@ public class UDialogManager extends JOptionPane {
 	public static ServizioInterno getDialogAggiungiServizioInterno(){
 		
 		/*Recupero i descrittori dei servizi offerti dall'albergo*/
-		HashMap<String,DescrizioneServizioInterno> descrizioniServizi = Albergo.getInstance().get_catalogoServizi().get_descrizioneServizi();
+		HashMap<String,DescrizioneServizioInterno> descrizioniServizi = CatalogoServiziInterni.getInstance().get_descrizioneServizi();
 		/*Combobox per mostrare la lista dei servizi*/
 		JComboBox<String> comboBoxServizi= new JComboBox<>();
 		/*TextArea per aggiungere note*/

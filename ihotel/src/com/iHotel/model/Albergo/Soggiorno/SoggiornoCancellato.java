@@ -6,8 +6,8 @@ package com.iHotel.model.Albergo.Soggiorno;
 import com.iHotel.model.Albergo.Camera.Camera;
 
 /**
+ * Questa classe rappresenta lo stato di un soggiorno che viene cancellato.
  * @author Gabriele
- *
  */
 public class SoggiornoCancellato extends SoggiornoState {
 

@@ -11,11 +11,7 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 /**
- * Questa classe rappresenta il concetto di "Prenotazione" di una stanza d'albergo del mondo reale. 
- * Poichè per necessità di design era necessario aggiornare alcuni oggetti software in seguito al cambiamento di uno degli 
- * attributi di un'oggetto di questa classe (e.g.: si aggiunge una camera alla prenotazione, deve essere notificato un 
- * cambiamento di prezzo all'operatore che si trova davanti al pc) questa classe è stata realizzata sfruttando il design
- * pattern "Observer". In particolare implementa la classe ISubject.
+ * Questa classe rappresenta il concetto di "Soggiorno" di un'albergo del mondo reale.
  * 
  * @author Alessandro
  */
@@ -36,8 +32,8 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	 */
 	private ArrayList<Pagamento> _pagamenti;
 	/**
-	 * Il periodo della prenotazione va dal giorno in cui l'ospite inizia il soggiorno, al giorno in cui l'ospite 
-	 * termina il soggiorno e lascia la struttura ricettiva.
+	 * Il periodo del soggiorno va dal giorno in cui l'ospite effettua il checkIn, al giorno in cui l'ospite 
+	 * effettua il checkOut, lasciando la struttura ricettiva.
 	 */
 	private Periodo _periodo;
 	/**
@@ -84,9 +80,9 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	
 	/* ----------------------------------- Metodi di classe ------------------------------------------- */
 	/**
-	 * Metodo per generare il codice della prenotazione.
+	 * Metodo per generare il codice del soggiorno.
 	 * 
-	 * @return Codice della prenotazione, legato al timestamp del sistema.
+	 * @return Codice del soggiorno, legato al timestamp del sistema.
 	 */
 	public static String generaCodice(){
 		long codice;
@@ -113,10 +109,20 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 		}
 	}
 	/* ------------ /Pattern Observer -------- */
+	@Override
+	public int compareTo(SoggiornoContextSubject s) {
+		// Giorno iniziale dell'istanza.
+		Giorno g1=this.get_periodo().get_dataInizio();
+		// Giorno iniziale del soggiorno passato come parametro.
+		Giorno g2=s.get_periodo().get_dataInizio();
+		int esito = g1.compara(g2);
+		
+		return esito;
+	}
 	/**
-	 * Metodo per ottenere il prezzo dei servizi interni di una prenotazione.
+	 * Metodo per ottenere il prezzo dei servizi interni di un soggiorno.
 	 * 
-	 * @return Prezzo dei servizi interni di una prenotazione.
+	 * @return Prezzo dei servizi interni di un soggiorno.
 	 */
 	public Prezzo getPrezzoServiziInterni(){
 		// Passo la richiesta allo stato attuale
@@ -125,14 +131,14 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 		return prezzoServiziInterni;
 	}
 	/**
-	 * Metodo per calcolare il totale delle camere di una prenotazione
+	 * Metodo per calcolare il totale delle camere di un soggiorno.
 	 */
 	public void calcolaImportoTotaleCamere(){
 		// Passo la richiesta allo stato attuale
 		_soggiornoState.calcolaImportoTotaleCamere();
 	}
 	/**
-	 * Metodo che calcola la differenza tra l'importo totale della prenotazione (comprensivo di prezzo di
+	 * Metodo che calcola la differenza tra l'importo totale del soggiorno (comprensivo di prezzo di
 	 * camere, servizi interni ed esterni) e l'importo già versato (con uno o più versamenti)
 	 */
 	public Prezzo calcolaImportoRimanenteDaPagare(){
@@ -140,9 +146,9 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 		return _soggiornoState.calcolaImportoRimanenteDaPagare();
 	}
 	/**
-	 * Metodo per aggiungere una camera alla prenotazione.
+	 * Metodo per aggiungere una camera al soggiorno.
 	 * 
-	 * @param camera Camera da aggiungere alla prenotazione.
+	 * @param camera Camera da aggiungere al soggiorno.
 	 */
 	public void addCamera(Camera camera) {
 		// Passo la richiesta allo stato attuale
@@ -161,14 +167,14 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 		_soggiornoState.addPrenotante(nome, cognome, eMail, telefono);
 	}
 	/**
-	 * Metodo per occupare le camere della prenotazione.
+	 * Metodo per occupare le camere del soggiorno.
 	 */
 	public void occupaCamere() {
 		// Passo la richiesta allo stato attuale
 		_soggiornoState.occupaCamere();
 	}
 	/**
-	 * Metodo per aggiungere un pagamento alla prenotazione.
+	 * Metodo per aggiungere un pagamento al soggiorno.
 	 * 
 	 * @param pagamento Pagamento effettuato a favore del soggiorno.
 	 */
@@ -209,7 +215,6 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 		System.out.print(_soggiornoState.getClass().getSimpleName());
 		
 	}
-	
 	/**
 	 * Metodo che calcola il costo totale del soggiorno comprensivo di totale camere, totale servizi
 	 * interni e totale servizi esterni
@@ -357,14 +362,5 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	 */
 	public void set_importoTotalePagamenti(Prezzo _importoTotalePagamenti) {
 		this._importoTotalePagamenti = _importoTotalePagamenti;
-	}
-
-	@Override
-	public int compareTo(SoggiornoContextSubject s) {
-		// TODO Auto-generated method stub
-		Giorno g1=this.get_periodo().get_dataInizio();
-		Giorno g2=s.get_periodo().get_dataInizio();
-		int esito = g1.compara(g2);
-		return esito;
 	}
 }

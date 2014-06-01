@@ -7,8 +7,8 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Pagamento.Pagamento;
 
 /**
+ * Questa classe rappresenta lo stato del soggiorno successivo al check in.
  * @author Gabriele
- *
  */
 public class Soggiorno extends SoggiornoState {
 

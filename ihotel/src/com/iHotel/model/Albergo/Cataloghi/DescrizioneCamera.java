@@ -16,8 +16,13 @@ import com.iHotel.model.Utility.Prezzo;
 public class DescrizioneCamera {
 
 	/* -------------------------- Attributi -------------------------------------- */
-	
+	/**
+	 * Lista dei prezzi della tipologia di camera descritta.
+	 */
 	private ArrayList<PrezzoCamera> _prezziCamera;
+	/**
+	 * Tipologia di camera che si descrive.
+	 */
 	private String _tipologia;
 	/**
 	 * Costruttore.
