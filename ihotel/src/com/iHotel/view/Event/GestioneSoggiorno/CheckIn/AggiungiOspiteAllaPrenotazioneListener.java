@@ -23,6 +23,7 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti_PanelCamera;
 
 /**
+ * Classe addetta alla gestione dell'evento per aggiungere un ospite alla prenotazione.
  * @author Eugenio
  *
  */
