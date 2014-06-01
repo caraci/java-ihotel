@@ -6,14 +6,24 @@ package com.iHotel.model.Utility;
 import java.util.Calendar;
 
 /**
+ * Classe che modella un giorno nel formato giorno-mese-anno
  * @author Eugenio
  *
  */
 public class Giorno {
 	
 	/* ----------------------------------------- Attributi e costruttore ------------------------------------- */
+	/**
+	 * Giorno
+	 */
 	private int _giorno;
+	/**
+	 * Mese
+	 */
 	private int _mese;
+	/**
+	 * Anno
+	 */
 	private int _anno;
 
 	/**

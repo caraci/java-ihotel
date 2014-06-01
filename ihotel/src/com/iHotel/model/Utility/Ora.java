@@ -11,13 +11,25 @@ package com.iHotel.model.Utility;
 public class Ora {
 	
 	/*Attributi e costruttore*/
+	/**
+	 * Ore
+	 */
 	private int ore;
+	/**
+	 * Minuti
+	 */
 	private int minuti;
 	
-	//Costruttore di default
+	/**
+	 * Costruttore di default
+	 */
 	public Ora(){}
 	
-	/*Costruttore di default*/
+	/**
+	 * Costruttore con parametri
+	 * @param ore 
+	 * @param minuti
+	 */
 	public Ora(int ore, int minuti){
 		this.setOre(ore);
 		this.setMinuti(minuti);

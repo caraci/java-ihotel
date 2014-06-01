@@ -28,7 +28,7 @@ public class Prezzo {
 	}
 	
 	/**
-	 * Costruttore.
+	 * Costruttore con parametri.
 	 * 
 	 * @param quantita E' la quantità del pagamento.
 	 */

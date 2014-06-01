@@ -11,9 +11,18 @@ import java.util.Calendar;
 public class Periodo {
 
 	/* ----------------------------------------- Attributi e costruttore ------------------------------------- */
+	/**
+	 * Giorno di inizio del periodo
+	 */
 	private Giorno _dataInizio;
+	/**
+	 * Giorno di fine del periodo
+	 */
 	private Giorno _dataFine;
 	
+	/**
+	 * Costruttore di default
+	 */
 	public Periodo() {}
 	/**
 	 * Costruttore della classe Periodo.
