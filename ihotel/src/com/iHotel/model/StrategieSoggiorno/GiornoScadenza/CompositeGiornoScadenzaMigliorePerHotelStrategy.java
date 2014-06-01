@@ -10,6 +10,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 
 /**
+ * Classe strategia composta concreta, per il calcolo del giorno entro cui versare la caparra, migliore per l'albergo.
  * @author Eugenio
  *
  */

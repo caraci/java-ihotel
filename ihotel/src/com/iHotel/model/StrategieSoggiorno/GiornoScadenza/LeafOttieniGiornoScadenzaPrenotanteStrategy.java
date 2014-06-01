@@ -11,6 +11,8 @@ import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Utility.Giorno;
 
 /**
+ * Classe strategia semplice che implementa l'algoritmo per il calcolo del giorno di scadenza entro cui versare
+ * la caparra in base al numero di prenotazioni che il cliente ha effettuato in passato.
  * @author Eugenio
  *
  */

@@ -10,9 +10,18 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
  * @author Eugenio
  */
 public class VincoloStrategiaDurataSoggiornoGiornoScadenza {
-
+	/**
+	 * Numero minimo di notti per cui vale questo vincolo.
+	 */
 	private int _numeroNottiMin;
+	/**
+	 * Numero massimo di notti per cui vale questo vincolo.
+	 */
 	private int _numeroNottiMax;
+	/**
+	 * Numero di giorni, antecedenti all'inizio del soggiorno, entro cui bisogna ricevere 
+	 * la caparra dal cliente
+	 */
 	private int _quantiGiorniPrimaRichiedere;
 	
 	/**

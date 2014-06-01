@@ -11,6 +11,7 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 
 /**
+ * Classe strategia semplice per il calcolo del giorno entro cui versare la caparra, in base alla durata del soggiorno.
  * @author Eugenio
  *
  */

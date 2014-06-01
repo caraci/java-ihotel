@@ -9,6 +9,8 @@ import java.util.Iterator;
 import com.iHotel.utility.ULeggiDaFileStrategieSoggiornoGiornoScadenza;
 
 /**
+ * Classe che ha la responsabilità di istanziare un oggetto strategia per il calcolo del giorno entro cui versare la caparra,
+ * sulla base delle politiche aziendali.
  * @author Eugenio
  *
  */
@@ -34,7 +36,7 @@ public class StrategiaSoggiornoGiornoScadenzaFactory {
 	}
 	/* -------------------- Metodi di istanza ---------------------- */
 	/**
-	 * Metodo per ottenere la strategia, per il calcolo del giorno di scadenza per l'invio della garanzia
+	 * Metodo pubblico per ottenere la strategia, per il calcolo del giorno di scadenza per l'invio della garanzia
 	 * alla richiesta di soggiorno, da parte del prenotante.
 	 * 
 	 * @return Strategia per calcolare il giorno.

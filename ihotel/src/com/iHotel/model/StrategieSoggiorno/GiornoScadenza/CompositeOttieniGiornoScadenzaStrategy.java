@@ -9,6 +9,8 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 
 /**
+ * Classe astratta, della gerarchia delle strategie per il calcolo del giorno di scadenza entro cui versare la caparra,
+ * a capo della gerarchia di classi strategie composite.
  * @author Eugenio
  *
  */

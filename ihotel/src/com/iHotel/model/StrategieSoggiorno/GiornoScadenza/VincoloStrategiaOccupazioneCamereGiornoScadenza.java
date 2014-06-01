@@ -10,9 +10,18 @@ package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
  * @author Eugenio
  */
 public class VincoloStrategiaOccupazioneCamereGiornoScadenza {
-
+	/**
+	 * Numero minimo di camere libere nella struttura per questo vincolo
+	 */
 	private int _numeroCamereLibereMin;
+	/**
+	 * Numero massimo di camere libere nella struttura per questo vincolo
+	 */
 	private int _numeroCamereLibereMax;
+	/**
+	 * Numero di giorni, antecedenti all'inizio del soggiorno, entro cui bisogna ricevere 
+	 * la caparra dal cliente
+	 */
 	private int _quantiGiorniPrimaRichiedere;
 	
 	/**

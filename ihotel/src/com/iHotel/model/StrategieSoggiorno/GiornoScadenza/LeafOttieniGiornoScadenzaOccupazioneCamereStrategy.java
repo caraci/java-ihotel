@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
 
-/**
+/**Classe strategia semplice per il calcolo del giorno di scadenza entro cui versare la caparra, in base all'occupazione
+ * delle camere nel periodo di soggiorno
  * @author Eugenio
  *
  */
