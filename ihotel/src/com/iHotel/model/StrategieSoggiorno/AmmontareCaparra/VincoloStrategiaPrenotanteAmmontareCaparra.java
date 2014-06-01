@@ -10,9 +10,17 @@ package com.iHotel.model.StrategieSoggiorno.AmmontareCaparra;
  * @author Eugenio
  */
 public class VincoloStrategiaPrenotanteAmmontareCaparra {
-
+	/**
+	 * Numero minimo di prenotazioni, da parte dello stesso prenotante, per cui vale il vincolo
+	 */
 	private int _numeroPrenotazioniMin;
+	/**
+	 * Numero minimo di prenotazioni, da parte dello stesso prenotante, per cui vale il vincolo
+	 */
 	private int _numeroPrenotazioniMax;
+	/**
+	 * Percentuale, sul totale del soggiorno, da richiedere come caparra
+	 */
 	private int _percentualeDaRichiedere;
 	/**
 	 * Costruttore.

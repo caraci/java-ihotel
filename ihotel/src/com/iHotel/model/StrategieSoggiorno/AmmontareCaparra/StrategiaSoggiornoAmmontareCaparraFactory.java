@@ -9,6 +9,7 @@ import java.util.Iterator;
 import com.iHotel.utility.ULeggiDaFileStrategieSoggiornoAmmontareCaparra;
 
 /**
+ * Classe che ha il compito di istanziare un oggetto strategia sulla base delle politiche aziendali.
  * @author Eugenio
  *
  */
@@ -34,8 +35,7 @@ public class StrategiaSoggiornoAmmontareCaparraFactory {
 	}
 	/* -------------------- Metodi di istanza ---------------------- */
 	/**
-	 * Metodo per ottenere la strategia, per il calcolo del giorno di scadenza per l'invio della garanzia
-	 * alla richiesta di soggiorno, da parte del prenotante.
+	 * Metodo pubblico per ottenere la strategia per il calcolo dell'ammontare della caparra.
 	 * 
 	 * @return Strategia per calcolare il giorno.
 	 */
@@ -50,11 +50,11 @@ public class StrategiaSoggiornoAmmontareCaparraFactory {
 			// Ricavo la strategia corretta in base al nome fornito e l'aggiungo alla composizione.
 			componentStrategy.addStrategy(getLeafStrategyFromName(nomeStrategia));
 		}
-		
+		//Restituisco la strategia
 		return componentStrategy;
 	}
 	/**
-	 * Metodo per ottenere la strategia per il calcolo dell'ammontare della caparra, tenendo conto della durata del soggiorno.
+	 * Metodo privato per ottenere la strategia per il calcolo dell'ammontare della caparra, tenendo conto della durata del soggiorno.
 	 * 
 	 * @return Strategia relativa alla durata del soggiorno per il calcolo dell'ammontare della caparra.
 	 */
@@ -67,7 +67,7 @@ public class StrategiaSoggiornoAmmontareCaparraFactory {
 		return leafStrategyDurataSoggiorno;
 	}
 	/**
-	 * Metodo per ottenere la strategia per il calcolo dell'ammontare della caparra, tenendo conto del prenotante.
+	 * Metodo privato per ottenere la strategia per il calcolo dell'ammontare della caparra, tenendo conto del prenotante.
 	 * 
 	 * @return Strategia relativa al prenotante per il calcolo dell'ammontare della caparra.
 	 */
@@ -80,7 +80,7 @@ public class StrategiaSoggiornoAmmontareCaparraFactory {
 		return leafStrategyPrenotante;
 	}
 	/**
-	 * Metodo per ottenere la strategia corretta a partire dal nome fornito.
+	 * Metodo privato per ottenere la strategia corretta a partire dal nome fornito.
 	 * 
 	 * @param nomeStrategia Nome della strategia che si vuole istanziare.
 	 * @return Strategia ricercata.

@@ -11,6 +11,8 @@ import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
+ * Classe strategia semplice, che ha il compito di calcolare l'ammontare della caparra in base alle
+ * prenotazioni effettuate in precedenza dal prenotante.
  * @author Eugenio
  *
  */
