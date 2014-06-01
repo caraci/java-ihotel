@@ -11,6 +11,7 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
+ * Classe di strategia semplice che calcola l'ammontare della caparra sulla base della durata del soggiorno.
  * @author Eugenio
  *
  */

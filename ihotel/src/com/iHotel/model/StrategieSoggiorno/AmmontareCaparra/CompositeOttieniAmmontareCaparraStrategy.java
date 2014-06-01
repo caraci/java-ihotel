@@ -6,6 +6,8 @@ package com.iHotel.model.StrategieSoggiorno.AmmontareCaparra;
 import java.util.ArrayList;
 
 /**
+ * Classe astratta, facente parte delle strategie per calcolare l'ammontare della caparra,
+ * a capo della gerarchia di classi strategie composte.
  * @author Eugenio
  *
  */

@@ -9,6 +9,8 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
+ * Classe concreta, di tipo strategia composita, per il calcolo della caparra del soggiorno che sia più
+ * favorevole all'albergo che al cliente.
  * @author Eugenio
  *
  */
