@@ -3,6 +3,8 @@
  */
 package com.iHotel.model.Persona;
 
+import com.iHotel.model.Persona.Documenti.CartaDiCredito;
+
 /**
  * Classe che modella una persona che effettua una prenotazione
  * @author Alessandro
@@ -11,7 +13,8 @@ package com.iHotel.model.Persona;
 public class ClientePrenotante extends Cliente{
 	
 	/*Attributi e costruttore*/
-	private String _codiceCartaDiCredito;
+	
+	private CartaDiCredito _cartaDiCredito;
 	/**
 	 * eMail del prenotante.
 	 */
@@ -25,9 +28,12 @@ public class ClientePrenotante extends Cliente{
 	 */
 	private int _numeroPrenotazioni;
 	
-	//Costruttore di default
+	/**
+	 * Costruttore di deufalt. 
+	 */
 	public ClientePrenotante(){
 		set_numeroPrenotazioni(0);
+		set_cartaDiCredito(null);
 	}
 	
 	/**
@@ -38,27 +44,27 @@ public class ClientePrenotante extends Cliente{
 	 * @param codice Codice del cliente prenotante
 	 * @param email Email del cliente prenotante
 	 * @param telefono Telefono del cliente prenotante
-	 * @param codiceCartaDiCredito Codice della carta di credito del cliente prenotante
+	 * @param cartaDiCredito Carta di credito del cliente prenotante
 	 */
-	public ClientePrenotante(String nome, String cognome, String codice, String email, String telefono, String codiceCartaDiCredito){
+	public ClientePrenotante(String nome, String cognome, String codice, String email, String telefono, CartaDiCredito cartaDiCredito){
 		super(nome,cognome,codice);
 		this.set_email(email);
 		this.set_telefono(telefono);
-		this.set_codiceCartaDiCredito(codiceCartaDiCredito);
+		this.set_cartaDiCredito(cartaDiCredito);
 	}
 
 	/**
 	 * @return the _codiceCartaDiCredito
 	 */
-	public String get_codiceCartaDiCredito() {
-		return _codiceCartaDiCredito;
+	public CartaDiCredito get_codiceCartaDiCredito() {
+		return _cartaDiCredito;
 	}
 
 	/**
 	 * @param _codiceCartaDiCredito the _codiceCartaDiCredito to set
 	 */
-	public void set_codiceCartaDiCredito(String _codiceCartaDiCredito) {
-		this._codiceCartaDiCredito = _codiceCartaDiCredito;
+	public void set_cartaDiCredito(CartaDiCredito _cartaDiCredito) {
+		this._cartaDiCredito = _cartaDiCredito;
 	}
 	/**
 	 * @return the _email

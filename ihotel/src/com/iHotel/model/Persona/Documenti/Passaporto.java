@@ -12,16 +12,30 @@ import com.iHotel.model.Utility.Giorno;
  * @author Alessandro
  */
 public class Passaporto extends Documento {
-	
+	/**
+	 * Tipo di passaporto
+	 */
 	private String _tipo;
+	/**
+	 * Codice della nazione in cui si risiede
+	 */
 	private String _codicePaese;
+	/**
+	 * Sesso del titolare
+	 */
 	private String _sesso;
 	/**
 	 * In un passaporto possono essere riportate fino a 3 residenze
 	 */
 	private Residenza _residenza2;
 	private Residenza _residenza3;
+	/**
+	 * Statura del titolare
+	 */
 	private float _statura;
+	/**
+	 * Colore degli occhi del titolare
+	 */
 	private String _coloreOcchi;
 	
 	/**

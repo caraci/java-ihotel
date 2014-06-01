@@ -4,6 +4,7 @@
 package com.iHotel.model.Persona;
 
 /**
+ * Questa classe modella la residenza del mondo reale, con città e indirizzo.
  * @author Alessandro
  *
  */
