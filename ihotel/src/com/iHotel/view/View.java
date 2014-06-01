@@ -16,6 +16,7 @@ import com.iHotel.view.Access.StyleAbstractFactory;
 import com.iHotel.view.Access.ViewFactory;
 
 /**
+ * Classe che estende il JPanel a capo della gerarchia di tutti i pannelli dell'applicazione
  * @author Eugenio
  *
  */

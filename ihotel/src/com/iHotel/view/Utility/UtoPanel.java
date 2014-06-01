@@ -22,7 +22,8 @@ import com.iHotel.model.Utility.Periodo;
 import com.iHotel.view.Access.ViewFactory;
 
 /**
- * Classe addetta alla creazione delle stringhe relative a gli oggetti dello strato di dominio.
+ * Classe addetta alla creazione dei pannelli contenenti informazioni relative agli oggetti dello strato di dominio,
+ * che devono essere visualizzate in diverse schermate del sistema.
  * @author Eugenio
  */
 public class UtoPanel {

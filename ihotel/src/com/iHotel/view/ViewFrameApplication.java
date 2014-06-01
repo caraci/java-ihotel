@@ -18,6 +18,7 @@ import com.iHotel.view.Access.ViewFactory;
 import com.iHotel.view.Graphic.VP_Home;
 
 /**
+ * Classe che estende il JFrame di java e rappresenta l'unico frame dell'applicazione.
  * @author Eugenio
  *
  */

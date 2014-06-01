@@ -21,26 +21,35 @@ import com.iHotel.view.Access.ViewFactory;
 public class UMostraOrario {
 	
 	/*Attributi e costruttore*/
-	
+	/**
+	 * Factory componenti grafici
+	 */
 	private StyleAbstractFactory _viewFactory;
 	
 	/** Pattern Singleton*/
 	private static UMostraOrario instance;
 	
-	/*Jlabel*/
+	/**
+	 * JPanel che conterrà l'orario
+	 */
 	private JPanel _panelOrario;
+	/**
+	 * JLabel con informazioni su ore e minuti
+	 */
 	private JLabel _lblOre, _lblMinuti;
 	
-	/*JComboBox*/
-	private JComboBox<String> _ore;
-	private JComboBox<String> _minuti;
+	/**
+	 * JComboBox contenenti l'elenco delle ore e dei minuti
+	 */
+	private JComboBox<String> _ore,_minuti;
+	
 	
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */
 	private UMostraOrario(){
-		_viewFactory = ViewFactory.getInstance().getStyleFactory();
-		
+		//Setto la factory degli elementi grafici
+		_viewFactory = ViewFactory.getInstance().getStyleFactory();		
 		/*JPanel*/
 		_panelOrario = _viewFactory.getPanel();
 		/*JLabel*/

@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * Classe che estende la classe view e che definisce l'impostazione della struttura delle
+ * schermate, che sarà ripetuta in ogni schermata del sistema.
  * @author Eugenio
  *
  */
