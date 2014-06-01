@@ -8,28 +8,33 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
- * Classe che modella un pagamento effettuato mediante bonifico
+ * Classe che modella un pagamento effettuato mediante bonifico.
+ * 
  * @author Alessandro
- *
  */
 public class PagamentoConBonifico extends Pagamento {
 
-	/*Attributi e costruttore*/
+	/**
+	 * Codice del bonifico.
+	 */
 	private String _codiceBonifico;
+	/**
+	 * Mittente del bonifico.
+	 */
 	private Persona _mittente;
 	
-	//Costruttore di default
-	public PagamentoConBonifico(){
-		
-	}
+	/**
+	 * Costruttore di default.
+	 */
+	public PagamentoConBonifico() {}
 	
 	/**
 	 * Costruttore con parametri
 	 * 
-	 * @param importo 	E' l'importo versato
-	 * @param data		E' il giorno in cui è stato fatto il bonifico
-	 * @param codice	E' il codice del bonifico
-	 * @param mittente	E' la persona che ha emesso il bonifico
+	 * @param importo Importo versato.
+	 * @param data Giorno in cui è stato fatto il bonifico.
+	 * @param codice Codice del bonifico.
+	 * @param mittente Persona che ha emesso il bonifico.
 	 */
 	public PagamentoConBonifico(Prezzo importo,Giorno data, String codice,Persona mittente){
 		this.set_importo(importo);
@@ -37,7 +42,7 @@ public class PagamentoConBonifico extends Pagamento {
 		this.set_codiceBonifico(codice);
 		this.set_mittente(mittente);
 	}
-
+	/* --------------------------------- Getter, Setter --------------------------------- */
 	/**
 	 * @return the _mittente
 	 */

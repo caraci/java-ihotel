@@ -4,24 +4,30 @@
 package com.iHotel.model.Persona;
 
 /**
- * Classe che modella una persona del mondo reale, in modo semplice, con pochi attributi
+ * Classe che modella una persona del mondo reale, in modo semplice, con pochi attributi.
+ * 
  * @author Alessandro
- *
  */
 public class Persona {
 	
-	/*Attributi e costruttore*/
+	/**
+	 * Nome della persona.
+	 */
 	private String _nome;
+	/**
+	 * Cognome della persona.
+	 */
 	private String _cognome;
 	
 	
-	//Costruttore di default
-	public Persona(){
-		
-	}
+	/**
+	 * Costruttore di default.
+	 */
+	public Persona() {}
 	
 	/**
-	 * Costruttore della persona con nome e cognome 
+	 * Costruttore della persona con nome e cognome.
+	 * 
 	 * @param nome Nome della persona
 	 * @param cognome Cognome della persona
 	 */

@@ -7,17 +7,16 @@ import com.iHotel.model.Persona.Residenza;
 import com.iHotel.model.Utility.Giorno;
 
 /**
- * Classe che descrive il documento "Patente"
- * Mancano le categorie di patente conseguite
+ * Classe che descrive il documento "Patente". Mancano le categorie di patente conseguite.
+ * 
  * @author Alessandro
- *
  */
 public class Patente extends Documento{
 	
-	//Costruttore di default
-	public Patente(){
-		
-	}
+	/**
+	 * Costruttore di default.
+	 */
+	public Patente() {}
 	
 	/**
 	 * Costruttore con tutti i parametri

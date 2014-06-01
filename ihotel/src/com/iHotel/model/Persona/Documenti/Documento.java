@@ -13,21 +13,47 @@ import com.iHotel.model.Utility.Giorno;
  */
 public class Documento {
 	
-	/*Attributi e costruttore*/
+	/**
+	 * Nome.
+	 */
 	protected String _nomeTitolare;
+	/**
+	 * Cognome.
+	 */
 	protected String _cognomeTitolare;
+	/**
+	 * Data di nascita.
+	 */
 	protected Giorno _dataDiNascita;
+	/**
+	 * Città di nascita.
+	 */
 	protected String _cittaDiNascita;
+	/**
+	 * Data di rilascio del documento.
+	 */
 	protected Giorno _dataDiRilascio;
+	/**
+	 * Data di scadenza.
+	 */
 	protected Giorno _dataDiScadenza;
+	/**
+	 * Ente rilasciatario.
+	 */
 	protected String _enteRilasciatario;
+	/**
+	 * Numero del documento.
+	 */
 	protected String _numeroDocumento;
+	/**
+	 * Residenza.
+	 */
 	protected Residenza _residenza;
 	
 	/**
-	 * Costruttore
+	 * Costruttore di default.
 	 */
-	public Documento(){}
+	public Documento() {}
 	
 	/**
 	 * Costruttore con tutti i parametri

@@ -7,7 +7,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 /**
- * Questa classe è l'interfaccia all'adattatore del sistema esterno riguardante il servizio di "Telefono in camera"
+ * Questa classe è l'interfaccia all'adattatore del sistema esterno riguardante il servizio di "Telefono in camera".
  * 
  * @author Alessandro
  */

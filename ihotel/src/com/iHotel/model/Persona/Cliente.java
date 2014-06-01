@@ -4,24 +4,27 @@
 package com.iHotel.model.Persona;
 
 /**
- * Classe che modella un cliente della struttura ricettiva
+ * Classe che modella un cliente della struttura ricettiva.
+ * 
  * @author Alessandro
- *
  */
 public class Cliente extends Persona {
 	
-	/*Attributi e costruttore*/
+	/**
+	 * Codice del cliente.
+	 */
 	private String _codiceCliente;
 	
-	//Costruttore di default
-	public Cliente(){
-		
-	}
 	/**
-	 * Costruttore con parametri
-	 * @param nome		Nome del cliente	
-	 * @param cognome	Cognome del cliente
-	 * @param codice	Codice del cliente
+	 * Costruttore di default.
+	 */
+	public Cliente() {}
+	/**
+	 * Costruttore con parametri.
+	 * 
+	 * @param nome Nome del cliente	
+	 * @param cognome Cognome del cliente
+	 * @param codice Codice del cliente
 	 */
 	public Cliente(String nome, String cognome, String codice){
 		super(nome,cognome);

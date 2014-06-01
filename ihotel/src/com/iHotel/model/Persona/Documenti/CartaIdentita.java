@@ -7,18 +7,35 @@ import com.iHotel.model.Persona.Residenza;
 import com.iHotel.model.Utility.Giorno;
 
 /**
- * Classe che rappresenta il documento "Carta d'identità"
+ * Classe che rappresenta il documento "Carta d'identità".
+ * 
  * @author Alessandro
- *
  */
 public class CartaIdentita extends Documento {
 	
-	/*Attributi e costruttore*/
+	/**
+	 * Stato civile.
+	 */
 	private String _statoCivile;
+	/**
+	 * Professione.
+	 */
 	private String _professione;
+	/**
+	 * Statura.
+	 */
 	private float _statura;
+	/**
+	 * Colore capelli.
+	 */
 	private String _coloreCapelli;
+	/**
+	 * Colore occhi.
+	 */
 	private String _coloreOcchi;
+	/**
+	 * Segni particolari.
+	 */
 	private String _segniParticolari;
 	
 	//Costruttore di default
@@ -28,21 +45,21 @@ public class CartaIdentita extends Documento {
 	/**
 	 * Costruttore con tutti i parametri 
 	 * 
-	 * @param nome 				Nome del titolare del documento
-	 * @param cognome			Cognome del titolare del documento
-	 * @param dataNascita 		Giorno di nascita del titolare del documento
-	 * @param cittaNascita 		Città di nascita del titolare del documento
-	 * @param dataRilascio 		Giorno di rilascio del documento
-	 * @param dataScadenza 		Giorno di scadenza del documento
-	 * @param enteRilascio 		Ente che ha rilasciato il documento
-	 * @param numeroDocumento	Numero del documento
-	 * @param residenza 		Residenza del titolare del documento
-	 * @param statoCivile 		Stato civile del titolare del documento
-	 * @param professione 		Professione del titolare del documento
-	 * @param statura 			Statura del titolare del documento
-	 * @param coloreCapelli 	Colore dei capelli del titolare del documento
-	 * @param coloreOcchi 		Colore degli occhi del titolare del documento
-	 * @param segniParticolari 	Segni particolari del titolare del documento
+	 * @param nome Nome del titolare del documento
+	 * @param cognome Cognome del titolare del documento
+	 * @param dataNascita Giorno di nascita del titolare del documento
+	 * @param cittaNascita Città di nascita del titolare del documento
+	 * @param dataRilascio Giorno di rilascio del documento
+	 * @param dataScadenza Giorno di scadenza del documento
+	 * @param enteRilascio Ente che ha rilasciato il documento
+	 * @param numeroDocumento Numero del documento
+	 * @param residenza Residenza del titolare del documento
+	 * @param statoCivile Stato civile del titolare del documento
+	 * @param professione Professione del titolare del documento
+	 * @param statura Statura del titolare del documento
+	 * @param coloreCapelli Colore dei capelli del titolare del documento
+	 * @param coloreOcchi Colore degli occhi del titolare del documento
+	 * @param segniParticolari Segni particolari del titolare del documento
 	 */
 	public CartaIdentita(String nome, String cognome, Giorno dataNascita,String cittaNascita,Giorno dataRilascio, Giorno dataScadenza,String enteRilascio, String numeroDocumento,Residenza residenza,
 			String statoCivile, String professione, float statura,String coloreCapelli, String coloreOcchi, String segniParticolari){

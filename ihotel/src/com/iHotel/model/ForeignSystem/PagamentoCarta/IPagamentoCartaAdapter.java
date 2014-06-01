@@ -12,8 +12,11 @@ import com.iHotel.model.Utility.Prezzo;
  * per il pagamento con carta
  * 
  * @author Gabriele
- *
  */
 public interface IPagamentoCartaAdapter {
+	/**
+	 * Metodo che effettua il pagamento con carta. Il pagamento è fittizio, in quanto non si è 
+	 * realmente collegati con l'esterno
+	 */
 	public PagamentoConCarta eseguiPagamento(Prezzo prezzo, CartaDiCredito carta);
 }

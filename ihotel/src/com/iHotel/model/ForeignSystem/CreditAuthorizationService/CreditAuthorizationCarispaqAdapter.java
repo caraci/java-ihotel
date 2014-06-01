@@ -12,13 +12,9 @@ import com.iHotel.model.Utility.Prezzo;
  * @author Gabriele
  *
  */
-public class CreditAuthorizationCarispaqAdapter implements
-		ICreditAuthorizationServiceAdapter {
+public class CreditAuthorizationCarispaqAdapter implements ICreditAuthorizationServiceAdapter {
 
 	@Override
-	/**
-	 * Metodo per richiedere l'autorizzazione al pagamento. Al momento è fittizio e restituisce true
-	 */
 	public boolean richiestaDiAutorizzazione(Prezzo importoPagamento, CartaDiCredito carta) {		
 		return true;
 	}

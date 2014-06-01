@@ -12,8 +12,17 @@ public class ClientePrenotante extends Cliente{
 	
 	/*Attributi e costruttore*/
 	private String _codiceCartaDiCredito;
+	/**
+	 * eMail del prenotante.
+	 */
 	private String _email;
+	/**
+	 * Telefono del prenotante.
+	 */
 	private String _telefono;
+	/**
+	 * Numero delle prenotazioni effettuate dal cliente.
+	 */
 	private int _numeroPrenotazioni;
 	
 	//Costruttore di default
@@ -24,12 +33,12 @@ public class ClientePrenotante extends Cliente{
 	/**
 	 * Costruttore con parametri
 	 * 
-	 * @param nome 					Nome del cliente prenotante
-	 * @param cognome				Cognome del cliente prenotante
-	 * @param codice				Codice del cliente prenotante
-	 * @param email					Email del cliente prenotante
-	 * @param telefono				Telefono del cliente prenotante
-	 * @param codiceCartaDiCredito	Codice della carta di credito del cliente prenotante
+	 * @param nome Nome del cliente prenotante
+	 * @param cognome Cognome del cliente prenotante
+	 * @param codice Codice del cliente prenotante
+	 * @param email Email del cliente prenotante
+	 * @param telefono Telefono del cliente prenotante
+	 * @param codiceCartaDiCredito Codice della carta di credito del cliente prenotante
 	 */
 	public ClientePrenotante(String nome, String cognome, String codice, String email, String telefono, String codiceCartaDiCredito){
 		super(nome,cognome,codice);

@@ -10,20 +10,25 @@ package com.iHotel.model.Persona;
  */
 public class Indirizzo {
 	
-	/*Attributi e costruttore*/
+	/**
+	 * Nome della via.
+	 */
 	private String _via;
+	/**
+	 * Civico della via.
+	 */
 	private int _civico;
 	
-	//Costruttore di default
-	public Indirizzo(){
-		
-	}
+	/**
+	 * Costruttore di default.
+	 */
+	public Indirizzo() {}
 	
 	/**
 	 * Costruttore con tutti i parametri
 	 * 
-	 * @param viaResidenza	Via o piazza
-	 * @param civico		Numero civico
+	 * @param viaResidenza Via o piazza
+	 * @param civico Numero civico
 	 */
 	public Indirizzo(String viaResidenza, int civico){
 		this.set_via(viaResidenza);

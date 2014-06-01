@@ -14,7 +14,6 @@ import com.iHotel.model.Persona.Ospite;
  * Classe concreta adattatore al sistema di generazione di schedine di pubblica sicurezza della polizia di stato.
  * 
  * @author Alessandro
- *
  */
 public class SchedePSPoliziaStatoAdapter implements ISchedePSAdapter {
 
@@ -25,8 +24,7 @@ public class SchedePSPoliziaStatoAdapter implements ISchedePSAdapter {
 		/*Ciclo sulle camere della prenotazione*/
 		for (Camera camera : camerePrenotate) {
 			/*Per ogni ospite presente nella camera faccio una stampa (dovrei generare scheda ps)*/
-			for (Iterator<Ospite> iterator = camera.getOspitiInPeriodo(soggiorno.get_periodo()).iterator(); iterator
-					.hasNext();) {
+			for (Iterator<Ospite> iterator = camera.getOspitiInPeriodo(soggiorno.get_periodo()).iterator(); iterator.hasNext();) {
 				Ospite ospite = iterator.next();
 				System.out.println("nome ospite: "+ospite.get_nome()+ " Cognome ospite: "+ospite.get_cognome()+" Numero documento: "+ospite.get_documento().get_numeroDocumento());
 				

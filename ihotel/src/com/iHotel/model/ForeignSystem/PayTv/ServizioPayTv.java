@@ -9,11 +9,21 @@ import com.iHotel.model.Utility.Prezzo;
  * @author Alessandro
  */
 public class ServizioPayTv {
-	//TODO al momento la classe risulta essere vuota, poichè per il caso d'uso in questione non 
-	//è stato necessario modellare completamente il servizio di pay TV.
+	/**
+	 * Codice del servizio payTv.
+	 */
 	private String _codice;
+	/**
+	 * Stringa contenente la descrizione dell'evento.
+	 */
 	private String _evento;
+	/**
+	 * Prezzo del servizio.
+	 */
 	private Prezzo _prezzo;
+	/**
+	 * Giorno del servizio.
+	 */
 	private Giorno _giorno;
 	/**
 	 * @return the _codice

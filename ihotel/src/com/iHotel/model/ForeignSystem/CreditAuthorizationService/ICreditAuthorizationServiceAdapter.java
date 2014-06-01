@@ -10,8 +10,10 @@ import com.iHotel.model.Utility.Prezzo;
  * Classe interfaccia a capo della gerarchia degli adattatori dei sistemi di autorizzazione dei pagamenti
  * 
  * @author Gabriele
- *
  */
 public interface ICreditAuthorizationServiceAdapter {
+	/**
+	 * Metodo per richiedere l'autorizzazione al pagamento.
+	 */
 	public boolean richiestaDiAutorizzazione(Prezzo importoPagamento, CartaDiCredito carta);
 }

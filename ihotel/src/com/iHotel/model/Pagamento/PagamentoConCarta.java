@@ -8,26 +8,27 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
- * Classe che modella un pagamento effettuato mediante carta di credito
+ * Classe che modella un pagamento effettuato mediante carta di credito o bancomat.
  * 
  * @author Alessandro
- *
  */
 public class PagamentoConCarta extends Pagamento{
-	/*Attributi e costruttore*/
+	/**
+	 * Carta di credito.
+	 */
 	private CartaDiCredito _cartaDiCredito;
 	
-	//Costruttore di default
-	public PagamentoConCarta(){
-	
-	}
+	/**
+	 * Costruttore di default.
+	 */
+	public PagamentoConCarta() {}
 	
 	/**
-	 * Costruttore con parametri
+	 * Costruttore con parametri.
 	 * 
-	 * @param importo			E' l'importo del versamento
-	 * @param data				E' il giorno in cui è stato fatto il versamento
-	 * @param cartaDiCredito	E' la carta di credito con cui è stato fatto il versamento
+	 * @param importo Importo del versamento.
+	 * @param data Giorno in cui è stato fatto il versamento.
+	 * @param cartaDiCredito Carta di credito con cui è stato fatto il versamento.
 	 */
 	public PagamentoConCarta(Prezzo importo, Giorno data, CartaDiCredito cartaDiCredito){
 		

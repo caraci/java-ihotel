@@ -14,9 +14,6 @@ import com.iHotel.model.Persona.Documenti.CartaDiCredito;
 public class LettoreCarteIngenicoAdapter implements ILettoreCarteAdapter {
 
 	@Override
-	/**
-	 * Metodo fittizio per leggere la carta. Nella realtà ci si collegherà con un sistema esterno.
-	 */
 	public CartaDiCredito leggiCarta() {
 		/*Si settano le informazioni sul titolare della carta*/
 		Persona titolareCarta = new Persona("Giovanni", "Verdi");

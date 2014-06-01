@@ -7,30 +7,36 @@ import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
- * Classe generica che descrive un pagamento
+ * Classe generica che descrive un pagamento.
+ * 
  * @author Alessandro
- *
  */
 public class Pagamento {
 	
-	/*Attributi e costruttore*/
+	/**
+	 * Importo del pagamento.
+	 */
 	private Prezzo _importo;
+	/**
+	 * Data del pagamento.
+	 */
 	private Giorno _data;
 	
-	//Costruttore di default
-	public Pagamento(){
-		
-	}
 	/**
-	 * Costruttore con parametri
-	 * @param importo Importo versato dal cliente
-	 * @param data	Giorno in cui è stato effettuato il pagamento
+	 * Costruttore di default.
+	 */
+	public Pagamento(){}
+	/**
+	 * Costruttore con parametri.
+	 * 
+	 * @param importo Importo del pagamento.
+	 * @param data Giorno in cui è stato effettuato il pagamento.
 	 */
 	public Pagamento(Prezzo importo, Giorno data){
 		this.set_importo(importo);
 		this.set_data(data);	
 	}
-
+	/* ------------------------------- Getter, Setter ------------------------------------- */
 	/**
 	 * @return the _data
 	 */

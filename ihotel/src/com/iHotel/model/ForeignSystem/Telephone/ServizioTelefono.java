@@ -9,12 +9,25 @@ import com.iHotel.model.Utility.Prezzo;
  * @author Alessandro
  */
 public class ServizioTelefono {
-	//TODO al momento la classe risulta essere vuota, poichè per il caso d'uso in questione non 
-	//è stato necessario modellare completamente il servizio di "Telefono in camera".
+	/**
+	 * Codice del servizio telefonico.
+	 */
 	private String _codice;
+	/**
+	 * Telefono del mittente.
+	 */
 	private String _telefonoMittente;
+	/**
+	 * Telefono del destinatario.
+	 */
 	private String _telefonoDestinatario;
+	/**
+	 * Prezzo della telefonata.
+	 */
 	private Prezzo _prezzo;
+	/**
+	 * Giorno della telefonata.
+	 */
 	private Giorno _giorno;
 	/**
 	 * @return the _codice

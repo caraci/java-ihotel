@@ -17,10 +17,6 @@ import com.iHotel.model.Utility.Prezzo;
 public class PagamentoVisaCartaAdapter implements IPagamentoCartaAdapter {
 
 	@Override
-	/**
-	 * Metodo che effettua il pagamento con carta. Il pagamento è fittizio, in quanto non si è 
-	 * realmente collegati con l'esterno
-	 */
 	public PagamentoConCarta eseguiPagamento(Prezzo prezzo, CartaDiCredito carta) {
 		/*Creo un giorno*/
 		int giorno, mese, anno;

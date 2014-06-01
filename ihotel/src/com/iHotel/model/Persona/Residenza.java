@@ -9,15 +9,23 @@ package com.iHotel.model.Persona;
  */
 public class Residenza {
 	
-	/*Attributi e costruttore*/
+	/**
+	 * Città di residenza.
+	 */
 	private String _cittaResidenza;
+	/**
+	 * Indirizzo della residenza.
+	 */
 	private Indirizzo _indirizzoResidenza;
 	
-	//Costruttore di default
+	/**
+	 * Costruttore di default.
+	 */
 	public Residenza(){}
 	/**
-	 * Costruttore con parametri
-	 * @param citta 	Città di residenza
+	 * Costruttore con parametri.
+	 * 
+	 * @param citta Città di residenza
 	 * @param indirizzo	Indirizzo di residenza
 	 */
 	public Residenza(String citta, Indirizzo indirizzo){

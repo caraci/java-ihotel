@@ -6,26 +6,31 @@ package com.iHotel.model.Persona.Documenti;
 import com.iHotel.model.Persona.Persona;
 
 /**
- * Classe che modella una carta di credito
+ * Classe che modella una carta di credito.
+ * 
  * @author Alessandro
- *
  */
 public class CartaDiCredito {
 	
-	/*Attributi e costruttore*/
+	/**
+	 * Titolare della carta di credito o bancomat.
+	 */
 	private Persona _titolare;
+	/**
+	 * Numero della carta di credito o bancomat.
+	 */
 	private String _numero;
 	
-	//Costruttore di default
-	public CartaDiCredito(){
-		
-	}
+	/**
+	 * Costruttore di default.
+	 */
+	public CartaDiCredito() {}
 	
 	/**
 	 * Costruttore con parametri
 	 * 
-	 * @param titolare 	Titolare della carta di credito
-	 * @param numero	Numero della carta di credito
+	 * @param titolare Titolare della carta di credito
+	 * @param numero Numero della carta di credito
 	 */
 	public CartaDiCredito(Persona titolare,String numero){
 		this.set_titolare(titolare);

@@ -28,7 +28,6 @@ public class Storico {
 	/* -------------------------------- Metodi di classe ----------------------------------- */
 	/**
 	 * Metodo per ottenere l'instanza della classe - Pattern singleton
-	 * @return instance 
 	 */
 	public static Storico getInstance() {
     	if(instance == null) {
@@ -46,7 +45,6 @@ public class Storico {
 	public SoggiornoContextSubject recuperaSoggiornoDaCodice(String codice) {
 		return _soggiorni.get(codice);
 	}
-
 	/**
 	 * Metodo per aggiungere un soggiorno allo storico.
 	 * 
@@ -77,7 +75,7 @@ public class Storico {
 				soggiorniFuturi.add(soggiorno);
 			}
 		}
-		// Ordino la lista
+		// Ordino la lista in ordine cronologico crescente.
 		Collections.sort(soggiorniFuturi);
 		
 		return soggiorniFuturi;

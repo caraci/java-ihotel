@@ -15,21 +15,35 @@ import com.iHotel.model.Utility.Ora;
 public class ServizioInterno {
 	
 	/*----------------------- Attributi e costruttore -----------------------*/
+	/**
+	 * Codice del servizio interno.
+	 */
 	private String _codice;	
-	private Giorno _giorno;	
-	private String _note;
+	/**
+	 * Giorno del servizio.
+	 */
+	private Giorno _giorno;
+	/**
+	 * Orario del servizio.
+	 */
 	private Ora _ora;
+	/**
+	 * Note sul servizio.
+	 */
+	private String _note;
+
 	/**
 	 * Costruttore di default
 	 */
 	public ServizioInterno(){}
 	
 	/**
-	 * Costruttore con parametri
-	 * @param codice 	E' il codice del servizio
-	 * @param giorno	E' il giorno in cui è stato richiesto il servizio
-	 * @param note		Sono le informazioni aggiuntive utili per fornire il servizio
-	 * @param ora		E' l'ora cui bisogna fornire il servizio
+	 * Costruttore.
+	 * 
+	 * @param codice Codice del servizio.
+	 * @param giorno Giorno in cui è stato richiesto il servizio.
+	 * @param note Sono le informazioni aggiuntive utili per fornire il servizio.
+	 * @param ora Ora cui bisogna fornire il servizio.
 	 */
 	public ServizioInterno(String codice, Giorno giorno, String note, Ora ora){
 		set_codice(codice);

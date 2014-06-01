@@ -7,13 +7,12 @@ import com.iHotel.model.Persona.Residenza;
 import com.iHotel.model.Utility.Giorno;
 
 /**
- * Classe che rappresenta il documento "Passaporto"
+ * Classe che rappresenta il documento "Passaporto".
+ * 
  * @author Alessandro
- *
  */
 public class Passaporto extends Documento {
 	
-	/*Attributi e costruttore*/
 	private String _tipo;
 	private String _codicePaese;
 	private String _sesso;
@@ -25,10 +24,10 @@ public class Passaporto extends Documento {
 	private float _statura;
 	private String _coloreOcchi;
 	
-	//Costruttore di default
-	public Passaporto(){
-		
-	}
+	/**
+	 * Costruttore di default.
+	 */
+	public Passaporto() {}
 	
 	/**
 	 * Costruttore con tutti i parametri

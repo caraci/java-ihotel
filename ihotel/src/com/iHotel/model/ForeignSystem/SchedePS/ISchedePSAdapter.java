@@ -13,5 +13,10 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
  *
  */
 public interface ISchedePSAdapter {
+	/**
+	 * Metodo per generare ed inviare le schedine di pubblica sicurezza.+
+	 * 
+	 * @param soggiorno Soggiorno in analisi.
+	 */
 	public void generaSchedePubblicaSicurezza(SoggiornoContextSubject soggiorno);
 }

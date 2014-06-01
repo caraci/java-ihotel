@@ -18,7 +18,7 @@ import com.iHotel.utility.ULeggiDaFile;
 
 /**
  * Questa classe ha il compito di fornire le maniglie ai sistemi esterni reali cui l'albergo è collegato. 
- * E' stata realizzata seguendo il design pattern "Abstract Factory" secondo cui si delega ad un oggetto terzo 
+ * E' stata realizzata seguendo il design pattern "Simple Factory" secondo cui si delega ad un oggetto terzo 
  * la responsabilità di creare istanze di classi che verranno determinate solo a runtime.
  * In questo modo è possibile cambiare il tipo di oggetto da creare senza intervenire sul codice.
  * 
@@ -107,15 +107,11 @@ public class ServiceFactory {
 		case "PoliziaDiStato":
 			set_schedePSAdapter(new SchedePSPoliziaStatoAdapter());
 			break;
-
-		default:
-			break;
 		}
 		
 	}
 	
 	/* ----------------------------- Metodi di classe -----------------------*/
-	
 	/**
 	 * Metodo per ottenere l'unica instanza di questa classe - Pattern Singleton
 	 */
@@ -127,17 +123,17 @@ public class ServiceFactory {
     }
 	/* -------------------------- Metodi di instanza ----------------------- */
 	/**
-	 * Metodo per ottenere il prezzo dei servizi esterni correlati ad una prenotazione.
+	 * Metodo per ottenere il prezzo dei servizi esterni correlati ad un soggiorno.
 	 * 
-	 * @param prenotazione Prenotazione da analizzare.
-	 * @return Prezzo totale dei servizi esterni correlati ad una prenotazione.
+	 * @param soggiorno Soggiorno da analizzare.
+	 * @return Prezzo totale dei servizi esterni correlati ad un soggiorno.
 	 */
-	public Prezzo getPrezzoServiziEsterniPrenotazione(SoggiornoContextSubject prenotazione){
+	public Prezzo getPrezzoServiziEsterniPrenotazione(SoggiornoContextSubject soggiorno){
 		Prezzo prezzo = new Prezzo();
 		// Sommo il prezzo dei servizi della payTv.
-		prezzo.somma(_payTvAdapter.getPrezzoTotaleServiziPrenotazione(prenotazione));
+		prezzo.somma(_payTvAdapter.getPrezzoTotaleServiziPrenotazione(soggiorno));
 		// Sommo il prezzo dei servizi del Telefono.
-		prezzo.somma(_telephoneAdapter.getPrezzoTotaleServiziPrenotazione(prenotazione));
+		prezzo.somma(_telephoneAdapter.getPrezzoTotaleServiziPrenotazione(soggiorno));
 		
 		return prezzo;
 	}
