@@ -23,7 +23,7 @@ public class TerminaModifichePrenotazione extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		// Recupero il controllore e invoco il metodo per tornare alla schermata principale.
 		CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
-		modificaPrenotazione.terminaGestionePrenotazione();
+		modificaPrenotazione.terminaGestioneSoggiorno();
 	}
 
 }

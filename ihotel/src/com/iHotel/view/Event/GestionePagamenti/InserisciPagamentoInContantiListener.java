@@ -64,7 +64,7 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 			/*Recupero il controllore corretto*/
 			CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 			/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
-			gestorePagamenti.inserisciPagamentoInPrenotazione(pagamentoInContanti);
+			gestorePagamenti.inserisciPagamentoInSoggiorno(pagamentoInContanti);
 			
 			// Prendo il pannello dove si va a mostrare la lista dei bonifici
 			JPanel panelContanti = _riepilogoPagamenti.getPanelListaPagamentiInContanti();

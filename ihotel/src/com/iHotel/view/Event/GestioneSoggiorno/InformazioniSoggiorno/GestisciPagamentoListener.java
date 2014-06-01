@@ -39,7 +39,7 @@ public class GestisciPagamentoListener extends MouseAdapter {
 		/*Recuper il controllore che si occupa di gestire i pagamenti*/
 		CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 		/*Invoco il metodo per la gestione dei pagamenti al controllore*/
-		gestorePagamenti.gestisciPagamentiPrenotazione(_prenotazione);
+		gestorePagamenti.gestisciPagamentiSoggiorno(_prenotazione);
 	}
 	
 }

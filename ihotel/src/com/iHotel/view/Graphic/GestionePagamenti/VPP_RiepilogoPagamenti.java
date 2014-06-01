@@ -128,9 +128,9 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		_panelMiddleTop.setLayout(new GridLayout(1,3,5,5));
 		
 		/*Setto il testo delle label*/
-		_lblTotaleImportoSoggiorno.setText("L'importo totale della prenotazione è: " + String.valueOf(_prenotazione.calcolaCostoTotaleSoggiorno().get_importo()));
-		_lblTotaleImportoVersato.setText("L'importo totale dei versamenti effettuati è: "+ String.valueOf(_prenotazione.get_importoTotalePagamenti().get_importo()));
-		_lblTotaleImportoRimanente.setText("Importo rimanente da pagare è: "+ String.valueOf(_prenotazione.calcolaImportoRimanenteDaPagare().get_importo()));
+		_lblTotaleImportoSoggiorno.setText("L'importo totale della prenotazione è: " + String.valueOf(_prenotazione.calcolaCostoTotaleSoggiorno().get_quantita()));
+		_lblTotaleImportoVersato.setText("L'importo totale dei versamenti effettuati è: "+ String.valueOf(_prenotazione.get_importoTotalePagamenti().get_quantita()));
+		_lblTotaleImportoRimanente.setText("Importo rimanente da pagare è: "+ String.valueOf(_prenotazione.calcolaImportoRimanenteDaPagare().get_quantita()));
 		/*Aggiungo le label al pannello*/
 		_panelMiddleTop.add(_lblTotaleImportoSoggiorno);
 		_panelMiddleTop.add(_lblTotaleImportoVersato);
@@ -404,9 +404,9 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	@Override
 	public void Update() {
 		/*Aggiorno gli importi sopra la schermata*/
-		_lblTotaleImportoSoggiorno.setText("L'importo totale della prenotazione è: "+_prenotazione.calcolaCostoTotaleSoggiorno().get_importo());
-		_lblTotaleImportoVersato.setText("L'importo totale dei versamenti effettuati è: "+ _prenotazione.get_importoTotalePagamenti().get_importo());
-		_lblTotaleImportoRimanente.setText("Importo rimanente da pagare è: "+ _prenotazione.calcolaImportoRimanenteDaPagare().get_importo());
+		_lblTotaleImportoSoggiorno.setText("L'importo totale della prenotazione è: "+_prenotazione.calcolaCostoTotaleSoggiorno().get_quantita());
+		_lblTotaleImportoVersato.setText("L'importo totale dei versamenti effettuati è: "+ _prenotazione.get_importoTotalePagamenti().get_quantita());
+		_lblTotaleImportoRimanente.setText("Importo rimanente da pagare è: "+ _prenotazione.calcolaImportoRimanenteDaPagare().get_quantita());
 				
 	}
 	

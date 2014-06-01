@@ -38,7 +38,7 @@ public class TornaAlSoggiornoDaGestionePagamentiListener extends MouseAdapter{
 		//Rimuovo l'osservatore dal soggiorno
 		_soggiorno.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
 		//Invoco il metodo per visualizzare le informazioni relative al soggiorno nel controllore
-		CModificaSoggiorno.getInstance().recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
+		CModificaSoggiorno.getInstance().recuperaSoggiornoDaCodice(_soggiorno.get_codice());
 	
 	}
 

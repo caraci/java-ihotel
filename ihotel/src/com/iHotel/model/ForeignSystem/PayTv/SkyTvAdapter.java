@@ -25,7 +25,7 @@ public class SkyTvAdapter implements IPayTvAdapter {
 	public Prezzo getPrezzoTotaleServiziPrenotazione(SoggiornoContextSubject prenotazione) {
 		// TODO - Chiaramente ora si sta utilizzando un prezzo di default.
 		Prezzo prezzoTotale = new Prezzo();
-		prezzoTotale.set_importo(10);
+		prezzoTotale.set_quantita(10);
 		return prezzoTotale;
 	}
 	@Override
@@ -41,7 +41,7 @@ public class SkyTvAdapter implements IPayTvAdapter {
     	servizioPayTv.set_evento("C'era una volta in America - S. Leone");
 		// Prezzo
 		Prezzo prezzo = new Prezzo();
-		prezzo.set_importo(8);
+		prezzo.set_quantita(8);
 		servizioPayTv.set_prezzo(prezzo);
 		// Lista di servizi
 		ArrayList<ServizioPayTv> listaServiziEsterni = new ArrayList<ServizioPayTv>();

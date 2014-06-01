@@ -348,15 +348,15 @@ public class MainPopolamentoDB {
 		String valuta = "Euro";
 		
 		Prezzo singola = new Prezzo();
-		singola.set_importo(10);
+		singola.set_quantita(10);
 		singola.set_valuta(valuta);
 		
 		Prezzo doppia = new Prezzo();
-		doppia.set_importo(20);
+		doppia.set_quantita(20);
 		doppia.set_valuta(valuta);
 		
 		Prezzo tripla = new Prezzo();
-		tripla.set_importo(30);
+		tripla.set_quantita(30);
 		tripla.set_valuta(valuta);
 		
 		PrezzoCamera p_singola_1 = new PrezzoCamera();
@@ -447,7 +447,7 @@ public class MainPopolamentoDB {
 		
 		// CHAMPAGNE
 		Prezzo pChampagne = new Prezzo();
-		pChampagne.set_importo(35);
+		pChampagne.set_quantita(35);
 		// Prezzi Champagne
 		PrezzoServizioInterno psiChampagne_5 = new PrezzoServizioInterno();
 		psiChampagne_5.set_periodo(periodo_5);
@@ -471,7 +471,7 @@ public class MainPopolamentoDB {
 		
 		// ROSE
 		Prezzo pRose = new Prezzo();
-		pRose.set_importo(15);
+		pRose.set_quantita(15);
 		// Prezzi Rose
 		PrezzoServizioInterno psiRose_5 = new PrezzoServizioInterno();
 		psiRose_5.set_periodo(periodo_5);

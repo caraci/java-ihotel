@@ -29,7 +29,7 @@ public class CaricaGestionePrenotazioneFromDialogListener extends MouseAdapter {
 			//Recupero il controllore
 			CModificaSoggiorno gestorePrenotazione = CModificaSoggiorno.getInstance();
 			//Recupero la prenotazione dal codice
-			gestorePrenotazione.recuperaPrenotazioneDaCodice(codice);
+			gestorePrenotazione.recuperaSoggiornoDaCodice(codice);
 		}
 	}
 

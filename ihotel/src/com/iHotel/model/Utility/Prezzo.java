@@ -9,22 +9,31 @@ package com.iHotel.model.Utility;
 public class Prezzo {
 
 	/* ----------------- Attributi --------------------- */
-	private double _importo;
+	/**
+	 * Quantità del prezzo. Es. 10€, allora _quantita=10.
+	 */
+	private double _quantita;
+	/**
+	 * Valuta della quantità. Es. 10€, allora _valuta=€.
+	 */
 	private String _valuta;
 	
-	//Costruttore di default
+	/**
+	 * Costruttore.
+	 */
 	public Prezzo() {
 		// Valori di default.
-		_importo = 0;
+		_quantita = 0;
 		_valuta = "Euro";
 	}
 	
 	/**
-	 * Costruttore con parametro
-	 * @param importo E' l'importo del pagamento
+	 * Costruttore.
+	 * 
+	 * @param quantita E' la quantità del pagamento.
 	 */
-	public Prezzo(double importo){
-		this.set_importo(importo);
+	public Prezzo(double quantita){
+		this.set_quantita(quantita);
 		_valuta = "Euro";
 	}
 	
@@ -36,8 +45,8 @@ public class Prezzo {
 	 * @return Prezzo in seguito alla somma.
 	 */
 	public Prezzo somma(Prezzo prezzo){
-		double importo = this.get_importo() + prezzo.get_importo();
-		this.set_importo(importo);
+		double importo = this.get_quantita() + prezzo.get_quantita();
+		this.set_quantita(importo);
 		return this;
 	}
 	/**
@@ -47,12 +56,12 @@ public class Prezzo {
 	 * @return Prezzo in seguito alla sottrazione.
 	 */
 	public Prezzo sottrai(Prezzo prezzo){
-		double importo = this.get_importo() - prezzo.get_importo();
-		this.set_importo(importo);
+		double importo = this.get_quantita() - prezzo.get_quantita();
+		this.set_quantita(importo);
 		return this;
 	}
 	/**
-	 * Metodo per ottenere un nuovo oggetto di tipo prezzo contenente un importo pari
+	 * Metodo per ottenere un nuovo oggetto di tipo prezzo contenente una quantità pari
 	 * a quello dell'oggetto su cui si invoca il metodo, scontato della quantità fornita
 	 * come parametro.
 	 * 
@@ -64,22 +73,22 @@ public class Prezzo {
 		// Percentuale da scontare
 		double percentuale = (double) percentualeSconto*0.01;
 		// Calcolo l'importo scontato
-		double importoScontato = this.get_importo()*percentuale;		
+		double importoScontato = this.get_quantita()*percentuale;		
 		// Setto l'importo al prezzo scontato
-		prezzoScontato.set_importo(importoScontato);
+		prezzoScontato.set_quantita(importoScontato);
 		
 		return prezzoScontato;
 	}
 	/**
 	 * Metodo per vedere se l'importo di un prezzo è superiore rispetto a quello di un altro.
 	 * 
-	 * @param prezzoDaConfrontare Prezzo da confrontare
+	 * @param prezzoDaConfrontare Prezzo da confrontare.
 	 * @return True se l'importo dell'istanza è superiore rispetto a quello fornito per parametro. False altrimenti.
 	 */
 	public boolean isMaggioreDi(Prezzo prezzoDaConfrontare) {
 		boolean esito = false;
 		// Controllo se l'importo dell'istanza è maggiore di quello fornito.
-		if (this.get_importo()>prezzoDaConfrontare.get_importo()) {
+		if (this.get_quantita()>prezzoDaConfrontare.get_quantita()) {
 			esito=true;
 		}
 		
@@ -90,14 +99,14 @@ public class Prezzo {
 	/**
 	 * @return the _importo
 	 */
-	public double get_importo() {
-		return _importo;
+	public double get_quantita() {
+		return _quantita;
 	}
 	/**
 	 * @param _importo the _importo to set
 	 */
-	public void set_importo(double _importo) {
-		this._importo = _importo;
+	public void set_quantita(double _importo) {
+		this._quantita = _importo;
 	}
 	/**
 	 * @return the _valuta

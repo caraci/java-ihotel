@@ -215,7 +215,7 @@ public class UtoPanel {
 		//Creo una label per l'importo
 		JLabel labelImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		//Setto il testo della label
-		labelImporto.setText("Importo: "+String.valueOf(pagamentoInContanti.get_importo().get_importo())+ " "+ pagamentoInContanti.get_importo().get_valuta());
+		labelImporto.setText("Importo: "+String.valueOf(pagamentoInContanti.get_importo().get_quantita())+ " "+ pagamentoInContanti.get_importo().get_valuta());
 		//Aggiungo la label al pannello insieme ad un separatore
 		panelContanti.add(labelImporto);
 		
@@ -245,7 +245,7 @@ public class UtoPanel {
 		//Creo una label per l'importo
 		JLabel labelImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		//Setto il testo della label
-		labelImporto.setText("Importo: "+String.valueOf(pagmentoConBonifico.get_importo().get_importo())+ " "+ pagmentoConBonifico.get_importo().get_valuta());		
+		labelImporto.setText("Importo: "+String.valueOf(pagmentoConBonifico.get_importo().get_quantita())+ " "+ pagmentoConBonifico.get_importo().get_valuta());		
 		//aggiungo la label al pannello
 		panelBonifico.add(labelImporto);
 		
@@ -281,7 +281,7 @@ public class UtoPanel {
 		//Creo una label per l'importo
 		JLabel labelImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		//Setto il testo della label
-		labelImporto.setText("Importo: "+String.valueOf(pagamentoConCarta.get_importo().get_importo())+ " "+ pagamentoConCarta.get_importo().get_valuta());
+		labelImporto.setText("Importo: "+String.valueOf(pagamentoConCarta.get_importo().get_quantita())+ " "+ pagamentoConCarta.get_importo().get_valuta());
 		//Aggiungo la label al pannello 
 		panelCarta.add(labelImporto);
 		

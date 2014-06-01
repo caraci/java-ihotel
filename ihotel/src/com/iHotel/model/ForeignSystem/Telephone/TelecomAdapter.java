@@ -25,7 +25,7 @@ public class TelecomAdapter implements ITelephoneAdapter {
 	public Prezzo getPrezzoTotaleServiziPrenotazione(SoggiornoContextSubject prenotazione) {
 		// TODO - Chiaramente ora si sta utilizzando un prezzo di default.
 		Prezzo prezzoTotale = new Prezzo();
-		prezzoTotale.set_importo(10);
+		prezzoTotale.set_quantita(10);
 		return prezzoTotale;
 	}
 	@Override
@@ -41,7 +41,7 @@ public class TelecomAdapter implements ITelephoneAdapter {
     	servizioTelefono.set_telefonoMittente("06/12***74");
     	// Prezzo
 		Prezzo prezzo = new Prezzo();
-		prezzo.set_importo(3.5);
+		prezzo.set_quantita(3.5);
 		servizioTelefono.set_prezzo(prezzo);
 		// Lista di servizi
 		ArrayList<ServizioTelefono> listaServiziEsterni = new ArrayList<ServizioTelefono>();

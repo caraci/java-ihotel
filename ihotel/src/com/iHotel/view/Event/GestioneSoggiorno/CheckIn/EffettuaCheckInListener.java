@@ -34,7 +34,7 @@ public class EffettuaCheckInListener extends MouseAdapter {
 		// Attraverso il gestore per la modifica della prenotazione, effettuo il checkin.
 		CModificaSoggiorno.getInstance().effettuaCheckIn();
 		// Torno alla gestione della prenotazione
-		CModificaSoggiorno.getInstance().recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
+		CModificaSoggiorno.getInstance().recuperaSoggiornoDaCodice(_soggiorno.get_codice());
 		//Visualizzo la dialog
 		UDialogManager.getDialogAvvenutoCheckIn();
 	}

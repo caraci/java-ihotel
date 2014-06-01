@@ -77,7 +77,7 @@ public class DescrizioneCamera {
 		// Prezzo da ritornare
 		Prezzo prezzo= new Prezzo();
 		// Setto l'importo del prezzo
-		prezzo.set_importo(totaleCameraPeriodo);
+		prezzo.set_quantita(totaleCameraPeriodo);
 		return prezzo;
 		
 	}
@@ -103,7 +103,7 @@ public class DescrizioneCamera {
 			PrezzoCamera prezzoCamera = (PrezzoCamera) iterator.next();
 			if (prezzoCamera.getPrezzoInPeriodo(periodo)!=null) {
 				prezzoCameraPeriodo=prezzoCamera.getPrezzoInPeriodo(periodo);
-				prezzoGiorno=prezzoCameraPeriodo.get_prezzo().get_importo();
+				prezzoGiorno=prezzoCameraPeriodo.get_prezzo().get_quantita();
 			}
 		}
 		return prezzoGiorno;

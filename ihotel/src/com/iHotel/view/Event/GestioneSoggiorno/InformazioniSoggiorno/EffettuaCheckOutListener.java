@@ -34,6 +34,6 @@ public class EffettuaCheckOutListener extends MouseAdapter {
 		// Attraverso il controllore CCheckOut effettuo il checkout.
 		CModificaSoggiorno.getInstance().effettuaCheckOut();
 		// Torno alla gestione della prenotazione
-		CModificaSoggiorno.getInstance().recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
+		CModificaSoggiorno.getInstance().recuperaSoggiornoDaCodice(_soggiorno.get_codice());
 	}
 }

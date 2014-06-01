@@ -210,16 +210,16 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		_lblRiepilogoPrenotazione.setText("Riepilogo prenotazione:");
 		
 		/*Setto il prezzo delle camere*/
-		_lblPrezzoCamere.setText("Totale camere: "+prezzoCamere.get_importo()+" "+prezzoCamere.get_valuta());
+		_lblPrezzoCamere.setText("Totale camere: "+prezzoCamere.get_quantita()+" "+prezzoCamere.get_valuta());
 		
 		/*Setto il prezzo dei servizi*/
-		_lblPrezzoServizi.setText("Totale servizi: "+totaleServizi.get_importo()+ " "+totaleServizi.get_valuta());
+		_lblPrezzoServizi.setText("Totale servizi: "+totaleServizi.get_quantita()+ " "+totaleServizi.get_valuta());
 		
 		/*Setto il giorno di scadenza per l'invio della garanzia */
 		_lblGiornoScadenzaGaranzia.setText("Richiedi garanzia entro: " + giornoScadenzaGaranzia.toString());
 		
 		/*Setto l'ammontare della caparra */
-		_lblAmmontareCaparra.setText("Ammontare caparra: " + ammontareCaparra.get_importo() + " " + ammontareCaparra.get_valuta());
+		_lblAmmontareCaparra.setText("Ammontare caparra: " + ammontareCaparra.get_quantita() + " " + ammontareCaparra.get_valuta());
 		
 		/*Aggiugo le label e gli spazi vuoti al blocco centrale*/
 		_panelInfoPrenotazione.add(_lblRiepilogoPrenotazione);

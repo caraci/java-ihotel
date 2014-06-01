@@ -79,7 +79,7 @@ public class UDialogManager extends JOptionPane {
 		
 		//lable importo massimo da addebitare
 		JLabel lblImportoMassimo = ViewFactory.getInstance().getStyleFactory().getLabel();
-		lblImportoMassimo.setText("L'importo massimo che si può registrare è: "+String.valueOf(importoDaVisualizzare.get_importo()));
+		lblImportoMassimo.setText("L'importo massimo che si può registrare è: "+String.valueOf(importoDaVisualizzare.get_quantita()));
 		//label importo
 		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImporto.setText("Importo: ");
@@ -140,9 +140,9 @@ public class UDialogManager extends JOptionPane {
 			Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
 			
 			/*Controllo se l'importo inserito è maggiore dell'importo massimo*/
-			if(importoRicevuto.get_importo()>importoDaVisualizzare.get_importo()){
+			if(importoRicevuto.get_quantita()>importoDaVisualizzare.get_quantita()){
 				/*Setto l'importo massimo al valore dell'importo massimo da pagare*/
-				importoRicevuto.set_importo(importoDaVisualizzare.get_importo());
+				importoRicevuto.set_quantita(importoDaVisualizzare.get_quantita());
 			}
 			
 			/*Creo un nuovo giorno con lla data in cui è stato ricevuto il bonifico*/		
@@ -170,7 +170,7 @@ public class UDialogManager extends JOptionPane {
 		/*Etichette*/
 		/*Label che contiente l'importo massimo da pagare*/
 		JLabel lblImportoMassimo = ViewFactory.getInstance().getStyleFactory().getLabel();
-		lblImportoMassimo.setText("L'importo massimo da addebitare per il soggiorno è: "+String.valueOf(importoDaVisualizzare.get_importo()));
+		lblImportoMassimo.setText("L'importo massimo da addebitare per il soggiorno è: "+String.valueOf(importoDaVisualizzare.get_quantita()));
 		//label importo
 		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImporto.setText("Importo: ");
@@ -206,9 +206,9 @@ public class UDialogManager extends JOptionPane {
 			Prezzo importoRicevuto = new Prezzo(Double.parseDouble(importo.getText()));
 			
 			/*Controllo se l'importo inserito è maggiore dell'importo massimo*/
-			if(importoRicevuto.get_importo()>importoDaVisualizzare.get_importo()){
+			if(importoRicevuto.get_quantita()>importoDaVisualizzare.get_quantita()){
 				/*Setto l'importo massimo al valore dell'importo massimo da pagare*/
-				importoRicevuto.set_importo(importoDaVisualizzare.get_importo());
+				importoRicevuto.set_quantita(importoDaVisualizzare.get_quantita());
 			}
 			
 			/*Creo un nuovo giorno con lla data in cui è stato ricevuto il bonifico*/		
@@ -312,7 +312,7 @@ public class UDialogManager extends JOptionPane {
 		/*Label*/
 		/*Label che contiente l'importo massimo da pagare*/
 		JLabel lblImportoMassimo = ViewFactory.getInstance().getStyleFactory().getLabel();
-		lblImportoMassimo.setText("L'importo massimo da addebitare per il soggiorno è: "+String.valueOf(importoDaVisualizzare.get_importo()));
+		lblImportoMassimo.setText("L'importo massimo da addebitare per il soggiorno è: "+String.valueOf(importoDaVisualizzare.get_quantita()));
 		JLabel lblImporto = ViewFactory.getInstance().getStyleFactory().getLabel();
 		lblImporto.setText("Importo da pagare:");
 		/*Campo di testo per l'inserimento del prezzo*/
@@ -330,9 +330,9 @@ public class UDialogManager extends JOptionPane {
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento importo pagamento con carta", JOptionPane.PLAIN_MESSAGE);
 		/*Controllo se il pagamento ha un importo maggiore di quello che è rimasto da pagare*/
 		if(!txtImporto.getText().equals("")){
-			if(Double.valueOf(txtImporto.getText())<importoDaVisualizzare.get_importo()){
+			if(Double.valueOf(txtImporto.getText())<importoDaVisualizzare.get_quantita()){
 				/*Setto l'importo del pagamento da effettuare con quello inserito dall'utente*/
-				importoDaVisualizzare.set_importo(Double.valueOf(txtImporto.getText()));
+				importoDaVisualizzare.set_quantita(Double.valueOf(txtImporto.getText()));
 			}
 		}
 		/*Restituisco l'importo da addebitare*/

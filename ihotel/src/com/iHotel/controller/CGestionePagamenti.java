@@ -18,12 +18,16 @@ import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
 
 /**
+ * Questa classe rappresenta il controllore con la responsabilità di gestire i pagamenti relativi ai soggiorni.
+ * 
  * @author Alessandro
- *
  */
 public class CGestionePagamenti {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
+	/**
+	 * Soggiorno in analisi.
+	 */
 	private SoggiornoContextSubject _soggiorno;
 	/**
 	 * Attributo privato - Pattern Singleton
@@ -42,13 +46,13 @@ public class CGestionePagamenti {
     }
     
     /**
-     * Metodo che ha il compito di mostrare la schermata per la gestione dei pagamenti
-     * @param prenotazione Prenotazione di cui si stanno gestendo i pagamenti
+     * Metodo che ha il compito di mostrare la schermata per la gestione dei pagamenti.
+     * 
+     * @param soggiorno Soggiorno di cui si stanno gestendo i pagamenti
      */
-    public void gestisciPagamentiPrenotazione(SoggiornoContextSubject prenotazione){
+    public void gestisciPagamentiSoggiorno(SoggiornoContextSubject soggiorno){
     	//Setto l'attributo della prenotazione
-    	this._soggiorno =prenotazione;
-    	
+    	this._soggiorno = soggiorno;	
     	// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
@@ -62,17 +66,22 @@ public class CGestionePagamenti {
     }
     
     /**
-     * Metodo che consente di aggiungere un pagamento alla prenotazione
-     * @param pagamento E' il pagamento effettuato dal cliente
+     * Metodo che consente di aggiungere un pagamento al soggiorno.
+     * 
+     * @param pagamento E' il pagamento effettuato dal cliente.
      */
-    public void inserisciPagamentoInPrenotazione(Pagamento pagamento){
+    public void inserisciPagamentoInSoggiorno(Pagamento pagamento){
     	/*Aggiungo il pagamento alla prenotazione*/
     	_soggiorno.addPagamento(pagamento);
     	/*Salvo il pagamento nel db*/
     	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
     	PPrenotazione.getInstance().store(_soggiorno.get_importoTotalePagamenti());
     }
-    
+    /**
+     * Metodo per effettuare un pagamento mediante carta di credito o bancomat.
+     * 
+     * @param importoDaPagareConCarta Importo che si vuole pagare con la carta.
+     */
     public void pagaConCarta(Prezzo importoDaPagareConCarta){
     	
     	//recupero la ServiceFactory
@@ -92,6 +101,7 @@ public class CGestionePagamenti {
     		//aggiungo il pagamento alla prenotazione
         	_soggiorno.addPagamento(pagamentoEffettuato);
     	}
+    	// Faccio lo store degli oggetti.
     	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
     	PPrenotazione.getInstance().store(_soggiorno.get_importoTotalePagamenti());
     	

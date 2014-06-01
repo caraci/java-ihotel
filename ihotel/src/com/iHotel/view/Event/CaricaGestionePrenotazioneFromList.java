@@ -31,6 +31,6 @@ public class CaricaGestionePrenotazioneFromList extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {		
 		//Recupero la prenotazione dal codice
-		CModificaSoggiorno.getInstance().recuperaPrenotazioneDaCodice(_codicePrenotazione);
+		CModificaSoggiorno.getInstance().recuperaSoggiornoDaCodice(_codicePrenotazione);
 	}
 }

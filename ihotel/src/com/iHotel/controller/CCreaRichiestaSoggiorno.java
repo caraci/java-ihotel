@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Crea Prenotazione"
+ * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Crea Richiesta Soggiorno".
  * @author Alessandro
  *
  */
@@ -58,7 +58,7 @@ public class CCreaRichiestaSoggiorno {
     }
     /* --------------------------------- Metodi di instanza -------------------------------------- */
     /**
-     * Metodo per creare una nuova richiesta di soggiorno
+     * Metodo per creare una nuova richiesta di soggiorno.
      */
 	public void creaNuovaRichiestaSoggiorno() {
 		// Creo il nuovo soggiorno
@@ -76,7 +76,7 @@ public class CCreaRichiestaSoggiorno {
 		selezionePeriodoTipologie.creaPanel(tipologieCamere);	
 	}
 	/**
-	 * Metodo per aggiungere una camera al soggiorno
+	 * Metodo per aggiungere una camera al soggiorno.
 	 * 
 	 * @param numeroCamera Stringa contenente il numero della camera che si vuole aggiungere.
 	 */
@@ -130,12 +130,8 @@ public class CCreaRichiestaSoggiorno {
 		// Aggiungo il soggiorno allo storico
 		Storico storico = Storico.getInstance();
 		storico.addSoggiorno(_soggiorno);
-		// Salvataggio degli oggetti da Ram -> Persistenza.
-		try {
-			PPrenotazione.getInstance().store(_soggiorno);
-		} catch(Exception e) {
-			// TODO
-		}
+		// Effettuo lo store del soggiorno.
+		PPrenotazione.getInstance().store(_soggiorno);
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
@@ -147,7 +143,7 @@ public class CCreaRichiestaSoggiorno {
 	}
 	
 	/**
-	 * Metodo che permette di annullare la creazione di una prenotazione
+	 * Metodo che permette di tornare indietro durante la creazione di una richiesta di soggiorno.
 	 */
 	public void annullaRichiestaSoggiorno(){
 		// Recupero il frame dell'applicazione

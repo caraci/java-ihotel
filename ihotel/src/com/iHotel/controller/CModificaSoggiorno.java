@@ -18,14 +18,14 @@ import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCam
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno;
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
+ * 
  * @author Alessandro
- *
  */
 public class CModificaSoggiorno {
 	
 	/* ------------------------- Attributi e costruttore ---------------------------- */
 	/**
-	 * Attributo privato - Pattern Singleton
+	 * Attributo privato che rappresenta l'unica istanza di questa classe - Pattern Singleton
 	 */
 	private static CModificaSoggiorno instance = null;
 	/**
@@ -63,7 +63,8 @@ public class CModificaSoggiorno {
   
 	/**
 	 * Metodo per mostrare l'interfaccia contenente le informazioni sulla camera, relativa al numero fornito. 
-	 * @param numeroCamera 
+	 * 
+	 * @param numeroCamera Stringa contenente il numero di camire che si vuole gestire. 
 	 */
 	public void gestioneCamera(String numeroCamera) {
 		// Ricavo la camera da visualizzare e la salvo come attributo del controllore.
@@ -94,24 +95,17 @@ public class CModificaSoggiorno {
     	// Salvo nel db lo stato camera in seguito all'aggiornamento.
     	PCamera.getInstance().store(_camera.getStatoCameraInPeriodo(periodo));
     }
-	/**
-     * Metodo che termina l'aggiunta dei servizi e restituisce la schermata precedente
-     */
-    public void terminaAggiuntaServiziCamera(){
-    	// Mostro l'interfaccia relativa alla camera, utilizzando il metodo del controllore.
-    	gestioneCamera(_camera.get_numero());
-    }
     /**
-     * Metodo che conclude la gestione della camera
+     * Metodo che conclude la gestione della camera.
      */
     public void terminaGestioneCamera(){
     	// Mostro l'interfaccia relativa alla camera, utilizzando il metodo del controllore.
-    	recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
+    	recuperaSoggiornoDaCodice(_soggiorno.get_codice());
     }
     /**
-     * Metodo che conclude la gestione della prenotazione
+     * Metodo che conclude la gestione del soggiorno.
      */
-    public void terminaGestionePrenotazione(){
+    public void terminaGestioneSoggiorno(){
     	// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
@@ -121,9 +115,8 @@ public class CModificaSoggiorno {
 		// Creo il frame
 		panelHome.creaPanel();
     }
-    
 	/**
-	 * Metodo per caricare la finestra per effettuare il checkIn.
+	 * Metodo per caricare la finestra per aggiungere gli ospiti alle camere del soggiorno.
 	 */
 	public void aggiungiOspitiAllaPrenotazione() {
 		// Recupero il frame dell'applicazione
@@ -150,7 +143,7 @@ public class CModificaSoggiorno {
     	PCamera.getInstance().store(camera.getStatoCameraInPeriodo(periodo));
 	}
 	/**
-	 * Metodo per terminare il checkIn per la camera.
+	 * Metodo per effettuare il checkIn degli ospiti per la camera.
 	 */
 	public void effettuaCheckIn() {
 		// Effettuo il check in per il soggiorno
@@ -159,7 +152,7 @@ public class CModificaSoggiorno {
 		PPrenotazione.getInstance().store(_soggiorno);		
 	}
 	/**
-	 * Metodo per terminare il checkIn per la camera.
+	 * Metodo per effettuare il checkOut per la camera.
 	 */
 	public void effettuaCheckOut() {
 		// Effettuo il check in per il soggiorno
@@ -168,18 +161,11 @@ public class CModificaSoggiorno {
 		PPrenotazione.getInstance().store(_soggiorno);		
 	}
 	/**
-	 * Metodo per tornare alla gestione della prenotazione.
-	 */
-	public void tornaAllaPrenotazione() {
-		// Fornisco la prenotazione de gestire a CModificaPrenotazione
-		this.recuperaPrenotazioneDaCodice(_soggiorno.get_codice());
-	}
-	/**
 	 * Metodo per mostrare l'interfaccia per la gestione del soggiorno, relativo al codice fornito.
 	 * 
 	 * @param codiceSoggiorno Codice della soggiorno da caricare.
 	 */
-	public void recuperaPrenotazioneDaCodice(String codiceSoggiorno) {
+	public void recuperaSoggiornoDaCodice(String codiceSoggiorno) {
 		// Recupero la prenotazione dallo storico.
 		_soggiorno=Storico.getInstance().recuperaSoggiornoDaCodice(codiceSoggiorno);		
 		// Recupero il frame dell'applicazione
