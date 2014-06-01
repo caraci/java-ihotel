@@ -255,6 +255,10 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 		creaPanelBottom();    			
     }
     /* ------------- Getter, Setter ---------------------------- */
+    /**
+     * 
+     * @param subject the subject to set
+     */
     public void set_prenotazioneSubject(ISubject subject) {
     	this._prenotazioneSubject=(SoggiornoContextSubject) subject;
     }

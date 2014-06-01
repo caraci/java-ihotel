@@ -35,6 +35,7 @@ import com.iHotel.view.Utility.UtoPanel;
 
 
 /**
+ * Classe addetta alla creazione dei contenuti della finestra generale del check in
  * @author Eugenio
  *
  */

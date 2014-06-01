@@ -21,9 +21,6 @@ public class VPGP_InfoSoggiorno_Cancellato extends VPGP_InfoSoggiorno {
 	}
 	
 	@Override
-	/**
-	 * Metodo che setta la label contenente lo stato del soggiorno
-	 */
 	protected void setLblStatoSoggiorno(){
 		_lblStatoSoggiorno.setText("Soggiorno Cancellato");
 	}

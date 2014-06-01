@@ -21,6 +21,7 @@ import com.iHotel.view.Event.GestioneSoggiorno.CheckIn.EffettuaCheckInListener;
 import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAlSoggiornoDaInfoCameraListener;
 
 /**
+ * Classe addetta alla creazione della finestra generica per effettuare il check in
  * @author Eugenio
  *
  */
