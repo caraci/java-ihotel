@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import com.iHotel.controller.CCreaRichiestaSoggiorno;
 
 /**
+ * Classe addetta alla gestione dell'evento che permette di tornare alla home una volta iniziata una prenotazione.
  * @author Gabriele
  *
  */
