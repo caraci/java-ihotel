@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import com.iHotel.controller.CModificaSoggiorno;
 
 /**
+ * Classe addetta alla gestione dell'evento per gestire una prenotazione dalla lista presenta nella schermata iniziale.
  * @author Eugenio
  *
  */

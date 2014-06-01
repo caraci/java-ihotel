@@ -10,6 +10,7 @@ import com.iHotel.controller.CModificaSoggiorno;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 
 /**
+ * Classe addetta alla gestione dell'evento per effettuare il check out.
  * @author Eugenio
  *
  */
