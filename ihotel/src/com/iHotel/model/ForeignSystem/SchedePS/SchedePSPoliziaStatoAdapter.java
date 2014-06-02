@@ -23,11 +23,9 @@ public class SchedePSPoliziaStatoAdapter implements ISchedePSAdapter {
 		ArrayList<Camera> camerePrenotate = soggiorno.get_camerePrenotate();
 		/*Ciclo sulle camere della prenotazione*/
 		for (Camera camera : camerePrenotate) {
-			/*Per ogni ospite presente nella camera faccio una stampa (dovrei generare scheda ps)*/
+			/*Per ogni ospite presente nella camera genero la scheda di PS*/
 			for (Iterator<Ospite> iterator = camera.getOspitiInPeriodo(soggiorno.get_periodo()).iterator(); iterator.hasNext();) {
-				Ospite ospite = iterator.next();
-				System.out.println("nome ospite: "+ospite.get_nome()+ " Cognome ospite: "+ospite.get_cognome()+" Numero documento: "+ospite.get_documento().get_numeroDocumento());
-				
+				//TODO generare schede di pubblica sicurezza
 			}
 		}
 	}
