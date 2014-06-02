@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.StrategieSoggiorno.AmmontareCaparra;
+package com.iHotel.model.Strategie.StrategieSoggiorno.AmmontareCaparra;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Prezzo;

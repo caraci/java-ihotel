@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
+package com.iHotel.model.Strategie.StrategieSoggiorno.GiornoScadenza;
 
 import java.util.ArrayList;
 import java.util.Iterator;

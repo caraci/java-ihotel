@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.StrategieSoggiorno.AmmontareCaparra;
+package com.iHotel.model.Strategie.StrategieSoggiorno.AmmontareCaparra;
 
 import java.util.ArrayList;
 import java.util.Iterator;

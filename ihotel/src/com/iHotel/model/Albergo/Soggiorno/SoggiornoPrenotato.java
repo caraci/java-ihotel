@@ -9,10 +9,10 @@ import java.util.Iterator;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Persona.ClientePrenotante;
-import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.ComponentOttieniAmmontareCaparraStrategy;
-import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.StrategiaSoggiornoAmmontareCaparraFactory;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.ComponentOttieniGiornoScadenzaStrategy;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.StrategiaSoggiornoGiornoScadenzaFactory;
+import com.iHotel.model.Strategie.StrategieSoggiorno.AmmontareCaparra.ComponentOttieniAmmontareCaparraStrategy;
+import com.iHotel.model.Strategie.StrategieSoggiorno.AmmontareCaparra.StrategiaSoggiornoAmmontareCaparraFactory;
+import com.iHotel.model.Strategie.StrategieSoggiorno.GiornoScadenza.ComponentOttieniGiornoScadenzaStrategy;
+import com.iHotel.model.Strategie.StrategieSoggiorno.GiornoScadenza.StrategiaSoggiornoGiornoScadenzaFactory;
 import com.iHotel.model.Utility.Periodo;
 
 /**

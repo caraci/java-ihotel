@@ -4,8 +4,8 @@ import java.util.*;
 
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
-import com.iHotel.model.Strategy.CreaStatiCameraStrategy;
-import com.iHotel.model.Strategy.CreaStatiCameraStrategyFactory;
+import com.iHotel.model.Strategie.StrategieOccupazioneCamera.CreaStatiCameraStrategy;
+import com.iHotel.model.Strategie.StrategieOccupazioneCamera.CreaStatiCameraStrategyFactory;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.StrategieSoggiorno.AmmontareCaparra;
+package com.iHotel.model.Strategie.StrategieSoggiorno.AmmontareCaparra;
 
 /**
  * Questa classe rappresenta il generico vincolo per la strategia relativa al calcolo

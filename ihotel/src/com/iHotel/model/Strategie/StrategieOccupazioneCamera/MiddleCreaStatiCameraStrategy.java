@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.Strategy;
+package com.iHotel.model.Strategie.StrategieOccupazioneCamera;
 
 import java.util.LinkedList;
 

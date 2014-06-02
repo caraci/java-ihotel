@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
+package com.iHotel.model.Strategie.StrategieSoggiorno.GiornoScadenza;
 
 /**
  * Questa classe rappresenta il generico vincolo per la strategia relativa a quanti giorni

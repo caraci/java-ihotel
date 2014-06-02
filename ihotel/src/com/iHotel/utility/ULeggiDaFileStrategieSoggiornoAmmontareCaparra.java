@@ -9,8 +9,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.VincoloStrategiaDurataSoggiornoAmmontareCaparra;
-import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.VincoloStrategiaPrenotanteAmmontareCaparra;
+import com.iHotel.model.Strategie.StrategieSoggiorno.AmmontareCaparra.VincoloStrategiaDurataSoggiornoAmmontareCaparra;
+import com.iHotel.model.Strategie.StrategieSoggiorno.AmmontareCaparra.VincoloStrategiaPrenotanteAmmontareCaparra;
 
 /**
  * Classe addetta alla lettura dei file di configurazione, in merito alla lettura dei parametri da utilizzare per la 

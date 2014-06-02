@@ -9,9 +9,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaDurataSoggiornoGiornoScadenza;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaOccupazioneCamereGiornoScadenza;
-import com.iHotel.model.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaPrenotanteGiornoScadenza;
+import com.iHotel.model.Strategie.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaDurataSoggiornoGiornoScadenza;
+import com.iHotel.model.Strategie.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaOccupazioneCamereGiornoScadenza;
+import com.iHotel.model.Strategie.StrategieSoggiorno.GiornoScadenza.VincoloStrategiaPrenotanteGiornoScadenza;
 
 /**
  * Classe addetta alla lettura dei file di configurazione, in merito alla lettura dei parametri da utilizzare per la 

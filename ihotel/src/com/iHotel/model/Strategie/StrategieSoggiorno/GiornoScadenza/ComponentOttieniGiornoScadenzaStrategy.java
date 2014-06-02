@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.StrategieSoggiorno.GiornoScadenza;
+package com.iHotel.model.Strategie.StrategieSoggiorno.GiornoScadenza;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.Giorno;
