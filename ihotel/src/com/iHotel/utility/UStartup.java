@@ -13,7 +13,7 @@ import com.iHotel.persistence.PDescrizioneServiziInterni;
 import com.iHotel.persistence.PPrenotazione;
 
 /**
- * Classe addetta alla realizzazione dello strato di dominio.
+ * Classe addetta alla inizializzazione dello strato di dominio.
  *  
  * @author Eugenio
  */

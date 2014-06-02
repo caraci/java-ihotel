@@ -13,8 +13,10 @@ import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.VincoloStrategiaDura
 import com.iHotel.model.StrategieSoggiorno.AmmontareCaparra.VincoloStrategiaPrenotanteAmmontareCaparra;
 
 /**
+ * Classe addetta alla lettura dei file di configurazione, in merito alla lettura dei parametri da utilizzare per la 
+ * strategia di calcolo dell'ammontare della caparra per il soggiorno.
+ * 
  * @author Eugenio
- *
  */
 public class ULeggiDaFileStrategieSoggiornoAmmontareCaparra extends
 		ULeggiDaFile {
@@ -25,9 +27,9 @@ public class ULeggiDaFileStrategieSoggiornoAmmontareCaparra extends
 	public static String _pathToConfigsStrategieAmmontareCaparra = _pathToConfigs + "strategie/AmmontareCaparra/";
 	
 	/**
-	 * Metodo per ottenere la strategia di risoluzione scelta dall'albergo per decidere l'ammontare della caparra
+	 * Metodo per ottenere la strategia di risoluzione scelta dall'albergo per decidere l'ammontare della caparra.
 	 * 
-	 * @return
+	 * @return Stringa contenente la strategia di risoluzione.
 	 */
 	public static String getPoliticaSceltaStrategieAmmontareCaparra() {
 		// Stringa dove memorizzo la politica da utilizzare.
@@ -53,7 +55,7 @@ public class ULeggiDaFileStrategieSoggiornoAmmontareCaparra extends
 	/**
 	 * Metodo per ottenere la lista delle strategie da utilizzare per il calcolo dell'ammontare della caparra per la richiesta di soggiorno.
 	 * 
-	 * @return Lista contenente l'insieme delle strategie per il calcolo dell'ammontare della caparra per la richiesta di soggiorno.
+	 * @return Lista contenente l'insieme delle strategie per il calcolo dell'ammontare della caparra.
 	 */
 	public static ArrayList<String> getStrategieDaUtilizzareAmmontareCaparra() {
 		// Struttura dati dove inserisco le strategie da utilizzare

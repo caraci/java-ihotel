@@ -16,7 +16,7 @@ public class ULeggiDaFile {
 	/**
 	 * Stringa contenente il percorso verso la cartella configs.
 	 */
-	protected static String _pathToConfigs = "../../ihotel/configs/";
+	protected static String _pathToConfigs = "./ihotel/configs/";
 	/* ------------------------- Metodi di instanza ------------------------------ */
 	/**
 	 * Metodo per andare a leggere in un file di configurazione i valori relativi a nome, telefono, PIVA e eMail della
@@ -71,7 +71,7 @@ public class ULeggiDaFile {
 		return stile;	
 	}
 	/**
-	 * Metodo per andare a leggere in un file di configurazione quali sistemi esterni utilizzare in merito alla gestione dei servizi.
+	 * Metodo per andare a leggere in un file di configurazione quali sistemi esterni utilizzare.
 	 * 
 	 * @return Lista contenente i sistemi esterni da utilizzare
 	 */
