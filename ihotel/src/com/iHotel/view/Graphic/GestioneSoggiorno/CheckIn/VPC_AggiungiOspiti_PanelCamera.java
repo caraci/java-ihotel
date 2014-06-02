@@ -287,7 +287,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 		// Data di rilascio
 		_lblCartaIdentitaDataRilascio.setText("Data rilascio:");
 		// Data di scadenza
-		_lblCartaIdentitaDataScadenza.setText("Data rilascio:");
+		_lblCartaIdentitaDataScadenza.setText("Data scadenza:");
 		
 		// Aggiungo campi al pannello pnlCartaIdentitaDati
 		// riga 1
@@ -334,7 +334,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 		// Data di rilascio
 		_lblPatenteDataRilascio.setText("Data rilascio:");
 		// Data di scadenza
-		_lblPatenteDataScadenza.setText("Data rilascio:");
+		_lblPatenteDataScadenza.setText("Data scadenza:");
 		
 		// Aggiungo campi al pannello _pnlPatenteDati
 		// riga 1
@@ -381,7 +381,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 		// Data di rilascio
 		_lblPassaportoDataRilascio.setText("Data rilascio:");
 		// Data di scadenza
-		_lblPassaportoDataScadenza.setText("Data rilascio:");
+		_lblPassaportoDataScadenza.setText("Data scadenza:");
 		
 		// Aggiungo campi al pannello pnlPassaportoDati
 		// riga 1
