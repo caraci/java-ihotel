@@ -21,7 +21,8 @@ import com.iHotel.view.Event.GestioneSoggiorno.CheckIn.EffettuaCheckInListener;
 import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAlSoggiornoDaInfoCameraListener;
 
 /**
- * Classe addetta alla creazione della finestra generica per effettuare il check in
+ * Classe addetta alla creazione della finestra che mostra la lista degli ospiti per le camere
+ * della prenotazione.
  * @author Eugenio
  *
  */
@@ -94,7 +95,7 @@ public class VPC_AggiungiOspiti extends ViewPanelContentPane {
 		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
 		_btnTerminaCheckin.addMouseListener(new EffettuaCheckInListener(_prenotazione));
 		// Button torna alla prenotazione.
-		_btnTornaPrenotazione.setText("Torna \n Prenotazione");
+		_btnTornaPrenotazione.setText("Indietro");
 		// Assegniamo l'eventListener al JButton btnTerminaCheckin.
 		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaInfoCameraListener());
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.

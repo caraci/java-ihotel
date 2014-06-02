@@ -16,13 +16,9 @@ import com.iHotel.view.Event.GestioneSoggiorno.InformazioniCamera.TornaAlSoggior
  * @author Alessandro
  *
  */
+@SuppressWarnings("serial")
 public class VPGP_InfoCamera_SoggiornoTerminato extends VPGP_InfoCamera {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	@Override
 	protected void creaPanelBottom() {
 		/*Setto il testo dei bottoni*/

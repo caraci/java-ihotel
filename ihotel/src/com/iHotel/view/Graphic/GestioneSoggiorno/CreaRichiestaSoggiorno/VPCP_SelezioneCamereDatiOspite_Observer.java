@@ -78,7 +78,7 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 		_panelFinale=_viewFactory.getPanel();
 		// JButton
 		_btnCompletaPrenotazione=_viewFactory.getButtonAvanti();
-		_btnTornaASelezionaPeriodoTipologia= _viewFactory.getButtonAvanti();
+		_btnTornaASelezionaPeriodoTipologia= _viewFactory.getButton();
 	}
     /* ----------------- /Pattern Singleton  ---------------- */
     /* ------------- Pattern Observer ----------- */
@@ -242,7 +242,7 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);
     }
     /**
-     * Metodo per creare il frame.
+     * Metodo per creare il pannello.
      */
     public void creaPanel(HashMap<String, ArrayList<Camera>> camereDisponibili) {
     	// Setto l'attributo relativo alle camere libere

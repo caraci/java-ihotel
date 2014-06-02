@@ -14,7 +14,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.PagamentoInContanti;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti_Observer;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
@@ -28,7 +28,7 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 	/**
 	 * Pannello contenente i pagamenti.
 	 */
-	private VPP_RiepilogoPagamenti _riepilogoPagamenti;
+	private VPP_RiepilogoPagamenti_Observer _riepilogoPagamenti;
 	private SoggiornoContextSubject _prenotazione;
 
 	/**
@@ -41,7 +41,7 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 		// Recupero il contentPane del frame.
 		JPanel contentPane = (JPanel) viewFrame.getContentPane();
 		// Recupero il panel corretto
-		_riepilogoPagamenti= (VPP_RiepilogoPagamenti) contentPane.getComponent(0);
+		_riepilogoPagamenti= (VPP_RiepilogoPagamenti_Observer) contentPane.getComponent(0);
 		//Aggiungo la prenotazione come attributo
 		_prenotazione=prenotazione;
 
