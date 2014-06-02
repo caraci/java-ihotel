@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConBonifico;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
@@ -28,6 +27,7 @@ import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConBonificoList
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoConCartaListener;
 import com.iHotel.view.Event.GestionePagamenti.InserisciPagamentoInContantiListener;
 import com.iHotel.view.Event.GestionePagamenti.TornaAlSoggiornoDaGestionePagamentiListener;
+import com.iHotel.view.Utility.IObserver;
 import com.iHotel.view.Utility.UtoPanel;
 
 /**

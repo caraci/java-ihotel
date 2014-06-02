@@ -1,4 +1,4 @@
-package com.iHotel.model.Observer;
+package com.iHotel.view.Utility;
 
 /**
  * Pattern Observer. Una classe che implementa questa classe deve implementare un metodo che gli consenta

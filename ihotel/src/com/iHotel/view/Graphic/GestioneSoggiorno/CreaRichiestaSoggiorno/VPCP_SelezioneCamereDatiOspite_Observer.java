@@ -17,12 +17,12 @@ import java.util.Iterator;
 
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.Observer.IObserver;
-import com.iHotel.model.Observer.ISubject;
+import com.iHotel.model.Utility.ISubject;
 import com.iHotel.view.ViewPanelContentPane;
 import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.GestioneSoggiorno.CreaRichiestaSoggiorno.AggiungiCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestioneSoggiorno.CreaRichiestaSoggiorno.EffettuaNuovaPrenotazioneListener;
+import com.iHotel.view.Utility.IObserver;
 
 import java.awt.GridLayout;
 

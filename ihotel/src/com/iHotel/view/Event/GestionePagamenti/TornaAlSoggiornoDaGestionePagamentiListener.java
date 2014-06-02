@@ -8,8 +8,8 @@ import java.awt.event.MouseEvent;
 
 import com.iHotel.controller.CModificaSoggiorno;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.Observer.IObserver;
 import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Utility.IObserver;
 
 /**
  * Classe che ha il compito di gestire il click sul pulsante per tornare indietro nella schermata VPP_RiepilogoPagamenti

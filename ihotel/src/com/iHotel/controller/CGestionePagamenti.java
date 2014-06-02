@@ -8,7 +8,6 @@ import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.ForeignSystem.CreditAuthorizationService.ICreditAuthorizationServiceAdapter;
 import com.iHotel.model.ForeignSystem.LettoreCarte.ILettoreCarteAdapter;
 import com.iHotel.model.ForeignSystem.PagamentoCarta.IPagamentoCartaAdapter;
-import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Pagamento.PagamentoConCarta;
 import com.iHotel.model.Persona.Documenti.CartaDiCredito;
@@ -16,6 +15,7 @@ import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti_Observer;
+import com.iHotel.view.Utility.IObserver;
 
 /**
  * Questa classe rappresenta il controllore con la responsabilità di gestire i pagamenti relativi ai soggiorni.

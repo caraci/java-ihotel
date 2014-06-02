@@ -5,7 +5,6 @@ import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.Observer.IObserver;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
@@ -13,6 +12,7 @@ import com.iHotel.view.ViewFrameApplication;
 import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno.VPCP_SelezioneCamereDatiOspite_Observer;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno.VPCP_SelezionePeriodoTipologie;
+import com.iHotel.view.Utility.IObserver;
 
 import java.util.ArrayList;
 import java.util.HashMap;

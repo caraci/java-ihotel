@@ -3,13 +3,13 @@ package com.iHotel.model.Albergo.Soggiorno;
 import java.util.*;
 
 import com.iHotel.model.Albergo.Camera.Camera;
-import com.iHotel.model.Observer.IObserver;
-import com.iHotel.model.Observer.ISubject;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Utility.Giorno;
+import com.iHotel.model.Utility.ISubject;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.view.Utility.IObserver;
 /**
  * Questa classe rappresenta il concetto di "Soggiorno" di un'albergo del mondo reale.
  * 
