@@ -34,7 +34,7 @@ public class ViewFrameApplication extends JFrame {
 	 */
 	private CardLayout _layoutContentPane;
 	/**
-	 * Panello in uso
+	 * Panello in uso.
 	 */
 	private JPanel _pnlAttuale;
 	/**
@@ -42,9 +42,9 @@ public class ViewFrameApplication extends JFrame {
 	 */
 	private static ViewFrameApplication _instance = null;
 	/**
-	 * 
+	 * Path per l'icoan dell'applicazione.
 	 */
-	private String _pathToIcon="../../ihotel/configs/ihotel_Icon.jpg"; 
+	private String _pathToIcon="./ihotel/configs/ihotel_Icon.jpg"; 
 	/**
 	 * Costruttore
 	 */
