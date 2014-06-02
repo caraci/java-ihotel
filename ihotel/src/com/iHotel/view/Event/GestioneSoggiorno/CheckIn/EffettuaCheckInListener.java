@@ -11,7 +11,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.view.Utility.UDialogManager;
 
 /**
- * Classe addetta alla gestione dell'evento per effettuare il chek in.
+ * Classe addetta alla gestione dell'evento per effettuare il check in.
  * @author Eugenio
  *
  */

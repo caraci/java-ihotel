@@ -37,7 +37,7 @@ import com.iHotel.view.Utility.UtoPanel;
  *
  */
 @SuppressWarnings("serial")
-public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObserver {
+public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implements IObserver {
 	
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
@@ -74,7 +74,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	private JButton _btnTornaPrenotazione;
  
 
-	public VPP_RiepilogoPagamenti() {
+	public VPP_RiepilogoPagamenti_Observer() {
 		/*JPanel*/
 		
 		//Pannelli con liste pagamenti
@@ -162,7 +162,7 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 		// Struttura dati dove si salvano i bottoni con la relativa posizione.
 		HashMap<Integer, JButton> Bottoni = new HashMap<Integer, JButton>();
 		//Setto il testo del bottone
-		_btnTornaPrenotazione.setText("Torna alla prenotazione");
+		_btnTornaPrenotazione.setText("Indietro");
 		/*Aggiungo il listener al click sul pulsante*/
 		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaGestionePagamentiListener(_prenotazione));
 		// Aggiungo il bottone alla struttura.
@@ -316,12 +316,10 @@ public class VPP_RiepilogoPagamenti extends ViewPanelContentPane implements IObs
 	public void creaPanel(SoggiornoContextSubject prenotazione){
 		//Setto l'attributo prenotazione con il riferimento passato come parametro
 		_prenotazione = prenotazione;
-		//Creo il pannello centrale
+		//Creo i pannelli top,middle e bottom della pagina
 		creaPanelTop();
 		creaPanelMiddle();
-		creaPanelBottom();
-		/* ATTENZIONE MANCANO I METODI PER CREARE PANNELLO SUPERIORE ED INFERIORE*********************************************/
-		
+		creaPanelBottom();		
 	}	
 	
 	/**

@@ -15,7 +15,7 @@ import com.iHotel.model.Persona.Documenti.CartaDiCredito;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti_Observer;
 
 /**
  * Questa classe rappresenta il controllore con la responsabilità di gestire i pagamenti relativi ai soggiorni.
@@ -56,7 +56,7 @@ public class CGestionePagamenti {
     	// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
-		VPP_RiepilogoPagamenti riepilogoPagamenti = new VPP_RiepilogoPagamenti();
+		VPP_RiepilogoPagamenti_Observer riepilogoPagamenti = new VPP_RiepilogoPagamenti_Observer();
 		// Per il pattern Observer aggiungo l'observer alla prenotazione.
 		_soggiorno.Attach((IObserver) riepilogoPagamenti);
 		// Assegno la prossima schermata al frame.

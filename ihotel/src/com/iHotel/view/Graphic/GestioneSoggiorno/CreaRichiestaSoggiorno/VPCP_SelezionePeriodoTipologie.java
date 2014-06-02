@@ -56,7 +56,7 @@ public class VPCP_SelezionePeriodoTipologie extends ViewPanelContentPane {
 		_lblTitolo=_viewFactory.getLabelIntestazione_1();
 		// JButton
 		_btnAvanti=_viewFactory.getButtonAvanti();
-		_btnIndietro=_viewFactory.getButtonAvanti();
+		_btnIndietro=_viewFactory.getButton();
 		// CheckBox
 		_checkBoxesTipologie = new ArrayList<JCheckBox>();
 		// Creo il frame

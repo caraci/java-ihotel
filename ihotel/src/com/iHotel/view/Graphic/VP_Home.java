@@ -1,4 +1,4 @@
- package com.iHotel.view.Graphic;
+package com.iHotel.view.Graphic;
 
 import java.awt.GridLayout;
 import java.util.Iterator;

@@ -265,7 +265,7 @@ public class VPGP_InfoCamera extends ViewPanelContentPane {
 	protected void creaPanelBottom() {
 		/*Setto il testo dei bottoni*/
 		_btnAggiungiServizi.setText("Aggiungi servizi");
-		_btnTornaPrenotazione.setText("Torna alla prenotazione");
+		_btnTornaPrenotazione.setText("Indietro");
 		/*Aggiungo il listener al click sul bottone*/
 		_btnAggiungiServizi.addMouseListener(new AggiungiServiziListener());
 		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaInfoCameraListener());
