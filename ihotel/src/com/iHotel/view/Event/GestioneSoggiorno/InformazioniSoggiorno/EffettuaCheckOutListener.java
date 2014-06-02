@@ -15,7 +15,9 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
  *
  */
 public class EffettuaCheckOutListener extends MouseAdapter {
-	
+	/**
+	 * Maniglia al soggiorno
+	 */
 	private SoggiornoContextSubject _soggiorno;
 	
 	/**

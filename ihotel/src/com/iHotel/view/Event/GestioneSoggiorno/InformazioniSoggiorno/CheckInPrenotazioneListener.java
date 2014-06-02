@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import com.iHotel.controller.CModificaSoggiorno;
 
 /**
- * Classe addetta alla gestione dell'evento per effettuare il check in.
+ * Classe addetta alla gestione dell'evento click sul pulsante per aggiungere ospiti al soggiorno.
  * @author Alessandro
  *
  */

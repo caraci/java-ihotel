@@ -12,7 +12,8 @@ import javax.swing.JPanel;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti_PanelCamera;
 
 /**
- * Classe addetta alla gestione dell'evento per sceglierre un documento durante l'inserimento di un ospite.
+ * Classe addetta alla gestione dell'evento per scegliere il tipo di documento durante l'inserimento delle
+ * informazioni relative ad un ospite.
  * @author Eugenio
  *
  */

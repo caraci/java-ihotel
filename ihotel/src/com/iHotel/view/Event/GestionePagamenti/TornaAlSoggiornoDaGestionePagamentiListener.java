@@ -12,7 +12,7 @@ import com.iHotel.model.Observer.IObserver;
 import com.iHotel.view.ViewFrameApplication;
 
 /**
- * Classe che ha il compito di gestire il click sul pulsante "Torna al soggiorno"nella schermata VPP_RiepilogoPagamenti
+ * Classe che ha il compito di gestire il click sul pulsante per tornare indietro nella schermata VPP_RiepilogoPagamenti
  * @author Alessandro
  *
  */
@@ -31,7 +31,7 @@ public class TornaAlSoggiornoDaGestionePagamentiListener extends MouseAdapter{
 		_soggiorno = soggiorno;
 	}
 	/**
-	 * Metodo che ha il compito di gestire il click sul pulsante "Torna al soggiorno"
+	 * Metodo che ha il compito di gestire il click sul pulsante "Indietro"
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){

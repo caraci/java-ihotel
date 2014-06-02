@@ -16,6 +16,8 @@ import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_Info
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato;
 
 /**
+ * Classe che ha il compito di restituire i pannelli che visualizzano informazioni dipendenti dallo stato
+ * del soggiorno 
  * @author Eugenio
  *
  */
