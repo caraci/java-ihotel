@@ -66,8 +66,7 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 			/*Recupero il controllore corretto*/
 			CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 			/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
-			gestorePagamenti.pagaConCarta(importoDaPagareConCarta);
-					
+			gestorePagamenti.pagaConCarta(importoDaPagareConCarta);		
 			// Prendo il pannello dove si va a mostrare la lista dei bonifici
 			JPanel panelCarta = _riepilogoPagamenti.getPanelListaPagamentiConCarta();
 			// Prendo il layout del pannello

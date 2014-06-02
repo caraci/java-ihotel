@@ -70,7 +70,7 @@ public class CGestionePagamenti {
      * 
      * @param pagamento E' il pagamento effettuato dal cliente.
      */
-    public void inserisciPagamentoInSoggiorno(Pagamento pagamento){
+    public void inserisciPagamentoInSoggiorno(Pagamento pagamento) {
     	/*Aggiungo il pagamento alla prenotazione*/
     	_soggiorno.addPagamento(pagamento);
     	/*Salvo il pagamento nel db*/
@@ -82,7 +82,7 @@ public class CGestionePagamenti {
      * 
      * @param importoDaPagareConCarta Importo che si vuole pagare con la carta.
      */
-    public void pagaConCarta(Prezzo importoDaPagareConCarta){
+    public void pagaConCarta(Prezzo importoDaPagareConCarta) {
     	
     	//recupero la ServiceFactory
     	ServiceFactory serviceFactory= ServiceFactory.getInstance();
@@ -98,13 +98,9 @@ public class CGestionePagamenti {
     		IPagamentoCartaAdapter pagaConCarta = serviceFactory.get_pagamentoCartaAdapter();
     		//effetuo il pagamento
     		PagamentoConCarta pagamentoEffettuato=pagaConCarta.eseguiPagamento(importoDaPagareConCarta, cartaDiCredito);
-    		//aggiungo il pagamento alla prenotazione
-        	_soggiorno.addPagamento(pagamentoEffettuato);
+    		// Salvo il pagamento
+    		this.inserisciPagamentoInSoggiorno(pagamentoEffettuato);
     	}
-    	// Faccio lo store degli oggetti.
-    	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
-    	PPrenotazione.getInstance().store(_soggiorno.get_importoTotalePagamenti());
-    	
     }
 
 }
