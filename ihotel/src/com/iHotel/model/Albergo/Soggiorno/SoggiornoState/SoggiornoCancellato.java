@@ -1,21 +1,22 @@
 /**
  * 
  */
-package com.iHotel.model.Albergo.Soggiorno;
+package com.iHotel.model.Albergo.Soggiorno.SoggiornoState;
 
 import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 
 /**
- * Questa classe rappresenta lo stato del soggiorno in seguito al checkOut.
- * 
+ * Questa classe rappresenta lo stato di un soggiorno che viene cancellato.
  * @author Gabriele
  */
-public class SoggiornoTerminato extends SoggiornoState {
+public class SoggiornoCancellato extends SoggiornoStatePagamentoContext {
 
-	public SoggiornoTerminato(SoggiornoContextSubject soggiornoSubject) {
+	public SoggiornoCancellato(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	@Override
 	public void addCamera(Camera camera) {
@@ -43,18 +44,14 @@ public class SoggiornoTerminato extends SoggiornoState {
 		
 	}
 
-
 	@Override
-	public SoggiornoState effettuaCheckIn() {
+	public void effettuaCheckIn() {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
-
 	@Override
-	public SoggiornoState effettuaCheckOut() {
+	public void effettuaCheckOut() {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

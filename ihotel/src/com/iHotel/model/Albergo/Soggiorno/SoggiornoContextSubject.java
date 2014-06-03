@@ -3,6 +3,8 @@ package com.iHotel.model.Albergo.Soggiorno;
 import java.util.*;
 
 import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoPrenotato;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoStatePagamentoContext;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Utility.Giorno;
@@ -59,7 +61,7 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	/**
 	 * Stato in cui si trova il soggiorno - Pattern State
 	 */
-	private SoggiornoState _soggiornoState;
+	private SoggiornoStatePagamentoContext _soggiornoState;
 	/**
 	 * 	Importo totale pagamenti ricevuti per il soggiorno
 	 */
@@ -199,18 +201,14 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	 */
 	public void effettuaCheckIn() {
 		// Passo la richiesta allo stato attuale
-		SoggiornoState statoSuccessivo = _soggiornoState.effettuaCheckIn();
-		// Setto il nuovo stato del soggiorno
-		this.set_soggiornoState(statoSuccessivo);
+		_soggiornoState.effettuaCheckIn();
 	}
 	/**
 	 * Metodo per effettuare il check out della del soggiorno.
 	 */
 	public void effettuaCheckOut() {
 		// Passo la richiesta allo stato attuale
-		SoggiornoState statoSuccessivo = _soggiornoState.effettuaCheckOut();
-		// Setto il nuovo stato del soggiorno
-		this.set_soggiornoState(statoSuccessivo);		
+		_soggiornoState.effettuaCheckOut();	
 	}
 	/**
 	 * Metodo che calcola il costo totale del soggiorno comprensivo di totale camere, totale servizi
@@ -336,14 +334,14 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	/**
 	 * @return the _statoSoggiorno
 	 */
-	public SoggiornoState get_soggiornoState() {
+	public SoggiornoStatePagamentoContext get_soggiornoState() {
 		return _soggiornoState;
 	}
 
 	/**
 	 * @param _statoSoggiorno the _statoSoggiorno to set
 	 */
-	public void set_soggiornoState(SoggiornoState _statoSoggiorno) {
+	public void set_soggiornoState(SoggiornoStatePagamentoContext _statoSoggiorno) {
 		this._soggiornoState = _statoSoggiorno;
 	}
 

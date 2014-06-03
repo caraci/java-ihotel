@@ -15,11 +15,11 @@ import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.TerminaModi
  * @author Gabriele
  *
  */
-public class VPGP_InfoSoggiorno_Terminato_Saldato extends VPGP_InfoSoggiorno {
+public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
 	/**
 	 * Costruttore
 	 */
-	public VPGP_InfoSoggiorno_Terminato_Saldato() {
+	public VPGP_InfoSoggiorno_Terminato() {
 		super();
 	}
 	@Override

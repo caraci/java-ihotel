@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iHotel.model.Albergo.Soggiorno;
+package com.iHotel.model.Albergo.Soggiorno.SoggiornoState;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,6 +9,8 @@ import java.util.Iterator;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoStateObserver;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Utility.Periodo;
@@ -18,18 +20,32 @@ import com.iHotel.model.Utility.Prezzo;
  * @author Gabriele
  *
  */
-public abstract class SoggiornoState {
+public abstract class SoggiornoStatePagamentoContext {
 	/**
 	 * Soggiorno a cui è associato lo stato - Pattern State
 	 */
 	protected SoggiornoContextSubject _soggiornoSubject;
 	/**
+	 * Stato del pagamento relativo al soggiorno, context per questo state - Pattern State.
+	 */
+	protected PagamentoStateObserver _pagamentoState;
+	/**
 	 * Costruttore.
 	 * 
 	 * @param soggiornoSubject Soggiorno a cui è associato lo stato.
 	 */
-	public SoggiornoState(SoggiornoContextSubject soggiornoSubject) {
+	public SoggiornoStatePagamentoContext(SoggiornoContextSubject soggiornoSubject) {
 		_soggiornoSubject=soggiornoSubject;
+	}
+	/**
+	 * Costruttore.
+	 * 
+	 * @param soggiornoSubject Soggiorno a cui è associato lo stato.
+	 * @param pagamentoState Stato del pagamento associato allo stato corrente del soggiorno.
+	 */
+	public SoggiornoStatePagamentoContext(SoggiornoContextSubject soggiornoSubject, PagamentoStateObserver pagamentoState) {
+		_soggiornoSubject = soggiornoSubject;
+		_pagamentoState = pagamentoState;
 	}
 	/* ------------------------- Metodi di istanza ----------------------------- */
 	/**
@@ -157,12 +173,12 @@ public abstract class SoggiornoState {
 	 * Metodo per effettuare il check in dei clienti del soggiorno.
 	 * @return Stato successivo del soggiorno.
 	 */
-	public abstract SoggiornoState effettuaCheckIn();
+	public abstract void effettuaCheckIn();
 	/**
 	 * Metodo per effettuare il check out dei clienti del soggiorno.
 	 * @return Stato successivo del soggiorno.
 	 */
-	public abstract SoggiornoState effettuaCheckOut();
+	public abstract void effettuaCheckOut();
 	
 	
 	/* ----------------- Getter, Setter ------------------- */
@@ -177,6 +193,12 @@ public abstract class SoggiornoState {
 	 */
 	public void set_soggiornoSubject(SoggiornoContextSubject _soggiornoSubject) {
 		this._soggiornoSubject = _soggiornoSubject;
+	}
+	/**
+	 * @return the _pagamentoState
+	 */
+	public PagamentoStateObserver get_pagamentoState() {
+		return _pagamentoState;
 	}
 	
 }

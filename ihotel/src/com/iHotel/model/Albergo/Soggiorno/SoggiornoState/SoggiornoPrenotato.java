@@ -1,12 +1,15 @@
 /**
  * 
  */
-package com.iHotel.model.Albergo.Soggiorno;
+package com.iHotel.model.Albergo.Soggiorno.SoggiornoState;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoSospeso;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoStateObserver;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Strategie.StrategieSoggiorno.AmmontareCaparra.ComponentOttieniAmmontareCaparraStrategy;
@@ -20,11 +23,16 @@ import com.iHotel.model.Utility.Periodo;
  * 
  * @author Gabriele
  */
-public class SoggiornoPrenotato extends SoggiornoState {
+public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
 
 	public SoggiornoPrenotato(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);
-		// TODO Auto-generated constructor stub
+		// Inizializziamo il pagamento state.
+		_pagamentoState = new PagamentoSospeso(this);
+	}
+	
+	public SoggiornoPrenotato(SoggiornoContextSubject soggiornoSubject, PagamentoStateObserver pagamentoState) {
+		super(soggiornoSubject, pagamentoState);
 	}
 
 	@Override
@@ -82,18 +90,16 @@ public class SoggiornoPrenotato extends SoggiornoState {
 	}
 
 	@Override
-	public SoggiornoState effettuaCheckIn() {
+	public void effettuaCheckIn() {
 		// TODO - invio le informazioni degli ospiti al sistema esterno della polizia di stato
 		ServiceFactory.getInstance().get_schedePSAdapter().generaSchedePubblicaSicurezza(_soggiornoSubject);
-		// Creo lo stato successivo
-		SoggiornoState statoSuccessivo = new SoggiornoInCorso(_soggiornoSubject);
-		return statoSuccessivo;
+		// Setto lo stato successivo al subject.
+		_soggiornoSubject.set_soggiornoState(new SoggiornoInCorso(_soggiornoSubject, _pagamentoState));
 	}
 
 	@Override
-	public SoggiornoState effettuaCheckOut() {
+	public void effettuaCheckOut() {
 		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

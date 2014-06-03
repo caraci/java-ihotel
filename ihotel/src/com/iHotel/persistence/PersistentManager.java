@@ -10,7 +10,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Camera.StatoCamera;
 import com.iHotel.model.Albergo.Camera.StatoCameraOccupata;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoState;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoStatePagamentoContext;
 
 public class PersistentManager {
 	/* --------------- Attributi e costruttore ------------------- */
@@ -32,7 +32,7 @@ public class PersistentManager {
 			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 			// Configurazioni per l'aggiornamento in cascata degli oggetti delle seguenti classi.
 			config.common().objectClass(SoggiornoContextSubject.class).cascadeOnUpdate(true);
-			config.common().objectClass(SoggiornoState.class).cascadeOnUpdate(true);
+			config.common().objectClass(SoggiornoStatePagamentoContext.class).cascadeOnUpdate(true);
 			config.common().objectClass(Camera.class).cascadeOnUpdate(true);
 			config.common().objectClass(StatoCamera.class).cascadeOnUpdate(true);
 			config.common().objectClass(StatoCameraOccupata.class).cascadeOnUpdate(true);

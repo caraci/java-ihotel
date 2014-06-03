@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  *
  */
 @SuppressWarnings("serial")
-public class VPP_RiepilogoPagamentiSoggiornoNonSaldato extends VPP_RiepilogoPagamenti_Observer {
+public class VPP_RiepilogoPagamentiSoggiornoSospeso extends VPP_RiepilogoPagamenti_Observer {
 	
 	@Override
 	protected JPanel creaPanelEsternoContanti(){

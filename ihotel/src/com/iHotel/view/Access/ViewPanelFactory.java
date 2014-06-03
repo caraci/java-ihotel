@@ -4,7 +4,8 @@
 package com.iHotel.view.Access;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamentiSoggiornoNonSaldato;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoStateObserver;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamentiSoggiornoSospeso;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamentiSoggiornoSaldato;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti_Observer;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera;
@@ -16,8 +17,7 @@ import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_Info
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Cancellato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_InCorso;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Prenotato;
-import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato_Saldato;
-import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato_Sospeso;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato;
 
 /**
  * Classe che ha il compito di restituire i pannelli che visualizzano informazioni dipendenti dallo stato
@@ -47,16 +47,11 @@ public class ViewPanelFactory {
 		case "SoggiornoInCorso" :
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_InCorso();
 			break;
-		case "SoggiornoTerminatoSaldato" :
-			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato_Saldato();
+		case "SoggiornoTerminato" :
+			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato();
 			break;
-		case "SoggiornoTerminatoSospeso":
-			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato_Sospeso();
-		break;
 		case "SoggiornoCancellato" :
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Cancellato();
-			break;
-		default:
 			break;
 		}
 		return panelInfoSoggiorno;
@@ -76,19 +71,17 @@ public class ViewPanelFactory {
 		
 		// Scelgo il pannello da fornire in base allo stato della prenotazione
 		switch (nomeStato) {
-		case "SoggiornoTerminato" :
-			panelInfoCamera = new VPGP_InfoCamera_SoggiornoTerminato();
-			break;
-		case "SoggiornoCancellato" :
-			panelInfoCamera = new VPGP_InfoCamera_SoggiornoCancellato();
-			break;
 		case "SoggiornoPrenotato":
 			panelInfoCamera = new VPGP_InfoCamera_SoggiornoPrenotato();
 			break;
 		case "SoggiornoInCorso":
 			panelInfoCamera = new VPGP_InfoCamera_SoggiornoInCorso();
 			break;
-		default:
+		case "SoggiornoTerminato" :
+			panelInfoCamera = new VPGP_InfoCamera_SoggiornoTerminato();
+			break;
+		case "SoggiornoCancellato" :
+			panelInfoCamera = new VPGP_InfoCamera_SoggiornoCancellato();
 			break;
 		}
 		return panelInfoCamera;
@@ -100,19 +93,21 @@ public class ViewPanelFactory {
 	 * @return Pannello contenente il riepilogo sui pagamenti
 	 */
 	public static VPP_RiepilogoPagamenti_Observer getPanelRiepilogoPagamenti(SoggiornoContextSubject soggiorno){
+		// Recupero lo stato attuale del pagamento del soggiorno.
+		PagamentoStateObserver statoPagamento = soggiorno.get_soggiornoState().get_pagamentoState();
 		// Prendo il nome dello stato attuale del soggiorno
-		String nomeStato = soggiorno.get_soggiornoState().getClass().getSimpleName();
+		String nomeStatoPagamento = statoPagamento.getClass().getSimpleName();
 		
 		//Istanzio il pannello
 		VPP_RiepilogoPagamenti_Observer panelRiepilogoPagamenti= null;
 		
 		//Scelgo il pannello corretto in base allo stato del soggiorno
-		switch (nomeStato) {
-		case "SoggiornoTerminatoSaldato":
+		switch (nomeStatoPagamento) {
+		case "PagamentoSaldato":
 			panelRiepilogoPagamenti = new VPP_RiepilogoPagamentiSoggiornoSaldato();
 			break;
-		default:
-			panelRiepilogoPagamenti = new VPP_RiepilogoPagamentiSoggiornoNonSaldato();
+		case "PagamentoSospeso":
+			panelRiepilogoPagamenti = new VPP_RiepilogoPagamentiSoggiornoSospeso();
 			break;
 		}
 		return panelRiepilogoPagamenti;
