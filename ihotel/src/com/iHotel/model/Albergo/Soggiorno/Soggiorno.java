@@ -59,9 +59,17 @@ public class Soggiorno extends SoggiornoState {
 
 	@Override
 	public SoggiornoState effettuaCheckOut() {
-		// Creo lo stato successivo
-		SoggiornoState statoSuccessivo = new SoggiornoTerminato(_soggiornoSubject);
-		return statoSuccessivo;		
+		//creo uno stato
+		SoggiornoState statoSuccessivo;
+		//controllo se la prenotazione è stata saldata
+		if (_soggiornoSubject.calcolaImportoRimanenteDaPagare().get_quantita()==0) {
+			//Creo lo stato successivo
+			statoSuccessivo = new SoggiornoTerminatoSaldato(_soggiornoSubject);
+		} else {
+			//l'importo non è stato saldato o saldato in parte 
+			statoSuccessivo = new SoggiornoTerminatoSospeso(_soggiornoSubject);
+		}
+		return statoSuccessivo;
 	}
 
 }
