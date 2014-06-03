@@ -13,7 +13,7 @@ import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_Info
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Cancellato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_InCorso;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Prenotato;
-import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato_Sospeso;
 
 /**
  * Classe che ha il compito di restituire i pannelli che visualizzano informazioni dipendenti dallo stato
@@ -44,10 +44,10 @@ public class ViewPanelFactory {
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_InCorso();
 			break;
 		case "SoggiornoTerminatoSaldato" :
-			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato();
+			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato_Sospeso();
 			break;
 		case "SoggiornoTerminatoSospeso":
-			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato();
+			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato_Sospeso();
 		break;
 		case "SoggiornoCancellato" :
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Cancellato();

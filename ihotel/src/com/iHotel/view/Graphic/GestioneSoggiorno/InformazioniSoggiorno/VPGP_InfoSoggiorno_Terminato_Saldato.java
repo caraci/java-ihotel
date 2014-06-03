@@ -11,23 +11,20 @@ import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.GestisciPag
 import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.TerminaModifichePrenotazione;
 
 /**
- * Classe addetta alla realizzazione della finestra per mostrare le informazioni di un soggiorno terminato
- * @author Eugenio
+ * Classe addetta alla realizzazione della finestra per mostrare le informazioni di un soggiorno terminato saldato
+ * @author Gabriele
  *
  */
-@SuppressWarnings("serial")
-public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
-
+public class VPGP_InfoSoggiorno_Terminato_Saldato extends VPGP_InfoSoggiorno {
 	/**
 	 * Costruttore
 	 */
-	public VPGP_InfoSoggiorno_Terminato() {
+	public VPGP_InfoSoggiorno_Terminato_Saldato() {
 		super();
 	}
-	
 	@Override
 	protected void setLblStatoSoggiorno(){
-		_lblStatoSoggiorno.setText("Soggiorno Terminato");
+		_lblStatoSoggiorno.setText("Soggiorno Terminato Saldato");
 	}
 	
 	@Override
@@ -51,5 +48,4 @@ public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
 		Integer numeroColonne = 5;
 		creaPanelPulsanti(_panelBottom, numeroColonne, Bottoni);		
 	}
-
 }
