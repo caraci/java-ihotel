@@ -60,7 +60,7 @@ public class InserisciPagamentoInContantiListener extends MouseAdapter {
 		 * un oggetto PagamentoInContanti*/
 		PagamentoInContanti pagamentoInContanti = UDialogManager.getDialogDatiPagamentoInContanti(importoRimanenteDaPagare);
 		//Controllo se il pagamento restituito non è vuoto
-		if(pagamentoInContanti.get_importo()!=null){
+		if(pagamentoInContanti!=null){
 			/*Recupero il controllore corretto*/
 			CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 			/*Invoco il metodo per l'inserimento della prenotazione al controllore*/

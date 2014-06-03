@@ -130,7 +130,7 @@ public class UDialogManager extends JOptionPane {
 		setColor(ViewFactory.getInstance().getStyleFactory().getColorContentPane(), ViewFactory.getInstance().getStyleFactory().getColorContentPane());
 		
 		//Creo un pagamento con bonifico
-		PagamentoConBonifico pagamento = new PagamentoConBonifico();
+		PagamentoConBonifico pagamento = null;
 		//Faccio il display della schermata
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento pagamento Con Bonifico", JOptionPane.PLAIN_MESSAGE);
 		
@@ -149,12 +149,9 @@ public class UDialogManager extends JOptionPane {
 			
 			/*Creo una persona che è il mittente del bonifico*/
 			Persona mittente = new Persona(nomeMittente.getText(), cognomeMittente.getText());
-			
 			/*Creo l'oggetto PagamentoConBonifico che restituisco*/
-			pagamento.set_importo(importoRicevuto);
-			pagamento.set_data(dataBonifico);
-			pagamento.set_codiceBonifico(codice.getText());
-			pagamento.set_mittente(mittente);
+			pagamento = new PagamentoConBonifico(importoRicevuto, dataBonifico, codice.getText(), mittente);
+
 		}
 		/*Restituisco il pagamento*/
 		return pagamento;		
@@ -196,7 +193,7 @@ public class UDialogManager extends JOptionPane {
 		setColor(ViewFactory.getInstance().getStyleFactory().getColorContentPane(), ViewFactory.getInstance().getStyleFactory().getColorContentPane());
 		
 		//
-		PagamentoInContanti pagamento = new PagamentoInContanti();
+		PagamentoInContanti pagamento = null; new PagamentoInContanti();
 		//Faccio il display della schermata
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs,"Inserimento pagamento in contanti", JOptionPane.PLAIN_MESSAGE);
 		
@@ -213,10 +210,8 @@ public class UDialogManager extends JOptionPane {
 			/*Creo un nuovo giorno con lla data in cui è stato ricevuto il bonifico*/		
 			Giorno dataIncasso = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
 			
-			
 			/*Creo l'oggetto PagamentoConBonifico che restituisco*/
-			pagamento.set_importo(importoRicevuto);
-			pagamento.set_data(dataIncasso);
+			pagamento =  new PagamentoInContanti(importoRicevuto, dataIncasso);			
 		}
 		
 		/*Restituisco il pagamento*/
@@ -284,20 +279,22 @@ public class UDialogManager extends JOptionPane {
 			
 		//Faccio il display della schermata
 		JOptionPane.showMessageDialog(ViewFrameApplication.getInstance(), inputs, "Inserimento servizi nella prenotaziones", JOptionPane.PLAIN_MESSAGE);
-		
-		/*Costruisco tutto ciò che mi serve per istanziare un servizio*/
-		DescrizioneServizioInterno descrizioneServizio=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaNome(comboBoxServizi.getSelectedItem().toString());
-		/*Codice del servizio*/
-		String codice = descrizioneServizio.get_codice();
-		/*Data in cui eseguire il servizio*/
-		Giorno dataRichiesta = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
-		/*Ora per cui è stato richiesto il servizio*/
-		Ora orario = new Ora(UMostraOrario.getInstance().getOraSelezionata(),UMostraOrario.getInstance().getMinutoSelezionato());
-		/*Testo delle note*/
-		String testoNote = note.getText();
-		/*Costruisco il servizio interno con le informazioni inserite*/
-		ServizioInterno servizioInterno = new ServizioInterno(codice,dataRichiesta,testoNote,orario);
-		
+		ServizioInterno servizioInterno = null;
+
+		if(!note.getText().trim().equals("")){
+			/*Costruisco tutto ciò che mi serve per istanziare un servizio*/
+			DescrizioneServizioInterno descrizioneServizio=CatalogoServiziInterni.getInstance().getDescrizioneServizioDaNome(comboBoxServizi.getSelectedItem().toString());
+			/*Codice del servizio*/
+			String codice = descrizioneServizio.get_codice();
+			/*Data in cui eseguire il servizio*/
+			Giorno dataRichiesta = new Giorno(data.getModel().getDay(),data.getModel().getMonth(),data.getModel().getYear());
+			/*Ora per cui è stato richiesto il servizio*/
+			Ora orario = new Ora(UMostraOrario.getInstance().getOraSelezionata(),UMostraOrario.getInstance().getMinutoSelezionato());
+			/*Testo delle note*/
+			String testoNote = note.getText();
+			/*Costruisco il servizio interno con le informazioni inserite*/
+			servizioInterno = new ServizioInterno(codice, dataRichiesta, testoNote, orario);		
+		}
 		/*Restituisco il servizio interno costruito*/
 		return servizioInterno;
 	}

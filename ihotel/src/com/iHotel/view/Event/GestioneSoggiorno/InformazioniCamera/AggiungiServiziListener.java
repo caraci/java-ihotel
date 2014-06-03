@@ -47,17 +47,19 @@ public class AggiungiServiziListener extends MouseAdapter {
 		//Invoco la creazione della dialog per l'inserimento del servizio. Mi viene restituito il servizio
 		//costruito con le informazioni inserite dall'utente
 		ServizioInterno servizio = UDialogManager.getDialogAggiungiServizioInterno();
-		// Recupero il controllore e invoco il metodo per tornare alla gestione della prenotazione.
-		CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
-		//Invoco il metodo per l'aggiunta del servizio
-		modificaPrenotazione.aggiungiServizio(servizio);
-		//Creo il pannello dei servizi interni
-		JPanel panelServiziInterni = _infoCamera.getPanelServiziInterni();
-		//Recuper il layout
-		CardLayout cardLayout = (CardLayout) panelServiziInterni.getLayout();
-		//Aggiungo un nuovo pannello di servizi interni
-		panelServiziInterni.add(_infoCamera.creaPanelMiddleCenter());
-		//Mostro il pannello appena creato
-		cardLayout.next(panelServiziInterni);
+		if(servizio!=null){		
+			// Recupero il controllore e invoco il metodo per tornare alla gestione della prenotazione.
+			CModificaSoggiorno modificaPrenotazione = CModificaSoggiorno.getInstance();
+			//Invoco il metodo per l'aggiunta del servizio
+			modificaPrenotazione.aggiungiServizio(servizio);
+			//Creo il pannello dei servizi interni
+			JPanel panelServiziInterni = _infoCamera.getPanelServiziInterni();
+			//Recuper il layout
+			CardLayout cardLayout = (CardLayout) panelServiziInterni.getLayout();
+			//Aggiungo un nuovo pannello di servizi interni
+			panelServiziInterni.add(_infoCamera.creaPanelMiddleCenter());
+			//Mostro il pannello appena creato
+			cardLayout.next(panelServiziInterni);
+		}
 	}
 }
