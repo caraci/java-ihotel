@@ -8,8 +8,6 @@ import java.awt.event.MouseEvent;
 
 import com.iHotel.controller.CModificaSoggiorno;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.view.ViewFrameApplication;
-import com.iHotel.view.Utility.IObserver;
 
 /**
  * Classe che ha il compito di gestire il click sul pulsante per tornare indietro nella schermata VPP_RiepilogoPagamenti
@@ -35,8 +33,6 @@ public class TornaAlSoggiornoDaGestionePagamentiListener extends MouseAdapter{
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e){
-		//Rimuovo l'osservatore dal soggiorno
-		_soggiorno.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
 		//Invoco il metodo per visualizzare le informazioni relative al soggiorno nel controllore
 		CModificaSoggiorno.getInstance().recuperaSoggiornoDaCodice(_soggiorno.get_codice());
 	

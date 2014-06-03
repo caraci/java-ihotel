@@ -71,12 +71,15 @@ public class CGestionePagamenti {
      * 
      * @param pagamento E' il pagamento effettuato dal cliente.
      */
-    public void inserisciPagamentoInSoggiorno(Pagamento pagamento) {
-    	
+    public void inserisciPagamentoInSoggiorno(Pagamento pagamento) {    	
     	/*Aggiungo il pagamento alla prenotazione*/
     	_soggiorno.addPagamento(pagamento);
+    	//Rimuovo l'osservatore dal soggiorno, altrimenti verrebbe salvato nel db.
+		_soggiorno.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
     	/*Salvo il pagamento nel db*/
     	PPrenotazione.getInstance().store(_soggiorno);
+    	//Aggiungo di nuovo l'osservatore al soggiorno
+    	_soggiorno.Attach((IObserver)ViewFrameApplication.getInstance().get_pnlAttuale());
     }
     /**
      * Metodo per effettuare un pagamento mediante carta di credito o bancomat.
