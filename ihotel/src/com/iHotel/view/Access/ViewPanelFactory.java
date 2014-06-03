@@ -43,9 +43,12 @@ public class ViewPanelFactory {
 		case "Soggiorno" :
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_InCorso();
 			break;
-		case "SoggiornoTerminato" :
+		case "SoggiornoTerminatoSaldato" :
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato();
 			break;
+		case "SoggiornoTerminatoSospeso":
+			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato();
+		break;
 		case "SoggiornoCancellato" :
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Cancellato();
 			break;

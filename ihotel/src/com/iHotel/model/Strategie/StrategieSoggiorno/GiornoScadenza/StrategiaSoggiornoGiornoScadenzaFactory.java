@@ -18,7 +18,7 @@ public class StrategiaSoggiornoGiornoScadenzaFactory {
 	/**
 	 * Istanza unica della classe - Pattern Singleton
 	 */
-	public static StrategiaSoggiornoGiornoScadenzaFactory _instance = null;
+	private static StrategiaSoggiornoGiornoScadenzaFactory _instance = null;
 	/**
 	 * Costruttore privato - Pattern Singleton
 	 */

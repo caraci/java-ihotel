@@ -4,7 +4,6 @@
 package com.iHotel.view.Graphic.GestionePagamenti;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
@@ -37,41 +36,41 @@ import com.iHotel.view.Utility.UtoPanel;
  *
  */
 @SuppressWarnings("serial")
-public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implements IObserver {
+public abstract class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implements IObserver {
 	
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */
-	private SoggiornoContextSubject _prenotazione;	
+	protected SoggiornoContextSubject _prenotazione;	
 	/**
 	* Lista contenente i pagamenti in contanti della prenotazione.
 	*/
-	private ArrayList<PagamentoInContanti> _pagamentiInContanti = new ArrayList<PagamentoInContanti>();
+	protected ArrayList<PagamentoInContanti> _pagamentiInContanti = new ArrayList<PagamentoInContanti>();
 	/**
 	* Lista contenente i pagamenti mediante bonifici della prenotazione.
 	*/
-	private ArrayList<PagamentoConBonifico> _pagamentiConBonifico = new ArrayList<PagamentoConBonifico>();
+	protected ArrayList<PagamentoConBonifico> _pagamentiConBonifico = new ArrayList<PagamentoConBonifico>();
 	/**
 	* Lista contenente i pagamenti mediante carta della prenotazione.
 	*/
-	private ArrayList<PagamentoConCarta> _pagamentiConCarta = new ArrayList<PagamentoConCarta>();
+	protected ArrayList<PagamentoConCarta> _pagamentiConCarta = new ArrayList<PagamentoConCarta>();
 	
 	
 	/*JPanel*/
 		/**
 	 * Pannelli contenenti le liste dei pagamenti
 	 */
-	private JPanel _panelListaPagamentiInContanti,_panelListaPagamentiConBonifico, _panelListaPagamentiConCarta;
+	protected JPanel _panelListaPagamentiInContanti,_panelListaPagamentiConBonifico, _panelListaPagamentiConCarta;
 	
 	/**
 	 * Altri pannelli
 	 */
-	private JPanel _panelMiddleTop, _panelMiddleBottom;
+	protected JPanel _panelMiddleTop, _panelMiddleBottom;
 	/*JLabel*/
 	public JLabel  _lblTotaleImportoVersato, _lblTotaleImportoSoggiorno, _lblTotaleImportoRimanente, _lblTitoloPrenotazione;
 	
 	/*JButton*/
-	private JButton _btnTornaPrenotazione;
+	protected JButton _btnTornaPrenotazione;
  
 
 	public VPP_RiepilogoPagamenti_Observer() {
@@ -123,7 +122,7 @@ public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implem
 	 * 
 	 * @return Il pannello con le informazioni sulla prenotazione
 	 */
-	private JPanel creaPanelMiddleTop(){
+	protected JPanel creaPanelMiddleTop(){
 		/*Setto il layout*/
 		_panelMiddleTop.setLayout(new GridLayout(1,3,5,5));
 		
@@ -145,7 +144,7 @@ public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implem
 	 * 
 	 * @return Il pannello contenente le informazioni sugli acconti
 	 */
-	private JPanel creaPanelMiddleBottom(){
+	protected JPanel creaPanelMiddleBottom(){
 		//Setto il layout del panel middleBottom
 		_panelMiddleBottom.setLayout(new GridLayout(1, 3, 5, 0));
 		
@@ -282,7 +281,7 @@ public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implem
 	/**
 	 * Metodo privato che restituisce la mappa dei pagamenti della prenotazione
 	 */
-	private void recuperaPagamenti(){
+	protected void recuperaPagamenti(){
 		/*Se la mappa della classe è vuota vado a chiedere alla prenotazione la mappa dei pagamenti e setto la mappa
 		della schermata attuale con quella recuperata. Se non è vuota vuol dire che l'avevo già caricata*/
 			
@@ -327,7 +326,7 @@ public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implem
 	 * 
 	 * @return	 pulsante per aggiungere un pagamento in contanti
 	 */
-	private JButton creaPulsanteAggiungiPagamentoInContanti(){
+	protected JButton creaPulsanteAggiungiPagamentoInContanti(){
 		/*Creo un pulsante gli setto le dimensioni ed il testo*/
 		JButton btnAggiungiPagamentoInContanti = _viewFactory.getButton();
 		btnAggiungiPagamentoInContanti.setPreferredSize(new Dimension(30,30));
@@ -345,7 +344,7 @@ public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implem
 	 * 
 	 * @return Pulsante per aggiungere pagamenti con bonifico
 	 */
-	private JButton creaPulsanteAggiungiPagamentoConBonifico(){
+	protected JButton creaPulsanteAggiungiPagamentoConBonifico(){
 		/*Creo il pulsante e gli setto le dimensioni ed il testo*/
 		JButton btnAggiungiPagamentoConBonifico = _viewFactory.getButton();
 		btnAggiungiPagamentoConBonifico.setPreferredSize(new Dimension(30,30));
@@ -362,7 +361,7 @@ public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implem
 	 * 
 	 * @return Pulsante per aggiungere pagamenti con carta
 	 */
-	private JButton creaPulsanteAggiungiPagamentoConCarta(){
+	protected JButton creaPulsanteAggiungiPagamentoConCarta(){
 		/*creo il pulsante e gli setto la dimensione ed il testo */
 		JButton btnAggiungiPagamentoConCarta = _viewFactory.getButton();		
 		btnAggiungiPagamentoConCarta.setPreferredSize(new Dimension(30,30));
@@ -413,66 +412,19 @@ public class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPane implem
 	 * 
 	 * @return Pannello contenente sia la lista dei pagamenti in contanti che il pulsante per aggiungerne altri
 	 */
-	private JPanel creaPanelEsternoContanti(){
-		/*Creo un pannello che contiene sia la lista dei pagamenti sia il pulsante per aggiungerne*/
-		JPanel panelEsternoContanti = _viewFactory.getPanel(false);
-		/*Setto il layout*/
-		panelEsternoContanti.setLayout(new BoxLayout(panelEsternoContanti, BoxLayout.Y_AXIS));
-		/*Setto il layout al pannello contenente la lista dei pagamenti in contanti*/
-		_panelListaPagamentiInContanti.setLayout(new CardLayout());
-		/*Aggiungo al pannello contenente la lista dei pagamenti, la lista contenente i pagamenti*/
-		_panelListaPagamentiInContanti.add(creaJScrollPanePagamentiContanti());
-		/*Aggiungo al pannello esterno il pannello che contiene la lista dei pagamenti*/
-		panelEsternoContanti.add(_panelListaPagamentiInContanti);
-		/*Aggiungo al pannello esterno il pulsante per l'aggiuta di un altro pagamento*/
-		panelEsternoContanti.add(creaPulsanteAggiungiPagamentoInContanti());
-		/*Restituisco il panello esterno*/
-		return panelEsternoContanti;
-	}
+	protected abstract JPanel creaPanelEsternoContanti();
 	
 	/**
 	 * Metodo che costruisce il pannello esterno dei pagamenti con bonifici
 	 * 
 	 * @return Pannello contenente sia la lista dei pagamenti in con bonifici che il pulsante per aggiungerne altri
 	 */
-	private JPanel creaPanelEsternoBonifici(){
-		/*Creo un pannello che contiene sia la lista dei pagamenti sia il pulsante per aggiungerne*/
-		JPanel panelEsternoBonifico = _viewFactory.getPanel(false);
-		/*Setto il layout*/
-		panelEsternoBonifico.setLayout(new BoxLayout(panelEsternoBonifico, BoxLayout.Y_AXIS));
-		/*Setto il layout al pannello contenente la lista dei pagamenti in con bonifico*/
-		_panelListaPagamentiConBonifico.setLayout(new CardLayout());
-		/*Aggiungo al pannello cntenente la lista dei pagamenti, la lista dei pagamenti*/
-		_panelListaPagamentiConBonifico.add(creaJScrollPanePagamentiConBonifici());
-		/*Aggiungo al pannello esterno il pannello che contiene la lista dei pagamenti*/
-		panelEsternoBonifico.add(_panelListaPagamentiConBonifico);
-		/*Aggiungo al pannello esterno il pulsante per l'aggiuta di un altro pagamento*/
-		panelEsternoBonifico.add(creaPulsanteAggiungiPagamentoConBonifico());
-		/*Restituisco il panello esterno*/
-		return panelEsternoBonifico;
-	}
+	protected abstract JPanel creaPanelEsternoBonifici();
 	
 	/**
 	 * Metodo per creare il pannello esterno dei pagamenti con carta di credito.
 	 * 
 	 * @return Pannello contenente la lista dei pagamenti con carta di credit ed il pulsante per aggiungerne altri
 	 */
-	private JPanel creaPanelEsternoCarta(){
-		/*Creo un pannello che contiene sia la lista dei pagamenti sia il pulsante per aggiungerne*/
-		JPanel panelEsternoCarta = _viewFactory.getPanel(false);
-		/*Setto il layout*/
-		panelEsternoCarta.setLayout(new BoxLayout(panelEsternoCarta, BoxLayout.Y_AXIS));
-		/*Setto il layout al pannello contenente la lista dei pagamenti in con bonifico*/
-		_panelListaPagamentiConCarta.setLayout(new CardLayout());
-		/*Aggiungo al pannello cntenente la lista dei pagamenti, la lista dei pagamenti*/
-		_panelListaPagamentiConCarta.add(creaJScrollPanePagamentiCarta());
-		/*Aggiungo al pannello esterno il pannello che contiene la lista dei pagamenti*/
-		panelEsternoCarta.add(_panelListaPagamentiConCarta);
-		/*Aggiungo al pannello esterno il pulsante per l'aggiuta di un altro pagamento*/
-		panelEsternoCarta.add(creaPulsanteAggiungiPagamentoConCarta());
-		/*Restituisco il panello esterno*/
-		return panelEsternoCarta;
-		
-	}
-	
+	protected abstract JPanel creaPanelEsternoCarta();
 }
