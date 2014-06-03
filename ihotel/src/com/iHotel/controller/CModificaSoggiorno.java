@@ -17,7 +17,7 @@ import com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn.VPC_AggiungiOspiti;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno;
 /**
- * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione"
+ * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Modifica Prenotazione".
  * 
  * @author Alessandro
  */
@@ -91,7 +91,6 @@ public class CModificaSoggiorno {
     	Periodo periodo = _soggiorno.get_periodo();
     	//Aggiungo il servizio alla camera, nel periodo della prenotazione
     	_camera.aggiungiServizioInPeriodo(servizio, periodo);
-    	
     	// Salvo nel db lo stato camera in seguito all'aggiornamento.
     	PCamera.getInstance().store(_camera.getStatoCameraInPeriodo(periodo));
     }

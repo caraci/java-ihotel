@@ -8,6 +8,7 @@ import com.iHotel.model.Strategie.StrategieOccupazioneCamera.CreaStatiCameraStra
 import com.iHotel.model.Strategie.StrategieOccupazioneCamera.CreaStatiCameraStrategyFactory;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.view.Utility.IObserver;
 
 /**
  * Classe che realizza uno stato camera "libero".
@@ -57,5 +58,20 @@ public class StatoCameraLibera extends StatoCamera {
 	@Override
 	public void aggiungiOspite(Ospite ospite) {
 		// TODO Auto-generated method stub
+	}
+	@Override
+	public void Attach(IObserver observer) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void Detach(IObserver observer) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void Notify() {
+		// TODO Auto-generated method stub
+		
 	}	
 }

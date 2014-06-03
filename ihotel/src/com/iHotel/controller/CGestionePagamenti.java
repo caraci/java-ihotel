@@ -72,11 +72,11 @@ public class CGestionePagamenti {
      * @param pagamento E' il pagamento effettuato dal cliente.
      */
     public void inserisciPagamentoInSoggiorno(Pagamento pagamento) {
+    	
     	/*Aggiungo il pagamento alla prenotazione*/
     	_soggiorno.addPagamento(pagamento);
     	/*Salvo il pagamento nel db*/
-    	PPrenotazione.getInstance().store(_soggiorno.get_pagamenti());
-    	PPrenotazione.getInstance().store(_soggiorno.get_importoTotalePagamenti());
+    	PPrenotazione.getInstance().store(_soggiorno);
     }
     /**
      * Metodo per effettuare un pagamento mediante carta di credito o bancomat.
@@ -84,7 +84,6 @@ public class CGestionePagamenti {
      * @param importoDaPagareConCarta Importo che si vuole pagare con la carta.
      */
     public void pagaConCarta(Prezzo importoDaPagareConCarta) {
-    	
     	//recupero la ServiceFactory
     	ServiceFactory serviceFactory= ServiceFactory.getInstance();
     	//tramite la serviceFactory recupero il lettore di carte 

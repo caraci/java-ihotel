@@ -8,6 +8,7 @@ import com.iHotel.model.Albergo.Cataloghi.CatalogoServiziInterni;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneServizioInterno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.view.Utility.IObserver;
 
 /**
  * Classe che realizza uno stato camera "occupato".
@@ -43,6 +44,8 @@ public class StatoCameraOccupata extends StatoCamera {
 			// Ricavo il prezzo del servizio e lo aggiungo al prezzo dei servizi per lo stato della camera.
 			DescrizioneServizioInterno descrizioneServizioInterno = CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(servizio.get_codice());
 			_prezzoServizi.somma(descrizioneServizioInterno.getPrezzoInData(servizio.get_giorno()));
+			// Comunico all'osservatore il cambio dello stato.
+			this.Notify();
 		}
 	}
 	@Override
@@ -66,5 +69,20 @@ public class StatoCameraOccupata extends StatoCamera {
 	@Override
 	public void aggiungiOspite(Ospite ospite) {
 		_ospiti.add(ospite);
+	}
+	@Override
+	public void Attach(IObserver observer) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void Detach(IObserver observer) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void Notify() {
+		// Comunichiamo all'osservatore che c'è stato un cambio nel suo stato.
+		_observer.Update();
 	}
 }

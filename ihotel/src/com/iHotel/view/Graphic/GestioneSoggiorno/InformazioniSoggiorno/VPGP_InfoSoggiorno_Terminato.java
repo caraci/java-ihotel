@@ -15,6 +15,7 @@ import com.iHotel.view.Event.GestioneSoggiorno.InformazioniSoggiorno.TerminaModi
  * @author Gabriele
  *
  */
+@SuppressWarnings("serial")
 public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
 	/**
 	 * Costruttore
@@ -24,7 +25,7 @@ public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
 	}
 	@Override
 	protected void setLblStatoSoggiorno(){
-		_lblStatoSoggiorno.setText("Soggiorno Terminato Saldato");
+		_lblStatoSoggiorno.setText("Soggiorno Terminato");
 	}
 	
 	@Override

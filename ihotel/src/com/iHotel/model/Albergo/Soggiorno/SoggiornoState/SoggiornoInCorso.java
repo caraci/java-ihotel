@@ -62,7 +62,7 @@ public class SoggiornoInCorso extends SoggiornoStatePagamentoContext {
 	@Override
 	public void effettuaCheckOut() {
 		// Importo rimanente da pagare per il soggiorno.
-		_soggiornoSubject.set_soggiornoState(new SoggiornoTerminato(_soggiornoSubject, _pagamentoState));
+		_soggiornoContext.set_soggiornoState(new SoggiornoTerminato(_soggiornoContext, _pagamentoState));
 	}
 
 }

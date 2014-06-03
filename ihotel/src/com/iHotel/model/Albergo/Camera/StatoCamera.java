@@ -7,8 +7,10 @@ import java.util.*;
 
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
+import com.iHotel.model.Utility.ISubject;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
+import com.iHotel.view.Utility.IObserver;
 
 /**
  * Classe che realizza un generico stato della camera, questo potrà poi essere uno stato "libero" o "occupato". Si
@@ -16,7 +18,7 @@ import com.iHotel.model.Utility.Prezzo;
  * 
  * @author Eugenio
  */
-public abstract class StatoCamera {
+public abstract class StatoCamera implements ISubject {
 	/* -------------------------- Attributi ---------------------------------- */
 	/**
 	 * Periodo dello stato camera.
@@ -34,6 +36,10 @@ public abstract class StatoCamera {
 	 * Prezzo totale dei servizi interni richiesti in questo stato.
 	 */
 	protected Prezzo _prezzoServizi;
+	/**
+	 * Osservatore del prezzo dei servizi interni.
+	 */
+	protected IObserver _observer;
 	/**
 	 * Costruttore
 	 */

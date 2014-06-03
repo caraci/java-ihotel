@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.iHotel.model.Albergo.Camera.Camera;
+import com.iHotel.model.Albergo.Camera.StatoCamera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoSospeso;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoStateObserver;
@@ -28,7 +29,7 @@ public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
 	public SoggiornoPrenotato(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);
 		// Inizializziamo il pagamento state.
-		_pagamentoState = new PagamentoSospeso(this);
+		_pagamentoState = new PagamentoSospeso(this, _soggiornoContext);
 	}
 	
 	public SoggiornoPrenotato(SoggiornoContextSubject soggiornoSubject, PagamentoStateObserver pagamentoState) {
@@ -37,9 +38,13 @@ public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
 
 	@Override
 	public void addCamera(Camera camera) {
-		_soggiornoSubject.get_camerePrenotate().add(camera);
+		_soggiornoContext.get_camerePrenotate().add(camera);
 		// Calcolo il nuovo totale delle camere della prenotazione
-		_soggiornoSubject.calcolaImportoTotaleCamere();
+		_soggiornoContext.calcolaImportoTotaleCamere();
+		// Prendo lo stato relativo al periodo del soggiorno, della camera inserita.
+		StatoCamera statoCamera = camera.getStatoCameraInPeriodo(_soggiornoContext.get_periodo());
+		// Aggiungo lo statoCamera, come subject allo stato attuale del pagamento.
+		_pagamentoState.addSubject(statoCamera);
 	}
 
 	@Override
@@ -51,15 +56,15 @@ public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
 		prenotante.set_email(eMail);
 		prenotante.set_telefono(telefono);
 		// Setto il prenotante al soggiorno
-		_soggiornoSubject.set_prenotante(prenotante);
+		_soggiornoContext.set_prenotante(prenotante);
 	}
 
 	@Override
 	public void occupaCamere() {
 		// Camere riservate per il soggiorno
-		ArrayList<Camera> camerePrenotante = _soggiornoSubject.get_camerePrenotate();
+		ArrayList<Camera> camerePrenotante = _soggiornoContext.get_camerePrenotate();
 		// Periodo della prenotazione
-		Periodo periodoSoggiorno = _soggiornoSubject.get_periodo();
+		Periodo periodoSoggiorno = _soggiornoContext.get_periodo();
 		// Ciclo sulle camere del soggiorno
 		for (Iterator<Camera> iterator = camerePrenotante.iterator(); iterator.hasNext();) {
 			Camera cameraPrenotata = (Camera) iterator.next();
@@ -74,27 +79,27 @@ public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
 		StrategiaSoggiornoGiornoScadenzaFactory strategiaGiornoScadenzaFactory = StrategiaSoggiornoGiornoScadenzaFactory.getInstance();
 		StrategiaSoggiornoAmmontareCaparraFactory strategiaAmmontareCaparraFactory = StrategiaSoggiornoAmmontareCaparraFactory.getInstance();
 		// Aggiungo l'ospite alla prenotazione
-		_soggiornoSubject.addPrenotante(nome, cognome, eMail, telefono);
+		_soggiornoContext.addPrenotante(nome, cognome, eMail, telefono);
 		// Occupo le camere scelte dall'utente
-		_soggiornoSubject.occupaCamere();
+		_soggiornoContext.occupaCamere();
 		// Setto il codice alla prenotazione
-		_soggiornoSubject.set_codice(SoggiornoContextSubject.generaCodice());
+		_soggiornoContext.set_codice(SoggiornoContextSubject.generaCodice());
 		// Strategia per il calcolo del giorno di scadenza
 		ComponentOttieniGiornoScadenzaStrategy strategiaGiornoScadenza = strategiaGiornoScadenzaFactory.getStrategyCalcoloGiornoScadenza();
 		// Setto il giorno di scadenza per l'invio della garanzia.
-		_soggiornoSubject.set_giornoScadenzaInvioGaranzia(strategiaGiornoScadenza.getGiornoScadenza(_soggiornoSubject));
+		_soggiornoContext.set_giornoScadenzaInvioGaranzia(strategiaGiornoScadenza.getGiornoScadenza(_soggiornoContext));
 		// Strategia per il calcolo dell'ammontare della caparra
 		ComponentOttieniAmmontareCaparraStrategy strategiaAmmontareCaparra = strategiaAmmontareCaparraFactory.getStrategyAmmontareCaparra();
 		// Setto l'ammontare della caparra
-		_soggiornoSubject.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_soggiornoSubject));		
+		_soggiornoContext.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_soggiornoContext));		
 	}
 
 	@Override
 	public void effettuaCheckIn() {
 		// TODO - invio le informazioni degli ospiti al sistema esterno della polizia di stato
-		ServiceFactory.getInstance().get_schedePSAdapter().generaSchedePubblicaSicurezza(_soggiornoSubject);
+		ServiceFactory.getInstance().get_schedePSAdapter().generaSchedePubblicaSicurezza(_soggiornoContext);
 		// Setto lo stato successivo al subject.
-		_soggiornoSubject.set_soggiornoState(new SoggiornoInCorso(_soggiornoSubject, _pagamentoState));
+		_soggiornoContext.set_soggiornoState(new SoggiornoInCorso(_soggiornoContext, _pagamentoState));
 	}
 
 	@Override
