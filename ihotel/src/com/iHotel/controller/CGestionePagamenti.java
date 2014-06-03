@@ -14,6 +14,7 @@ import com.iHotel.model.Persona.Documenti.CartaDiCredito;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
+import com.iHotel.view.Access.ViewPanelFactory;
 import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti_Observer;
 import com.iHotel.view.Utility.IObserver;
 
@@ -56,7 +57,7 @@ public class CGestionePagamenti {
     	// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
-		VPP_RiepilogoPagamenti_Observer riepilogoPagamenti = new VPP_RiepilogoPagamenti_Observer();
+		VPP_RiepilogoPagamenti_Observer riepilogoPagamenti = ViewPanelFactory.getPanelRiepilogoPagamenti(soggiorno);
 		// Per il pattern Observer aggiungo l'observer alla prenotazione.
 		_soggiorno.Attach((IObserver) riepilogoPagamenti);
 		// Assegno la prossima schermata al frame.

@@ -86,7 +86,7 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		// TODO - invio le informazioni degli ospiti al sistema esterno della polizia di stato
 		ServiceFactory.getInstance().get_schedePSAdapter().generaSchedePubblicaSicurezza(_soggiornoSubject);
 		// Creo lo stato successivo
-		SoggiornoState statoSuccessivo = new Soggiorno(_soggiornoSubject);
+		SoggiornoState statoSuccessivo = new SoggiornoInCorso(_soggiornoSubject);
 		return statoSuccessivo;
 	}
 

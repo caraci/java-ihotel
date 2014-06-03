@@ -10,9 +10,9 @@ import com.iHotel.model.Pagamento.Pagamento;
  * Questa classe rappresenta lo stato del soggiorno successivo al check in.
  * @author Gabriele
  */
-public class Soggiorno extends SoggiornoState {
+public class SoggiornoInCorso extends SoggiornoState {
 
-	public Soggiorno(SoggiornoContextSubject soggiornoSubject) {
+	public SoggiornoInCorso(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);
 		// TODO Auto-generated constructor stub
 	}

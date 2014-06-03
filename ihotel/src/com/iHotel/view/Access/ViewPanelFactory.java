@@ -4,6 +4,9 @@
 package com.iHotel.view.Access;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamentiSoggiornoNonSaldato;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamentiSoggiornoSaldato;
+import com.iHotel.view.Graphic.GestionePagamenti.VPP_RiepilogoPagamenti_Observer;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera_SoggiornoCancellato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniCamera.VPGP_InfoCamera_SoggiornoInCorso;
@@ -13,6 +16,7 @@ import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_Info
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Cancellato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_InCorso;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Prenotato;
+import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato_Saldato;
 import com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno.VPGP_InfoSoggiorno_Terminato_Sospeso;
 
 /**
@@ -40,11 +44,11 @@ public class ViewPanelFactory {
 		case "SoggiornoPrenotato" :
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Prenotato();
 			break;
-		case "Soggiorno" :
+		case "SoggiornoInCorso" :
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_InCorso();
 			break;
 		case "SoggiornoTerminatoSaldato" :
-			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato_Sospeso();
+			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato_Saldato();
 			break;
 		case "SoggiornoTerminatoSospeso":
 			panelInfoSoggiorno = new VPGP_InfoSoggiorno_Terminato_Sospeso();
@@ -81,12 +85,37 @@ public class ViewPanelFactory {
 		case "SoggiornoPrenotato":
 			panelInfoCamera = new VPGP_InfoCamera_SoggiornoPrenotato();
 			break;
-		case "Soggiorno":
+		case "SoggiornoInCorso":
 			panelInfoCamera = new VPGP_InfoCamera_SoggiornoInCorso();
 			break;
 		default:
 			break;
 		}
 		return panelInfoCamera;
+	}
+	/**
+	 * Metodo che restituisce la schermata del riepilogo dei pagamenti in base allo stato del soggiorno
+	 * 
+	 * @param soggiorno cui appartiene la camera
+	 * @return Pannello contenente il riepilogo sui pagamenti
+	 */
+	public static VPP_RiepilogoPagamenti_Observer getPanelRiepilogoPagamenti(SoggiornoContextSubject soggiorno){
+		// Prendo il nome dello stato attuale del soggiorno
+		String nomeStato = soggiorno.get_soggiornoState().getClass().getSimpleName();
+		
+		//Istanzio il pannello
+		VPP_RiepilogoPagamenti_Observer panelRiepilogoPagamenti= null;
+		
+		//Scelgo il pannello corretto in base allo stato del soggiorno
+		switch (nomeStato) {
+		case "SoggiornoTerminatoSaldato":
+			panelRiepilogoPagamenti = new VPP_RiepilogoPagamentiSoggiornoSaldato();
+			break;
+		default:
+			panelRiepilogoPagamenti = new VPP_RiepilogoPagamentiSoggiornoNonSaldato();
+			break;
+		}
+		return panelRiepilogoPagamenti;
+		
 	}
 }

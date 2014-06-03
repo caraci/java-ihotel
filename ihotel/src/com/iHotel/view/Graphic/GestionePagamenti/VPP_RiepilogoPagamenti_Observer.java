@@ -333,7 +333,7 @@ public abstract class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPa
 		btnAggiungiPagamentoInContanti.setText("Aggiungi Pagamento in contanti");
 		/*Aggiungo il listener all'evento*/
 		btnAggiungiPagamentoInContanti.addMouseListener(new InserisciPagamentoInContantiListener(_prenotazione));
-				
+		
 		/*Restituisco il pulsante*/
 		return btnAggiungiPagamentoInContanti;
 	}
