@@ -69,6 +69,15 @@ public abstract class SoggiornoState {
 		_pagamentoState.addPagamento(pagamento);
 	}
 	/**
+     * Metodo per effettuare un pagamento mediante carta di credito o bancomat.
+     * 
+     * @param importoDaPagareConCarta Importo che si vuole pagare con la carta.
+     */
+	public Pagamento pagaConCarta(Prezzo importoDaPagareConCarta) {
+		// Passo la richiesta allo stato del pagamento attuale
+		return _pagamentoState.pagaConCarta(importoDaPagareConCarta);
+	}
+	/**
 	 * Metodo che restituisce l'importo che rimane da pagare per il soggiorno passato come parametro.
 	 * L'importo è calcolato come la somma dell'importo delle camere, dei servizi interni, dei servizi esterni
 	 * al netto dei versamenti giò effettuati.

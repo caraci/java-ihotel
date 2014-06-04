@@ -181,6 +181,15 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 		_soggiornoState.addPagamento(pagamento);
 	}
 	/**
+     * Metodo per effettuare un pagamento mediante carta di credito o bancomat.
+     * 
+     * @param importoDaPagareConCarta Importo che si vuole pagare con la carta.
+     */
+	public Pagamento pagaConCarta(Prezzo importoDaPagareConCarta) {
+		// Passo la richiesta allo stato attuale
+		return _soggiornoState.pagaConCarta(importoDaPagareConCarta);
+	}
+	/**
 	 * Metodo per concludere la richiesta di soggiorno.
 	 * 
 	 * @param nome Nome del prenotante.
