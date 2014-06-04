@@ -56,7 +56,7 @@ public class SoggiornoInCorso extends SoggiornoState {
 		// Creo lo stato successivo soggiornoTerminato.
 		SoggiornoTerminato soggiornoTerminato = new SoggiornoTerminato(_soggiornoContext, _pagamentoState);
 		// Comunico al pagamento state il nuovo stato del soggiorno
-		_pagamentoState.set_soggiornoStatePagamentoContext(soggiornoTerminato);
+		_pagamentoState.set_soggiornoState(soggiornoTerminato);
 		// Setto lo stato successivo al subject.
 		_soggiornoContext.set_soggiornoState(soggiornoTerminato);
 	}

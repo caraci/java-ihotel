@@ -5,7 +5,6 @@ package com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState;
 
 import java.util.Iterator;
 
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoState;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Utility.ISubject;
@@ -17,8 +16,8 @@ import com.iHotel.model.Utility.Prezzo;
  */
 public class PagamentoSospeso extends PagamentoStateObserver {
 
-	public PagamentoSospeso(SoggiornoState soggiornoStateContext, SoggiornoContextSubject soggiornoContext) {
-		super(soggiornoStateContext, soggiornoContext);
+	public PagamentoSospeso(SoggiornoState soggiornoState) {
+		super(soggiornoState);
 	}
 
 	@Override
@@ -34,7 +33,7 @@ public class PagamentoSospeso extends PagamentoStateObserver {
 		// Controllo se l'importo rimanente da pagare 
 		if (importoRimanenteDaPagare.get_quantita()==0) {
 			// Creo il pagamento state saldato.
-			PagamentoSaldato pagamentoSaldato = new PagamentoSaldato(_soggiornoStatePagamentoContext, _soggiornoContext);
+			PagamentoSaldato pagamentoSaldato = new PagamentoSaldato(_soggiornoState);
 			// Ciclo sulla lista dei subject per assegnare il nuovo osservatore.
 			for (Iterator<ISubject> iterator = _elencoSubject.iterator(); iterator.hasNext();) {
 				ISubject subject = (ISubject) iterator.next();
@@ -44,7 +43,7 @@ public class PagamentoSospeso extends PagamentoStateObserver {
 			// Assegno la lista dei subject del pagamentoSospeso, aggiornati al nuovo osservatore, al pagamentoSaldato.
 			pagamentoSaldato.set_elencoSubject(this.get_elencoSubject());
 			// Essendo stato saldato il soggiorno, allora il pagamento diventa saldato.
-			_soggiornoStatePagamentoContext.set_pagamentoState(pagamentoSaldato);
+			_soggiornoState.set_pagamentoState(pagamentoSaldato);
 		}
 	}
 

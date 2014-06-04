@@ -31,9 +31,9 @@ public abstract class PagamentoStateObserver implements IObserver {
 	/**
 	 * Stato in cui si trova il soggiorno.
 	 */
-	protected SoggiornoState _soggiornoStatePagamentoContext;
+	protected SoggiornoState _soggiornoState;
 	/**
-	 * Soggiorno a cui è associato lo stato, a cui è associato il pagamento - Pattern State
+	 * Soggiorno di cui si gestisce il pagamento - Pattern State
 	 */
 	protected SoggiornoContextSubject _soggiornoContext;
 	
@@ -42,9 +42,9 @@ public abstract class PagamentoStateObserver implements IObserver {
 	 * 
 	 * @param soggiornoStateContext Stato in cui si trova il soggiorno.
 	 */
-	protected PagamentoStateObserver(SoggiornoState soggiornoState, SoggiornoContextSubject soggiornoContext) {
-		_soggiornoStatePagamentoContext = soggiornoState;
-		_soggiornoContext = soggiornoContext;
+	protected PagamentoStateObserver(SoggiornoState soggiornoState) {
+		_soggiornoState = soggiornoState;
+		_soggiornoContext = soggiornoState.get_soggiornoContext();
 		_elencoSubject = new ArrayList<ISubject>();
 	}
 	/* ----------------------------------------------------- Metodi di istanza ----------------------------------------------------- */
@@ -156,14 +156,14 @@ public abstract class PagamentoStateObserver implements IObserver {
 	/**
 	 * @return the _soggiornoStatePagamentoContext
 	 */
-	public SoggiornoState get_soggiornoStatePagamentoContext() {
-		return _soggiornoStatePagamentoContext;
+	public SoggiornoState get_soggiornoState() {
+		return _soggiornoState;
 	}
 	/**
 	 * @param _soggiornoStatePagamentoContext the _soggiornoStatePagamentoContext to set
 	 */
-	public void set_soggiornoStatePagamentoContext(
+	public void set_soggiornoState(
 			SoggiornoState _soggiornoStatePagamentoContext) {
-		this._soggiornoStatePagamentoContext = _soggiornoStatePagamentoContext;
+		this._soggiornoState = _soggiornoStatePagamentoContext;
 	}
 }

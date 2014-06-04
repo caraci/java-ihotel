@@ -28,7 +28,7 @@ public class SoggiornoPrenotato extends SoggiornoState {
 	public SoggiornoPrenotato(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);
 		// Inizializziamo il pagamento state.
-		_pagamentoState = new PagamentoSospeso(this, _soggiornoContext);
+		_pagamentoState = new PagamentoSospeso(this);
 	}
 	
 	public SoggiornoPrenotato(SoggiornoContextSubject soggiornoSubject, PagamentoStateObserver pagamentoState) {
@@ -96,7 +96,7 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		// Creo lo stato successivo soggiornoInCorso
 		SoggiornoInCorso soggiornoInCorso = new SoggiornoInCorso(_soggiornoContext, _pagamentoState);
 		// Comunico al pagamento state il nuovo stato del soggiorno
-		_pagamentoState.set_soggiornoStatePagamentoContext(soggiornoInCorso);
+		_pagamentoState.set_soggiornoState(soggiornoInCorso);
 		// Setto lo stato successivo al subject.
 		_soggiornoContext.set_soggiornoState(soggiornoInCorso);
 	}

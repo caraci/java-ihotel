@@ -5,7 +5,6 @@ package com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState;
 
 import java.util.Iterator;
 
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoState;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Utility.ISubject;
@@ -16,8 +15,8 @@ import com.iHotel.model.Utility.ISubject;
  */
 public class PagamentoSaldato extends PagamentoStateObserver {
 
-	public PagamentoSaldato(SoggiornoState soggiornoStateContext, SoggiornoContextSubject soggiornoContext) {
-		super(soggiornoStateContext, soggiornoContext);
+	public PagamentoSaldato(SoggiornoState soggiornoState) {
+		super(soggiornoState);
 	}
 
 	@Override
@@ -28,7 +27,7 @@ public class PagamentoSaldato extends PagamentoStateObserver {
 	@Override
 	public void Update() {
 		// Creo il pagamento state sospeso.
-		PagamentoSospeso pagamentoSospeso = new PagamentoSospeso(_soggiornoStatePagamentoContext, _soggiornoContext);
+		PagamentoSospeso pagamentoSospeso = new PagamentoSospeso(_soggiornoState);
 		// Ciclo sulla lista dei subject per assegnare il nuovo osservatore.
 		for (Iterator<ISubject> iterator = _elencoSubject.iterator(); iterator.hasNext();) {
 			ISubject subject = (ISubject) iterator.next();
@@ -38,7 +37,7 @@ public class PagamentoSaldato extends PagamentoStateObserver {
 		// Assegno la lista dei subject del pagamentoSaldato, aggiornati al nuovo osservatore, al pagamentoSospeso.
 		pagamentoSospeso.set_elencoSubject(this.get_elencoSubject());
 		// Essendo stato aggiunto un servizio interno ad una camera del soggiorno, allora il pagamento diventa sospeso.
-		_soggiornoStatePagamentoContext.set_pagamentoState(pagamentoSospeso);	
+		_soggiornoState.set_pagamentoState(pagamentoSospeso);	
 	}
 
 }
