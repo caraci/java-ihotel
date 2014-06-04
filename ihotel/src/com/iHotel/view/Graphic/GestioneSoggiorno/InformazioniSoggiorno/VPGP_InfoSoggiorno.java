@@ -6,6 +6,7 @@ package com.iHotel.view.Graphic.GestioneSoggiorno.InformazioniSoggiorno;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -248,8 +249,13 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		_panelCamerePrenotate.add(_lblScegliCamera);
 		_panelCamerePrenotate.add(Box.createRigidArea(new Dimension(0,15)));
 		
+		// Lista delle camere prenotante
+		ArrayList<Camera> camerePrenotate = _soggiorno.get_camerePrenotate();
+		// Ordino l'array delle camere
+    	Collections.sort(camerePrenotate);
+		
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
-		for (Iterator<Camera> iterator = _soggiorno.get_camerePrenotate().iterator(); iterator.hasNext();) {
+		for (Iterator<Camera> iterator = camerePrenotate.iterator(); iterator.hasNext();) {
 			Camera cameraContext = (Camera) iterator.next();
 			/*Istanzio un button, gli assegno il numero della camera prenotata come testo e lo aggiungo al pannello delle camere
 			  prenotate*/

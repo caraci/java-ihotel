@@ -13,7 +13,7 @@ import com.iHotel.model.Utility.Prezzo;
  * 
  * @author Eugenio
  */
-public class Camera {
+public class Camera implements Comparable<Camera> {
 
 	/* --------------------------- Attributi e Costruttore ---------------------- */
 	/**
@@ -35,6 +35,20 @@ public class Camera {
 		_statiCameraState = new LinkedList<StatoCamera>();
 	}
 	/* -------------------------- Metodi di istanza ----------------------- */
+	@Override
+	public int compareTo(Camera cameraDaConfrontare) {
+		int esito;
+		// Ricavo i numeri di camera
+		int numeroCamera = Integer.valueOf(this.get_numero());
+		int numeroCameraDaConfrontare = Integer.valueOf(cameraDaConfrontare.get_numero());
+		// Confronto i numeri di camera.
+		if (numeroCamera > numeroCameraDaConfrontare) {
+			esito = 1;
+		} else {
+			esito = -1;
+		}
+		return esito;
+	}
 	/**
 	 * Metodo per aggiungere un ospite alla camera in un determinato periodo.
 	 * 

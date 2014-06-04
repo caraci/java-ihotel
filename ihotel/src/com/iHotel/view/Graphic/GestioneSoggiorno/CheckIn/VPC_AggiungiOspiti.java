@@ -6,6 +6,7 @@ package com.iHotel.view.Graphic.GestioneSoggiorno.CheckIn;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -74,6 +75,8 @@ public class VPC_AggiungiOspiti extends ViewPanelContentPane {
     	_panelMiddle.setLayout(new BoxLayout(_panelMiddle, BoxLayout.PAGE_AXIS));
     	// Creo il tabbedPane
     	ArrayList<Camera> camerePrenotazione = _prenotazione.get_camerePrenotate();
+    	// Ordino l'array delle camere
+    	Collections.sort(camerePrenotazione);
     	// Ciclo sulle camere per aggiungere i tab.
     	for (Iterator<Camera> iterator = camerePrenotazione.iterator(); iterator.hasNext();) {
 			Camera camera = (Camera) iterator.next();
