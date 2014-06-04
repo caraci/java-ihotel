@@ -40,7 +40,7 @@ public class SoggiornoPrenotato extends SoggiornoState {
 	public void addCamera(Camera camera) {
 		_soggiornoContext.get_camerePrenotate().add(camera);
 		// Calcolo il nuovo totale delle camere della prenotazione
-		_soggiornoContext.calcolaImportoTotaleCamere();
+		this.calcolaImportoTotaleCamere();
 	}
 
 	@Override
