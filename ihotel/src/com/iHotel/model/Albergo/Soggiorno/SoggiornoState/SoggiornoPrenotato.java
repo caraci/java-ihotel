@@ -69,12 +69,12 @@ public class SoggiornoPrenotato extends SoggiornoState {
 	}
 
 	@Override
-	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {		
+	public void concludiPrenotazione(ClientePrenotante clientePrenotante) {		
 		// Factory delle strategie.
 		StrategiaSoggiornoGiornoScadenzaFactory strategiaGiornoScadenzaFactory = StrategiaSoggiornoGiornoScadenzaFactory.getInstance();
 		StrategiaSoggiornoAmmontareCaparraFactory strategiaAmmontareCaparraFactory = StrategiaSoggiornoAmmontareCaparraFactory.getInstance();
 		// Aggiungo l'ospite alla prenotazione
-		_soggiornoContext.addPrenotante(nome, cognome, eMail, telefono);
+		_soggiornoContext.set_prenotante(clientePrenotante);
 		// Occupo le camere scelte dall'utente
 		_soggiornoContext.occupaCamere();
 		// Setto il codice alla prenotazione

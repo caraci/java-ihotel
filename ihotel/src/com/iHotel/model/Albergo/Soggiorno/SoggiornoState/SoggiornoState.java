@@ -7,6 +7,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoStateObserver;
 import com.iHotel.model.Pagamento.Pagamento;
+import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
@@ -121,12 +122,9 @@ public abstract class SoggiornoState {
 	/**
 	 * Metodo per completare la richiesta di soggiorno.
 	 * 
-	 * @param nome Nome del cliente prenotante.
-	 * @param cognome Cognome del cliente prenotante.
-	 * @param eMail eMail del cliente prenotante.
-	 * @param telefono Telefono del cliente prenotante.
+	 * @param clientePrenotante Cliente prenotante del soggiorno.
 	 */
-	public abstract void concludiPrenotazione(String nome, String cognome, String eMail, String telefono);
+	public abstract void concludiPrenotazione(ClientePrenotante clientePrenotante);
 	/**
 	 * Metodo per effettuare il check in dei clienti del soggiorno.
 	 */

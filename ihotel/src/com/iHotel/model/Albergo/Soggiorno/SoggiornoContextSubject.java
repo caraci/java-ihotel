@@ -192,14 +192,11 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	/**
 	 * Metodo per concludere la richiesta di soggiorno.
 	 * 
-	 * @param nome Nome del prenotante.
-	 * @param cognome Cognome del prenotante.
-	 * @param eMail eMail del prenotante.
-	 * @param telefono Telefono del prenotante.
+	 * @param clientePrenotante Cliente prenotante del soggiorno.
 	 */
-	public void concludiPrenotazione(String nome, String cognome, String eMail, String telefono) {
+	public void concludiPrenotazione(ClientePrenotante clientePrenotante) {
 		// Passo la richiesta allo stato attuale
-		_soggiornoState.concludiPrenotazione(nome, cognome, eMail, telefono);
+		_soggiornoState.concludiPrenotazione(clientePrenotante);
 	}
 	/**
 	 * Metodo per effettuare il check in del soggiorno.

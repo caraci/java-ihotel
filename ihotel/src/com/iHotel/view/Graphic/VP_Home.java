@@ -160,6 +160,11 @@ public class VP_Home extends ViewPanelContentPane {
 			// Label codice
 	    	JLabel lblCodice = _viewFactory.getLabel();
 	    	lblCodice.setText(soggiorno.get_codice());
+	    	// Recupero il periodo del soggiorno e incremento di 1 il valore del mese, vedi myDate.
+	    	int meseInizio = periodoSoggiorno.get_dataInizio().get_mese() + 1;
+	    	int meseFine = periodoSoggiorno.get_dataFine().get_mese() + 1;
+	    	periodoSoggiorno.get_dataInizio().set_mese(meseInizio);
+	    	periodoSoggiorno.get_dataFine().set_mese(meseFine);
 	    	// Panel periodo
 	    	JLabel lblPeriodo = _viewFactory.getLabel();
 	    	lblPeriodo.setText("Da: " + periodoSoggiorno.get_dataInizio().toString() + " A: " + periodoSoggiorno.get_dataFine().toString());

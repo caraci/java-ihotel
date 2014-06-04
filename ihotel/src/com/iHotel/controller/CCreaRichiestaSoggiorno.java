@@ -5,6 +5,7 @@ import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
+import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Utility.Giorno;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.persistence.PPrenotazione;
@@ -117,16 +118,13 @@ public class CCreaRichiestaSoggiorno {
 	/**
 	 * Metodo per concludere una richiesta di soggiorno.
 	 * 
-	 * @param nome Nome dell'ospite.
-	 * @param cognome Cognome dell'ospite.
-	 * @param eMail e-Mail dell'ospite.
-	 * @param telefono Telefono dell'ospite.
+	 * @param clientePrenotante Cliente prenotante del soggiorno.
 	 */
-	public void concludiRichiestaSoggiorno(String nome, String cognome, String eMail, String telefono) {
+	public void concludiRichiestaSoggiorno(ClientePrenotante clientePrenotante) {
 		// Rimuovo l'osservatore dal soggiorno.
 		_soggiorno.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
 		// Concludo la richiesta di soggiorno
-		_soggiorno.concludiPrenotazione(nome, cognome, eMail, telefono);
+		_soggiorno.concludiPrenotazione(clientePrenotante);
 		// Aggiungo il soggiorno allo storico
 		Storico storico = Storico.getInstance();
 		storico.addSoggiorno(_soggiorno);
