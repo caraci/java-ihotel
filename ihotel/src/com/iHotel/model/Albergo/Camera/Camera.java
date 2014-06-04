@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.iHotel.model.Persona.Ospite;
 import com.iHotel.model.Albergo.ServizioInterno;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoStateObserver;
 import com.iHotel.model.Utility.Periodo;
 import com.iHotel.model.Utility.Prezzo;
 
@@ -55,7 +56,7 @@ public class Camera {
 	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo){
 		// Prendo il giusto statoCamera in base al periodo.
 		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
-		statoCamera.aggiungiServizioInPeriodo(servizio, periodo);
+		statoCamera.aggiungiServizio(servizio);
 	}
 	/**
 	 * Metodo per ottenere il prezzo dei servizi interni della camera in un certo periodo.
@@ -96,22 +97,37 @@ public class Camera {
 	 * Metodo per occupare una camera in un periodo.
 	 *  
 	 * @param periodo Periodo in cui si vuole occupare la camera.
+	 * @param pagamentoState Stato del pagamento del soggiorno per il quale si stanno occupando le camere.
 	 */
-	public void occupaInPeriodo(Periodo periodo) {
+	public void occupaInPeriodo(Periodo periodo, PagamentoStateObserver pagamentoState) {
+		
+		System.out.println("Prima: "+pagamentoState.get_elencoSubject().size());
+		
 		// Lista degli stati camera che vengono restituiti dallo stato della camera
 		List<StatoCamera> statiCameraDopoOccupazione;
 		// Ciclo su tutti gli stati della camera
 		for (int i = 0; i < _statiCameraState.size(); i++) {
-			StatoCamera cameraState = _statiCameraState.get(i);
-			// Controllo se mi viene restituita una lista di stati.
-			// Solo uno stato può restituire la lista.
-			// Assegno il risultato alla variabile statiCameraDopoOccupazione		
-			statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo);
+			StatoCamera cameraState = _statiCameraState.get(i);		
+			statiCameraDopoOccupazione=cameraState.occupaInPeriodo(periodo);		
+			// Controllo se viene restituita la lista dei nuovi stati camera.
 			if(statiCameraDopoOccupazione!=null) {	
+				// Ciclo sulla lista degli stati camera appena creati per ottenere quello relativo al periodo del soggiorno.
+				for (Iterator<StatoCamera> iterator = statiCameraDopoOccupazione.iterator(); iterator.hasNext();) {
+					StatoCamera statoCamera = (StatoCamera) iterator.next();
+					// Individuo il giusto stato camera.
+					if(statoCamera.get_periodo().coincideCon(periodo)) {
+						// Aggiungo lo statoCamera, come subject allo stato attuale del pagamento.
+						pagamentoState.addSubject(statoCamera);
+						// Aggiungo l'osservatore allo statoCamera
+						statoCamera.Attach(pagamentoState);
+					}			
+				}		
 				// Rimuovo il vecchio stato camera.
 				_statiCameraState.remove(i);
 				// Aggiungo la lista ricavata dallo stato partendo dalla sua vecchia posizione.
 				_statiCameraState.addAll(i, statiCameraDopoOccupazione);
+				
+				System.out.println("Dopo: "+pagamentoState.get_elencoSubject().size());
 			}
 		}
 	}	

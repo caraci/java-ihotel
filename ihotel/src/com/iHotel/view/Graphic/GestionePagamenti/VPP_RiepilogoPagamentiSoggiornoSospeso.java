@@ -4,6 +4,7 @@
 package com.iHotel.view.Graphic.GestionePagamenti;
 
 import java.awt.CardLayout;
+import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -14,6 +15,18 @@ import javax.swing.JPanel;
  */
 @SuppressWarnings("serial")
 public class VPP_RiepilogoPagamentiSoggiornoSospeso extends VPP_RiepilogoPagamenti_Observer {
+	
+	@Override
+	protected void creaPanelTop() {
+		// Setto layout
+		_panelTop.setLayout(new GridLayout(1,2,0,5));
+		//setto la label con il codice della prenotazione
+		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ _prenotazione.get_codice());
+		_lblStatoPagamento.setText("Stato pagamento: Non saldato");
+		//aggiungo la label al panelTop
+		_panelTop.add(_lblTitoloPrenotazione);
+		_panelTop.add(_lblStatoPagamento);
+	}
 	
 	@Override
 	protected JPanel creaPanelEsternoContanti(){

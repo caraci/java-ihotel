@@ -26,6 +26,7 @@ public class StatoCameraLibera extends StatoCamera {
 			CreaStatiCameraStrategy creaStatiCameraStrategy = CreaStatiCameraStrategyFactory.getInstance().getStrategy(_periodo, periodoRichiesta);
 			nuoviStatiCamera=creaStatiCameraStrategy.creaNuoviStati(this, periodoRichiesta);
 		}
+				
 		return nuoviStatiCamera;
 	}
 	@Override
@@ -44,7 +45,7 @@ public class StatoCameraLibera extends StatoCamera {
 		return null;
 	}
 	@Override
-	public void aggiungiServizioInPeriodo(ServizioInterno servizio,	Periodo periodo) {
+	public void aggiungiServizio(ServizioInterno servizio) {
 		// TODO Auto-generated method stub
 	}
 	@Override

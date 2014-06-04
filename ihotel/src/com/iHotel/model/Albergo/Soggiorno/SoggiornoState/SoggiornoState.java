@@ -13,7 +13,7 @@ import com.iHotel.model.Utility.Prezzo;
  * @author Gabriele
  *
  */
-public abstract class SoggiornoStatePagamentoContext {
+public abstract class SoggiornoState {
 	/**
 	 * Soggiorno a cui è associato lo stato - Pattern State
 	 */
@@ -27,7 +27,7 @@ public abstract class SoggiornoStatePagamentoContext {
 	 * 
 	 * @param soggiornoSubject Soggiorno a cui è associato lo stato.
 	 */
-	public SoggiornoStatePagamentoContext(SoggiornoContextSubject soggiornoSubject) {
+	public SoggiornoState(SoggiornoContextSubject soggiornoSubject) {
 		_soggiornoContext=soggiornoSubject;
 	}
 	/**
@@ -36,7 +36,7 @@ public abstract class SoggiornoStatePagamentoContext {
 	 * @param soggiornoSubject Soggiorno a cui è associato lo stato.
 	 * @param pagamentoState Stato del pagamento associato allo stato corrente del soggiorno.
 	 */
-	public SoggiornoStatePagamentoContext(SoggiornoContextSubject soggiornoSubject, PagamentoStateObserver pagamentoState) {
+	public SoggiornoState(SoggiornoContextSubject soggiornoSubject, PagamentoStateObserver pagamentoState) {
 		_soggiornoContext = soggiornoSubject;
 		_pagamentoState = pagamentoState;
 	}

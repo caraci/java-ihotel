@@ -10,7 +10,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
  * Questa classe rappresenta lo stato di un soggiorno che viene cancellato.
  * @author Gabriele
  */
-public class SoggiornoCancellato extends SoggiornoStatePagamentoContext {
+public class SoggiornoCancellato extends SoggiornoState {
 
 	public SoggiornoCancellato(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);

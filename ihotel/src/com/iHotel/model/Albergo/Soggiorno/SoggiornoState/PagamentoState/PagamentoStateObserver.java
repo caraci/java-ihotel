@@ -10,7 +10,7 @@ import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Cataloghi.DescrizioneCamera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoStatePagamentoContext;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoState;
 import com.iHotel.model.ForeignSystem.ServiceFactory;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Utility.ISubject;
@@ -31,7 +31,7 @@ public abstract class PagamentoStateObserver implements IObserver {
 	/**
 	 * Stato in cui si trova il soggiorno.
 	 */
-	protected SoggiornoStatePagamentoContext _soggiornoStatePagamentoContext;
+	protected SoggiornoState _soggiornoStatePagamentoContext;
 	/**
 	 * Soggiorno a cui è associato lo stato, a cui è associato il pagamento - Pattern State
 	 */
@@ -42,9 +42,10 @@ public abstract class PagamentoStateObserver implements IObserver {
 	 * 
 	 * @param soggiornoStateContext Stato in cui si trova il soggiorno.
 	 */
-	protected PagamentoStateObserver(SoggiornoStatePagamentoContext soggiornoStatePagamentoContext, SoggiornoContextSubject soggiornoContext) {
-		_soggiornoStatePagamentoContext = soggiornoStatePagamentoContext;
+	protected PagamentoStateObserver(SoggiornoState soggiornoState, SoggiornoContextSubject soggiornoContext) {
+		_soggiornoStatePagamentoContext = soggiornoState;
 		_soggiornoContext = soggiornoContext;
+		_elencoSubject = new ArrayList<ISubject>();
 	}
 	/* ----------------------------------------------------- Metodi di istanza ----------------------------------------------------- */
 	@Override
@@ -139,5 +140,30 @@ public abstract class PagamentoStateObserver implements IObserver {
 		
 		/*Restituisco il prezzo totale della prenotazione*/
 		return costoSoggiorno;
+	}
+	/**
+	 * @return the _elencoSubject
+	 */
+	public ArrayList<ISubject> get_elencoSubject() {
+		return _elencoSubject;
+	}
+	/**
+	 * @param _elencoSubject the _elencoSubject to set
+	 */
+	public void set_elencoSubject(ArrayList<ISubject> _elencoSubject) {
+		this._elencoSubject = _elencoSubject;
+	}
+	/**
+	 * @return the _soggiornoStatePagamentoContext
+	 */
+	public SoggiornoState get_soggiornoStatePagamentoContext() {
+		return _soggiornoStatePagamentoContext;
+	}
+	/**
+	 * @param _soggiornoStatePagamentoContext the _soggiornoStatePagamentoContext to set
+	 */
+	public void set_soggiornoStatePagamentoContext(
+			SoggiornoState _soggiornoStatePagamentoContext) {
+		this._soggiornoStatePagamentoContext = _soggiornoStatePagamentoContext;
 	}
 }

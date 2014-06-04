@@ -4,7 +4,7 @@ import java.util.*;
 
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoPrenotato;
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoStatePagamentoContext;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoState;
 import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Persona.ClientePrenotante;
 import com.iHotel.model.Utility.Giorno;
@@ -25,9 +25,9 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	 */
 	private ArrayList<Camera> _camerePrenotate;
 	/**
-	 * Lista degli osservatori di questo oggetto - Pattern Observer
+	 * Osservatore di questo oggetto - Pattern Observer
 	 */
-	private ArrayList<IObserver> _osservatori;
+	private IObserver _observer;
 	
 	/**
 	 * Lista dei pagamenti effettuati a favore del soggiorno.
@@ -61,7 +61,7 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	/**
 	 * Stato in cui si trova il soggiorno - Pattern State
 	 */
-	private SoggiornoStatePagamentoContext _soggiornoState;
+	private SoggiornoState _soggiornoState;
 	/**
 	 * 	Importo totale pagamenti ricevuti per il soggiorno
 	 */
@@ -72,7 +72,6 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	 */
 	public SoggiornoContextSubject() {
 		_camerePrenotate = new ArrayList<Camera>();
-		_osservatori = new ArrayList<IObserver>();
 		_importoTotaleCamere = new Prezzo();
 		_pagamenti= new ArrayList<Pagamento>();
 		_ammontareCaparra = new Prezzo();
@@ -97,18 +96,15 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	/* ----------- Pattern Observer -------- */
 	@Override
 	public void Attach(IObserver observer) {
-		_osservatori.add(observer);
+		_observer=observer;
 	}
 	@Override
 	public void Detach(IObserver observer) {
-		_osservatori.remove(observer);
+		_observer=null;
 	}
 	@Override
 	public void Notify() {
-		for (Iterator<IObserver> iterator = _osservatori.iterator(); iterator.hasNext();) {
-			IObserver observer = (IObserver) iterator.next();
-			observer.Update();
-		}
+		_observer.Update();
 	}
 	/* ------------ /Pattern Observer -------- */
 	@Override
@@ -334,14 +330,14 @@ public class SoggiornoContextSubject implements ISubject, Comparable<SoggiornoCo
 	/**
 	 * @return the _statoSoggiorno
 	 */
-	public SoggiornoStatePagamentoContext get_soggiornoState() {
+	public SoggiornoState get_soggiornoState() {
 		return _soggiornoState;
 	}
 
 	/**
 	 * @param _statoSoggiorno the _statoSoggiorno to set
 	 */
-	public void set_soggiornoState(SoggiornoStatePagamentoContext _statoSoggiorno) {
+	public void set_soggiornoState(SoggiornoState _statoSoggiorno) {
 		this._soggiornoState = _statoSoggiorno;
 	}
 

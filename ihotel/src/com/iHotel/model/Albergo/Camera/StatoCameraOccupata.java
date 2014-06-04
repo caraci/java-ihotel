@@ -35,18 +35,14 @@ public class StatoCameraOccupata extends StatoCamera {
 		return prezzo;
 	}
 	@Override
-	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo) {
-		// Controllo se il periodo di richiesta, ovvero quello della prenotazione è effettivamente
-		// il periodo dello stato.
-		if (_periodo.coincideCon(periodo)) {
-			// Aggiungo il servizio alla lista dei servizi per questo stato della camera.
-			_serviziInterni.add(servizio);
-			// Ricavo il prezzo del servizio e lo aggiungo al prezzo dei servizi per lo stato della camera.
-			DescrizioneServizioInterno descrizioneServizioInterno = CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(servizio.get_codice());
-			_prezzoServizi.somma(descrizioneServizioInterno.getPrezzoInData(servizio.get_giorno()));
-			// Comunico all'osservatore il cambio dello stato.
-			this.Notify();
-		}
+	public void aggiungiServizio(ServizioInterno servizio) {
+		// Aggiungo il servizio alla lista dei servizi per questo stato della camera.
+		_serviziInterni.add(servizio);
+		// Ricavo il prezzo del servizio e lo aggiungo al prezzo dei servizi per lo stato della camera.
+		DescrizioneServizioInterno descrizioneServizioInterno = CatalogoServiziInterni.getInstance().getDescrizioneServizioDaCodice(servizio.get_codice());
+		_prezzoServizi.somma(descrizioneServizioInterno.getPrezzoInData(servizio.get_giorno()));
+		// Comunico all'osservatore il cambio dello stato.
+		this.Notify();
 	}
 	@Override
 	public ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo) {
@@ -72,12 +68,12 @@ public class StatoCameraOccupata extends StatoCamera {
 	}
 	@Override
 	public void Attach(IObserver observer) {
-		// TODO Auto-generated method stub
+		_observer = observer;
 		
 	}
 	@Override
 	public void Detach(IObserver observer) {
-		// TODO Auto-generated method stub
+		_observer = null;
 		
 	}
 	@Override

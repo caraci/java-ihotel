@@ -3,9 +3,12 @@
  */
 package com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState;
 
+import java.util.Iterator;
+
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
-import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoStatePagamentoContext;
+import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.SoggiornoState;
 import com.iHotel.model.Pagamento.Pagamento;
+import com.iHotel.model.Utility.ISubject;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
@@ -14,7 +17,7 @@ import com.iHotel.model.Utility.Prezzo;
  */
 public class PagamentoSospeso extends PagamentoStateObserver {
 
-	public PagamentoSospeso(SoggiornoStatePagamentoContext soggiornoStateContext, SoggiornoContextSubject soggiornoContext) {
+	public PagamentoSospeso(SoggiornoState soggiornoStateContext, SoggiornoContextSubject soggiornoContext) {
 		super(soggiornoStateContext, soggiornoContext);
 	}
 
@@ -30,8 +33,18 @@ public class PagamentoSospeso extends PagamentoStateObserver {
 		Prezzo importoRimanenteDaPagare = _soggiornoContext.calcolaImportoRimanenteDaPagare();	
 		// Controllo se l'importo rimanente da pagare 
 		if (importoRimanenteDaPagare.get_quantita()==0) {
-			// Passiamo allo stato del pagamento saldato.
-			_soggiornoStatePagamentoContext.set_pagamentoState(new PagamentoSaldato(_soggiornoStatePagamentoContext, _soggiornoContext));
+			// Creo il pagamento state saldato.
+			PagamentoSaldato pagamentoSaldato = new PagamentoSaldato(_soggiornoStatePagamentoContext, _soggiornoContext);
+			// Ciclo sulla lista dei subject per assegnare il nuovo osservatore.
+			for (Iterator<ISubject> iterator = _elencoSubject.iterator(); iterator.hasNext();) {
+				ISubject subject = (ISubject) iterator.next();
+				// Assegno il nuovo observer al generico subject.
+				subject.Attach(pagamentoSaldato);
+			}
+			// Assegno la lista dei subject del pagamentoSospeso, aggiornati al nuovo osservatore, al pagamentoSaldato.
+			pagamentoSaldato.set_elencoSubject(this.get_elencoSubject());
+			// Essendo stato saldato il soggiorno, allora il pagamento diventa saldato.
+			_soggiornoStatePagamentoContext.set_pagamentoState(pagamentoSaldato);
 		}
 	}
 

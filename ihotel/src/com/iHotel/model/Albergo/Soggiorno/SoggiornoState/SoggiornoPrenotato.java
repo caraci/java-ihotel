@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.iHotel.model.Albergo.Camera.Camera;
-import com.iHotel.model.Albergo.Camera.StatoCamera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoSospeso;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoStateObserver;
@@ -24,7 +23,7 @@ import com.iHotel.model.Utility.Periodo;
  * 
  * @author Gabriele
  */
-public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
+public class SoggiornoPrenotato extends SoggiornoState {
 
 	public SoggiornoPrenotato(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);
@@ -41,10 +40,6 @@ public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
 		_soggiornoContext.get_camerePrenotate().add(camera);
 		// Calcolo il nuovo totale delle camere della prenotazione
 		_soggiornoContext.calcolaImportoTotaleCamere();
-		// Prendo lo stato relativo al periodo del soggiorno, della camera inserita.
-		StatoCamera statoCamera = camera.getStatoCameraInPeriodo(_soggiornoContext.get_periodo());
-		// Aggiungo lo statoCamera, come subject allo stato attuale del pagamento.
-		_pagamentoState.addSubject(statoCamera);
 	}
 
 	@Override
@@ -69,7 +64,7 @@ public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
 		for (Iterator<Camera> iterator = camerePrenotante.iterator(); iterator.hasNext();) {
 			Camera cameraPrenotata = (Camera) iterator.next();
 			// Occupo la camera nel periodo
-			cameraPrenotata.occupaInPeriodo(periodoSoggiorno);
+			cameraPrenotata.occupaInPeriodo(periodoSoggiorno, _pagamentoState);
 		}
 	}
 
@@ -98,8 +93,12 @@ public class SoggiornoPrenotato extends SoggiornoStatePagamentoContext {
 	public void effettuaCheckIn() {
 		// TODO - invio le informazioni degli ospiti al sistema esterno della polizia di stato
 		ServiceFactory.getInstance().get_schedePSAdapter().generaSchedePubblicaSicurezza(_soggiornoContext);
+		// Creo lo stato successivo soggiornoInCorso
+		SoggiornoInCorso soggiornoInCorso = new SoggiornoInCorso(_soggiornoContext, _pagamentoState);
+		// Comunico al pagamento state il nuovo stato del soggiorno
+		_pagamentoState.set_soggiornoStatePagamentoContext(soggiornoInCorso);
 		// Setto lo stato successivo al subject.
-		_soggiornoContext.set_soggiornoState(new SoggiornoInCorso(_soggiornoContext, _pagamentoState));
+		_soggiornoContext.set_soggiornoState(soggiornoInCorso);
 	}
 
 	@Override

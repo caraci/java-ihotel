@@ -105,5 +105,15 @@ public class CGestionePagamenti {
     		this.inserisciPagamentoInSoggiorno(pagamentoEffettuato);
     	}
     }
+    /**
+     * Metodo per terminare la gestione dei pagamenti e tornare alle informazioni sul soggiorno.
+     */
+	public void tornaAlSoggiorno() {
+		//Rimuovo l'osservatore dal soggiorno, altrimenti verrebbe salvato nel db.
+		_soggiorno.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
+		// Torno al pannello relativo alle informazioni del soggiorno
+		CModificaSoggiorno.getInstance().recuperaSoggiornoDaCodice(_soggiorno.get_codice());
+		
+	}
 
 }

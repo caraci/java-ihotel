@@ -57,17 +57,14 @@ public abstract class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPa
 	
 	
 	/*JPanel*/
-		/**
-	 * Pannelli contenenti le liste dei pagamenti
-	 */
+	/**
+	* Pannello contenente una lista di pagamenti
+	*/
 	protected JPanel _panelListaPagamentiInContanti,_panelListaPagamentiConBonifico, _panelListaPagamentiConCarta;
 	
-	/**
-	 * Altri pannelli
-	 */
 	protected JPanel _panelMiddleTop, _panelMiddleBottom;
 	/*JLabel*/
-	public JLabel  _lblTotaleImportoVersato, _lblTotaleImportoSoggiorno, _lblTotaleImportoRimanente, _lblTitoloPrenotazione;
+	public JLabel  _lblTotaleImportoVersato, _lblTotaleImportoSoggiorno, _lblTotaleImportoRimanente, _lblTitoloPrenotazione, _lblStatoPagamento;
 	
 	/*JButton*/
 	protected JButton _btnTornaPrenotazione;
@@ -89,6 +86,7 @@ public abstract class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPa
 		_lblTotaleImportoSoggiorno = _viewFactory.getLabel();
 		_lblTotaleImportoRimanente = _viewFactory.getLabel();
 		_lblTitoloPrenotazione = _viewFactory.getLabelIntestazione_1();
+		_lblStatoPagamento = _viewFactory.getLabelIntestazione_1();
 		
 		/*JButton*/
 		_btnTornaPrenotazione = _viewFactory.getButton();
@@ -163,7 +161,7 @@ public abstract class VPP_RiepilogoPagamenti_Observer extends ViewPanelContentPa
 		//Setto il testo del bottone
 		_btnTornaPrenotazione.setText("Indietro");
 		/*Aggiungo il listener al click sul pulsante*/
-		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaGestionePagamentiListener(_prenotazione));
+		_btnTornaPrenotazione.addMouseListener(new TornaAlSoggiornoDaGestionePagamentiListener());
 		// Aggiungo il bottone alla struttura.
 		Bottoni.put(0, _btnTornaPrenotazione);
 				

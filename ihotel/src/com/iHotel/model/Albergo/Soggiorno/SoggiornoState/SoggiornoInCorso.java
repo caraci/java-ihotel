@@ -12,7 +12,7 @@ import com.iHotel.model.Pagamento.Pagamento;
  * Questa classe rappresenta lo stato del soggiorno successivo al check in.
  * @author Gabriele
  */
-public class SoggiornoInCorso extends SoggiornoStatePagamentoContext {
+public class SoggiornoInCorso extends SoggiornoState {
 
 	public SoggiornoInCorso(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);
@@ -61,8 +61,12 @@ public class SoggiornoInCorso extends SoggiornoStatePagamentoContext {
 
 	@Override
 	public void effettuaCheckOut() {
-		// Importo rimanente da pagare per il soggiorno.
-		_soggiornoContext.set_soggiornoState(new SoggiornoTerminato(_soggiornoContext, _pagamentoState));
+		// Creo lo stato successivo soggiornoTerminato.
+		SoggiornoTerminato soggiornoTerminato = new SoggiornoTerminato(_soggiornoContext, _pagamentoState);
+		// Comunico al pagamento state il nuovo stato del soggiorno
+		_pagamentoState.set_soggiornoStatePagamentoContext(soggiornoTerminato);
+		// Setto lo stato successivo al subject.
+		_soggiornoContext.set_soggiornoState(soggiornoTerminato);
 	}
 
 }

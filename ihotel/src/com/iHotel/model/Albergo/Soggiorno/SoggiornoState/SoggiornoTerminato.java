@@ -12,7 +12,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.Pagament
  * 
  * @author Gabriele
  */
-public class SoggiornoTerminato extends SoggiornoStatePagamentoContext {
+public class SoggiornoTerminato extends SoggiornoState {
 
 	public SoggiornoTerminato(SoggiornoContextSubject soggiornoSubject) {
 		super(soggiornoSubject);

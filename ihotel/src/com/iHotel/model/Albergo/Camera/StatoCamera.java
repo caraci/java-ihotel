@@ -74,9 +74,8 @@ public abstract class StatoCamera implements ISubject {
 	 * Metodo per aggiungere un servizio interno in un periodo alla camera.
 	 * 
 	 * @param servizio Servizio da aggiungere.
-	 * @param periodo Periodo in cui aggiungere il servizio.
 	 */
-	public abstract void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo);
+	public abstract void aggiungiServizio(ServizioInterno servizio);
 	/**
 	 * Metodo per ottenere la lista dei servizi interni della camera.
 	 * 
