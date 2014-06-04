@@ -99,10 +99,7 @@ public class Camera {
 	 * @param periodo Periodo in cui si vuole occupare la camera.
 	 * @param pagamentoState Stato del pagamento del soggiorno per il quale si stanno occupando le camere.
 	 */
-	public void occupaInPeriodo(Periodo periodo, PagamentoStateObserver pagamentoState) {
-		
-		System.out.println("Prima: "+pagamentoState.get_elencoSubject().size());
-		
+	public void occupaInPeriodo(Periodo periodo, PagamentoStateObserver pagamentoState) {		
 		// Lista degli stati camera che vengono restituiti dallo stato della camera
 		List<StatoCamera> statiCameraDopoOccupazione;
 		// Ciclo su tutti gli stati della camera
@@ -126,8 +123,6 @@ public class Camera {
 				_statiCameraState.remove(i);
 				// Aggiungo la lista ricavata dallo stato partendo dalla sua vecchia posizione.
 				_statiCameraState.addAll(i, statiCameraDopoOccupazione);
-				
-				System.out.println("Dopo: "+pagamentoState.get_elencoSubject().size());
 			}
 		}
 	}	

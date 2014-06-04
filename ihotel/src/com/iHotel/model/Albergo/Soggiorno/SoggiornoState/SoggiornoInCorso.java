@@ -6,7 +6,6 @@ package com.iHotel.model.Albergo.Soggiorno.SoggiornoState;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoStateObserver;
-import com.iHotel.model.Pagamento.Pagamento;
 
 /**
  * Questa classe rappresenta lo stato del soggiorno successivo al check in.
@@ -41,17 +40,10 @@ public class SoggiornoInCorso extends SoggiornoState {
 	}
 
 	@Override
-	public void addPagamento(Pagamento pagamento) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void concludiPrenotazione(String nome, String cognome, String eMail,	String telefono) {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public void effettuaCheckIn() {
