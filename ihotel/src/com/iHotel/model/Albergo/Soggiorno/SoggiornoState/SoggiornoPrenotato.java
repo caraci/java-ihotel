@@ -6,6 +6,7 @@ package com.iHotel.model.Albergo.Soggiorno.SoggiornoState;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.PagamentoSospeso;
@@ -86,7 +87,10 @@ public class SoggiornoPrenotato extends SoggiornoState {
 		// Strategia per il calcolo dell'ammontare della caparra
 		ComponentOttieniAmmontareCaparraStrategy strategiaAmmontareCaparra = strategiaAmmontareCaparraFactory.getStrategyAmmontareCaparra();
 		// Setto l'ammontare della caparra
-		_soggiornoContext.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_soggiornoContext));		
+		_soggiornoContext.set_ammontareCaparra(strategiaAmmontareCaparra.getAmmontareCaparra(_soggiornoContext));
+		// Aggiungo il soggiorno allo storico
+		Storico storico = Storico.getInstance();
+		storico.addSoggiorno(_soggiornoContext);
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.Albergo;
-import com.iHotel.model.Albergo.Storico;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
@@ -125,9 +124,6 @@ public class CCreaRichiestaSoggiorno {
 		_soggiorno.Detach((IObserver) ViewFrameApplication.getInstance().get_pnlAttuale());
 		// Concludo la richiesta di soggiorno
 		_soggiorno.concludiPrenotazione(clientePrenotante);
-		// Aggiungo il soggiorno allo storico
-		Storico storico = Storico.getInstance();
-		storico.addSoggiorno(_soggiorno);
 		// Effettuo lo store del soggiorno.
 		PPrenotazione.getInstance().store(_soggiorno);
 		// Recupero il frame dell'applicazione

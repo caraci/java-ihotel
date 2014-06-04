@@ -71,7 +71,7 @@ public class CModificaSoggiorno {
 		_camera=_albergo.getCameraDaNumero(numeroCamera);
 		// Ricavo il periodo della prenotazione.
 		Periodo periodo = _soggiorno.get_periodo();
-		
+
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo
