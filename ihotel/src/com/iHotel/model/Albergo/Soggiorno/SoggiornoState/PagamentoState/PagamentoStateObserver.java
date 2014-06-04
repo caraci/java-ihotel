@@ -19,8 +19,9 @@ import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.view.Utility.IObserver;
 
 /**
+ * Questo classe rappresenta lo stato dei pagamenti per un soggiorno.
+ * 
  * @author Eugenio
- *
  */
 public abstract class PagamentoStateObserver implements IObserver {
 	/**
@@ -33,14 +34,14 @@ public abstract class PagamentoStateObserver implements IObserver {
 	 */
 	protected SoggiornoState _soggiornoState;
 	/**
-	 * Soggiorno di cui si gestisce il pagamento - Pattern State
+	 * Soggiorno di cui si gestiscono i pagamenti - Pattern State
 	 */
 	protected SoggiornoContextSubject _soggiornoContext;
 	
 	/**
 	 * Costruttore.
 	 * 
-	 * @param soggiornoStateContext Stato in cui si trova il soggiorno.
+	 * @param soggiornoState Stato in cui si trova il soggiorno.
 	 */
 	protected PagamentoStateObserver(SoggiornoState soggiornoState) {
 		_soggiornoState = soggiornoState;

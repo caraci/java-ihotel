@@ -269,10 +269,10 @@ public class UtoPanel {
 	}
 	
 	/**
-	 * Metodo che restituisce un pannello contenente un pagamento in contanti
+	 * Metodo che restituisce un pannello contenente un pagamento in contanti.
 	 * 
-	 * @param pagamentoInContanti che si vuole visualizzare
-	 * @return Pannello con le informazioni sul pagamento in contanti
+	 * @param pagamentoConCarta Pagamento che si vuole visualizzare.
+	 * @return Pannello con le informazioni sul pagamento in contanti.
 	 */
 	public static JPanel getPanelPagamentoConCarta(PagamentoConCarta pagamentoConCarta){
 		/*Creo un pannello*/

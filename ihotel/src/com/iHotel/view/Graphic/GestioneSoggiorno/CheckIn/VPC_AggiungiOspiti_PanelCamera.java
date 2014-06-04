@@ -158,7 +158,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Metodo per creare la parte centrale sinistra della pagina.
 	 * 
-	 * @return
+	 * @return Pannello centrale sinistro.
 	 */
 	private JPanel creaPanelMiddleLeft() {
 		// Setto Layout pnlMiddleLeft
@@ -195,7 +195,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Metodo per fornire il pannello contenente le informazioni generali dell'ospite.
 	 * 
-	 * @return
+	 * @return Pannello contenente le informazioni generali dell'ospite.
 	 */
 	private JPanel creaPanelInformazioniOspiteGenerale() {
 		JPanel pnlInformazioniOspiteGenerale = _viewFactory.getPanel(false);
@@ -236,7 +236,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Metodo per creare il pannello del documento.
 	 * 
-	 * @return
+	 * @return Pannello relativo al documento.
 	 */
 	private JPanel creaPanelDocumento() {
 		_pnlContieniDocumento.setLayout(new BoxLayout(_pnlContieniDocumento, BoxLayout.PAGE_AXIS));
@@ -269,7 +269,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Pannello per inserire le informazioni della carta d'identità.
 	 * 
-	 * @return
+	 * @return Pannello relativo alla carta di identità.
 	 */
 	private JPanel creaPanelCartaIdentita() {
 		// Setto layout
@@ -316,7 +316,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Pannello per inserire le informazioni della patente.
 	 * 
-	 * @return
+	 * @return Pannello relativo alla patente.
 	 */
 	private JPanel creaPanelPatente() {
 		// Setto layout
@@ -363,7 +363,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Pannello per inserire le informazioni del passaporto.
 	 * 
-	 * @return
+	 * @return Pannello relativo al passaporto.
 	 */
 	private JPanel creaPanelPassaporto() {
 		// Setto layout
@@ -410,7 +410,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Metodo per creare il pannello, contenente il bottone per aggiungere l'ospite alla prenotazione.
 	 * 
-	 * @return
+	 * @return Pannello per il bottone per inserire l'ospite.
 	 */
 	private JPanel creaPanelBottoneInserisciOspite() {	
 		_btnAggiungiOspite.setText("Aggiungi ospite");
@@ -429,7 +429,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Metodo per creare la parte centrale destra della pagina.
 	 * 
-	 * @return
+	 * @return Pannello centrale destro.
 	 */
 	private JPanel creaPanelMiddleRight() {
 		// Setto il layout al panelContenitore
@@ -442,7 +442,7 @@ public class VPC_AggiungiOspiti_PanelCamera extends View {
 	/**
 	 * Metodo per creare il pannello dove si mostrano gli ospiti della camera.
 	 * 
-	 * @return
+	 * @return Pannello contenente la lista degli ospiti.
 	 */
 	public JScrollPane creaPanelListaOspiti() {
 		// ScrollPanel nel quale si inserirà la lista.

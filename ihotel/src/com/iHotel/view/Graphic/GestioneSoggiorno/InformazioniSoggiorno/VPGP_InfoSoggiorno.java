@@ -41,7 +41,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 	/**
 	 * Prenotazione di cui si mostrano le informazioni.
 	 */
-	protected SoggiornoContextSubject _prenotazione;
+	protected SoggiornoContextSubject _soggiorno;
 	/**
 	 * Prezzo dei servizi esterni, richiesti dalle camere della prenotazione, nel periodo di quest'ultima.
 	 */
@@ -95,7 +95,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		/*Setto il layout*/
 		_panelTop.setLayout(new GridLayout(1,2,5,5));
 		//setto la label con il codice della prenotazione
-		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ _prenotazione.get_codice());
+		_lblTitoloPrenotazione.setText("Prenotazione numero: "+ _soggiorno.get_codice());
 		//Setto la label con lo stato del soggiorno
 		setLblStatoSoggiorno();
 		//aggiungo le label al panelTop
@@ -125,7 +125,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		/*Setto il testo del bottone Gestione pagamenti*/
 		_btnGestionePagamenti.setText("Gestisci pagamenti");
 		/*Aggiungo il listener all'evento*/
-		_btnGestionePagamenti.addMouseListener(new GestisciPagamentoListener(_prenotazione));
+		_btnGestionePagamenti.addMouseListener(new GestisciPagamentoListener(_soggiorno));
 		/*Setto il testo del bottone*/
 		_btnTerminaModifichePrenotazione.setText("Indietro");
 		/*Aggiungo il listener al click sul pulsante*/
@@ -154,7 +154,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		_panelInfoPrenotante.setLayout(new BoxLayout(_panelInfoPrenotante, BoxLayout.PAGE_AXIS));
 				
 		/*Recupero il prenotante della prenotazione */
-		ClientePrenotante prenotante = _prenotazione.get_prenotante();
+		ClientePrenotante prenotante = _soggiorno.get_prenotante();
 		
 		/*Setto il testo dell'intestazione*/
 		_lblTitoloPrenotante.setText("Titolare della prenotazione: ");
@@ -187,21 +187,21 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		_panelInfoPrenotazione.setLayout(new BoxLayout(_panelInfoPrenotazione, BoxLayout.PAGE_AXIS));
 		
 		/*Recupero il periodo*/
-		Periodo periodo = _prenotazione.get_periodo();
+		Periodo periodo = _soggiorno.get_periodo();
 		
 		/*Recupero il giorno di scadenza per l'invio della garanzia*/
-		Giorno giornoScadenzaGaranzia =  _prenotazione.get_giornoScadenzaInvioGaranzia();
+		Giorno giornoScadenzaGaranzia =  _soggiorno.get_giornoScadenzaInvioGaranzia();
 		
 		/*Recupero l'ammontare della caparra*/
-		Prezzo ammontareCaparra = _prenotazione.get_ammontareCaparra();
+		Prezzo ammontareCaparra = _soggiorno.get_ammontareCaparra();
 		
 		/*Recupero il prezzo delle camere*/
-		Prezzo prezzoCamere = _prenotazione.get_importoTotaleCamere();
+		Prezzo prezzoCamere = _soggiorno.get_importoTotaleCamere();
 		
 		/*Sommo il prezzo dei servizi interni con quelli esterni*/
 		Prezzo totaleServizi = new Prezzo();
 		totaleServizi.somma(_prezzoServiziEsterni);
-		totaleServizi.somma(_prenotazione.getPrezzoServiziInterni());
+		totaleServizi.somma(_soggiorno.getPrezzoServiziInterni());
 		
 		/*Setto il testo da riportare nell'intestazione del blocco del riepilogo informazioni sulla prenotazione*/
 		_lblRiepilogoPrenotazione.setText("Riepilogo prenotazione:");
@@ -249,7 +249,7 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 		_panelCamerePrenotate.add(Box.createRigidArea(new Dimension(0,15)));
 		
 		/* Ciclo per prendere i numeri di camera della prenotazione*/
-		for (Iterator<Camera> iterator = _prenotazione.get_camerePrenotate().iterator(); iterator.hasNext();) {
+		for (Iterator<Camera> iterator = _soggiorno.get_camerePrenotate().iterator(); iterator.hasNext();) {
 			Camera cameraContext = (Camera) iterator.next();
 			/*Istanzio un button, gli assegno il numero della camera prenotata come testo e lo aggiungo al pannello delle camere
 			  prenotate*/
@@ -268,15 +268,13 @@ public class VPGP_InfoSoggiorno extends ViewPanelContentPane {
 	 * Metodo che permette di creare il frame che contiene le informazioni sul prenotante, sulla prenotazione
 	 * e sulle camere prenotate.
 	 * 
-	 * @param prenotazione La prenotazione di cui si vogliono visualizzare i dettagli.
-	 * @param prezzoServiziEsterni Il prezzo dei servizi esterni richiesti dalle camere appartenenti alla prenotazione
-	 * 	 	  passata come parametro.
+	 * @param soggiorno Soggiorno di cui si vogliono visualizzare i dettagli.
 	 */
-	public void creaPanel(SoggiornoContextSubject prenotazione){	
+	public void creaPanel(SoggiornoContextSubject soggiorno){	
 		// Setto gli attributi dell'interfaccia
-		_prenotazione=prenotazione;
+		_soggiorno=soggiorno;
 		// Recupero il prezzo dei servizi esterni della prenotazione, attraverso serviceFactory.
-		_prezzoServiziEsterni=ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(prenotazione);
+		_prezzoServiziEsterni=ServiceFactory.getInstance().getPrezzoServiziEsterniPrenotazione(soggiorno);
 		// Creo i pannelli
 		creaPanelTop();
 		creaPanelMiddle();

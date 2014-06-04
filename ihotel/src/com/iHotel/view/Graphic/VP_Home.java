@@ -85,7 +85,7 @@ public class VP_Home extends ViewPanelContentPane {
     /**
      * Metodo per creare il pannello relativo alla parte centrale superiore della finestra.
      * 
-     * @return
+     * @return Pannello centrale superiore.
      */
     public JPanel creaPanelMiddleTop() {
     	// Setto layout
@@ -106,7 +106,7 @@ public class VP_Home extends ViewPanelContentPane {
     /**
      * Metodo per creare il pannello relativo alla parte centrale inferiore della finestra.
      * 
-     * @return
+     * @return Pannello centrale inferiore.
      */
     public JPanel creaPanelMiddleBottom() {
     	// Setto layout al _pnlMiddleBottom

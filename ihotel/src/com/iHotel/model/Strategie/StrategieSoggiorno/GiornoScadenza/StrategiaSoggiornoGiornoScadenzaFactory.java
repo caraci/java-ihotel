@@ -26,7 +26,6 @@ public class StrategiaSoggiornoGiornoScadenzaFactory {
 	/* ---------------------- Metodi di classe --------------------- */
 	/**
 	 * Metodo per fornire l'istanza unica di questa classe - Pattern Singleton
-	 * @return
 	 */
 	public static StrategiaSoggiornoGiornoScadenzaFactory getInstance() {
 		if (_instance == null) {

@@ -33,7 +33,7 @@ public class VPGP_InfoSoggiorno_Terminato extends VPGP_InfoSoggiorno {
 		/*Setto il testo del bottone Gestione pagamenti*/
 		_btnGestionePagamenti.setText("Gestisci pagamenti");
 		/*Aggiungo il listener all'evento*/
-		_btnGestionePagamenti.addMouseListener(new GestisciPagamentoListener(_prenotazione));
+		_btnGestionePagamenti.addMouseListener(new GestisciPagamentoListener(_soggiorno));
 		/*Setto il testo del bottone*/
 		_btnTerminaModifichePrenotazione.setText("Indietro");
 		/*Aggiungo il listener al click sul pulsante*/

@@ -37,7 +37,7 @@ public class AggiungiOspiteAllaPrenotazioneListener implements ActionListener {
 	/**
 	 * Costruttore.
 	 * 
-	 * @param pnlMiddleRight Pannello contenente la lista degli ospiti.
+	 * @param panelCamera Pannello relativo alla camera.
 	 */
 	public AggiungiOspiteAllaPrenotazioneListener(VPC_AggiungiOspiti_PanelCamera panelCamera) {
 		_panelCamera=panelCamera;

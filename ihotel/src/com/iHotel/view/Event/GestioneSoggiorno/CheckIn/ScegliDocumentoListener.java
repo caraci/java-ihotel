@@ -24,7 +24,7 @@ public class ScegliDocumentoListener implements ItemListener {
 	private VPC_AggiungiOspiti_PanelCamera _panelCamera;
 	/**
 	 * Costruttore
-	 * @param pnlTipoDocumento Pannello contenente i diversi documenti.
+	 * @param panelCamera Pannello relativo alla camera.
 	 */
 	public ScegliDocumentoListener(VPC_AggiungiOspiti_PanelCamera panelCamera) {
 		_panelCamera=panelCamera;

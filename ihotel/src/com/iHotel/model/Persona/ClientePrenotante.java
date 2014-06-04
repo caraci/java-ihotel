@@ -61,7 +61,7 @@ public class ClientePrenotante extends Cliente{
 	}
 
 	/**
-	 * @param _codiceCartaDiCredito the _codiceCartaDiCredito to set
+	 * @param _cartaDiCredito the _codiceCartaDiCredito to set
 	 */
 	public void set_cartaDiCredito(CartaDiCredito _cartaDiCredito) {
 		this._cartaDiCredito = _cartaDiCredito;

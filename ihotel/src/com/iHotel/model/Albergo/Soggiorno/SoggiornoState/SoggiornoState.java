@@ -10,8 +10,10 @@ import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
+ * Questa classe rappresenta lo stato di un soggiorno in un certo lasso temporale. Questo al suo
+ * interno ha a sua volta lo stato attuale dei pagamenti per il soggiorno. 
+ * 
  * @author Gabriele
- *
  */
 public abstract class SoggiornoState {
 	/**
@@ -19,7 +21,7 @@ public abstract class SoggiornoState {
 	 */
 	protected SoggiornoContextSubject _soggiornoContext;
 	/**
-	 * Stato del pagamento relativo al soggiorno, context per questo state - Pattern State.
+	 * Stato del pagamento relativo al soggiorno - Pattern State.
 	 */
 	protected PagamentoStateObserver _pagamentoState;
 	/**
@@ -118,12 +120,10 @@ public abstract class SoggiornoState {
 	public abstract void concludiPrenotazione(String nome, String cognome, String eMail, String telefono);
 	/**
 	 * Metodo per effettuare il check in dei clienti del soggiorno.
-	 * @return Stato successivo del soggiorno.
 	 */
 	public abstract void effettuaCheckIn();
 	/**
 	 * Metodo per effettuare il check out dei clienti del soggiorno.
-	 * @return Stato successivo del soggiorno.
 	 */
 	public abstract void effettuaCheckOut();
 	

@@ -46,7 +46,7 @@ public class Giorno {
 	/**
 	 * Metodo per ottenere un oggetto della classe MyDate dall'instanza della classe Giorno.
 	 * 
-	 * @return
+	 * @return Classe myDate relativa a questo giorno.
 	 */
 	public MyDate toMyDate() {
 		MyDate date = new MyDate();

@@ -11,8 +11,9 @@ import com.iHotel.model.Utility.ISubject;
 import com.iHotel.model.Utility.Prezzo;
 
 /**
+ * Questa classe rappresenta uno stato di pagamento sospeso per il soggiorno.
+ * 
  * @author Eugenio
- *
  */
 public class PagamentoSospeso extends PagamentoStateObserver {
 

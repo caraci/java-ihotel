@@ -25,7 +25,6 @@ public class StrategiaSoggiornoAmmontareCaparraFactory {
 	/* ---------------------- Metodi di classe --------------------- */
 	/**
 	 * Metodo per fornire l'istanza unica di questa classe - Pattern Singleton
-	 * @return
 	 */
 	public static StrategiaSoggiornoAmmontareCaparraFactory getInstance() {
 		if (_instance == null) {

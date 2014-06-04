@@ -10,8 +10,9 @@ import com.iHotel.model.Pagamento.Pagamento;
 import com.iHotel.model.Utility.ISubject;
 
 /**
+ * Questa classe rappresenta uno stato di pagamento saldato per il soggiorno.
+ * 
  * @author Eugenio
- *
  */
 public class PagamentoSaldato extends PagamentoStateObserver {
 
