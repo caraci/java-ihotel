@@ -5,6 +5,7 @@ package com.iHotel.controller;
 
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Pagamento.Pagamento;
+import com.iHotel.model.Utility.GestorePagamentiElettronici;
 import com.iHotel.model.Utility.Prezzo;
 import com.iHotel.persistence.PPrenotazione;
 import com.iHotel.view.ViewFrameApplication;
@@ -82,7 +83,7 @@ public class CGestionePagamenti {
      */
     public void pagaConCarta(Prezzo importoDaPagareConCarta) {   	
     	// Pago con Carta
-    	Pagamento pagamentoConCarta = _soggiorno.pagaConCarta(importoDaPagareConCarta);
+    	Pagamento pagamentoConCarta = GestorePagamentiElettronici.pagaConCarta(importoDaPagareConCarta);
     	// Inserisco il pagamento nel soggiorno
     	this.inserisciPagamentoInSoggiorno(pagamentoConCarta);
     }

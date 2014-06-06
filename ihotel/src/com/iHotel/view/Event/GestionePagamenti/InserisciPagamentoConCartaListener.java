@@ -63,6 +63,7 @@ public class InserisciPagamentoConCartaListener extends MouseAdapter {
 		
 		//Controllo se l'importo è nullo
 		if(importoDaPagareConCarta!=null){
+			
 			/*Recupero il controllore corretto*/
 			CGestionePagamenti gestorePagamenti = CGestionePagamenti.getInstance();
 			/*Invoco il metodo per l'inserimento della prenotazione al controllore*/
