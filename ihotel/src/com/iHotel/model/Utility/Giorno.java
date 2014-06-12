@@ -101,7 +101,8 @@ public class Giorno {
 	 * Stringa contenente le informazioni del giorno.
 	 */
 	public String toString() {
-		return _giorno + "-" + _mese + "-" + _anno; 
+		int mese = _mese + 1;
+		return _giorno + "-" + mese + "-" + _anno; 
 	}
 	/* -------------------------- Getter, Setter ----------------------------------- */
 	/**
