@@ -39,8 +39,10 @@ public class StrategiaSoggiornoAmmontareCaparraFactory {
 	 * @return Strategia per calcolare il giorno.
 	 */
 	public ComponentOttieniAmmontareCaparraStrategy getStrategyAmmontareCaparra() {
+		// Carico la strategia di risoluzione.
+		String politicaSceltaStrategie = ULeggiDaFileStrategieSoggiornoAmmontareCaparra.getPoliticaSceltaStrategieAmmontareCaparra();
 		// Scelgo la strategia di risoluzione indicata dall'albergo in una sorgente esterna.
-		ComponentOttieniAmmontareCaparraStrategy componentStrategy = getPoliticaRisoluzioneTraStrategie(ULeggiDaFileStrategieSoggiornoAmmontareCaparra.getPoliticaSceltaStrategieAmmontareCaparra());
+		ComponentOttieniAmmontareCaparraStrategy componentStrategy = getPoliticaRisoluzioneTraStrategie(politicaSceltaStrategie);
 		// Carico le strategie da utilizzare.
 		ArrayList<String> strategieDaUtilizzare = ULeggiDaFileStrategieSoggiornoAmmontareCaparra.getStrategieDaUtilizzareAmmontareCaparra();
 		// Ciclo sulle strategie per decidere quali utilizzare

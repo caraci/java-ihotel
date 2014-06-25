@@ -41,8 +41,10 @@ public class StrategiaSoggiornoGiornoScadenzaFactory {
 	 * @return Strategia per calcolare il giorno.
 	 */
 	public ComponentOttieniGiornoScadenzaStrategy getStrategyCalcoloGiornoScadenza() {
+		// Carico la strategia di risoluzione.
+		String politicaSceltaStrategie = ULeggiDaFileStrategieSoggiornoGiornoScadenza.getPoliticaSceltaStrategieGiornoScadenza();
 		// Scelgo la strategia di risoluzione indicata dall'albergo in una sorgente esterna.
-		ComponentOttieniGiornoScadenzaStrategy componentStrategy = getPoliticaRisoluzioneTraStrategie(ULeggiDaFileStrategieSoggiornoGiornoScadenza.getPoliticaSceltaStrategieGiornoScadenza());
+		ComponentOttieniGiornoScadenzaStrategy componentStrategy = getPoliticaRisoluzioneTraStrategie(politicaSceltaStrategie);
 		// Carico le strategie da utilizzare.
 		ArrayList<String> strategieDaUtilizzare = ULeggiDaFileStrategieSoggiornoGiornoScadenza.getStrategieDaUtilizzareGiornoScadenza();
 		// Ciclo sulle strategie per decidere quali utilizzare
