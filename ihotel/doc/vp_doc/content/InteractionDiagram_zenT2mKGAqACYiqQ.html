@@ -1,0 +1,207 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - SD_EffettuaCheckOut</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_1wDkG8KAUBRkpA1o.html">
+DynamicDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_ULigfiKGAqACSQmT.html">
+ModificaSoggiorno_ScenarioSuccesso : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_sCbT2mKGAqACYiqJ.html">
+SD_EffettuaCheckOut : Model</a>
+	</p>
+	<p class="PageTitle">
+		Sequence Diagram - SD_EffettuaCheckOut		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/zenT2mKGAqACYiqQ', 'SD_EffettuaCheckOut\nihotel.vpp://diagram/zenT2mKGAqACYiqQ', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|538.0|212.0|8.0|12.0|Activation_E5PT2mKGAqACYity.html|Activation_E5PT2mKGAqACYity.html|y5PT2mKGAqACYit0" id="optiony5PT2mKGAqACYit0">Activation : Activation</option>
+<option value="shape|492.0|2.0|100.0|300.0|InteractionLifeLine_hpPT2mKGAqACYitb.html|InteractionLifeLine_hpPT2mKGAqACYitb.html|1pPT2mKGAqACYitc" id="option1pPT2mKGAqACYitc">Unnamed Lifeline : Lifeline</option>
+<option value="shape|368.0|112.0|8.0|12.0|Activation_4RPT2mKGAqACYiso.html|Activation_4RPT2mKGAqACYiso.html|iRPT2mKGAqACYisq" id="optioniRPT2mKGAqACYisq">Activation : Activation</option>
+<option value="shape|262.0|2.0|220.0|300.0|InteractionLifeLine_GBPT2mKGAqACYisS.html|InteractionLifeLine_GBPT2mKGAqACYisS.html|dBPT2mKGAqACYisT" id="optiondBPT2mKGAqACYisT">_soggiorno : Lifeline</option>
+<option value="shape|158.0|62.0|8.0|212.0|Activation_l2PT2mKGAqACYiq_.html|Activation_l2PT2mKGAqACYiq_.html|T2PT2mKGAqACYirA" id="optionT2PT2mKGAqACYirA">Activation : Activation</option>
+<option value="shape|92.0|2.0|140.0|300.0|InteractionLifeLine_QWPT2mKGAqACYiqt.html|InteractionLifeLine_QWPT2mKGAqACYiqt.html|EWPT2mKGAqACYiqu" id="optionEWPT2mKGAqACYiqu">Unnamed Lifeline : Lifeline</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/SD_EffettuaCheckOut.png" usemap="#diagram_map" class="Image" width="596" height="306"/>
+					<map name="diagram_map">
+<area coords="17.0, 55.0, 17.0, 69.0, 92.0, 69.0, 92.0, 55.0" coords2="17.0, 55.0, 17.0, 69.0, 92.0, 69.0, 92.0, 55.0" shape="poly" alt="1: effettuaCheckOut() : void:Message" id="areadiagram_map_DWPT2mKGAqACYiqz" href="Message_DWPT2mKGAqACYiq0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="232.0, 105.0, 232.0, 119.0, 262.0, 119.0, 262.0, 105.0" coords2="232.0, 105.0, 232.0, 119.0, 262.0, 119.0, 262.0, 105.0" shape="poly" alt="1.1: effettuaCheckOut() : void:Message" id="areadiagram_map_RhPT2mKGAqACYisa" href="Message_RhPT2mKGAqACYisb.html" onmouseover="storeReferenceAndSubdiagramInfos('232.0, 105.0, 232.0, 119.0, 262.0, 119.0, 262.0, 105.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('Operation_MS12ZmKFYGwwHg_v.html/generaCodice/Operation','Operation_vy12ZmKFYGwwHhAY.html/effettuaCheckOut/Operation'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('232.0, 105.0, 232.0, 119.0, 262.0, 119.0, 262.0, 105.0')" onmousedown="clearSpotLight();"/>
+<area coords="232.0, 205.0, 232.0, 219.0, 492.0, 219.0, 492.0, 205.0" coords2="232.0, 205.0, 232.0, 219.0, 492.0, 219.0, 492.0, 205.0" shape="poly" alt="1.2: store(arg0 : Object = _soggiorno) : void:Message" id="areadiagram_map_hZPT2mKGAqACYitk" href="Message_RZPT2mKGAqACYitl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="17.0, 255.0, 17.0, 269.0, 92.0, 269.0, 92.0, 255.0" coords2="17.0, 255.0, 17.0, 269.0, 92.0, 269.0, 92.0, 255.0" shape="poly" alt="1.3: :Message" id="areadiagram_map_N5PT2mKGAqACYit5" href="Message_t5PT2mKGAqACYit6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="538, 212, 546, 224" coords2="538, 212, 546, 224" shape="rect" alt="Activation:Activation" id="areadiagram_map_y5PT2mKGAqACYit0" href="Activation_E5PT2mKGAqACYity.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="492, 2, 592, 302" coords2="492, 2, 592, 302" shape="rect" alt=" : PPrenotazione:Lifeline" id="areadiagram_map_1pPT2mKGAqACYitc" href="InteractionLifeLine_hpPT2mKGAqACYitb.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="368, 112, 376, 124" coords2="368, 112, 376, 124" shape="rect" alt="Activation:Activation" id="areadiagram_map_iRPT2mKGAqACYisq" href="Activation_4RPT2mKGAqACYiso.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="262, 2, 482, 302" coords2="262, 2, 482, 302" shape="rect" alt="_soggiorno : SoggiornoContextSubject:Lifeline" id="areadiagram_map_dBPT2mKGAqACYisT" href="InteractionLifeLine_GBPT2mKGAqACYisS.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="158, 62, 166, 274" coords2="158, 62, 166, 274" shape="rect" alt="Activation:Activation" id="areadiagram_map_T2PT2mKGAqACYirA" href="Activation_l2PT2mKGAqACYiq_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="92, 2, 232, 302" coords2="92, 2, 232, 302" shape="rect" alt=" : CModificaSoggiorno:Lifeline" id="areadiagram_map_EWPT2mKGAqACYiqu" href="InteractionLifeLine_QWPT2mKGAqACYiqt.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

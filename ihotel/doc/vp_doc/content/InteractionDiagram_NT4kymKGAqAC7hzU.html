@@ -1,0 +1,247 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - SD_StrategiaSoggiornoAmmontareCaparraFactory_StrategiaCalcoloAmmontareCaparra</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_1wDkG8KAUBRkpA1o.html">
+DynamicDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_IWsgfiKGAqACSQaI.html">
+CreaRichiestaSoggiorno_ScenarioSuccesso : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_hNgkymKGAqAC7hyA.html">
+SD_StrategiaCalcoloAmmontareCaparra_StrategiaSoggiornoAmmontareCaparraFactory : Model</a>
+	</p>
+	<p class="PageTitle">
+		Sequence Diagram - SD_StrategiaSoggiornoAmmontareCaparraFactory_StrategiaCalcoloAmmontareCaparra		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/NT4kymKGAqAC7hzU', 'SD_StrategiaSoggiornoAmmontareCaparraFactory_StrategiaCalcoloAmmontareCaparra\nihotel.vpp://diagram/NT4kymKGAqAC7hzU', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|40.0|2.0|260.0|540.0|InteractionLifeLine_TUKKy2KAUrgcxSwq.html|InteractionLifeLine_TUKKy2KAUrgcxSwq.html|U0KKy2KAUrgcxSwr" id="optionU0KKy2KAUrgcxSwr">Unnamed Lifeline : Lifeline</option>
+<option value="shape|166.0|62.0|7.0|452.0|Activation_5MKKy2KAUrgcxSw7.html|Activation_5MKKy2KAUrgcxSw7.html|jMKKy2KAUrgcxSw9" id="optionjMKKy2KAUrgcxSw9">Activation : Activation</option>
+<option value="shape|360.0|2.0|540.0|540.0|InteractionLifeLine_RcKKy2KAUrgcxSw_.html|InteractionLifeLine_RcKKy2KAUrgcxSw_.html|ZcKKy2KAUrgcxSxA" id="optionZcKKy2KAUrgcxSxA">ULeggiDaFileStrategieSoggiornoAmmontareCaparra : Lifeline</option>
+<option value="shape|626.0|110.0|8.0|12.0|Activation_MCKKy2KAUrgcxSxU.html|Activation_MCKKy2KAUrgcxSxU.html|KCKKy2KAUrgcxSxW" id="optionKCKKy2KAUrgcxSxW">Activation : Activation</option>
+<option value="shape|626.0|220.0|8.0|12.0|Activation_VyKKy2KAUrgcxSyC.html|Activation_VyKKy2KAUrgcxSyC.html|TyKKy2KAUrgcxSyE" id="optionTyKKy2KAUrgcxSyE">Activation : Activation</option>
+<option value="shape|1030.0|2.0|220.0|540.0|InteractionLifeLine_uKKKy2KAUrgcxSyI.html|InteractionLifeLine_uKKKy2KAUrgcxSyI.html|hKKKy2KAUrgcxSyJ" id="optionhKKKy2KAUrgcxSyJ">strategieDaUtilizzare : Lifeline</option>
+<option value="shape|1136.0|282.0|8.0|12.0|Activation_dqKKy2KAUrgcxSyd.html|Activation_dqKKy2KAUrgcxSyd.html|bqKKy2KAUrgcxSyf" id="optionbqKKy2KAUrgcxSyf">Activation : Activation</option>
+<option value="shape|30.0|332.0|1890.0|130.0|CombinedFragment_WaKKy2KAUrgcxSym.html|CombinedFragment_WaKKy2KAUrgcxSym.html|WaKKy2KAUrgcxSyl" id="optionWaKKy2KAUrgcxSyl">CombinedFragment : Combined Fragment</option>
+<option value="shape|30.0|348.0|1890.0|112.0|InteractionOperand_1aKKy2KAUrgcxSyq.html|InteractionOperand_1aKKy2KAUrgcxSyq.html|1aKKy2KAUrgcxSyp" id="option1aKKy2KAUrgcxSyp">Operand : Interaction Operand</option>
+<option value="shape|1360.0|2.0|140.0|540.0|InteractionLifeLine_s6KKy2KAUrgcxSyv.html|InteractionLifeLine_s6KKy2KAUrgcxSyv.html|C6KKy2KAUrgcxSyw" id="optionC6KKy2KAUrgcxSyw">iterator : Lifeline</option>
+<option value="shape|1426.0|382.0|8.0|12.0|Activation_VGKKy2KAUrgcxSzE.html|Activation_VGKKy2KAUrgcxSzE.html|zGKKy2KAUrgcxSzG" id="optionzGKKy2KAUrgcxSzG">Activation : Activation</option>
+<option value="shape|1550.0|2.0|360.0|540.0|InteractionLifeLine_4WKKy2KAUrgcxSzu.html|InteractionLifeLine_4WKKy2KAUrgcxSzu.html|cWKKy2KAUrgcxSzy" id="optioncWKKy2KAUrgcxSzy">componentStrategy : Lifeline</option>
+<option value="shape|1726.0|430.0|8.0|12.0|Activation_p2KKy2KAUrgcxS0I.html|Activation_p2KKy2KAUrgcxS0I.html|d2KKy2KAUrgcxS0K" id="optiond2KKy2KAUrgcxS0K">Activation : Activation</option>
+<option value="shape|660.0|112.0|180.0|40.0|NOTE_6bZqy2KAUrgcxS1x.html|NOTE_6bZqy2KAUrgcxS1x.html|6bZqy2KAUrgcxS1w" id="option6bZqy2KAUrgcxS1w">Unnamed Note : Note</option>
+<option value="shape|660.0|222.0|280.0|40.0|NOTE_8bgay2KAUrgcxS2l.html|NOTE_8bgay2KAUrgcxS2l.html|8bgay2KAUrgcxS2k" id="option8bgay2KAUrgcxS2k">Unnamed Note : Note</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/SD_StrategiaSoggiornoAmmontareCaparraFactory_StrategiaCalcoloAmmontareCaparra.png" usemap="#diagram_map" class="Image" width="1924" height="546"/>
+					<map name="diagram_map">
+<area coords="34.0, 55.0, 34.0, 69.0, 40.0, 69.0, 40.0, 55.0" coords2="34.0, 55.0, 34.0, 69.0, 40.0, 69.0, 40.0, 55.0" shape="poly" alt="1: getStrategyAmmontareCaparra() : ComponentOttieniAmmontareCaparraStrategy:Message" id="areadiagram_map_30KKy2KAUrgcxSww" href="Message_30KKy2KAUrgcxSwx.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="300.0, 105.0, 300.0, 119.0, 360.0, 119.0, 360.0, 105.0" coords2="300.0, 105.0, 300.0, 119.0, 360.0, 119.0, 360.0, 105.0" shape="poly" alt="1.1: politicaSceltaStrategie = getPoliticaSceltaStrategieAmmontareCaparra():Message" id="areadiagram_map_58KKy2KAUrgcxSxG" href="Message_F8KKy2KAUrgcxSxH.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="" coords2="" shape="poly" alt="1.2: getPoliticaRisoluzioneTraStrategie(nomeStrategiaRisoluzione : String = politicaSceltaStrategie) : CompositeOttieniAmmontareCaparraStrategy:Message" id="areadiagram_map_zCKKy2KAUrgcxSxd" href="Message_zCKKy2KAUrgcxSxe.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="300.0, 215.0, 300.0, 229.0, 360.0, 229.0, 360.0, 215.0" coords2="300.0, 215.0, 300.0, 229.0, 360.0, 229.0, 360.0, 215.0" shape="poly" alt="1.3: strategieDaUtilizzare = getStrategieDaUtilizzareAmmontareCaparra():Message" id="areadiagram_map_oyKKy2KAUrgcxSx0" href="Message_YyKKy2KAUrgcxSx1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="300.0, 275.0, 300.0, 289.0, 1030.0, 289.0, 1030.0, 275.0" coords2="300.0, 275.0, 300.0, 289.0, 1030.0, 289.0, 1030.0, 275.0" shape="poly" alt="1.4: iterator():Message" id="areadiagram_map_kqKKy2KAUrgcxSyP" href="Message_kqKKy2KAUrgcxSyQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="300.0, 375.0, 300.0, 389.0, 1360.0, 389.0, 1360.0, 375.0" coords2="300.0, 375.0, 300.0, 389.0, 1360.0, 389.0, 1360.0, 375.0" shape="poly" alt="1.5: nomeStrategia = next():Message" id="areadiagram_map_n6KKy2KAUrgcxSy2" href="Message_n6KKy2KAUrgcxSy3.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="300.0, 425.0, 300.0, 439.0, 1550.0, 439.0, 1550.0, 425.0" coords2="300.0, 425.0, 300.0, 439.0, 1550.0, 439.0, 1550.0, 425.0" shape="poly" alt="1.6: addStrategy(strategy : ComponentOttieniAmmontareCaparraStrategy = getLeafStrategyFromName(nomeStrategia)) : void:Message" id="areadiagram_map_3WKKy2KAUrgcxSz6" href="Message_3WKKy2KAUrgcxSz7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="34.0, 495.0, 34.0, 509.0, 40.0, 509.0, 40.0, 495.0" coords2="34.0, 495.0, 34.0, 509.0, 40.0, 509.0, 40.0, 495.0" shape="poly" alt="1.7: :Message" id="areadiagram_map_OOKKy2KAUrgcxS0P" href="Message_OOKKy2KAUrgcxS0Q.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="583.0, 102.0, 583.0, 125.0, 580.0, 125.0, 580.0, 139.0, 583.0, 139.0, 583.0, 142.0, 597.0, 142.0, 597.0, 139.0, 660.0, 139.0, 660.0, 125.0, 597.0, 125.0, 597.0, 102.0" coords2="583.0, 102.0, 583.0, 125.0, 580.0, 125.0, 580.0, 139.0, 583.0, 139.0, 583.0, 142.0, 597.0, 142.0, 597.0, 139.0, 660.0, 139.0, 660.0, 125.0, 597.0, 125.0, 597.0, 102.0" shape="poly" alt=":Anchor" id="areadiagram_map_m7Zqy2KAUrgcxS11" href="Anchor_67Zqy2KAUrgcxS10.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="563.0, 212.0, 563.0, 235.0, 560.0, 235.0, 560.0, 249.0, 563.0, 249.0, 563.0, 252.0, 577.0, 252.0, 577.0, 249.0, 660.0, 249.0, 660.0, 235.0, 577.0, 235.0, 577.0, 212.0" coords2="563.0, 212.0, 563.0, 235.0, 560.0, 235.0, 560.0, 249.0, 563.0, 249.0, 563.0, 252.0, 577.0, 252.0, 577.0, 249.0, 660.0, 249.0, 660.0, 235.0, 577.0, 235.0, 577.0, 212.0" shape="poly" alt=":Anchor" id="areadiagram_map_Q7gay2KAUrgcxS2p" href="Anchor_A7gay2KAUrgcxS2o.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Lista 
+      delle strategie foglia da utilizzare. by Composite&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="660, 222, 940, 262" coords2="660, 222, 940, 262" shape="rect" alt="Lista delle strategie foglia da utilizzare. by Composite:Note" id="areadiagram_map_8bgay2KAUrgcxS2k" href="NOTE_8bgay2KAUrgcxS2l.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Nome 
+      della politica di risoluzione. by Composite&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="660, 112, 840, 152" coords2="660, 112, 840, 152" shape="rect" alt="Nome della politica di risoluzione. by Composite:Note" id="areadiagram_map_6bZqy2KAUrgcxS1w" href="NOTE_6bZqy2KAUrgcxS1x.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area coords="30, 348, 1920, 460" coords2="30, 348, 1920, 460" shape="rect" alt="Operand:Interaction Operand" id="areadiagram_map_1aKKy2KAUrgcxSyp" href="InteractionOperand_1aKKy2KAUrgcxSyq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1726, 430, 1734, 442" coords2="1726, 430, 1734, 442" shape="rect" alt="Activation:Activation" id="areadiagram_map_d2KKy2KAUrgcxS0K" href="Activation_p2KKy2KAUrgcxS0I.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="30, 332, 1920, 462" coords2="30, 332, 1920, 462" shape="rect" alt="CombinedFragment:Combined Fragment" id="areadiagram_map_WaKKy2KAUrgcxSyl" href="CombinedFragment_WaKKy2KAUrgcxSym.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1550, 2, 1910, 542" coords2="1550, 2, 1910, 542" shape="rect" alt="componentStrategy : ComponentOttieniAmmontareCaparraStrategy:Lifeline" id="areadiagram_map_cWKKy2KAUrgcxSzy" href="InteractionLifeLine_4WKKy2KAUrgcxSzu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1426, 382, 1434, 394" coords2="1426, 382, 1434, 394" shape="rect" alt="Activation:Activation" id="areadiagram_map_zGKKy2KAUrgcxSzG" href="Activation_VGKKy2KAUrgcxSzE.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1360, 2, 1500, 542" coords2="1360, 2, 1500, 542" shape="rect" alt="iterator : Iterator&lt;String&gt;:Lifeline" id="areadiagram_map_C6KKy2KAUrgcxSyw" href="InteractionLifeLine_s6KKy2KAUrgcxSyv.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1136, 282, 1144, 294" coords2="1136, 282, 1144, 294" shape="rect" alt="Activation:Activation" id="areadiagram_map_bqKKy2KAUrgcxSyf" href="Activation_dqKKy2KAUrgcxSyd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1030, 2, 1250, 542" coords2="1030, 2, 1250, 542" shape="rect" alt="strategieDaUtilizzare : ArrayList&lt;String&gt;:Lifeline" id="areadiagram_map_hKKKy2KAUrgcxSyJ" href="InteractionLifeLine_uKKKy2KAUrgcxSyI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="626, 220, 634, 232" coords2="626, 220, 634, 232" shape="rect" alt="Activation:Activation" id="areadiagram_map_TyKKy2KAUrgcxSyE" href="Activation_VyKKy2KAUrgcxSyC.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="626, 110, 634, 122" coords2="626, 110, 634, 122" shape="rect" alt="Activation:Activation" id="areadiagram_map_KCKKy2KAUrgcxSxW" href="Activation_MCKKy2KAUrgcxSxU.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="360, 2, 900, 542" coords2="360, 2, 900, 542" shape="rect" alt="ULeggiDaFileStrategieSoggiornoAmmontareCaparra : ULeggiDaFileStrategieSoggiornoAmmontareCaparra:Lifeline" id="areadiagram_map_ZcKKy2KAUrgcxSxA" href="InteractionLifeLine_RcKKy2KAUrgcxSw_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="166, 62, 173, 514" coords2="166, 62, 173, 514" shape="rect" alt="Activation:Activation" id="areadiagram_map_jMKKy2KAUrgcxSw9" href="Activation_5MKKy2KAUrgcxSw7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="40, 2, 300, 542" coords2="40, 2, 300, 542" shape="rect" alt=" : StrategiaSoggiornoAmmontareCaparraFactory:Lifeline" id="areadiagram_map_U0KKy2KAUrgcxSwr" href="InteractionLifeLine_TUKKy2KAUrgcxSwq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

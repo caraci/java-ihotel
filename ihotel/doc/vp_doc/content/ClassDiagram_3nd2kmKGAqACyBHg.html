@@ -1,0 +1,269 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Class Diagram - Utilità</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_FT7xCaKGAqACZBQd.html">
+StaticDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_KyXxCaKGAqACZBRb.html">
+ClassDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_63F2kmKGAqACyBGZ.html">
+Utility : Model</a>
+	</p>
+	<p class="PageTitle">
+		Class Diagram - Utilità		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/3nd2kmKGAqACyBHg', 'Utilit&#xe0;\nihotel.vpp://diagram/3nd2kmKGAqACyBHg', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|2.0|2.0|290.0|90.0|Class_pqW2GmKGAqACTx0C.html|Class_pqW2GmKGAqACTx0C.html|WEe2GmKGAqACTx0S" id="optionWEe2GmKGAqACTx0S">UStartup : Class</option>
+<option value="shape|382.0|2.0|240.0|90.0|Class_nmqsEmKGAqACvRYA.html|Class_nmqsEmKGAqACvRYA.html|oGD2kmKGAqACyBHr" id="optionoGD2kmKGAqACyBHr">ULeggiDaFile : Class</option>
+<option value="shape|2.0|192.0|530.0|110.0|Class_iWqsEmKGAqACvRYK.html|Class_iWqsEmKGAqACvRYK.html|YGD2kmKGAqACyBHt" id="optionYGD2kmKGAqACyBHt">ULeggiDaFileStrategieSoggiornoAmmontareCaparra : Class</option>
+<option value="shape|552.0|192.0|550.0|120.0|Class_ZWqsEmKGAqACvRYW.html|Class_ZWqsEmKGAqACvRYW.html|4GD2kmKGAqACyBHv" id="option4GD2kmKGAqACyBHv">ULeggiDaFileStrategieSoggiornoGiornoScadenza : Class</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Utilit.png" usemap="#diagram_map" class="Image" width="1106" height="316"/>
+					<map name="diagram_map">
+<area coords="495.0, 92.0, 495.0, 145.0, 228.0, 145.0, 228.0, 142.0, 214.0, 142.0, 214.0, 145.0, 211.0, 145.0, 211.0, 159.0, 214.0, 159.0, 214.0, 192.0, 228.0, 192.0, 228.0, 159.0, 495.0, 159.0, 495.0, 162.0, 509.0, 162.0, 509.0, 159.0, 512.0, 159.0, 512.0, 145.0, 509.0, 145.0, 509.0, 92.0" coords2="495.0, 92.0, 495.0, 145.0, 228.0, 145.0, 228.0, 142.0, 214.0, 142.0, 214.0, 145.0, 211.0, 145.0, 211.0, 159.0, 214.0, 159.0, 214.0, 192.0, 228.0, 192.0, 228.0, 159.0, 495.0, 159.0, 495.0, 162.0, 509.0, 162.0, 509.0, 159.0, 512.0, 159.0, 512.0, 145.0, 509.0, 145.0, 509.0, 92.0" shape="poly" alt=":Generalization" id="areadiagram_map_EGD2kmKGAqACyBHz" href="Generalization_gHasEmKGAqACvRvW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="494.0, 92.0, 494.0, 145.0, 491.0, 145.0, 491.0, 159.0, 494.0, 159.0, 494.0, 162.0, 508.0, 162.0, 508.0, 159.0, 844.0, 159.0, 844.0, 192.0, 858.0, 192.0, 858.0, 159.0, 861.0, 159.0, 861.0, 145.0, 858.0, 145.0, 858.0, 142.0, 844.0, 142.0, 844.0, 145.0, 508.0, 145.0, 508.0, 92.0" coords2="494.0, 92.0, 494.0, 145.0, 491.0, 145.0, 491.0, 159.0, 494.0, 159.0, 494.0, 162.0, 508.0, 162.0, 508.0, 159.0, 844.0, 159.0, 844.0, 192.0, 858.0, 192.0, 858.0, 159.0, 861.0, 159.0, 861.0, 145.0, 858.0, 145.0, 858.0, 142.0, 844.0, 142.0, 844.0, 145.0, 508.0, 145.0, 508.0, 92.0" shape="poly" alt=":Generalization" id="areadiagram_map_kGD2kmKGAqACyBH1" href="Generalization_RHasEmKGAqACvRvg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla realizzazione dello strato di dominio.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2, 2, 292, 92" coords2="2, 2, 292, 92" shape="rect" alt="UStartup:Class" id="areadiagram_map_WEe2GmKGAqACTx0S" href="Class_pqW2GmKGAqACTx0C.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta all'accesso ai file di configurazione, per il recupero 
+      delle informazioni di diverso genere.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="382, 2, 622, 92" coords2="382, 2, 622, 92" shape="rect" alt="ULeggiDaFile:Class" id="areadiagram_map_oGD2kmKGAqACyBHr" href="Class_nmqsEmKGAqACvRYA.html" onmouseover="storeReferenceAndSubdiagramInfos('382, 2, 622, 92',new Array('ULeggiDaFile.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/utility/ULeggiDaFile.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('382, 2, 622, 92'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2, 192, 532, 302" coords2="2, 192, 532, 302" shape="rect" alt="ULeggiDaFileStrategieSoggiornoAmmontareCaparra:Class" id="areadiagram_map_YGD2kmKGAqACyBHt" href="Class_iWqsEmKGAqACvRYK.html" onmouseover="storeReferenceAndSubdiagramInfos('2, 192, 532, 302',new Array('ULeggiDaFileStrategieSoggiornoAmmontareCaparra.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/utility/ULeggiDaFileStrategieSoggiornoAmmontareCaparra.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2, 192, 532, 302'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe per andare a leggere i vincoli legati alle differenti strategie, 
+      per decidere
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      il giorno di scadenza, entro il quale il prenotante deve fornire o la 
+      sua carta di credito,
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      o deve effettuare un bonifico a garanzia della richiesta di &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt; 
+      effettuata.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="552, 192, 1102, 312" coords2="552, 192, 1102, 312" shape="rect" alt="ULeggiDaFileStrategieSoggiornoGiornoScadenza:Class" id="areadiagram_map_4GD2kmKGAqACyBHv" href="Class_ZWqsEmKGAqACvRYW.html" onmouseover="storeReferenceAndSubdiagramInfos('552, 192, 1102, 312',new Array('ULeggiDaFileStrategieSoggiornoGiornoScadenza.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/utility/ULeggiDaFileStrategieSoggiornoGiornoScadenza.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('552, 192, 1102, 312'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

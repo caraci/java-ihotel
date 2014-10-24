@@ -1,0 +1,254 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - SD_CercaCamereLibere</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_1wDkG8KAUBRkpA1o.html">
+DynamicDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_IWsgfiKGAqACSQaI.html">
+CreaRichiestaSoggiorno_ScenarioSuccesso : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_khwUG8KAUBRkpA2S.html">
+SD_CercaCamereLibere : Model</a>
+	</p>
+	<p class="PageTitle">
+		Sequence Diagram - SD_CercaCamereLibere		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/CsA_68KAUBRkpAVg', 'SD_CercaCamereLibere\nihotel.vpp://diagram/CsA_68KAUBRkpAVg', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|1382.0|362.0|90.0|40.0|NOTE_r8Gsy2KAUrgcxRXd.html|NOTE_r8Gsy2KAUrgcxRXd.html|L8Gsy2KAUrgcxRXc" id="optionL8Gsy2KAUrgcxRXc">Unnamed Note : Note</option>
+<option value="shape|652.0|382.0|90.0|40.0|NOTE_DDisy2KAUrgcxRXJ.html|NOTE_DDisy2KAUrgcxRXJ.html|9Disy2KAUrgcxRXI" id="option9Disy2KAUrgcxRXI">Unnamed Note : Note</option>
+<option value="shape|1678.0|512.0|8.0|12.0|Activation__hVXimKGAqAC6hrM.html|Activation__hVXimKGAqAC6hrM.html|NhVXimKGAqAC6hrO" id="optionNhVXimKGAqAC6hrO">Activation : Activation</option>
+<option value="shape|1978.0|462.0|8.0|12.0|Activation_a_VXimKGAqAC6hq1.html|Activation_a_VXimKGAqAC6hq1.html|R.VXimKGAqAC6hq3" id="optionR.VXimKGAqAC6hq3">Activation : Activation</option>
+<option value="shape|1882.0|2.0|200.0|600.0|InteractionLifeLine_duVXimKGAqAC6hqe.html|InteractionLifeLine_duVXimKGAqAC6hqe.html|buVXimKGAqAC6hqf" id="optionbuVXimKGAqAC6hqf">viewFrame : Lifeline</option>
+<option value="shape|1678.0|412.0|8.0|12.0|Activation_wuVXimKGAqAC6hqY.html|Activation_wuVXimKGAqAC6hqY.html|suVXimKGAqAC6hqa" id="optionsuVXimKGAqAC6hqa">Activation : Activation</option>
+<option value="shape|858.0|362.0|8.0|12.0|Activation_a2VXimKGAqAC6hqB.html|Activation_a2VXimKGAqAC6hqB.html|h2VXimKGAqAC6hqD" id="optionh2VXimKGAqAC6hqD">Activation : Activation</option>
+<option value="shape|1492.0|292.0|380.0|310.0|InteractionLifeLine_EGVXimKGAqAC6hpb.html|InteractionLifeLine_EGVXimKGAqAC6hpb.html|hGVXimKGAqAC6hpd" id="optionhGVXimKGAqAC6hpd">selezioneCamereDatiOspite : Lifeline</option>
+<option value="shape|1348.0|262.0|8.0|12.0|Activation_qyVXimKGAqAC6hm5.html|Activation_qyVXimKGAqAC6hm5.html|OyVXimKGAqAC6hm7" id="optionOyVXimKGAqAC6hm7">Activation : Activation</option>
+<option value="shape|1222.0|2.0|260.0|600.0|InteractionLifeLine_7iVXimKGAqAC6hmj.html|InteractionLifeLine_7iVXimKGAqAC6hmj.html|ASVXimKGAqAC6hmk" id="optionASVXimKGAqAC6hmk">ViewFrameApplication : Lifeline</option>
+<option value="shape|1149.0|212.0|6.0|10.0|Activation_F8VXimKGAqAC6hli.html|Activation_F8VXimKGAqAC6hli.html|98VXimKGAqAC6hlk" id="option98VXimKGAqAC6hlk">Activation : Activation</option>
+<option value="shape|1092.0|2.0|120.0|600.0|InteractionLifeLine_4cVXimKGAqAC6hlK.html|InteractionLifeLine_4cVXimKGAqAC6hlK.html|qcVXimKGAqAC6hlL" id="optionqcVXimKGAqAC6hlL">_albergo : Lifeline</option>
+<option value="shape|858.0|162.0|8.0|12.0|Activation_vEVXimKGAqAC6hif.html|Activation_vEVXimKGAqAC6hif.html|YkVXimKGAqAC6hih" id="optionYkVXimKGAqAC6hih">Activation : Activation</option>
+<option value="shape|752.0|2.0|220.0|600.0|InteractionLifeLine_LYVXimKGAqAC6hiI.html|InteractionLifeLine_LYVXimKGAqAC6hiI.html|24VXimKGAqAC6hiJ" id="option24VXimKGAqAC6hiJ">_soggiorno : Lifeline</option>
+<option value="shape|632.0|92.0|100.0|510.0|InteractionLifeLine_JblXimKGAqAC6hT9.html|InteractionLifeLine_JblXimKGAqAC6hT9.html|bblXimKGAqAC6hT." id="optionbblXimKGAqAC6hT.">periodo : Lifeline</option>
+<option value="shape|517.0|62.0|8.0|512.0|Activation_ODlXimKGAqAC6hS_.html|Activation_ODlXimKGAqAC6hS_.html|NDlXimKGAqAC6hTB" id="optionNDlXimKGAqAC6hTB">Activation : Activation</option>
+<option value="shape|442.0|2.0|160.0|600.0|InteractionLifeLine_HtlXimKGAqAC6hSu.html|InteractionLifeLine_HtlXimKGAqAC6hSu.html|SdlXimKGAqAC6hSv" id="optionSdlXimKGAqAC6hSv">Unnamed Lifeline : Lifeline</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/SD_CercaCamereLibere.png" usemap="#diagram_map" class="Image" width="2086" height="606"/>
+					<map name="diagram_map">
+<area coords="685.0, 352.0, 685.0, 382.0, 699.0, 382.0, 699.0, 352.0" coords2="685.0, 352.0, 685.0, 382.0, 699.0, 382.0, 699.0, 352.0" shape="poly" alt=":Anchor" id="areadiagram_map_rjisy2KAUrgcxRXN" href="Anchor_zjisy2KAUrgcxRXM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1415.0, 402.0, 1415.0, 422.0, 1429.0, 422.0, 1429.0, 402.0" coords2="1415.0, 402.0, 1415.0, 422.0, 1429.0, 422.0, 1429.0, 402.0" shape="poly" alt=":Anchor" id="areadiagram_map_bCGsy2KAUrgcxRXh" href="Anchor_LCGsy2KAUrgcxRXg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="17.0, 55.0, 17.0, 69.0, 442.0, 69.0, 442.0, 55.0" coords2="17.0, 55.0, 17.0, 69.0, 442.0, 69.0, 442.0, 55.0" shape="poly" alt="1: cercaCamereLibere(dataInizio : Giorno, dataFine : Giorno, Tipologie : java.util.ArrayList) : void:Message" id="areadiagram_map_q9lXimKGAqAC6hS0" href="Message_a9lXimKGAqAC6hS1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 105.0, 602.0, 119.0, 632.0, 119.0, 632.0, 105.0" coords2="602.0, 105.0, 602.0, 119.0, 632.0, 119.0, 632.0, 105.0" shape="poly" alt="1.1: create():Message" id="areadiagram_map_N7lXimKGAqAC6hUD" href="Message_N7lXimKGAqAC6hUE.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 155.0, 602.0, 169.0, 752.0, 169.0, 752.0, 155.0" coords2="602.0, 155.0, 602.0, 169.0, 752.0, 169.0, 752.0, 155.0" shape="poly" alt="1.2: set_periodo(_periodo : Periodo = periodo):Message" id="areadiagram_map_iEVXimKGAqAC6hiR" href="Message_iEVXimKGAqAC6hiS.html" onmouseover="storeReferenceAndSubdiagramInfos('602.0, 155.0, 602.0, 169.0, 752.0, 169.0, 752.0, 155.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('Attribute_5i12ZmKFYGwwHg_d.html/_periodo/Attribute'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('602.0, 155.0, 602.0, 169.0, 752.0, 169.0, 752.0, 155.0')" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 205.0, 602.0, 219.0, 1092.0, 219.0, 1092.0, 205.0" coords2="602.0, 205.0, 602.0, 219.0, 1092.0, 219.0, 1092.0, 205.0" shape="poly" alt="1.3: cercaCamereLibereInPeriodoDaTipologie(periodo : Periodo = periodo, tipologie : ArrayList = Tipologie) : HashMap:Message" id="areadiagram_map_fcVXimKGAqAC6hlU" href="Message__cVXimKGAqAC6hlV.html" onmouseover="storeReferenceAndSubdiagramInfos('602.0, 205.0, 602.0, 219.0, 1092.0, 219.0, 1092.0, 205.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('Operation_XqcCGmKGAqACTxdO.html/cercaCamereLibereInPeriodoDaTipologie/Operation'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('602.0, 205.0, 602.0, 219.0, 1092.0, 219.0, 1092.0, 205.0')" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 255.0, 602.0, 269.0, 1222.0, 269.0, 1222.0, 255.0" coords2="602.0, 255.0, 602.0, 269.0, 1222.0, 269.0, 1222.0, 255.0" shape="poly" alt="1.4: viewFrame =  getInstance() : ViewFrameApplication:Message" id="areadiagram_map_tSVXimKGAqAC6hmr" href="Message_dSVXimKGAqAC6hms.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 305.0, 602.0, 319.0, 1492.0, 319.0, 1492.0, 305.0" coords2="602.0, 305.0, 602.0, 319.0, 1492.0, 319.0, 1492.0, 305.0" shape="poly" alt="1.5: create():Message" id="areadiagram_map_OmVXimKGAqAC6hpi" href="Message_OmVXimKGAqAC6hpj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 355.0, 602.0, 369.0, 752.0, 369.0, 752.0, 355.0" coords2="602.0, 355.0, 602.0, 369.0, 752.0, 369.0, 752.0, 355.0" shape="poly" alt="1.6: Attach(observer : IObserver = (IObserver) selezioneCamereDatiOspite) : void:Message" id="areadiagram_map_RWVXimKGAqAC6hpz" href="Message_RWVXimKGAqAC6hp0.html" onmouseover="storeReferenceAndSubdiagramInfos('602.0, 355.0, 602.0, 369.0, 752.0, 369.0, 752.0, 355.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('Operation_qS12ZmKFYGwwHg_x.html/Attach/Operation'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('602.0, 355.0, 602.0, 369.0, 752.0, 369.0, 752.0, 355.0')" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 405.0, 602.0, 419.0, 1492.0, 419.0, 1492.0, 405.0" coords2="602.0, 405.0, 602.0, 419.0, 1492.0, 419.0, 1492.0, 405.0" shape="poly" alt="1.7: set_prenotazioneSubject(subject : ISubject = _soggiorno) : void:Message" id="areadiagram_map_qOVXimKGAqAC6hqK" href="Message_qOVXimKGAqAC6hqL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 455.0, 602.0, 469.0, 1882.0, 469.0, 1882.0, 455.0" coords2="602.0, 455.0, 602.0, 469.0, 1882.0, 469.0, 1882.0, 455.0" shape="poly" alt="1.8: cambiaSchermata(panel : ViewPanelContentPane = selezioneCamereDatiOspite) : void:Message" id="areadiagram_map_leVXimKGAqAC6hqn" href="Message_VeVXimKGAqAC6hqo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="602.0, 505.0, 602.0, 519.0, 1492.0, 519.0, 1492.0, 505.0" coords2="602.0, 505.0, 602.0, 519.0, 1492.0, 519.0, 1492.0, 505.0" shape="poly" alt="1.9: creaPanel(camereDisponibili : java.util.HashMap = camereLibere) : void:Message" id="areadiagram_map_qBVXimKGAqAC6hq." href="Message_aBVXimKGAqAC6hq_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="17.0, 555.0, 17.0, 569.0, 442.0, 569.0, 442.0, 555.0" coords2="17.0, 555.0, 17.0, 569.0, 442.0, 569.0, 442.0, 555.0" shape="poly" alt="1.10: :Message" id="areadiagram_map_eRVXimKGAqAC6hrT" href="Message_eRVXimKGAqAC6hrU.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;by 
+      Observer&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1382, 362, 1472, 402" coords2="1382, 362, 1472, 402" shape="rect" alt="by Observer:Note" id="areadiagram_map_L8Gsy2KAUrgcxRXc" href="NOTE_r8Gsy2KAUrgcxRXd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;by 
+      Observer&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="652, 382, 742, 422" coords2="652, 382, 742, 422" shape="rect" alt="by Observer:Note" id="areadiagram_map_9Disy2KAUrgcxRXI" href="NOTE_DDisy2KAUrgcxRXJ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area coords="1678, 512, 1686, 524" coords2="1678, 512, 1686, 524" shape="rect" alt="Activation:Activation" id="areadiagram_map_NhVXimKGAqAC6hrO" href="Activation__hVXimKGAqAC6hrM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1978, 462, 1986, 474" coords2="1978, 462, 1986, 474" shape="rect" alt="Activation:Activation" id="areadiagram_map_R.VXimKGAqAC6hq3" href="Activation_a_VXimKGAqAC6hq1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1882, 2, 2082, 602" coords2="1882, 2, 2082, 602" shape="rect" alt="viewFrame : ViewFrameApplication:Lifeline" id="areadiagram_map_buVXimKGAqAC6hqf" href="InteractionLifeLine_duVXimKGAqAC6hqe.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1678, 412, 1686, 424" coords2="1678, 412, 1686, 424" shape="rect" alt="Activation:Activation" id="areadiagram_map_suVXimKGAqAC6hqa" href="Activation_wuVXimKGAqAC6hqY.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="858, 362, 866, 374" coords2="858, 362, 866, 374" shape="rect" alt="Activation:Activation" id="areadiagram_map_h2VXimKGAqAC6hqD" href="Activation_a2VXimKGAqAC6hqB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1492, 292, 1872, 602" coords2="1492, 292, 1872, 602" shape="rect" alt="selezioneCamereDatiOspite : VPCP_SelezioneCamereDatiOspite_Observer:Lifeline" id="areadiagram_map_hGVXimKGAqAC6hpd" href="InteractionLifeLine_EGVXimKGAqAC6hpb.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1348, 262, 1356, 274" coords2="1348, 262, 1356, 274" shape="rect" alt="Activation:Activation" id="areadiagram_map_OyVXimKGAqAC6hm7" href="Activation_qyVXimKGAqAC6hm5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1222, 2, 1482, 602" coords2="1222, 2, 1482, 602" shape="rect" alt="ViewFrameApplication : ViewFrameApplication:Lifeline" id="areadiagram_map_ASVXimKGAqAC6hmk" href="InteractionLifeLine_7iVXimKGAqAC6hmj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1149, 212, 1155, 222" coords2="1149, 212, 1155, 222" shape="rect" alt="Activation:Activation" id="areadiagram_map_98VXimKGAqAC6hlk" href="Activation_F8VXimKGAqAC6hli.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1092, 2, 1212, 602" coords2="1092, 2, 1212, 602" shape="rect" alt="_albergo : Albergo:Lifeline" id="areadiagram_map_qcVXimKGAqAC6hlL" href="InteractionLifeLine_4cVXimKGAqAC6hlK.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="858, 162, 866, 174" coords2="858, 162, 866, 174" shape="rect" alt="Activation:Activation" id="areadiagram_map_YkVXimKGAqAC6hih" href="Activation_vEVXimKGAqAC6hif.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="752, 2, 972, 602" coords2="752, 2, 972, 602" shape="rect" alt="_soggiorno : SoggiornoContextSubject:Lifeline" id="areadiagram_map_24VXimKGAqAC6hiJ" href="InteractionLifeLine_LYVXimKGAqAC6hiI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="632, 92, 732, 602" coords2="632, 92, 732, 602" shape="rect" alt="periodo : Periodo:Lifeline" id="areadiagram_map_bblXimKGAqAC6hT." href="InteractionLifeLine_JblXimKGAqAC6hT9.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="517, 62, 525, 574" coords2="517, 62, 525, 574" shape="rect" alt="Activation:Activation" id="areadiagram_map_NDlXimKGAqAC6hTB" href="Activation_ODlXimKGAqAC6hS_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="442, 2, 602, 602" coords2="442, 2, 602, 602" shape="rect" alt=" : CCreaRichiestaSoggiorno:Lifeline" id="areadiagram_map_SdlXimKGAqAC6hSv" href="InteractionLifeLine_HtlXimKGAqAC6hSu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

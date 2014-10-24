@@ -1,0 +1,301 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Package Diagram - PackageDiagram</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_FT7xCaKGAqACZBQd.html">
+StaticDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_BTQCrCKAUBRkpD2E.html">
+PackageDiagram : Model</a>
+	</p>
+	<p class="PageTitle">
+		Package Diagram - PackageDiagram		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/NuE6BaKGAqAC3AR7', 'PackageDiagram\nihotel.vpp://diagram/NuE6BaKGAqAC3AR7', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|502.0|1250.0|140.0|100.0|Package_zO12ZmKFYGwwHhEA.html|Package_zO12ZmKFYGwwHhEA.html|aSWY5mKFYGwwHijx" id="optionaSWY5mKFYGwwHijx">PagamentoState : Package</option>
+<option value="shape|482.0|1210.0|180.0|190.0|Package_ya12ZmKFYGwwHhBP.html|Package_ya12ZmKFYGwwHhBP.html|qSWY5mKFYGwwHijv" id="optionqSWY5mKFYGwwHijv">SoggiornoState : Package</option>
+<option value="shape|852.0|1710.0|140.0|100.0|Package_VcqsEmKGAqACvRQG.html|Package_VcqsEmKGAqACvRQG.html|qX.UOmKGAqACYleU" id="optionqX.UOmKGAqACYleU">AmmontareCaparra : Package</option>
+<option value="shape|852.0|1560.0|140.0|100.0|Package_xCqsEmKGAqACvRRy.html|Package_xCqsEmKGAqACvRRy.html|aX.UOmKGAqACYleW" id="optionaX.UOmKGAqACYleW">GiornoScadenza : Package</option>
+<option value="shape|1052.0|1500.0|160.0|100.0|Package_A8JpCaKGAqACZBlE.html|Package_A8JpCaKGAqACZBlE.html|KX.UOmKGAqACYleQ" id="optionKX.UOmKGAqACYleQ">StrategieOccupazioneCamera : Package</option>
+<option value="shape|652.0|1670.0|140.0|100.0|Package_HCJpCaKGAqACZBl7.html|Package_HCJpCaKGAqACZBl7.html|QQ6HcmKGAqAC2CQX" id="optionQQ6HcmKGAqAC2CQX">Utility : Package</option>
+<option value="shape|832.0|1490.0|180.0|340.0|Package_lcqsEmKGAqACvRQF.html|Package_lcqsEmKGAqACvRQF.html|KX.UOmKGAqACYleS" id="optionKX.UOmKGAqACYleS">StrategieSoggiorno : Package</option>
+<option value="shape|812.0|1450.0|410.0|390.0|Package_Y7CUOmKGAqACYlds.html|Package_Y7CUOmKGAqACYlds.html|SX.UOmKGAqACYleO" id="optionSX.UOmKGAqACYleO">Strategie : Package</option>
+<option value="shape|1062.0|400.0|140.0|100.0|Package_qChNimKGAqAC6iAH.html|Package_qChNimKGAqAC6iAH.html|VMxNimKGAqAC6iDi" id="optionVMxNimKGAqAC6iDi">CheckIn : Package</option>
+<option value="shape|1062.0|250.0|140.0|100.0|Package_yihNimKGAqAC6iAx.html|Package_yihNimKGAqAC6iAx.html|NMxNimKGAqAC6iDk" id="optionNMxNimKGAqAC6iDk">CreaRichiestaSoggiorno : Package</option>
+<option value="shape|1312.0|250.0|140.0|100.0|Package_sShNimKGAqAC6iBY.html|Package_sShNimKGAqAC6iBY.html|tMxNimKGAqAC6iDm" id="optiontMxNimKGAqAC6iDm">InformazioniCamera : Package</option>
+<option value="shape|1312.0|400.0|140.0|100.0|Package_ZShNimKGAqAC6iBp.html|Package_ZShNimKGAqAC6iBp.html|9MxNimKGAqAC6iDo" id="option9MxNimKGAqAC6iDo">InformazioniSoggiorno : Package</option>
+<option value="shape|272.0|390.0|140.0|100.0|Package_ahsNimKGAqAC6hzI.html|Package_ahsNimKGAqAC6hzI.html|U.iNimKGAqAC6h.3" id="optionU.iNimKGAqAC6h.3">CheckIn : Package</option>
+<option value="shape|272.0|240.0|140.0|100.0|Package_uFsNimKGAqAC6h3s.html|Package_uFsNimKGAqAC6h3s.html|M.iNimKGAqAC6h.5" id="optionM.iNimKGAqAC6h.5">CreaRichiestaSoggiorno : Package</option>
+<option value="shape|522.0|240.0|140.0|100.0|Package_jNsNimKGAqAC6h5o.html|Package_jNsNimKGAqAC6h5o.html|s.iNimKGAqAC6h.7" id="options.iNimKGAqAC6h.7">InformazioniCamera : Package</option>
+<option value="shape|522.0|390.0|140.0|100.0|Package_LdsNimKGAqAC6h67.html|Package_LdsNimKGAqAC6h67.html|c.iNimKGAqAC6h.9" id="optionc.iNimKGAqAC6h.9">InformazioniSoggiorno : Package</option>
+<option value="shape|1042.0|190.0|420.0|320.0|Package_dk4I8mKGAqAC2COZ.html|Package_dk4I8mKGAqAC2COZ.html|Bg.1imKGAqAC6g_8" id="optionBg.1imKGAqAC6g_8">GestioneSoggiorno : Package</option>
+<option value="shape|1042.0|80.0|140.0|100.0|Package_uuqsEmKGAqACvRZh.html|Package_uuqsEmKGAqACvRZh.html|Jg.1imKGAqAC6hAC" id="optionJg.1imKGAqAC6hAC">GestionePagamenti : Package</option>
+<option value="shape|1012.0|40.0|460.0|480.0|Package_PaJpCaKGAqACZBqb.html|Package_PaJpCaKGAqACZBqb.html|pg.1imKGAqAC6hAE" id="optionpg.1imKGAqAC6hAE">Event : Package</option>
+<option value="shape|802.0|110.0|140.0|100.0|Package_V_JpCaKGAqACZBxW.html|Package_V_JpCaKGAqACZBxW.html|hbEncmKGAqAC2CR9" id="optionhbEncmKGAqAC2CR9">Utility : Package</option>
+<option value="shape|252.0|190.0|420.0|310.0|Package_YJqsEmKGAqACvRch.html|Package_YJqsEmKGAqACvRch.html|KqLHcmKGAqAC2CRg" id="optionKqLHcmKGAqAC2CRg">GestioneSoggiorno : Package</option>
+<option value="shape|252.0|80.0|140.0|100.0|Package_ThqsEmKGAqACvRbe.html|Package_ThqsEmKGAqACvRbe.html|KqLHcmKGAqAC2CRi" id="optionKqLHcmKGAqAC2CRi">GestionePagamenti : Package</option>
+<option value="shape|232.0|40.0|470.0|480.0|Package_mGJpCaKGAqACZBsO.html|Package_mGJpCaKGAqACZBsO.html|qqLHcmKGAqAC2CRk" id="optionqqLHcmKGAqAC2CRk">Graphic : Package</option>
+<option value="shape|802.0|260.0|140.0|100.0|Package_uuqsEmKGAqACvRZh.html|Package_uuqsEmKGAqACvRZh.html|M4NHcmKGAqAC2CQx" id="optionM4NHcmKGAqAC2CQx">GestionePagamenti : Package</option>
+<option value="shape|802.0|420.0|140.0|100.0|Package_jKJpCaKGAqACZBoo.html|Package_jKJpCaKGAqACZBoo.html|VbFHcmKGAqAC2CQi" id="optionVbFHcmKGAqAC2CQi">Access : Package</option>
+<option value="shape|452.0|1540.0|140.0|100.0|Package_b4qsEmKGAqACvRMo.html|Package_b4qsEmKGAqACvRMo.html|SWiHcmKGAqAC2CP2" id="optionSWiHcmKGAqAC2CP2">Documenti : Package</option>
+<option value="shape|432.0|1500.0|170.0|150.0|Package_tYqsEmKGAqACvRL_.html|Package_tYqsEmKGAqACvRL_.html|iWiHcmKGAqAC2CP0" id="optioniWiHcmKGAqAC2CP0">Persona : Package</option>
+<option value="shape|252.0|1500.0|140.0|100.0|Package_DoqsEmKGAqACvRLO.html|Package_DoqsEmKGAqACvRLO.html|xP8HcmKGAqAC2CPq" id="optionxP8HcmKGAqAC2CPq">Pagamento : Package</option>
+<option value="shape|832.0|1310.0|140.0|100.0|Package_agqsEmKGAqACvRI7.html|Package_agqsEmKGAqACvRI7.html|KcEHcmKGAqAC2CPM" id="optionKcEHcmKGAqAC2CPM">CreditAuthorizationService : Package</option>
+<option value="shape|832.0|1160.0|140.0|100.0|Package_g0JpCaKGAqACZBiW.html|Package_g0JpCaKGAqACZBiW.html|qcEHcmKGAqAC2CPO" id="optionqcEHcmKGAqAC2CPO">Telephone : Package</option>
+<option value="shape|1182.0|1170.0|140.0|100.0|Package_SIqsEmKGAqACvRKq.html|Package_SIqsEmKGAqACvRKq.html|6cEHcmKGAqAC2CPQ" id="option6cEHcmKGAqAC2CPQ">SchedePS : Package</option>
+<option value="shape|1182.0|1300.0|140.0|100.0|Package_XgqsEmKGAqACvRJX.html|Package_XgqsEmKGAqACvRJX.html|GcEHcmKGAqAC2CPS" id="optionGcEHcmKGAqAC2CPS">PagamentoCarta : Package</option>
+<option value="shape|1012.0|1310.0|140.0|100.0|Package_VgqsEmKGAqACvRJN.html|Package_VgqsEmKGAqACvRJN.html|mcEHcmKGAqAC2CPU" id="optionmcEHcmKGAqAC2CPU">LettoreCarte : Package</option>
+<option value="shape|1012.0|1160.0|140.0|100.0|Package_fkJpCaKGAqACZBhy.html|Package_fkJpCaKGAqACZBhy.html|OcEHcmKGAqAC2CPY" id="optionOcEHcmKGAqAC2CPY">PayTv : Package</option>
+<option value="shape|812.0|1090.0|520.0|330.0|Package_xkJpCaKGAqACZBhl.html|Package_xkJpCaKGAqACZBhl.html|WcEHcmKGAqAC2CPW" id="optionWcEHcmKGAqAC2CPW">ForeignSystem : Package</option>
+<option value="shape|262.0|1290.0|120.0|100.0|Package_5bKsEmKGAqACvRBj.html|Package_5bKsEmKGAqACvRBj.html|PZIHcmKGAqAC2CPA" id="optionPZIHcmKGAqAC2CPA">Camera : Package</option>
+<option value="shape|262.0|1140.0|120.0|120.0|Package_xwJpCaKGAqACZBfD.html|Package_xwJpCaKGAqACZBfD.html|vZIHcmKGAqAC2CPC" id="optionvZIHcmKGAqAC2CPC">Cataloghi : Package</option>
+<option value="shape|422.0|1150.0|250.0|260.0|Package_VPKsEmKGAqACvREa.html|Package_VPKsEmKGAqACvREa.html|fZIHcmKGAqAC2CPE" id="optionfZIHcmKGAqAC2CPE">Soggiorno : Package</option>
+<option value="shape|242.0|1080.0|440.0|340.0|Package_0QJpCaKGAqACZBec.html|Package_0QJpCaKGAqACZBec.html|3ZIHcmKGAqAC2CO." id="option3ZIHcmKGAqAC2CO.">Albergo : Package</option>
+<option value="shape|82.0|750.0|140.0|100.0|Package_FvxpCaKGAqACZBch.html|Package_FvxpCaKGAqACZBch.html|iaa6BaKGAqAC3AZA" id="optioniaa6BaKGAqAC3AZA">controller : Package</option>
+<option value="shape|2.0|2040.0|140.0|100.0|Package_JyJpCaKGAqACZBnc.html|Package_JyJpCaKGAqACZBnc.html|BGa6BaKGAqAC3Abh" id="optionBGa6BaKGAqAC3Abh">persistence : Package</option>
+<option value="shape|182.0|990.0|1160.0|860.0|Package_kQJpCaKGAqACZBeb.html|Package_kQJpCaKGAqACZBeb.html|.Ga6BaKGAqAC3Abf" id="option.Ga6BaKGAqAC3Abf">model : Package</option>
+<option value="shape|1592.0|700.0|140.0|100.0|Package_SKJpCaKGAqACZBoI.html|Package_SKJpCaKGAqACZBoI.html|hGa6BaKGAqAC3Abj" id="optionhGa6BaKGAqAC3Abj">utility : Package</option>
+<option value="shape|212.0|0.0|1270.0|530.0|Package_DKJpCaKGAqACZBon.html|Package_DKJpCaKGAqACZBon.html|RGa6BaKGAqAC3Abl" id="optionRGa6BaKGAqAC3Abl">view : Package</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/PackageDiagram.png" usemap="#diagram_map" class="Image" width="1736" height="2144"/>
+					<map name="diagram_map">
+<area coords="392.0, 1572.0, 392.0, 1586.0, 432.0, 1586.0, 432.0, 1572.0" coords2="392.0, 1572.0, 392.0, 1586.0, 432.0, 1586.0, 432.0, 1572.0" shape="poly" alt=":Dependency" id="areadiagram_map_zUZ0hmKFYGwwHh2w" href="Dependency_dUZ0hmKFYGwwHh2v.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="644.0, 1420.0, 644.0, 1612.0, 641.0, 1612.0, 641.0, 1626.0, 644.0, 1626.0, 644.0, 1629.0, 658.0, 1629.0, 658.0, 1626.0, 812.0, 1626.0, 812.0, 1612.0, 658.0, 1612.0, 658.0, 1420.0" coords2="644.0, 1420.0, 644.0, 1612.0, 641.0, 1612.0, 641.0, 1626.0, 644.0, 1626.0, 644.0, 1629.0, 658.0, 1629.0, 658.0, 1626.0, 812.0, 1626.0, 812.0, 1612.0, 658.0, 1612.0, 658.0, 1420.0" shape="poly" alt=":Dependency" id="areadiagram_map_VRP0hmKFYGwwHh3a" href="Dependency_pRP0hmKFYGwwHh3Z.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="664.0, 1420.0, 664.0, 1592.0, 661.0, 1592.0, 661.0, 1606.0, 664.0, 1606.0, 664.0, 1609.0, 678.0, 1609.0, 678.0, 1606.0, 812.0, 1606.0, 812.0, 1592.0, 678.0, 1592.0, 678.0, 1420.0" coords2="664.0, 1420.0, 664.0, 1592.0, 661.0, 1592.0, 661.0, 1606.0, 664.0, 1606.0, 664.0, 1609.0, 678.0, 1609.0, 678.0, 1606.0, 812.0, 1606.0, 812.0, 1592.0, 678.0, 1592.0, 678.0, 1420.0" shape="poly" alt=":Dependency" id="areadiagram_map_uBjUOmKGAqACYlfI" href="Dependency_GBjUOmKGAqACYlfH.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1644.0, 800.0, 1644.0, 1072.0, 1342.0, 1072.0, 1342.0, 1086.0, 1644.0, 1086.0, 1644.0, 1089.0, 1658.0, 1089.0, 1658.0, 1086.0, 1661.0, 1086.0, 1661.0, 1072.0, 1658.0, 1072.0, 1658.0, 800.0" coords2="1644.0, 800.0, 1644.0, 1072.0, 1342.0, 1072.0, 1342.0, 1086.0, 1644.0, 1086.0, 1644.0, 1089.0, 1658.0, 1089.0, 1658.0, 1086.0, 1661.0, 1086.0, 1661.0, 1072.0, 1658.0, 1072.0, 1658.0, 800.0" shape="poly" alt=":Dependency" id="areadiagram_map_YVGR2mKGAqACYggR" href="Dependency_5lGR2mKGAqACYggJ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1684.0, 800.0, 1684.0, 2092.0, 142.0, 2092.0, 142.0, 2106.0, 1684.0, 2106.0, 1684.0, 2109.0, 1698.0, 2109.0, 1698.0, 2106.0, 1701.0, 2106.0, 1701.0, 2092.0, 1698.0, 2092.0, 1698.0, 800.0" coords2="1684.0, 800.0, 1684.0, 2092.0, 142.0, 2092.0, 142.0, 2106.0, 1684.0, 2106.0, 1684.0, 2109.0, 1698.0, 2109.0, 1698.0, 2106.0, 1701.0, 2106.0, 1701.0, 2092.0, 1698.0, 2092.0, 1698.0, 800.0" shape="poly" alt=":Dependency" id="areadiagram_map_d3Wx2mKGAqACYggw" href="Dependency_l3Wx2mKGAqACYggv.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="702.0, 463.0, 702.0, 477.0, 802.0, 477.0, 802.0, 463.0" coords2="702.0, 463.0, 702.0, 477.0, 802.0, 477.0, 802.0, 463.0" shape="poly" alt=":Dependency" id="areadiagram_map_901J2mKGAqACYgxB" href="Dependency_l01J2mKGAqACYgxA.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="866.0, 360.0, 866.0, 420.0, 880.0, 420.0, 880.0, 360.0" coords2="866.0, 360.0, 866.0, 420.0, 880.0, 420.0, 880.0, 360.0" shape="poly" alt=":Dependency" id="areadiagram_map_bHNJ2mKGAqACYgxO" href="Dependency_jHNJ2mKGAqACYgxN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="702.0, 153.0, 702.0, 167.0, 802.0, 167.0, 802.0, 153.0" coords2="702.0, 153.0, 702.0, 167.0, 802.0, 167.0, 802.0, 153.0" shape="poly" alt=":Dependency" id="areadiagram_map_SXAp2mKGAqACYgyN" href="Dependency_sXAp2mKGAqACYgyM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="865.0, 210.0, 865.0, 260.0, 879.0, 260.0, 879.0, 210.0" coords2="865.0, 210.0, 865.0, 260.0, 879.0, 260.0, 879.0, 210.0" shape="poly" alt=":Dependency" id="areadiagram_map_gSEp2mKGAqACYgy2" href="Dependency_PiEp2mKGAqACYgy1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="942.0, 153.0, 942.0, 167.0, 1012.0, 167.0, 1012.0, 153.0" coords2="942.0, 153.0, 942.0, 167.0, 1012.0, 167.0, 1012.0, 153.0" shape="poly" alt=":Dependency" id="areadiagram_map_TWSp2mKGAqACYgzH" href="Dependency_NWSp2mKGAqACYgzG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="682.0, 1193.0, 682.0, 1207.0, 812.0, 1207.0, 812.0, 1193.0" coords2="682.0, 1193.0, 682.0, 1207.0, 812.0, 1207.0, 812.0, 1193.0" shape="poly" alt=":Dependency" id="areadiagram_map_TM0timKGAqAC6iGN" href="Dependency_dM0timKGAqAC6iGM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="265.0, 1420.0, 265.0, 1500.0, 279.0, 1500.0, 279.0, 1420.0" coords2="265.0, 1420.0, 265.0, 1500.0, 279.0, 1500.0, 279.0, 1420.0" shape="poly" alt=":Dependency" id="areadiagram_map_1XMtimKGAqAC6iGc" href="Dependency_5XMtimKGAqAC6iGb.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="445.0, 1420.0, 445.0, 1500.0, 459.0, 1500.0, 459.0, 1420.0" coords2="445.0, 1420.0, 445.0, 1500.0, 459.0, 1500.0, 459.0, 1420.0" shape="poly" alt=":Dependency" id="areadiagram_map_yppTimKGAqAC6iHJ" href="Dependency_yppTimKGAqAC6iHI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="382.0, 1343.0, 382.0, 1357.0, 422.0, 1357.0, 422.0, 1343.0" coords2="382.0, 1343.0, 382.0, 1357.0, 422.0, 1357.0, 422.0, 1343.0" shape="poly" alt=":Dependency" id="areadiagram_map_qI1TimKGAqAC6iHm" href="Dependency_oI1TimKGAqAC6iHl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="382.0, 1212.0, 382.0, 1226.0, 422.0, 1226.0, 422.0, 1212.0" coords2="382.0, 1212.0, 382.0, 1226.0, 422.0, 1226.0, 422.0, 1212.0" shape="poly" alt=":Dependency" id="areadiagram_map_rUzTimKGAqAC6iIH" href="Dependency_rUzTimKGAqAC6iIG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="702.0, 63.0, 702.0, 77.0, 1012.0, 77.0, 1012.0, 63.0" coords2="702.0, 63.0, 702.0, 77.0, 1012.0, 77.0, 1012.0, 63.0" shape="poly" alt=":Dependency" id="areadiagram_map_6QQzimKGAqAC6iI5" href="Dependency_6QQzimKGAqAC6iI4.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="702.0, 83.0, 702.0, 97.0, 1012.0, 97.0, 1012.0, 83.0" coords2="702.0, 83.0, 702.0, 97.0, 1012.0, 97.0, 1012.0, 83.0" shape="poly" alt=":Dependency" id="areadiagram_map_5LQzimKGAqAC6iJE" href="Dependency_5LQzimKGAqAC6iJD.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="165.0, 480.0, 165.0, 483.0, 162.0, 483.0, 162.0, 497.0, 165.0, 497.0, 165.0, 750.0, 179.0, 750.0, 179.0, 497.0, 212.0, 497.0, 212.0, 483.0, 179.0, 483.0, 179.0, 480.0" coords2="165.0, 480.0, 165.0, 483.0, 162.0, 483.0, 162.0, 497.0, 165.0, 497.0, 165.0, 750.0, 179.0, 750.0, 179.0, 497.0, 212.0, 497.0, 212.0, 483.0, 179.0, 483.0, 179.0, 480.0" shape="poly" alt=":Dependency" id="areadiagram_map_NlAGBaKGAqAC3Aiv" href="Dependency__5AGBaKGAqAC3Aiu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="796.0, 530.0, 796.0, 990.0, 810.0, 990.0, 810.0, 530.0" coords2="796.0, 530.0, 796.0, 990.0, 810.0, 990.0, 810.0, 530.0" shape="poly" alt=":Dependency" id="areadiagram_map_JdgGBaKGAqAC3Ai6" href="Dependency_INgGBaKGAqAC3Ai5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="105.0, 430.0, 105.0, 433.0, 102.0, 433.0, 102.0, 447.0, 105.0, 447.0, 105.0, 750.0, 119.0, 750.0, 119.0, 447.0, 212.0, 447.0, 212.0, 433.0, 119.0, 433.0, 119.0, 430.0" coords2="105.0, 430.0, 105.0, 433.0, 102.0, 433.0, 102.0, 447.0, 105.0, 447.0, 105.0, 750.0, 119.0, 750.0, 119.0, 447.0, 212.0, 447.0, 212.0, 433.0, 119.0, 433.0, 119.0, 430.0" shape="poly" alt=":Dependency" id="areadiagram_map_KhwGBaKGAqAC3AjA" href="Dependency_DewGBaKGAqAC3Ai_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="385.0, 799.0, 385.0, 802.0, 222.0, 802.0, 222.0, 816.0, 385.0, 816.0, 385.0, 990.0, 399.0, 990.0, 399.0, 816.0, 402.0, 816.0, 402.0, 802.0, 399.0, 802.0, 399.0, 799.0" coords2="385.0, 799.0, 385.0, 802.0, 222.0, 802.0, 222.0, 816.0, 385.0, 816.0, 385.0, 990.0, 399.0, 990.0, 399.0, 816.0, 402.0, 816.0, 402.0, 802.0, 399.0, 802.0, 399.0, 799.0" shape="poly" alt=":Dependency" id="areadiagram_map_I_IGBaKGAqAC3AjG" href="Dependency_JPIGBaKGAqAC3AjF.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="95.0, 850.0, 95.0, 2040.0, 109.0, 2040.0, 109.0, 850.0" coords2="95.0, 850.0, 95.0, 2040.0, 109.0, 2040.0, 109.0, 850.0" shape="poly" alt=":Dependency" id="areadiagram_map_LU4GBaKGAqAC3AjM" href="Dependency_844GBaKGAqAC3AjL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1604.0, 800.0, 1604.0, 1022.0, 1342.0, 1022.0, 1342.0, 1036.0, 1604.0, 1036.0, 1604.0, 1039.0, 1618.0, 1039.0, 1618.0, 1036.0, 1621.0, 1036.0, 1621.0, 1022.0, 1618.0, 1022.0, 1618.0, 800.0" coords2="1604.0, 800.0, 1604.0, 1022.0, 1342.0, 1022.0, 1342.0, 1036.0, 1604.0, 1036.0, 1604.0, 1039.0, 1618.0, 1039.0, 1618.0, 1036.0, 1621.0, 1036.0, 1621.0, 1022.0, 1618.0, 1022.0, 1618.0, 800.0" shape="poly" alt=":Dependency" id="areadiagram_map_BG6GBaKGAqAC3AjW" href="Dependency_fq6GBaKGAqAC3AjV.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1643.0, 390.0, 1643.0, 393.0, 1482.0, 393.0, 1482.0, 407.0, 1643.0, 407.0, 1643.0, 700.0, 1657.0, 700.0, 1657.0, 407.0, 1660.0, 407.0, 1660.0, 393.0, 1657.0, 393.0, 1657.0, 390.0" coords2="1643.0, 390.0, 1643.0, 393.0, 1482.0, 393.0, 1482.0, 407.0, 1643.0, 407.0, 1643.0, 700.0, 1657.0, 700.0, 1657.0, 407.0, 1660.0, 407.0, 1660.0, 393.0, 1657.0, 393.0, 1657.0, 390.0" shape="poly" alt=":Dependency" id="areadiagram_map_dLGGBaKGAqAC3Aja" href="Dependency_ITGGBaKGAqAC3AjZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="502, 1250, 642, 1350" coords2="502, 1250, 642, 1350" shape="rect" alt="PagamentoState:Package" id="areadiagram_map_aSWY5mKFYGwwHijx" href="Package_zO12ZmKFYGwwHhEA.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="482, 1210, 662, 1400" coords2="482, 1210, 662, 1400" shape="rect" alt="SoggiornoState:Package" id="areadiagram_map_qSWY5mKFYGwwHijv" href="Package_ya12ZmKFYGwwHhBP.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="852, 1710, 992, 1810" coords2="852, 1710, 992, 1810" shape="rect" alt="AmmontareCaparra:Package" id="areadiagram_map_qX.UOmKGAqACYleU" href="Package_VcqsEmKGAqACvRQG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="852, 1560, 992, 1660" coords2="852, 1560, 992, 1660" shape="rect" alt="GiornoScadenza:Package" id="areadiagram_map_aX.UOmKGAqACYleW" href="Package_xCqsEmKGAqACvRRy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1052, 1500, 1212, 1600" coords2="1052, 1500, 1212, 1600" shape="rect" alt="StrategieOccupazioneCamera:Package" id="areadiagram_map_KX.UOmKGAqACYleQ" href="Package_A8JpCaKGAqACZBlE.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="652, 1670, 792, 1770" coords2="652, 1670, 792, 1770" shape="rect" alt="Utility:Package" id="areadiagram_map_QQ6HcmKGAqAC2CQX" href="Package_HCJpCaKGAqACZBl7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="832, 1490, 1012, 1830" coords2="832, 1490, 1012, 1830" shape="rect" alt="StrategieSoggiorno:Package" id="areadiagram_map_KX.UOmKGAqACYleS" href="Package_lcqsEmKGAqACvRQF.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="812, 1450, 1222, 1840" coords2="812, 1450, 1222, 1840" shape="rect" alt="Strategie:Package" id="areadiagram_map_SX.UOmKGAqACYleO" href="Package_Y7CUOmKGAqACYlds.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1062, 400, 1202, 500" coords2="1062, 400, 1202, 500" shape="rect" alt="CheckIn:Package" id="areadiagram_map_VMxNimKGAqAC6iDi" href="Package_qChNimKGAqAC6iAH.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1062, 250, 1202, 350" coords2="1062, 250, 1202, 350" shape="rect" alt="CreaRichiestaSoggiorno:Package" id="areadiagram_map_NMxNimKGAqAC6iDk" href="Package_yihNimKGAqAC6iAx.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1312, 250, 1452, 350" coords2="1312, 250, 1452, 350" shape="rect" alt="InformazioniCamera:Package" id="areadiagram_map_tMxNimKGAqAC6iDm" href="Package_sShNimKGAqAC6iBY.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1312, 400, 1452, 500" coords2="1312, 400, 1452, 500" shape="rect" alt="InformazioniSoggiorno:Package" id="areadiagram_map_9MxNimKGAqAC6iDo" href="Package_ZShNimKGAqAC6iBp.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="272, 390, 412, 490" coords2="272, 390, 412, 490" shape="rect" alt="CheckIn:Package" id="areadiagram_map_U.iNimKGAqAC6h.3" href="Package_ahsNimKGAqAC6hzI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="272, 240, 412, 340" coords2="272, 240, 412, 340" shape="rect" alt="CreaRichiestaSoggiorno:Package" id="areadiagram_map_M.iNimKGAqAC6h.5" href="Package_uFsNimKGAqAC6h3s.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="522, 240, 662, 340" coords2="522, 240, 662, 340" shape="rect" alt="InformazioniCamera:Package" id="areadiagram_map_s.iNimKGAqAC6h.7" href="Package_jNsNimKGAqAC6h5o.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="522, 390, 662, 490" coords2="522, 390, 662, 490" shape="rect" alt="InformazioniSoggiorno:Package" id="areadiagram_map_c.iNimKGAqAC6h.9" href="Package_LdsNimKGAqAC6h67.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1042, 190, 1462, 510" coords2="1042, 190, 1462, 510" shape="rect" alt="GestioneSoggiorno:Package" id="areadiagram_map_Bg.1imKGAqAC6g_8" href="Package_dk4I8mKGAqAC2COZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1042, 80, 1182, 180" coords2="1042, 80, 1182, 180" shape="rect" alt="GestionePagamenti:Package" id="areadiagram_map_Jg.1imKGAqAC6hAC" href="Package_uuqsEmKGAqACvRZh.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1012, 40, 1472, 520" coords2="1012, 40, 1472, 520" shape="rect" alt="Event:Package" id="areadiagram_map_pg.1imKGAqAC6hAE" href="Package_PaJpCaKGAqACZBqb.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="802, 110, 942, 210" coords2="802, 110, 942, 210" shape="rect" alt="Utility:Package" id="areadiagram_map_hbEncmKGAqAC2CR9" href="Package_V_JpCaKGAqACZBxW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="252, 190, 672, 500" coords2="252, 190, 672, 500" shape="rect" alt="GestioneSoggiorno:Package" id="areadiagram_map_KqLHcmKGAqAC2CRg" href="Package_YJqsEmKGAqACvRch.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="252, 80, 392, 180" coords2="252, 80, 392, 180" shape="rect" alt="GestionePagamenti:Package" id="areadiagram_map_KqLHcmKGAqAC2CRi" href="Package_ThqsEmKGAqACvRbe.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="232, 40, 702, 520" coords2="232, 40, 702, 520" shape="rect" alt="Graphic:Package" id="areadiagram_map_qqLHcmKGAqAC2CRk" href="Package_mGJpCaKGAqACZBsO.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="802, 260, 942, 360" coords2="802, 260, 942, 360" shape="rect" alt="GestionePagamenti:Package" id="areadiagram_map_M4NHcmKGAqAC2CQx" href="Package_uuqsEmKGAqACvRZh.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="802, 420, 942, 520" coords2="802, 420, 942, 520" shape="rect" alt="Access:Package" id="areadiagram_map_VbFHcmKGAqAC2CQi" href="Package_jKJpCaKGAqACZBoo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="452, 1540, 592, 1640" coords2="452, 1540, 592, 1640" shape="rect" alt="Documenti:Package" id="areadiagram_map_SWiHcmKGAqAC2CP2" href="Package_b4qsEmKGAqACvRMo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="432, 1500, 602, 1650" coords2="432, 1500, 602, 1650" shape="rect" alt="Persona:Package" id="areadiagram_map_iWiHcmKGAqAC2CP0" href="Package_tYqsEmKGAqACvRL_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="252, 1500, 392, 1600" coords2="252, 1500, 392, 1600" shape="rect" alt="Pagamento:Package" id="areadiagram_map_xP8HcmKGAqAC2CPq" href="Package_DoqsEmKGAqACvRLO.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="832, 1310, 972, 1410" coords2="832, 1310, 972, 1410" shape="rect" alt="CreditAuthorizationService:Package" id="areadiagram_map_KcEHcmKGAqAC2CPM" href="Package_agqsEmKGAqACvRI7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="832, 1160, 972, 1260" coords2="832, 1160, 972, 1260" shape="rect" alt="Telephone:Package" id="areadiagram_map_qcEHcmKGAqAC2CPO" href="Package_g0JpCaKGAqACZBiW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1182, 1170, 1322, 1270" coords2="1182, 1170, 1322, 1270" shape="rect" alt="SchedePS:Package" id="areadiagram_map_6cEHcmKGAqAC2CPQ" href="Package_SIqsEmKGAqACvRKq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1182, 1300, 1322, 1400" coords2="1182, 1300, 1322, 1400" shape="rect" alt="PagamentoCarta:Package" id="areadiagram_map_GcEHcmKGAqAC2CPS" href="Package_XgqsEmKGAqACvRJX.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1012, 1310, 1152, 1410" coords2="1012, 1310, 1152, 1410" shape="rect" alt="LettoreCarte:Package" id="areadiagram_map_mcEHcmKGAqAC2CPU" href="Package_VgqsEmKGAqACvRJN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1012, 1160, 1152, 1260" coords2="1012, 1160, 1152, 1260" shape="rect" alt="PayTv:Package" id="areadiagram_map_OcEHcmKGAqAC2CPY" href="Package_fkJpCaKGAqACZBhy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="812, 1090, 1332, 1420" coords2="812, 1090, 1332, 1420" shape="rect" alt="ForeignSystem:Package" id="areadiagram_map_WcEHcmKGAqAC2CPW" href="Package_xkJpCaKGAqACZBhl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="262, 1290, 382, 1390" coords2="262, 1290, 382, 1390" shape="rect" alt="Camera:Package" id="areadiagram_map_PZIHcmKGAqAC2CPA" href="Package_5bKsEmKGAqACvRBj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="262, 1140, 382, 1260" coords2="262, 1140, 382, 1260" shape="rect" alt="Cataloghi:Package" id="areadiagram_map_vZIHcmKGAqAC2CPC" href="Package_xwJpCaKGAqACZBfD.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="422, 1150, 672, 1410" coords2="422, 1150, 672, 1410" shape="rect" alt="Soggiorno:Package" id="areadiagram_map_fZIHcmKGAqAC2CPE" href="Package_VPKsEmKGAqACvREa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="242, 1080, 682, 1420" coords2="242, 1080, 682, 1420" shape="rect" alt="Albergo:Package" id="areadiagram_map_3ZIHcmKGAqAC2CO." href="Package_0QJpCaKGAqACZBec.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="82, 750, 222, 850" coords2="82, 750, 222, 850" shape="rect" alt="controller:Package" id="areadiagram_map_iaa6BaKGAqAC3AZA" href="Package_FvxpCaKGAqACZBch.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="2, 2040, 142, 2140" coords2="2, 2040, 142, 2140" shape="rect" alt="persistence:Package" id="areadiagram_map_BGa6BaKGAqAC3Abh" href="Package_JyJpCaKGAqACZBnc.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="182, 990, 1342, 1850" coords2="182, 990, 1342, 1850" shape="rect" alt="model:Package" id="areadiagram_map_.Ga6BaKGAqAC3Abf" href="Package_kQJpCaKGAqACZBeb.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1592, 700, 1732, 800" coords2="1592, 700, 1732, 800" shape="rect" alt="utility:Package" id="areadiagram_map_hGa6BaKGAqAC3Abj" href="Package_SKJpCaKGAqACZBoI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="212, 0, 1482, 530" coords2="212, 0, 1482, 530" shape="rect" alt="view:Package" id="areadiagram_map_RGa6BaKGAqAC3Abl" href="Package_DKJpCaKGAqACZBon.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

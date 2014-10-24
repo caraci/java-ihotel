@@ -1,0 +1,318 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - SD_AggiungiPagamentoSoggiorno_PagamentoSospeso</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_1wDkG8KAUBRkpA1o.html">
+DynamicDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_ULigfiKGAqACSQmT.html">
+ModificaSoggiorno_ScenarioSuccesso : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_X9Ao5mKFYGwwHiWB.html">
+SD_AggiungiPagamentoSoggiorno_PagamentoSospeso : Model</a>
+	</p>
+	<p class="PageTitle">
+		Sequence Diagram - SD_AggiungiPagamentoSoggiorno_PagamentoSospeso		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/iBoo5mKFYGwwHiWI', 'SD_AggiungiPagamentoSoggiorno_PagamentoSospeso\nihotel.vpp://diagram/iBoo5mKFYGwwHiWI', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|1252.0|402.0|130.0|40.0|NOTE_PACCy2KAUmggjQ1C.html|NOTE_PACCy2KAUmggjQ1C.html|PACCy2KAUmggjQ1B" id="optionPACCy2KAUmggjQ1B">Unnamed Note : Note</option>
+<option value="shape|1612.0|472.0|150.0|70.0|NOTE_wZE8y2KAUmggjQz5.html|NOTE_wZE8y2KAUmggjQz5.html|wZE8y2KAUmggjQz4" id="optionwZE8y2KAUmggjQz4">Unnamed Note : Note</option>
+<option value="shape|832.0|102.0|160.0|40.0|NOTE_nw7cy2KAUmggjQzi.html|NOTE_nw7cy2KAUmggjQzi.html|nw7cy2KAUmggjQzh" id="optionnw7cy2KAUmggjQzh">Unnamed Note : Note</option>
+<option value="shape|772.0|722.0|220.0|50.0|NOTE_uXvo5mKFYGwwHiff.html|NOTE_uXvo5mKFYGwwHiff.html|OXvo5mKFYGwwHife" id="optionOXvo5mKFYGwwHife">Unnamed Note : Note</option>
+<option value="shape|462.0|732.0|120.0|60.0|NOTE_puro5mKFYGwwHifF.html|NOTE_puro5mKFYGwwHifF.html|Juro5mKFYGwwHifE" id="optionJuro5mKFYGwwHifE">Unnamed Note : Note</option>
+<option value="shape|812.0|162.0|140.0|60.0|NOTE_s96o5mKFYGwwHid3.html|NOTE_s96o5mKFYGwwHid3.html|M96o5mKFYGwwHid2" id="optionM96o5mKFYGwwHid2">Unnamed Note : Note</option>
+<option value="shape|252.0|470.0|1390.0|122.0|InteractionOperand_nl0o5mKFYGwwHia1.html|InteractionOperand_nl0o5mKFYGwwHia1.html|nl0o5mKFYGwwHia0" id="optionnl0o5mKFYGwwHia0">Operand9 : Interaction Operand</option>
+<option value="shape|252.0|453.0|1390.0|140.0|CombinedFragment_xl0o5mKFYGwwHiax.html|CombinedFragment_xl0o5mKFYGwwHiax.html|xl0o5mKFYGwwHiaw" id="optionxl0o5mKFYGwwHiaw">CombinedFragment9 : Combined Fragment</option>
+<option value="shape|1767.0|682.0|8.0|12.0|Activation_k70o5mKFYGwwHicq.html|Activation_k70o5mKFYGwwHicq.html|q70o5mKFYGwwHics" id="optionq70o5mKFYGwwHics">Activation : Activation</option>
+<option value="shape|202.0|302.0|1680.0|410.0|CombinedFragment_9x0o5mKFYGwwHiZo.html|CombinedFragment_9x0o5mKFYGwwHiZo.html|dx0o5mKFYGwwHiZn" id="optiondx0o5mKFYGwwHiZn">CombinedFragment8 : Combined Fragment</option>
+<option value="shape|1672.0|2.0|200.0|790.0|InteractionLifeLine_KL0o5mKFYGwwHicT.html|InteractionLifeLine_KL0o5mKFYGwwHicT.html|BL0o5mKFYGwwHicU" id="optionBL0o5mKFYGwwHicU">_soggiornoState : Lifeline</option>
+<option value="shape|857.0|632.0|8.0|12.0|Activation_GT0o5mKFYGwwHicD.html|Activation_GT0o5mKFYGwwHicD.html|JT0o5mKFYGwwHicF" id="optionJT0o5mKFYGwwHicF">Activation : Activation</option>
+<option value="shape|1568.0|562.0|8.0|12.0|Activation_QD0o5mKFYGwwHibs.html|Activation_QD0o5mKFYGwwHibs.html|CD0o5mKFYGwwHibu" id="optionCD0o5mKFYGwwHibu">Activation : Activation</option>
+<option value="shape|1512.0|2.0|120.0|790.0|InteractionLifeLine_at0o5mKFYGwwHibV.html|InteractionLifeLine_at0o5mKFYGwwHibV.html|Wt0o5mKFYGwwHibW" id="optionWt0o5mKFYGwwHibW">subject : Lifeline</option>
+<option value="shape|1407.0|512.0|8.0|12.0|Activation__N0o5mKFYGwwHibP.html|Activation__N0o5mKFYGwwHibP.html|NN0o5mKFYGwwHibR" id="optionNN0o5mKFYGwwHibR">Activation : Activation</option>
+<option value="shape|1332.0|2.0|160.0|790.0|InteractionLifeLine_hV0o5mKFYGwwHia6.html|InteractionLifeLine_hV0o5mKFYGwwHia6.html|JV0o5mKFYGwwHia7" id="optionJV0o5mKFYGwwHia7">iterator : Lifeline</option>
+<option value="shape|1167.0|412.0|8.0|12.0|Activation_RF0o5mKFYGwwHiao.html|Activation_RF0o5mKFYGwwHiao.html|tF0o5mKFYGwwHiaq" id="optiontF0o5mKFYGwwHiaq">Activation : Activation</option>
+<option value="shape|1072.0|2.0|200.0|790.0|InteractionLifeLine_fZ0o5mKFYGwwHiaT.html|InteractionLifeLine_fZ0o5mKFYGwwHiaT.html|g50o5mKFYGwwHiaU" id="optiong50o5mKFYGwwHiaU">_elencoSubject : Lifeline</option>
+<option value="shape|752.0|342.0|220.0|450.0|InteractionLifeLine_NJ0o5mKFYGwwHiZ_.html|InteractionLifeLine_NJ0o5mKFYGwwHiZ_.html|wp0o5mKFYGwwHiaA" id="optionwp0o5mKFYGwwHiaA">pagamentoSaldato : Lifeline</option>
+<option value="shape|757.0|260.0|8.0|12.0|Activation_vR0o5mKFYGwwHiZf.html|Activation_vR0o5mKFYGwwHiZf.html|Ex0o5mKFYGwwHiZh" id="optionEx0o5mKFYGwwHiZh">Activation : Activation</option>
+<option value="shape|757.0|210.0|8.0|12.0|Activation_jh0o5mKFYGwwHiZJ.html|Activation_jh0o5mKFYGwwHiZJ.html|3h0o5mKFYGwwHiZL" id="option3h0o5mKFYGwwHiZL">Activation : Activation</option>
+<option value="shape|758.0|161.0|8.0|12.0|Activation_RB0o5mKFYGwwHiYz.html|Activation_RB0o5mKFYGwwHiYz.html|NB0o5mKFYGwwHiY1" id="optionNB0o5mKFYGwwHiY1">Activation : Activation</option>
+<option value="shape|758.0|101.0|8.0|12.0|Activation_4_0o5mKFYGwwHiYc.html|Activation_4_0o5mKFYGwwHiYc.html|i.0o5mKFYGwwHiYe" id="optioni.0o5mKFYGwwHiYe">Activation : Activation</option>
+<option value="shape|632.0|2.0|260.0|790.0|InteractionLifeLine_gu0o5mKFYGwwHiYG.html|InteractionLifeLine_gu0o5mKFYGwwHiYG.html|3u0o5mKFYGwwHiYH" id="option3u0o5mKFYGwwHiYH">_soggiornoContext : Lifeline</option>
+<option value="shape|202.0|320.0|1680.0|392.0|InteractionOperand_wJ0o5mKFYGwwHiZw.html|InteractionOperand_wJ0o5mKFYGwwHiZw.html|wJ0o5mKFYGwwHiZv" id="optionwJ0o5mKFYGwwHiZv">Operand8 : Interaction Operand</option>
+<option value="shape|277.0|62.0|8.0|702.0|Activation_XG0o5mKFYGwwHiW6.html|Activation_XG0o5mKFYGwwHiW6.html|om0o5mKFYGwwHiW8" id="optionom0o5mKFYGwwHiW8">Activation : Activation</option>
+<option value="shape|212.0|2.0|140.0|790.0|InteractionLifeLine_w60o5mKFYGwwHiWp.html|InteractionLifeLine_w60o5mKFYGwwHiWp.html|a60o5mKFYGwwHiWq" id="optiona60o5mKFYGwwHiWq">Unnamed Lifeline : Lifeline</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/SD_AggiungiPagamentoSoggiorno_PagamentoSospeso.png" usemap="#diagram_map" class="Image" width="1886" height="796"/>
+					<map name="diagram_map">
+<area coords="725.0, 112.0, 725.0, 115.0, 722.0, 115.0, 722.0, 129.0, 725.0, 129.0, 725.0, 172.0, 739.0, 172.0, 739.0, 129.0, 832.0, 129.0, 832.0, 115.0, 739.0, 115.0, 739.0, 112.0" coords2="725.0, 112.0, 725.0, 115.0, 722.0, 115.0, 722.0, 129.0, 725.0, 129.0, 725.0, 172.0, 739.0, 172.0, 739.0, 129.0, 832.0, 129.0, 832.0, 115.0, 739.0, 115.0, 739.0, 112.0" shape="poly" alt=":Anchor" id="areadiagram_map_yI7cy2KAUmggjQzm" href="Anchor_SI7cy2KAUmggjQzl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1485.0, 512.0, 1485.0, 515.0, 1482.0, 515.0, 1482.0, 529.0, 1485.0, 529.0, 1485.0, 572.0, 1499.0, 572.0, 1499.0, 529.0, 1612.0, 529.0, 1612.0, 515.0, 1499.0, 515.0, 1499.0, 512.0" coords2="1485.0, 512.0, 1485.0, 515.0, 1482.0, 515.0, 1482.0, 529.0, 1485.0, 529.0, 1485.0, 572.0, 1499.0, 572.0, 1499.0, 529.0, 1612.0, 529.0, 1612.0, 515.0, 1499.0, 515.0, 1499.0, 512.0" shape="poly" alt=":Anchor" id="areadiagram_map_JZE8y2KAUmggjQz9" href="Anchor_xZE8y2KAUmggjQz8.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1285.0, 442.0, 1285.0, 462.0, 1285.0, 522.0, 1299.0, 522.0, 1299.0, 462.0, 1299.0, 442.0" coords2="1285.0, 442.0, 1285.0, 462.0, 1285.0, 522.0, 1299.0, 522.0, 1299.0, 462.0, 1299.0, 442.0" shape="poly" alt=":Anchor" id="areadiagram_map_mgCCy2KAUmggjQ1G" href="Anchor_6gCCy2KAUmggjQ1F.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="17.0, 55.0, 17.0, 69.0, 212.0, 69.0, 212.0, 55.0" coords2="17.0, 55.0, 17.0, 69.0, 212.0, 69.0, 212.0, 55.0" shape="poly" alt="1: addPagamento(pagamento : Pagamento) : void:Message" id="areadiagram_map_P60o5mKFYGwwHiWv" href="Message_v60o5mKFYGwwHiWw.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 95.0, 352.0, 109.0, 632.0, 109.0, 632.0, 95.0" coords2="352.0, 95.0, 352.0, 109.0, 632.0, 109.0, 632.0, 95.0" shape="poly" alt="1.1: get_pagamenti() : ArrayList:Message" id="areadiagram_map_5e0o5mKFYGwwHiYO" href="Message_5e0o5mKFYGwwHiYP.html" onmouseover="storeReferenceAndSubdiagramInfos('352.0, 95.0, 352.0, 109.0, 632.0, 109.0, 632.0, 95.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('Operation_Gq12ZmKFYGwwHhA6.html/get_pagamenti/Operation'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('352.0, 95.0, 352.0, 109.0, 632.0, 109.0, 632.0, 95.0')" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 155.0, 352.0, 169.0, 632.0, 169.0, 632.0, 155.0" coords2="352.0, 155.0, 352.0, 169.0, 632.0, 169.0, 632.0, 155.0" shape="poly" alt="1.2: set_importoTotalePagamenti(_importoTotalePagamenti : Prezzo = _soggiornoContext.get_importoTotalePagamenti().somma(pagamento.get_importo())):Message" id="areadiagram_map_f.0o5mKFYGwwHiYl" href="Message___0o5mKFYGwwHiYm.html" onmouseover="storeReferenceAndSubdiagramInfos('352.0, 155.0, 352.0, 169.0, 632.0, 169.0, 632.0, 155.0',new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array('Attribute__i12ZmKFYGwwHg_r.html/_importoTotalePagamenti/Attribute'),new Array()),hideReferenceIcon(),hideSubdiagramIcon(),showTransitorIcon('352.0, 155.0, 352.0, 169.0, 632.0, 169.0, 632.0, 155.0')" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 205.0, 352.0, 219.0, 632.0, 219.0, 632.0, 205.0" coords2="352.0, 205.0, 352.0, 219.0, 632.0, 219.0, 632.0, 205.0" shape="poly" alt="1.3: Notify() : void:Message" id="areadiagram_map_Uh0o5mKFYGwwHiY7" href="Message_Uh0o5mKFYGwwHiY8.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 255.0, 352.0, 269.0, 632.0, 269.0, 632.0, 255.0" coords2="352.0, 255.0, 352.0, 269.0, 632.0, 269.0, 632.0, 255.0" shape="poly" alt="1.4: importoRimanenteDaPagare =  calcolaImportoRimanenteDaPagare() : Prezzo:Message" id="areadiagram_map_GR0o5mKFYGwwHiZR" href="Message_GR0o5mKFYGwwHiZS.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 355.0, 352.0, 369.0, 752.0, 369.0, 752.0, 355.0" coords2="352.0, 355.0, 352.0, 369.0, 752.0, 369.0, 752.0, 355.0" shape="poly" alt="1.5: create():Message" id="areadiagram_map_Dp0o5mKFYGwwHiaF" href="Message_Dp0o5mKFYGwwHiaG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 405.0, 352.0, 419.0, 1072.0, 419.0, 1072.0, 405.0" coords2="352.0, 405.0, 352.0, 419.0, 1072.0, 419.0, 1072.0, 405.0" shape="poly" alt="1.6: iterator():Message" id="areadiagram_map_r50o5mKFYGwwHiaa" href="Message_b50o5mKFYGwwHiab.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 505.0, 352.0, 519.0, 1332.0, 519.0, 1332.0, 505.0" coords2="352.0, 505.0, 352.0, 519.0, 1332.0, 519.0, 1332.0, 505.0" shape="poly" alt="1.7: subject = next():Message" id="areadiagram_map_V10o5mKFYGwwHibB" href="Message_V10o5mKFYGwwHibC.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 555.0, 352.0, 569.0, 1512.0, 569.0, 1512.0, 555.0" coords2="352.0, 555.0, 352.0, 569.0, 1512.0, 569.0, 1512.0, 555.0" shape="poly" alt="1.8: Attach(observer : IObserver = pagamentoSaldato) : void:Message" id="areadiagram_map_490o5mKFYGwwHibe" href="Message_490o5mKFYGwwHibf.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 625.0, 352.0, 639.0, 752.0, 639.0, 752.0, 625.0" coords2="352.0, 625.0, 352.0, 639.0, 752.0, 639.0, 752.0, 625.0" shape="poly" alt="1.9: set_elencoSubject(_elencoSubject : java.util.ArrayList = this.get_elencoSubject()) : void:Message" id="areadiagram_map_Oj0o5mKFYGwwHib1" href="Message_Oj0o5mKFYGwwHib2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="352.0, 675.0, 352.0, 689.0, 1672.0, 689.0, 1672.0, 675.0" coords2="352.0, 675.0, 352.0, 689.0, 1672.0, 689.0, 1672.0, 675.0" shape="poly" alt="1.10: set_pagamentoState(pagamentoSaldato):Message" id="areadiagram_map_vr0o5mKFYGwwHicc" href="Message_vr0o5mKFYGwwHicd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="17.0, 745.0, 17.0, 759.0, 212.0, 759.0, 212.0, 745.0" coords2="17.0, 745.0, 17.0, 759.0, 212.0, 759.0, 212.0, 745.0" shape="poly" alt="1.11: :Message" id="areadiagram_map_mH0o5mKFYGwwHicx" href="Message_mH0o5mKFYGwwHicy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="575.0, 182.0, 575.0, 185.0, 572.0, 185.0, 572.0, 199.0, 575.0, 199.0, 575.0, 222.0, 589.0, 222.0, 589.0, 199.0, 812.0, 199.0, 812.0, 185.0, 589.0, 185.0, 589.0, 182.0" coords2="575.0, 182.0, 575.0, 185.0, 572.0, 185.0, 572.0, 199.0, 575.0, 199.0, 575.0, 222.0, 589.0, 222.0, 589.0, 199.0, 812.0, 199.0, 812.0, 185.0, 589.0, 185.0, 589.0, 182.0" shape="poly" alt=":Anchor" id="areadiagram_map_4D6o5mKFYGwwHid7" href="Anchor_oD6o5mKFYGwwHid6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="505.0, 622.0, 505.0, 732.0, 519.0, 732.0, 519.0, 622.0" coords2="505.0, 622.0, 505.0, 732.0, 519.0, 732.0, 519.0, 622.0" shape="poly" alt=":Anchor" id="areadiagram_map_Jero5mKFYGwwHifJ" href="Anchor_Rero5mKFYGwwHifI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="865.0, 672.0, 865.0, 722.0, 879.0, 722.0, 879.0, 672.0" coords2="865.0, 672.0, 865.0, 722.0, 879.0, 722.0, 879.0, 672.0" shape="poly" alt=":Anchor" id="areadiagram_map_q3vo5mKFYGwwHifj" href="Anchor_y3vo5mKFYGwwHifi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Il 
+      subject &amp;#232; uno statoCamera&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1252, 402, 1382, 442" coords2="1252, 402, 1382, 442" shape="rect" alt="Il subject è uno statoCamera:Note" id="areadiagram_map_PACCy2KAUmggjQ1B" href="NOTE_PACCy2KAUmggjQ1C.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Collegamento 
+      del &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamento&amp;lt;/a&amp;gt; 
+      saldato come osservatore dello &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bkYQqiKGAqACSQ3t&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bkYQqiKGAqACSQ3t');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;stato 
+      camera&amp;lt;/a&amp;gt;&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1612, 472, 1762, 542" coords2="1612, 472, 1762, 542" shape="rect" alt="Collegamento del pagamento saldato come osservatore dello stato camera:Note" id="areadiagram_map_wZE8y2KAUmggjQz4" href="NOTE_wZE8y2KAUmggjQz5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Sommo 
+      il totale gi&amp;#224; versato con il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamento&amp;lt;/a&amp;gt; 
+      passato&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="832, 102, 992, 142" coords2="832, 102, 992, 142" shape="rect" alt="Sommo il totale già versato con il pagamento passato:Note" id="areadiagram_map_nw7cy2KAUmggjQzh" href="NOTE_nw7cy2KAUmggjQzi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Comunicazione 
+      allo stato del &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt;
+&amp;lt;/font&amp;gt;    &amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;del 
+      cambiamento di stato del &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamento&amp;lt;/a&amp;gt;&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="772, 722, 992, 772" coords2="772, 722, 992, 772" shape="rect" alt="Comunicazione allo stato del soggiorno
+del cambiamento di stato del pagamento:Note" id="areadiagram_map_OXvo5mKFYGwwHife" href="NOTE_uXvo5mKFYGwwHiff.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Si 
+      imposta la lista dei subject all'observer&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="462, 732, 582, 792" coords2="462, 732, 582, 792" shape="rect" alt="Si imposta la lista dei subject all'observer:Note" id="areadiagram_map_Juro5mKFYGwwHifE" href="NOTE_puro5mKFYGwwHifF.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Notifichiamo 
+    al pannello relativo ai &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamenti&amp;lt;/a&amp;gt; 
+    la'ggiunta del &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamento&amp;lt;/a&amp;gt;&amp;lt;/font&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="812, 162, 952, 222" coords2="812, 162, 952, 222" shape="rect" alt="Notifichiamo al pannello relativo ai pagamenti la'ggiunta del pagamento:Note" id="areadiagram_map_M96o5mKFYGwwHid2" href="NOTE_s96o5mKFYGwwHid3.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area coords="252, 470, 1642, 592" coords2="252, 470, 1642, 592" shape="rect" alt="Operand9:Interaction Operand" id="areadiagram_map_nl0o5mKFYGwwHia0" href="InteractionOperand_nl0o5mKFYGwwHia1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="252, 453, 1642, 593" coords2="252, 453, 1642, 593" shape="rect" alt="CombinedFragment9:Combined Fragment" id="areadiagram_map_xl0o5mKFYGwwHiaw" href="CombinedFragment_xl0o5mKFYGwwHiax.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1767, 682, 1775, 694" coords2="1767, 682, 1775, 694" shape="rect" alt="Activation:Activation" id="areadiagram_map_q70o5mKFYGwwHics" href="Activation_k70o5mKFYGwwHicq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1167, 412, 1175, 424" coords2="1167, 412, 1175, 424" shape="rect" alt="Activation:Activation" id="areadiagram_map_tF0o5mKFYGwwHiaq" href="Activation_RF0o5mKFYGwwHiao.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="202, 302, 1882, 712" coords2="202, 302, 1882, 712" shape="rect" alt="CombinedFragment8:Combined Fragment" id="areadiagram_map_dx0o5mKFYGwwHiZn" href="CombinedFragment_9x0o5mKFYGwwHiZo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1672, 2, 1872, 792" coords2="1672, 2, 1872, 792" shape="rect" alt="_soggiornoState : SoggiornoState:Lifeline" id="areadiagram_map_BL0o5mKFYGwwHicU" href="InteractionLifeLine_KL0o5mKFYGwwHicT.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="857, 632, 865, 644" coords2="857, 632, 865, 644" shape="rect" alt="Activation:Activation" id="areadiagram_map_JT0o5mKFYGwwHicF" href="Activation_GT0o5mKFYGwwHicD.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1568, 562, 1576, 574" coords2="1568, 562, 1576, 574" shape="rect" alt="Activation:Activation" id="areadiagram_map_CD0o5mKFYGwwHibu" href="Activation_QD0o5mKFYGwwHibs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1512, 2, 1632, 792" coords2="1512, 2, 1632, 792" shape="rect" alt="subject : ISubject:Lifeline" id="areadiagram_map_Wt0o5mKFYGwwHibW" href="InteractionLifeLine_at0o5mKFYGwwHibV.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1407, 512, 1415, 524" coords2="1407, 512, 1415, 524" shape="rect" alt="Activation:Activation" id="areadiagram_map_NN0o5mKFYGwwHibR" href="Activation__N0o5mKFYGwwHibP.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1332, 2, 1492, 792" coords2="1332, 2, 1492, 792" shape="rect" alt="iterator : Iterator&lt;ISubject&gt;:Lifeline" id="areadiagram_map_JV0o5mKFYGwwHia7" href="InteractionLifeLine_hV0o5mKFYGwwHia6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1072, 2, 1272, 792" coords2="1072, 2, 1272, 792" shape="rect" alt="_elencoSubject : java.util.ArrayList:Lifeline" id="areadiagram_map_g50o5mKFYGwwHiaU" href="InteractionLifeLine_fZ0o5mKFYGwwHiaT.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="752, 342, 972, 792" coords2="752, 342, 972, 792" shape="rect" alt="pagamentoSaldato : PagamentoSaldato:Lifeline" id="areadiagram_map_wp0o5mKFYGwwHiaA" href="InteractionLifeLine_NJ0o5mKFYGwwHiZ_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="757, 260, 765, 272" coords2="757, 260, 765, 272" shape="rect" alt="Activation:Activation" id="areadiagram_map_Ex0o5mKFYGwwHiZh" href="Activation_vR0o5mKFYGwwHiZf.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="757, 210, 765, 222" coords2="757, 210, 765, 222" shape="rect" alt="Activation:Activation" id="areadiagram_map_3h0o5mKFYGwwHiZL" href="Activation_jh0o5mKFYGwwHiZJ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="758, 161, 766, 173" coords2="758, 161, 766, 173" shape="rect" alt="Activation:Activation" id="areadiagram_map_NB0o5mKFYGwwHiY1" href="Activation_RB0o5mKFYGwwHiYz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="758, 101, 766, 113" coords2="758, 101, 766, 113" shape="rect" alt="Activation:Activation" id="areadiagram_map_i.0o5mKFYGwwHiYe" href="Activation_4_0o5mKFYGwwHiYc.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="632, 2, 892, 792" coords2="632, 2, 892, 792" shape="rect" alt="_soggiornoContext : SoggiornoContextSubject:Lifeline" id="areadiagram_map_3u0o5mKFYGwwHiYH" href="InteractionLifeLine_gu0o5mKFYGwwHiYG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="202, 320, 1882, 712" coords2="202, 320, 1882, 712" shape="rect" alt="Operand8:Interaction Operand" id="areadiagram_map_wJ0o5mKFYGwwHiZv" href="InteractionOperand_wJ0o5mKFYGwwHiZw.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="277, 62, 285, 764" coords2="277, 62, 285, 764" shape="rect" alt="Activation:Activation" id="areadiagram_map_om0o5mKFYGwwHiW8" href="Activation_XG0o5mKFYGwwHiW6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="212, 2, 352, 792" coords2="212, 2, 352, 792" shape="rect" alt=" : PagamentoSospeso:Lifeline" id="areadiagram_map_a60o5mKFYGwwHiWq" href="InteractionLifeLine_w60o5mKFYGwwHiWp.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

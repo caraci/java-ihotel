@@ -1,0 +1,330 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Class Diagram - StrategiaAmmontareCaparra</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_FT7xCaKGAqACZBQd.html">
+StaticDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_KyXxCaKGAqACZBRb.html">
+ClassDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_uISTCaKGAqACZGgv.html">
+Model : Model</a>
+	</p>
+	<p class="PageTitle">
+		Class Diagram - StrategiaAmmontareCaparra		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/Z_H6kmKGAqACyATF', 'StrategiaAmmontareCaparra\nihotel.vpp://diagram/Z_H6kmKGAqACyATF', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|882.0|62.0|390.0|60.0|Class_1cqsEmKGAqACvRQH.html|Class_1cqsEmKGAqACvRQH.html|m4YGkmKGAqACyAV2" id="optionm4YGkmKGAqACyAV2">ComponentOttieniAmmontareCaparraStrategy : Class</option>
+<option value="shape|1402.0|552.0|360.0|40.0|Class_rcqsEmKGAqACvRQR.html|Class_rcqsEmKGAqACvRQR.html|d0YGkmKGAqACyAYT" id="optiond0YGkmKGAqACyAYT">CompositeOttieniAmmontareCaparraMigliorePerHotelStrategy : Class</option>
+<option value="shape|1822.0|552.0|370.0|40.0|Class_vcqsEmKGAqACvRQY.html|Class_vcqsEmKGAqACvRQY.html|90YGkmKGAqACyAYV" id="option90YGkmKGAqACyAYV">CompositeOttieniAmmontareCaparraMigliorePerPrenotanteStrategy : Class</option>
+<option value="shape|1582.0|362.0|460.0|90.0|Class_o8qsEmKGAqACvRQf.html|Class_o8qsEmKGAqACvRQf.html|D0YGkmKGAqACyAYX" id="optionD0YGkmKGAqACyAYX">CompositeOttieniAmmontareCaparraStrategy : Class</option>
+<option value="shape|912.0|362.0|360.0|40.0|Class_68qsEmKGAqACvRQo.html|Class_68qsEmKGAqACvRQo.html|j0YGkmKGAqACyAYZ" id="optionj0YGkmKGAqACyAYZ">LeafOttieniAmmontareCaparraDurataSoggiornoStrategy : Class</option>
+<option value="shape|372.0|352.0|360.0|40.0|Class_J8qsEmKGAqACvRQz.html|Class_J8qsEmKGAqACvRQz.html|z0YGkmKGAqACyAYb" id="optionz0YGkmKGAqACyAYb">LeafOttieniAmmontareCaparraPrenotanteStrategy : Class</option>
+<option value="shape|2.0|12.0|590.0|160.0|Class_d8qsEmKGAqACvRQ_.html|Class_d8qsEmKGAqACvRQ_.html|L0YGkmKGAqACyAYd" id="optionL0YGkmKGAqACyAYd">StrategiaSoggiornoAmmontareCaparraFactory : Class</option>
+<option value="shape|922.0|522.0|290.0|70.0|Class__8qsEmKGAqACvRRS.html|Class__8qsEmKGAqACvRRS.html|b0YGkmKGAqACyAYf" id="optionb0YGkmKGAqACyAYf">VincoloStrategiaDurataSoggiornoAmmontareCaparra : Class</option>
+<option value="shape|422.0|522.0|260.0|70.0|Class_iCqsEmKGAqACvRRi.html|Class_iCqsEmKGAqACvRRi.html|70YGkmKGAqACyAYh" id="option70YGkmKGAqACyAYh">VincoloStrategiaPrenotanteAmmontareCaparra : Class</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/StrategiaAmmontareCaparra.png" usemap="#diagram_map" class="Image" width="2196" height="596"/>
+					<map name="diagram_map">
+<area coords="1054.0, 402.0, 1054.0, 522.0, 1068.0, 522.0, 1068.0, 402.0" coords2="1054.0, 402.0, 1054.0, 522.0, 1068.0, 522.0, 1068.0, 402.0" shape="poly" alt=":Association" id="areadiagram_map_MKtGGmKGAqACTxqh" href="Association_YKtGGmKGAqACTxqc.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="555.0, 392.0, 555.0, 522.0, 569.0, 522.0, 569.0, 392.0" coords2="555.0, 392.0, 555.0, 522.0, 569.0, 522.0, 569.0, 392.0" shape="poly" alt=":Association" id="areadiagram_map_53jGGmKGAqACTxrC" href="Association_h3jGGmKGAqACTxq9.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="2115.0, 82.0, 2115.0, 85.0, 1272.0, 85.0, 1272.0, 99.0, 2115.0, 99.0, 2115.0, 395.0, 2042.0, 395.0, 2042.0, 409.0, 2115.0, 409.0, 2115.0, 412.0, 2129.0, 412.0, 2129.0, 409.0, 2132.0, 409.0, 2132.0, 395.0, 2129.0, 395.0, 2129.0, 99.0, 2132.0, 99.0, 2132.0, 85.0, 2129.0, 85.0, 2129.0, 82.0" coords2="2115.0, 82.0, 2115.0, 85.0, 1272.0, 85.0, 1272.0, 99.0, 2115.0, 99.0, 2115.0, 395.0, 2042.0, 395.0, 2042.0, 409.0, 2115.0, 409.0, 2115.0, 412.0, 2129.0, 412.0, 2129.0, 409.0, 2132.0, 409.0, 2132.0, 395.0, 2129.0, 395.0, 2129.0, 99.0, 2132.0, 99.0, 2132.0, 85.0, 2129.0, 85.0, 2129.0, 82.0" shape="poly" alt=":Association" id="areadiagram_map_J2XGGmKGAqACTxr3" href="Association_e2XGGmKGAqACTxry.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1055.0, 122.0, 1055.0, 235.0, 1052.0, 235.0, 1052.0, 249.0, 1055.0, 249.0, 1055.0, 252.0, 1069.0, 252.0, 1069.0, 249.0, 1785.0, 249.0, 1785.0, 362.0, 1799.0, 362.0, 1799.0, 249.0, 1802.0, 249.0, 1802.0, 235.0, 1799.0, 235.0, 1799.0, 232.0, 1785.0, 232.0, 1785.0, 235.0, 1069.0, 235.0, 1069.0, 122.0" coords2="1055.0, 122.0, 1055.0, 235.0, 1052.0, 235.0, 1052.0, 249.0, 1055.0, 249.0, 1055.0, 252.0, 1069.0, 252.0, 1069.0, 249.0, 1785.0, 249.0, 1785.0, 362.0, 1799.0, 362.0, 1799.0, 249.0, 1802.0, 249.0, 1802.0, 235.0, 1799.0, 235.0, 1799.0, 232.0, 1785.0, 232.0, 1785.0, 235.0, 1069.0, 235.0, 1069.0, 122.0" shape="poly" alt=":Generalization" id="areadiagram_map_rsYGkmKGAqACyAag" href="Generalization_aTasEmKGAqACvRtG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1054.0, 122.0, 1054.0, 362.0, 1068.0, 362.0, 1068.0, 122.0" coords2="1054.0, 122.0, 1054.0, 362.0, 1068.0, 362.0, 1068.0, 122.0" shape="poly" alt=":Generalization" id="areadiagram_map_bsYGkmKGAqACyAai" href="Generalization__TasEmKGAqACvRtO.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1055.0, 122.0, 1055.0, 235.0, 569.0, 235.0, 569.0, 232.0, 555.0, 232.0, 555.0, 235.0, 552.0, 235.0, 552.0, 249.0, 555.0, 249.0, 555.0, 352.0, 569.0, 352.0, 569.0, 249.0, 1055.0, 249.0, 1055.0, 252.0, 1069.0, 252.0, 1069.0, 249.0, 1072.0, 249.0, 1072.0, 235.0, 1069.0, 235.0, 1069.0, 122.0" coords2="1055.0, 122.0, 1055.0, 235.0, 569.0, 235.0, 569.0, 232.0, 555.0, 232.0, 555.0, 235.0, 552.0, 235.0, 552.0, 249.0, 555.0, 249.0, 555.0, 352.0, 569.0, 352.0, 569.0, 249.0, 1055.0, 249.0, 1055.0, 252.0, 1069.0, 252.0, 1069.0, 249.0, 1072.0, 249.0, 1072.0, 235.0, 1069.0, 235.0, 1069.0, 122.0" shape="poly" alt=":Generalization" id="areadiagram_map_7sYGkmKGAqACyAak" href="Generalization_fTasEmKGAqACvRtZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1765.0, 452.0, 1765.0, 485.0, 1589.0, 485.0, 1589.0, 482.0, 1575.0, 482.0, 1575.0, 485.0, 1572.0, 485.0, 1572.0, 499.0, 1575.0, 499.0, 1575.0, 552.0, 1589.0, 552.0, 1589.0, 499.0, 1765.0, 499.0, 1765.0, 502.0, 1779.0, 502.0, 1779.0, 499.0, 1782.0, 499.0, 1782.0, 485.0, 1779.0, 485.0, 1779.0, 452.0" coords2="1765.0, 452.0, 1765.0, 485.0, 1589.0, 485.0, 1589.0, 482.0, 1575.0, 482.0, 1575.0, 485.0, 1572.0, 485.0, 1572.0, 499.0, 1575.0, 499.0, 1575.0, 552.0, 1589.0, 552.0, 1589.0, 499.0, 1765.0, 499.0, 1765.0, 502.0, 1779.0, 502.0, 1779.0, 499.0, 1782.0, 499.0, 1782.0, 485.0, 1779.0, 485.0, 1779.0, 452.0" shape="poly" alt=":Generalization" id="areadiagram_map_HsYGkmKGAqACyAam" href="Generalization_CTasEmKGAqACvRtE.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1765.0, 452.0, 1765.0, 485.0, 1762.0, 485.0, 1762.0, 499.0, 1765.0, 499.0, 1765.0, 502.0, 1779.0, 502.0, 1779.0, 499.0, 1985.0, 499.0, 1985.0, 552.0, 1999.0, 552.0, 1999.0, 499.0, 2002.0, 499.0, 2002.0, 485.0, 1999.0, 485.0, 1999.0, 482.0, 1985.0, 482.0, 1985.0, 485.0, 1779.0, 485.0, 1779.0, 452.0" coords2="1765.0, 452.0, 1765.0, 485.0, 1762.0, 485.0, 1762.0, 499.0, 1765.0, 499.0, 1765.0, 502.0, 1779.0, 502.0, 1779.0, 499.0, 1985.0, 499.0, 1985.0, 552.0, 1999.0, 552.0, 1999.0, 499.0, 2002.0, 499.0, 2002.0, 485.0, 1999.0, 485.0, 1999.0, 482.0, 1985.0, 482.0, 1985.0, 485.0, 1779.0, 485.0, 1779.0, 452.0" shape="poly" alt=":Generalization" id="areadiagram_map_HsYGkmKGAqACyAao" href="Generalization_yTasEmKGAqACvRtF.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="435.0, -8.0, 435.0, -5.0, 432.0, -5.0, 432.0, 9.0, 435.0, 9.0, 435.0, 12.0, 449.0, 12.0, 449.0, 9.0, 605.0, 9.0, 605.0, 45.0, 592.0, 45.0, 592.0, 59.0, 605.0, 59.0, 605.0, 62.0, 619.0, 62.0, 619.0, 59.0, 622.0, 59.0, 622.0, 45.0, 619.0, 45.0, 619.0, 9.0, 622.0, 9.0, 622.0, -5.0, 619.0, -5.0, 619.0, -8.0, 605.0, -8.0, 605.0, -5.0, 449.0, -5.0, 449.0, -8.0" coords2="435.0, -8.0, 435.0, -5.0, 432.0, -5.0, 432.0, 9.0, 435.0, 9.0, 435.0, 12.0, 449.0, 12.0, 449.0, 9.0, 605.0, 9.0, 605.0, 45.0, 592.0, 45.0, 592.0, 59.0, 605.0, 59.0, 605.0, 62.0, 619.0, 62.0, 619.0, 59.0, 622.0, 59.0, 622.0, 45.0, 619.0, 45.0, 619.0, 9.0, 622.0, 9.0, 622.0, -5.0, 619.0, -5.0, 619.0, -8.0, 605.0, -8.0, 605.0, -5.0, 449.0, -5.0, 449.0, -8.0" shape="poly" alt=":Association" id="areadiagram_map_nsYGkmKGAqACyAaq" href="Association_szasEmKGAqACvRtk.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="882, 62, 1272, 122" coords2="882, 62, 1272, 122" shape="rect" alt="ComponentOttieniAmmontareCaparraStrategy:Class" id="areadiagram_map_m4YGkmKGAqACyAV2" href="Class_1cqsEmKGAqACvRQH.html" onmouseover="storeReferenceAndSubdiagramInfos('882, 62, 1272, 122',new Array('ComponentOttieniAmmontareCaparraStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Strategie/StrategieSoggiorno/AmmontareCaparra/ComponentOttieniAmmontareCaparraStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('882, 62, 1272, 122'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1402, 552, 1762, 592" coords2="1402, 552, 1762, 592" shape="rect" alt="CompositeOttieniAmmontareCaparraMigliorePerHotelStrategy:Class" id="areadiagram_map_d0YGkmKGAqACyAYT" href="Class_rcqsEmKGAqACvRQR.html" onmouseover="storeReferenceAndSubdiagramInfos('1402, 552, 1762, 592',new Array('CompositeOttieniAmmontareCaparraMigliorePerHotelStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/StrategieSoggiorno/AmmontareCaparra/CompositeOttieniAmmontareCaparraMigliorePerHotelStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1402, 552, 1762, 592'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1822, 552, 2192, 592" coords2="1822, 552, 2192, 592" shape="rect" alt="CompositeOttieniAmmontareCaparraMigliorePerPrenotanteStrategy:Class" id="areadiagram_map_90YGkmKGAqACyAYV" href="Class_vcqsEmKGAqACvRQY.html" onmouseover="storeReferenceAndSubdiagramInfos('1822, 552, 2192, 592',new Array('CompositeOttieniAmmontareCaparraMigliorePerPrenotanteStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/StrategieSoggiorno/AmmontareCaparra/CompositeOttieniAmmontareCaparraMigliorePerPrenotanteStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1822, 552, 2192, 592'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1582, 362, 2042, 452" coords2="1582, 362, 2042, 452" shape="rect" alt="CompositeOttieniAmmontareCaparraStrategy:Class" id="areadiagram_map_D0YGkmKGAqACyAYX" href="Class_o8qsEmKGAqACvRQf.html" onmouseover="storeReferenceAndSubdiagramInfos('1582, 362, 2042, 452',new Array('CompositeOttieniAmmontareCaparraStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/StrategieSoggiorno/AmmontareCaparra/CompositeOttieniAmmontareCaparraStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1582, 362, 2042, 452'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="912, 362, 1272, 402" coords2="912, 362, 1272, 402" shape="rect" alt="LeafOttieniAmmontareCaparraDurataSoggiornoStrategy:Class" id="areadiagram_map_j0YGkmKGAqACyAYZ" href="Class_68qsEmKGAqACvRQo.html" onmouseover="storeReferenceAndSubdiagramInfos('912, 362, 1272, 402',new Array('LeafOttieniAmmontareCaparraDurataSoggiornoStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/StrategieSoggiorno/AmmontareCaparra/LeafOttieniAmmontareCaparraDurataSoggiornoStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('912, 362, 1272, 402'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="372, 352, 732, 392" coords2="372, 352, 732, 392" shape="rect" alt="LeafOttieniAmmontareCaparraPrenotanteStrategy:Class" id="areadiagram_map_z0YGkmKGAqACyAYb" href="Class_J8qsEmKGAqACvRQz.html" onmouseover="storeReferenceAndSubdiagramInfos('372, 352, 732, 392',new Array('LeafOttieniAmmontareCaparraPrenotanteStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/StrategieSoggiorno/AmmontareCaparra/LeafOttieniAmmontareCaparraPrenotanteStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('372, 352, 732, 392'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2, 12, 592, 172" coords2="2, 12, 592, 172" shape="rect" alt="StrategiaSoggiornoAmmontareCaparraFactory:Class" id="areadiagram_map_L0YGkmKGAqACyAYd" href="Class_d8qsEmKGAqACvRQ_.html" onmouseover="storeReferenceAndSubdiagramInfos('2, 12, 592, 172',new Array('StrategiaSoggiornoAmmontareCaparraFactory.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Strategie/StrategieSoggiorno/AmmontareCaparra/StrategiaSoggiornoAmmontareCaparraFactory.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2, 12, 592, 172'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta il generico vincolo per la strategia relativa 
+      al calcolo
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      dell'ammontare della caparra che deve fornire il prenotante, tenendo 
+      conto della durata del &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt;.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="922, 522, 1212, 592" coords2="922, 522, 1212, 592" shape="rect" alt="VincoloStrategiaDurataSoggiornoAmmontareCaparra:Class" id="areadiagram_map_b0YGkmKGAqACyAYf" href="Class__8qsEmKGAqACvRRS.html" onmouseover="storeReferenceAndSubdiagramInfos('922, 522, 1212, 592',new Array('VincoloStrategiaDurataSoggiornoAmmontareCaparra.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/StrategieSoggiorno/AmmontareCaparra/VincoloStrategiaDurataSoggiornoAmmontareCaparra.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('922, 522, 1212, 592'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta il generico vincolo per la strategia relativa 
+      al calcolo
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      dell'ammontare della caparra che deve fornire il prenotante, tenendo 
+      conto del prenotante.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="422, 522, 682, 592" coords2="422, 522, 682, 592" shape="rect" alt="VincoloStrategiaPrenotanteAmmontareCaparra:Class" id="areadiagram_map_70YGkmKGAqACyAYh" href="Class_iCqsEmKGAqACvRRi.html" onmouseover="storeReferenceAndSubdiagramInfos('422, 522, 682, 592',new Array('VincoloStrategiaPrenotanteAmmontareCaparra.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/StrategieSoggiorno/AmmontareCaparra/VincoloStrategiaPrenotanteAmmontareCaparra.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('422, 522, 682, 592'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Class Diagram - Cataloghi</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_FT7xCaKGAqACZBQd.html">
+StaticDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_KyXxCaKGAqACZBRb.html">
+ClassDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_uISTCaKGAqACZGgv.html">
+Model : Model</a>
+	</p>
+	<p class="PageTitle">
+		Class Diagram - Cataloghi		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/.a1mkmKGAqACyA3s', 'Cataloghi\nihotel.vpp://diagram/.a1mkmKGAqACyA3s', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|2.0|412.0|480.0|120.0|Class_pwJpCaKGAqACZBfE.html|Class_pwJpCaKGAqACZBfE.html|zkNmkmKGAqACyA4S" id="optionzkNmkmKGAqACyA4S">CatalogoCamere : Class</option>
+<option value="shape|32.0|162.0|450.0|120.0|Class_cIJpCaKGAqACZBfW.html|Class_cIJpCaKGAqACZBfW.html|rkNmkmKGAqACyA4U" id="optionrkNmkmKGAqACyA4U">CatalogoServiziInterni : Class</option>
+<option value="shape|602.0|412.0|450.0|150.0|Class_LIJpCaKGAqACZBfo.html|Class_LIJpCaKGAqACZBfo.html|bkNmkmKGAqACyA4W" id="optionbkNmkmKGAqACyA4W">DescrizioneCamera : Class</option>
+<option value="shape|602.0|162.0|400.0|170.0|Class_BoJpCaKGAqACZBf8.html|Class_BoJpCaKGAqACZBf8.html|7kNmkmKGAqACyA4Y" id="option7kNmkmKGAqACyA4Y">DescrizioneServizioInterno : Class</option>
+<option value="shape|652.0|662.0|290.0|80.0|Class_wYJpCaKGAqACZBgM.html|Class_wYJpCaKGAqACZBgM.html|7kNmkmKGAqACyA4a" id="option7kNmkmKGAqACyA4a">PrezzoCamera : Class</option>
+<option value="shape|602.0|2.0|220.0|80.0|Class_cYJpCaKGAqACZBgS.html|Class_cYJpCaKGAqACZBgS.html|HkNmkmKGAqACyA4c" id="optionHkNmkmKGAqACyA4c">PrezzoServizioInterno : Class</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Cataloghi.png" usemap="#diagram_map" class="Image" width="1056" height="746"/>
+					<map name="diagram_map">
+<area coords="355.0, 382.0, 355.0, 385.0, 352.0, 385.0, 352.0, 399.0, 355.0, 399.0, 355.0, 412.0, 369.0, 412.0, 369.0, 399.0, 495.0, 399.0, 495.0, 435.0, 482.0, 435.0, 482.0, 449.0, 495.0, 449.0, 495.0, 452.0, 509.0, 452.0, 509.0, 449.0, 512.0, 449.0, 512.0, 435.0, 509.0, 435.0, 509.0, 399.0, 512.0, 399.0, 512.0, 385.0, 509.0, 385.0, 509.0, 382.0, 495.0, 382.0, 495.0, 385.0, 369.0, 385.0, 369.0, 382.0" coords2="355.0, 382.0, 355.0, 385.0, 352.0, 385.0, 352.0, 399.0, 355.0, 399.0, 355.0, 412.0, 369.0, 412.0, 369.0, 399.0, 495.0, 399.0, 495.0, 435.0, 482.0, 435.0, 482.0, 449.0, 495.0, 449.0, 495.0, 452.0, 509.0, 452.0, 509.0, 449.0, 512.0, 449.0, 512.0, 435.0, 509.0, 435.0, 509.0, 399.0, 512.0, 399.0, 512.0, 385.0, 509.0, 385.0, 509.0, 382.0, 495.0, 382.0, 495.0, 385.0, 369.0, 385.0, 369.0, 382.0" shape="poly" alt=":Association" id="areadiagram_map_XkNmkmKGAqACyA4e" href="Association_bxJpCaKGAqACZB0G.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="365.0, 132.0, 365.0, 135.0, 362.0, 135.0, 362.0, 149.0, 365.0, 149.0, 365.0, 162.0, 379.0, 162.0, 379.0, 149.0, 495.0, 149.0, 495.0, 185.0, 482.0, 185.0, 482.0, 199.0, 495.0, 199.0, 495.0, 202.0, 509.0, 202.0, 509.0, 199.0, 512.0, 199.0, 512.0, 185.0, 509.0, 185.0, 509.0, 149.0, 512.0, 149.0, 512.0, 135.0, 509.0, 135.0, 509.0, 132.0, 495.0, 132.0, 495.0, 135.0, 379.0, 135.0, 379.0, 132.0" coords2="365.0, 132.0, 365.0, 135.0, 362.0, 135.0, 362.0, 149.0, 365.0, 149.0, 365.0, 162.0, 379.0, 162.0, 379.0, 149.0, 495.0, 149.0, 495.0, 185.0, 482.0, 185.0, 482.0, 199.0, 495.0, 199.0, 495.0, 202.0, 509.0, 202.0, 509.0, 199.0, 512.0, 199.0, 512.0, 185.0, 509.0, 185.0, 509.0, 149.0, 512.0, 149.0, 512.0, 135.0, 509.0, 135.0, 509.0, 132.0, 495.0, 132.0, 495.0, 135.0, 379.0, 135.0, 379.0, 132.0" shape="poly" alt=":Association" id="areadiagram_map_XkNmkmKGAqACyA4g" href="Association_OJJpCaKGAqACZB0Y.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="785.0, 562.0, 785.0, 662.0, 799.0, 662.0, 799.0, 562.0" coords2="785.0, 562.0, 785.0, 662.0, 799.0, 662.0, 799.0, 562.0" shape="poly" alt=":Association" id="areadiagram_map_3kNmkmKGAqACyA4i" href="Association_tJJpCaKGAqACZB0f.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="705.0, 82.0, 705.0, 162.0, 719.0, 162.0, 719.0, 82.0" coords2="705.0, 82.0, 705.0, 162.0, 719.0, 162.0, 719.0, 82.0" shape="poly" alt=":Association" id="areadiagram_map_PkNmkmKGAqACyA4k" href="Association_4pJpCaKGAqACZB0s.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="482.0, 215.0, 482.0, 229.0, 602.0, 229.0, 602.0, 215.0" coords2="482.0, 215.0, 482.0, 229.0, 602.0, 229.0, 602.0, 215.0" shape="poly" alt=":Dependency" id="areadiagram_map_n_9mkmKGAqACyA5A" href="Dependency_L_9mkmKGAqACyA4_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="482.0, 475.0, 482.0, 489.0, 602.0, 489.0, 602.0, 475.0" coords2="482.0, 475.0, 482.0, 489.0, 602.0, 489.0, 602.0, 475.0" shape="poly" alt=":Dependency" id="areadiagram_map_HRrmkmKGAqACyA5z" href="Dependency_LRrmkmKGAqACyA5y.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rispecchia un vero e proprio catalogo di &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camere&amp;lt;/a&amp;gt; 
+      del dominio applicativo. Ha quindi il compito di
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      mantere e fornire gli oggetti software che descrivono le &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camere&amp;lt;/a&amp;gt; 
+      dell'albergo.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2, 412, 482, 532" coords2="2, 412, 482, 532" shape="rect" alt="CatalogoCamere:Class" id="areadiagram_map_zkNmkmKGAqACyA4S" href="Class_pwJpCaKGAqACZBfE.html" onmouseover="storeReferenceAndSubdiagramInfos('2, 412, 482, 532',new Array('CatalogoCamere.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Cataloghi/CatalogoCamere.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2, 412, 482, 532'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rispecchia un vero e proprio catalogo di &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#2PNiLaKGAqACkgcE&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('2PNiLaKGAqACkgcE');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizi 
+      interni&amp;lt;/a&amp;gt; offerti dall'albergo. Ha quindi il compito di
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      mantere e fornire gli oggetti software che descrivono i &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#2PNiLaKGAqACkgcE&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('2PNiLaKGAqACkgcE');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizi 
+      interni&amp;lt;/a&amp;gt;. Fanno parte dei &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#2PNiLaKGAqACkgcE&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('2PNiLaKGAqACkgcE');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizi 
+      interni&amp;lt;/a&amp;gt; tutti quei
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizi&amp;lt;/a&amp;gt; 
+      che l'albergo offre direttamente al &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;cliente&amp;lt;/a&amp;gt;, 
+      senza la necessit&amp;#224; che questo passi per terze parti.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="32, 162, 482, 282" coords2="32, 162, 482, 282" shape="rect" alt="CatalogoServiziInterni:Class" id="areadiagram_map_rkNmkmKGAqACyA4U" href="Class_cIJpCaKGAqACZBfW.html" onmouseover="storeReferenceAndSubdiagramInfos('32, 162, 482, 282',new Array('CatalogoServiziInterni.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Cataloghi/CatalogoServiziInterni.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('32, 162, 482, 282'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta il descrittore di una &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;. 
+      Ha quindi il compito di mantere le informazioni generali
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      della &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;(e.g.: 
+      prezzo). L'uso di questo descrittore si basa non sulla singola &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;, 
+      ma sul fatto che l'albergo
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      ha pi&amp;#249; &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camere&amp;lt;/a&amp;gt; 
+      della stessa tipologia, quindi che condividono le stesse informazioni, 
+      ed aiuta a ridurre la ridondanza.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="602, 412, 1052, 562" coords2="602, 412, 1052, 562" shape="rect" alt="DescrizioneCamera:Class" id="areadiagram_map_bkNmkmKGAqACyA4W" href="Class_LIJpCaKGAqACZBfo.html" onmouseover="storeReferenceAndSubdiagramInfos('602, 412, 1052, 562',new Array('DescrizioneCamera.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Cataloghi/DescrizioneCamera.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('602, 412, 1052, 562'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta il descrittore di un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#2PNiLaKGAqACkgcE&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('2PNiLaKGAqACkgcE');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizio 
+      interno&amp;lt;/a&amp;gt;. Ha quindi il compito di mantere le informazioni generali
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      sul &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizio&amp;lt;/a&amp;gt;(e.g.: 
+      prezzo). L'uso di questo descrittore si basa non sul singolo &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizio&amp;lt;/a&amp;gt;, 
+      ma sul fatto che ci possono essere
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      pi&amp;#249; &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizi&amp;lt;/a&amp;gt; 
+      che condividono le stesse informazioni. L'uso del descrittore aiuta a 
+      ridurre la ridondanza, ed &amp;#232; abbinato
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      al codice del &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizio&amp;lt;/a&amp;gt;.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="602, 162, 1002, 332" coords2="602, 162, 1002, 332" shape="rect" alt="DescrizioneServizioInterno:Class" id="areadiagram_map_7kNmkmKGAqACyA4Y" href="Class_BoJpCaKGAqACZBf8.html" onmouseover="storeReferenceAndSubdiagramInfos('602, 162, 1002, 332',new Array('DescrizioneServizioInterno.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Cataloghi/DescrizioneServizioInterno.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('602, 162, 1002, 332'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta il prezzo che pu&amp;#242; avere una &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;. 
+      Poich&amp;#232; nella realt&amp;#224; una &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt; 
+      assume prezzi
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      differenti da &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      a &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt;, 
+      &amp;#232; stato legato al prezzo un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      di validit&amp;#224;. (e.g.: La &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt; 
+      X costa P1 nel &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      1
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      ma costa P2 nel &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      2).
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="652, 662, 942, 742" coords2="652, 662, 942, 742" shape="rect" alt="PrezzoCamera:Class" id="areadiagram_map_7kNmkmKGAqACyA4a" href="Class_wYJpCaKGAqACZBgM.html" onmouseover="storeReferenceAndSubdiagramInfos('652, 662, 942, 742',new Array('PrezzoCamera.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Cataloghi/PrezzoCamera.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('652, 662, 942, 742'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta il prezzo che pu&amp;#242; avere un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#2PNiLaKGAqACkgcE&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('2PNiLaKGAqACkgcE');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizio 
+      interno&amp;lt;/a&amp;gt;. Poich&amp;#232; nella realt&amp;#224; un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizio&amp;lt;/a&amp;gt; 
+      pu&amp;#242; avere prezzi
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      differenti da &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      a &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt;, 
+      &amp;#232; stato legato al prezzo un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      di validit&amp;#224;. (e.g.: Il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizio&amp;lt;/a&amp;gt; 
+      X costa P1 nel &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      1
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      ma costa P2 nel &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      2).
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="602, 2, 822, 82" coords2="602, 2, 822, 82" shape="rect" alt="PrezzoServizioInterno:Class" id="areadiagram_map_HkNmkmKGAqACyA4c" href="Class_cYJpCaKGAqACZBgS.html" onmouseover="storeReferenceAndSubdiagramInfos('602, 2, 822, 82',new Array('PrezzoServizioInterno.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Cataloghi/PrezzoServizioInterno.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('602, 2, 822, 82'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

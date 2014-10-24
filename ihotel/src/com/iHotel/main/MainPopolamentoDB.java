@@ -493,7 +493,7 @@ public class MainPopolamentoDB {
 		dsRose.set_nome("Fiori in camera");
 		dsRose.set_prezziServizio(prezziRose);
 		
-		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "dbihotel");
+		ObjectContainer db=Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "./configs/dbihotel");
 		try {
 		
 			//aggiunta dei periodi

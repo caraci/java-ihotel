@@ -1,0 +1,260 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - SD_PagaConCarta_GestorePagamentiElettronici</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_1wDkG8KAUBRkpA1o.html">
+DynamicDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_ULigfiKGAqACSQmT.html">
+ModificaSoggiorno_ScenarioSuccesso : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_gNNQ5mKFYGwwHh4h.html">
+SD_PagaConCarta_GestorePagamentiElettronici : Model</a>
+	</p>
+	<p class="PageTitle">
+		Sequence Diagram - SD_PagaConCarta_GestorePagamentiElettronici		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/HzjQ5mKFYGwwHh4p', 'SD_PagaConCarta_GestorePagamentiElettronici\nihotel.vpp://diagram/HzjQ5mKFYGwwHh4p', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|340.0|522.0|140.0|60.0|NOTE_Uw9Sy2KAUmggjRFz.html|NOTE_Uw9Sy2KAUmggjRFz.html|kw9Sy2KAUmggjRFy" id="optionkw9Sy2KAUmggjRFy">Unnamed Note : Note</option>
+<option value="shape|950.0|192.0|160.0|60.0|NOTE_8HRSy2KAUmggjRFd.html|NOTE_8HRSy2KAUmggjRFd.html|8HRSy2KAUmggjRFc" id="option8HRSy2KAUmggjRFc">Unnamed Note : Note</option>
+<option value="shape|690.0|112.0|140.0|40.0|NOTE_eq6Sy2KAUmggjRFF.html|NOTE_eq6Sy2KAUmggjRFF.html|uq6Sy2KAUmggjRFE" id="optionuq6Sy2KAUmggjRFE">Unnamed Note : Note</option>
+<option value="shape|80.0|318.0|1170.0|123.0|InteractionOperand_DiVBDmKFYGwwHhEB.html|InteractionOperand_DiVBDmKFYGwwHhEB.html|DiVBDmKFYGwwHhEA" id="optionDiVBDmKFYGwwHhEA">Operand3 : Interaction Operand</option>
+<option value="shape|1126.0|412.0|8.0|12.0|Activation_UqVBDmKFYGwwHhE5.html|Activation_UqVBDmKFYGwwHhE5.html|KqVBDmKFYGwwHhE7" id="optionKqVBDmKFYGwwHhE7">Activation : Activation</option>
+<option value="shape|80.0|302.0|1170.0|140.0|CombinedFragment_OiVBDmKFYGwwHhD7.html|CombinedFragment_OiVBDmKFYGwwHhD7.html|2iVBDmKFYGwwHhD6" id="option2iVBDmKFYGwwHhD6">CombinedFragment3 : Combined Fragment</option>
+<option value="shape|1020.0|2.0|220.0|520.0|InteractionLifeLine_FyVBDmKFYGwwHhEg.html|InteractionLifeLine_FyVBDmKFYGwwHhEg.html|tyVBDmKFYGwwHhEi" id="optiontyVBDmKFYGwwHhEi">pagaConCarta : Lifeline</option>
+<option value="shape|646.0|372.0|8.0|12.0|Activation_jSVBDmKFYGwwHhEa.html|Activation_jSVBDmKFYGwwHhEa.html|XSVBDmKFYGwwHhEc" id="optionXSVBDmKFYGwwHhEc">Activation : Activation</option>
+<option value="shape|646.0|262.0|8.0|12.0|Activation_dCVBDmKFYGwwHhDy.html|Activation_dCVBDmKFYGwwHhDy.html|bCVBDmKFYGwwHhD0" id="optionbCVBDmKFYGwwHhD0">Activation : Activation</option>
+<option value="shape|876.0|212.0|8.0|12.0|Activation_28VBDmKFYGwwHhDc.html|Activation_28VBDmKFYGwwHhDc.html|p8VBDmKFYGwwHhDe" id="optionp8VBDmKFYGwwHhDe">Activation : Activation</option>
+<option value="shape|780.0|2.0|200.0|520.0|InteractionLifeLine__sVBDmKFYGwwHhDF.html|InteractionLifeLine__sVBDmKFYGwwHhDF.html|wcVBDmKFYGwwHhDH" id="optionwcVBDmKFYGwwHhDH">lettoreCarta : Lifeline</option>
+<option value="shape|646.0|162.0|8.0|12.0|Activation_qsVBDmKFYGwwHhC_.html|Activation_qsVBDmKFYGwwHhC_.html|esVBDmKFYGwwHhDB" id="optionesVBDmKFYGwwHhDB">Activation : Activation</option>
+<option value="shape|560.0|2.0|180.0|520.0|InteractionLifeLine_v0VBDmKFYGwwHhCp.html|InteractionLifeLine_v0VBDmKFYGwwHhCp.html|IMVBDmKFYGwwHhCq" id="optionIMVBDmKFYGwwHhCq">serviceFactory : Lifeline</option>
+<option value="shape|451.0|112.0|8.0|12.0|Activation_60VBDmKFYGwwHhCj.html|Activation_60VBDmKFYGwwHhCj.html|h0VBDmKFYGwwHhCl" id="optionh0VBDmKFYGwwHhCl">Activation : Activation</option>
+<option value="shape|400.0|2.0|110.0|520.0|InteractionLifeLine_VkVBDmKFYGwwHhCN.html|InteractionLifeLine_VkVBDmKFYGwwHhCN.html|zkVBDmKFYGwwHhCO" id="optionzkVBDmKFYGwwHhCO">Unnamed Lifeline : Lifeline</option>
+<option value="shape|176.0|62.0|8.0|432.0|Activation_VoVBDmKFYGwwHg_d.html|Activation_VoVBDmKFYGwwHg_d.html|7oVBDmKFYGwwHg.f" id="option7oVBDmKFYGwwHg.f">Activation : Activation</option>
+<option value="shape|90.0|2.0|180.0|520.0|InteractionLifeLine_1wVBDmKFYGwwHg_M.html|InteractionLifeLine_1wVBDmKFYGwwHg_M.html|EIVBDmKFYGwwHg.N" id="optionEIVBDmKFYGwwHg.N">Unnamed Lifeline : Lifeline</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/SD_PagaConCarta_GestorePagamentiElettronici.png" usemap="#diagram_map" class="Image" width="1254" height="586"/>
+					<map name="diagram_map">
+<area coords="572.0, 112.0, 572.0, 115.0, 569.0, 115.0, 569.0, 129.0, 572.0, 129.0, 572.0, 172.0, 586.0, 172.0, 586.0, 129.0, 690.0, 129.0, 690.0, 115.0, 586.0, 115.0, 586.0, 112.0" coords2="572.0, 112.0, 572.0, 115.0, 569.0, 115.0, 569.0, 129.0, 572.0, 129.0, 572.0, 172.0, 586.0, 172.0, 586.0, 129.0, 690.0, 129.0, 690.0, 115.0, 586.0, 115.0, 586.0, 112.0" shape="poly" alt=":Anchor" id="areadiagram_map_rq6Sy2KAUmggjRFJ" href="Anchor_zq6Sy2KAUmggjRFI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="603.0, 222.0, 603.0, 225.0, 600.0, 225.0, 600.0, 239.0, 603.0, 239.0, 603.0, 272.0, 617.0, 272.0, 617.0, 239.0, 950.0, 239.0, 950.0, 225.0, 617.0, 225.0, 617.0, 222.0" coords2="603.0, 222.0, 603.0, 225.0, 600.0, 225.0, 600.0, 239.0, 603.0, 239.0, 603.0, 272.0, 617.0, 272.0, 617.0, 239.0, 950.0, 239.0, 950.0, 225.0, 617.0, 225.0, 617.0, 222.0" shape="poly" alt=":Anchor" id="areadiagram_map_ZHRSy2KAUmggjRFh" href="Anchor_pHRSy2KAUmggjRFg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="313.0, 360.0, 313.0, 535.0, 310.0, 535.0, 310.0, 549.0, 313.0, 549.0, 313.0, 552.0, 327.0, 552.0, 327.0, 549.0, 340.0, 549.0, 340.0, 535.0, 327.0, 535.0, 327.0, 360.0" coords2="313.0, 360.0, 313.0, 535.0, 310.0, 535.0, 310.0, 549.0, 313.0, 549.0, 313.0, 552.0, 327.0, 552.0, 327.0, 549.0, 340.0, 549.0, 340.0, 535.0, 327.0, 535.0, 327.0, 360.0" shape="poly" alt=":Anchor" id="areadiagram_map_.w9Sy2KAUmggjRF3" href="Anchor_ew9Sy2KAUmggjRF2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="35.0, 55.0, 35.0, 69.0, 90.0, 69.0, 90.0, 55.0" coords2="35.0, 55.0, 35.0, 69.0, 90.0, 69.0, 90.0, 55.0" shape="poly" alt="1: pagaConCarta(importoDaPagareConCarta : Prezzo) : Pagamento:Message" id="areadiagram_map_PIVBDmKFYGwwHg.S" href="Message_PIVBDmKFYGwwHg_T.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="270.0, 105.0, 270.0, 119.0, 400.0, 119.0, 400.0, 105.0" coords2="270.0, 105.0, 270.0, 119.0, 400.0, 119.0, 400.0, 105.0" shape="poly" alt="1.1: serviceFactory= getInstance() : ServiceFactory:Message" id="areadiagram_map_7UVBDmKFYGwwHhCV" href="Message_7UVBDmKFYGwwHhCW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="270.0, 155.0, 270.0, 169.0, 560.0, 169.0, 560.0, 155.0" coords2="270.0, 155.0, 270.0, 169.0, 560.0, 169.0, 560.0, 155.0" shape="poly" alt="1.2: lettoreCarta= serviceFactory.get_lettoreAdapter():Message" id="areadiagram_map_jMVBDmKFYGwwHhCx" href="Message_jMVBDmKFYGwwHhCy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="270.0, 205.0, 270.0, 219.0, 780.0, 219.0, 780.0, 205.0" coords2="270.0, 205.0, 270.0, 219.0, 780.0, 219.0, 780.0, 205.0" shape="poly" alt="1.3: leggiCarta() : CartaDiCredito:Message" id="areadiagram_map_TcVBDmKFYGwwHhDO" href="Message_zcVBDmKFYGwwHhDP.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="270.0, 255.0, 270.0, 269.0, 560.0, 269.0, 560.0, 255.0" coords2="270.0, 255.0, 270.0, 269.0, 560.0, 269.0, 560.0, 255.0" shape="poly" alt="1.4: creditAuth = serviceFactory.get_creditAuthAdapter():Message" id="areadiagram_map_kCVBDmKFYGwwHhDk" href="Message_kCVBDmKFYGwwHhDl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="270.0, 363.0, 270.0, 377.0, 560.0, 377.0, 560.0, 363.0" coords2="270.0, 363.0, 270.0, 377.0, 560.0, 377.0, 560.0, 363.0" shape="poly" alt="1.5: pagaConCarta = serviceFactory.get_pagamentoCartaAdapter():Message" id="areadiagram_map_ESVBDmKFYGwwHhEM" href="Message_ESVBDmKFYGwwHhEN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="270.0, 403.0, 270.0, 417.0, 1020.0, 417.0, 1020.0, 403.0" coords2="270.0, 403.0, 270.0, 417.0, 1020.0, 417.0, 1020.0, 403.0" shape="poly" alt="1.6: eseguiPagamento(prezzo : Prezzo = importoDaPagareConCarta, carta : CartaDiCredito = cartaDiCredito) : PagamentoConCarta:Message" id="areadiagram_map_2KVBDmKFYGwwHhEr" href="Message_2KVBDmKFYGwwHhEs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="35.0, 473.0, 35.0, 487.0, 90.0, 487.0, 90.0, 473.0" coords2="35.0, 473.0, 35.0, 487.0, 90.0, 487.0, 90.0, 473.0" shape="poly" alt="1.7: :Message" id="areadiagram_map_waVBDmKFYGwwHhFA" href="Message_IaVBDmKFYGwwHhFB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Recupero 
+      il sistema per l'esecuzione del &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamento&amp;lt;/a&amp;gt;&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="340, 522, 480, 582" coords2="340, 522, 480, 582" shape="rect" alt="Recupero il sistema per l'esecuzione del pagamento:Note" id="areadiagram_map_kw9Sy2KAUmggjRFy" href="NOTE_Uw9Sy2KAUmggjRFz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Recupero 
+      il sistema per l'autorizzazione al &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamento&amp;lt;/a&amp;gt;&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="950, 192, 1110, 252" coords2="950, 192, 1110, 252" shape="rect" alt="Recupero il sistema per l'autorizzazione al pagamento:Note" id="areadiagram_map_8HRSy2KAUmggjRFc" href="NOTE_8HRSy2KAUmggjRFd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Recupero 
+      il lettore carta&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="690, 112, 830, 152" coords2="690, 112, 830, 152" shape="rect" alt="Recupero il lettore carta:Note" id="areadiagram_map_uq6Sy2KAUmggjRFE" href="NOTE_eq6Sy2KAUmggjRFF.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area coords="80, 318, 1250, 441" coords2="80, 318, 1250, 441" shape="rect" alt="Operand3:Interaction Operand" id="areadiagram_map_DiVBDmKFYGwwHhEA" href="InteractionOperand_DiVBDmKFYGwwHhEB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1126, 412, 1134, 424" coords2="1126, 412, 1134, 424" shape="rect" alt="Activation:Activation" id="areadiagram_map_KqVBDmKFYGwwHhE7" href="Activation_UqVBDmKFYGwwHhE5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="646, 372, 654, 384" coords2="646, 372, 654, 384" shape="rect" alt="Activation:Activation" id="areadiagram_map_XSVBDmKFYGwwHhEc" href="Activation_jSVBDmKFYGwwHhEa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="80, 302, 1250, 442" coords2="80, 302, 1250, 442" shape="rect" alt="CombinedFragment3:Combined Fragment" id="areadiagram_map_2iVBDmKFYGwwHhD6" href="CombinedFragment_OiVBDmKFYGwwHhD7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1020, 2, 1240, 522" coords2="1020, 2, 1240, 522" shape="rect" alt="pagaConCarta : IPagamentoCartaAdapter:Lifeline" id="areadiagram_map_tyVBDmKFYGwwHhEi" href="InteractionLifeLine_FyVBDmKFYGwwHhEg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="646, 262, 654, 274" coords2="646, 262, 654, 274" shape="rect" alt="Activation:Activation" id="areadiagram_map_bCVBDmKFYGwwHhD0" href="Activation_dCVBDmKFYGwwHhDy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="876, 212, 884, 224" coords2="876, 212, 884, 224" shape="rect" alt="Activation:Activation" id="areadiagram_map_p8VBDmKFYGwwHhDe" href="Activation_28VBDmKFYGwwHhDc.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="780, 2, 980, 522" coords2="780, 2, 980, 522" shape="rect" alt="lettoreCarta : ILettoreCarteAdapter:Lifeline" id="areadiagram_map_wcVBDmKFYGwwHhDH" href="InteractionLifeLine__sVBDmKFYGwwHhDF.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="646, 162, 654, 174" coords2="646, 162, 654, 174" shape="rect" alt="Activation:Activation" id="areadiagram_map_esVBDmKFYGwwHhDB" href="Activation_qsVBDmKFYGwwHhC_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="560, 2, 740, 522" coords2="560, 2, 740, 522" shape="rect" alt="serviceFactory : ServiceFactory:Lifeline" id="areadiagram_map_IMVBDmKFYGwwHhCq" href="InteractionLifeLine_v0VBDmKFYGwwHhCp.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="451, 112, 459, 124" coords2="451, 112, 459, 124" shape="rect" alt="Activation:Activation" id="areadiagram_map_h0VBDmKFYGwwHhCl" href="Activation_60VBDmKFYGwwHhCj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="400, 2, 510, 522" coords2="400, 2, 510, 522" shape="rect" alt=" : ServiceFactory:Lifeline" id="areadiagram_map_zkVBDmKFYGwwHhCO" href="InteractionLifeLine_VkVBDmKFYGwwHhCN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="176, 62, 184, 494" coords2="176, 62, 184, 494" shape="rect" alt="Activation:Activation" id="areadiagram_map_7oVBDmKFYGwwHg.f" href="Activation_VoVBDmKFYGwwHg_d.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="90, 2, 270, 522" coords2="90, 2, 270, 522" shape="rect" alt=" : GestorePagamentiElettronici:Lifeline" id="areadiagram_map_EIVBDmKFYGwwHg.N" href="InteractionLifeLine_1wVBDmKFYGwwHg_M.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

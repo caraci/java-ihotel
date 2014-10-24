@@ -1,0 +1,548 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Class Diagram - View</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_FT7xCaKGAqACZBQd.html">
+StaticDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_KyXxCaKGAqACZBRb.html">
+ClassDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_Vl_zCaKGAqACZGly.html">
+View : Model</a>
+	</p>
+	<p class="PageTitle">
+		Class Diagram - View		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/A4RzCaKGAqACZGl5', 'View\nihotel.vpp://diagram/A4RzCaKGAqACZGl5', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|262.0|1082.0|90.0|60.0|Class_r0JpCaKGAqACZBi1.html|Class_r0JpCaKGAqACZBi1.html|vpeuGmKGAqACTx8h" id="optionvpeuGmKGAqACTx8h">IObserver : Class</option>
+<option value="shape|872.0|1222.0|230.0|60.0|Class_FdsNimKGAqAC6h60.html|Class_FdsNimKGAqAC6h60.html|qkDOGmKGAqACTx5t" id="optionqkDOGmKGAqACTx5t">VPGP_InfoCamera_SoggiornoTerminato : Class</option>
+<option value="shape|1752.0|712.0|300.0|110.0|Class_xhsNimKGAqAC6hzQ.html|Class_xhsNimKGAqAC6hzQ.html|ekDOGmKGAqACTx5v" id="optionekDOGmKGAqACTx5v">VPC_AggiungiOspiti : Class</option>
+<option value="shape|1602.0|1222.0|220.0|50.0|Class_BdsNimKGAqAC6h6u.html|Class_BdsNimKGAqAC6h6u.html|.kDOGmKGAqACTx5x" id="option.kDOGmKGAqACTx5x">VPGP_InfoCamera_SoggiornoPrenotato : Class</option>
+<option value="shape|982.0|12.0|300.0|150.0|Class_23qsEmKGAqACvRlD.html|Class_23qsEmKGAqACvRlD.html|.kDOGmKGAqACTx5z" id="option.kDOGmKGAqACTx5z">ViewFrameApplication : Class</option>
+<option value="shape|2072.0|712.0|320.0|150.0|Class_u1sNimKGAqAC6h41.html|Class_u1sNimKGAqAC6h41.html|BkDOGmKGAqACTx51" id="optionBkDOGmKGAqACTx51">VPCP_SelezionePeriodoTipologie : Class</option>
+<option value="shape|2.0|712.0|510.0|200.0|Class_BFsNimKGAqAC6h3t.html|Class_BFsNimKGAqAC6h3t.html|hkDOGmKGAqACTx53" id="optionhkDOGmKGAqACTx53">VPCP_SelezioneCamereDatiOspite_Observer : Class</option>
+<option value="shape|1442.0|2.0|500.0|110.0|Class_JBJpCaKGAqACZBx9.html|Class_JBJpCaKGAqACZBx9.html|RkDOGmKGAqACTx55" id="optionRkDOGmKGAqACTx55">View : Class</option>
+<option value="shape|1322.0|712.0|410.0|170.0|Class_OrqsEmKGAqACvRjX.html|Class_OrqsEmKGAqACvRjX.html|JkDOGmKGAqACTx57" id="optionJkDOGmKGAqACTx57">VP_Home : Class</option>
+<option value="shape|1122.0|1222.0|230.0|50.0|Class_CdsNimKGAqAC6h6i.html|Class_CdsNimKGAqAC6h6i.html|pkDOGmKGAqACTx59" id="optionpkDOGmKGAqACTx59">VPGP_InfoCamera_SoggiornoCancellato : Class</option>
+<option value="shape|1372.0|192.0|250.0|230.0|Class_cPqsEmKGAqACvRlX.html|Class_cPqsEmKGAqACvRlX.html|pkDOGmKGAqACTx5_" id="optionpkDOGmKGAqACTx5_">ViewPanelContentPane : Class</option>
+<option value="shape|532.0|712.0|470.0|350.0|Class_LhqsEmKGAqACvRbf.html|Class_LhqsEmKGAqACvRbf.html|5kDOGmKGAqACTx6B" id="option5kDOGmKGAqACTx6B">VPP_RiepilogoPagamenti_Observer : Class</option>
+<option value="shape|1672.0|192.0|490.0|190.0|Class_8xsNimKGAqAC6h1m.html|Class_8xsNimKGAqAC6h1m.html|FkDOGmKGAqACTx6D" id="optionFkDOGmKGAqACTx6D">VPC_AggiungiOspiti_PanelCamera : Class</option>
+<option value="shape|1022.0|712.0|280.0|200.0|Class_zNsNimKGAqAC6h5p.html|Class_zNsNimKGAqAC6h5p.html|lkDOGmKGAqACTx6F" id="optionlkDOGmKGAqACTx6F">VPGP_InfoCamera : Class</option>
+<option value="shape|1372.0|1222.0|210.0|50.0|Class_GdsNimKGAqAC6h6o.html|Class_GdsNimKGAqAC6h6o.html|VkDOGmKGAqACTx6H" id="optionVkDOGmKGAqACTx6H">VPGP_InfoCamera_SoggiornoInCorso : Class</option>
+<option value="shape|2412.0|712.0|300.0|170.0|Class_bdsNimKGAqAC6h68.html|Class_bdsNimKGAqAC6h68.html|1kDOGmKGAqACTx6J" id="option1kDOGmKGAqACTx6J">VPGP_InfoSoggiorno : Class</option>
+<option value="shape|2032.0|992.0|190.0|60.0|Class_bDsNimKGAqAC6h77.html|Class_bDsNimKGAqAC6h77.html|NkDOGmKGAqACTx6L" id="optionNkDOGmKGAqACTx6L">VPGP_InfoSoggiorno_Cancellato : Class</option>
+<option value="shape|2262.0|992.0|180.0|90.0|Class_IjsNimKGAqAC6h8E.html|Class_IjsNimKGAqAC6h8E.html|NkDOGmKGAqACTx6N" id="optionNkDOGmKGAqACTx6N">VPGP_InfoSoggiorno_InCorso : Class</option>
+<option value="shape|2712.0|992.0|180.0|50.0|Class_ajsNimKGAqAC6h8S.html|Class_ajsNimKGAqAC6h8S.html|tkDOGmKGAqACTx6P" id="optiontkDOGmKGAqACTx6P">VPGP_InfoSoggiorno_Prenotato : Class</option>
+<option value="shape|2482.0|992.0|190.0|80.0|Class__jsNimKGAqAC6h8Y.html|Class__jsNimKGAqAC6h8Y.html|dkDOGmKGAqACTx6R" id="optiondkDOGmKGAqACTx6R">VPGP_InfoSoggiorno_Terminato : Class</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/View.png" usemap="#diagram_map" class="Image" width="2896" height="1286"/>
+					<map name="diagram_map">
+<area coords="1195.0, -8.0, 1195.0, -5.0, 1192.0, -5.0, 1192.0, 9.0, 1195.0, 9.0, 1195.0, 12.0, 1209.0, 12.0, 1209.0, 9.0, 1285.0, 9.0, 1285.0, 45.0, 1282.0, 45.0, 1282.0, 59.0, 1285.0, 59.0, 1285.0, 62.0, 1299.0, 62.0, 1299.0, 59.0, 1302.0, 59.0, 1302.0, 45.0, 1299.0, 45.0, 1299.0, 9.0, 1302.0, 9.0, 1302.0, -5.0, 1299.0, -5.0, 1299.0, -8.0, 1285.0, -8.0, 1285.0, -5.0, 1209.0, -5.0, 1209.0, -8.0" coords2="1195.0, -8.0, 1195.0, -5.0, 1192.0, -5.0, 1192.0, 9.0, 1195.0, 9.0, 1195.0, 12.0, 1209.0, 12.0, 1209.0, 9.0, 1285.0, 9.0, 1285.0, 45.0, 1282.0, 45.0, 1282.0, 59.0, 1285.0, 59.0, 1285.0, 62.0, 1299.0, 62.0, 1299.0, 59.0, 1302.0, 59.0, 1302.0, 45.0, 1299.0, 45.0, 1299.0, 9.0, 1302.0, 9.0, 1302.0, -5.0, 1299.0, -5.0, 1299.0, -8.0, 1285.0, -8.0, 1285.0, -5.0, 1209.0, -5.0, 1209.0, -8.0" shape="poly" alt=":Association" id="areadiagram_map_DkDOGmKGAqACTx6T" href="Association_OE6sEmKGAqACvRzl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1485.0, 112.0, 1485.0, 192.0, 1499.0, 192.0, 1499.0, 112.0" coords2="1485.0, 112.0, 1485.0, 192.0, 1499.0, 192.0, 1499.0, 112.0" shape="poly" alt=":Generalization" id="areadiagram_map_DkDOGmKGAqACTx6V" href="Generalization_ZE6sEmKGAqACvRzs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1864.0, 112.0, 1864.0, 192.0, 1878.0, 192.0, 1878.0, 112.0" coords2="1864.0, 112.0, 1864.0, 192.0, 1878.0, 192.0, 1878.0, 112.0" shape="poly" alt=":Generalization" id="areadiagram_map_jkDOGmKGAqACTx6X" href="Generalization_CTsNimKGAqAC6h8s.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1475.0, 422.0, 1475.0, 565.0, 769.0, 565.0, 769.0, 562.0, 755.0, 562.0, 755.0, 565.0, 752.0, 565.0, 752.0, 579.0, 755.0, 579.0, 755.0, 712.0, 769.0, 712.0, 769.0, 579.0, 1475.0, 579.0, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.0, 1492.0, 579.0, 1492.0, 565.0, 1489.0, 565.0, 1489.0, 422.0" coords2="1475.0, 422.0, 1475.0, 565.0, 769.0, 565.0, 769.0, 562.0, 755.0, 562.0, 755.0, 565.0, 752.0, 565.0, 752.0, 579.0, 755.0, 579.0, 755.0, 712.0, 769.0, 712.0, 769.0, 579.0, 1475.0, 579.0, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.0, 1492.0, 579.0, 1492.0, 565.0, 1489.0, 565.0, 1489.0, 422.0" shape="poly" alt=":Generalization" id="areadiagram_map_jkDOGmKGAqACTx6Z" href="Generalization_CPasEmKGAqACvRxB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1475.0, 422.0, 1475.0, 712.0, 1489.0, 712.0, 1489.0, 422.0" coords2="1475.0, 422.0, 1475.0, 712.0, 1489.0, 712.0, 1489.0, 422.0" shape="poly" alt=":Generalization" id="areadiagram_map_TkDOGmKGAqACTx6b" href="Generalization_cY6sEmKGAqACvRzQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1475.0, 422.0, 1475.0, 565.0682, 1475.0, 565.0682, 1475.0, 565.0682, 1475.0, 565.0682, 1475.0, 565.0682, 1475.0, 565.0682, 1472.0, 565.0, 1472.0, 579.0, 1475.0, 579.0682, 1475.0, 579.0682, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.38635, 1489.0, 579.38635, 1489.0, 579.38635, 1489.0, 579.38635, 1895.0, 588.61365, 1895.0, 588.61365, 1895.0, 712.0, 1909.0, 712.0, 1909.0, 588.9318, 1909.0, 588.9318, 1912.0, 589.0, 1912.0, 575.0, 1909.0, 574.9318, 1909.0, 574.9318, 1909.0, 572.0, 1895.0, 572.0, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1489.0, 565.38635, 1489.0, 565.38635, 1489.0, 422.0" coords2="1475.0, 422.0, 1475.0, 565.0682, 1475.0, 565.0682, 1475.0, 565.0682, 1475.0, 565.0682, 1475.0, 565.0682, 1475.0, 565.0682, 1472.0, 565.0, 1472.0, 579.0, 1475.0, 579.0682, 1475.0, 579.0682, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.38635, 1489.0, 579.38635, 1489.0, 579.38635, 1489.0, 579.38635, 1895.0, 588.61365, 1895.0, 588.61365, 1895.0, 712.0, 1909.0, 712.0, 1909.0, 588.9318, 1909.0, 588.9318, 1912.0, 589.0, 1912.0, 575.0, 1909.0, 574.9318, 1909.0, 574.9318, 1909.0, 572.0, 1895.0, 572.0, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1895.0, 574.61365, 1489.0, 565.38635, 1489.0, 565.38635, 1489.0, 422.0" shape="poly" alt=":Generalization" id="areadiagram_map_TkDOGmKGAqACTx6d" href="Generalization_tjsNimKGAqAC6h8k.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1475.0, 422.0, 1475.0, 565.0, 259.0, 565.0, 259.0, 562.0, 245.0, 562.0, 245.0, 565.0, 242.0, 565.0, 242.0, 579.0, 245.0, 579.0, 245.0, 712.0, 259.0, 712.0, 259.0, 579.0, 1475.0, 579.0, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.0, 1492.0, 579.0, 1492.0, 565.0, 1489.0, 565.0, 1489.0, 422.0" coords2="1475.0, 422.0, 1475.0, 565.0, 259.0, 565.0, 259.0, 562.0, 245.0, 562.0, 245.0, 565.0, 242.0, 565.0, 242.0, 579.0, 245.0, 579.0, 245.0, 712.0, 259.0, 712.0, 259.0, 579.0, 1475.0, 579.0, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.0, 1492.0, 579.0, 1492.0, 565.0, 1489.0, 565.0, 1489.0, 422.0" shape="poly" alt=":Generalization" id="areadiagram_map_zkDOGmKGAqACTx6f" href="Generalization_ursNimKGAqAC6h9F.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1475.0, 422.0, 1475.0, 565.0395, 1475.0, 565.0395, 1472.0, 565.0, 1472.0, 579.0, 1475.0, 579.0395, 1475.0, 579.0395, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.2237, 1489.0, 579.2237, 2215.0, 588.7763, 2215.0, 588.7763, 2215.0, 712.0, 2229.0, 712.0, 2229.0, 588.9605, 2229.0, 588.9605, 2232.0, 589.0, 2232.0, 575.0, 2229.0, 574.9605, 2229.0, 574.9605, 2229.0, 572.0, 2215.0, 572.0, 2215.0, 574.7763, 2215.0, 574.7763, 1489.0, 565.2237, 1489.0, 565.2237, 1489.0, 422.0" coords2="1475.0, 422.0, 1475.0, 565.0395, 1475.0, 565.0395, 1472.0, 565.0, 1472.0, 579.0, 1475.0, 579.0395, 1475.0, 579.0395, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.2237, 1489.0, 579.2237, 2215.0, 588.7763, 2215.0, 588.7763, 2215.0, 712.0, 2229.0, 712.0, 2229.0, 588.9605, 2229.0, 588.9605, 2232.0, 589.0, 2232.0, 575.0, 2229.0, 574.9605, 2229.0, 574.9605, 2229.0, 572.0, 2215.0, 572.0, 2215.0, 574.7763, 2215.0, 574.7763, 1489.0, 565.2237, 1489.0, 565.2237, 1489.0, 422.0" shape="poly" alt=":Generalization" id="areadiagram_map_zkDOGmKGAqACTx6h" href="Generalization_b7sNimKGAqAC6h9f.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1475.0, 422.0, 1475.0, 565.0, 1159.0, 565.0, 1159.0, 562.0, 1145.0, 562.0, 1145.0, 565.0, 1142.0, 565.0, 1142.0, 579.0, 1145.0, 579.0, 1145.0, 712.0, 1159.0, 712.0, 1159.0, 579.0, 1475.0, 579.0, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.0, 1492.0, 579.0, 1492.0, 565.0, 1489.0, 565.0, 1489.0, 422.0" coords2="1475.0, 422.0, 1475.0, 565.0, 1159.0, 565.0, 1159.0, 562.0, 1145.0, 562.0, 1145.0, 565.0, 1142.0, 565.0, 1142.0, 579.0, 1145.0, 579.0, 1145.0, 712.0, 1159.0, 712.0, 1159.0, 579.0, 1475.0, 579.0, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.0, 1492.0, 579.0, 1492.0, 565.0, 1489.0, 565.0, 1489.0, 422.0" shape="poly" alt=":Generalization" id="areadiagram_map_LkDOGmKGAqACTx6j" href="Generalization_tnsNimKGAqAC6h9p.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1475.0, 422.0, 1475.0, 565.0275, 1475.0, 565.0275, 1475.0, 565.0275, 1475.0, 565.0275, 1472.0, 565.0, 1472.0, 579.0, 1475.0, 579.0275, 1475.0, 579.0275, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.15594, 1489.0, 579.15594, 2545.0, 588.84406, 2545.0, 588.84406, 2545.0, 712.0, 2559.0, 712.0, 2559.0, 588.9725, 2559.0, 588.9725, 2562.0, 589.0, 2562.0, 575.0, 2559.0, 574.9725, 2559.0, 574.9725, 2559.0, 572.0, 2545.0, 572.0, 2545.0, 574.84406, 2545.0, 574.84406, 1489.0, 565.15594, 1489.0, 565.15594, 1489.0, 422.0" coords2="1475.0, 422.0, 1475.0, 565.0275, 1475.0, 565.0275, 1475.0, 565.0275, 1475.0, 565.0275, 1472.0, 565.0, 1472.0, 579.0, 1475.0, 579.0275, 1475.0, 579.0275, 1475.0, 582.0, 1489.0, 582.0, 1489.0, 579.15594, 1489.0, 579.15594, 2545.0, 588.84406, 2545.0, 588.84406, 2545.0, 712.0, 2559.0, 712.0, 2559.0, 588.9725, 2559.0, 588.9725, 2562.0, 589.0, 2562.0, 575.0, 2559.0, 574.9725, 2559.0, 574.9725, 2559.0, 572.0, 2545.0, 572.0, 2545.0, 574.84406, 2545.0, 574.84406, 1489.0, 565.15594, 1489.0, 565.15594, 1489.0, 422.0" shape="poly" alt=":Generalization" id="areadiagram_map_LkDOGmKGAqACTx6l" href="Generalization_ePsNimKGAqAC6h_D.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1184.0, 912.0, 1184.0, 1222.0, 1198.0, 1222.0, 1198.0, 912.0" coords2="1184.0, 912.0, 1184.0, 1222.0, 1198.0, 1222.0, 1198.0, 912.0" shape="poly" alt=":Generalization" id="areadiagram_map_rkDOGmKGAqACTx6n" href="Generalization_o3sNimKGAqAC6h9_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1184.0, 912.0, 1184.0, 1085.0, 1181.0, 1085.0, 1181.0, 1099.0, 1184.0, 1099.0, 1184.0, 1102.0, 1198.0, 1102.0, 1198.0, 1099.0, 1464.0, 1099.0, 1464.0, 1222.0, 1478.0, 1222.0, 1478.0, 1099.0, 1481.0, 1099.0, 1481.0, 1085.0, 1478.0, 1085.0, 1478.0, 1082.0, 1464.0, 1082.0, 1464.0, 1085.0, 1198.0, 1085.0, 1198.0, 912.0" coords2="1184.0, 912.0, 1184.0, 1085.0, 1181.0, 1085.0, 1181.0, 1099.0, 1184.0, 1099.0, 1184.0, 1102.0, 1198.0, 1102.0, 1198.0, 1099.0, 1464.0, 1099.0, 1464.0, 1222.0, 1478.0, 1222.0, 1478.0, 1099.0, 1481.0, 1099.0, 1481.0, 1085.0, 1478.0, 1085.0, 1478.0, 1082.0, 1464.0, 1082.0, 1464.0, 1085.0, 1198.0, 1085.0, 1198.0, 912.0" shape="poly" alt=":Generalization" id="areadiagram_map_rkDOGmKGAqACTx6p" href="Generalization_63sNimKGAqAC6h_A.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1184.0, 912.0, 1184.0, 1085.0, 1181.0, 1085.0, 1181.0, 1099.0, 1184.0, 1099.0, 1184.0, 1102.0, 1198.0, 1102.0, 1198.0, 1099.0, 1635.0, 1099.0, 1635.0, 1222.0, 1649.0, 1222.0, 1649.0, 1099.0, 1652.0, 1099.0, 1652.0, 1085.0, 1649.0, 1085.0, 1649.0, 1082.0, 1635.0, 1082.0, 1635.0, 1085.0, 1198.0, 1085.0, 1198.0, 912.0" coords2="1184.0, 912.0, 1184.0, 1085.0, 1181.0, 1085.0, 1181.0, 1099.0, 1184.0, 1099.0, 1184.0, 1102.0, 1198.0, 1102.0, 1198.0, 1099.0, 1635.0, 1099.0, 1635.0, 1222.0, 1649.0, 1222.0, 1649.0, 1099.0, 1652.0, 1099.0, 1652.0, 1085.0, 1649.0, 1085.0, 1649.0, 1082.0, 1635.0, 1082.0, 1635.0, 1085.0, 1198.0, 1085.0, 1198.0, 912.0" shape="poly" alt=":Generalization" id="areadiagram_map_bkDOGmKGAqACTx6r" href="Generalization_t3sNimKGAqAC6h_B.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1185.0, 912.0, 1185.0, 1085.0, 989.0, 1085.0, 989.0, 1082.0, 975.0, 1082.0, 975.0, 1085.0, 972.0, 1085.0, 972.0, 1099.0, 975.0, 1099.0, 975.0, 1222.0, 989.0, 1222.0, 989.0, 1099.0, 1185.0, 1099.0, 1185.0, 1102.0, 1199.0, 1102.0, 1199.0, 1099.0, 1202.0, 1099.0, 1202.0, 1085.0, 1199.0, 1085.0, 1199.0, 912.0" coords2="1185.0, 912.0, 1185.0, 1085.0, 989.0, 1085.0, 989.0, 1082.0, 975.0, 1082.0, 975.0, 1085.0, 972.0, 1085.0, 972.0, 1099.0, 975.0, 1099.0, 975.0, 1222.0, 989.0, 1222.0, 989.0, 1099.0, 1185.0, 1099.0, 1185.0, 1102.0, 1199.0, 1102.0, 1199.0, 1099.0, 1202.0, 1099.0, 1202.0, 1085.0, 1199.0, 1085.0, 1199.0, 912.0" shape="poly" alt=":Generalization" id="areadiagram_map_bkDOGmKGAqACTx6t" href="Generalization_oPsNimKGAqAC6h_C.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="2595.0, 882.0, 2595.0, 925.0, 2139.0, 925.0, 2139.0, 922.0, 2125.0, 922.0, 2125.0, 925.0, 2122.0, 925.0, 2122.0, 939.0, 2125.0, 939.0, 2125.0, 992.0, 2139.0, 992.0, 2139.0, 939.0, 2595.0, 939.0, 2595.0, 942.0, 2609.0, 942.0, 2609.0, 939.0, 2612.0, 939.0, 2612.0, 925.0, 2609.0, 925.0, 2609.0, 882.0" coords2="2595.0, 882.0, 2595.0, 925.0, 2139.0, 925.0, 2139.0, 922.0, 2125.0, 922.0, 2125.0, 925.0, 2122.0, 925.0, 2122.0, 939.0, 2125.0, 939.0, 2125.0, 992.0, 2139.0, 992.0, 2139.0, 939.0, 2595.0, 939.0, 2595.0, 942.0, 2609.0, 942.0, 2609.0, 939.0, 2612.0, 939.0, 2612.0, 925.0, 2609.0, 925.0, 2609.0, 882.0" shape="poly" alt=":Generalization" id="areadiagram_map_7kDOGmKGAqACTx6v" href="Generalization_Y_sNimKGAqAC6h_V.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="2595.0, 882.0, 2595.0, 925.0, 2349.0, 925.0, 2349.0, 922.0, 2335.0, 922.0, 2335.0, 925.0, 2332.0, 925.0, 2332.0, 939.0, 2335.0, 939.0, 2335.0, 992.0, 2349.0, 992.0, 2349.0, 939.0, 2595.0, 939.0, 2595.0, 942.0, 2609.0, 942.0, 2609.0, 939.0, 2612.0, 939.0, 2612.0, 925.0, 2609.0, 925.0, 2609.0, 882.0" coords2="2595.0, 882.0, 2595.0, 925.0, 2349.0, 925.0, 2349.0, 922.0, 2335.0, 922.0, 2335.0, 925.0, 2332.0, 925.0, 2332.0, 939.0, 2335.0, 939.0, 2335.0, 992.0, 2349.0, 992.0, 2349.0, 939.0, 2595.0, 939.0, 2595.0, 942.0, 2609.0, 942.0, 2609.0, 939.0, 2612.0, 939.0, 2612.0, 925.0, 2609.0, 925.0, 2609.0, 882.0" shape="poly" alt=":Generalization" id="areadiagram_map_HkDOGmKGAqACTx6x" href="Generalization_O_sNimKGAqAC6h_W.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="2595.0, 882.0, 2595.0, 925.0, 2592.0, 925.0, 2592.0, 939.0, 2595.0, 939.0, 2595.0, 942.0, 2609.0, 942.0, 2609.0, 939.0, 2795.0, 939.0, 2795.0, 992.0, 2809.0, 992.0, 2809.0, 939.0, 2812.0, 939.0, 2812.0, 925.0, 2809.0, 925.0, 2809.0, 922.0, 2795.0, 922.0, 2795.0, 925.0, 2609.0, 925.0, 2609.0, 882.0" coords2="2595.0, 882.0, 2595.0, 925.0, 2592.0, 925.0, 2592.0, 939.0, 2595.0, 939.0, 2595.0, 942.0, 2609.0, 942.0, 2609.0, 939.0, 2795.0, 939.0, 2795.0, 992.0, 2809.0, 992.0, 2809.0, 939.0, 2812.0, 939.0, 2812.0, 925.0, 2809.0, 925.0, 2809.0, 922.0, 2795.0, 922.0, 2795.0, 925.0, 2609.0, 925.0, 2609.0, 882.0" shape="poly" alt=":Generalization" id="areadiagram_map_HkDOGmKGAqACTx6z" href="Generalization_b_sNimKGAqAC6h_X.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="2595.0, 882.0, 2595.0, 992.0, 2609.0, 992.0, 2609.0, 882.0" coords2="2595.0, 882.0, 2595.0, 992.0, 2609.0, 992.0, 2609.0, 882.0" shape="poly" alt=":Generalization" id="areadiagram_map_nkDOGmKGAqACTx61" href="Generalization_0AcNimKGAqAC6h_Y.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="324.0, 982.0, 324.0, 985.0, 321.0, 985.0, 321.0, 999.0, 324.0, 999.0, 324.0, 1082.0, 338.0, 1082.0, 338.0, 999.0, 532.0, 999.0, 532.0, 985.0, 338.0, 985.0, 338.0, 982.0" coords2="324.0, 982.0, 324.0, 985.0, 321.0, 985.0, 321.0, 999.0, 324.0, 999.0, 324.0, 1082.0, 338.0, 1082.0, 338.0, 999.0, 532.0, 999.0, 532.0, 985.0, 338.0, 985.0, 338.0, 982.0" shape="poly" alt=":Realization" id="areadiagram_map_IZeuGmKGAqACTx8j" href="Realization_WPasEmKGAqACvRxC.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="284.0, 912.0, 284.0, 1082.0, 298.0, 1082.0, 298.0, 912.0" coords2="284.0, 912.0, 284.0, 1082.0, 298.0, 1082.0, 298.0, 912.0" shape="poly" alt=":Realization" id="areadiagram_map_IZeuGmKGAqACTx8l" href="Realization_1rsNimKGAqAC6h9G.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Pattern Observer. Una classe che implementa questa classe deve 
+      implementare un metodo che gli consenta
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      di essere avvisato quando l'oggetto che sta osservando cambia stato. E' 
+      stato introdotto questo design
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      pattern, perch&amp;#232; alcuni oggetti software devono aggiornarsi quando cambia 
+      lo stato interno di altri oggetti
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      software.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="262, 1082, 352, 1142" coords2="262, 1082, 352, 1142" shape="rect" alt="IObserver:Class" id="areadiagram_map_vpeuGmKGAqACTx8h" href="Class_r0JpCaKGAqACZBi1.html" onmouseover="storeReferenceAndSubdiagramInfos('262, 1082, 352, 1142',new Array('IObserver.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Utility/IObserver.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('262, 1082, 352, 1142'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe che crea la schermata di un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt; 
+      terminato
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="872, 1222, 1102, 1282" coords2="872, 1222, 1102, 1282" shape="rect" alt="VPGP_InfoCamera_SoggiornoTerminato:Class" id="areadiagram_map_qkDOGmKGAqACTx5t" href="Class_FdsNimKGAqAC6h60.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1752, 712, 2052, 822" coords2="1752, 712, 2052, 822" shape="rect" alt="VPC_AggiungiOspiti:Class" id="areadiagram_map_ekDOGmKGAqACTx5v" href="Class_xhsNimKGAqAC6hzQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe che ha il compito di mostrare la schermata delle informazioni 
+      della &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;, 
+      quando il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt;
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      si trova nello stato prenotato
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1602, 1222, 1822, 1272" coords2="1602, 1222, 1822, 1272" shape="rect" alt="VPGP_InfoCamera_SoggiornoPrenotato:Class" id="areadiagram_map_.kDOGmKGAqACTx5x" href="Class_BdsNimKGAqAC6h6u.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="982, 12, 1282, 162" coords2="982, 12, 1282, 162" shape="rect" alt="ViewFrameApplication:Class" id="areadiagram_map_.kDOGmKGAqACTx5z" href="Class_23qsEmKGAqACvRlD.html" onmouseover="storeReferenceAndSubdiagramInfos('982, 12, 1282, 162',new Array('ViewFrameApplication.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/ViewFrameApplication.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('982, 12, 1282, 162'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla realizzazione della finestra per effettuare una 
+      nuova prenotazione. In particolare
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      con questa finestra si vanno ad indicare il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      di richiesta e le tipologie a cui si &amp;#232; interessati.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2072, 712, 2392, 862" coords2="2072, 712, 2392, 862" shape="rect" alt="VPCP_SelezionePeriodoTipologie:Class" id="areadiagram_map_BkDOGmKGAqACTx51" href="Class_u1sNimKGAqAC6h41.html" onmouseover="storeReferenceAndSubdiagramInfos('2072, 712, 2392, 862',new Array('VPCP_SelezionePeriodoTipologie.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Graphic/GestioneSoggiorno/CreaRichiestaSoggiorno/VPCP_SelezionePeriodoTipologie.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2072, 712, 2392, 862'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla realizzazione della finestra per la selezione delle &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camere&amp;lt;/a&amp;gt; 
+      che si vogliono
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      aggiungere ad una prenotazione.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2, 712, 512, 912" coords2="2, 712, 512, 912" shape="rect" alt="VPCP_SelezioneCamereDatiOspite_Observer:Class" id="areadiagram_map_hkDOGmKGAqACTx53" href="Class_BFsNimKGAqAC6h3t.html" onmouseover="storeReferenceAndSubdiagramInfos('2, 712, 512, 912',new Array('VPCP_SelezioneCamereDatiOspite_Observer.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Graphic/GestioneSoggiorno/CreaRichiestaSoggiorno/VPCP_SelezioneCamereDatiOspite_Observer.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2, 712, 512, 912'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1442, 2, 1942, 112" coords2="1442, 2, 1942, 112" shape="rect" alt="View:Class" id="areadiagram_map_RkDOGmKGAqACTx55" href="Class_JBJpCaKGAqACZBx9.html" onmouseover="storeReferenceAndSubdiagramInfos('1442, 2, 1942, 112',new Array('View.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/View.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1442, 2, 1942, 112'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla realizzazione della finestra iniziale 
+      dell'applicazione.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1322, 712, 1732, 882" coords2="1322, 712, 1732, 882" shape="rect" alt="VP_Home:Class" id="areadiagram_map_JkDOGmKGAqACTx57" href="Class_OrqsEmKGAqACvRjX.html" onmouseover="storeReferenceAndSubdiagramInfos('1322, 712, 1732, 882',new Array('VP_Home.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Graphic/VP_Home.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1322, 712, 1732, 882'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe che ha il compito di visualizzare le informazioni della &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt; 
+      in un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt; 
+      cancellato
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1122, 1222, 1352, 1272" coords2="1122, 1222, 1352, 1272" shape="rect" alt="VPGP_InfoCamera_SoggiornoCancellato:Class" id="areadiagram_map_pkDOGmKGAqACTx59" href="Class_CdsNimKGAqAC6h6i.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1372, 192, 1622, 422" coords2="1372, 192, 1622, 422" shape="rect" alt="ViewPanelContentPane:Class" id="areadiagram_map_pkDOGmKGAqACTx5_" href="Class_cPqsEmKGAqACvRlX.html" onmouseover="storeReferenceAndSubdiagramInfos('1372, 192, 1622, 422',new Array('ViewPanelContentPane.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/ViewPanelContentPane.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1372, 192, 1622, 422'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="532, 712, 1002, 1062" coords2="532, 712, 1002, 1062" shape="rect" alt="VPP_RiepilogoPagamenti_Observer:Class" id="areadiagram_map_5kDOGmKGAqACTx6B" href="Class_LhqsEmKGAqACvRbf.html" onmouseover="storeReferenceAndSubdiagramInfos('532, 712, 1002, 1062',new Array('VPP_RiepilogoPagamenti.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Graphic/GestionePagamenti/VPP_RiepilogoPagamenti.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('532, 712, 1002, 1062'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1672, 192, 2162, 382" coords2="1672, 192, 2162, 382" shape="rect" alt="VPC_AggiungiOspiti_PanelCamera:Class" id="areadiagram_map_FkDOGmKGAqACTx6D" href="Class_8xsNimKGAqAC6h1m.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla realizzazione della finestra relativa al mostrare le 
+      informazioni di una &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      in relazione ad una prenotazione.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1022, 712, 1302, 912" coords2="1022, 712, 1302, 912" shape="rect" alt="VPGP_InfoCamera:Class" id="areadiagram_map_lkDOGmKGAqACTx6F" href="Class_zNsNimKGAqAC6h5p.html" onmouseover="storeReferenceAndSubdiagramInfos('1022, 712, 1302, 912',new Array('VPGP_InfoCamera.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Graphic/GestioneSoggiorno/InformazioniCamera/VPGP_InfoCamera.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1022, 712, 1302, 912'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe che ha il compito di visualizzare le informazioni della &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt; 
+      in un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt; 
+      in corso
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1372, 1222, 1582, 1272" coords2="1372, 1222, 1582, 1272" shape="rect" alt="VPGP_InfoCamera_SoggiornoInCorso:Class" id="areadiagram_map_VkDOGmKGAqACTx6H" href="Class_GdsNimKGAqAC6h6o.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla realizzazione della finestra per mostrare le 
+      informazioni di una prenotazione.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2412, 712, 2712, 882" coords2="2412, 712, 2712, 882" shape="rect" alt="VPGP_InfoSoggiorno:Class" id="areadiagram_map_1kDOGmKGAqACTx6J" href="Class_bdsNimKGAqAC6h68.html" onmouseover="storeReferenceAndSubdiagramInfos('2412, 712, 2712, 882',new Array('VPGP_InfoSoggiorno.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Graphic/GestioneSoggiorno/InformazioniSoggiorno/VPGP_InfoSoggiorno.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2412, 712, 2712, 882'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2032, 992, 2222, 1052" coords2="2032, 992, 2222, 1052" shape="rect" alt="VPGP_InfoSoggiorno_Cancellato:Class" id="areadiagram_map_NkDOGmKGAqACTx6L" href="Class_bDsNimKGAqAC6h77.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2262, 992, 2442, 1082" coords2="2262, 992, 2442, 1082" shape="rect" alt="VPGP_InfoSoggiorno_InCorso:Class" id="areadiagram_map_NkDOGmKGAqACTx6N" href="Class_IjsNimKGAqAC6h8E.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2712, 992, 2892, 1042" coords2="2712, 992, 2892, 1042" shape="rect" alt="VPGP_InfoSoggiorno_Prenotato:Class" id="areadiagram_map_tkDOGmKGAqACTx6P" href="Class_ajsNimKGAqAC6h8S.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2482, 992, 2672, 1072" coords2="2482, 992, 2672, 1072" shape="rect" alt="VPGP_InfoSoggiorno_Terminato:Class" id="areadiagram_map_dkDOGmKGAqACTx6R" href="Class__jsNimKGAqAC6h8Y.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

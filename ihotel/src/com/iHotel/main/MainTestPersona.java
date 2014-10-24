@@ -1,27 +1,32 @@
 package com.iHotel.main;
 
-import com.iHotel.model.Persona.Indirizzo;
-import com.iHotel.model.Persona.Ospite;
-import com.iHotel.model.Persona.Residenza;
-import com.iHotel.model.Persona.Documenti.CartaIdentita;
-import com.iHotel.model.Utility.Giorno;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class MainTestPersona {
 
 	public static void main(String[] args) {
-		//Creo un indirizzo
-		Indirizzo indirizzo = new Indirizzo("Piazza la bomba e scappa",25);
-		//Creo una residenza
-		Residenza residenza = new Residenza("Rieti",indirizzo);
-		Giorno dataNascita = new Giorno(24,7,1989);
-		Giorno dataRilascio = new Giorno(10,10,2010);
-		Giorno dataScadenza =new Giorno(10,10,2020);
-		float altezza = (float) 1.74;
-		CartaIdentita cartaIdentita = new CartaIdentita("alessandro","Ranalli",dataNascita, "Rieti", dataRilascio, dataScadenza, "Comune", "XXX",residenza,"nubile","Studente",altezza,"castani","castani","");
+		String _pathToConfigs = "/configs/";
 		
-		Ospite ospite = new Ospite("alessandro", "Ranalli","la@ga",cartaIdentita);
+		// Ricavo il path assoluto.
+		String filePath = new File("").getAbsolutePath();
 		
-		System.out.println(ospite.get_documento().get_residenza().get_cittaResidenza());
+		System.out.println(filePath);
+		
+		// Provo ad aprire il file di testo. Se non riesco setto degli attributi di default.
+		try (BufferedReader sistemiEsterniReader = new BufferedReader(new FileReader(filePath + _pathToConfigs + "sistemiEsterni.txt"))) {  
+			// Inizializzo gli attributi
+			System.out.println(sistemiEsterniReader.readLine());
+			System.out.println(sistemiEsterniReader.readLine());
+			System.out.println(sistemiEsterniReader.readLine());
+			System.out.println(sistemiEsterniReader.readLine());
+			System.out.println(sistemiEsterniReader.readLine());
+		} catch (IOException e) {
+			System.out.println("dio");
+        } 
+		
 	}
 
 }

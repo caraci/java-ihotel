@@ -1,0 +1,339 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Class Diagram - StrategiaCreaStatiOccupazione</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_FT7xCaKGAqACZBQd.html">
+StaticDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_KyXxCaKGAqACZBRb.html">
+ClassDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_uISTCaKGAqACZGgv.html">
+Model : Model</a>
+	</p>
+	<p class="PageTitle">
+		Class Diagram - StrategiaCreaStatiOccupazione		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/VOxLCaKGAqACZGpW', 'StrategiaCreaStatiOccupazione\nihotel.vpp://diagram/VOxLCaKGAqACZGpW', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|1592.0|222.0|500.0|40.0|Class_Q8JpCaKGAqACZBlF.html|Class_Q8JpCaKGAqACZBlF.html|qxpLCaKGAqACZGph" id="optionqxpLCaKGAqACZGph">AllCreaStatiCameraStrategy : Class</option>
+<option value="shape|812.0|32.0|500.0|60.0|Class_G8JpCaKGAqACZBlO.html|Class_G8JpCaKGAqACZBlO.html|axpLCaKGAqACZGpj" id="optionaxpLCaKGAqACZGpj">CreaStatiCameraStrategy : Class</option>
+<option value="shape|2.0|22.0|460.0|80.0|Class_18JpCaKGAqACZBlW.html|Class_18JpCaKGAqACZBlW.html|mxpLCaKGAqACZGpl" id="optionmxpLCaKGAqACZGpl">CreaStatiCameraStrategyFactory : Class</option>
+<option value="shape|552.0|222.0|500.0|40.0|Class_gCJpCaKGAqACZBlg.html|Class_gCJpCaKGAqACZBlg.html|WxpLCaKGAqACZGpn" id="optionWxpLCaKGAqACZGpn">LeftCreaStatiCameraStrategy : Class</option>
+<option value="shape|32.0|222.0|500.0|40.0|Class_GCJpCaKGAqACZBlp.html|Class_GCJpCaKGAqACZBlp.html|WxpLCaKGAqACZGpp" id="optionWxpLCaKGAqACZGpp">MiddleCreaStatiCameraStrategy : Class</option>
+<option value="shape|1072.0|222.0|500.0|40.0|Class_ZCJpCaKGAqACZBly.html|Class_ZCJpCaKGAqACZBly.html|2xpLCaKGAqACZGpr" id="option2xpLCaKGAqACZGpr">RightCreaStatiCameraStrategy : Class</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/StrategiaCreaStatiOccupazione.png" usemap="#diagram_map" class="Image" width="2096" height="266"/>
+					<map name="diagram_map">
+<area coords="462.0, 55.0, 462.0, 69.0, 812.0, 69.0, 812.0, 55.0" coords2="462.0, 55.0, 462.0, 69.0, 812.0, 69.0, 812.0, 55.0" shape="poly" alt=":Dependency" id="areadiagram_map_A0nyLaKGAqACkgx0" href="Dependency_3UnyLaKGAqACkgxz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1065.0, 92.0, 1065.0, 155.0, 1062.0, 155.0, 1062.0, 169.0, 1065.0, 169.0, 1065.0, 172.0, 1079.0, 172.0, 1079.0, 169.0, 1815.0, 169.0, 1815.0, 222.0, 1829.0, 222.0, 1829.0, 169.0, 1832.0, 169.0, 1832.0, 155.0, 1829.0, 155.0, 1829.0, 152.0, 1815.0, 152.0, 1815.0, 155.0, 1079.0, 155.0, 1079.0, 92.0" coords2="1065.0, 92.0, 1065.0, 155.0, 1062.0, 155.0, 1062.0, 169.0, 1065.0, 169.0, 1065.0, 172.0, 1079.0, 172.0, 1079.0, 169.0, 1815.0, 169.0, 1815.0, 222.0, 1829.0, 222.0, 1829.0, 169.0, 1832.0, 169.0, 1832.0, 155.0, 1829.0, 155.0, 1829.0, 152.0, 1815.0, 152.0, 1815.0, 155.0, 1079.0, 155.0, 1079.0, 92.0" shape="poly" alt=":Realization" id="areadiagram_map_OxpLCaKGAqACZGpt" href="Realization_0VJpCaKGAqACZB4Z.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1065.0, 92.0, 1065.0, 155.0, 799.0, 155.0, 799.0, 152.0, 785.0, 152.0, 785.0, 155.0, 782.0, 155.0, 782.0, 169.0, 785.0, 169.0, 785.0, 222.0, 799.0, 222.0, 799.0, 169.0, 1065.0, 169.0, 1065.0, 172.0, 1079.0, 172.0, 1079.0, 169.0, 1082.0, 169.0, 1082.0, 155.0, 1079.0, 155.0, 1079.0, 92.0" coords2="1065.0, 92.0, 1065.0, 155.0, 799.0, 155.0, 799.0, 152.0, 785.0, 152.0, 785.0, 155.0, 782.0, 155.0, 782.0, 169.0, 785.0, 169.0, 785.0, 222.0, 799.0, 222.0, 799.0, 169.0, 1065.0, 169.0, 1065.0, 172.0, 1079.0, 172.0, 1079.0, 169.0, 1082.0, 169.0, 1082.0, 155.0, 1079.0, 155.0, 1079.0, 92.0" shape="poly" alt=":Realization" id="areadiagram_map_OxpLCaKGAqACZGpv" href="Realization_eVJpCaKGAqACZB4n.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1065.0, 92.0, 1065.0, 155.0, 279.0, 155.0, 279.0, 152.0, 265.0, 152.0, 265.0, 155.0, 262.0, 155.0, 262.0, 169.0, 265.0, 169.0, 265.0, 222.0, 279.0, 222.0, 279.0, 169.0, 1065.0, 169.0, 1065.0, 172.0, 1079.0, 172.0, 1079.0, 169.0, 1082.0, 169.0, 1082.0, 155.0, 1079.0, 155.0, 1079.0, 92.0" coords2="1065.0, 92.0, 1065.0, 155.0, 279.0, 155.0, 279.0, 152.0, 265.0, 152.0, 265.0, 155.0, 262.0, 155.0, 262.0, 169.0, 265.0, 169.0, 265.0, 222.0, 279.0, 222.0, 279.0, 169.0, 1065.0, 169.0, 1065.0, 172.0, 1079.0, 172.0, 1079.0, 169.0, 1082.0, 169.0, 1082.0, 155.0, 1079.0, 155.0, 1079.0, 92.0" shape="poly" alt=":Realization" id="areadiagram_map_uxpLCaKGAqACZGpx" href="Realization_ZVJpCaKGAqACZB4r.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1065.0, 92.0, 1065.0, 155.0, 1062.0, 155.0, 1062.0, 169.0, 1065.0, 169.0, 1065.0, 172.0, 1079.0, 172.0, 1079.0, 169.0, 1305.0, 169.0, 1305.0, 222.0, 1319.0, 222.0, 1319.0, 169.0, 1322.0, 169.0, 1322.0, 155.0, 1319.0, 155.0, 1319.0, 152.0, 1305.0, 152.0, 1305.0, 155.0, 1079.0, 155.0, 1079.0, 92.0" coords2="1065.0, 92.0, 1065.0, 155.0, 1062.0, 155.0, 1062.0, 169.0, 1065.0, 169.0, 1065.0, 172.0, 1079.0, 172.0, 1079.0, 169.0, 1305.0, 169.0, 1305.0, 222.0, 1319.0, 222.0, 1319.0, 169.0, 1322.0, 169.0, 1322.0, 155.0, 1319.0, 155.0, 1319.0, 152.0, 1305.0, 152.0, 1305.0, 155.0, 1079.0, 155.0, 1079.0, 92.0" shape="poly" alt=":Realization" id="areadiagram_map_uxpLCaKGAqACZGpz" href="Realization_NVJpCaKGAqACZB4v.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="335.0, -8.0, 335.0, -5.0, 332.0, -5.0, 332.0, 9.0, 335.0, 9.0, 335.0, 22.0, 349.0, 22.0, 349.0, 9.0, 465.0, 9.0, 465.0, 35.0, 462.0, 35.0, 462.0, 49.0, 465.0, 49.0, 465.0, 52.0, 479.0, 52.0, 479.0, 49.0, 482.0, 49.0, 482.0, 35.0, 479.0, 35.0, 479.0, 9.0, 482.0, 9.0, 482.0, -5.0, 479.0, -5.0, 479.0, -8.0, 465.0, -8.0, 465.0, -5.0, 349.0, -5.0, 349.0, -8.0" coords2="335.0, -8.0, 335.0, -5.0, 332.0, -5.0, 332.0, 9.0, 335.0, 9.0, 335.0, 22.0, 349.0, 22.0, 349.0, 9.0, 465.0, 9.0, 465.0, 35.0, 462.0, 35.0, 462.0, 49.0, 465.0, 49.0, 465.0, 52.0, 479.0, 52.0, 479.0, 49.0, 482.0, 49.0, 482.0, 35.0, 479.0, 35.0, 479.0, 9.0, 482.0, 9.0, 482.0, -5.0, 479.0, -5.0, 479.0, -8.0, 465.0, -8.0, 465.0, -5.0, 349.0, -5.0, 349.0, -8.0" shape="poly" alt=":Association" id="areadiagram_map_expLCaKGAqACZGp1" href="Association_aVJpCaKGAqACZB4g.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla creazione di nuovi stati &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;, 
+      quando il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      della prenotazione che si vuole effettuare &amp;#232; uguale
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      al &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      dello &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bkYQqiKGAqACSQ3t&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bkYQqiKGAqACSQ3t');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;stato 
+      camera&amp;lt;/a&amp;gt; contenente.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1592, 222, 2092, 262" coords2="1592, 222, 2092, 262" shape="rect" alt="AllCreaStatiCameraStrategy:Class" id="areadiagram_map_qxpLCaKGAqACZGph" href="Class_Q8JpCaKGAqACZBlF.html" onmouseover="storeReferenceAndSubdiagramInfos('1592, 222, 2092, 262',new Array('AllCreaStatiCameraStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Strategy/AllCreaStatiCameraStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1592, 222, 2092, 262'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Interfaccia che definisce il metodo che deve essere implementato dalle 
+      differenti strategie, per la creazione
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      di nuovi stati &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt; 
+      in seguito all'inserimento di una nuova prenotazione.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="812, 32, 1312, 92" coords2="812, 32, 1312, 92" shape="rect" alt="CreaStatiCameraStrategy:Class" id="areadiagram_map_axpLCaKGAqACZGpj" href="Class_G8JpCaKGAqACZBlO.html" onmouseover="storeReferenceAndSubdiagramInfos('812, 32, 1312, 92',new Array('CreaStatiCameraStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Strategie/StrategieOccupazioneCamera/CreaStatiCameraStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('812, 32, 1312, 92'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta all'ottenimento della corretta strategia per la creazione 
+      di nuovi stati &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt; 
+      in seguito
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      alla creazione di una nuova prenotazione.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2, 22, 462, 102" coords2="2, 22, 462, 102" shape="rect" alt="CreaStatiCameraStrategyFactory:Class" id="areadiagram_map_mxpLCaKGAqACZGpl" href="Class_18JpCaKGAqACZBlW.html" onmouseover="storeReferenceAndSubdiagramInfos('2, 22, 462, 102',new Array('CreaStatiCameraStrategyFactory.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Strategie/StrategieOccupazioneCamera/CreaStatiCameraStrategyFactory.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2, 22, 462, 102'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla creazione di nuovi stati &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;, 
+      quando il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      della prenotazione che si vuole effettuare inizia
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      lo stesso giorno dello &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bkYQqiKGAqACSQ3t&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bkYQqiKGAqACSQ3t');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;stato 
+      camera&amp;lt;/a&amp;gt; contenente.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="552, 222, 1052, 262" coords2="552, 222, 1052, 262" shape="rect" alt="LeftCreaStatiCameraStrategy:Class" id="areadiagram_map_WxpLCaKGAqACZGpn" href="Class_gCJpCaKGAqACZBlg.html" onmouseover="storeReferenceAndSubdiagramInfos('552, 222, 1052, 262',new Array('LeftCreaStatiCameraStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Strategy/LeftCreaStatiCameraStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('552, 222, 1052, 262'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla creazione di nuovi stati &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;, 
+      quando il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      della prenotazione che si vuole effettuare &amp;#232;
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      contenuto all'interno dello &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bkYQqiKGAqACSQ3t&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bkYQqiKGAqACSQ3t');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;stato 
+      camera&amp;lt;/a&amp;gt;, con i giorni iniziali e finali differenti.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="32, 222, 532, 262" coords2="32, 222, 532, 262" shape="rect" alt="MiddleCreaStatiCameraStrategy:Class" id="areadiagram_map_WxpLCaKGAqACZGpp" href="Class_GCJpCaKGAqACZBlp.html" onmouseover="storeReferenceAndSubdiagramInfos('32, 222, 532, 262',new Array('MiddleCreaStatiCameraStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Strategy/MiddleCreaStatiCameraStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('32, 222, 532, 262'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla creazione di nuovi stati &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;, 
+      quando il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;periodo&amp;lt;/a&amp;gt; 
+      della prenotazione che si vuole effettuare finisce
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      lo stesso giorno dello stato contenente.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1072, 222, 1572, 262" coords2="1072, 222, 1572, 262" shape="rect" alt="RightCreaStatiCameraStrategy:Class" id="areadiagram_map_2xpLCaKGAqACZGpr" href="Class_ZCJpCaKGAqACZBly.html" onmouseover="storeReferenceAndSubdiagramInfos('1072, 222, 1572, 262',new Array('RightCreaStatiCameraStrategy.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Strategy/RightCreaStatiCameraStrategy.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1072, 222, 1572, 262'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

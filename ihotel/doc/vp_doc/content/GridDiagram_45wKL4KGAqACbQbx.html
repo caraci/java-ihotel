@@ -1,0 +1,2444 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Grid - Glossary Grid</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_mRwKL4KGAqACbQbw.html">
+Glossary : Model</a>
+	</p>
+	<p class="PageTitle">
+		Grid - Glossary Grid		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/45wKL4KGAqACbQbx', 'Glossary Grid\nihotel.vpp://diagram/45wKL4KGAqACbQbx', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+Configuration			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="25%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Value</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Model element</span>			</td>
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Term.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Term.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Term</span>				</span>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Scope</span>			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Project</span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+<span class="TableContent">Includes Referenced Projects</span>			</td>
+			<td>
+			</td>
+			<td>
+<span class="TableContent">true</span>			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="Category">
+Terms			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td style="padding: 5px 10px;" width="31%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td style="padding: 5px 10px;" width="10%">
+<span class="TableHeaderText">Aliases</span>			</td>
+			<td style="padding: 5px 10px;" width="18%">
+<span class="TableHeaderText">Labels</span>			</td>
+			<td style="padding: 5px 10px;" width="39%">
+<span class="TableHeaderText">Documentation</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr id="modelSelectioneuz_KiKGAqACSQog" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="euz_KiKGAqACSQog">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_euz_KiKGAqACSQog.html">
+<span class="TableContent">aggiungiCameraAllaRichiestaDiSoggiorno</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="euz_KiKGAqACSQog">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="euz_KiKGAqACSQog">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="euz_KiKGAqACSQog">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema, che serve ad aggiungere una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a> 
+      alla richiesta di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a> 
+      in corso.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionJnqlcmKGAqAC2By7" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="JnqlcmKGAqAC2By7">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_JnqlcmKGAqAC2By7.html">
+<span class="TableContent">aggiungiOspite(camera, ospite)</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="JnqlcmKGAqAC2By7">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="JnqlcmKGAqAC2By7">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="JnqlcmKGAqAC2By7">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema con la finalit&#224; di inserire un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospite</a> 
+      ad una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>, 
+      in relazione ad un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionPYxFcmKGAqAC2ByX" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="PYxFcmKGAqAC2ByX">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_PYxFcmKGAqAC2ByX.html">
+<span class="TableContent">aggiungiOspitiAlSoggiorno</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="PYxFcmKGAqAC2ByX">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="PYxFcmKGAqAC2ByX">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="PYxFcmKGAqAC2ByX">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema che serve a caricare il pannello, contente tutte le <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camere</a>, 
+      dando la possibilit&#224; di inserire tutte le informazioni sui diversi <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionvQZl7iKFYGwoWQow" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="vQZl7iKFYGwoWQow">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_vQZl7iKFYGwoWQow.html">
+<span class="TableContent">aggiungiServiziCamera()</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vQZl7iKFYGwoWQow">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vQZl7iKFYGwoWQow">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vQZl7iKFYGwoWQow">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Con 
+      questa operazione di sistema, si va a caricare la finestra che permette 
+      di aggiungere i <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizi</a> 
+      associati alla <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a> 
+      che si sta analizzando.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection5Q217iKFYGwoWQpq" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="5Q217iKFYGwoWQpq">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_5Q217iKFYGwoWQpq.html">
+<span class="TableContent">aggiungiServizio(codiceServizio,dataServizio)</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="5Q217iKFYGwoWQpq">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="5Q217iKFYGwoWQpq">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="5Q217iKFYGwoWQpq">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Con 
+      questa operazione di sistema, si va ad aggiungere alla <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>, 
+      il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizio</a> 
+      definito dal suo codice, per la data indicata.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionpYjNjEKFYGwoWQYW" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="pYjNjEKFYGwoWQYW">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_pYjNjEKFYGwoWQYW.html">
+<span class="TableContent">amministratore di sistema</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="pYjNjEKFYGwoWQYW">
+</a>
+				<span class="TableContent">
+					<a target="_content_pane" class="ItemLink" href="Alias_RUrNjEKFYGwoWQYq.html">
+admin</a>
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="pYjNjEKFYGwoWQYW">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="pYjNjEKFYGwoWQYW">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">L'<a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#pYjNjEKFYGwoWQYW" name="" onclick="javascript: highlightGridModelSelection('pYjNjEKFYGwoWQYW');" target="_content_pane">amministratore 
+      di sistema</a> &#232; colui che si occupa dell'installazione del software 
+      sulle macchine. Si occupa della gestione tecnica del sistema in generale.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionbheG2kKGAqACSRwc" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="bheG2kKGAqACSRwc">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_bheG2kKGAqACSRwc.html">
+<span class="TableContent">booking online</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bheG2kKGAqACSRwc">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bheG2kKGAqACSRwc">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bheG2kKGAqACSRwc">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Il 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#bheG2kKGAqACSRwc" name="" onclick="javascript: highlightGridModelSelection('bheG2kKGAqACSRwc');" target="_content_pane">booking 
+      online</a> indica una prenotazione effettuata da una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">cliente</a>, 
+      su un portale sul web, come ad esempio Booking.com, Venere, Expedia.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection0bVQ_kKGAqACSQZk" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="0bVQ_kKGAqACSQZk">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_0bVQ_kKGAqACSQZk.html">
+<span class="TableContent">camera</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="0bVQ_kKGAqACSQZk">
+</a>
+				<span class="TableContent">
+					<a target="_content_pane" class="ItemLink" href="Alias_XSdQ_kKGAqACSQaB.html">
+stanza</a>
+					<br>					<a target="_content_pane" class="ItemLink" href="Alias_wanQ_kKGAqACSQaC.html">
+stanze</a>
+					<br>					<a target="_content_pane" class="ItemLink" href="Alias_ebnQ_kKGAqACSQaD.html">
+camere</a>
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="0bVQ_kKGAqACSQZk">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="0bVQ_kKGAqACSQZk">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">La 
+      struttura ricettiva si compone di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camere</a>. 
+      Ogni <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a> 
+      pu&#242; essere descritta dalle seguenti informazioni:
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Numero della <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">stanza</a>.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Piano di collocazione.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Tipologia (Singola, Doppia, Matrimoniale, Tripla, Junior suite, Senior 
+      suite).
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Numero di persone.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">Servizi</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection_jDKL4KGAqACbQcd" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="_jDKL4KGAqACbQcd">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary__jDKL4KGAqACbQcd.html">
+<span class="TableContent">Capo ricevimento</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="_jDKL4KGAqACbQcd">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="_jDKL4KGAqACbQcd">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="_jDKL4KGAqACbQcd">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Il 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#_jDKL4KGAqACbQcd" name="" onclick="javascript: highlightGridModelSelection('_jDKL4KGAqACbQcd');" target="_content_pane">capo 
+      ricevimento</a> &#232; colui che lavora nella struttura ricettiva durante la 
+      giornata, pu&#242; svolgere tutti i compiti svolti dal <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#CPwKL4KGAqACbQb7" name="" onclick="javascript: highlightGridModelSelection('CPwKL4KGAqACbQb7');" target="_content_pane">segretario 
+      di ricevimento</a>, ed inoltre &#232; in grado di accedere a ulteriori 
+      funzionalit&#224;.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionOWffKiKGAqACSQl5" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="OWffKiKGAqACSQl5">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_OWffKiKGAqACSQl5.html">
+<span class="TableContent">cercaCamereLibere</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="OWffKiKGAqACSQl5">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="OWffKiKGAqACSQl5">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="OWffKiKGAqACSQl5">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema che permette di cercare le <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camere</a> 
+      disponibili, nel <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb" name="" onclick="javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');" target="_content_pane">periodo</a> 
+      compreso tra <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#vb5fKiKGAqACSQk5" name="" onclick="javascript: highlightGridModelSelection('vb5fKiKGAqACSQk5');" target="_content_pane">DataInizio</a> 
+      e <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#mUdfKiKGAqACSQlM" name="" onclick="javascript: highlightGridModelSelection('mUdfKiKGAqACSQlM');" target="_content_pane">DataFine</a>, 
+      aventi tipologia contenuta in <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#he6fKiKGAqACSQkP" name="" onclick="javascript: highlightGridModelSelection('he6fKiKGAqACSQkP');" target="_content_pane">richieste</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionbgWDqkKFYGwwHga7" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="bgWDqkKFYGwwHga7">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_bgWDqkKFYGwwHga7.html">
+<span class="TableContent">channel manager</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bgWDqkKFYGwwHga7">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bgWDqkKFYGwwHga7">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bgWDqkKFYGwwHga7">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">&#200; 
+      un software che si interfaccia con i portali di&nbsp;prenotazioni 
+      online&nbsp;quali&nbsp;Expedia,&nbsp;Booking.com,&nbsp;Venere&nbsp;e tutti gli altri in modo da 
+      poterli aggiornare contemporaneamente senza dover accedere alle singole 
+      extranet una per volta. Inoltre fornendo delle API permette 
+      all'applicazione di poter sfruttare differenti <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizi</a> 
+      come ad esempio il trasferimento delle prenotazioni ricevute dai 
+      suddetti portali.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionKxu_SEKGAqACgRFP" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="Kxu_SEKGAqACgRFP">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_Kxu_SEKGAqACgRFP.html">
+<span class="TableContent">check in</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Kxu_SEKGAqACgRFP">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Kxu_SEKGAqACgRFP">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Kxu_SEKGAqACgRFP">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">E' 
+      l'insieme di tutte le procedure volte alla registrazione dei dati di 
+      tutti gli <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a> 
+      relativi ad una prenotazione. Tra le procedure troviamo:
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Registrazione dei documenti.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Eventuale acconto
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Consegna delle chiavi.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Registrazione data e ora d'arrivo.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Generazione delle <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#bfNAyEKGAqACgRFc" name="" onclick="javascript: highlightGridModelSelection('bfNAyEKGAqACgRFc');" target="_content_pane">schede 
+      di pubblica sicurezza</a></font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection1mc4yEKGAqACgRUK" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="1mc4yEKGAqACgRUK">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_1mc4yEKGAqACgRUK.html">
+<span class="TableContent">check out</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="1mc4yEKGAqACgRUK">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="1mc4yEKGAqACgRUK">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="1mc4yEKGAqACgRUK">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">E' 
+      l'insieme di tutte le procedure necessarie prima di abbandonare la 
+      struttura. Tra queste troviamo :
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Riconsegna delle chiavi.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Eventuale saldo del conto.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Richiesta di documenti fiscali.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionRxFtjEKFYGwoWQZH" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="RxFtjEKFYGwoWQZH">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_RxFtjEKFYGwoWQZH.html">
+<span class="TableContent">cliente</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="RxFtjEKFYGwoWQZH">
+</a>
+				<span class="TableContent">
+					<a target="_content_pane" class="ItemLink" href="Alias_dAgdjEKFYGwoWQZh.html">
+ospite</a>
+					<br>					<a target="_content_pane" class="ItemLink" href="Alias_MPywqiKGAqACSQ4Q.html">
+ospiti</a>
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="RxFtjEKFYGwoWQZH">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="RxFtjEKFYGwoWQZH">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Persona 
+      ospitata in una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection.4VAqiKGAqACSQov" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name=".4VAqiKGAqACSQov">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary__4VAqiKGAqACSQov.html">
+<span class="TableContent">concludiRichiestaDiSoggiorno(Nome, Cognome, eMail, Telefono)</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name=".4VAqiKGAqACSQov">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name=".4VAqiKGAqACSQov">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name=".4VAqiKGAqACSQov">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema, che serve a concludere una richiesta di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>, 
+      a salvare il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">cliente</a> 
+      prenotante, e ad occupare le <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camere</a> 
+      contenute all'interno del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionLMHba6KAUrhmpCFr" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="LMHba6KAUrhmpCFr">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_LMHba6KAUrhmpCFr.html">
+<span class="TableContent">condizioni della soggiorno</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="LMHba6KAUrhmpCFr">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="LMHba6KAUrhmpCFr">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="LMHba6KAUrhmpCFr">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Le 
+      condizioni del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a> 
+      sono:
+</font>    </p>
+    <ul class="disc" style="list-style-type:none;">
+      <li>
+        <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">il 
+        <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb" name="" onclick="javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');" target="_content_pane">periodo</a>;
+</font>      </li>
+      <li>
+        <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">le 
+        <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camere</a> 
+        prenotate;
+</font>      </li>
+      <li>
+        <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">il 
+        prezzo totale del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>;
+</font>      </li>
+      <li>
+        <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">eventuali 
+        <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizi</a> 
+        richiesti.
+</font>      </li>
+    </ul>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionShS7SEKGAqACgRB8" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="ShS7SEKGAqACgRB8">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_ShS7SEKGAqACgRB8.html">
+<span class="TableContent">corrispettivi</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="ShS7SEKGAqACgRB8">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="ShS7SEKGAqACgRB8">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="ShS7SEKGAqACgRB8">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Insieme 
+      dei documenti fiscali emessi durante la giornata.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionKZLfKiKGAqACSQlh" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="KZLfKiKGAqACSQlh">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_KZLfKiKGAqACSQlh.html">
+<span class="TableContent">creaNuovaRichiestaSoggiorno</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="KZLfKiKGAqACSQlh">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="KZLfKiKGAqACSQlh">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="KZLfKiKGAqACSQlh">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema, che serve ad avviare la creazione di una richiesta di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionmUdfKiKGAqACSQlM" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="mUdfKiKGAqACSQlM">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_mUdfKiKGAqACSQlM.html">
+<span class="TableContent">DataFine</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="mUdfKiKGAqACSQlM">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="mUdfKiKGAqACSQlM">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="mUdfKiKGAqACSQlM">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Data 
+      di fine della richiesta.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionvb5fKiKGAqACSQk5" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="vb5fKiKGAqACSQk5">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_vb5fKiKGAqACSQk5.html">
+<span class="TableContent">DataInizio</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vb5fKiKGAqACSQk5">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vb5fKiKGAqACSQk5">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vb5fKiKGAqACSQk5">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Data 
+      di inizio della richiesta.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionz.qvWkKGAqACSQw5" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="z.qvWkKGAqACSQw5">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_z_qvWkKGAqACSQw5.html">
+<span class="TableContent">dipendente</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="z.qvWkKGAqACSQw5">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="z.qvWkKGAqACSQw5">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="z.qvWkKGAqACSQw5">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Il 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#z.qvWkKGAqACSQw5" name="" onclick="javascript: highlightGridModelSelection('z.qvWkKGAqACSQw5');" target="_content_pane">dipendente</a> 
+      nell'applicazione <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#lXvO2kKGAqACSSEQ" name="" onclick="javascript: highlightGridModelSelection('lXvO2kKGAqACSSEQ');" target="_content_pane">iHotel</a>, 
+      pu&#242; identificare diverse figure. Pu&#242; essere il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RcOKL4KGAqACbQcU" name="" onclick="javascript: highlightGridModelSelection('RcOKL4KGAqACbQcU');" target="_content_pane">portiere 
+      di notte</a>, il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#CPwKL4KGAqACbQb7" name="" onclick="javascript: highlightGridModelSelection('CPwKL4KGAqACbQb7');" target="_content_pane">segretario 
+      di ricevimento</a> ed anche il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#_jDKL4KGAqACbQcd" name="" onclick="javascript: highlightGridModelSelection('_jDKL4KGAqACbQcd');" target="_content_pane">capo 
+      ricevimento</a>. Si &#232; scelto di utilizzare un nome generico nella 
+      stesura dei casi d'uso, laddove quest'ultimi possono essere attivati da 
+      attori diversi.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionvtplcmKGAqAC2BzT" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="vtplcmKGAqAC2BzT">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_vtplcmKGAqAC2BzT.html">
+<span class="TableContent">effettuaCheckIn</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vtplcmKGAqAC2BzT">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vtplcmKGAqAC2BzT">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="vtplcmKGAqAC2BzT">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema per effettuare il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#Kxu_SEKGAqACgRFP" name="" onclick="javascript: highlightGridModelSelection('Kxu_SEKGAqACgRFP');" target="_content_pane">check 
+      in</a> degli <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a> 
+      di una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionA5vVcmKGAqAC2B1P" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="A5vVcmKGAqAC2B1P">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_A5vVcmKGAqAC2B1P.html">
+<span class="TableContent">effettuaCheckOut</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="A5vVcmKGAqAC2B1P">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="A5vVcmKGAqAC2B1P">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="A5vVcmKGAqAC2B1P">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema attraverso la quale si effettua il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#1mc4yEKGAqACgRUK" name="" onclick="javascript: highlightGridModelSelection('1mc4yEKGAqACgRUK');" target="_content_pane">check 
+      out</a> degli <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a> 
+      dalle <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camere</a> 
+      del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection9ZrVcmKGAqAC2B0p" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="9ZrVcmKGAqAC2B0p">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_9ZrVcmKGAqAC2B0p.html">
+<span class="TableContent">effettuaPagamentoConCarta(importo)</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="9ZrVcmKGAqAC2B0p">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="9ZrVcmKGAqAC2B0p">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="9ZrVcmKGAqAC2B0p">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Metodo 
+      per effettuare un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamento</a> 
+      con carta di credito / bancomat, in relazione ad un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>. 
+      L'importo del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamento</a> 
+      viene fornito come parametro.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionC7ZVcmKGAqAC2B0W" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="C7ZVcmKGAqAC2B0W">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_C7ZVcmKGAqAC2B0W.html">
+<span class="TableContent">effettuaPagamentoInContati(Importo)</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="C7ZVcmKGAqAC2B0W">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="C7ZVcmKGAqAC2B0W">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="C7ZVcmKGAqAC2B0W">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Metodo 
+      per effettuare un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamento</a> 
+      in contanti, in relazione ad un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>. 
+      L'importo del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamento</a> 
+      viene fornito come parametro.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionjf8.KyKFYGwwHhGz" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="jf8.KyKFYGwwHhGz">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_jf8_KyKFYGwwHhGz.html">
+<span class="TableContent">gestioneCamera(numeroCamera)</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="jf8.KyKFYGwwHhGz">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="jf8.KyKFYGwwHhGz">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="jf8.KyKFYGwwHhGz">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema, attraverso la quale, si va a caricare la finestra contenente 
+      le informazioni relative alla numero di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a> 
+      passato come parametro.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionTXgVcmKGAqAC2Bzr" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="TXgVcmKGAqAC2Bzr">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_TXgVcmKGAqAC2Bzr.html">
+<span class="TableContent">gestisciPagamenti</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="TXgVcmKGAqAC2Bzr">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="TXgVcmKGAqAC2Bzr">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="TXgVcmKGAqAC2Bzr">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema, per caricare il pannello attraverso il quale si pu&#242; 
+      effettuare la gestione di tutti i <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamenti</a> 
+      per un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionlXvO2kKGAqACSSEQ" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="lXvO2kKGAqACSSEQ">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_lXvO2kKGAqACSSEQ.html">
+<span class="TableContent">iHotel</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="lXvO2kKGAqACSSEQ">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="lXvO2kKGAqACSSEQ">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="lXvO2kKGAqACSSEQ">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Applicazione 
+      per la gestione del front-desk in strutture ricettive, di piccole 
+      dimensioni. Il sistema sar&#224; dotato di flessibilit&#224; per supportare le 
+      regole di business diversificate e variabili del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">cliente</a>, 
+      per potersi interfacciare con pi&#249; sistemi di supporto prodotti da terze 
+      parti. L&#8217;applicativo finale potr&#224; essere utilizzato da uno o pi&#249; 
+      terminali della struttura, per andare ad effettuare tutte le operazioni 
+      di gestione.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionH21paSKFYGwwHgwp" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="H21paSKFYGwwHgwp">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_H21paSKFYGwwHgwp.html">
+<span class="TableContent">MServiceFactory</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="H21paSKFYGwwHgwp">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="H21paSKFYGwwHgwp">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="H21paSKFYGwwHgwp">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Factory 
+      che fornisce la maniglia agli oggetti responsabili della gestione dei 
+      sistemi esterni.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionq4N_KiKGAqACSQmn" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="q4N_KiKGAqACSQmn">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_q4N_KiKGAqACSQmn.html">
+<span class="TableContent">numeroCamera</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="q4N_KiKGAqACSQmn">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="q4N_KiKGAqACSQmn">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="q4N_KiKGAqACSQmn">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Numero 
+      della <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionALaVcmKGAqAC2Bz3" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="ALaVcmKGAqAC2Bz3">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_ALaVcmKGAqAC2Bz3.html">
+<span class="TableContent">pagamenti</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="ALaVcmKGAqAC2Bz3">
+</a>
+				<span class="TableContent">
+					<a target="_content_pane" class="ItemLink" href="Alias_cyGVcmKGAqAC2B0D.html">
+pagamento</a>
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="ALaVcmKGAqAC2Bz3">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="ALaVcmKGAqAC2Bz3">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Esistono 
+      differenti tipologie di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamento</a> 
+      previste:
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">Pagamento</a> 
+      in contanti.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">Pagamento</a> 
+      attraverso bonifico bancario.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">Pagamento</a> 
+      attraverso bancomat / carta di credito.
+</font>    </p>
+    <p style="margin-top:0;">
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">&nbsp;</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionbRTZTiKFYGwoWQdb" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="bRTZTiKFYGwoWQdb">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_bRTZTiKFYGwoWQdb.html">
+<span class="TableContent">periodo</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bRTZTiKFYGwoWQdb">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bRTZTiKFYGwoWQdb">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bRTZTiKFYGwoWQdb">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">E' 
+      il lasso temporale compreso tra due date.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection1B0Y_kKGAqACSQaz" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="1B0Y_kKGAqACSQaz">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_1B0Y_kKGAqACSQaz.html">
+<span class="TableContent">Periodo di riferimento</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="1B0Y_kKGAqACSQaz">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="1B0Y_kKGAqACSQaz">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="1B0Y_kKGAqACSQaz">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Il 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#1B0Y_kKGAqACSQaz" name="" onclick="javascript: highlightGridModelSelection('1B0Y_kKGAqACSQaz');" target="_content_pane">periodo 
+      di riferimento</a> per la prenotazione di una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>, 
+      da parte di un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">cliente</a>, 
+      si compone di:
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Data di arrivo.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Ora di arrivo.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Data di partenza.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Ora di partenza.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionRcOKL4KGAqACbQcU" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="RcOKL4KGAqACbQcU">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_RcOKL4KGAqACbQcU.html">
+<span class="TableContent">Portiere di notte</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="RcOKL4KGAqACbQcU">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="RcOKL4KGAqACbQcU">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="RcOKL4KGAqACbQcU">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Il 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RcOKL4KGAqACbQcU" name="" onclick="javascript: highlightGridModelSelection('RcOKL4KGAqACbQcU');" target="_content_pane">portiere 
+      di notte</a> &#232; colui che lavora nella struttura ricettiva durante la 
+      notte.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionhEUnSEKGAqACgRC2" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="hEUnSEKGAqACgRC2">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_hEUnSEKGAqACgRC2.html">
+<span class="TableContent">prima nota</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="hEUnSEKGAqACgRC2">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="hEUnSEKGAqACgRC2">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="hEUnSEKGAqACgRC2">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">E' 
+      un documento che registra tutte le entrate e le uscite del giorno (ad 
+      esempio vendita di prodotti, frigo, e costi sostenuti per riparazioni)</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionjBKl7iKFYGwoWQn1" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="jBKl7iKFYGwoWQn1">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_jBKl7iKFYGwoWQn1.html">
+<span class="TableContent">recuperaSoggiornoDaCodice(codicePrenotazione)</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="jBKl7iKFYGwoWQn1">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="jBKl7iKFYGwoWQn1">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="jBKl7iKFYGwoWQn1">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Con 
+      questa operazione di sistema, si va a recuperare una prenotazione dal 
+      sistema, attraverso il suo codice identificativo.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionbk33SEKGAqACgRES" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="bk33SEKGAqACgRES">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_bk33SEKGAqACgRES.html">
+<span class="TableContent">revenue management</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bk33SEKGAqACgRES">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bk33SEKGAqACgRES">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bk33SEKGAqACgRES">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Il 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#bk33SEKGAqACgRES" name="" onclick="javascript: highlightGridModelSelection('bk33SEKGAqACgRES');" target="_content_pane">revenue 
+      management</a> comprende tutto l'insieme delle operazioni che vengono 
+      compiute per la gestione dei prezzi delle <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camere</a> 
+      e le relative disponibilit&#224;.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionhe6fKiKGAqACSQkP" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="he6fKiKGAqACSQkP">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_he6fKiKGAqACSQkP.html">
+<span class="TableContent">Richieste</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="he6fKiKGAqACSQkP">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="he6fKiKGAqACSQkP">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="he6fKiKGAqACSQkP">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">E' 
+      l'insieme delle tipologie che si vanno a richiedere al sistema.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionbfNAyEKGAqACgRFc" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="bfNAyEKGAqACgRFc">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_bfNAyEKGAqACgRFc.html">
+<span class="TableContent">schede di pubblica sicurezza</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bfNAyEKGAqACgRFc">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bfNAyEKGAqACgRFc">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bfNAyEKGAqACgRFc">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Sono 
+      le schede che devono essere compilate e trasmesse alla questura entro la 
+      giornata di arrivo del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">cliente</a> 
+      nella struttura ricettiva.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionsYbE_kKGAqACSQbe" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="sYbE_kKGAqACSQbe">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_sYbE_kKGAqACSQbe.html">
+<span class="TableContent">Sconto</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="sYbE_kKGAqACSQbe">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="sYbE_kKGAqACSQbe">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="sYbE_kKGAqACSQbe">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Lo 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#sYbE_kKGAqACSQbe" name="" onclick="javascript: highlightGridModelSelection('sYbE_kKGAqACSQbe');" target="_content_pane">sconto</a> 
+      viene applicato al prezzo totale della <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">stanza</a>, 
+      secondo delle regole di business.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionCPwKL4KGAqACbQb7" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="CPwKL4KGAqACbQb7">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_CPwKL4KGAqACbQb7.html">
+<span class="TableContent">Segretario di ricevimento</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="CPwKL4KGAqACbQb7">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="CPwKL4KGAqACbQb7">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="CPwKL4KGAqACbQb7">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Il 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#CPwKL4KGAqACbQb7" name="" onclick="javascript: highlightGridModelSelection('CPwKL4KGAqACbQb7');" target="_content_pane">segretario 
+      di ricevimento</a> &#232; colui che lavora nella struttura ricettiva durante 
+      la giornata. Pu&#242; svolgere tutte le mansioni del <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RcOKL4KGAqACbQcU" name="" onclick="javascript: highlightGridModelSelection('RcOKL4KGAqACbQcU');" target="_content_pane">portiere 
+      di notte</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionO0DI_kKGAqACSQaG" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="O0DI_kKGAqACSQaG">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_O0DI_kKGAqACSQaG.html">
+<span class="TableContent">Servizi</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="O0DI_kKGAqACSQaG">
+</a>
+				<span class="TableContent">
+					<a target="_content_pane" class="ItemLink" href="Alias_iC47FiKFYGwoWR7V.html">
+servizio</a>
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="O0DI_kKGAqACSQaG">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="O0DI_kKGAqACSQaG">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">L'<a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospite</a> 
+      pu&#242; usufruire di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizi</a> 
+      offerti dalla struttura ricettiva. Ogni <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizio</a> 
+      comporta un costo aggiuntivo alla prenotazione, il costo aggiuntivo 
+      viene calcolato in base al tipo di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizio</a>.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Il 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizio</a> 
+      pu&#242; essere:
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#2PNiLaKGAqACkgcE" name="" onclick="javascript: highlightGridModelSelection('2PNiLaKGAqACkgcE');" target="_content_pane">servizio 
+      interno</a>.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#DuViLaKGAqACkgbu" name="" onclick="javascript: highlightGridModelSelection('DuViLaKGAqACkgbu');" target="_content_pane">servizio 
+      esterno</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionDuViLaKGAqACkgbu" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="DuViLaKGAqACkgbu">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_DuViLaKGAqACkgbu.html">
+<span class="TableContent">servizio esterno</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="DuViLaKGAqACkgbu">
+</a>
+				<span class="TableContent">
+					<a target="_content_pane" class="ItemLink" href="Alias_iQriLaKGAqACkgcY.html">
+servizi esterni</a>
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="DuViLaKGAqACkgbu">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="DuViLaKGAqACkgbu">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">E' 
+      un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizio</a> 
+      offerto da un sistema esterno come ad esempio la payTv o il telefono in <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>. 
+      Dunque un esempio di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#DuViLaKGAqACkgbu" name="" onclick="javascript: highlightGridModelSelection('DuViLaKGAqACkgbu');" target="_content_pane">servizio 
+      esterno</a> pu&#242; essere:
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Film acquistato attraverso il televisore in <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Telefonata effettuata dal <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">cliente</a>, 
+      con il telefono in <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection2PNiLaKGAqACkgcE" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="2PNiLaKGAqACkgcE">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_2PNiLaKGAqACkgcE.html">
+<span class="TableContent">servizio interno</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="2PNiLaKGAqACkgcE">
+</a>
+				<span class="TableContent">
+					<a target="_content_pane" class="ItemLink" href="Alias_pL4SLaKGAqACkghG.html">
+servizi interni</a>
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="2PNiLaKGAqACkgcE">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="2PNiLaKGAqACkgcE">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane"><font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Servizio</font></a><font color="#000000" face="Courier New" size="11px" style="font-size:11px;"> 
+      offerto dalla struttura ricettiva come ad esempio:
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Mazzo di fiori in <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Champagne in <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Colazione in <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectiontRjLdaKGAqACdgpn" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="tRjLdaKGAqACdgpn">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_tRjLdaKGAqACdgpn.html">
+<span class="TableContent">Sistema channel Manager</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="tRjLdaKGAqACdgpn">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="tRjLdaKGAqACdgpn">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="tRjLdaKGAqACdgpn">
+</a>
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr id="modelSelectionIaKhGmKGAqACTyI0" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="IaKhGmKGAqACTyI0">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_IaKhGmKGAqACTyI0.html">
+<span class="TableContent">Sistema della polizia di stato</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="IaKhGmKGAqACTyI0">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="IaKhGmKGAqACTyI0">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="IaKhGmKGAqACTyI0">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#IaKhGmKGAqACTyI0" name="" onclick="javascript: highlightGridModelSelection('IaKhGmKGAqACTyI0');" target="_content_pane"><font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Sistema 
+      della polizia di stato</font></a><font color="#000000" face="Courier New" size="11px" style="font-size:11px;"> 
+      al quale si inviano le informazioni sugli <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a> 
+      presenti nella struttura ricettiva.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionUi3Z2mKGAqACYg2r" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="Ui3Z2mKGAqACYg2r">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_Ui3Z2mKGAqACYg2r.html">
+<span class="TableContent">Sistema di autorizzazione al pagamento</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Ui3Z2mKGAqACYg2r">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Ui3Z2mKGAqACYg2r">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Ui3Z2mKGAqACYg2r">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Sistema 
+      attraverso il quale viene effettuata la richiesta di autorizzazione ad 
+      effettuare un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamento</a> 
+      utilizzando o una carta di credito o un bancomat.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionzCrqg6KGAqAC4Qtu" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="zCrqg6KGAqAC4Qtu">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_zCrqg6KGAqAC4Qtu.html">
+<span class="TableContent">SistemaDiGestioneServiziEsterni</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="zCrqg6KGAqAC4Qtu">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="zCrqg6KGAqAC4Qtu">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="zCrqg6KGAqAC4Qtu">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Sistema 
+      generico di gestione di <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#DuViLaKGAqACkgbu" name="" onclick="javascript: highlightGridModelSelection('DuViLaKGAqACkgbu');" target="_content_pane">servizi 
+      esterni</a>, come <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#OSWLdaKGAqACdgpH" name="" onclick="javascript: highlightGridModelSelection('OSWLdaKGAqACdgpH');" target="_content_pane">sistema 
+      PayTv Camere</a> o <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#kcHLdaKGAqACdgqC" name="" onclick="javascript: highlightGridModelSelection('kcHLdaKGAqACdgqC');" target="_content_pane">sistema 
+      Telefoni Camere</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionNKzZ2mKGAqACYg2N" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="NKzZ2mKGAqACYg2N">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_NKzZ2mKGAqACYg2N.html">
+<span class="TableContent">Sistema di pagamento con carta</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="NKzZ2mKGAqACYg2N">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="NKzZ2mKGAqACYg2N">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="NKzZ2mKGAqACYg2N">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Sistema 
+      attraverso il quale viene effettuato il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamento</a> 
+      per il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>, 
+      utilizzando o una carta di credito o un bancomat.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectiongVpt2mKGAqACYg5k" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="gVpt2mKGAqACYg5k">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_gVpt2mKGAqACYg5k.html">
+<span class="TableContent">sistema lettore carte</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="gVpt2mKGAqACYg5k">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="gVpt2mKGAqACYg5k">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="gVpt2mKGAqACYg5k">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Sistema 
+      esterno con la responsabilit&#224; di recuperare le informazioni sulle carte 
+      di credito o bancomat.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionOSWLdaKGAqACdgpH" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="OSWLdaKGAqACdgpH">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_OSWLdaKGAqACdgpH.html">
+<span class="TableContent">Sistema PayTv Camere</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="OSWLdaKGAqACdgpH">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="OSWLdaKGAqACdgpH">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="OSWLdaKGAqACdgpH">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Sistema 
+      esterno che ha la responsabilit&#224; di conoscere tutti gli spettacoli ( 
+      partita calcistica, film a <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">pagamento</a>, 
+      ecc...) acquistati dal televisore presente nella <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>. 
+      Ci si rivolge ad esso per conoscere quali spettacoli sono stati 
+      acquistati da una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a> 
+      in un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb" name="" onclick="javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');" target="_content_pane">periodo</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionkcHLdaKGAqACdgqC" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="kcHLdaKGAqACdgqC">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_kcHLdaKGAqACdgqC.html">
+<span class="TableContent">Sistema Telefoni Camere</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="kcHLdaKGAqACdgqC">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="kcHLdaKGAqACdgqC">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="kcHLdaKGAqACdgqC">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Sistema 
+      esterno che ha la responsabilit&#224; di conoscere tutte le chiamate 
+      effettuate da tutti i telefoni presenti in ogni <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a> 
+      dell'albergo. Ci si rivolge ad esso per conoscere informazioni in merito 
+      alle telefonate emesse da una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>, 
+      in un certo <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb" name="" onclick="javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');" target="_content_pane">periodo</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionPjDCyEKGAqACgRWD" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="PjDCyEKGAqACgRWD">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_PjDCyEKGAqACgRWD.html">
+<span class="TableContent">soggiorno</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="PjDCyEKGAqACgRWD">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="PjDCyEKGAqACgRWD">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="PjDCyEKGAqACgRWD">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">E' 
+      l'entit&#224; fondamentale di una struttura alberghiera. Essa si pu&#242; trovare 
+      in vari stati, inizialmente il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a> 
+      &#232; prenotato, successivamente dopo il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#Kxu_SEKGAqACgRFP" name="" onclick="javascript: highlightGridModelSelection('Kxu_SEKGAqACgRFP');" target="_content_pane">check 
+      in</a> degli <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a> 
+      nella struttura ricettiva diventa un vero e proprio <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>, 
+      infine dopo il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#1mc4yEKGAqACgRUK" name="" onclick="javascript: highlightGridModelSelection('1mc4yEKGAqACgRUK');" target="_content_pane">check 
+      out</a> degli <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a>, 
+      il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a> 
+      diventa terminato. E' caratterizzato dalle seguenti informazioni 
+      fondamentali:
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Codice identificativo.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">Cliente</a> 
+      prenotante.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">Camere</a> 
+      riservate.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3" name="" onclick="javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');" target="_content_pane">Pagamenti</a> 
+      ricevuti.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#bRTZTiKFYGwoWQdb" name="" onclick="javascript: highlightGridModelSelection('bRTZTiKFYGwoWQdb');" target="_content_pane">Periodo</a> 
+      in cui gli <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a> 
+      saranno ospitati presso la struttura.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Importo totale da pagare.
+</font>    </p>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">- 
+      Stato in cui si trova il <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD" name="" onclick="javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');" target="_content_pane">soggiorno</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionaSxrSEKGAqACgQ04" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="aSxrSEKGAqACgQ04">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_aSxrSEKGAqACgQ04.html">
+<span class="TableContent">sospesi</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="aSxrSEKGAqACgQ04">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="aSxrSEKGAqACgQ04">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="aSxrSEKGAqACgQ04">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Un 
+      sospeso &#232; un un credito della struttura alberghiera nei confronti di un <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">cliente</a> 
+      non ancora riscosso.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionuPrXSEKGAqACgRDz" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="uPrXSEKGAqACgRDz">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_uPrXSEKGAqACgRDz.html">
+<span class="TableContent">statistiche sulla struttura</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="uPrXSEKGAqACgRDz">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="uPrXSEKGAqACgRDz">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="uPrXSEKGAqACgRDz">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Le 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#uPrXSEKGAqACgRDz" name="" onclick="javascript: highlightGridModelSelection('uPrXSEKGAqACgRDz');" target="_content_pane">statistiche 
+      sulla struttura</a> possono essere di vario tipo. Possono essere 
+      relative all'occupazione delle <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camere</a>, 
+      all'andamento e alla provenienza delle prenotazioni ecc...</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionbkYQqiKGAqACSQ3t" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="bkYQqiKGAqACSQ3t">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_bkYQqiKGAqACSQ3t.html">
+<span class="TableContent">Stato Camera</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bkYQqiKGAqACSQ3t">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bkYQqiKGAqACSQ3t">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="bkYQqiKGAqACSQ3t">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Oggetto 
+      che ha la responsabilit&#224; di conoscere lo stato di una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a> 
+      al variare del tempo. Per stato si intendono tutte le informazioni 
+      dipendenti dal tempo relative ad una <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>, 
+      se &#232; libera o se &#232; occupata. Se &#232; occupata sar&#224; associata con degli <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#RxFtjEKFYGwoWQZH" name="" onclick="javascript: highlightGridModelSelection('RxFtjEKFYGwoWQZH');" target="_content_pane">ospiti</a>, 
+      ma anche con dei <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#2PNiLaKGAqACkgcE" name="" onclick="javascript: highlightGridModelSelection('2PNiLaKGAqACkgcE');" target="_content_pane">servizi 
+      interni</a> con un conseguente prezzo totale di quest'ultimi.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionSb.7daKGAqACdg0B" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="Sb.7daKGAqACdg0B">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_Sb_7daKGAqACdg0B.html">
+<span class="TableContent">Storico</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Sb.7daKGAqACdg0B">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Sb.7daKGAqACdg0B">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Sb.7daKGAqACdg0B">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Contenitore 
+      di tutte le prenotazioni effettuate all'albergo.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionAcMM_kKGAqACSQbr" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="AcMM_kKGAqACSQbr">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_AcMM_kKGAqACSQbr.html">
+<span class="TableContent">Supplementi</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="AcMM_kKGAqACSQbr">
+</a>
+				<span class="TableContent">
+					<a target="_content_pane" class="ItemLink" href="Alias_VgcM_kKGAqACSQb2.html">
+Supplemento</a>
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="AcMM_kKGAqACSQbr">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="AcMM_kKGAqACSQbr">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Un 
+      <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#AcMM_kKGAqACSQbr" name="" onclick="javascript: highlightGridModelSelection('AcMM_kKGAqACSQbr');" target="_content_pane">supplemento</a> 
+      &#232; l'addebito riferito all'uso di uno dei <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizi</a> 
+      offerti nella <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">stanza</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelection5rUJKyKFYGwwHhJB" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="5rUJKyKFYGwwHhJB">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_5rUJKyKFYGwwHhJB.html">
+<span class="TableContent">terminaAggiuntaServiziCamera()</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="5rUJKyKFYGwwHhJB">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="5rUJKyKFYGwwHhJB">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="5rUJKyKFYGwwHhJB">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Operazione 
+      di sistema, per uscire dalla finestra relativa all'aggiunta dei <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#O0DI_kKGAqACSQaG" name="" onclick="javascript: highlightGridModelSelection('O0DI_kKGAqACSQaG');" target="_content_pane">servizi</a>, 
+      e tornare a visualizzare i dettagli della <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectionIm1OPSKGAqACxDfp" class="TableRow2">
+			<td style="padding: 5px 10px;">
+				<a name="Im1OPSKGAqACxDfp">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_Im1OPSKGAqACxDfp.html">
+<span class="TableContent">terminaGestioneCamera()</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Im1OPSKGAqACxDfp">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Im1OPSKGAqACxDfp">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="Im1OPSKGAqACxDfp">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Con 
+      questa operazione di sistema, si va chiudere la finestra relativa alle 
+      informazioni della <a class="ItemLink" href="GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk" name="" onclick="javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');" target="_content_pane">camera</a>, 
+      per tornare alla finestra relativa alla prenotazione.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr id="modelSelectioniEwN7iKFYGwoWQrE" class="TableRow1">
+			<td style="padding: 5px 10px;">
+				<a name="iEwN7iKFYGwoWQrE">
+</a>
+				<a target="_content_pane" class="TableContent" href="Glossary_iEwN7iKFYGwoWQrE.html">
+<span class="TableContent">terminaGestionePrenotazione()</span></a>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="iEwN7iKFYGwoWQrE">
+</a>
+				<span class="TableContent">
+				</span>
+			</td>
+			<td style="padding: 5px 10px;">
+				<a name="iEwN7iKFYGwoWQrE">
+</a>
+<span class="TableContent"></span>			</td>
+			<td style="padding: 5px 10px;">
+				<a name="iEwN7iKFYGwoWQrE">
+</a>
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body>
+    <p>
+      <font color="#000000" face="Courier New" size="11px" style="font-size:11px;">Con 
+      questa operazione di sistema, si va a concludere la modifica della 
+      prenotazione.</font>
+    </p>
+  </body></span>			</td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

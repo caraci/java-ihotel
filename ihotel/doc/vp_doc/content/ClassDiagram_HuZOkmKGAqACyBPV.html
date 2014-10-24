@@ -1,0 +1,282 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Class Diagram - Access</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_FT7xCaKGAqACZBQd.html">
+StaticDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_KyXxCaKGAqACZBRb.html">
+ClassDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_Vl_zCaKGAqACZGly.html">
+View : Model</a>
+	</p>
+	<p class="PageTitle">
+		Class Diagram - Access		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/HuZOkmKGAqACyBPV', 'Access\nihotel.vpp://diagram/HuZOkmKGAqACyBPV', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|352.0|422.0|250.0|320.0|Class_NGPRcmKGAqAC2BiM.html|Class_NGPRcmKGAqAC2BiM.html|0RPxcmKGAqAC2Bnm" id="option0RPxcmKGAqAC2Bnm">DarkStyleFactory : Class</option>
+<option value="shape|2.0|22.0|250.0|320.0|Class_LmPRcmKGAqAC2BjF.html|Class_LmPRcmKGAqAC2BjF.html|sRPxcmKGAqAC2Bno" id="optionsRPxcmKGAqAC2Bno">LightStyleFactory : Class</option>
+<option value="shape|12.0|432.0|230.0|300.0|Class_LWPRcmKGAqAC2Bj_.html|Class_LWPRcmKGAqAC2Bj_.html|cRPxcmKGAqAC2Bnq" id="optioncRPxcmKGAqAC2Bnq">StyleAbstractFactory : Class</option>
+<option value="shape|452.0|202.0|230.0|80.0|Class_lOPRcmKGAqAC2Bkk.html|Class_lOPRcmKGAqAC2Bkk.html|SRPxcmKGAqAC2Bns" id="optionSRPxcmKGAqAC2Bns">ViewFactory : Class</option>
+<option value="shape|372.0|22.0|430.0|60.0|Class_HOPRcmKGAqAC2Bkq.html|Class_HOPRcmKGAqAC2Bkq.html|yRPxcmKGAqAC2Bnu" id="optionyRPxcmKGAqAC2Bnu">ViewPanelFactory : Class</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Access.png" usemap="#diagram_map" class="Image" width="806" height="746"/>
+					<map name="diagram_map">
+<area coords="535.0, 392.0, 535.0, 395.0, 532.0, 395.0, 532.0, 409.0, 535.0, 409.0, 535.0, 422.0, 549.0, 422.0, 549.0, 409.0, 615.0, 409.0, 615.0, 495.0, 602.0, 495.0, 602.0, 509.0, 615.0, 509.0, 615.0, 512.0, 629.0, 512.0, 629.0, 509.0, 632.0, 509.0, 632.0, 495.0, 629.0, 495.0, 629.0, 409.0, 632.0, 409.0, 632.0, 395.0, 629.0, 395.0, 629.0, 392.0, 615.0, 392.0, 615.0, 395.0, 549.0, 395.0, 549.0, 392.0" coords2="535.0, 392.0, 535.0, 395.0, 532.0, 395.0, 532.0, 409.0, 535.0, 409.0, 535.0, 422.0, 549.0, 422.0, 549.0, 409.0, 615.0, 409.0, 615.0, 495.0, 602.0, 495.0, 602.0, 509.0, 615.0, 509.0, 615.0, 512.0, 629.0, 512.0, 629.0, 509.0, 632.0, 509.0, 632.0, 495.0, 629.0, 495.0, 629.0, 409.0, 632.0, 409.0, 632.0, 395.0, 629.0, 395.0, 629.0, 392.0, 615.0, 392.0, 615.0, 395.0, 549.0, 395.0, 549.0, 392.0" shape="poly" alt=":Association" id="areadiagram_map_KRPxcmKGAqAC2Bnw" href="Association_SuPRcmKGAqAC2Bk1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="185.0, -8.0, 185.0, -5.0, 182.0, -5.0, 182.0, 9.0, 185.0, 9.0, 185.0, 22.0, 199.0, 22.0, 199.0, 9.0, 265.0, 9.0, 265.0, 95.0, 252.0, 95.0, 252.0, 109.0, 265.0, 109.0, 265.0, 112.0, 279.0, 112.0, 279.0, 109.0, 282.0, 109.0, 282.0, 95.0, 279.0, 95.0, 279.0, 9.0, 282.0, 9.0, 282.0, -5.0, 279.0, -5.0, 279.0, -8.0, 265.0, -8.0, 265.0, -5.0, 199.0, -5.0, 199.0, -8.0" coords2="185.0, -8.0, 185.0, -5.0, 182.0, -5.0, 182.0, 9.0, 185.0, 9.0, 185.0, 22.0, 199.0, 22.0, 199.0, 9.0, 265.0, 9.0, 265.0, 95.0, 252.0, 95.0, 252.0, 109.0, 265.0, 109.0, 265.0, 112.0, 279.0, 112.0, 279.0, 109.0, 282.0, 109.0, 282.0, 95.0, 279.0, 95.0, 279.0, 9.0, 282.0, 9.0, 282.0, -5.0, 279.0, -5.0, 279.0, -8.0, 265.0, -8.0, 265.0, -5.0, 199.0, -5.0, 199.0, -8.0" shape="poly" alt=":Association" id="areadiagram_map_qRPxcmKGAqAC2Bny" href="Association_UePRcmKGAqAC2Bk9.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="242.0, 575.0, 242.0, 589.0, 352.0, 589.0, 352.0, 575.0" coords2="242.0, 575.0, 242.0, 589.0, 352.0, 589.0, 352.0, 575.0" shape="poly" alt=":Realization" id="areadiagram_map_aRPxcmKGAqAC2Bn0" href="Realization_cuPRcmKGAqAC2Bk0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="115.0, 342.0, 115.0, 432.0, 129.0, 432.0, 129.0, 342.0" coords2="115.0, 342.0, 115.0, 432.0, 129.0, 432.0, 129.0, 342.0" shape="poly" alt=":Realization" id="areadiagram_map_6RPxcmKGAqAC2Bn2" href="Realization_YePRcmKGAqAC2Bk8.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="615.0, 172.0, 615.0, 175.0, 612.0, 175.0, 612.0, 189.0, 615.0, 189.0, 615.0, 202.0, 629.0, 202.0, 629.0, 189.0, 695.0, 189.0, 695.0, 215.0, 682.0, 215.0, 682.0, 229.0, 695.0, 229.0, 695.0, 232.0, 709.0, 232.0, 709.0, 229.0, 712.0, 229.0, 712.0, 215.0, 709.0, 215.0, 709.0, 189.0, 712.0, 189.0, 712.0, 175.0, 709.0, 175.0, 709.0, 172.0, 695.0, 172.0, 695.0, 175.0, 629.0, 175.0, 629.0, 172.0" coords2="615.0, 172.0, 615.0, 175.0, 612.0, 175.0, 612.0, 189.0, 615.0, 189.0, 615.0, 202.0, 629.0, 202.0, 629.0, 189.0, 695.0, 189.0, 695.0, 215.0, 682.0, 215.0, 682.0, 229.0, 695.0, 229.0, 695.0, 232.0, 709.0, 232.0, 709.0, 229.0, 712.0, 229.0, 712.0, 215.0, 709.0, 215.0, 709.0, 189.0, 712.0, 189.0, 712.0, 175.0, 709.0, 175.0, 709.0, 172.0, 695.0, 172.0, 695.0, 175.0, 629.0, 175.0, 629.0, 172.0" shape="poly" alt=":Association" id="areadiagram_map_GRPxcmKGAqAC2Bn4" href="Association_O_PRcmKGAqAC2BlE.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla fornitura di elementi grafici di uno stile &amp;quot;Dark&amp;quot;.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="352, 422, 602, 742" coords2="352, 422, 602, 742" shape="rect" alt="DarkStyleFactory:Class" id="areadiagram_map_0RPxcmKGAqAC2Bnm" href="Class_NGPRcmKGAqAC2BiM.html" onmouseover="storeReferenceAndSubdiagramInfos('352, 422, 602, 742',new Array('DarkStyleFactory.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Access/DarkStyleFactory.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('352, 422, 602, 742'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta alla fornitura di elementi grafici di uno stile &amp;quot;Light&amp;quot;.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2, 22, 252, 342" coords2="2, 22, 252, 342" shape="rect" alt="LightStyleFactory:Class" id="areadiagram_map_sRPxcmKGAqAC2Bno" href="Class_LmPRcmKGAqAC2BjF.html" onmouseover="storeReferenceAndSubdiagramInfos('2, 22, 252, 342',new Array('LightStyleFactory.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Access/LightStyleFactory.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2, 22, 252, 342'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Interfaccia che definisce gli elementi grafici che si utilizzano 
+      nell'applicazione.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="12, 432, 242, 732" coords2="12, 432, 242, 732" shape="rect" alt="StyleAbstractFactory:Class" id="areadiagram_map_cRPxcmKGAqAC2Bnq" href="Class_LWPRcmKGAqAC2Bj_.html" onmouseover="storeReferenceAndSubdiagramInfos('12, 432, 242, 732',new Array('StyleAbstractFactory.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Access/StyleAbstractFactory.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('12, 432, 242, 732'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe addetta al reperimento della giusta factory per la creazione di 
+      oggetti grafici.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="452, 202, 682, 282" coords2="452, 202, 682, 282" shape="rect" alt="ViewFactory:Class" id="areadiagram_map_SRPxcmKGAqAC2Bns" href="Class_lOPRcmKGAqAC2Bkk.html" onmouseover="storeReferenceAndSubdiagramInfos('452, 202, 682, 282',new Array('ViewFactory.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Access/ViewFactory.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('452, 202, 682, 282'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="372, 22, 802, 82" coords2="372, 22, 802, 82" shape="rect" alt="ViewPanelFactory:Class" id="areadiagram_map_yRPxcmKGAqAC2Bnu" href="Class_HOPRcmKGAqAC2Bkq.html" onmouseover="storeReferenceAndSubdiagramInfos('372, 22, 802, 82',new Array('ViewPanelFactory.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/view/Access/ViewPanelFactory.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('372, 22, 802, 82'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

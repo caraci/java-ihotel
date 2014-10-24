@@ -1,0 +1,301 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - SD_CreaStatiCamera_Camera</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_1wDkG8KAUBRkpA1o.html">
+DynamicDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_IWsgfiKGAqACSQaI.html">
+CreaRichiestaSoggiorno_ScenarioSuccesso : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_LYF3ZmKFYGwwHkjT.html">
+SD_CreaStatiCamera_Camera : Model</a>
+	</p>
+	<p class="PageTitle">
+		Sequence Diagram - SD_CreaStatiCamera_Camera		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/GI13ZmKFYGwwHkja', 'SD_CreaStatiCamera_Camera\nihotel.vpp://diagram/GI13ZmKFYGwwHkja', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|1510.0|482.0|170.0|60.0|NOTE_pvUiy2KAUrgcxRpa.html|NOTE_pvUiy2KAUrgcxRpa.html|JvUiy2KAUrgcxRpZ" id="optionJvUiy2KAUrgcxRpZ">Unnamed Note : Note</option>
+<option value="shape|1240.0|452.0|220.0|40.0|NOTE_f3bCy2KAUrgcxRo2.html|NOTE_f3bCy2KAUrgcxRo2.html|f3bCy2KAUrgcxRo1" id="optionf3bCy2KAUrgcxRo1">Unnamed Note : Note</option>
+<option value="shape|440.0|452.0|160.0|70.0|NOTE_gXxCy2KAUrgcxRof.html|NOTE_gXxCy2KAUrgcxRof.html|gXxCy2KAUrgcxRoe" id="optiongXxCy2KAUrgcxRoe">Unnamed Note : Note</option>
+<option value="shape|490.0|681.0|170.0|40.0|NOTE_7Yr9CWKAUrgcxR2R.html|NOTE_7Yr9CWKAUrgcxR2R.html|bYr9CWKAUrgcxR2Q" id="optionbYr9CWKAUrgcxR2Q">Unnamed Note : Note</option>
+<option value="shape|490.0|631.0|200.0|40.0|NOTE_YKN9CWKAUrgcxR1r.html|NOTE_YKN9CWKAUrgcxR1r.html|oKN9CWKAUrgcxR1q" id="optionoKN9CWKAUrgcxR1q">Unnamed Note : Note</option>
+<option value="shape|150.0|470.0|1740.0|122.0|InteractionOperand_3Zv3ZmKFYGwwHko_.html|InteractionOperand_3Zv3ZmKFYGwwHko_.html|XZv3ZmKFYGwwHko." id="optionXZv3ZmKFYGwwHko.">Operand7 : Interaction Operand</option>
+<option value="shape|1475.0|512.0|8.0|12.0|Activation_GVv3ZmKFYGwwHkp0.html|Activation_GVv3ZmKFYGwwHkp0.html|ZVv3ZmKFYGwwHkp2" id="optionZVv3ZmKFYGwwHkp2">Activation : Activation</option>
+<option value="shape|1805.0|562.0|8.0|12.0|Activation_LNv3ZmKFYGwwHkqP.html|Activation_LNv3ZmKFYGwwHkqP.html|Qtv3ZmKFYGwwHkqR" id="optionQtv3ZmKFYGwwHkqR">Activation : Activation</option>
+<option value="shape|150.0|452.0|1740.0|140.0|CombinedFragment_VZv3ZmKFYGwwHko7.html|CombinedFragment_VZv3ZmKFYGwwHko7.html|VZv3ZmKFYGwwHko6" id="optionVZv3ZmKFYGwwHko6">CombinedFragment7 : Combined Fragment</option>
+<option value="shape|130.0|370.0|1740.0|232.0|InteractionOperand__xv3ZmKFYGwwHkoY.html|InteractionOperand__xv3ZmKFYGwwHkoY.html|_xv3ZmKFYGwwHkoX" id="option_xv3ZmKFYGwwHkoX">Operand6 : Interaction Operand</option>
+<option value="shape|130.0|352.0|1740.0|250.0|CombinedFragment_9xv3ZmKFYGwwHkoU.html|CombinedFragment_9xv3ZmKFYGwwHkoU.html|9xv3ZmKFYGwwHkoT" id="option9xv3ZmKFYGwwHkoT">CombinedFragment6 : Combined Fragment</option>
+<option value="shape|405.0|632.0|8.0|12.0|Activation_V9v3ZmKFYGwwHkqk.html|Activation_V9v3ZmKFYGwwHkqk.html|_9v3ZmKFYGwwHkqm" id="option_9v3ZmKFYGwwHkqm">Activation : Activation</option>
+<option value="shape|405.0|682.0|8.0|12.0|Activation_djv3ZmKFYGwwHkq5.html|Activation_djv3ZmKFYGwwHkq5.html|Pjv3ZmKFYGwwHkq7" id="optionPjv3ZmKFYGwwHkq7">Activation : Activation</option>
+<option value="shape|120.0|270.0|1770.0|462.0|InteractionOperand_Yhv3ZmKFYGwwHknx.html|InteractionOperand_Yhv3ZmKFYGwwHknx.html|Yhv3ZmKFYGwwHknw" id="optionYhv3ZmKFYGwwHknw">Operand5 : Interaction Operand</option>
+<option value="shape|120.0|252.0|1770.0|480.0|CombinedFragment_7Bv3ZmKFYGwwHknt.html|CombinedFragment_7Bv3ZmKFYGwwHknt.html|7Bv3ZmKFYGwwHkns" id="option7Bv3ZmKFYGwwHkns">CombinedFragment5 : Combined Fragment</option>
+<option value="shape|100.0|120.0|1800.0|622.0|InteractionOperand_nWv3ZmKFYGwwHkmM.html|InteractionOperand_nWv3ZmKFYGwwHkmM.html|HWv3ZmKFYGwwHkmL" id="optionHWv3ZmKFYGwwHkmL">Operand4 : Interaction Operand</option>
+<option value="shape|1185.0|412.0|8.0|12.0|Activation_7pv3ZmKFYGwwHkoy.html|Activation_7pv3ZmKFYGwwHkoy.html|wZv3ZmKFYGwwHko0" id="optionwZv3ZmKFYGwwHko0">Activation : Activation</option>
+<option value="shape|100.0|102.0|1800.0|640.0|CombinedFragment_lWv3ZmKFYGwwHkmH.html|CombinedFragment_lWv3ZmKFYGwwHkmH.html|lWv3ZmKFYGwwHkmG" id="optionlWv3ZmKFYGwwHkmG">CombinedFragment4 : Combined Fragment</option>
+<option value="shape|1730.0|2.0|160.0|830.0|InteractionLifeLine_g1v3ZmKFYGwwHkp6.html|InteractionLifeLine_g1v3ZmKFYGwwHkp6.html|U1v3ZmKFYGwwHkp7" id="optionU1v3ZmKFYGwwHkp7">statoCamera : Lifeline</option>
+<option value="shape|1360.0|2.0|240.0|830.0|InteractionLifeLine_NFv3ZmKFYGwwHkpd.html|InteractionLifeLine_NFv3ZmKFYGwwHkpd.html|jFv3ZmKFYGwwHkpe" id="optionjFv3ZmKFYGwwHkpe">pagamentoState : Lifeline</option>
+<option value="shape|1100.0|2.0|180.0|830.0|InteractionLifeLine_WJv3ZmKFYGwwHkod.html|InteractionLifeLine_WJv3ZmKFYGwwHkod.html|uJv3ZmKFYGwwHkoe" id="optionuJv3ZmKFYGwwHkoe">iterator : Lifeline</option>
+<option value="shape|897.0|310.0|8.0|12.0|Activation_nRv3ZmKFYGwwHkoL.html|Activation_nRv3ZmKFYGwwHkoL.html|oxv3ZmKFYGwwHkoN" id="optionoxv3ZmKFYGwwHkoN">Activation : Activation</option>
+<option value="shape|760.0|2.0|280.0|830.0|InteractionLifeLine_hhv3ZmKFYGwwHkn2.html|InteractionLifeLine_hhv3ZmKFYGwwHkn2.html|Jhv3ZmKFYGwwHkn3" id="optionJhv3ZmKFYGwwHkn3">statiCameraDopoOccupazione : Lifeline</option>
+<option value="shape|655.0|212.0|8.0|12.0|Activation_0Bv3ZmKFYGwwHknk.html|Activation_0Bv3ZmKFYGwwHknk.html|aBv3ZmKFYGwwHknm" id="optionaBv3ZmKFYGwwHknm">Activation : Activation</option>
+<option value="shape|580.0|2.0|160.0|830.0|InteractionLifeLine_zev3ZmKFYGwwHknN.html|InteractionLifeLine_zev3ZmKFYGwwHknN.html|Hev3ZmKFYGwwHknO" id="optionHev3ZmKFYGwwHknO">cameraState : Lifeline</option>
+<option value="shape|405.0|162.0|8.0|12.0|Activation_5Ov3ZmKFYGwwHkmo.html|Activation_5Ov3ZmKFYGwwHkmo.html|DOv3ZmKFYGwwHkmq" id="optionDOv3ZmKFYGwwHkmq">Activation : Activation</option>
+<option value="shape|335.0|2.0|150.0|830.0|InteractionLifeLine_a2v3ZmKFYGwwHkmT.html|InteractionLifeLine_a2v3ZmKFYGwwHkmT.html|m2v3ZmKFYGwwHkmU" id="optionm2v3ZmKFYGwwHkmU">_statiCamera : Lifeline</option>
+<option value="shape|146.0|62.0|8.0|742.0|Activation_wWv3ZmKFYGwwHkmB.html|Activation_wWv3ZmKFYGwwHkmB.html|MWv3ZmKFYGwwHkmD" id="optionMWv3ZmKFYGwwHkmD">Activation : Activation</option>
+<option value="shape|110.0|2.0|80.0|830.0|InteractionLifeLine_PGv3ZmKFYGwwHklw.html|InteractionLifeLine_PGv3ZmKFYGwwHklw.html|Amv3ZmKFYGwwHklx" id="optionAmv3ZmKFYGwwHklx">Unnamed Lifeline : Lifeline</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/SD_CreaStatiCamera_Camera.png" usemap="#diagram_map" class="Image" width="1904" height="836"/>
+					<map name="diagram_map">
+<area coords="1333.0, 492.0, 1333.0, 512.0, 1333.0, 521.0, 1347.0, 521.0, 1347.0, 512.0, 1347.0, 492.0" coords2="1333.0, 492.0, 1333.0, 512.0, 1333.0, 521.0, 1347.0, 521.0, 1347.0, 512.0, 1347.0, 492.0" shape="poly" alt=":Anchor" id="areadiagram_map_ovbCy2KAUrgcxRo6" href="Anchor_wvbCy2KAUrgcxRo5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1573.0, 542.0, 1573.0, 562.0, 1573.0, 572.0, 1587.0, 572.0, 1587.0, 562.0, 1587.0, 542.0" coords2="1573.0, 542.0, 1573.0, 562.0, 1573.0, 572.0, 1587.0, 572.0, 1587.0, 562.0, 1587.0, 542.0" shape="poly" alt=":Anchor" id="areadiagram_map_BfUiy2KAUrgcxRpe" href="Anchor_efUiy2KAUrgcxRpd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="273.0, 622.0, 273.0, 644.9869, 273.0, 644.9869, 270.0, 645.0, 270.0, 659.0, 273.0, 658.9869, 273.0, 658.9869, 273.0, 662.0, 287.0, 662.0, 287.0, 658.9258, 287.0, 658.9258, 490.0, 658.0393, 490.0, 658.0393, 490.0, 644.0393, 490.0, 644.0393, 287.0, 644.9258, 287.0, 644.9258, 287.0, 622.0" coords2="273.0, 622.0, 273.0, 644.9869, 273.0, 644.9869, 270.0, 645.0, 270.0, 659.0, 273.0, 658.9869, 273.0, 658.9869, 273.0, 662.0, 287.0, 662.0, 287.0, 658.9258, 287.0, 658.9258, 490.0, 658.0393, 490.0, 658.0393, 490.0, 644.0393, 490.0, 644.0393, 287.0, 644.9258, 287.0, 644.9258, 287.0, 622.0" shape="poly" alt=":Anchor" id="areadiagram_map_8qN9CWKAUrgcxR1v" href="Anchor_MqN9CWKAUrgcxR1u.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="273.0, 672.0, 273.0, 694.9869, 273.0, 694.9869, 270.0, 695.0, 270.0, 709.0, 273.0, 708.9869, 273.0, 708.9869, 273.0, 708.9869, 273.0, 708.9869, 273.0, 708.9869, 273.0, 708.9869, 273.0, 712.0, 287.0, 712.0, 287.0, 708.9258, 287.0, 708.9258, 490.0, 708.0393, 490.0, 708.0393, 490.0, 694.0393, 490.0, 694.0393, 287.0, 694.9258, 287.0, 694.9258, 287.0, 672.0" coords2="273.0, 672.0, 273.0, 694.9869, 273.0, 694.9869, 270.0, 695.0, 270.0, 709.0, 273.0, 708.9869, 273.0, 708.9869, 273.0, 708.9869, 273.0, 708.9869, 273.0, 708.9869, 273.0, 708.9869, 273.0, 712.0, 287.0, 712.0, 287.0, 708.9258, 287.0, 708.9258, 490.0, 708.0393, 490.0, 708.0393, 490.0, 694.0393, 490.0, 694.0393, 287.0, 694.9258, 287.0, 694.9258, 287.0, 672.0" shape="poly" alt=":Anchor" id="areadiagram_map_n4r9CWKAUrgcxR2V" href="Anchor_74r9CWKAUrgcxR2U.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="35.0, 55.0, 35.0, 69.0, 110.0, 69.0, 110.0, 55.0" coords2="35.0, 55.0, 35.0, 69.0, 110.0, 69.0, 110.0, 55.0" shape="poly" alt="1: occupaInPeriodo(periodo : Periodo, pagamentoState : PagamentoStateObserver) : void:Message" id="areadiagram_map_emv3ZmKFYGwwHkl2" href="Message_emv3ZmKFYGwwHkl3.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="190.0, 155.0, 190.0, 169.0, 335.0, 169.0, 335.0, 155.0" coords2="190.0, 155.0, 190.0, 169.0, 335.0, 169.0, 335.0, 155.0" shape="poly" alt="1.1: cameraState = get(i):Message" id="areadiagram_map_QOv3ZmKFYGwwHkma" href="Message_wOv3ZmKFYGwwHkmb.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="190.0, 205.0, 190.0, 219.0, 580.0, 219.0, 580.0, 205.0" coords2="190.0, 205.0, 190.0, 219.0, 580.0, 219.0, 580.0, 205.0" shape="poly" alt="1.2: statiCameraDopoOccupazione = occupaInPeriodo(periodo : Periodo = periodo) : LinkedList:Message" id="areadiagram_map_5.v3ZmKFYGwwHknW" href="Message_F_v3ZmKFYGwwHknX.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="190.0, 304.0, 190.0, 318.0, 760.0, 318.0, 760.0, 304.0" coords2="190.0, 304.0, 190.0, 318.0, 760.0, 318.0, 760.0, 304.0" shape="poly" alt="1.3: iterator():Message" id="areadiagram_map_qRv3ZmKFYGwwHkn9" href="Message_qRv3ZmKFYGwwHkn_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="190.0, 404.0, 190.0, 418.0, 1100.0, 418.0, 1100.0, 404.0" coords2="190.0, 404.0, 190.0, 418.0, 1100.0, 418.0, 1100.0, 404.0" shape="poly" alt="1.4: statoCamera = next():Message" id="areadiagram_map_ipv3ZmKFYGwwHkok" href="Message_ipv3ZmKFYGwwHkol.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="190.0, 504.0, 190.0, 518.0, 1360.0, 518.0, 1360.0, 504.0" coords2="190.0, 504.0, 190.0, 518.0, 1360.0, 518.0, 1360.0, 504.0" shape="poly" alt="1.5: addSubject(subject : ISubject = statoCamera) : void:Message" id="areadiagram_map_tlv3ZmKFYGwwHkpm" href="Message_dlv3ZmKFYGwwHkpn.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="190.0, 555.0, 190.0, 569.0, 1730.0, 569.0, 1730.0, 555.0" coords2="190.0, 555.0, 190.0, 569.0, 1730.0, 569.0, 1730.0, 555.0" shape="poly" alt="1.6: Attach(pagamentoState):Message" id="areadiagram_map_oNv3ZmKFYGwwHkqB" href="Message_oNv3ZmKFYGwwHkqC.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="190.0, 625.0, 190.0, 639.0, 335.0, 639.0, 335.0, 625.0" coords2="190.0, 625.0, 190.0, 639.0, 335.0, 639.0, 335.0, 625.0" shape="poly" alt="1.7: remove(i):Message" id="areadiagram_map_rdv3ZmKFYGwwHkqW" href="Message_rdv3ZmKFYGwwHkqX.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="190.0, 675.0, 190.0, 689.0, 335.0, 689.0, 335.0, 675.0" coords2="190.0, 675.0, 190.0, 689.0, 335.0, 689.0, 335.0, 675.0" shape="poly" alt="1.8: addAll(i, statiCameraDopoOccupazione):Message" id="areadiagram_map_XDv3ZmKFYGwwHkqr" href="Message_XDv3ZmKFYGwwHkqs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="35.0, 785.0, 35.0, 799.0, 110.0, 799.0, 110.0, 785.0" coords2="35.0, 785.0, 35.0, 799.0, 110.0, 799.0, 110.0, 785.0" shape="poly" alt="1.9: :Message" id="areadiagram_map_Bzv3ZmKFYGwwHkrA" href="Message_Bzv3ZmKFYGwwHkrB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Aggiunta 
+      del pagamentoState come osservatore dello statoCamera.&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1510, 482, 1680, 542" coords2="1510, 482, 1680, 542" shape="rect" alt="Aggiunta del pagamentoState come osservatore dello statoCamera.:Note" id="areadiagram_map_JvUiy2KAUrgcxRpZ" href="NOTE_pvUiy2KAUrgcxRpa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Aggiunta 
+      dello statoCamera, come subject per il pagamentoState observer.&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1240, 452, 1460, 492" coords2="1240, 452, 1460, 492" shape="rect" alt="Aggiunta dello statoCamera, come subject per il pagamentoState observer.:Note" id="areadiagram_map_f3bCy2KAUrgcxRo1" href="NOTE_f3bCy2KAUrgcxRo2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Controllo 
+    necessario per individuare lo &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bkYQqiKGAqACSQ3t&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bkYQqiKGAqACSQ3t');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;stato 
+    camera&amp;lt;/a&amp;gt; riferito al &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt;.&amp;lt;/font&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="440, 452, 600, 522" coords2="440, 452, 600, 522" shape="rect" alt="Controllo necessario per individuare lo stato camera riferito al soggiorno.:Note" id="areadiagram_map_gXxCy2KAUrgcxRoe" href="NOTE_gXxCy2KAUrgcxRof.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p&amp;gt;
+      &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Aggiunta 
+      dei nuovi stati &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;&amp;lt;/font&amp;gt;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="490, 681, 660, 721" coords2="490, 681, 660, 721" shape="rect" alt="Aggiunta dei nuovi stati camera:Note" id="areadiagram_map_bYr9CWKAUrgcxR2Q" href="NOTE_7Yr9CWKAUrgcxR2R.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;font color=&amp;quot;#000000&amp;quot; face=&amp;quot;Dialog&amp;quot; size=&amp;quot;11px&amp;quot; style=&amp;quot;font-size:11px;&amp;quot;&amp;gt;Rimozione 
+    del vecchio &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bkYQqiKGAqACSQ3t&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bkYQqiKGAqACSQ3t');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;stato 
+    camera&amp;lt;/a&amp;gt;&amp;lt;/font&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="490, 631, 690, 671" coords2="490, 631, 690, 671" shape="rect" alt="Rimozione del vecchio stato camera:Note" id="areadiagram_map_oKN9CWKAUrgcxR1q" href="NOTE_YKN9CWKAUrgcxR1r.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area coords="150, 470, 1890, 592" coords2="150, 470, 1890, 592" shape="rect" alt="Operand7:Interaction Operand" id="areadiagram_map_XZv3ZmKFYGwwHko." href="InteractionOperand_3Zv3ZmKFYGwwHko_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1475, 512, 1483, 524" coords2="1475, 512, 1483, 524" shape="rect" alt="Activation:Activation" id="areadiagram_map_ZVv3ZmKFYGwwHkp2" href="Activation_GVv3ZmKFYGwwHkp0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1805, 562, 1813, 574" coords2="1805, 562, 1813, 574" shape="rect" alt="Activation:Activation" id="areadiagram_map_Qtv3ZmKFYGwwHkqR" href="Activation_LNv3ZmKFYGwwHkqP.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="150, 452, 1890, 592" coords2="150, 452, 1890, 592" shape="rect" alt="CombinedFragment7:Combined Fragment" id="areadiagram_map_VZv3ZmKFYGwwHko6" href="CombinedFragment_VZv3ZmKFYGwwHko7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="130, 370, 1870, 602" coords2="130, 370, 1870, 602" shape="rect" alt="Operand6:Interaction Operand" id="areadiagram_map__xv3ZmKFYGwwHkoX" href="InteractionOperand__xv3ZmKFYGwwHkoY.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="130, 352, 1870, 602" coords2="130, 352, 1870, 602" shape="rect" alt="CombinedFragment6:Combined Fragment" id="areadiagram_map_9xv3ZmKFYGwwHkoT" href="CombinedFragment_9xv3ZmKFYGwwHkoU.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="405, 632, 413, 644" coords2="405, 632, 413, 644" shape="rect" alt="Activation:Activation" id="areadiagram_map__9v3ZmKFYGwwHkqm" href="Activation_V9v3ZmKFYGwwHkqk.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="405, 682, 413, 694" coords2="405, 682, 413, 694" shape="rect" alt="Activation:Activation" id="areadiagram_map_Pjv3ZmKFYGwwHkq7" href="Activation_djv3ZmKFYGwwHkq5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="120, 270, 1890, 732" coords2="120, 270, 1890, 732" shape="rect" alt="Operand5:Interaction Operand" id="areadiagram_map_Yhv3ZmKFYGwwHknw" href="InteractionOperand_Yhv3ZmKFYGwwHknx.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1185, 412, 1193, 424" coords2="1185, 412, 1193, 424" shape="rect" alt="Activation:Activation" id="areadiagram_map_wZv3ZmKFYGwwHko0" href="Activation_7pv3ZmKFYGwwHkoy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="120, 252, 1890, 732" coords2="120, 252, 1890, 732" shape="rect" alt="CombinedFragment5:Combined Fragment" id="areadiagram_map_7Bv3ZmKFYGwwHkns" href="CombinedFragment_7Bv3ZmKFYGwwHknt.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="100, 120, 1900, 742" coords2="100, 120, 1900, 742" shape="rect" alt="Operand4:Interaction Operand" id="areadiagram_map_HWv3ZmKFYGwwHkmL" href="InteractionOperand_nWv3ZmKFYGwwHkmM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="100, 102, 1900, 742" coords2="100, 102, 1900, 742" shape="rect" alt="CombinedFragment4:Combined Fragment" id="areadiagram_map_lWv3ZmKFYGwwHkmG" href="CombinedFragment_lWv3ZmKFYGwwHkmH.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1730, 2, 1890, 832" coords2="1730, 2, 1890, 832" shape="rect" alt="statoCamera : StatoCamera:Lifeline" id="areadiagram_map_U1v3ZmKFYGwwHkp7" href="InteractionLifeLine_g1v3ZmKFYGwwHkp6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1360, 2, 1600, 832" coords2="1360, 2, 1600, 832" shape="rect" alt="pagamentoState : PagamentoStateObserver:Lifeline" id="areadiagram_map_jFv3ZmKFYGwwHkpe" href="InteractionLifeLine_NFv3ZmKFYGwwHkpd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1100, 2, 1280, 832" coords2="1100, 2, 1280, 832" shape="rect" alt="iterator : Iterator&lt;StatoCamera&gt;:Lifeline" id="areadiagram_map_uJv3ZmKFYGwwHkoe" href="InteractionLifeLine_WJv3ZmKFYGwwHkod.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="897, 310, 905, 322" coords2="897, 310, 905, 322" shape="rect" alt="Activation:Activation" id="areadiagram_map_oxv3ZmKFYGwwHkoN" href="Activation_nRv3ZmKFYGwwHkoL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="760, 2, 1040, 832" coords2="760, 2, 1040, 832" shape="rect" alt="statiCameraDopoOccupazione : List&lt;StatoCamera&gt;:Lifeline" id="areadiagram_map_Jhv3ZmKFYGwwHkn3" href="InteractionLifeLine_hhv3ZmKFYGwwHkn2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="655, 212, 663, 224" coords2="655, 212, 663, 224" shape="rect" alt="Activation:Activation" id="areadiagram_map_aBv3ZmKFYGwwHknm" href="Activation_0Bv3ZmKFYGwwHknk.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="580, 2, 740, 832" coords2="580, 2, 740, 832" shape="rect" alt="cameraState : StatoCamera:Lifeline" id="areadiagram_map_Hev3ZmKFYGwwHknO" href="InteractionLifeLine_zev3ZmKFYGwwHknN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="405, 162, 413, 174" coords2="405, 162, 413, 174" shape="rect" alt="Activation:Activation" id="areadiagram_map_DOv3ZmKFYGwwHkmq" href="Activation_5Ov3ZmKFYGwwHkmo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="335, 2, 485, 832" coords2="335, 2, 485, 832" shape="rect" alt="_statiCamera : LinkedList:Lifeline" id="areadiagram_map_m2v3ZmKFYGwwHkmU" href="InteractionLifeLine_a2v3ZmKFYGwwHkmT.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="146, 62, 154, 804" coords2="146, 62, 154, 804" shape="rect" alt="Activation:Activation" id="areadiagram_map_MWv3ZmKFYGwwHkmD" href="Activation_wWv3ZmKFYGwwHkmB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="110, 2, 190, 832" coords2="110, 2, 190, 832" shape="rect" alt=" : Camera:Lifeline" id="areadiagram_map_Amv3ZmKFYGwwHklx" href="InteractionLifeLine_PGv3ZmKFYGwwHklw.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>

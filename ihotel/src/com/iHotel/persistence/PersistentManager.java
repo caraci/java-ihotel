@@ -16,7 +16,7 @@ import com.iHotel.model.Albergo.Soggiorno.SoggiornoState.PagamentoState.Pagament
 public class PersistentManager {
 	/* --------------- Attributi e costruttore ------------------- */
 	/**
-	 * Attributo rappresentante la connessione alla base dati. Per le sue tecnologie, è necessario
+	 * Attributo rappresentante la connessione alla base dati. Per le sue tecnologie, ï¿½ necessario
 	 * che la connessione resti sempre attiva.
 	 */
 	protected static ObjectContainer _db = null;
@@ -28,7 +28,7 @@ public class PersistentManager {
 	}
 	/* --------------------------- Metodi di classe ------------------------------ */
 	protected static void getConnection() {
-		// Se la connessione non è aperta, la si va ad aprire.
+		// Se la connessione non Ã¨ aperta, la si va ad aprire.
 		if (_db==null) {
 			EmbeddedConfiguration config = Db4oEmbedded.newConfiguration();
 			// Configurazioni per l'aggiornamento in cascata degli oggetti delle seguenti classi.
@@ -43,7 +43,7 @@ public class PersistentManager {
 			config.common().objectClass(Camera.class).minimumActivationDepth(50);
 			config.common().objectClass(SoggiornoContextSubject.class).minimumActivationDepth(50);
 			// Posizione del file contenente la base dati.
-			_db=Db4oEmbedded.openFile(config, "dbihotel");
+			_db=Db4oEmbedded.openFile(config, "./configs/dbihotel");
 		}
 	}
 	/* ------------------------- Metodi di instanza ------------------------------ */

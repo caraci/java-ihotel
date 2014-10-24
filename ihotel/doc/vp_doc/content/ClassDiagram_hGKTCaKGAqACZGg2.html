@@ -1,0 +1,434 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Class Diagram - Albergo</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotlight_top" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_bottom" style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_left" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<div id="spotlight_right" style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;">
+	</div>
+	<canvas id="spotlight_c" height="100" style="position:absolute; z-index:2; visibility:hidden" width="100">
+	</canvas>
+	<div id="spotLightResourcesTop" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="spotLightResourcesRight" style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden">
+		<table cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<a href="#top">
+						<img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<a href="javascript:clearSpotLightFromOpenSpecButton();">
+						<img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="linkPopupMenuLayer" style="position:absolute;z-index:4;visibility:hidden">
+		<table id="linkPopupMenuTable" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" width="100%" border="0">
+		</table>
+	</div>
+	<div id="referenceIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="subdiagramIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="transitorIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="documentationIconLayer" style="position:absolute; z-index:1; visibility:hidden; ">
+		<table style="font-size:1;" cellpadding="3" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div id="vplink" style="position:absolute; z-index:21; visibility:hidden">
+		<table bordercolor="#A9BFD3" cellpadding="0" border="1" cellspacing="0">
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" border="0" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+Link:							</td>
+							<td style="font-size: 12px;" align="right">
+								<input id="vplink-checkbox" onClick="javascript: vpLinkToggleName()" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+		<a target="_content_pane" class="PageParentTitle" href="Model_CmXo3cKGAqACSQPT.html">
+Design Model : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_FT7xCaKGAqACZBQd.html">
+StaticDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_KyXxCaKGAqACZBRb.html">
+ClassDiagram : Model</a>
+<span class="PageParentTitle">&nbsp;.&nbsp;</span>		<a target="_content_pane" class="PageParentTitle" href="Model_uISTCaKGAqACZGgv.html">
+Model : Model</a>
+	</p>
+	<p class="PageTitle">
+		Class Diagram - Albergo		<a style="padding-left: 16px; font-size: 12px" onclick="javascript: showVpLink('ihotel.vpp://diagram/hGKTCaKGAqACZGg2', 'Albergo\nihotel.vpp://diagram/hGKTCaKGAqACZGg2', this); return false;" href="#">
+			<img src="../images/icons/link.png" border="0"> link</a>
+	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table style="position: absolute; top: 0; left: 0; z-index: 20;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin(this.value);hideLinkPopup();showSpotLight(this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|1332.0|282.0|430.0|500.0|Class_pC12ZmKFYGwwHg_V.html|Class_pC12ZmKFYGwwHg_V.html|SXn2ZmKFYGwwHhKB" id="optionSXn2ZmKFYGwwHhKB">SoggiornoContextSubject : Class</option>
+<option value="shape|1302.0|932.0|540.0|220.0|Class_um12ZmKFYGwwHhCp.html|Class_um12ZmKFYGwwHhCp.html|WXn2ZmKFYGwwHhKD" id="optionWXn2ZmKFYGwwHhKD">SoggiornoState : Class</option>
+<option value="shape|1472.0|1312.0|320.0|200.0|Class_Hu12ZmKFYGwwHhEX.html|Class_Hu12ZmKFYGwwHhEX.html|2Xn2ZmKFYGwwHhKF" id="option2Xn2ZmKFYGwwHhKF">PagamentoStateObserver : Class</option>
+<option value="shape|342.0|22.0|650.0|170.0|Class_4ycCGmKGAqACTxal.html|Class_4ycCGmKGAqACTxal.html|8TCiGmKGAqACTxeb" id="option8TCiGmKGAqACTxeb">Albergo : Class</option>
+<option value="shape|1862.0|322.0|190.0|90.0|Class_v0JpCaKGAqACZBi5.html|Class_v0JpCaKGAqACZBi5.html|PVB8EmKGAqACvSTb" id="optionPVB8EmKGAqACvSTb">ISubject : Class</option>
+<option value="shape|2.0|642.0|360.0|120.0|Class_rEJpCaKGAqACZBhR.html|Class_rEJpCaKGAqACZBhR.html|pVi8EmKGAqACvSS8" id="optionpVi8EmKGAqACvSS8">ServizioInterno : Class</option>
+<option value="shape|1382.0|72.0|370.0|120.0|Class_EkJpCaKGAqACZBhX.html|Class_EkJpCaKGAqACZBhX.html|81tcEmKGAqACvSQ9" id="option81tcEmKGAqACvSQ9">Storico : Class</option>
+<option value="shape|482.0|292.0|440.0|240.0|Class_lbKsEmKGAqACvRBk.html|Class_lbKsEmKGAqACvRBk.html|nBhcEmKGAqACvSQI" id="optionnBhcEmKGAqACvSQI">Camera : Class</option>
+<option value="shape|532.0|642.0|370.0|230.0|Class_kHKsEmKGAqACvRCW.html|Class_kHKsEmKGAqACvRCW.html|XBhcEmKGAqACvSQK" id="optionXBhcEmKGAqACvSQK">StatoCamera : Class</option>
+<option value="shape|362.0|932.0|370.0|180.0|Class_zHKsEmKGAqACvRC4.html|Class_zHKsEmKGAqACvRC4.html|3BhcEmKGAqACvSQM" id="option3BhcEmKGAqACvSQM">StatoCameraLibera : Class</option>
+<option value="shape|772.0|932.0|390.0|130.0|Class_YXKsEmKGAqACvRDf.html|Class_YXKsEmKGAqACvRDf.html|PBhcEmKGAqACvSQO" id="optionPBhcEmKGAqACvSQO">StatoCameraOccupata : Class</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table style="position: relative; top: 24;" width="100%" cellpadding="0" border="0" cellspacing="0">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Albergo.png" usemap="#diagram_map" class="Image" width="2056" height="1516"/>
+					<map name="diagram_map">
+<area coords="1414.0, 782.0, 1414.0, 932.0, 1428.0, 932.0, 1428.0, 782.0" coords2="1414.0, 782.0, 1414.0, 932.0, 1428.0, 932.0, 1428.0, 782.0" shape="poly" alt=":Association" id="areadiagram_map_WKMlCWKAUrgcxQos" href="Association_NyMlCWKAUrgcxQog.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="695.0, 532.0, 695.0, 642.0, 709.0, 642.0, 709.0, 532.0" coords2="695.0, 532.0, 695.0, 642.0, 709.0, 642.0, 709.0, 532.0" shape="poly" alt=":Association" id="areadiagram_map_K_A.DmKFYGwwHg28" href="Association_s_A_DmKFYGwwHg23.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1762.0, 354.0, 1762.0, 368.0, 1862.0, 368.0, 1862.0, 354.0" coords2="1762.0, 354.0, 1762.0, 368.0, 1862.0, 368.0, 1862.0, 354.0" shape="poly" alt=":Realization" id="areadiagram_map_.Xn2ZmKFYGwwHhKJ" href="Realization_q_12ZmKFYGwwHhE_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1644.0, 782.0, 1644.0, 932.0, 1658.0, 932.0, 1658.0, 782.0" coords2="1644.0, 782.0, 1644.0, 932.0, 1658.0, 932.0, 1658.0, 782.0" shape="poly" alt=":Association" id="areadiagram_map_hXn2ZmKFYGwwHhKN" href="Association_tp12ZmKFYGwwHhHW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="2002.0, 539.0, 2002.0344, 542.0, 1762.0, 542.0, 1762.0, 556.0, 2002.1954, 556.0, 2011.8046, 1392.0, 1792.0, 1392.0, 1792.0, 1406.0, 2011.9656, 1406.0, 2012.0, 1409.0, 2026.0, 1409.0, 2025.9656, 1406.0, 2029.0, 1406.0, 2029.0, 1392.0, 2025.8046, 1392.0, 2016.1954, 556.0, 2019.0, 556.0, 2019.0, 542.0, 2016.0344, 542.0, 2016.0, 539.0" coords2="2002.0, 539.0, 2002.0344, 542.0, 1762.0, 542.0, 1762.0, 556.0, 2002.1954, 556.0, 2011.8046, 1392.0, 1792.0, 1392.0, 1792.0, 1406.0, 2011.9656, 1406.0, 2012.0, 1409.0, 2026.0, 1409.0, 2025.9656, 1406.0, 2029.0, 1406.0, 2029.0, 1392.0, 2025.8046, 1392.0, 2016.1954, 556.0, 2019.0, 556.0, 2019.0, 542.0, 2016.0344, 542.0, 2016.0, 539.0" shape="poly" alt=":Association" id="areadiagram_map_hXn2ZmKFYGwwHhKP" href="Association_KF12ZmKFYGwwHhJA.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1533.0, 1152.0, 1533.0, 1312.0, 1547.0, 1312.0, 1547.0, 1152.0" coords2="1533.0, 1152.0, 1533.0, 1312.0, 1547.0, 1312.0, 1547.0, 1152.0" shape="poly" alt=":Association" id="areadiagram_map_RXn2ZmKFYGwwHhKR" href="Association_0F12ZmKFYGwwHhI7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1633.0, 1152.0, 1633.0, 1312.0, 1647.0, 1312.0, 1647.0, 1152.0" coords2="1633.0, 1152.0, 1633.0, 1312.0, 1647.0, 1312.0, 1647.0, 1152.0" shape="poly" alt=":Association" id="areadiagram_map_xXn2ZmKFYGwwHhKT" href="Association_Hp12ZmKFYGwwHhHb.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="1554.0, 192.0, 1554.0, 282.0, 1568.0, 282.0, 1568.0, 192.0" coords2="1554.0, 192.0, 1554.0, 282.0, 1568.0, 282.0, 1568.0, 192.0" shape="poly" alt=":Dependency" id="areadiagram_map_o6IOZmKFYGwwHhLI" href="Dependency_A6IOZmKFYGwwHhLH.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="655.0, 192.0, 655.0, 292.0, 669.0, 292.0, 669.0, 192.0" coords2="655.0, 192.0, 655.0, 292.0, 669.0, 292.0, 669.0, 192.0" shape="poly" alt=":Association" id="areadiagram_map_STCiGmKGAqACTxed" href="Association_IacCGmKGAqACTxdU.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="825.0, -8.0, 825.0, -5.0, 822.0, -5.0, 822.0, 9.0, 825.0, 9.0, 825.0, 22.0, 839.0, 22.0, 839.0, 9.0, 1005.0, 9.0, 1005.0, 65.0, 992.0, 65.0, 992.0, 79.0, 1005.0, 79.0, 1005.0, 82.0, 1019.0, 82.0, 1019.0, 79.0, 1022.0, 79.0, 1022.0, 65.0, 1019.0, 65.0, 1019.0, 9.0, 1022.0, 9.0, 1022.0, -5.0, 1019.0, -5.0, 1019.0, -8.0, 1005.0, -8.0, 1005.0, -5.0, 839.0, -5.0, 839.0, -8.0" coords2="825.0, -8.0, 825.0, -5.0, 822.0, -5.0, 822.0, 9.0, 825.0, 9.0, 825.0, 22.0, 839.0, 22.0, 839.0, 9.0, 1005.0, 9.0, 1005.0, 65.0, 992.0, 65.0, 992.0, 79.0, 1005.0, 79.0, 1005.0, 82.0, 1019.0, 82.0, 1019.0, 79.0, 1022.0, 79.0, 1022.0, 65.0, 1019.0, 65.0, 1019.0, 9.0, 1022.0, 9.0, 1022.0, -5.0, 1019.0, -5.0, 1019.0, -8.0, 1005.0, -8.0, 1005.0, -5.0, 839.0, -5.0, 839.0, -8.0" shape="poly" alt=":Association" id="areadiagram_map_yTCiGmKGAqACTxef" href="Association_GacCGmKGAqACTxdb.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="362.0, 695.0, 362.0, 709.0, 532.0, 709.0, 532.0, 695.0" coords2="362.0, 695.0, 362.0, 709.0, 532.0, 709.0, 532.0, 695.0" shape="poly" alt=":Association" id="areadiagram_map_hhbmSmKGAqAAA0QE" href="Association_TebmSmKGAqAAA0P_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="724.0, 872.0, 724.0, 894.0, 558.0, 894.0, 558.0, 891.0, 544.0, 891.0, 544.0, 894.0, 541.0, 894.0, 541.0, 908.0, 544.0, 908.0, 544.0, 932.0, 558.0, 932.0, 558.0, 908.0, 724.0, 908.0, 724.0, 911.0, 738.0, 911.0, 738.0, 908.0, 741.0, 908.0, 741.0, 894.0, 738.0, 894.0, 738.0, 872.0" coords2="724.0, 872.0, 724.0, 894.0, 558.0, 894.0, 558.0, 891.0, 544.0, 891.0, 544.0, 894.0, 541.0, 894.0, 541.0, 908.0, 544.0, 908.0, 544.0, 932.0, 558.0, 932.0, 558.0, 908.0, 724.0, 908.0, 724.0, 911.0, 738.0, 911.0, 738.0, 908.0, 741.0, 908.0, 741.0, 894.0, 738.0, 894.0, 738.0, 872.0" shape="poly" alt=":Generalization" id="areadiagram_map_fBhcEmKGAqACvSQU" href="Generalization__ZasEmKGAqACvRoi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area coords="724.0, 872.0, 724.0, 894.0, 721.0, 894.0, 721.0, 908.0, 724.0, 908.0, 724.0, 911.0, 738.0, 911.0, 738.0, 908.0, 954.0, 908.0, 954.0, 932.0, 968.0, 932.0, 968.0, 908.0, 971.0, 908.0, 971.0, 894.0, 968.0, 894.0, 968.0, 891.0, 954.0, 891.0, 954.0, 894.0, 738.0, 894.0, 738.0, 872.0" coords2="724.0, 872.0, 724.0, 894.0, 721.0, 894.0, 721.0, 908.0, 724.0, 908.0, 724.0, 911.0, 738.0, 911.0, 738.0, 908.0, 954.0, 908.0, 954.0, 932.0, 968.0, 932.0, 968.0, 908.0, 971.0, 908.0, 971.0, 894.0, 968.0, 894.0, 968.0, 891.0, 954.0, 891.0, 954.0, 894.0, 738.0, 894.0, 738.0, 872.0" shape="poly" alt=":Generalization" id="areadiagram_map__BhcEmKGAqACvSQW" href="Generalization_Q5asEmKGAqACvRos.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta il concetto di &amp;quot;&amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;Soggiorno&amp;lt;/a&amp;gt;&amp;quot; 
+      di un'albergo del mondo reale.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1332, 282, 1762, 782" coords2="1332, 282, 1762, 782" shape="rect" alt="SoggiornoContextSubject:Class" id="areadiagram_map_SXn2ZmKFYGwwHhKB" href="Class_pC12ZmKFYGwwHg_V.html" onmouseover="storeReferenceAndSubdiagramInfos('1332, 282, 1762, 782',new Array('SoggiornoContextSubject.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Soggiorno/SoggiornoContextSubject.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1332, 282, 1762, 782'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta lo stato di un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt; 
+      in un certo lasso temporale. Questo al suo
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      interno ha a sua volta lo stato attuale dei &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamenti&amp;lt;/a&amp;gt; 
+      per il &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt;.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Gabriele
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1302, 932, 1842, 1152" coords2="1302, 932, 1842, 1152" shape="rect" alt="SoggiornoState:Class" id="areadiagram_map_WXn2ZmKFYGwwHhKD" href="Class_um12ZmKFYGwwHhCp.html" onmouseover="storeReferenceAndSubdiagramInfos('1302, 932, 1842, 1152',new Array('SoggiornoState.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Soggiorno/SoggiornoState/SoggiornoState.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1302, 932, 1842, 1152'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questo classe rappresenta lo stato dei &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#ALaVcmKGAqAC2Bz3&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('ALaVcmKGAqAC2Bz3');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;pagamenti&amp;lt;/a&amp;gt; 
+      per un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#PjDCyEKGAqACgRWD&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('PjDCyEKGAqACgRWD');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;soggiorno&amp;lt;/a&amp;gt;.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1472, 1312, 1792, 1512" coords2="1472, 1312, 1792, 1512" shape="rect" alt="PagamentoStateObserver:Class" id="areadiagram_map_2Xn2ZmKFYGwwHhKF" href="Class_Hu12ZmKFYGwwHhEX.html" onmouseover="storeReferenceAndSubdiagramInfos('1472, 1312, 1792, 1512',new Array('PagamentoStateObserver.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Soggiorno/SoggiornoState/PagamentoState/PagamentoStateObserver.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1472, 1312, 1792, 1512'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta il concetto di &amp;quot;Albergo&amp;quot; del mondo reale.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="342, 22, 992, 192" coords2="342, 22, 992, 192" shape="rect" alt="Albergo:Class" id="areadiagram_map_8TCiGmKGAqACTxeb" href="Class_4ycCGmKGAqACTxal.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Pattern Observer. Una classe che implementa questa classe deve 
+      implementare un metodo che gli consenta
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      di &amp;quot;attaccargli&amp;quot; un osservatore, di &amp;quot;rimuovergli&amp;quot; un osservatore, e di 
+      notificare a tutti i suoi osservatori
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      un suo cambiamento di stato. E' stato introdotto questo design pattern, 
+      perch&amp;#232; alcuni oggetti software devono
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      aggiornarsi quando cambia lo stato interno di altri oggetti software.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1862, 322, 2052, 412" coords2="1862, 322, 2052, 412" shape="rect" alt="ISubject:Class" id="areadiagram_map_PVB8EmKGAqACvSTb" href="Class_v0JpCaKGAqACZBi5.html" onmouseover="storeReferenceAndSubdiagramInfos('1862, 322, 2052, 412',new Array('ISubject.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Utility/ISubject.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1862, 322, 2052, 412'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe serve a modellare un &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#2PNiLaKGAqACkgcE&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('2PNiLaKGAqACkgcE');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;servizio 
+      interno&amp;lt;/a&amp;gt; all'albergo, per cui la struttura ricettiva
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      non si appoggia a sistemi esterni di gestione. (e.g.: fiori in &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;, 
+      champagne in &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;).
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="2, 642, 362, 762" coords2="2, 642, 362, 762" shape="rect" alt="ServizioInterno:Class" id="areadiagram_map_pVi8EmKGAqACvSS8" href="Class_rEJpCaKGAqACZBhR.html" onmouseover="storeReferenceAndSubdiagramInfos('2, 642, 362, 762',new Array('ServizioInterno.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/ServizioInterno.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('2, 642, 362, 762'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Questa classe rappresenta lo &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#Sb.7daKGAqACdg0B&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('Sb.7daKGAqACdg0B');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;storico&amp;lt;/a&amp;gt; 
+      dei soggiorni dell'albergo.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Alessandro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="1382, 72, 1752, 192" coords2="1382, 72, 1752, 192" shape="rect" alt="Storico:Class" id="areadiagram_map_81tcEmKGAqACvSQ9" href="Class_EkJpCaKGAqACZBhX.html" onmouseover="storeReferenceAndSubdiagramInfos('1382, 72, 1752, 192',new Array('Storico.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Storico.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('1382, 72, 1752, 192'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe che realizza una &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt; 
+      all'interno dell'albergo.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="482, 292, 922, 532" coords2="482, 292, 922, 532" shape="rect" alt="Camera:Class" id="areadiagram_map_nBhcEmKGAqACvSQI" href="Class_lbKsEmKGAqACvRBk.html" onmouseover="storeReferenceAndSubdiagramInfos('482, 292, 922, 532',new Array('Camera.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Camera/Camera.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('482, 292, 922, 532'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe che realizza un generico stato della &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#0bVQ_kKGAqACSQZk&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('0bVQ_kKGAqACSQZk');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;camera&amp;lt;/a&amp;gt;, 
+      questo potr&amp;#224; poi essere uno stato &amp;quot;libero&amp;quot; o &amp;quot;occupato&amp;quot;. Si
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      &amp;#232; applicato il pattern State.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="532, 642, 902, 872" coords2="532, 642, 902, 872" shape="rect" alt="StatoCamera:Class" id="areadiagram_map_XBhcEmKGAqACvSQK" href="Class_kHKsEmKGAqACvRCW.html" onmouseover="storeReferenceAndSubdiagramInfos('532, 642, 902, 872',new Array('StatoCamera.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Camera/StatoCamera.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('532, 642, 902, 872'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe che realizza uno &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bkYQqiKGAqACSQ3t&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bkYQqiKGAqACSQ3t');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;stato 
+      camera&amp;lt;/a&amp;gt; &amp;quot;libero&amp;quot;.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="362, 932, 732, 1112" coords2="362, 932, 732, 1112" shape="rect" alt="StatoCameraLibera:Class" id="areadiagram_map_3BhcEmKGAqACvSQM" href="Class_zHKsEmKGAqACvRC4.html" onmouseover="storeReferenceAndSubdiagramInfos('362, 932, 732, 1112',new Array('StatoCameraLibera.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Camera/StatoCameraLibera.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('362, 932, 732, 1112'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area docContent="&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      Classe che realizza uno &amp;lt;a class=&amp;quot;ItemLink&amp;quot; href=&amp;quot;GridDiagram_45wKL4KGAqACbQbx.html#bkYQqiKGAqACSQ3t&amp;quot; name=&amp;quot;&amp;quot; onclick=&amp;quot;javascript: highlightGridModelSelection('bkYQqiKGAqACSQ3t');&amp;quot; target=&amp;quot;_content_pane&amp;quot;&amp;gt;stato 
+      camera&amp;lt;/a&amp;gt; &amp;quot;occupato&amp;quot;.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-top:0;&amp;quot;&amp;gt;
+      @author Eugenio
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+" coords="772, 932, 1162, 1062" coords2="772, 932, 1162, 1062" shape="rect" alt="StatoCameraOccupata:Class" id="areadiagram_map_PBhcEmKGAqACvSQO" href="Class_YXKsEmKGAqACvRDf.html" onmouseover="storeReferenceAndSubdiagramInfos('772, 932, 1162, 1062',new Array('StatoCameraOccupata.java*file:///C:/ihotel/ihotel_src/ihotel/ihotel/src/com/iHotel/model/Albergo/Camera/StatoCameraOccupata.java'),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array(),new Array()),showReferenceIcon('772, 932, 1162, 1062'),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<div style="height: 20px">
+	</div>
+	<table width="100%" cellpadding="0" border="0" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		ihotel Documentation	</div>
+</body>
+</html>
