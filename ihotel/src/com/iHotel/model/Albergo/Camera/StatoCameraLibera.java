@@ -21,7 +21,7 @@ public class StatoCameraLibera extends StatoCamera {
 	public LinkedList<StatoCamera> occupaInPeriodo(Periodo periodoRichiesta) {
 		// Lista degli stati da restituire alla camera.
 		LinkedList<StatoCamera> nuoviStatiCamera=null;
-		// Controllo che il periodo della richiesta è contenuto nel periodo dell'instanza.
+		// Controllo che il periodo della richiesta ï¿½ contenuto nel periodo dell'instanza.
 		if (_periodo.contiene(periodoRichiesta)) {
 			CreaStatiCameraStrategy creaStatiCameraStrategy = CreaStatiCameraStrategyFactory.getInstance().getStrategy(_periodo, periodoRichiesta);
 			nuoviStatiCamera=creaStatiCameraStrategy.creaNuoviStati(this, periodoRichiesta);
@@ -31,13 +31,7 @@ public class StatoCameraLibera extends StatoCamera {
 	}
 	@Override
 	public boolean isLiberaInPeriodo(Periodo periodo) {
-		boolean esito;
-		if(this.get_periodo().contiene(periodo)) {
-			esito=true;
-		} else {
-			esito=false;
-		}
-		return esito;
+		return get_periodo().contiene(periodo) ? true : false;
 	}
 	@Override
 	public Prezzo getPrezzoTotaleServizi(Periodo periodo) {

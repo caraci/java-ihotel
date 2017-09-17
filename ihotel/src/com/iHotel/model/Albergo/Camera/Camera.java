@@ -56,10 +56,7 @@ public class Camera implements Comparable<Camera> {
 	 * @param periodo Periodo in cui aggiungere l'ospite.
 	 */
 	public void aggiungiOspiteInPeriodo(Ospite ospite, Periodo periodo) {
-		// Prendo il giusto statoCamera in base al periodo.
-		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
-		// Aggiungo l'ospite allo stato camera.
-		statoCamera.aggiungiOspite(ospite);
+		getStatoCameraInPeriodo(periodo).aggiungiOspite(ospite);
 	}
 	/**
 	 * Metodo per aggiungere un servizio interno alla camera in un determinato periodo.
@@ -68,9 +65,7 @@ public class Camera implements Comparable<Camera> {
 	 * @param periodo Periodo in cui aggiungere il servizio.
 	 */
 	public void aggiungiServizioInPeriodo(ServizioInterno servizio, Periodo periodo){
-		// Prendo il giusto statoCamera in base al periodo.
-		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
-		statoCamera.aggiungiServizio(servizio);
+		getStatoCameraInPeriodo(periodo).aggiungiServizio(servizio);
 	}
 	/**
 	 * Metodo per ottenere il prezzo dei servizi interni della camera in un certo periodo.
@@ -80,22 +75,20 @@ public class Camera implements Comparable<Camera> {
 	 */
 	public Prezzo getPrezzoServiziInPeriodo(Periodo periodo){
 		Prezzo prezzo = new Prezzo();
-		// Ciclo sugli stati della camera
-		for (Iterator<StatoCamera> iterator = _statiCameraState.iterator(); iterator.hasNext();) {
-			StatoCamera cameraState = (StatoCamera) iterator.next();
+		// Ciclo sugli stati della camera	
+		for (StatoCamera cameraState: this.get_statiCamera()) {
 			// Controllo che non mi venga fornito un null
 			if(cameraState.getPrezzoTotaleServizi(periodo)!=null) {
 				prezzo=cameraState.getPrezzoTotaleServizi(periodo);
 			}
 		}
-		
 		return prezzo;
 	}
 	/**
-	 * Metodo per controllare se una camera è libera in un periodo.
+	 * Metodo per controllare se una camera e' libera in un periodo.
 	 * 
 	 * @param periodoRichiesta Periodo nel quale si vuole prenotare la camera.
-	 * @return True se la camera è libera nel periodo. False altrimenti.
+	 * @return True se la camera e' libera nel periodo. False altrimenti.
 	 */
 	public boolean isLiberaInPeriodo(Periodo periodoRichiesta) {	
 		boolean esito=false;
@@ -147,13 +140,7 @@ public class Camera implements Comparable<Camera> {
 	 * @return Lista dei servizi interni della camera nel periodo.
 	 */
 	public ArrayList<ServizioInterno> getServiziInterniInPeriodo(Periodo periodo){
-		ArrayList<ServizioInterno> serviziInterni=new ArrayList<ServizioInterno>();
-		// Ricavo il giusto stato camera.
-		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
-		// Ricavo la lista di servizi
-		serviziInterni=statoCamera.getServiziInterniInPeriodo(periodo);
-		
-		return serviziInterni;
+		return getStatoCameraInPeriodo(periodo).getServiziInterniInPeriodo(periodo);
 	}
 	/**
 	 * Metodo per ottenere la lista degli ospiti in un periodo.
@@ -162,13 +149,7 @@ public class Camera implements Comparable<Camera> {
 	 * @return Lista degli ospiti della camera nel periodo.
 	 */
 	public ArrayList<Ospite> getOspitiInPeriodo(Periodo periodo){
-		ArrayList<Ospite> ospiti=new ArrayList<Ospite>() ;
-		// Ricavo il giusto stato camera.
-		StatoCamera statoCamera = this.getStatoCameraInPeriodo(periodo);
-		// Ricavo la lista di ospiti.
-		ospiti=statoCamera.getOspitiInPeriodo(periodo);
-		
-		return ospiti;
+		return getStatoCameraInPeriodo(periodo).getOspitiInPeriodo(periodo);
 	}
 	/**
 	 * Metodo per ottenere il corretto stato camera in relazione ad un periodo.

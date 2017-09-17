@@ -1,5 +1,9 @@
 package com.iHotel.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import com.iHotel.model.Albergo.Albergo;
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Cataloghi.CatalogoCamere;
@@ -13,9 +17,6 @@ import com.iHotel.view.Graphic.VP_Home;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno.VPCP_SelezioneCamereDatiOspite_Observer;
 import com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno.VPCP_SelezionePeriodoTipologie;
 import com.iHotel.view.Utility.IObserver;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Questa classe rappresenta il controllore che ha il compito di gestire il caso d'uso "Crea Richiesta Soggiorno".
@@ -100,7 +101,7 @@ public class CCreaRichiestaSoggiorno {
 		/* Setto il periodo alla prenotazione */
 		_soggiorno.set_periodo(periodo);
 		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
-		HashMap<String, ArrayList<Camera>> camereLibere = _albergo.cercaCamereLibereInPeriodoDaTipologie(periodo, Tipologie);		
+		Map<String, List<Camera>> camereLibere = _albergo.cercaCamereLibereInPeriodoDaTipologie(periodo, Tipologie);		
 		// Recupero il frame dell'applicazione
 		ViewFrameApplication viewFrame = ViewFrameApplication.getInstance();
 		// Creo il pannello successivo

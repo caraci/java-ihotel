@@ -2,6 +2,11 @@ package com.iHotel.view.Graphic.GestioneSoggiorno.CreaRichiestaSoggiorno;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -11,10 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Albergo.Soggiorno.SoggiornoContextSubject;
 import com.iHotel.model.Utility.ISubject;
@@ -23,8 +24,6 @@ import com.iHotel.view.Event.CaricaCreaNuovaPrenotazioneListener;
 import com.iHotel.view.Event.GestioneSoggiorno.CreaRichiestaSoggiorno.AggiungiCameraPrenotazioneListener;
 import com.iHotel.view.Event.GestioneSoggiorno.CreaRichiestaSoggiorno.EffettuaNuovaPrenotazioneListener;
 import com.iHotel.view.Utility.IObserver;
-
-import java.awt.GridLayout;
 
 /**
  * Classe addetta alla realizzazione della finestra per la selezione delle camere che si vogliono
@@ -37,9 +36,9 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 
 	/**
 	 * Mappa contenente l'insieme di tutte le camere disponibili a seguito della richiesta effettuata precedentemente.
-	 * La chiave della mappa rappresenta la tipologia della camera, il valore è la lista delle camere disponibili.
+	 * La chiave della mappa rappresenta la tipologia della camera, il valore ï¿½ la lista delle camere disponibili.
 	 */
-	private HashMap<String, ArrayList<Camera>> _camereDisponibili;
+	private Map<String, List<Camera>> _camereDisponibili;
 	/* Panel */
     private JPanel _panelFinale, _panelPrezzo, _panelOspite;
     /* JButton */
@@ -102,7 +101,7 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
     protected void creaPanelMiddle() {
     	// Numero di tipologie di camere
 		int numeroTipologie = _camereDisponibili.size();
-    	// Numero di colonne. Il +1 è dovuta alla colonna di gestione.
+    	// Numero di colonne. Il +1 ï¿½ dovuta alla colonna di gestione.
 		int numeroColonne = numeroTipologie + 1;
     	// Setto Layout con il numero di colonne ricavato sulla base del risultato e con una riga.
 		_panelMiddle.setLayout(new GridLayout(1, numeroColonne, 5, 0));
@@ -122,8 +121,8 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
      * @param arrayListCamere Lista di camere disponibili.
      * @return Pannello con le camere disponibili.
      */
-    private JScrollPane creaColonnaTipologiaCamere(String tipologia, ArrayList<Camera> arrayListCamere) {
-    	// Creo uno scollPane, all'interno del quale andrò ad inserire il JPanel contenente le camere
+    private JScrollPane creaColonnaTipologiaCamere(String tipologia, List<Camera> arrayListCamere) {
+    	// Creo uno scollPane, all'interno del quale andrï¿½ ad inserire il JPanel contenente le camere
     	JScrollPane scrollPaneColonna = _viewFactory.getScrollPane();
     	// Creo una colonna per mostrare i risultati della tipologia di camere
 		JPanel panelColonna = _viewFactory.getPanel();
@@ -177,7 +176,7 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
 		_panelPrezzo.setLayout(new BoxLayout(_panelPrezzo, BoxLayout.PAGE_AXIS));
 		// Nome
 		_lblPrezzoScritto.setText("Prezzo Totale:");
-		_lblPrezzoTotale.setText("0€");
+		_lblPrezzoTotale.setText("0ï¿½");
 		// Aggiungo gli elementi al panelOspite
 		_panelPrezzo.add(_lblPrezzoScritto);
 		_panelPrezzo.add(Box.createRigidArea(new Dimension(0,20)));
@@ -244,7 +243,7 @@ public class VPCP_SelezioneCamereDatiOspite_Observer extends ViewPanelContentPan
     /**
      * Metodo per creare il pannello.
      */
-    public void creaPanel(HashMap<String, ArrayList<Camera>> camereDisponibili) {
+    public void creaPanel(Map<String, List<Camera>> camereDisponibili) {
     	// Setto l'attributo relativo alle camere libere
     	_camereDisponibili=camereDisponibili;
     	// Creo il pannello in alto

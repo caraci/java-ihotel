@@ -1,6 +1,7 @@
 package com.iHotel.model.Albergo;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import com.iHotel.model.Albergo.Camera.Camera;
 import com.iHotel.model.Utility.Periodo;
@@ -46,7 +47,7 @@ public class Albergo {
 	private Albergo() {
 		/*
 		 * Si prendono nome, telefono, partita IVA e email dal defaultLoader, togliendo dalla classe  
-		 * MAlbergo la responsabilità di recuperare i dati di default.
+		 * MAlbergo la responsabilitï¿½ di recuperare i dati di default.
 		 */
         ArrayList<String> informazioniAlbergo;
         informazioniAlbergo=ULeggiDaFile.getInformazioniAlbergo();
@@ -74,14 +75,11 @@ public class Albergo {
 	 * @return cameraRicercata Camera che ha il numero passato come parametro.
 	 */
 	public Camera getCameraDaNumero(String numeroCamera) {
-		Camera cameraRicercata = null;
-		for (Iterator<Camera> iterator = _camere.iterator(); iterator.hasNext();) {
-			Camera camera = (Camera) iterator.next();
-			if (camera.get_numero().equals(numeroCamera)) {
-				cameraRicercata = camera;
-			}
-		}
-		return cameraRicercata;
+		Optional<Camera> cameraRicercata = null;	
+		cameraRicercata = _camere.stream()
+			.filter(c -> c.get_numero().equals(numeroCamera))
+			.findFirst();
+		return cameraRicercata.orElse(null);
 	}
 	/**
 	 * Restituisce una lista di camere libere di una tipologia e in un periodo.
@@ -90,18 +88,11 @@ public class Albergo {
 	 * @param tipologia Tipologia delle camere da ricercare.
 	 * @return Lista contenente le camere libere della tipologia indicata, nel periodo indicato.
 	 */
-	public ArrayList<Camera> cercaCamereLibereInPeriodoDaTipologia(Periodo periodo, String tipologia){
-		ArrayList<Camera> lista_camere = new ArrayList<Camera>();
-		for (Iterator<Camera> iterator = _camere.iterator(); iterator.hasNext();) {
-			Camera camera = iterator.next();
-			// Controllo se la tipologia della camera è uguale a quella per cui stiamo cercando informazioni
-			if (camera.get_tipologia().equals(tipologia)){
-				// Controllo se la camera è libera nel periodo richiesto.
-				if(camera.isLiberaInPeriodo(periodo)==true){
-					lista_camere.add(camera);
-				}
-			}
-		}
+	public List<Camera> cercaCamereLibereInPeriodoDaTipologia(Periodo periodo, String tipologia){
+		List<Camera> lista_camere = new ArrayList<Camera>();
+		lista_camere = _camere.stream()
+			.filter(c -> c.isLiberaInPeriodo(periodo))
+			.collect(Collectors.toList());
 		return lista_camere;
 	}
 	/**
@@ -112,18 +103,13 @@ public class Albergo {
 	 * @param tipologie Lista delle tipologie di camere che si vogliono ricercare.
 	 * @return Mappa contenente come chiave la tipologia, e come valore la lista di camere libere di quella tipologia.
 	 */
-	public HashMap<String, ArrayList<Camera>> cercaCamereLibereInPeriodoDaTipologie(Periodo periodo, ArrayList<String> tipologie) {
+	public Map<String, List<Camera>> cercaCamereLibereInPeriodoDaTipologie(Periodo periodo, ArrayList<String> tipologie) {
 		// Struttura dati nella quale andremo a salvare le camera libere suddivise per tipologia.
-		HashMap<String, ArrayList<Camera>> camereLibere = new HashMap<String, ArrayList<Camera>>();
+		Map<String, List<Camera>> camereLibere = new HashMap<String, List<Camera>>();
 		// Ciclo sulle tipologie
-		for (Iterator<String> iterator = tipologie.iterator(); iterator.hasNext();) {
-			String tipologia = iterator.next();
-			// Struttura dati nella quale si inseriranno le camere disponibili.
-			ArrayList<Camera> camereLibereTipologia = new ArrayList<Camera>();	
-			// Inserisco nella lista le camere disponibili.
-			camereLibereTipologia = this.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia);		
+		for (String tipologia: tipologie) {	
 			// Aggiungo le camere appartenenti ad una tipologia
-			camereLibere.put(tipologia, camereLibereTipologia);
+			camereLibere.put(tipologia, this.cercaCamereLibereInPeriodoDaTipologia(periodo, tipologia));
 		}
 		return camereLibere;
 	}

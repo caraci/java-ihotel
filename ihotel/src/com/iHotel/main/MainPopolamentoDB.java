@@ -122,6 +122,16 @@ public class MainPopolamentoDB {
 
 				Periodo periodo_6 = new Periodo(new Giorno(giornoInizio_6,meseInizio_6,annoInizio_6),new Giorno(giornoFine_6,meseFine_6,annoFine_6));
 				
+			// periodo_6 - 31 Marzo 2014 - 31 Maggio 2015
+				int giornoInizio_7 = 1;
+				int meseInizio_7 = 6;
+				int annoInizio_7 = 2015;
+				int giornoFine_7 = 31;
+				int meseFine_7 = 12;
+				int annoFine_7 = 2040;
+
+				Periodo periodo_7 = new Periodo(new Giorno(giornoInizio_7,meseInizio_7,annoInizio_7),new Giorno(giornoFine_7,meseFine_7,annoFine_7));
+				
 		//fine periodi
 		
 		//Creo le camere
@@ -207,6 +217,16 @@ public class MainPopolamentoDB {
 		StatoCamera statoCamera_103_Periodo6 = new StatoCameraLibera();
 		statoCamera_103_Periodo6.set_periodo(periodo_6);
 		
+		// StatoCamera_101_Periodo_7
+		StatoCamera statoCamera_101_Periodo7 = new StatoCameraLibera();
+		statoCamera_101_Periodo7.set_periodo(periodo_7);
+		// StatoCamera_102_Periodo_7
+		StatoCamera statoCamera_102_Periodo7 = new StatoCameraLibera();
+		statoCamera_102_Periodo7.set_periodo(periodo_7);
+		// StatoCamera_103_Periodo_7
+		StatoCamera statoCamera_103_Periodo7 = new StatoCameraLibera();
+		statoCamera_103_Periodo7.set_periodo(periodo_7);
+		
 		/* --------------------------- stati camere DOPPIE ------------------------------- */
 		
 		//Stati camere doppie periodo 5
@@ -230,6 +250,16 @@ public class MainPopolamentoDB {
 		// StatoCamera_203_Periodo_6
 		StatoCamera statoCamera_203_Periodo6 = new StatoCameraLibera();
 		statoCamera_203_Periodo6.set_periodo(periodo_6);
+		
+		// StatoCamera_201_Periodo_7
+		StatoCamera statoCamera_201_Periodo7 = new StatoCameraLibera();
+		statoCamera_201_Periodo7.set_periodo(periodo_7);
+		// StatoCamera_202_Periodo_7
+		StatoCamera statoCamera_202_Periodo7 = new StatoCameraLibera();
+		statoCamera_202_Periodo7.set_periodo(periodo_7);
+		// StatoCamera_203_Periodo_7
+		StatoCamera statoCamera_203_Periodo7 = new StatoCameraLibera();
+		statoCamera_203_Periodo7.set_periodo(periodo_7);
 		
 		/* --------------------------- stati camere TRIPLE ------------------------------- */
 		
@@ -273,6 +303,16 @@ public class MainPopolamentoDB {
 		// StatoCamera_303_Periodo_3
 		StatoCamera statoCamera_303_Periodo6 = new StatoCameraLibera();
 		statoCamera_303_Periodo6.set_periodo(periodo_6);
+		
+		// StatoCamera_301_Periodo_6
+		StatoCamera statoCamera_301_Periodo7 = new StatoCameraLibera();
+		statoCamera_301_Periodo7.set_periodo(periodo_7);
+		// StatoCamera_302_Periodo_6
+		StatoCamera statoCamera_302_Periodo7 = new StatoCameraLibera();
+		statoCamera_302_Periodo7.set_periodo(periodo_7);
+		// StatoCamera_303_Periodo_3
+		StatoCamera statoCamera_303_Periodo7 = new StatoCameraLibera();
+		statoCamera_303_Periodo7.set_periodo(periodo_7);
 
 		//Creo le map di stati di camere
 		//map di stati camere singole
@@ -281,34 +321,40 @@ public class MainPopolamentoDB {
 		statiCamera_101.add(statoCamera_101_Periodo1);
 		statiCamera_101.add(statoCamera_101_Periodo4);
 		statiCamera_101.add(statoCamera_101_Periodo6);
+		statiCamera_101.add(statoCamera_101_Periodo7);
 		
 		// Stati occupazione Camera 102
 		LinkedList<StatoCamera> statiCamera_102 = new LinkedList<StatoCamera>();
 		statiCamera_102.add(statoCamera_102_Periodo1);
 		statiCamera_102.add(statoCamera_102_Periodo4);
 		statiCamera_102.add(statoCamera_102_Periodo6);
+		statiCamera_102.add(statoCamera_102_Periodo7);
 		
 		// Stati occupazione Camera 103
 		LinkedList<StatoCamera> statiCamera_103 = new LinkedList<StatoCamera>();
 		statiCamera_103.add(statoCamera_103_Periodo1);
 		statiCamera_103.add(statoCamera_103_Periodo4);
 		statiCamera_103.add(statoCamera_103_Periodo6);
+		statiCamera_103.add(statoCamera_103_Periodo7);
 		
 		//map di stati camere doppie
 		// Stati occupazione Camera 201
 		LinkedList<StatoCamera> statiCamera_201 = new LinkedList<StatoCamera>();
 		statiCamera_201.add(statoCamera_201_Periodo5);
 		statiCamera_201.add(statoCamera_201_Periodo6);
+		statiCamera_201.add(statoCamera_201_Periodo7);
 		
 		// Stati occupazione Camera 202
 		LinkedList<StatoCamera> statiCamera_202 = new LinkedList<StatoCamera>();
 		statiCamera_202.add(statoCamera_202_Periodo5);
 		statiCamera_202.add(statoCamera_202_Periodo6);
+		statiCamera_202.add(statoCamera_202_Periodo7);
 		
 		// Stati occupazione Camera 203
 		LinkedList<StatoCamera> statiCamera_203 = new LinkedList<StatoCamera>();
 		statiCamera_203.add(statoCamera_203_Periodo5);
 		statiCamera_203.add(statoCamera_203_Periodo6);
+		statiCamera_203.add(statoCamera_203_Periodo7);
 		
 		//map di stati camere triple
 		// Stati occupazione Camera 201
@@ -317,6 +363,7 @@ public class MainPopolamentoDB {
 		statiCamera_301.add(statoCamera_301_Periodo2);
 		statiCamera_301.add(statoCamera_301_Periodo3);
 		statiCamera_301.add(statoCamera_301_Periodo6);
+		statiCamera_301.add(statoCamera_301_Periodo7);
 		
 		// Stati occupazione Camera 201
 		LinkedList<StatoCamera> statiCamera_302 = new LinkedList<StatoCamera>();
@@ -324,6 +371,7 @@ public class MainPopolamentoDB {
 		statiCamera_302.add(statoCamera_302_Periodo2);
 		statiCamera_302.add(statoCamera_302_Periodo3);
 		statiCamera_302.add(statoCamera_302_Periodo6);
+		statiCamera_302.add(statoCamera_302_Periodo7);
 		
 		// Stati occupazione Camera 201
 		LinkedList<StatoCamera> statiCamera_303 = new LinkedList<StatoCamera>();
@@ -331,6 +379,7 @@ public class MainPopolamentoDB {
 		statiCamera_303.add(statoCamera_303_Periodo2);
 		statiCamera_303.add(statoCamera_303_Periodo3);
 		statiCamera_303.add(statoCamera_303_Periodo6);
+		statiCamera_303.add(statoCamera_303_Periodo7);
 		
 		// Aggiungo stati alle rispettive camere
 		
@@ -375,6 +424,10 @@ public class MainPopolamentoDB {
 		p_singola_6.set_prezzo(singola);
 		p_singola_6.set_periodo(periodo_6);
 		
+		PrezzoCamera p_singola_7 = new PrezzoCamera();
+		p_singola_7.set_prezzo(singola);
+		p_singola_7.set_periodo(periodo_7);
+		
 		PrezzoCamera p_doppia_1 = new PrezzoCamera();
 		p_doppia_1.set_prezzo(doppia);
 		p_doppia_1.set_periodo(periodo_1);
@@ -390,6 +443,10 @@ public class MainPopolamentoDB {
 		PrezzoCamera p_doppia_6 = new PrezzoCamera();
 		p_doppia_6.set_prezzo(doppia);
 		p_doppia_6.set_periodo(periodo_6);
+		
+		PrezzoCamera p_doppia_7 = new PrezzoCamera();
+		p_doppia_7.set_prezzo(doppia);
+		p_doppia_7.set_periodo(periodo_7);
 		
 		PrezzoCamera p_tripla_1 = new PrezzoCamera();
 		p_tripla_1.set_prezzo(tripla);
@@ -407,6 +464,10 @@ public class MainPopolamentoDB {
 		p_tripla_6.set_prezzo(tripla);
 		p_tripla_6.set_periodo(periodo_6);
 		
+		PrezzoCamera p_tripla_7 = new PrezzoCamera();
+		p_tripla_7.set_prezzo(tripla);
+		p_tripla_7.set_periodo(periodo_7);
+		
 		//fine prezzi camere
 		
 		//inizializzazione map prezzi camere
@@ -417,18 +478,21 @@ public class MainPopolamentoDB {
 		prezzi_singola.add(p_singola_2);
 		prezzi_singola.add(p_singola_3);
 		prezzi_singola.add(p_singola_6);
+		prezzi_singola.add(p_singola_7);
 		//doppia
 		ArrayList<PrezzoCamera> prezzi_doppia = new ArrayList<PrezzoCamera>();
 		prezzi_doppia.add(p_doppia_1);
 		prezzi_doppia.add(p_doppia_2);
 		prezzi_doppia.add(p_doppia_3);
 		prezzi_doppia.add(p_doppia_6);
+		prezzi_doppia.add(p_doppia_7);
 		//tripla
 		ArrayList<PrezzoCamera> prezzi_tripla = new ArrayList<PrezzoCamera>();
 		prezzi_tripla.add(p_tripla_1);
 		prezzi_tripla.add(p_tripla_2);
 		prezzi_tripla.add(p_tripla_3);
 		prezzi_tripla.add(p_tripla_6);
+		prezzi_tripla.add(p_tripla_7);
 		
 		//inizializzazione descrizioni camere
 		DescrizioneCamera d1 = new DescrizioneCamera();
@@ -456,10 +520,15 @@ public class MainPopolamentoDB {
 		PrezzoServizioInterno psiChampagne_6 = new PrezzoServizioInterno();
 		psiChampagne_6.set_periodo(periodo_6);
 		psiChampagne_6.set_prezzo(pChampagne);
+		
+		PrezzoServizioInterno psiChampagne_7 = new PrezzoServizioInterno();
+		psiChampagne_7.set_periodo(periodo_7);
+		psiChampagne_7.set_prezzo(pChampagne);
 		// Lista Prezzi Champagne
 		LinkedList<PrezzoServizioInterno> prezziChampagne = new LinkedList<PrezzoServizioInterno>();
 		prezziChampagne.add(psiChampagne_5);
 		prezziChampagne.add(psiChampagne_6);
+		prezziChampagne.add(psiChampagne_7);
 		
 		// Descrizione Servizio Interno Champagne
 		
@@ -480,10 +549,15 @@ public class MainPopolamentoDB {
 		PrezzoServizioInterno psiRose_6 = new PrezzoServizioInterno();
 		psiRose_6.set_periodo(periodo_6);
 		psiRose_6.set_prezzo(pRose);
+		
+		PrezzoServizioInterno psiRose_7 = new PrezzoServizioInterno();
+		psiRose_7.set_periodo(periodo_7);
+		psiRose_7.set_prezzo(pRose);
 		// Lista Prezzi Rose
 		LinkedList<PrezzoServizioInterno> prezziRose = new LinkedList<PrezzoServizioInterno>();
 		prezziRose.add(psiRose_5);
 		prezziRose.add(psiRose_6);
+		prezziRose.add(psiRose_7);
 		
 		// Descrizione Servizio Interno Rose
 		
@@ -500,17 +574,27 @@ public class MainPopolamentoDB {
 			aggiungiPeriodo(db,periodo_1);
 			aggiungiPeriodo(db,periodo_2);
 			aggiungiPeriodo(db,periodo_3);
+			aggiungiPeriodo(db,periodo_4);
+			aggiungiPeriodo(db,periodo_5);
+			aggiungiPeriodo(db,periodo_6);
+			aggiungiPeriodo(db,periodo_7);
 			
 			//aggiunta prezzi
 			aggiungiPrezzo(db,p_singola_1);
 			aggiungiPrezzo(db,p_singola_2);
 			aggiungiPrezzo(db,p_singola_3);
+			aggiungiPrezzo(db,p_singola_6);
+			aggiungiPrezzo(db,p_singola_7);
 			aggiungiPrezzo(db,p_doppia_1);
 			aggiungiPrezzo(db,p_doppia_2);
 			aggiungiPrezzo(db,p_doppia_3);
+			aggiungiPrezzo(db,p_doppia_6);
+			aggiungiPrezzo(db,p_doppia_7);
 			aggiungiPrezzo(db,p_tripla_1);
 			aggiungiPrezzo(db,p_tripla_2);
 			aggiungiPrezzo(db,p_tripla_3);
+			aggiungiPrezzo(db,p_tripla_6);
+			aggiungiPrezzo(db,p_tripla_7);
 			
 			//aggiunta descrizioni camere
 			aggiungiDescrizioneCamera(db,d1);
@@ -532,13 +616,8 @@ public class MainPopolamentoDB {
 			aggiungiCamera(db,camera_302);
 			aggiungiCamera(db,camera_303);
 			
-		}
-		
-		finally {
+		} finally {
 		db.close();
-			}
-		
-
+		}
 	}
-
 }
